@@ -1,7 +1,6 @@
 package Modelo;
 
 import java.util.Date;
-import java.util.List;
 
 public class Actividad {
 	
@@ -12,7 +11,7 @@ public class Actividad {
 	private Date fecha;
 	private String lugar;
 	
-	private List<Usuario> participante;
+	private Usuario [] participante;
 	private Organizacion organizacion;
 	
 
@@ -64,19 +63,11 @@ public class Actividad {
 		this.lugar = lugar;
 	}
 
-	public List<Usuario> getParticipante() {
+	public Usuario getParticipante() {
 		return participante;
 	}
 
-	public void setParticipante(List<Usuario> participante) {
+	public void setParticipante(Usuario participante) {
 		this.participante = participante;
-	}
-
-	public Organizacion getOrganizacion() {
-		return organizacion;
-	}
-
-	public void setOrganizacion(Organizacion organizacion) {
-		this.organizacion = organizacion;
 	}
 }
