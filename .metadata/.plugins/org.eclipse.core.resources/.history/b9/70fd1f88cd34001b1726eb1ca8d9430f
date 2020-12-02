@@ -1,7 +1,6 @@
 package Modelo;
 
 public class Profesor extends Usuario {
-	
 	private String telefono;
 
 	public String getTelefono() {
