@@ -55,8 +55,8 @@ public class Curso {
 		return idCurso;
 	}
 
-	public void setId(Integer idCurso) {
-		this.idCurso = idCurso;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNombre() {

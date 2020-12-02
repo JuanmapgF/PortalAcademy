@@ -35,28 +35,25 @@ public class Curso {
 	public Curso(Integer idCurso) {
 		BD miBD = new BD(server, databaseName);
 		List<Object[]> datos = miBD.Select("SELECT * FROM Curso WHERE idCurso = " + idCurso);
-		Object[] aux = datos.get(0);
-		this.nombre = aux[0].toString();
-		this.descripcion = aux[1].toString();
-		this.imagen = aux[2].toString();
-		this.publico = Boolean.parseBoolean(aux[3].toString());
-		this.aforo = Integer.parseInt(aux[4].toString());
-		this.presencial = Boolean.parseBoolean(aux[5].toString());
-		this.tieneForo = Boolean.parseBoolean(aux[6].toString());
-		this.profesor = new Profesor(aux[7].toString());
-		if(this.tieneForo) {
-			this.foro = new Foro(Integer.parseInt(aux[8].toString()));
-		} else {
-			this.foro = null;
-		}
+		Object[] aux = datos.get(0)
+		this.nombre = datos.get(0)[0].toString();
+		this.descripcion = datos.get(0)[1].toString();
+		this.imagen = datos.get(0)[2].toString();
+		this.publico = datos.get(0)[3];
+		this.aforo = datos.get(0)[4];
+		this.presencial = datos.get(0)[5];
+		this.tieneForo = datos.get(0)[6];
+		
+		this.profesor = new Profesor(datos.get(0));
+		this.foro = new Foro(datos.get(8));
 	}
 
 	public Integer getId() {
-		return idCurso;
+		return id;
 	}
 
-	public void setId(Integer idCurso) {
-		this.idCurso = idCurso;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNombre() {

@@ -45,18 +45,18 @@ public class Curso {
 		this.tieneForo = Boolean.parseBoolean(aux[6].toString());
 		this.profesor = new Profesor(aux[7].toString());
 		if(this.tieneForo) {
-			this.foro = new Foro(Integer.parseInt(aux[8].toString()));
+			this.foro = new Foro(aux[8].toString());
 		} else {
 			this.foro = null;
 		}
 	}
 
 	public Integer getId() {
-		return idCurso;
+		return id;
 	}
 
-	public void setId(Integer idCurso) {
-		this.idCurso = idCurso;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNombre() {

@@ -41,22 +41,19 @@ public class Curso {
 		this.imagen = aux[2].toString();
 		this.publico = Boolean.parseBoolean(aux[3].toString());
 		this.aforo = Integer.parseInt(aux[4].toString());
-		this.presencial = Boolean.parseBoolean(aux[5].toString());
-		this.tieneForo = Boolean.parseBoolean(aux[6].toString());
+		this.presencial = aux[5];
+		this.tieneForo = aux[6];
+		
 		this.profesor = new Profesor(aux[7].toString());
-		if(this.tieneForo) {
-			this.foro = new Foro(Integer.parseInt(aux[8].toString()));
-		} else {
-			this.foro = null;
-		}
+		this.foro = new Foro(aux[8].toString());
 	}
 
 	public Integer getId() {
-		return idCurso;
+		return id;
 	}
 
-	public void setId(Integer idCurso) {
-		this.idCurso = idCurso;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
