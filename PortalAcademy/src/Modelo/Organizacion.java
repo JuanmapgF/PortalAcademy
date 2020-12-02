@@ -4,7 +4,6 @@ public class Organizacion extends Usuario {
 
 	private String sede;
 	
-	private String sede;
 
 	public String getSede() {
 		return sede;

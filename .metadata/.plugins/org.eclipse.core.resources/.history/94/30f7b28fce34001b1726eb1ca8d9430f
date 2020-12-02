@@ -64,11 +64,11 @@ public class Actividad {
 		this.lugar = lugar;
 	}
 
-	public List<Usuario> getParticipante() {
+	public Usuario getParticipante() {
 		return participante;
 	}
 
-	public void setParticipante(List<Usuario> participante) {
+	public void setParticipante(Usuario participante) {
 		this.participante = participante;
 	}
 

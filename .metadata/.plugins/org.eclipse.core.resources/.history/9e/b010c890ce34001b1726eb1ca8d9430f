@@ -64,6 +64,8 @@ public class Actividad {
 		this.lugar = lugar;
 	}
 
+	
+
 	public List<Usuario> getParticipante() {
 		return participante;
 	}
