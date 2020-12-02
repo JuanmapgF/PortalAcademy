@@ -6,8 +6,8 @@ public class Foro {
 	
 	private List<Mensaje> mensajes;
 
-	public Foro(int idForo) {
-		
+	public Foro(int parseInt) {
+		// TODO Auto-generated constructor stub
 	}
 
 	public List<Mensaje> getMensajes() {

@@ -6,10 +6,6 @@ public class Foro {
 	
 	private List<Mensaje> mensajes;
 
-	public Foro(int idForo) {
-		
-	}
-
 	public List<Mensaje> getMensajes() {
 		return mensajes;
 	}

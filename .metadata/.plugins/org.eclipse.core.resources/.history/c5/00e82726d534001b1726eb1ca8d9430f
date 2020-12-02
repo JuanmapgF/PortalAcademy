@@ -29,6 +29,7 @@ public class Curso {
 		this.aforo = aforo;
 		this.presencial = presencial;
 		this.tieneForo = tieneForo;
+
 	}
 
 	public Curso(Integer idCurso) {

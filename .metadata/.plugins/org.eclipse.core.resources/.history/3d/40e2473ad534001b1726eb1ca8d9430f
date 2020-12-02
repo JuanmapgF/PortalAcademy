@@ -7,10 +7,6 @@ public class Profesor extends Usuario {
 	private String telefono;
 	private List<Curso> cursos;
 
-	public Profesor(String idProfesor) {
-		
-	}
-
 	public List<Curso> getCursos() {
 		return cursos;
 	}
