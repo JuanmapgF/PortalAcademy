@@ -21,7 +21,7 @@ public class BD {
 
 	public Object SelectEscalar(String sel) {
 		if (!sel.toUpperCase().startsWith("SELECT"))
-			throw new ErrorBD("SELECT Syntax Error: " + sel);
+			throw new ErrorBD("SELECT Sytanx Error: " + sel);
 
 		ResultSet rset;
 		Object res = null;
@@ -41,7 +41,7 @@ public class BD {
 
 	public List<Object[]> Select(String sel) {
 		if (!sel.toUpperCase().startsWith("SELECT"))
-			throw new ErrorBD("SELECT Syntax Error: " + sel);
+			throw new ErrorBD("SELECT Sytanx Error: " + sel);
 
 		ResultSet rset;
 		List<Object[]> lista = new ArrayList<Object[]>();
@@ -68,7 +68,7 @@ public class BD {
 
 	public void Insert(String ins) {
 		if (!ins.toUpperCase().startsWith("INSERT"))
-			throw new ErrorBD("INSERT Syntax Error: " + ins);
+			throw new ErrorBD("INSERT Sytanx Error: " + ins);
 
 		try {
 			Statement stmt = con.createStatement();
@@ -81,7 +81,7 @@ public class BD {
 
 	public void Delete(String del) {
 		if (!del.toUpperCase().startsWith("DELETE"))
-			throw new ErrorBD("DELETE Syntax Error: " + del);
+			throw new ErrorBD("DELETE Sytanx Error: " + del);
 		try {
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(del);
@@ -93,7 +93,7 @@ public class BD {
 
 	public void Update(String up) {
 		if (!up.toUpperCase().startsWith("UPDATE"))
-			throw new ErrorBD("UPDATE Syntax Error: " + up);
+			throw new ErrorBD("UPDATE Sytanx Error: " + up);
 
 		try {
 			Statement stmt = con.createStatement();
