@@ -69,7 +69,7 @@ public class Actividad {
 	}
 
 	public void setParticipantes(List<Usuario> participantes) {
-		this.participantes = participantes;
+		this.participantes = participante;
 	}
 
 	public Organizacion getOrganizacion() {

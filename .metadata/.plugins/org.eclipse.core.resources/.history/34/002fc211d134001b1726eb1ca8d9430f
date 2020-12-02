@@ -1,0 +1,8 @@
+package Modelo;
+
+public class Estudiante extends Usuario {
+	
+	private List<Curso> cursos;
+	private List<Actividad> actividades;
+
+}

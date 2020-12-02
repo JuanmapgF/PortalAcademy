@@ -7,14 +7,6 @@ public class Profesor extends Usuario {
 	private String telefono;
 	private List<Curso> cursos;
 
-	public List<Curso> getCursos() {
-		return cursos;
-	}
-
-	public void setCursos(List<Curso> cursos) {
-		this.cursos = cursos;
-	}
-
 	public String getTelefono() {
 		return telefono;
 	}

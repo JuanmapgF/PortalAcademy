@@ -1,7 +1,5 @@
 package Modelo;
 
-import java.util.List;
-
 public class Curso {
 	
 	private Integer id;
@@ -80,13 +78,5 @@ public class Curso {
 
 	public void setPresencial(Boolean presencial) {
 		this.presencial = presencial;
-	}
-
-	public List<Usuario> getEstudiantes() {
-		return estudiantes;
-	}
-
-	public void setEstudiantes(List<Usuario> estudiantes) {
-		this.estudiantes = estudiantes;
 	}
 }
