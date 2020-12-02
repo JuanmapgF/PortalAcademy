@@ -8,7 +8,7 @@ public class ErrorBD extends RuntimeException
 		super();
 	}
 
-	public ErrorBD(String msg) {
-		super(msg);
+	public ErrorBD(String arg0) {
+		super(arg0);
 	}
 }
