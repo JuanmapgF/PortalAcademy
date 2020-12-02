@@ -114,36 +114,4 @@ public class Curso {
 	public void setEstudiantes(List<Usuario> estudiantes) {
 		this.estudiantes = estudiantes;
 	}
-
-	public Integer getIdCurso() {
-		return idCurso;
-	}
-
-	public void setIdCurso(Integer idCurso) {
-		this.idCurso = idCurso;
-	}
-
-	public Boolean getTieneForo() {
-		return tieneForo;
-	}
-
-	public void setTieneForo(Boolean tieneForo) {
-		this.tieneForo = tieneForo;
-	}
-
-	public Profesor getProfesor() {
-		return profesor;
-	}
-
-	public void setProfesor(Profesor profesor) {
-		this.profesor = profesor;
-	}
-
-	public Foro getForo() {
-		return foro;
-	}
-
-	public void setForo(Foro foro) {
-		this.foro = foro;
-	}
 }
