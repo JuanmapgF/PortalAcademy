@@ -12,6 +12,8 @@ public class Actividad {
 	private String lugar;
 	
 	private Usuario participante;
+	private Organizacion org;
+	
 
 	public String getNombre() {
 		return nombre;
