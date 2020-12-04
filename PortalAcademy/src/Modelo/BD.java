@@ -2,12 +2,19 @@ package Modelo;
 
 import java.sql.*;
 import java.util.*;
+import com.mysql.jdbc.PreparedStatement;
 
 public class BD {
 	private Connection con;
 
-	public BD(String server, String databaseName) {
-
+	public BD(String server, String databaseName, String user, String pass) {
+		try {
+			con = DriverManager.getConnection(server + "/" + databaseName, user, pass);
+		} catch (SQLException e) {
+			System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	protected void finalize() {
