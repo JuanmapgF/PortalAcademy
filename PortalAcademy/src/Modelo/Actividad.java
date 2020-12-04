@@ -15,6 +15,30 @@ public class Actividad {
 	private List<Usuario> participantes;
 	private Organizacion organizacion;
 	
+	private static String server;
+	private static String databaseName;
+	
+	public Actividad(String nombre, String descripcion, String imagen, int aforo, Date fecha, String lugar) {
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.imagen = imagen;
+		this.aforo = aforo;
+		this.fecha = fecha;
+		this.lugar = lugar;
+	}
+
+	public Actividad(Integer idActividad) {
+		BD miBD = new BD(server, databaseName);
+		List<Object[]> datos = miBD.Select("SELECT * FROM Curso WHERE idActividad = " + idActividad);
+		Object[] aux = datos.get(0);
+		this.nombre = aux[0].toString();
+		this.descripcion = aux[1].toString();
+		this.imagen = aux[2].toString();
+		this.aforo = Integer.parseInt(aux[4].toString());
+		//this.fecha = Date.parse((aux[5].toString());
+		this.lugar = aux[6].toString();
+	}
+	
 
 	public String getNombre() {
 		return nombre;
