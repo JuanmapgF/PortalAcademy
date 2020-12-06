@@ -15,7 +15,7 @@ import Modelo.Curso;
 
 public class ExplorarEstudiante extends JPanel {
 	
-	private String titulo;
+	private JLabel titulo = new JLabel("Explorar");
 	private JButton cerrarSesion = new JButton("Cerrar sesión");
 	private List<Curso> cursos;
 	private List<Actividad> actividades;
@@ -37,11 +37,35 @@ public class ExplorarEstudiante extends JPanel {
 		
 		addElements();
 		
+		addScroll();
 		
+		JPanel title = new JPanel();
+		title.setLayout(new BorderLayout());
+		title.add(titulo, BorderLayout.WEST);
+		title.add(cerrarSesion, BorderLayout.EAST);
+		
+		JPanel explorar = new JPanel();
+		explorar.setLayout(new BorderLayout());
 		
 		JPanel oeste = new JPanel();
 		oeste.setLayout(new BorderLayout());
 		oeste.add(curso, BorderLayout.NORTH);
+		oeste.add(scroll1, BorderLayout.SOUTH);
+		
+		JPanel este = new JPanel();
+		este.setLayout(new BorderLayout());
+		este.add(actividad, BorderLayout.NORTH);
+		oeste.add(scroll2, BorderLayout.SOUTH);
+		
+		explorar.add(oeste, BorderLayout.WEST);
+		explorar.add(este, BorderLayout.EAST);
+		
+		JPanel res = new JPanel();
+		res.setLayout(new BorderLayout());
+		res.add(title, BorderLayout.NORTH);
+		res.add(explorar, BorderLayout.SOUTH);
+		
+		this.add(res);
 	}
 	
 	public void setSize(int width, int height) {
@@ -56,6 +80,14 @@ public class ExplorarEstudiante extends JPanel {
 		for (Actividad a : actividades) {
 			modeloA.addElement(a.toString());
 		}
+	}
+	
+	public void addScroll() {
+		scroll1.add(listaC);
+		listaC.setLayoutOrientation(JList.VERTICAL);
+		
+		scroll2.add(listaA);
+		listaA.setLayoutOrientation(JList.VERTICAL);
 	}
 
 }
