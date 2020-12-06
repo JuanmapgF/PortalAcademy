@@ -4,13 +4,20 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Prueba extends JFrame {
+	public Prueba() {
+	}
 
 	public static void crearGUI(JFrame ventana) {
+		
+		
 		MenuEstudiante m = new MenuEstudiante();
-		ventana.setContentPane(m);
+		Ajustes a = new Ajustes();
+		ventana.getContentPane().setLayout(new BorderLayout());
+		ventana.getContentPane().add(m, BorderLayout.WEST);
+		ventana.getContentPane().add(a, BorderLayout.CENTER);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.pack();
-		ventana.setExtendedState(MAXIMIZED_BOTH);
+		ventana.setSize(1000, 650);
 		ventana.setLocationRelativeTo(null);
 		ventana.setVisible(true);
 	}

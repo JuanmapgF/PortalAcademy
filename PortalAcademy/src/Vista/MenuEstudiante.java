@@ -6,13 +6,14 @@ import javax.swing.*;
 
 public class MenuEstudiante extends JPanel {
 
-	private JButton explorar = new JButton("Explorar");
+	/*private JButton explorar = new JButton("Explorar");
 	private JButton misCursos = new JButton("Mis cursos");
 	private JButton misActividades = new JButton("Mis actividades");
-	private JButton ajustes = new JButton("Ajustes");
+	private JButton ajustes = new JButton("Ajustes");*/
 	
 	public MenuEstudiante() {
 		
+<<<<<<< Updated upstream
 		JPanel norte = new JPanel();
 		norte.setLayout(new BorderLayout());
 		norte.add(explorar, BorderLayout.NORTH);
@@ -29,6 +30,8 @@ public class MenuEstudiante extends JPanel {
 		menu.add(sur, BorderLayout.SOUTH); 
 		
 		this.add(menu);
+=======
+>>>>>>> Stashed changes
 	}
 
 }
