@@ -13,7 +13,6 @@ public class BD {
 	private Connection con;
 	
 	private static BD bd;
-	
 	public BD() {
 		try {
 			con = DriverManager.getConnection( URL +"/"+ DATABASENAME , USERNAME, PASSWORD);
@@ -24,7 +23,7 @@ public class BD {
 		}
 	}
 	
-	// Utilizar este método para construir objetos de BD (singleton):
+	// Utilizar este método:
 	
 	public static BD getBD() {
 		if(bd == null) {
