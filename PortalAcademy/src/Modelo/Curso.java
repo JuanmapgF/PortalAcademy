@@ -152,4 +152,8 @@ public class Curso {
 	public Foro getForo() {
 		return foro;
 	}
+	
+	public String ToString() {
+		return nombre;
+	}
 }
