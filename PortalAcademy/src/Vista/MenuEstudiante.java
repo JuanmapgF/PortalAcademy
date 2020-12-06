@@ -27,6 +27,8 @@ public class MenuEstudiante extends JPanel {
 		menu.setLayout(new BorderLayout());
 		menu.add(norte, BorderLayout.NORTH);
 		menu.add(sur, BorderLayout.SOUTH);
+		
+		this.add(menu);
 	}
 
 }
