@@ -3,13 +3,6 @@ package Modelo;
 import java.util.List;
 
 public class Curso {
-	
-	private static String server;
-	private static String databaseName;
-	private static String user;
-	private static String pass;
-
-
 	private Integer idCurso;
 	private String nombre;
 	private String descripcion;
@@ -23,7 +16,11 @@ public class Curso {
 	private Foro foro;
 	private List<Usuario> estudiantes;
 	
-	public Curso(String nombre, String descripcion, String imagen, Boolean publico, Integer aforo, Boolean presencial, Boolean tieneForo, Profesor profesor, List<Usuario> estudiantes) {
+	public Curso(String nombre, String descripcion, String imagen, Boolean publico, Integer aforo,
+			Boolean presencial, Boolean tieneForo, Profesor profesor, List<Usuario> estudiantes) {
+		Conexion miBD = ConexionJDBC.getInstance();
+		this.idCurso = miBD.crearCurso(nombre, descripcion, imagen, publico, aforo, presencial, tieneForo, profesor, new Foro(), estudiantes);
+		
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.imagen = imagen;
@@ -40,17 +37,6 @@ public class Curso {
 	}
 
 	public Curso(Integer idCurso) {
-		BD miBD = new BD(server, databaseName, user, password);
-		List<Object[]> datos = miBD.Select("SELECT * FROM Curso WHERE idCurso = " + idCurso);
-		Object[] aux = datos.get(0);
-		this.nombre = aux[0].toString();
-		this.descripcion = aux[1].toString();
-		this.imagen = aux[2].toString();
-		this.publico = Boolean.parseBoolean(aux[3].toString());
-		this.aforo = Integer.parseInt(aux[4].toString());
-		this.presencial = Boolean.parseBoolean(aux[5].toString());
-		this.tieneForo = Boolean.parseBoolean(aux[6].toString());
-		
 		BD miBD = new BD(server, databaseName, user, pass);
 		Object[] datos = miBD.Select("SELECT * FROM Curso WHERE idCurso = " + idCurso).get(0);
 		this.nombre = datos[0].toString();
@@ -61,9 +47,9 @@ public class Curso {
 		this.presencial = Boolean.parseBoolean(datos[5].toString());
 		this.tieneForo = Boolean.parseBoolean(datos[6].toString());
 		
-		this.profesor = new Profesor(aux[7].toString());
+		this.profesor = new Profesor(datos[7].toString());
 		if(this.tieneForo) {
-			this.foro = new Foro(Integer.parseInt(aux[8].toString()));
+			this.foro = new Foro(Integer.parseInt(datos[8].toString()));
 		} else {
 			this.foro = null;
 		}
