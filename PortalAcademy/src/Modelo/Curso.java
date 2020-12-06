@@ -7,7 +7,11 @@ public class Curso {
 	private static String server;
 	private static String databaseName;
 	private static String user;
+<<<<<<< Updated upstream
 	private static String password;
+=======
+	private static String pass;
+>>>>>>> Stashed changes
 
 	private Integer idCurso;
 	private String nombre;
@@ -16,14 +20,13 @@ public class Curso {
 	private Boolean publico;
 	private Integer aforo;
 	private Boolean presencial;
-	private List<Usuario> estudiantes;
+		
 	private Boolean tieneForo;
 	private Profesor profesor;
 	private Foro foro;
+	private List<Usuario> estudiantes;
 	
-	
-	
-	public Curso(String nombre, String descripcion, String imagen, Boolean publico, Integer aforo, Boolean presencial, Boolean tieneForo) {
+	public Curso(String nombre, String descripcion, String imagen, Boolean publico, Integer aforo, Boolean presencial, Boolean tieneForo, Profesor profesor, List<Usuario> estudiantes) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.imagen = imagen;
@@ -31,9 +34,16 @@ public class Curso {
 		this.aforo = aforo;
 		this.presencial = presencial;
 		this.tieneForo = tieneForo;
+		
+		this.profesor = profesor;
+		if (tieneForo) {
+			this.foro = new Foro();
+		}
+		this.estudiantes = estudiantes.clone();
 	}
 
 	public Curso(Integer idCurso) {
+<<<<<<< Updated upstream
 		BD miBD = new BD(server, databaseName, user, password);
 		List<Object[]> datos = miBD.Select("SELECT * FROM Curso WHERE idCurso = " + idCurso);
 		Object[] aux = datos.get(0);
@@ -44,11 +54,29 @@ public class Curso {
 		this.aforo = Integer.parseInt(aux[4].toString());
 		this.presencial = Boolean.parseBoolean(aux[5].toString());
 		this.tieneForo = Boolean.parseBoolean(aux[6].toString());
+=======
+		BD miBD = new BD(server, databaseName, user, pass);
+		Object[] datos = miBD.Select("SELECT * FROM Curso WHERE idCurso = " + idCurso).get(0);
+		this.nombre = datos[0].toString();
+		this.descripcion = datos[1].toString();
+		this.imagen = datos[2].toString();
+		this.publico = Boolean.parseBoolean(datos[3].toString());
+		this.aforo = Integer.parseInt(datos[4].toString());
+		this.presencial = Boolean.parseBoolean(datos[5].toString());
+		this.tieneForo = Boolean.parseBoolean(datos[6].toString());
+		
+		
+>>>>>>> Stashed changes
 		this.profesor = new Profesor(aux[7].toString());
 		if(this.tieneForo) {
 			this.foro = new Foro(Integer.parseInt(aux[8].toString()));
 		} else {
 			this.foro = null;
+		}
+		
+		List<Object[]> datos2 = miBD.Select("SELECT * FROM RelCursoEstudiante WHERE idCurso = " + idCurso);
+		for (Object[] o : datos2) {
+			this.estudiantes.add(new Estudiante(o[1]));
 		}
 	}
 
@@ -114,6 +142,10 @@ public class Curso {
 
 	public void setEstudiantes(List<Usuario> estudiantes) {
 		this.estudiantes = estudiantes;
+	}
+	
+	public void addEstudiante(Usuario estudiante) {
+		this.estudiantes.add(estudiante);
 	}
 
 	public Integer getIdCurso() {
