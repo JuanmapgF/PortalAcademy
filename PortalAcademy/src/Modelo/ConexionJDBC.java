@@ -34,6 +34,7 @@ public class ConexionJDBC extends Conexion {
 	}
 	
 	//==============================================================================
+	//============================= CURSO ==========================================
 	
 	public Integer crearCurso(String nombre, String descripcion, String imagen, Boolean publico, Integer aforo,
 			Boolean presencial, Boolean tieneForo, Profesor profesor, Foro foro, List<Usuario> estudiantes) {
@@ -144,6 +145,110 @@ public class ConexionJDBC extends Conexion {
 			e.printStackTrace();
 		}
 	}
+	
+	public void cambiarDescripcionCurso(String descripcion, Integer idCurso) {
+		PreparedStatement ps = null;
+		String query;
+		try {
+			query = "UPDATE Curso SET DESCRIPCION = ? WHERE ID_CURSO = ?";
+			ps = (PreparedStatement) con.prepareStatement(query);
+			ps.setString(1, descripcion);
+			ps.setInt(2, idCurso);
+			int res = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void cambiarImagenCurso(String imagen, Integer idCurso) {
+		PreparedStatement ps = null;
+		String query;
+		try {
+			query = "UPDATE Curso SET IMAGEN = ? WHERE ID_CURSO = ?";
+			ps = (PreparedStatement) con.prepareStatement(query);
+			ps.setString(1, imagen);
+			ps.setInt(2, idCurso);
+			int res = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void cambiarPrivacidadCurso(Boolean publico, Integer idCurso) {
+		PreparedStatement ps = null;
+		String query;
+		try {
+			query = "UPDATE Curso SET PUBLICO = ? WHERE ID_CURSO = ?";
+			ps = (PreparedStatement) con.prepareStatement(query);
+			ps.setBoolean(1, publico);
+			ps.setInt(2, idCurso);
+			int res = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void cambiarAforoCurso(Integer aforo, Integer idCurso) {
+		PreparedStatement ps = null;
+		String query;
+		try {
+			query = "UPDATE Curso SET AFORO = ? WHERE ID_CURSO = ?";
+			ps = (PreparedStatement) con.prepareStatement(query);
+			ps.setInt(1, aforo);
+			ps.setInt(2, idCurso);
+			int res = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void cambiarModalidadCurso(Boolean presencial, Integer idCurso) {
+		PreparedStatement ps = null;
+		String query;
+		try {
+			query = "UPDATE Curso SET PRESENCIAL = ? WHERE ID_CURSO = ?";
+			ps = (PreparedStatement) con.prepareStatement(query);
+			ps.setBoolean(1, presencial);
+			ps.setInt(2, idCurso);
+			int res = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void cambiartieneForoCurso(Boolean tieneForo, Integer idCurso) {
+		PreparedStatement ps = null;
+		String query;
+		try {
+			query = "UPDATE Curso SET TIENEFORO = ? WHERE ID_CURSO = ?";
+			ps = (PreparedStatement) con.prepareStatement(query);
+			ps.setBoolean(1, tieneForo);
+			ps.setInt(2, idCurso);
+			int res = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void insertarEstudianteEnCurso(Usuario estudiante, Integer idCurso) {
+		PreparedStatement ps = null;
+		String query = "INSERT INTO RelCursoEstudiante (ID_CURSO, ID_ESTUDIANTE) VALUES (?, ?)";
+		
+		try {
+			java.sql.PreparedStatement pS = (PreparedStatement) con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
+			pS.setString(1, idCurso);
+			pS.setString(2, estudiante.getId());
+			int res = pS.executeUpdate();
+			ResultSet rs = pS.getGeneratedKeys();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//==============================================================================
+	//============================= ACTIVIDAD ======================================
+	
 	
 	
 }

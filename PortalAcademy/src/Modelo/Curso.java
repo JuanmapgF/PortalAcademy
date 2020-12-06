@@ -130,10 +130,6 @@ public class Curso {
 	public List<Usuario> getEstudiantes() {
 		return estudiantes;
 	}
-
-	public void setEstudiantes(List<Usuario> estudiantes) {
-		this.estudiantes = estudiantes;
-	}
 	
 	public void addEstudiante(Usuario estudiante) {
 		this.estudiantes.add(estudiante);
@@ -153,15 +149,7 @@ public class Curso {
 		return profesor;
 	}
 
-	public void setProfesor(Profesor profesor) {
-		this.profesor = profesor;
-	}
-
 	public Foro getForo() {
 		return foro;
-	}
-
-	public void setForo(Foro foro) {
-		this.foro = foro;
 	}
 }
