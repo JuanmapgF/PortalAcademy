@@ -2,7 +2,6 @@ package Modelo;
 
 import java.sql.*;
 import java.util.*;
-import com.mysql.jdbc.PreparedStatement;
 
 public class BD {
 	private Connection con;
