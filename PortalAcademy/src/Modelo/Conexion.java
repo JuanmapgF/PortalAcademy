@@ -1,3 +1,5 @@
+package Modelo;
+
 import java.util.List;
 
 public abstract class Conexion {

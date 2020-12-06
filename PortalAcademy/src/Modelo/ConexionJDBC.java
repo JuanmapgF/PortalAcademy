@@ -1,3 +1,5 @@
+package Modelo;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -8,8 +10,6 @@ import java.util.List;
 
 import com.mysql.jdbc.PreparedStatement;
 
-import prLIGAppControlador.ConexionJDBC;
-import prLIGAppModelo.Usuario;
 
 public class ConexionJDBC extends Conexion {
 	private Connection con;
