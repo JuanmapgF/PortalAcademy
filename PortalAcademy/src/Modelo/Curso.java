@@ -6,6 +6,8 @@ public class Curso {
 	
 	private static String server;
 	private static String databaseName;
+	private static String user;
+	private static String password;
 
 	private Integer idCurso;
 	private String nombre;
@@ -32,7 +34,7 @@ public class Curso {
 	}
 
 	public Curso(Integer idCurso) {
-		BD miBD = new BD(server, databaseName);
+		BD miBD = new BD(server, databaseName, user, password);
 		List<Object[]> datos = miBD.Select("SELECT * FROM Curso WHERE idCurso = " + idCurso);
 		Object[] aux = datos.get(0);
 		this.nombre = aux[0].toString();
@@ -144,5 +146,37 @@ public class Curso {
 
 	public void setForo(Foro foro) {
 		this.foro = foro;
+	}
+	
+	public static String getUser() {
+		return user;
+	}
+
+	public static String getServer() {
+		return server;
+	}
+
+	public static void setServer(String server) {
+		Curso.server = server;
+	}
+
+	public static String getDatabaseName() {
+		return databaseName;
+	}
+
+	public static void setDatabaseName(String databaseName) {
+		Curso.databaseName = databaseName;
+	}
+
+	public static void setUser(String user) {
+		Curso.user = user;
+	}
+
+	public static String getPassword() {
+		return password;
+	}
+
+	public static void setPassword(String password) {
+		Curso.password = password;
 	}
 }
