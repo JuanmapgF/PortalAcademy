@@ -5,6 +5,10 @@ import java.util.List;
 public class Foro {
 	
 	private List<Mensaje> mensajes;
+	
+	public Foro() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Foro(int idForo) {
 		
@@ -16,5 +20,10 @@ public class Foro {
 
 	public void setMensajes(List<Mensaje> mensajes) {
 		this.mensajes = mensajes;
+	}
+
+	public String getId() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
