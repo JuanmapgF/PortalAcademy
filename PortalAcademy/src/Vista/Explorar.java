@@ -7,6 +7,8 @@ public class Explorar extends JPanel {
 	
 	private String titulo;
 	private JButton cerrarSesion = new JButton("Cerrar sesión");
+	
+	
 	public Explorar() {
 		
 	}
