@@ -7,11 +7,8 @@ public class Curso {
 	private static String server;
 	private static String databaseName;
 	private static String user;
-<<<<<<< Updated upstream
-	private static String password;
-=======
 	private static String pass;
->>>>>>> Stashed changes
+
 
 	private Integer idCurso;
 	private String nombre;
@@ -43,7 +40,6 @@ public class Curso {
 	}
 
 	public Curso(Integer idCurso) {
-<<<<<<< Updated upstream
 		BD miBD = new BD(server, databaseName, user, password);
 		List<Object[]> datos = miBD.Select("SELECT * FROM Curso WHERE idCurso = " + idCurso);
 		Object[] aux = datos.get(0);
@@ -54,7 +50,7 @@ public class Curso {
 		this.aforo = Integer.parseInt(aux[4].toString());
 		this.presencial = Boolean.parseBoolean(aux[5].toString());
 		this.tieneForo = Boolean.parseBoolean(aux[6].toString());
-=======
+		
 		BD miBD = new BD(server, databaseName, user, pass);
 		Object[] datos = miBD.Select("SELECT * FROM Curso WHERE idCurso = " + idCurso).get(0);
 		this.nombre = datos[0].toString();
@@ -65,8 +61,6 @@ public class Curso {
 		this.presencial = Boolean.parseBoolean(datos[5].toString());
 		this.tieneForo = Boolean.parseBoolean(datos[6].toString());
 		
-		
->>>>>>> Stashed changes
 		this.profesor = new Profesor(aux[7].toString());
 		if(this.tieneForo) {
 			this.foro = new Foro(Integer.parseInt(aux[8].toString()));
