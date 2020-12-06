@@ -5,11 +5,10 @@ import java.util.*;
 
 public class BD {
 	
-	private static final String DRIVER = "com.mysql.jdbc.Driver";
-	private static final String URL = "jdbc:mysql://rds-mysql-ingreq-2021.cobadwnzalab.eu-central-1.rds.amazonaws.com";
-	private static final String SCHEMA = "Qk6fyf8BXt";
-	private static final String USERNAME = "grupo09";
-	private static final String PASSWORD = "IngReq09";
+	private static final String URL = "jdbc:mysql://remotemysql.com:3306";
+	private static final String DATABASENAME = "Qk6fyf8BXt";
+	private static final String USERNAME = "Qk6fyf8BXt";
+	private static final String PASSWORD = "0904kWU1wM";
 	
 	private Connection con;
 	
@@ -17,13 +16,15 @@ public class BD {
 	
 	public BD() {
 		try {
-			con = DriverManager.getConnection( URL +"/"+ SCHEMA , USERNAME, PASSWORD);
+			con = DriverManager.getConnection( URL +"/"+ DATABASENAME , USERNAME, PASSWORD);
 		} catch (SQLException e) {
 			throw new ErrorBD("Error al iniciar la conexion con la base de datos: "+e.getMessage());
 		} catch (Exception e) {
 			throw new ErrorBD("Error inesperado: "+e.getMessage());
 		}
 	}
+	
+	// Utilizar este método para construir objetos de BD (singleton):
 	
 	public static BD getBD() {
 		if(bd == null) {
@@ -32,6 +33,8 @@ public class BD {
 		
 		return bd;
 	}
+	
+	//------------------------
 	
 	protected void finalize () {
 		try {
