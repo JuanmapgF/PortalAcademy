@@ -15,6 +15,64 @@ public class Actividad {
 	private List<Usuario> participantes;
 	private Organizacion organizacion;
 	
+	private static String server;
+	private static String databaseName;
+	private static String user;
+	private static String password;
+	
+	public Actividad(String nombre, String descripcion, String imagen, int aforo, Date fecha, String lugar) {
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.imagen = imagen;
+		this.aforo = aforo;
+		this.fecha = fecha;
+		this.lugar = lugar;
+	}
+
+	public Actividad(Integer idActividad) {
+		BD miBD = new BD(server, databaseName, user, password);
+		List<Object[]> datos = miBD.Select("SELECT * FROM Curso WHERE idActividad = " + idActividad);
+		Object[] aux = datos.get(0);
+		this.nombre = aux[0].toString();
+		this.descripcion = aux[1].toString();
+		this.imagen = aux[2].toString();
+		this.aforo = Integer.parseInt(aux[4].toString());
+		//this.fecha = Date.parse((aux[5].toString());
+		this.lugar = aux[6].toString();
+	}
+	
+
+	public static String getServer() {
+		return server;
+	}
+
+	public static void setServer(String server) {
+		Actividad.server = server;
+	}
+
+	public static String getUser() {
+		return user;
+	}
+
+	public static void setUser(String user) {
+		Actividad.user = user;
+	}
+
+	public static String getDatabaseName() {
+		return databaseName;
+	}
+
+	public static void setDatabaseName(String databaseName) {
+		Actividad.databaseName = databaseName;
+	}
+
+	public static String getPassword() {
+		return password;
+	}
+
+	public static void setPassword(String password) {
+		Actividad.password = password;
+	}
 
 	public String getNombre() {
 		return nombre;
