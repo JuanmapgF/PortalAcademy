@@ -17,13 +17,17 @@ public class Curso {
 	private List<Usuario> estudiantes;
 	
 	public Curso(String nombre, String descripcion, String imagen, Boolean publico, Integer aforo,
-			Boolean presencial, Boolean tieneForo, Profesor profesor, List<Usuario> estudiantes) {
-		Conexion miBD = ConexionJDBC.getInstance();
+			Boolean presencial, Boolean tieneForo, Profesor profesor) {
+		BD miBD = BD.getBD();
+		Foro foro;
 		if (tieneForo) {
-			this.idCurso = miBD.crearCurso(nombre, descripcion, imagen, publico, aforo, presencial, tieneForo, profesor, new Foro(), estudiantes);
+			foro = new Foro();
 		} else {
-			this.idCurso = miBD.crearCurso(nombre, descripcion, imagen, publico, aforo, presencial, tieneForo, profesor, estudiantes);
+			foro = null;
 		}
+		miBD.Insert("INSERT INTO Curso (NOMBRE, DESCRIPCION, IMAGEN, PUBLICO, AFORO, PRESENCIAL, TIENEFORO, ID_PROFESOR, ID_FORO)"
+				+ "VALUES ('"+nombre+"','"+descripcion+"','"+imagen+"',"+publico+","+aforo+","+presencial+","+tieneForo+","+profesor+","+foro+")");
+		miBD.finalize();
 		
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -32,35 +36,32 @@ public class Curso {
 		this.aforo = aforo;
 		this.presencial = presencial;
 		this.tieneForo = tieneForo;
-		
 		this.profesor = profesor;
-		this.estudiantes = estudiantes;
+		this.foro = foro;
+		
 	}
 
 	public Curso(Integer idCurso) {
-		Conexion miBD = ConexionJDBC.getInstance();
-		Object[] lista = miBD.obtenerCurso(idCurso);
+		BD miBD = BD.getBD();
+		Object[] tupla = miBD.Select("SELECT * FROM Curso WHERE idCurso").get(0);
 		
-		this.idCurso = Integer.parseInt(lista[0].toString());
-		this.nombre = lista[1].toString();
-		this.descripcion = lista[2].toString();
-		this.imagen = lista[3].toString();
-		this.publico = Boolean.parseBoolean(lista[4].toString());
-		this.aforo = Integer.parseInt(lista[5].toString());
-		this.presencial = Boolean.parseBoolean(lista[6].toString());
-		this.tieneForo = Boolean.parseBoolean(lista[7].toString());
+		this.idCurso = Integer.parseInt(tupla[0].toString());
+		this.nombre = tupla[1].toString();
+		this.descripcion = tupla[2].toString();
+		this.imagen = tupla[3].toString();
+		this.publico = Boolean.parseBoolean(tupla[4].toString());
+		this.aforo = Integer.parseInt(tupla[5].toString());
+		this.presencial = Boolean.parseBoolean(tupla[6].toString());
+		this.tieneForo = Boolean.parseBoolean(tupla[7].toString());
 		
-		this.profesor = new Profesor(lista[8].toString());
-		if(this.tieneForo) {
-			this.foro = new Foro(Integer.parseInt(lista[9].toString()));
-		} else {
-			this.foro = null;
+
+		this.foro = new Foro(Integer.parseInt(tupla[9].toString()));
+		
+		List<Object[]> tuplaEstudiantes = miBD.Select("SELECT * FROM RelCursoEstudiante WHERE idCurso = " + idCurso);
+		for (Object[] o : tuplaEstudiantes) {
+			this.estudiantes.add(new Estudiante((String) o[1]));
 		}
-		
-		List<Object[]> datos = miBD.Select("SELECT * FROM RelCursoEstudiante WHERE idCurso = " + idCurso);
-		for (Object[] o : datos) {
-			this.estudiantes.add(new Estudiante(o[1]));
-		}
+		miBD.finalize();
 	}
 
 	public Integer getId() {
@@ -72,9 +73,10 @@ public class Curso {
 	}
 
 	public void setNombre(String nombre) {
-		Conexion miBD = ConexionJDBC.getInstance();
-		miBD.cambiarNombreCurso(nombre, this.idCurso);
-		this.nombre = nombre;
+		BD miBD = BD.getBD();
+		miBD.Update("UPDATE Curso SET NOMBRE = '"+nombre+"' WHERE ID_CURSO = "+this.idCurso);
+		miBD.finalize();
+		this.nombre = nombre;	
 	}
 
 	public String getDescripcion() {
@@ -82,8 +84,9 @@ public class Curso {
 	}
 
 	public void setDescripcion(String descripcion) {
-		Conexion miBD = ConexionJDBC.getInstance();
-		miBD.cambiarDescripcionCurso(descripcion, this.idCurso);
+		BD miBD = BD.getBD();
+		miBD.Update("UPDATE Curso SET DESCRIPCION = '"+descripcion+"' WHERE ID_CURSO = "+this.idCurso);
+		miBD.finalize();
 		this.descripcion = descripcion;
 	}
 
@@ -92,8 +95,9 @@ public class Curso {
 	}
 
 	public void setImagen(String imagen) {
-		Conexion miBD = ConexionJDBC.getInstance();
-		miBD.cambiarImagenCurso(imagen, this.idCurso);
+		BD miBD = BD.getBD();
+		miBD.Update("UPDATE Curso SET IMAGEN = '"+imagen+"' WHERE ID_CURSO = "+this.idCurso);
+		miBD.finalize();
 		this.imagen = imagen;
 	}
 
@@ -101,9 +105,10 @@ public class Curso {
 		return publico;
 	}
 
-	public void setPublico(Boolean publico) {´
-		Conexion miBD = ConexionJDBC.getInstance();
-		miBD.cambiarPrivacidadCurso(publico, this.idCurso);
+	public void setPublico(Boolean publico) {
+		BD miBD = BD.getBD();
+		miBD.Update("UPDATE Curso SET PUBLICO = "+publico+" WHERE ID_CURSO = "+this.idCurso);
+		miBD.finalize();
 		this.publico = publico;
 	}
 
@@ -112,8 +117,9 @@ public class Curso {
 	}
 
 	public void setAforo(Integer aforo) {
-		Conexion miBD = ConexionJDBC.getInstance();
-		miBD.cambiarAforoCurso(aforo, this.idCurso);
+		BD miBD = BD.getBD();
+		miBD.Update("UPDATE Curso SET AFORO = "+aforo+" WHERE ID_CURSO = "+this.idCurso);
+		miBD.finalize();
 		this.aforo = aforo;
 	}
 
@@ -122,17 +128,11 @@ public class Curso {
 	}
 
 	public void setPresencial(Boolean presencial) {
-		Conexion miBD = ConexionJDBC.getInstance();
-		miBD.cambiarModalidadCurso(presencial, this.idCurso);
+		BD miBD = BD.getBD();
+		miBD.Update("UPDATE Curso SET PRESENCIAL = "+presencial+" WHERE ID_CURSO = "+this.idCurso);
+		miBD.finalize();
 		this.presencial = presencial;
-	}
 
-	public List<Usuario> getEstudiantes() {
-		return estudiantes;
-	}
-	
-	public void addEstudiante(Usuario estudiante) {
-		this.estudiantes.add(estudiante);
 	}
 
 	public Boolean getTieneForo() {
@@ -140,9 +140,10 @@ public class Curso {
 	}
 
 	public void setTieneForo(Boolean tieneForo) {
-		Conexion miBD = ConexionJDBC.getInstance();
-		miBD.cambiarTieneForoCurso(nombre, this.idCurso);
-		this.tieneForo = tieneForo;
+		BD miBD = BD.getBD();
+		miBD.Update("UPDATE Curso SET TIENEFORO = "+tieneForo+" WHERE ID_CURSO = "+this.idCurso);
+		miBD.finalize();
+		this.tieneForo = tieneForo;;
 	}
 
 	public Profesor getProfesor() {
@@ -151,6 +152,17 @@ public class Curso {
 
 	public Foro getForo() {
 		return foro;
+	}
+	
+	public List<Usuario> getEstudiantes() {
+		return estudiantes;
+	}
+	
+	public void addEstudiante(Usuario estudiante) {
+		BD miBD = BD.getBD();
+		miBD.Insert("INSERT INTO RelCursoEstudiante (ID_CURSO, ID_ESTUDIANTE) VALUES ("+this.idCurso+", '"+estudiante.getNick()+"')");
+		miBD.finalize();
+		this.estudiantes.add(estudiante);
 	}
 	
 	public String ToString() {

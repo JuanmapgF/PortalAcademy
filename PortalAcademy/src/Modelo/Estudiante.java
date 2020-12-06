@@ -14,6 +14,7 @@ public class Estudiante extends Usuario {
 		this.cursos = new ArrayList<Curso>();
 	}
 	
+	
 	public Estudiante (String idEstudiante) {
 		super(idEstudiante);
 		
@@ -35,6 +36,9 @@ public class Estudiante extends Usuario {
 	}
 	
 	
+
+	
+
 	public List<Curso> getCursos() {
 		return this.cursos;
 	}

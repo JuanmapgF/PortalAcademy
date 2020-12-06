@@ -5,6 +5,10 @@ import java.util.List;
 public class Foro {
 	
 	private List<Mensaje> mensajes;
+	
+	public Foro() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Foro(int idForo) {
 		
