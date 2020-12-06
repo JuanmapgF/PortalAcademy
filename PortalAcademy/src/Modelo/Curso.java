@@ -19,7 +19,11 @@ public class Curso {
 	public Curso(String nombre, String descripcion, String imagen, Boolean publico, Integer aforo,
 			Boolean presencial, Boolean tieneForo, Profesor profesor, List<Usuario> estudiantes) {
 		Conexion miBD = ConexionJDBC.getInstance();
-		this.idCurso = miBD.crearCurso(nombre, descripcion, imagen, publico, aforo, presencial, tieneForo, profesor, new Foro(), estudiantes);
+		if (tieneForo) {
+			this.idCurso = miBD.crearCurso(nombre, descripcion, imagen, publico, aforo, presencial, tieneForo, profesor, new Foro(), estudiantes);
+		} else {
+			this.idCurso = miBD.crearCurso(nombre, descripcion, imagen, publico, aforo, presencial, tieneForo, profesor, estudiantes);
+		}
 		
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -30,42 +34,37 @@ public class Curso {
 		this.tieneForo = tieneForo;
 		
 		this.profesor = profesor;
-		if (tieneForo) {
-			this.foro = new Foro();
-		}
-		this.estudiantes = estudiantes.clone();
+		this.estudiantes = estudiantes;
 	}
 
 	public Curso(Integer idCurso) {
-//		BD miBD = new BD(server, databaseName, user, pass);
-//		Object[] datos = miBD.Select("SELECT * FROM Curso WHERE idCurso = " + idCurso).get(0);
-//		this.nombre = datos[0].toString();
-//		this.descripcion = datos[1].toString();
-//		this.imagen = datos[2].toString();
-//		this.publico = Boolean.parseBoolean(datos[3].toString());
-//		this.aforo = Integer.parseInt(datos[4].toString());
-//		this.presencial = Boolean.parseBoolean(datos[5].toString());
-//		this.tieneForo = Boolean.parseBoolean(datos[6].toString());
-//		
-//		this.profesor = new Profesor(datos[7].toString());
-//		if(this.tieneForo) {
-//			this.foro = new Foro(Integer.parseInt(datos[8].toString()));
-//		} else {
-//			this.foro = null;
-//		}
-//		
-//		List<Object[]> datos2 = miBD.Select("SELECT * FROM RelCursoEstudiante WHERE idCurso = " + idCurso);
-//		for (Object[] o : datos2) {
-//			this.estudiantes.add(new Estudiante(o[1]));
-//		}
+		Conexion miBD = ConexionJDBC.getInstance();
+		Object[] lista = miBD.obtenerCurso(idCurso);
+		
+		this.idCurso = Integer.parseInt(lista[0].toString());
+		this.nombre = lista[1].toString();
+		this.descripcion = lista[2].toString();
+		this.imagen = lista[3].toString();
+		this.publico = Boolean.parseBoolean(lista[4].toString());
+		this.aforo = Integer.parseInt(lista[5].toString());
+		this.presencial = Boolean.parseBoolean(lista[6].toString());
+		this.tieneForo = Boolean.parseBoolean(lista[7].toString());
+		
+		this.profesor = new Profesor(lista[8].toString());
+		if(this.tieneForo) {
+			this.foro = new Foro(Integer.parseInt(lista[9].toString()));
+		} else {
+			this.foro = null;
+		}
+		
+		List<Object[]> datos = miBD.Select("SELECT * FROM RelCursoEstudiante WHERE idCurso = " + idCurso);
+		for (Object[] o : datos) {
+			this.estudiantes.add(new Estudiante(o[1]));
+		}
 	}
 
 	public Integer getId() {
 		return idCurso;
-	}
-
-	public void setId(Integer idCurso) {
-		this.idCurso = idCurso;
 	}
 
 	public String getNombre() {
@@ -73,6 +72,8 @@ public class Curso {
 	}
 
 	public void setNombre(String nombre) {
+		Conexion miBD = ConexionJDBC.getInstance();
+		miBD.cambiarNombreCurso(nombre, this.idCurso);
 		this.nombre = nombre;
 	}
 
@@ -81,6 +82,8 @@ public class Curso {
 	}
 
 	public void setDescripcion(String descripcion) {
+		Conexion miBD = ConexionJDBC.getInstance();
+		miBD.cambiarDescripcionCurso(descripcion, this.idCurso);
 		this.descripcion = descripcion;
 	}
 
@@ -89,6 +92,8 @@ public class Curso {
 	}
 
 	public void setImagen(String imagen) {
+		Conexion miBD = ConexionJDBC.getInstance();
+		miBD.cambiarImagenCurso(imagen, this.idCurso);
 		this.imagen = imagen;
 	}
 
@@ -96,7 +101,9 @@ public class Curso {
 		return publico;
 	}
 
-	public void setPublico(Boolean publico) {
+	public void setPublico(Boolean publico) {´
+		Conexion miBD = ConexionJDBC.getInstance();
+		miBD.cambiarPrivacidadCurso(publico, this.idCurso);
 		this.publico = publico;
 	}
 
@@ -105,6 +112,8 @@ public class Curso {
 	}
 
 	public void setAforo(Integer aforo) {
+		Conexion miBD = ConexionJDBC.getInstance();
+		miBD.cambiarAforoCurso(aforo, this.idCurso);
 		this.aforo = aforo;
 	}
 
@@ -113,6 +122,8 @@ public class Curso {
 	}
 
 	public void setPresencial(Boolean presencial) {
+		Conexion miBD = ConexionJDBC.getInstance();
+		miBD.cambiarModalidadCurso(presencial, this.idCurso);
 		this.presencial = presencial;
 	}
 
@@ -128,19 +139,13 @@ public class Curso {
 		this.estudiantes.add(estudiante);
 	}
 
-	public Integer getIdCurso() {
-		return idCurso;
-	}
-
-	public void setIdCurso(Integer idCurso) {
-		this.idCurso = idCurso;
-	}
-
 	public Boolean getTieneForo() {
 		return tieneForo;
 	}
 
 	public void setTieneForo(Boolean tieneForo) {
+		Conexion miBD = ConexionJDBC.getInstance();
+		miBD.cambiarTieneForoCurso(nombre, this.idCurso);
 		this.tieneForo = tieneForo;
 	}
 
@@ -158,37 +163,5 @@ public class Curso {
 
 	public void setForo(Foro foro) {
 		this.foro = foro;
-	}
-	
-	public static String getUser() {
-		return user;
-	}
-
-	public static String getServer() {
-		return server;
-	}
-
-	public static void setServer(String server) {
-		Curso.server = server;
-	}
-
-	public static String getDatabaseName() {
-		return databaseName;
-	}
-
-	public static void setDatabaseName(String databaseName) {
-		Curso.databaseName = databaseName;
-	}
-
-	public static void setUser(String user) {
-		Curso.user = user;
-	}
-
-	public static String getPassword() {
-		return password;
-	}
-
-	public static void setPassword(String password) {
-		Curso.password = password;
 	}
 }
