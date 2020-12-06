@@ -137,4 +137,8 @@ public class Actividad {
 	public void setOrganizacion(Organizacion organizacion) {
 		this.organizacion = organizacion;
 	}
+	
+	public String ToString() {
+		return nombre;
+	}
 }
