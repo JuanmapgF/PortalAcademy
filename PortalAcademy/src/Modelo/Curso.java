@@ -37,27 +37,27 @@ public class Curso {
 	}
 
 	public Curso(Integer idCurso) {
-		BD miBD = new BD(server, databaseName, user, pass);
-		Object[] datos = miBD.Select("SELECT * FROM Curso WHERE idCurso = " + idCurso).get(0);
-		this.nombre = datos[0].toString();
-		this.descripcion = datos[1].toString();
-		this.imagen = datos[2].toString();
-		this.publico = Boolean.parseBoolean(datos[3].toString());
-		this.aforo = Integer.parseInt(datos[4].toString());
-		this.presencial = Boolean.parseBoolean(datos[5].toString());
-		this.tieneForo = Boolean.parseBoolean(datos[6].toString());
-		
-		this.profesor = new Profesor(datos[7].toString());
-		if(this.tieneForo) {
-			this.foro = new Foro(Integer.parseInt(datos[8].toString()));
-		} else {
-			this.foro = null;
-		}
-		
-		List<Object[]> datos2 = miBD.Select("SELECT * FROM RelCursoEstudiante WHERE idCurso = " + idCurso);
-		for (Object[] o : datos2) {
-			this.estudiantes.add(new Estudiante(o[1]));
-		}
+//		BD miBD = new BD(server, databaseName, user, pass);
+//		Object[] datos = miBD.Select("SELECT * FROM Curso WHERE idCurso = " + idCurso).get(0);
+//		this.nombre = datos[0].toString();
+//		this.descripcion = datos[1].toString();
+//		this.imagen = datos[2].toString();
+//		this.publico = Boolean.parseBoolean(datos[3].toString());
+//		this.aforo = Integer.parseInt(datos[4].toString());
+//		this.presencial = Boolean.parseBoolean(datos[5].toString());
+//		this.tieneForo = Boolean.parseBoolean(datos[6].toString());
+//		
+//		this.profesor = new Profesor(datos[7].toString());
+//		if(this.tieneForo) {
+//			this.foro = new Foro(Integer.parseInt(datos[8].toString()));
+//		} else {
+//			this.foro = null;
+//		}
+//		
+//		List<Object[]> datos2 = miBD.Select("SELECT * FROM RelCursoEstudiante WHERE idCurso = " + idCurso);
+//		for (Object[] o : datos2) {
+//			this.estudiantes.add(new Estudiante(o[1]));
+//		}
 	}
 
 	public Integer getId() {

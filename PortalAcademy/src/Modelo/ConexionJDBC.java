@@ -30,6 +30,7 @@ public class ConexionJDBC extends Conexion {
 		return instanciaInterfaz;
 	}
 	
+	//==============================================================================
 	
 	public Integer crearCurso(String nombre, String descripcion, String imagen, Boolean publico, Integer aforo,
 			Boolean presencial, Boolean tieneForo, Profesor profesor, Foro foro, List<Usuario> estudiantes) {
@@ -66,5 +67,5 @@ public class ConexionJDBC extends Conexion {
 		return idCurso;
 	}
 	
-	private 
+	
 }
