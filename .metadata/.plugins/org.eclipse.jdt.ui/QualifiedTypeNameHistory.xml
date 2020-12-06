@@ -8,4 +8,5 @@
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.mysql.jdbc.jdbc2.optional.MysqlDataSource"/>
     <fullyQualifiedTypeName name="Vista.Registro"/>
+    <fullyQualifiedTypeName name="javax.swing.JPanel"/>
 </qualifiedTypeNameHistroy>

@@ -31,6 +31,7 @@ public class Registro extends JFrame {
 	private JTextField textFieldNick;
 	private JTextField textFieldCorreo;
 	private JTextField textFieldContrasena;
+	private final Action action = new SwingAction();
 	private final ButtonGroup buttonGroupRol = new ButtonGroup();
 
 	/**
@@ -136,5 +137,13 @@ public class Registro extends JFrame {
 		rdbtnEstudiante.setBounds(340, 218, 108, 23);
 		panel.add(rdbtnEstudiante);
 		contentPane.setLayout(gl_contentPane);
+	}
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "SwingAction");
+			putValue(SHORT_DESCRIPTION, "Some short description");
+		}
+		public void actionPerformed(ActionEvent e) {
+		}
 	}
 }

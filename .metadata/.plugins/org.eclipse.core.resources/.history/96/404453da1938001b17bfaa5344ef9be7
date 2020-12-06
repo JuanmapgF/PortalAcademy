@@ -137,4 +137,12 @@ public class Registro extends JFrame {
 		panel.add(rdbtnEstudiante);
 		contentPane.setLayout(gl_contentPane);
 	}
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "SwingAction");
+			putValue(SHORT_DESCRIPTION, "Some short description");
+		}
+		public void actionPerformed(ActionEvent e) {
+		}
+	}
 }
