@@ -36,7 +36,7 @@ public class Organizacion extends Usuario {
 
 	public void anadirActividad(Actividad actividad) {
 		actividades.add(actividad);
-		//ACCESO BASEDATOS PARA AÑADIR ACTIVIDAD A LA ORGANIZACION
+		//ACCESO BASEDATOS PARA Aï¿½ADIR ACTIVIDAD A LA ORGANIZACION
 	}
 	
 	public void eliminarActividad(Actividad actividad) {
