@@ -1,0 +1,205 @@
+package Vista;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import net.miginfocom.swing.MigLayout;
+import java.awt.FlowLayout;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormSpecs;
+import com.jgoodies.forms.layout.RowSpec;
+import java.awt.GridLayout;
+
+public class Registro extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textFieldNick;
+	private JTextField textFieldCorreo;
+	private JTextField textFieldContrasena;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Registro frame = new Registro();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Registro() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 910, 545);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		
+		JPanel panel = new JPanel();
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(52)
+					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)
+					.addGap(31))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addGap(32)
+					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		panel.setLayout(new GridLayout(0, 5, 0, 0));
+		
+		JLabel label = new JLabel("");
+		panel.add(label);
+		
+		JLabel label_1 = new JLabel("");
+		panel.add(label_1);
+		
+		JLabel lblNewLabel = new JLabel("Registro");
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 30));
+		panel.add(lblNewLabel);
+		
+		JLabel label_2 = new JLabel("");
+		panel.add(label_2);
+		
+		JLabel label_3 = new JLabel("");
+		panel.add(label_3);
+		
+		JLabel label_4 = new JLabel("");
+		panel.add(label_4);
+		
+		JLabel label_5 = new JLabel("");
+		panel.add(label_5);
+		
+		JLabel label_6 = new JLabel("");
+		panel.add(label_6);
+		
+		JLabel label_7 = new JLabel("");
+		panel.add(label_7);
+		
+		JLabel label_8 = new JLabel("");
+		panel.add(label_8);
+		
+		JLabel label_9 = new JLabel("");
+		panel.add(label_9);
+		
+		JLabel lblNewLabel_1 = new JLabel("Nick:");
+		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		panel.add(lblNewLabel_1);
+		
+		JLabel label_10 = new JLabel("");
+		panel.add(label_10);
+		
+		textFieldNick = new JTextField();
+		textFieldNick.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		textFieldNick.setColumns(10);
+		panel.add(textFieldNick);
+		
+		JLabel label_11 = new JLabel("");
+		panel.add(label_11);
+		
+		JLabel label_12 = new JLabel("");
+		panel.add(label_12);
+		
+		JLabel label_13 = new JLabel("");
+		panel.add(label_13);
+		
+		JLabel label_14 = new JLabel("");
+		panel.add(label_14);
+		
+		JLabel label_15 = new JLabel("");
+		panel.add(label_15);
+		
+		JLabel label_16 = new JLabel("");
+		panel.add(label_16);
+		
+		JLabel label_17 = new JLabel("");
+		panel.add(label_17);
+		
+		JLabel lblNewLabel_2 = new JLabel("Correo:");
+		lblNewLabel_2.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		panel.add(lblNewLabel_2);
+		
+		JLabel label_18 = new JLabel("");
+		panel.add(label_18);
+		
+		textFieldCorreo = new JTextField();
+		textFieldCorreo.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		textFieldCorreo.setColumns(10);
+		panel.add(textFieldCorreo);
+		
+		JLabel label_19 = new JLabel("");
+		panel.add(label_19);
+		
+		JLabel label_20 = new JLabel("");
+		panel.add(label_20);
+		
+		JLabel label_21 = new JLabel("");
+		panel.add(label_21);
+		
+		JLabel label_22 = new JLabel("");
+		panel.add(label_22);
+		
+		JLabel label_23 = new JLabel("");
+		panel.add(label_23);
+		
+		JLabel label_24 = new JLabel("");
+		panel.add(label_24);
+		
+		JLabel label_25 = new JLabel("");
+		panel.add(label_25);
+		
+		JLabel lblNewLabel_3 = new JLabel("Contrase\u00F1a:");
+		lblNewLabel_3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		panel.add(lblNewLabel_3);
+		
+		JLabel label_26 = new JLabel("");
+		panel.add(label_26);
+		
+		textFieldContrasena = new JTextField();
+		textFieldContrasena.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		textFieldContrasena.setColumns(10);
+		panel.add(textFieldContrasena);
+		
+		JLabel label_27 = new JLabel("");
+		panel.add(label_27);
+		
+		JLabel label_28 = new JLabel("");
+		panel.add(label_28);
+		
+		JLabel label_29 = new JLabel("");
+		panel.add(label_29);
+		
+		JLabel label_30 = new JLabel("");
+		panel.add(label_30);
+		
+		JLabel label_31 = new JLabel("");
+		panel.add(label_31);
+		
+		JLabel label_32 = new JLabel("");
+		panel.add(label_32);
+		contentPane.setLayout(gl_contentPane);
+	}
+}
