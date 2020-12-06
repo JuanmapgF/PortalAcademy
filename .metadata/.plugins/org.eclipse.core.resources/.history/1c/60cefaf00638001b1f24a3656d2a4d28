@@ -5,6 +5,7 @@ import java.util.*;
 
 public class BD {
 	
+	private static final String DRIVER = "com.mysql.jdbc.Driver";
 	private static final String URL = "jdbc:mysql://remotemysql.com:3306";
 	private static final String DATABASENAME = "Qk6fyf8BXt";
 	private static final String USERNAME = "Qk6fyf8BXt";
@@ -24,8 +25,6 @@ public class BD {
 		}
 	}
 	
-	// Utilizar este método:
-	
 	public static BD getBD() {
 		if(bd == null) {
 			bd = new BD();
@@ -33,8 +32,6 @@ public class BD {
 		
 		return bd;
 	}
-	
-	//------------------------
 	
 	protected void finalize () {
 		try {

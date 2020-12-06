@@ -24,8 +24,6 @@ public class BD {
 		}
 	}
 	
-	// Utilizar este método:
-	
 	public static BD getBD() {
 		if(bd == null) {
 			bd = new BD();
@@ -33,8 +31,6 @@ public class BD {
 		
 		return bd;
 	}
-	
-	//------------------------
 	
 	protected void finalize () {
 		try {
