@@ -21,4 +21,9 @@ public class Foro {
 	public void setMensajes(List<Mensaje> mensajes) {
 		this.mensajes = mensajes;
 	}
+
+	public String getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

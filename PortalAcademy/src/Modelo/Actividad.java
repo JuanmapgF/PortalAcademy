@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Actividad {
 	
+	private Integer idActividad;
 	private String nombre;
 	private String descripcion;
 	private String imagen;
@@ -12,21 +13,22 @@ public class Actividad {
 	private Date fecha;
 	private String lugar;
 	
-	private List<Usuario> participantes;
 	private Organizacion organizacion;
+	private List<Usuario> participantes;
 	
-	private static String server;
-	private static String databaseName;
-	private static String user;
-	private static String password;
-	
-	public Actividad(String nombre, String descripcion, String imagen, int aforo, Date fecha, String lugar) {
+	public Actividad(String nombre, String descripcion, String imagen, int aforo, Date fecha, String lugar, Organizacion organizacion) {
+		BD miBD = BD.getBD();
+		miBD.Insert("INSERT INTO Curso (NOMBRE, DESCRIPCION, IMAGEN, AFORO, FECHA, LUGAR, ID_ORGANIZACION)"
+				+ "VALUES ('"+nombre+"','"+descripcion+"','"+imagen+"',"+aforo+","+fecha+","+lugar+",'"+organizacion.getNick()+"')");
+		miBD.finalize();
+		
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.imagen = imagen;
 		this.aforo = aforo;
 		this.fecha = fecha;
 		this.lugar = lugar;
+		this.organizacion = organizacion;
 	}
 
 	public Actividad(Integer idActividad) {

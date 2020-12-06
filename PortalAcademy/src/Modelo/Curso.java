@@ -3,6 +3,7 @@ package Modelo;
 import java.util.List;
 
 public class Curso {
+	
 	private Integer idCurso;
 	private String nombre;
 	private String descripcion;
@@ -10,8 +11,8 @@ public class Curso {
 	private Boolean publico;
 	private Integer aforo;
 	private Boolean presencial;
-		
 	private Boolean tieneForo;
+	
 	private Profesor profesor;
 	private Foro foro;
 	private List<Usuario> estudiantes;
@@ -26,7 +27,7 @@ public class Curso {
 			foro = null;
 		}
 		miBD.Insert("INSERT INTO Curso (NOMBRE, DESCRIPCION, IMAGEN, PUBLICO, AFORO, PRESENCIAL, TIENEFORO, ID_PROFESOR, ID_FORO)"
-				+ "VALUES ('"+nombre+"','"+descripcion+"','"+imagen+"',"+publico+","+aforo+","+presencial+","+tieneForo+","+profesor+","+foro+")");
+				+ "VALUES ('"+nombre+"','"+descripcion+"','"+imagen+"',"+publico+","+aforo+","+presencial+","+tieneForo+",'"+profesor.getNick()+"',"+foro.getId()+")");
 		miBD.finalize();
 		
 		this.nombre = nombre;
