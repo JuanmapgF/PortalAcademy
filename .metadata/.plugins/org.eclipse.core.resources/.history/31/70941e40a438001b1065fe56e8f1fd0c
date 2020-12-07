@@ -1,0 +1,8 @@
+package Modelo;
+
+public class Telefono {
+	
+	private int codigo;
+	private String numero;
+
+}

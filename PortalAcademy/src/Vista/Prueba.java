@@ -3,17 +3,17 @@ package Vista;
 import java.awt.*;
 import javax.swing.*;
 
+import Controlador.ControladorRegistro;
 import Modelo.Estudiante;
 
 public class Prueba extends JFrame {
-	public Prueba() {
-	}
 
 	public static void crearGUI(JFrame ventana) {
-		Estudiante e = new Estudiante("Palomo", "adiufhjnsdk", "hola");
+		Estudiante e = new Estudiante("dfg", "gfd", "hola");
+		Explorar ex = new Explorar(e, null, null);
 		Menu m = new Menu(e);
 		Ajustes a = new Ajustes();
-		ventana.add(a);
+		ventana.add(ex);
 		ventana.add(m);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setSize(1080, 650);
