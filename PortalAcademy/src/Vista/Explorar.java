@@ -13,9 +13,10 @@ import javax.swing.JScrollPane;
 import Modelo.Actividad;
 import Modelo.Curso;
 
-public class ExplorarEstudiante extends JPanel {
+public class Explorar extends JPanel {
 	
 	private JLabel titulo = new JLabel("Explorar");
+	private JButton iniciarSesion = new JButton("Iniciar sesión");
 	private JButton cerrarSesion = new JButton("Cerrar sesión");
 	private List<Curso> cursos;
 	private List<Actividad> actividades;
@@ -28,7 +29,7 @@ public class ExplorarEstudiante extends JPanel {
 	private JLabel curso = new JLabel("Cursos");
 	private JLabel actividad = new JLabel("Actividades");
 	
-	public ExplorarEstudiante(List<Curso> c, List<Actividad> a) {
+	public Explorar(List<Curso> c, List<Actividad> a) {
 		cursos = c;
 		actividades = a;
 		
@@ -42,6 +43,7 @@ public class ExplorarEstudiante extends JPanel {
 		JPanel title = new JPanel();
 		title.setLayout(new BorderLayout());
 		title.add(titulo, BorderLayout.CENTER);
+		title.add(iniciarSesion, BorderLayout.EAST);
 		title.add(cerrarSesion, BorderLayout.EAST);
 		
 		JPanel explorar = new JPanel();
