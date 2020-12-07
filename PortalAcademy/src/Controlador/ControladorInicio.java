@@ -15,13 +15,8 @@ public class ControladorInicio implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-<<<<<<< Updated upstream
-		if (e.getActionCommand().equals("SELECCION")) {
-			
-		}
-=======
-		if ()
->>>>>>> Stashed changes
+		
+		
 	}
 
 }
