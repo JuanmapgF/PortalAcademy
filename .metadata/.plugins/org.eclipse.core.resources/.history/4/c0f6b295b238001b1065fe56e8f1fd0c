@@ -90,12 +90,11 @@ public class ControladorRegistro implements ActionListener {
 				}
 
 				if (vista.rdbtnEstudiante.isSelected()) {
-					Estudiante estudiante = new Estudiante(vista.textFieldNick.getText(),
-							vista.textFieldCorreo.getText(), new String(vista.passwordFieldContrasena.getPassword()));
+					Estudiante e = new Estudiante(vista.textFieldNick.getText(), vista.textFieldCorreo.getText(), password);
 				} else if (vista.rdbtnProfesor.isSelected()) {
-
+					
 				} else if (vista.rdbtnOrganizacion.isSelected()) {
-
+					
 				}
 
 			} catch (ErrorBD err) {

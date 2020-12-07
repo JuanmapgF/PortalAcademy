@@ -9,7 +9,6 @@ import javax.swing.JOptionPane;
 
 import Modelo.BD;
 import Modelo.ErrorBD;
-import Modelo.Estudiante;
 import Vista.Registro;
 
 public class ControladorRegistro implements ActionListener {
@@ -90,8 +89,7 @@ public class ControladorRegistro implements ActionListener {
 				}
 
 				if (vista.rdbtnEstudiante.isSelected()) {
-					Estudiante estudiante = new Estudiante(vista.textFieldNick.getText(),
-							vista.textFieldCorreo.getText(), new String(vista.passwordFieldContrasena.getPassword()));
+
 				} else if (vista.rdbtnProfesor.isSelected()) {
 
 				} else if (vista.rdbtnOrganizacion.isSelected()) {
