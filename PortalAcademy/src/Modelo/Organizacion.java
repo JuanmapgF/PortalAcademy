@@ -7,19 +7,23 @@ public class Organizacion extends Usuario {
 
 	private String sede;
 	private List<Actividad> actividades;
+	private BD bd;
 	
 	public Organizacion (String nick, String correo, String password, String sede) {
 		super(nick,correo,password);
 		this.sede = sede;
 		this.actividades = new ArrayList<Actividad>();
+		bd = BD.getBD();
+		bd.Insert("INSERT INTO Organizacion (nick,sede) VALUES ('"+this.getNick() + "','"+this.getSede()+"')");
+		bd.finalize();
 	}
 	
-	public Organizacion (String idOrganizacion) {
-		super(idOrganizacion);
-		
-		//ACCESO BASEDATOS PARA OBTENER INFO ORGANIZACION
-		String sede;	
-		this.sede = sede;
+	public Organizacion (String nick) {
+		super(nick);
+		bd = BD.getBD();
+		Object [] user = bd.Select("SELECT * FROM Organizacion WHERE Organizacion.nick = '" + nick + "'").get(0);
+		bd.finalize();
+		this.sede = user[1].toString();
 		
 		List<Actividad> c = new ArrayList<Actividad>();
 		//ACCESO BASEDATOS PARA OBTENER ACTIVIDADES DE LA ORGANIZACION
@@ -47,4 +51,5 @@ public class Organizacion extends Usuario {
 	public String getSede() {
 		return sede;
 	}
+	
 }
