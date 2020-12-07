@@ -44,7 +44,7 @@ public class Curso {
 
 	public Curso(Integer idCurso) {
 		BD miBD = BD.getBD();
-		Object[] tupla = miBD.Select("SELECT * FROM Curso WHERE idCurso").get(0);
+		Object[] tupla = miBD.Select("SELECT * FROM Curso WHERE ID_CURSO = " + idCurso).get(0);
 		
 		this.idCurso = Integer.parseInt(tupla[0].toString());
 		this.nombre = tupla[1].toString();
@@ -55,12 +55,12 @@ public class Curso {
 		this.presencial = Boolean.parseBoolean(tupla[6].toString());
 		this.tieneForo = Boolean.parseBoolean(tupla[7].toString());
 		
-
+		this.profesor = new Profesor(tupla[8].toString());
 		this.foro = new Foro(Integer.parseInt(tupla[9].toString()));
 		
-		List<Object[]> tuplaEstudiantes = miBD.Select("SELECT * FROM RelCursoEstudiante WHERE idCurso = " + idCurso);
+		List<Object[]> tuplaEstudiantes = miBD.Select("SELECT * FROM RelCursoUsuario WHERE ID_CURSO = " + idCurso);
 		for (Object[] o : tuplaEstudiantes) {
-			this.estudiantes.add(new Estudiante((String) o[1]));
+			this.estudiantes.add(new Usuario((String) o[1]));
 		}
 		miBD.finalize();
 	}
@@ -144,7 +144,7 @@ public class Curso {
 		BD miBD = BD.getBD();
 		miBD.Update("UPDATE Curso SET TIENEFORO = "+tieneForo+" WHERE ID_CURSO = "+this.idCurso);
 		miBD.finalize();
-		this.tieneForo = tieneForo;;
+		this.tieneForo = tieneForo;
 	}
 
 	public Profesor getProfesor() {
@@ -161,7 +161,7 @@ public class Curso {
 	
 	public void addEstudiante(Usuario estudiante) {
 		BD miBD = BD.getBD();
-		miBD.Insert("INSERT INTO RelCursoEstudiante (ID_CURSO, ID_ESTUDIANTE) VALUES ("+this.idCurso+", '"+estudiante.getNick()+"')");
+		miBD.Insert("INSERT INTO RelCursoUsuario (ID_CURSO, ID_USUARIO) VALUES ("+this.idCurso+", '"+estudiante.getNick()+"')");
 		miBD.finalize();
 		this.estudiantes.add(estudiante);
 	}
