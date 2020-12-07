@@ -10,7 +10,7 @@ public class Mensaje {
 	
 	public Mensaje(String texto, Usuario emisor, Curso curso) {
 		BD miBD = BD.getBD();
-		miBD.Insert("INSERT INTO Mensaje (TEXTO, ID_USUARIO, ID_CURSO)"
+		miBD.Insert("INSERT INTO Mensaje (texto, nickUsuario, idCurso)"
 				+ "VALUES ('"+texto+"',"+emisor.getNick()+","+curso.getId()+")");
 		miBD.finalize();
 		
@@ -21,7 +21,7 @@ public class Mensaje {
 	
 	public Mensaje(Integer idMensaje) {
 		BD miBD = BD.getBD();
-		Object[] tupla = miBD.Select("SELECT * FROM Mensaje WHERE ID_MENSAJE = " + idMensaje).get(0);
+		Object[] tupla = miBD.Select("SELECT * FROM Mensaje WHERE idMensaje = " + idMensaje).get(0);
 		miBD.finalize();
 		
 		this.idMensaje = Integer.parseInt(tupla[0].toString());

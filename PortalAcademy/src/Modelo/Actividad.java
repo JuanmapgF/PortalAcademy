@@ -20,7 +20,7 @@ public class Actividad {
 	
 	public Actividad(String nombre, String descripcion, String imagen, int aforo, Date fecha, String lugar, Organizacion organizacion) {
 		BD miBD = BD.getBD();
-		miBD.Insert("INSERT INTO Curso (NOMBRE, DESCRIPCION, IMAGEN, AFORO, FECHA, LUGAR, ID_ORGANIZACION)"
+		miBD.Insert("INSERT INTO Curso (nombre, descripcion, imagen, aforo, fecha, lugar, idOrganizacion)"
 				+ "VALUES ('"+nombre+"','"+descripcion+"','"+imagen+"',"+aforo+","+fecha+","+lugar+",'"+organizacion.getNick()+"')");
 		miBD.finalize();
 		
@@ -49,7 +49,7 @@ public class Actividad {
 		
 		this.organizacion = new Organizacion(tupla[7].toString());
 		
-		List<Object[]> tuplaParticipantes = miBD.Select("SELECT * FROM RelActividadParticipantes WHERE ID_ACTIVIDAD = " + idActividad);
+		List<Object[]> tuplaParticipantes = miBD.Select("SELECT * FROM RelActividadParticipantes WHERE idActividad = " + idActividad);
 		for (Object[] o : tuplaParticipantes) {
 			this.participantes.add(new Usuario((String) o[1]));
 		}
@@ -66,7 +66,7 @@ public class Actividad {
 
 	public void setNombre(String nombre) {
 		BD miBD = BD.getBD();
-		miBD.Update("UPDATE Actividad SET NOMBRE = '"+nombre+"' WHERE ID_ACTIVIDAD = "+this.idActividad);
+		miBD.Update("UPDATE Actividad SET nombre = '"+nombre+"' WHERE idActividad = "+this.idActividad);
 		miBD.finalize();
 		this.nombre = nombre;
 	}
@@ -77,7 +77,7 @@ public class Actividad {
 
 	public void setDescripcion(String descripcion) {
 		BD miBD = BD.getBD();
-		miBD.Update("UPDATE Actividad SET DESCRIPCION = '"+descripcion+"' WHERE ID_ACTIVIDAD = "+this.idActividad);
+		miBD.Update("UPDATE Actividad SET descripcion = '"+descripcion+"' WHERE idActividad = "+this.idActividad);
 		miBD.finalize();
 		this.descripcion = descripcion;
 	}
@@ -88,7 +88,7 @@ public class Actividad {
 
 	public void setImagen(String imagen) {
 		BD miBD = BD.getBD();
-		miBD.Update("UPDATE Actividad SET IMAGEN = '"+imagen+"' WHERE ID_ACTIVIDAD = "+this.idActividad);
+		miBD.Update("UPDATE Actividad SET imagen = '"+imagen+"' WHERE idActividad = "+this.idActividad);
 		miBD.finalize();
 		this.imagen = imagen;
 	}
@@ -99,7 +99,7 @@ public class Actividad {
 
 	public void setAforo(int aforo) {
 		BD miBD = BD.getBD();
-		miBD.Update("UPDATE Actividad SET AFORO = "+aforo+" WHERE ID_ACTIVIDAD = "+this.idActividad);
+		miBD.Update("UPDATE Actividad SET aforo = "+aforo+" WHERE idActividad = "+this.idActividad);
 		miBD.finalize();
 		this.aforo = aforo;
 	}
@@ -110,7 +110,7 @@ public class Actividad {
 
 	public void setFecha(Date fecha) {
 		BD miBD = BD.getBD();
-		miBD.Update("UPDATE Actividad SET FECHA = "+fecha+" WHERE ID_ACTIVIDAD = "+this.idActividad);
+		miBD.Update("UPDATE Actividad SET fecha = "+fecha+" WHERE idActividad = "+this.idActividad);
 		miBD.finalize();
 		this.fecha = fecha;
 	}
@@ -121,7 +121,7 @@ public class Actividad {
 
 	public void setLugar(String lugar) {
 		BD miBD = BD.getBD();
-		miBD.Update("UPDATE Actividad SET LUGAR = "+lugar+" WHERE ID_ACTIVIDAD = "+this.idActividad);
+		miBD.Update("UPDATE Actividad SET lugar = "+lugar+" WHERE idActividad = "+this.idActividad);
 		miBD.finalize();
 		this.lugar = lugar;
 	}
@@ -136,7 +136,7 @@ public class Actividad {
 	
 	public void addParticipante(Usuario participante) {
 		BD miBD = BD.getBD();
-		miBD.Insert("INSERT INTO RelActividadUsuario (ID_USUARIO, ID_ACTIVIDAD) VALUES ('"+participante.getNick()+"',"+this.idActividad+")");
+		miBD.Insert("INSERT INTO RelActividadUsuario (nickUsuario, idActividad) VALUES ('"+participante.getNick()+"',"+this.idActividad+")");
 		miBD.finalize();
 		this.participantes.add(participante);
 	}
