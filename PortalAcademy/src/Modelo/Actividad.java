@@ -2,6 +2,7 @@ package Modelo;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -51,12 +52,12 @@ public class Actividad {
 		
 		List<Object[]> tuplaParticipantes = miBD.Select("SELECT * FROM RelActividadParticipantes WHERE idActividad = " + idActividad);
 		for (Object[] o : tuplaParticipantes) {
-			this.participantes.add(new Usuario((String) o[1]));
+			this.participantes.add(new Usuario(o[0].toString()));
 		}
 		miBD.finalize();
 	}
 
-	public Integer getIdActividad() {
+	public Integer getId() {
 		return idActividad;
 	}
 
@@ -139,6 +140,26 @@ public class Actividad {
 		miBD.Insert("INSERT INTO RelActividadUsuario (nickUsuario, idActividad) VALUES ('"+participante.getNick()+"',"+this.idActividad+")");
 		miBD.finalize();
 		this.participantes.add(participante);
+	}
+	
+	public void eliminarCurso() {
+		BD miBD = BD.getBD();
+    	miBD.Delete("DELETE FROM Actividad WHERE idActividad =" + idActividad);
+    	miBD.finalize();
+    	this.nombre = null;
+    	this.descripcion = null;
+    	this.imagen = null;
+    	this.lugar = null;
+	}
+	
+	public static List<Actividad> getTodasLasActividades() throws ParseException {
+		List<Actividad> listaActividades = new ArrayList<>();
+		BD miBD = BD.getBD();
+		List<Object[]> actividades = miBD.Select("SELECT * FROM Actividad");
+		for (Object[] tupla : actividades) {
+			listaActividades.add(new Actividad(Integer.parseInt(tupla[0].toString())));
+		}
+		return listaActividades;
 	}
 	
 	public String ToString() {

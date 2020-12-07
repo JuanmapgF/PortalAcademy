@@ -30,4 +30,20 @@ public class Mensaje {
 		this.curso = new Curso(Integer.parseInt(tupla[3].toString()));
 	}
 
+	public Integer getIdMensaje() {
+		return idMensaje;
+	}
+
+	public String getTexto() {
+		return texto;
+	}
+
+	public Usuario getEmisor() {
+		return emisor;
+	}
+
+	public Curso getCurso() {
+		return curso;
+	}
+
 }

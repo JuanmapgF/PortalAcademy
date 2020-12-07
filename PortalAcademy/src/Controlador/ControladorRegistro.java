@@ -10,11 +10,18 @@ import javax.swing.JOptionPane;
 import Modelo.BD;
 import Modelo.ErrorBD;
 import Modelo.Estudiante;
+import Modelo.Organizacion;
+import Modelo.Profesor;
+import Modelo.Telefono;
+import Modelo.Usuario;
+import Vista.Explorar;
+import Vista.Main;
 import Vista.Registro;
 
 public class ControladorRegistro implements ActionListener {
 
 	private Registro vista;
+	private Usuario usuario;
 
 	private BD bd;
 
@@ -90,13 +97,32 @@ public class ControladorRegistro implements ActionListener {
 				}
 
 				if (vista.rdbtnEstudiante.isSelected()) {
-					Estudiante estudiante = new Estudiante(vista.textFieldNick.getText(),
+					usuario = new Estudiante(vista.textFieldNick.getText(),
 							vista.textFieldCorreo.getText(), new String(vista.passwordFieldContrasena.getPassword()));
+					Main.setUsuario(usuario);
+					Main.removeVentana();
+					Main.addPanel(new Explorar(usuario, c, a));
 				} else if (vista.rdbtnProfesor.isSelected()) {
-
+					usuario = new Profesor(vista.textFieldNick.getText(), vista.textFieldCorreo.getText(),
+							new String(vista.passwordFieldContrasena.getPassword()),
+							new Telefono(Integer.parseInt(vista.textFieldCodigo.getText()),
+									vista.textFieldInfoAdicional.getText()));
+					Main.setUsuario(usuario);
+					Main.removeVentana();
+					Main.addPanel(new Explorar(usuario, l));
 				} else if (vista.rdbtnOrganizacion.isSelected()) {
-
+					usuario = new Organizacion(vista.textFieldNick.getText(),
+							vista.textFieldCorreo.getText(), new String(vista.passwordFieldContrasena.getPassword()),
+							vista.textFieldInfoAdicional.getText());
+					Main.setUsuario(usuario);
+					Main.removeVentana();
+					Main.addPanel(new Explorar(usuario, l));
+					
 				}
+
+				JOptionPane.showMessageDialog(vista, "Cuenta creada satisfactoriamente.", "Registro correcto",
+						JOptionPane.INFORMATION_MESSAGE);
+				
 
 			} catch (ErrorBD err) {
 				JOptionPane.showMessageDialog(vista, err.getMessage(), "Error al registrarse",
@@ -104,6 +130,12 @@ public class ControladorRegistro implements ActionListener {
 			}
 		}
 
+	}
+	
+	
+	
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
 	private boolean telefonoValido() {

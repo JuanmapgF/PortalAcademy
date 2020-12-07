@@ -1,0 +1,21 @@
+package Modelo;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class ControladorMain implements ActionListener {
+
+	
+	private Main vista;
+	
+	public public ControladorMain(Main v) {
+		
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
