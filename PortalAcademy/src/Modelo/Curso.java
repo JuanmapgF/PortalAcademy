@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Curso {
@@ -33,6 +34,9 @@ public class Curso {
 		this.tieneForo = tieneForo;
 		this.profesor = profesor;
 		
+		mensajes = new ArrayList<Mensaje>();
+		estudiantes = new ArrayList<Usuario>();
+		
 	}
 
 	public Curso(Integer idCurso) {
@@ -50,9 +54,15 @@ public class Curso {
 		
 		this.profesor = new Profesor(tupla[8].toString());
 		
+		mensajes = new ArrayList<Mensaje>();
+		estudiantes = new ArrayList<Usuario>();
+		
 		List<Object[]> tuplaEstudiantes = miBD.Select("SELECT * FROM RelCursoUsuario WHERE ID_CURSO = " + idCurso);
 		for (Object[] o : tuplaEstudiantes) {
 			this.estudiantes.add(new Usuario((String) o[1]));
+		}
+		
+			this.mensajes.add(new Mensaje((Integer) o[1]));
 		}
 		miBD.finalize();
 	}
