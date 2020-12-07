@@ -141,6 +141,15 @@ public class Actividad {
 		this.participantes.add(participante);
 	}
 	
+	public void eliminarCurso() {
+		BD miBD = BD.getBD();
+    	miBD.Delete("DELETE FROM Actividad WHERE idActividad =" + idActividad);
+    	this.nombre = null;
+    	this.descripcion = null;
+    	this.imagen = null;
+    	this.lugar = null;
+	}
+	
 	public String ToString() {
 		return nombre;
 	}
