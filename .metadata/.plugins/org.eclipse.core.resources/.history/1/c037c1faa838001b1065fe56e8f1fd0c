@@ -35,59 +35,55 @@ public class ControladorRegistro implements ActionListener {
 		if (e.getSource() == vista.rdbtnEstudiante) {
 			vista.lblInfoAdicional.setText("");
 			vista.lblInfoAdicional.setVisible(false);
-			vista.textFieldInfoAdicional.setText("");
 			vista.textFieldInfoAdicional.setVisible(false);
 			vista.textFieldCodigo.setVisible(false);
-			vista.textFieldCodigo.setText("");
 		}
 
 		if (e.getSource() == vista.rdbtnOrganizacion) {
 			vista.lblInfoAdicional.setText("Sede:");
 			vista.lblInfoAdicional.setVisible(true);
-			vista.textFieldInfoAdicional.setText("");
 			vista.textFieldInfoAdicional.setVisible(true);
 			vista.textFieldCodigo.setVisible(false);
-			vista.textFieldCodigo.setText("");
 		}
 
 		if (e.getSource() == vista.rdbtnProfesor) {
 			vista.lblInfoAdicional.setText("Teléfono:");
 			vista.lblInfoAdicional.setVisible(true);
-			vista.textFieldInfoAdicional.setText("");
 			vista.textFieldInfoAdicional.setVisible(true);
-			vista.textFieldCodigo.setText("");
 			vista.textFieldCodigo.setVisible(true);
 		}
 
 		if (e.getSource() == vista.btnRegistro) {
 			try {
-
+				
 				if (!nickValido()) {
 					throw new ErrorBD(
-							"El nick debe tener al menos 4 caracteres, y debe estar formado solamente por letras y digitos.");
+							"El nick debe tener al menos 4 caracteres, y debe estar formado por al menos 1 digito y una letra.");
 				}
-
+				
 				if (!nickDisponible()) {
 					throw new ErrorBD("El nick que has introducido ya ha sido utilizado.");
 				}
-
+				
+				
 				if (!correoValido()) {
 					throw new ErrorBD("El correo introducido debe ser válido.");
 				}
-
+				
 				if (!correoDisponible()) {
 					throw new ErrorBD("El correo que has introducido ya ha sido utilizado.");
 				}
-
+				
 				if (!contrasenaValida()) {
 					throw new ErrorBD(
 							"La contraseña tiene que tener al menos 6 caracteres, una mayúscula, una minúscula y un dígito.");
 				}
-
-				if (vista.rdbtnProfesor.isSelected() && !telefonoValido()) {
-					throw new ErrorBD("El telefono no es valido. Introduzca el codigo de su pais y el telefono.");
+				
+				if(vista.rdbtnProfesor.isSelected() && !telefonoValido()) {
+					
 				}
-
+				
+				vista.buttonGroupRoles.getButtonCount();
 			} catch (ErrorBD err) {
 				JOptionPane.showMessageDialog(vista, err.getMessage(), "Error al registrarse",
 						JOptionPane.ERROR_MESSAGE);
@@ -97,11 +93,12 @@ public class ControladorRegistro implements ActionListener {
 	}
 
 	private boolean telefonoValido() {
-		Pattern pattern1 = Pattern.compile("^(?=\\w*\\d)\\S{1,4}$");
-		Matcher mather1 = pattern1.matcher(vista.textFieldCodigo.getText());
-		Pattern pattern2 = Pattern.compile("^(?=\\w*\\d)\\S{3,15}$");
-		Matcher mather2 = pattern2.matcher(vista.textFieldInfoAdicional.getText());
-		return mather1.find() && mather2.find();
+		Pattern pattern = Pattern.compile("^(?=\\w*\\d)\\S{1,4}$");
+		Matcher mather = pattern.matcher(vista.textFieldCodigo.getText());
+		return mather.find();
+		Pattern pattern = Pattern.compile("^(?=\\w*\\d)\\S{3,15}$");
+		Matcher mather = pattern.matcher(vista.textFieldInfoAdicional.getText());
+		return mather.find();
 	}
 
 	private boolean correoDisponible() {
@@ -121,7 +118,7 @@ public class ControladorRegistro implements ActionListener {
 	}
 
 	private boolean nickValido() {
-		Pattern pattern = Pattern.compile("^[A-Za-z0-9]\\S{3,30}");
+		Pattern pattern = Pattern.compile("^(?=\\w*\\d)(?=\\w*[A-Za-z])\\S{4,30}$");
 		Matcher mather = pattern.matcher(vista.textFieldNick.getText());
 		return mather.find();
 	}

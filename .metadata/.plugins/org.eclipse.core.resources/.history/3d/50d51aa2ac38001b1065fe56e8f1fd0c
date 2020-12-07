@@ -35,27 +35,21 @@ public class ControladorRegistro implements ActionListener {
 		if (e.getSource() == vista.rdbtnEstudiante) {
 			vista.lblInfoAdicional.setText("");
 			vista.lblInfoAdicional.setVisible(false);
-			vista.textFieldInfoAdicional.setText("");
 			vista.textFieldInfoAdicional.setVisible(false);
 			vista.textFieldCodigo.setVisible(false);
-			vista.textFieldCodigo.setText("");
 		}
 
 		if (e.getSource() == vista.rdbtnOrganizacion) {
 			vista.lblInfoAdicional.setText("Sede:");
 			vista.lblInfoAdicional.setVisible(true);
-			vista.textFieldInfoAdicional.setText("");
 			vista.textFieldInfoAdicional.setVisible(true);
 			vista.textFieldCodigo.setVisible(false);
-			vista.textFieldCodigo.setText("");
 		}
 
 		if (e.getSource() == vista.rdbtnProfesor) {
 			vista.lblInfoAdicional.setText("Teléfono:");
 			vista.lblInfoAdicional.setVisible(true);
-			vista.textFieldInfoAdicional.setText("");
 			vista.textFieldInfoAdicional.setVisible(true);
-			vista.textFieldCodigo.setText("");
 			vista.textFieldCodigo.setVisible(true);
 		}
 
@@ -64,7 +58,7 @@ public class ControladorRegistro implements ActionListener {
 
 				if (!nickValido()) {
 					throw new ErrorBD(
-							"El nick debe tener al menos 4 caracteres, y debe estar formado solamente por letras y digitos.");
+							"El nick debe tener al menos 4 caracteres, y debe estar formado por al menos 1 digito y una letra.");
 				}
 
 				if (!nickDisponible()) {
@@ -95,7 +89,7 @@ public class ControladorRegistro implements ActionListener {
 		}
 
 	}
-
+	
 	private boolean telefonoValido() {
 		Pattern pattern1 = Pattern.compile("^(?=\\w*\\d)\\S{1,4}$");
 		Matcher mather1 = pattern1.matcher(vista.textFieldCodigo.getText());
@@ -121,7 +115,7 @@ public class ControladorRegistro implements ActionListener {
 	}
 
 	private boolean nickValido() {
-		Pattern pattern = Pattern.compile("^[A-Za-z0-9]\\S{3,30}");
+		Pattern pattern = Pattern.compile("^(?=\\w*\\d)(?=\\w*[A-Za-z])\\S{4,30}$");
 		Matcher mather = pattern.matcher(vista.textFieldNick.getText());
 		return mather.find();
 	}

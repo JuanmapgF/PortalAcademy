@@ -1,9 +1,10 @@
 package Vista;
 
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
+import java.awt.*;
+import javax.swing.*;
 
 import Controlador.ControladorRegistro;
+import Modelo.Estudiante;
 
 public class Prueba extends JFrame {
 
@@ -15,7 +16,7 @@ public class Prueba extends JFrame {
 		ventana.setLocationRelativeTo(null);
 		ventana.setVisible(true);
 	}
-
+	
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {

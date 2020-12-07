@@ -24,7 +24,7 @@ public class BD {
 		}
 	}
 
-	// Utilizar este metodo para construir objetos de BD (singleton):
+	// Utilizar este m�todo para construir objetos de BD (singleton):
 
 	public static BD getBD() {
 		if (bd == null) {
