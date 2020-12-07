@@ -5,10 +5,10 @@ import java.util.*;
 
 public class BD {
 	
-	private static final String URL = "jdbc:mysql://remotemysql.com:3306";
-	private static final String DATABASENAME = "Qk6fyf8BXt";
-	private static final String USERNAME = "Qk6fyf8BXt";
-	private static final String PASSWORD = "0904kWU1wM";
+	private static final String URL = "jdbc:mysql://ingreq2021-mysql.cobadwnzalab.eu-central-1.rds.amazonaws.com";
+	private static final String SCHEMA = "apsgrupo09";
+	private static final String USERNAME = "grupo09";
+	private static final String PASSWORD = "morenobecerra2021";
 	
 	private Connection con;
 	
@@ -16,7 +16,7 @@ public class BD {
 	
 	public BD() {
 		try {
-			con = DriverManager.getConnection( URL +"/"+ DATABASENAME , USERNAME, PASSWORD);
+			con = DriverManager.getConnection( URL +"/"+ SCHEMA, USERNAME, PASSWORD);
 		} catch (SQLException e) {
 			throw new ErrorBD("Error al iniciar la conexion con la base de datos: "+e.getMessage());
 		} catch (Exception e) {
