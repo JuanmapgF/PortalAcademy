@@ -16,7 +16,9 @@ public class ControladorInicio implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
-		
+		if (e.getActionCommand().equals("INICIAR")) {
+			
+		} else if ()
 	}
 
 }
