@@ -1,7 +1,9 @@
 package Controlador;
 
 import java.awt.event.*;
+import java.util.List;
 
+import Modelo.Usuario;
 import Vista.*;
 
 public class ControladorInicio implements ActionListener {
@@ -17,8 +19,8 @@ public class ControladorInicio implements ActionListener {
 		// TODO Auto-generated method stub
 		
 		if (e.getActionCommand().equals("INICIAR")) {
-			
-		} else if ()
+			List<Usuario> users = Usuario.getUsuarios();
+		}
 	}
 
 }

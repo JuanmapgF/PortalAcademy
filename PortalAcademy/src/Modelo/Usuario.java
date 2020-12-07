@@ -1,5 +1,8 @@
 package Modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Usuario {
 
 	private String nick;
@@ -63,4 +66,13 @@ public class Usuario {
 		}
 	}
 
+	public static List<Usuario> getUsuarios() {
+		List<Usuario> usuarios = new ArrayList<>();
+		BD miBD = BD.getBD();
+		List<Object[]> users = miBD.Select("SELECT nick FROM Curso");
+		for (Object[] tupla : users) {
+			usuarios.add(new Usuario((String) tupla[0]));
+		}
+		return usuarios;
+	}
 }
