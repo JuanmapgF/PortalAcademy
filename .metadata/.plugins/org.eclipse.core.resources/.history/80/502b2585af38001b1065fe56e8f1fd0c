@@ -87,6 +87,7 @@ public class ControladorRegistro implements ActionListener {
 				if (vista.rdbtnProfesor.isSelected() && !telefonoValido()) {
 					throw new ErrorBD("El telefono no es valido. Introduzca el codigo de su pais y el telefono.");
 				}
+				
 
 			} catch (ErrorBD err) {
 				JOptionPane.showMessageDialog(vista, err.getMessage(), "Error al registrarse",
@@ -95,7 +96,7 @@ public class ControladorRegistro implements ActionListener {
 		}
 
 	}
-
+	
 	private boolean telefonoValido() {
 		Pattern pattern1 = Pattern.compile("^(?=\\w*\\d)\\S{1,4}$");
 		Matcher mather1 = pattern1.matcher(vista.textFieldCodigo.getText());
