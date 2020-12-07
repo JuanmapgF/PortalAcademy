@@ -70,6 +70,7 @@ public class Usuario {
 		List<Usuario> usuarios = new ArrayList<>();
 		BD miBD = BD.getBD();
 		List<Object[]> users = miBD.Select("SELECT nick FROM Curso");
+		miBD.finalize();
 		for (Object[] tupla : users) {
 			usuarios.add(new Usuario((String) tupla[0]));
 		}
