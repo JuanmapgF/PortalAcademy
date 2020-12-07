@@ -4,13 +4,12 @@ import java.awt.*;
 import javax.swing.*;
 
 import Controlador.ControladorRegistro;
+import Modelo.Estudiante;
 
 public class Prueba extends JFrame {
-	public Prueba() {
-	}
 
 	public static void crearGUI(JFrame ventana) {
-		Estudiante e = new Estudiante("qwwghre", "rtrgwert", "hola");
+		Estudiante e = new Estudiante("dfg", "gfd", "hola");
 		Explorar ex = new Explorar(e, null, null);
 		Menu m = new Menu(e);
 		Ajustes a = new Ajustes();
