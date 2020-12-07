@@ -2,6 +2,7 @@ package Modelo;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class Actividad {
 		
 		List<Object[]> tuplaParticipantes = miBD.Select("SELECT * FROM RelActividadParticipantes WHERE idActividad = " + idActividad);
 		for (Object[] o : tuplaParticipantes) {
-			this.participantes.add(new Usuario((String) o[1]));
+			this.participantes.add(new Usuario((String) o[0]));
 		}
 		miBD.finalize();
 	}
@@ -149,6 +150,16 @@ public class Actividad {
     	this.descripcion = null;
     	this.imagen = null;
     	this.lugar = null;
+	}
+	
+	public static List<Actividad> getTodasLasActividades() {
+		List<Actividad> listaActividades = new ArrayList<>();
+		BD miBD = BD.getBD();
+		List<Object[]> actividades = miBD.Select("SELECT * FROM Actividad");
+		for (Object[] tupla : actividades) {
+			listaActividades.add(new Actividad(Integer.parseInt(tupla[0].toString())));
+		}
+		return listaActividades;
 	}
 	
 	public String ToString() {

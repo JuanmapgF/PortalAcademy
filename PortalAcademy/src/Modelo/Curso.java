@@ -59,12 +59,12 @@ public class Curso {
 		
 		List<Object[]> tuplaEstudiantes = miBD.Select("SELECT * FROM RelCursoUsuario WHERE idCurso = " + idCurso);
 		for (Object[] o : tuplaEstudiantes) {
-			this.estudiantes.add(new Usuario((String) o[1]));
+			this.estudiantes.add(new Usuario(o[0].toString()));
 		}
 		
-		List<Object[]> tuplaMensajes = miBD.Select("SELECT * FROM MENSAJE WHERE idCurso = " + idCurso);
+		List<Object[]> tuplaMensajes = miBD.Select("SELECT * FROM Mensaje WHERE idCurso = " + idCurso);
 		for (Object[] o : tuplaMensajes) {
-			this.mensajes.add(new Mensaje((Integer) o[1]));
+			this.mensajes.add(new Mensaje(Integer.parseInt(o[0].toString())));
 		}
 		miBD.finalize();
 	}
@@ -161,7 +161,7 @@ public class Curso {
 			List<Object[]> tuplaMensajes = miBD.Select("SELECT * FROM mensaje WHERE idCurso = " + idCurso);
 			miBD.finalize();
 			for (Object[] o : tuplaMensajes) {
-				this.mensajes.add(new Mensaje((Integer) o[1]));
+				this.mensajes.add(new Mensaje(Integer.parseInt(o[0].toString())));
 			}
 			return mensajes;
 		} else {
@@ -187,6 +187,16 @@ public class Curso {
     	this.nombre = null;
     	this.descripcion = null;
     	this.imagen = null;
+	}
+	
+	public static List<Curso> getTodosLosCursos() {
+		List<Curso> listaCursos = new ArrayList<>();
+		BD miBD = BD.getBD();
+		List<Object[]> cursos = miBD.Select("SELECT * FROM Curso");
+		for (Object[] tupla : cursos) {
+			listaCursos.add(new Curso(Integer.parseInt(tupla[0].toString())));
+		}
+		return listaCursos;
 	}
 	
 	public String ToString() {
