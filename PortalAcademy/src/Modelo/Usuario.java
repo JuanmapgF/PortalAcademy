@@ -21,7 +21,7 @@ public class Usuario {
 		this.correo = correo;
 		this.password = password;
 		bd = BD.getBD();
-		bd.Insert("INSERT INTO Usuario (nick, correo, contrasena) VALUES ( '"+this.getNick()+"', '"+this.getCorreo()+"', '"+this.getPassword()+"')");
+		bd.Insert("INSERT INTO Usuario (nick, correo, contrasena) VALUES ( '"+this.getNick().toUpperCase()+"', '"+this.getCorreo()+"', '"+this.getPassword()+"')");
 		bd.finalize();
 	}
 
