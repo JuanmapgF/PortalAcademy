@@ -95,7 +95,7 @@ public class Explorar extends JPanel {
 			add(sp_n);
 		}
 		
-		this.setBounds(200, 0, 800, 650);
+		this.setBounds(200, 0, 880, 650);
 	}
 	
 	public Explorar(Usuario u, List<Object> l) {
@@ -137,5 +137,7 @@ public class Explorar extends JPanel {
 			sp_n.setBounds(263, 235, 273, 339);
 			add(sp_n);
 		}
+		
+		this.setBounds(200, 0, 880, 650);
 	}
 }

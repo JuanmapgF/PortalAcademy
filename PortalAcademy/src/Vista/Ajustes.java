@@ -44,6 +44,6 @@ public class Ajustes extends JPanel {
 		eliminar.setBounds(309, 456, 129, 23);
 		add(eliminar);
 		
-		this.setBounds(200, 0, 800, 650);
+		this.setBounds(200, 0, 880, 650);
 	}
 }
