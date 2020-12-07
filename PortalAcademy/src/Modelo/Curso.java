@@ -13,21 +13,15 @@ public class Curso {
 	private Boolean presencial;
 	private Boolean tieneForo;
 	
+	private List<Mensaje> mensajes;
 	private Profesor profesor;
-	private Foro foro;
 	private List<Usuario> estudiantes;
 	
 	public Curso(String nombre, String descripcion, String imagen, Boolean publico, Integer aforo,
 			Boolean presencial, Boolean tieneForo, Profesor profesor) {
 		BD miBD = BD.getBD();
-		Foro foro;
-		if (tieneForo) {
-			foro = new Foro();
-		} else {
-			foro = null;
-		}
-		miBD.Insert("INSERT INTO Curso (NOMBRE, DESCRIPCION, IMAGEN, PUBLICO, AFORO, PRESENCIAL, TIENEFORO, ID_PROFESOR, ID_FORO)"
-				+ "VALUES ('"+nombre+"','"+descripcion+"','"+imagen+"',"+publico+","+aforo+","+presencial+","+tieneForo+",'"+profesor.getNick()+"',"+foro.getId()+")");
+		miBD.Insert("INSERT INTO Curso (NOMBRE, DESCRIPCION, IMAGEN, PUBLICO, AFORO, PRESENCIAL, TIENEFORO, ID_PROFESOR)"
+				+ "VALUES ('"+nombre+"','"+descripcion+"','"+imagen+"',"+publico+","+aforo+","+presencial+","+tieneForo+",'"+profesor.getNick()+")");
 		miBD.finalize();
 		
 		this.nombre = nombre;
@@ -38,7 +32,6 @@ public class Curso {
 		this.presencial = presencial;
 		this.tieneForo = tieneForo;
 		this.profesor = profesor;
-		this.foro = foro;
 		
 	}
 
@@ -56,7 +49,6 @@ public class Curso {
 		this.tieneForo = Boolean.parseBoolean(tupla[7].toString());
 		
 		this.profesor = new Profesor(tupla[8].toString());
-		this.foro = new Foro(Integer.parseInt(tupla[9].toString()));
 		
 		List<Object[]> tuplaEstudiantes = miBD.Select("SELECT * FROM RelCursoUsuario WHERE ID_CURSO = " + idCurso);
 		for (Object[] o : tuplaEstudiantes) {
@@ -151,8 +143,18 @@ public class Curso {
 		return profesor;
 	}
 
-	public Foro getForo() {
-		return foro;
+	public List<Mensaje> getMensajes() {
+		if (tieneForo) {
+			BD miBD = BD.getBD();
+			List<Object[]> tuplaMensajes = miBD.Select("SELECT * FROM MENSAJE WHERE ID_CURSO = " + idCurso);
+			miBD.finalize();
+			for (Object[] o : tuplaMensajes) {
+				this.mensajes.add(new Mensaje((Integer) o[1]));
+			}
+			return mensajes;
+		} else {
+			return null;
+		}
 	}
 	
 	public List<Usuario> getEstudiantes() {

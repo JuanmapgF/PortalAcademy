@@ -2,7 +2,14 @@ package Modelo;
 
 public class Mensaje {
 	
+	private Integer idMensaje;
+	private String contenido;
+	
+	
 	private String texto;
+	public Mensaje(Integer integer) {
+		// TODO Auto-generated constructor stub
+	}
 	public String getTexto() {
 		return texto;
 	}
