@@ -3,10 +3,15 @@ package Controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Vista.Registro;
+
 public class ControladorRegistro implements ActionListener {
 	
+	private Registro vista;
 	
-	public ControladorRegistro() {
+	public ControladorRegistro(Registro v) {
+		vista = v;
+		
 	}
 
 	@Override
