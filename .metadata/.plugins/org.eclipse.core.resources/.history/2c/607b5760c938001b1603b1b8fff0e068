@@ -38,6 +38,7 @@ public class CtrAdminInicio implements ActionListener{
 		// pulsar en cualquiera de los dos botones de "ACTIVIDAD"
 		if(e.getSource() == vista.bActividades || e.getSource() == vista.bActividades_1 ) {
 			
+			
 		}
 		
 		//pulsar en el botón "AJUSTES"
