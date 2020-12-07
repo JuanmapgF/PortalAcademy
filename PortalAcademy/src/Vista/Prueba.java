@@ -15,7 +15,7 @@ public class Prueba extends JFrame {
 		ventana.add(a);
 		ventana.add(m);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		ventana.setSize(1000, 650);
+		ventana.setSize(1080, 650);
 		ventana.setLocationRelativeTo(null);
 		ventana.setVisible(true);
 	}
