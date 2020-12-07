@@ -144,6 +144,7 @@ public class Actividad {
 	public void eliminarCurso() {
 		BD miBD = BD.getBD();
     	miBD.Delete("DELETE FROM Actividad WHERE idActividad =" + idActividad);
+    	miBD.finalize();
     	this.nombre = null;
     	this.descripcion = null;
     	this.imagen = null;
