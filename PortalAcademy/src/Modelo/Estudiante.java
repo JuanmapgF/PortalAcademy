@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,23 +20,22 @@ public class Estudiante extends Usuario {
 	}
 	
 	
-	public Estudiante (String nick) {
+	public Estudiante (String nick) throws ParseException {
 		super(nick);
 		
-		List<Curso> c = new ArrayList<Curso>();
-		//ACCESO BASEDATOS PARA OBTENER CURSOS DEL ESTUDIANTE
-		Curso curso;
-		c.add(curso);
-		for(Curso cu : c) {
-			cursos.add(cu);
-		}
+		this.cursos = new ArrayList<Curso>();
+		this.actividades = new ArrayList<Actividad>();
 		
-		List<Actividad> ca = new ArrayList<Actividad>();
-		//ACCESO BASEDATOS PARA OBTENER ACTIVIDADES DEL ESTUDIANTE
-		Actividad activ;
-		ca.add(activ);
-		for(Actividad ct : ca) {
-			actividades.add(ct);
+		bd = BD.getBD();
+		List<Object[]> cursos = bd.Select("SELECT * FROM RelCursoUsuario WHERE nickUsuario = '" +nick+"'");
+		for (Object[] o : cursos) {
+			this.cursos.add(new Curso((int) o[1]));
+		}
+
+		bd = BD.getBD();
+		List<Object[]> actividades = bd.Select("SELECT * FROM RelActividadUsuario WHERE nickUsuario = '" +nick+"'");
+		for (Object[] e : actividades) {
+			this.actividades.add(new Actividad((int) e[1]));
 		}
 	}
 	
@@ -49,12 +49,16 @@ public class Estudiante extends Usuario {
 	
 	public void anadirCurso(Curso curso) {
 		cursos.add(curso);
-		//ACCESO BASEDATOS PARA AÑADIR CURSO AL ESTUDIANTE
+		bd = BD.getBD();
+		bd.Insert("INSERT INTO RelCursoUsuario (nickUsuario,idCurso) VALUES ('"+this.getNick() + "',"+curso.getId()+")");
+		bd.finalize();
 	}
 	
 	public void eliminarCurso(Curso curso) {
 		cursos.remove(curso);
-		//ACCESO BASEDATOS PARA ELIMINAR CURSO DEL ESTUDIANTE
+		bd = BD.getBD();
+		bd.Delete("DELETE FROM RelCursoUsuario WHERE idCurso = "+curso.getId());
+		bd.finalize();
 	}
 	
 	public List<Actividad> getActividades() {
@@ -63,12 +67,16 @@ public class Estudiante extends Usuario {
 	
 	public void anadirActividad(Actividad actividad) {
 		actividades.add(actividad);
-		//ACCESO BASEDATOS PARA AÑADIR ACTIVIDAD AL ESTUDIANTE
+		bd = BD.getBD();
+		bd.Insert("INSERT INTO RelActividadUsuario (nickUsuario,idActividad) VALUES ('"+this.getNick() + "',"+actividad.getId()+")");
+		bd.finalize();
 	}
 	
 	public void eliminarActividad(Actividad actividad) {
 		actividades.remove(actividad);
-		//ACCESO BASEDATOS PARA ELIMINAR ACTIVIDAD DEL ESTUDIANTE
+		bd = BD.getBD();
+		bd.Delete("DELETE FROM RelActividadUsuario WHERE idActividad = "+actividad.getId());
+		bd.finalize();
 	}
 	
 

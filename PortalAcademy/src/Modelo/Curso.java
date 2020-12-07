@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Curso {
@@ -20,7 +21,7 @@ public class Curso {
 	public Curso(String nombre, String descripcion, String imagen, Boolean publico, Integer aforo,
 			Boolean presencial, Boolean tieneForo, Profesor profesor) {
 		BD miBD = BD.getBD();
-		miBD.Insert("INSERT INTO Curso (NOMBRE, DESCRIPCION, IMAGEN, PUBLICO, AFORO, PRESENCIAL, TIENEFORO, ID_PROFESOR)"
+		miBD.Insert("INSERT INTO Curso (nombre, descripcion, imagen, publico, aforo, presencial, tieneforo, nickProfesor)"
 				+ "VALUES ('"+nombre+"','"+descripcion+"','"+imagen+"',"+publico+","+aforo+","+presencial+","+tieneForo+",'"+profesor.getNick()+")");
 		miBD.finalize();
 		
@@ -32,11 +33,15 @@ public class Curso {
 		this.presencial = presencial;
 		this.tieneForo = tieneForo;
 		this.profesor = profesor;
+		
+		mensajes = new ArrayList<Mensaje>();
+		estudiantes = new ArrayList<Usuario>();
+		
 	}
 
 	public Curso(Integer idCurso) {
 		BD miBD = BD.getBD();
-		Object[] tupla = miBD.Select("SELECT * FROM Curso WHERE ID_CURSO = " + idCurso).get(0);
+		Object[] tupla = miBD.Select("SELECT * FROM Curso WHERE idCurso = " + idCurso).get(0);
 		
 		this.idCurso = Integer.parseInt(tupla[0].toString());
 		this.nombre = tupla[1].toString();
@@ -49,9 +54,17 @@ public class Curso {
 		
 		this.profesor = new Profesor(tupla[8].toString());
 		
-		List<Object[]> tuplaEstudiantes = miBD.Select("SELECT * FROM RelCursoUsuario WHERE ID_CURSO = " + idCurso);
+		mensajes = new ArrayList<Mensaje>();
+		estudiantes = new ArrayList<Usuario>();
+		
+		List<Object[]> tuplaEstudiantes = miBD.Select("SELECT * FROM RelCursoUsuario WHERE idCurso = " + idCurso);
 		for (Object[] o : tuplaEstudiantes) {
 			this.estudiantes.add(new Usuario((String) o[1]));
+		}
+		
+		List<Object[]> tuplaMensajes = miBD.Select("SELECT * FROM MENSAJE WHERE idCurso = " + idCurso);
+		for (Object[] o : tuplaMensajes) {
+			this.mensajes.add(new Mensaje((Integer) o[1]));
 		}
 		miBD.finalize();
 	}
@@ -66,7 +79,7 @@ public class Curso {
 
 	public void setNombre(String nombre) {
 		BD miBD = BD.getBD();
-		miBD.Update("UPDATE Curso SET NOMBRE = '"+nombre+"' WHERE ID_CURSO = "+this.idCurso);
+		miBD.Update("UPDATE Curso SET nombre = '"+nombre+"' WHERE idCurso = "+this.idCurso);
 		miBD.finalize();
 		this.nombre = nombre;	
 	}
@@ -77,7 +90,7 @@ public class Curso {
 
 	public void setDescripcion(String descripcion) {
 		BD miBD = BD.getBD();
-		miBD.Update("UPDATE Curso SET DESCRIPCION = '"+descripcion+"' WHERE ID_CURSO = "+this.idCurso);
+		miBD.Update("UPDATE Curso SET descripcion = '"+descripcion+"' WHERE idCurso = "+this.idCurso);
 		miBD.finalize();
 		this.descripcion = descripcion;
 	}
@@ -88,7 +101,7 @@ public class Curso {
 
 	public void setImagen(String imagen) {
 		BD miBD = BD.getBD();
-		miBD.Update("UPDATE Curso SET IMAGEN = '"+imagen+"' WHERE ID_CURSO = "+this.idCurso);
+		miBD.Update("UPDATE Curso SET imagen = '"+imagen+"' WHERE idCurso = "+this.idCurso);
 		miBD.finalize();
 		this.imagen = imagen;
 	}
@@ -99,7 +112,7 @@ public class Curso {
 
 	public void setPublico(Boolean publico) {
 		BD miBD = BD.getBD();
-		miBD.Update("UPDATE Curso SET PUBLICO = "+publico+" WHERE ID_CURSO = "+this.idCurso);
+		miBD.Update("UPDATE Curso SET publico = "+publico+" WHERE idCurso = "+this.idCurso);
 		miBD.finalize();
 		this.publico = publico;
 	}
@@ -110,7 +123,7 @@ public class Curso {
 
 	public void setAforo(Integer aforo) {
 		BD miBD = BD.getBD();
-		miBD.Update("UPDATE Curso SET AFORO = "+aforo+" WHERE ID_CURSO = "+this.idCurso);
+		miBD.Update("UPDATE Curso SET aforo = "+aforo+" WHERE idCurso = "+this.idCurso);
 		miBD.finalize();
 		this.aforo = aforo;
 	}
@@ -121,7 +134,7 @@ public class Curso {
 
 	public void setPresencial(Boolean presencial) {
 		BD miBD = BD.getBD();
-		miBD.Update("UPDATE Curso SET PRESENCIAL = "+presencial+" WHERE ID_CURSO = "+this.idCurso);
+		miBD.Update("UPDATE Curso SET presencial = "+presencial+" WHERE idCurso = "+this.idCurso);
 		miBD.finalize();
 		this.presencial = presencial;
 
@@ -133,7 +146,7 @@ public class Curso {
 
 	public void setTieneForo(Boolean tieneForo) {
 		BD miBD = BD.getBD();
-		miBD.Update("UPDATE Curso SET TIENEFORO = "+tieneForo+" WHERE ID_CURSO = "+this.idCurso);
+		miBD.Update("UPDATE Curso SET tieneforo = "+tieneForo+" WHERE idCurso = "+this.idCurso);
 		miBD.finalize();
 		this.tieneForo = tieneForo;
 	}
@@ -145,7 +158,7 @@ public class Curso {
 	public List<Mensaje> getMensajes() {
 		if (tieneForo) {
 			BD miBD = BD.getBD();
-			List<Object[]> tuplaMensajes = miBD.Select("SELECT * FROM MENSAJE WHERE ID_CURSO = " + idCurso);
+			List<Object[]> tuplaMensajes = miBD.Select("SELECT * FROM mensaje WHERE idCurso = " + idCurso);
 			miBD.finalize();
 			for (Object[] o : tuplaMensajes) {
 				this.mensajes.add(new Mensaje((Integer) o[1]));
@@ -162,9 +175,18 @@ public class Curso {
 	
 	public void addEstudiante(Usuario estudiante) {
 		BD miBD = BD.getBD();
-		miBD.Insert("INSERT INTO RelCursoUsuario (ID_CURSO, ID_USUARIO) VALUES ("+this.idCurso+", '"+estudiante.getNick()+"')");
+		miBD.Insert("INSERT INTO RelCursoUsuario (nickUsuario, idCurso) VALUES ('"+estudiante.getNick()+"',"+this.idCurso+")");
 		miBD.finalize();
 		this.estudiantes.add(estudiante);
+	}
+	
+	public void eliminarCurso() {
+		BD miBD = BD.getBD();
+    	miBD.Delete("DELETE FROM Curso WHERE idCurso =" + idCurso);
+    	miBD.finalize();
+    	this.nombre = null;
+    	this.descripcion = null;
+    	this.imagen = null;
 	}
 	
 	public String ToString() {
