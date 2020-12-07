@@ -180,6 +180,15 @@ public class Curso {
 		this.estudiantes.add(estudiante);
 	}
 	
+	public void eliminarCurso() {
+		BD miBD = BD.getBD();
+    	miBD.Delete("DELETE FROM Curso WHERE idCurso =" + idCurso);
+    	miBD.finalize();
+    	this.nombre = null;
+    	this.descripcion = null;
+    	this.imagen = null;
+	}
+	
 	public String ToString() {
 		return nombre;
 	}

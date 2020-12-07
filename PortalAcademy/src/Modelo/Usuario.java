@@ -52,5 +52,15 @@ public class Usuario {
 		this.correo = "";
 		this.password = "";
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (o instanceof Usuario) {
+			Usuario u = (Usuario) o;
+			return this.nick.equals(u.nick) && this.password.equals(u.password);
+		} else {
+			return false;
+		}
+	}
 
 }
