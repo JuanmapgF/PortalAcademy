@@ -62,6 +62,8 @@ public class Curso {
 			this.estudiantes.add(new Usuario((String) o[1]));
 		}
 		
+		List<Object[]> tuplaMensajes = miBD.Select("SELECT * FROM MENSAJE WHERE ID_CURSO = " + idCurso);
+		for (Object[] o : tuplaMensajes) {
 			this.mensajes.add(new Mensaje((Integer) o[1]));
 		}
 		miBD.finalize();
