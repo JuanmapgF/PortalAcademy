@@ -5,7 +5,6 @@ public class Usuario {
 	private String nick;
 	private String correo;
 	private String password;
-
 	private BD bd;
 
 	public Usuario(String nick) {

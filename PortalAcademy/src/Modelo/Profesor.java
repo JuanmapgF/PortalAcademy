@@ -5,21 +5,25 @@ import java.util.List;
 
 public class Profesor extends Usuario {
 	
-	private int telefono;
+	private Telefono telefono;
 	private List<Curso> cursos;
+	private BD bd;
 	
-	public Profesor(String nick, String correo, String password, int telefono) {
+	public Profesor(String nick, String correo, String password, Telefono telefono) {
 		super(nick,correo,password);
 		this.telefono = telefono;
 		this.cursos = new ArrayList<Curso>();
+		bd = BD.getBD();
+		bd.Insert("INSERT INTO Profesor (nick, codigoTelefono, numeroTelefono) VALUES ( '"+this.getNick()+"', "+this.getTelefono().getCodigo()+",'"+this.getTelefono().getNumero()+"')");
+		bd.finalize();
 	}
 	
-	public Profesor(String idProfesor) {
-		super(idProfesor);
-		
-		//ACCESO BASEDATOS PARA OBTENER INFO PROFESOR
-		int telefono;	
-		this.telefono = telefono;
+	public Profesor(String nick) {
+		super(nick);
+		bd = BD.getBD();
+		Object [] user = bd.Select("SELECT * FROM Profesor WHERE Profesor.nick = '" + nick + "'").get(0);
+		bd.finalize();
+		this.telefono = new Telefono((int)user[1],user[2].toString());
 		
 		List<Curso> c = new ArrayList<Curso>();
 		//ACCESO BASEDATOS PARA OBTENER CURSOS DEL PROFESOR
@@ -44,7 +48,7 @@ public class Profesor extends Usuario {
 		//ACCESO BASEDATOS PARA ELIMINAR CURSO DEL PROFESOR
 	}
 
-	public int getTelefono() {
+	public Telefono getTelefono() {
 		return this.telefono;
 	}
 }
