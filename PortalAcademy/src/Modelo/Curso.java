@@ -158,7 +158,7 @@ public class Curso {
 	public List<Mensaje> getMensajes() {
 		if (tieneForo) {
 			BD miBD = BD.getBD();
-			List<Object[]> tuplaMensajes = miBD.Select("SELECT * FROM MENSAJE WHERE ID_CURSO = " + idCurso);
+			List<Object[]> tuplaMensajes = miBD.Select("SELECT * FROM Mensaje WHERE ID_CURSO = " + idCurso);
 			miBD.finalize();
 			for (Object[] o : tuplaMensajes) {
 				this.mensajes.add(new Mensaje((Integer) o[1]));
