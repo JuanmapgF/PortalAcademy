@@ -3,6 +3,8 @@ package Vista;
 import java.awt.*;
 import javax.swing.*;
 
+import Controlador.ControladorRegistro;
+
 public class Prueba extends JFrame {
 	public Prueba() {
 	}
@@ -10,10 +12,11 @@ public class Prueba extends JFrame {
 	public static void crearGUI(JFrame ventana) {
 		
 		
-		MenuEstudiante m = new MenuEstudiante();
-		Ajustes a = new Ajustes();
-		ventana.add(a);
-		ventana.add(m);
+//		MenuEstudiante m = new MenuEstudiante();
+//		Ajustes a = new Ajustes();
+		ControladorRegistro cr = new ControladorRegistro(new Registro());
+		ventana.add(cr.getPanel());
+//		ventana.add(m);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setSize(1080, 650);
 		ventana.setLocationRelativeTo(null);
