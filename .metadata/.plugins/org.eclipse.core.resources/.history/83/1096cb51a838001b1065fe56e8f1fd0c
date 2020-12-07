@@ -93,11 +93,9 @@ public class ControladorRegistro implements ActionListener {
 	}
 
 	private boolean telefonoValido() {
-		Pattern pattern = Pattern.compile("^(?=\\w*\\d)\\S{1,4}$");
-		Matcher mather = pattern.matcher(vista.textFieldCodigo.getText());
-		return mather.find();
-		Pattern pattern = Pattern.compile("^(?=\\w*\\d)\\S{3,15}$");
-		Matcher mather = pattern.matcher(vista.textFieldInfoAdicional.getText());
+		Pattern pattern = Pattern.compile(
+				"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,4})$");
+		Matcher mather = pattern.matcher(vista.textFieldCorreo.getText());
 		return mather.find();
 	}
 

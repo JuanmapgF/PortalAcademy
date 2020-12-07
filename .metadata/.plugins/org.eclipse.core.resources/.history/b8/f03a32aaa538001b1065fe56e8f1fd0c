@@ -23,7 +23,6 @@ public class Registro extends JPanel {
 	public JLabel lblInfoAdicional;
 	public JButton btnRegistro;
 	public JPasswordField passwordFieldContrasena;
-	public JTextField textFieldCodigo;
 	
 
 	/**
@@ -97,13 +96,6 @@ public class Registro extends JPanel {
 		passwordFieldContrasena = new JPasswordField();
 		passwordFieldContrasena.setBounds(477, 247, 118, 24);
 		add(passwordFieldContrasena);
-		
-		textFieldCodigo = new JTextField();
-		textFieldCodigo.setVisible(false);
-		textFieldCodigo.setText("+");
-		textFieldCodigo.setBounds(411, 389, 56, 20);
-		add(textFieldCodigo);
-		textFieldCodigo.setColumns(10);
 
 	}
 }

@@ -23,7 +23,7 @@ public class Registro extends JPanel {
 	public JLabel lblInfoAdicional;
 	public JButton btnRegistro;
 	public JPasswordField passwordFieldContrasena;
-	public JTextField textFieldCodigo;
+	private JTextField textFieldCodigo;
 	
 
 	/**

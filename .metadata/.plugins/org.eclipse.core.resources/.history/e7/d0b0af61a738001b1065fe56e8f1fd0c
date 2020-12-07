@@ -16,7 +16,7 @@ public class BD {
 	
 	public BD() {
 		try {
-			con = DriverManager.getConnection( URL +"/"+ SCHEME , USERNAME, PASSWORD);
+			con = DriverManager.getConnection( URL +"/"+ DATABASENAME , USERNAME, PASSWORD);
 		} catch (SQLException e) {
 			throw new ErrorBD("Error al iniciar la conexion con la base de datos: "+e.getMessage());
 		} catch (Exception e) {
