@@ -3,14 +3,15 @@ package Vista;
 import java.awt.*;
 import javax.swing.*;
 
+import Modelo.Estudiante;
+
 public class Prueba extends JFrame {
 	public Prueba() {
 	}
 
 	public static void crearGUI(JFrame ventana) {
-		
-		
-		MenuEstudiante m = new MenuEstudiante();
+		Estudiante e = new Estudiante("Palomo", "adiufhjnsdk", "hola");
+		Menu m = new Menu(e);
 		Ajustes a = new Ajustes();
 		ventana.add(a);
 		ventana.add(m);
