@@ -7,20 +7,16 @@ public class Estudiante extends Usuario {
 	
 	private List<Curso> cursos;
 	private List<Actividad> actividades;
-	private BD bd;
 	
 	public Estudiante(String nick, String correo, String password) {
 		super(nick,correo,password);
 		this.actividades = new ArrayList<Actividad>();
 		this.cursos = new ArrayList<Curso>();
-		bd = BD.getBD();
-		bd.Insert("INSERT INTO Estudiante (nick) VALUES ('"+this.getNick() + "')");
-		bd.finalize();
 	}
 	
 	
-	public Estudiante (String nick) {
-		super(nick);
+	public Estudiante (String idEstudiante) {
+		super(idEstudiante);
 		
 		List<Curso> c = new ArrayList<Curso>();
 		//ACCESO BASEDATOS PARA OBTENER CURSOS DEL ESTUDIANTE
@@ -31,7 +27,7 @@ public class Estudiante extends Usuario {
 		}
 		
 		List<Actividad> ca = new ArrayList<Actividad>();
-		//ACCESO BASEDATOS PARA OBTENER ACTIVIDADES DEL ESTUDIANTE
+		//ACCESO BASEDATOS PARA OBTENER CURSOS DEL ESTUDIANTE
 		Actividad activ;
 		ca.add(activ);
 		for(Actividad ct : ca) {
