@@ -75,4 +75,8 @@ public class Inicio extends JPanel {
 	public String getPass() {
 		return String.valueOf(cont.getPassword());
 	}
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
