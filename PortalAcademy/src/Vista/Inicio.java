@@ -2,6 +2,8 @@ package Vista;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
@@ -58,6 +60,7 @@ public class Inicio extends JPanel {
 		cont = new JPasswordField();
 		cont.setBounds(412, 279, 242, 20);
 		add(cont);
+		
 	}
 	
 	public void controlador(ActionListener ctr) {
