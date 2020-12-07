@@ -56,7 +56,7 @@ public class Actividad {
 		miBD.finalize();
 	}
 
-	public Integer getIdActividad() {
+	public Integer getId() {
 		return idActividad;
 	}
 
@@ -139,6 +139,16 @@ public class Actividad {
 		miBD.Insert("INSERT INTO RelActividadUsuario (nickUsuario, idActividad) VALUES ('"+participante.getNick()+"',"+this.idActividad+")");
 		miBD.finalize();
 		this.participantes.add(participante);
+	}
+	
+	public void eliminarCurso() {
+		BD miBD = BD.getBD();
+    	miBD.Delete("DELETE FROM Actividad WHERE idActividad =" + idActividad);
+    	miBD.finalize();
+    	this.nombre = null;
+    	this.descripcion = null;
+    	this.imagen = null;
+    	this.lugar = null;
 	}
 	
 	public String ToString() {

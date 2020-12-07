@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,34 +19,23 @@ public class Organizacion extends Usuario {
 		bd.finalize();
 	}
 	
-	public Organizacion (String nick) {
+	public Organizacion (String nick) throws ParseException {
 		super(nick);
 		bd = BD.getBD();
 		Object [] user = bd.Select("SELECT * FROM Organizacion WHERE Organizacion.nick = '" + nick + "'").get(0);
 		bd.finalize();
 		this.sede = user[1].toString();
 		
-		List<Actividad> c = new ArrayList<Actividad>();
-		//ACCESO BASEDATOS PARA OBTENER ACTIVIDADES DE LA ORGANIZACION
-		Actividad acti;
-		c.add(acti);
-		for(Actividad cu : c) {
-			actividades.add(cu);
+		bd = BD.getBD();
+		List<Object[]> actividades = bd.Select("SELECT * FROM Actividad WHERE nickOrganizacion = '" +nick+"'");
+		for (Object[] o : actividades) {
+			this.actividades.add(new Actividad((int) o[0]));
 		}
+		
 	}
 	
 	public List<Actividad> getActividades() {
 		return this.actividades;
-	}
-
-	public void anadirActividad(Actividad actividad) {
-		actividades.add(actividad);
-		//ACCESO BASEDATOS PARA A�ADIR ACTIVIDAD A LA ORGANIZACION
-	}
-	
-	public void eliminarActividad(Actividad actividad) {
-		actividades.remove(actividad);
-		//ACCESO BASEDATOS PARA ELIMINAR ACTIVIDAD DE LA ORGANIZACION
 	}
 	
 	public String getSede() {
