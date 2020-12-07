@@ -4,10 +4,9 @@ import java.awt.*;
 import javax.swing.*;
 
 import Controlador.ControladorRegistro;
+import Modelo.Estudiante;
 
 public class Prueba extends JFrame {
-	public Prueba() {
-	}
 
 	public static void crearGUI(JFrame ventana) {
 		ControladorRegistro cr = new ControladorRegistro(new Registro());
