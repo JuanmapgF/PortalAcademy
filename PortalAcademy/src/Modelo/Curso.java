@@ -163,7 +163,7 @@ public class Curso {
 	
 	public void addEstudiante(Usuario estudiante) {
 		BD miBD = BD.getBD();
-		miBD.Insert("INSERT INTO RelCursoUsuario (ID_CURSO, ID_USUARIO) VALUES ("+this.idCurso+", '"+estudiante.getNick()+"')");
+		miBD.Insert("INSERT INTO RelCursoUsuario (ID_USUARIO, ID_CURSO) VALUES ('"+estudiante.getNick()+"',"+this.idCurso+")");
 		miBD.finalize();
 		this.estudiantes.add(estudiante);
 	}

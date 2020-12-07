@@ -136,7 +136,7 @@ public class Actividad {
 	
 	public void addParticipante(Usuario participante) {
 		BD miBD = BD.getBD();
-		miBD.Insert("INSERT INTO RelActividadUsuario (ID_ACTIVIDAD, ID_USUARIO) VALUES ("+this.idActividad+", '"+participante.getNick()+"')");
+		miBD.Insert("INSERT INTO RelActividadUsuario (ID_USUARIO, ID_ACTIVIDAD) VALUES ('"+participante.getNick()+"',"+this.idActividad+")");
 		miBD.finalize();
 		this.participantes.add(participante);
 	}
