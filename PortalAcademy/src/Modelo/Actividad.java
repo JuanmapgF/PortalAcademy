@@ -56,7 +56,7 @@ public class Actividad {
 		miBD.finalize();
 	}
 
-	public Integer getIdActividad() {
+	public Integer getId() {
 		return idActividad;
 	}
 
