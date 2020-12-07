@@ -52,7 +52,7 @@ public class Actividad {
 		
 		List<Object[]> tuplaParticipantes = miBD.Select("SELECT * FROM RelActividadParticipantes WHERE idActividad = " + idActividad);
 		for (Object[] o : tuplaParticipantes) {
-			this.participantes.add(new Usuario((String) o[0]));
+			this.participantes.add(new Usuario(o[0].toString()));
 		}
 		miBD.finalize();
 	}
@@ -152,7 +152,7 @@ public class Actividad {
     	this.lugar = null;
 	}
 	
-	public static List<Actividad> getTodasLasActividades() {
+	public static List<Actividad> getTodasLasActividades() throws ParseException {
 		List<Actividad> listaActividades = new ArrayList<>();
 		BD miBD = BD.getBD();
 		List<Object[]> actividades = miBD.Select("SELECT * FROM Actividad");
