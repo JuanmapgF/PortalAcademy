@@ -19,31 +19,31 @@ public class Ajustes extends JPanel {
 		
 		JLabel titulo = new JLabel("Ajustes");
 		titulo.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
-		titulo.setBounds(374, 0, 118, 102);
+		titulo.setBounds(329, 0, 118, 102);
 		add(titulo);
 		
 		JButton cerrarSesion = new JButton("Cerrar Sesi\u00F3n");
-		cerrarSesion.setBounds(698, 42, 118, 23);
+		cerrarSesion.setBounds(672, 42, 118, 23);
 		add(cerrarSesion);
 		
 		JLabel nueva = new JLabel("Nueva contrase\u00F1a:");
 		nueva.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 16));
-		nueva.setBounds(123, 183, 158, 102);
+		nueva.setBounds(83, 183, 158, 102);
 		add(nueva);
 		
 		texto = new JTextField();
-		texto.setBounds(291, 223, 278, 20);
+		texto.setBounds(266, 223, 278, 20);
 		add(texto);
 		texto.setColumns(10);
 		
 		JButton cambiar = new JButton("Cambiar contrase\u00F1a");
-		cambiar.setBounds(339, 326, 183, 23);
+		cambiar.setBounds(284, 324, 183, 23);
 		add(cambiar);
 		
 		JButton eliminar = new JButton("Eliminar cuenta");
-		eliminar.setBounds(363, 456, 129, 23);
+		eliminar.setBounds(309, 456, 129, 23);
 		add(eliminar);
 		
-		
+		this.setBounds(2500, 0, 800, 650);
 	}
 }

@@ -12,11 +12,9 @@ public class Prueba extends JFrame {
 		
 		MenuEstudiante m = new MenuEstudiante();
 		Ajustes a = new Ajustes();
-		ventana.getContentPane().setLayout(new BorderLayout());
-		ventana.getContentPane().add(m, BorderLayout.WEST);
-		ventana.getContentPane().add(a, BorderLayout.CENTER);
+		ventana.add(a);
+		ventana.add(m);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		ventana.pack();
 		ventana.setSize(1000, 650);
 		ventana.setLocationRelativeTo(null);
 		ventana.setVisible(true);
