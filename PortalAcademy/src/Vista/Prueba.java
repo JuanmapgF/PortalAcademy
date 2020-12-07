@@ -10,13 +10,11 @@ public class Prueba extends JFrame {
 	}
 
 	public static void crearGUI(JFrame ventana) {
-		
-		
-//		MenuEstudiante m = new MenuEstudiante();
-//		Ajustes a = new Ajustes();
-		ControladorRegistro cr = new ControladorRegistro(new Registro());
-		ventana.add(cr.getPanel());
-//		ventana.add(m);
+		Estudiante e = new Estudiante("Palomo", "adiufhjnsdk", "hola");
+		Menu m = new Menu(e);
+		Ajustes a = new Ajustes();
+		ventana.add(a);
+		ventana.add(m);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setSize(1080, 650);
 		ventana.setLocationRelativeTo(null);
