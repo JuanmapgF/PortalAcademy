@@ -36,7 +36,7 @@ public class BD {
 	
 	//------------------------
 	
-	protected void finalize () {
+	public void finalize () {
 		try {
 			if (con!=null)  con.close();
 		} catch (SQLException e) {

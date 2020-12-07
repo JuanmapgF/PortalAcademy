@@ -3,7 +3,7 @@ package Vista;
 import java.awt.*;
 import javax.swing.*;
 
-import Modelo.Estudiante;
+import Controlador.ControladorRegistro;
 
 public class Prueba extends JFrame {
 	public Prueba() {
