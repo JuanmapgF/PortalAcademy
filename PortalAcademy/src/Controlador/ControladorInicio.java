@@ -27,7 +27,7 @@ public class ControladorInicio implements ActionListener {
 				if (us.equals(u)) {
 					ini = us;
 					
-					//Explorar ex = new Explorar()
+					Explorar ex = new Explorar()
 				}
 			}
 		}

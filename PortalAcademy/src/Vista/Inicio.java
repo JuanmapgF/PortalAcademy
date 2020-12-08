@@ -68,7 +68,7 @@ public class Inicio extends JPanel {
 		iniciar.setActionCommand("INICIAR");
 		
 		registro.addActionListener(ctr);
-		registro.setActionCommand("REGISTRO");
+		registro.setActionCommand("REGISTRATE");
 	}
 	
 	public String getUser() {
