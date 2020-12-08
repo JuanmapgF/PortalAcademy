@@ -12,11 +12,11 @@ import Modelo.Profesor;
 import Modelo.Usuario;
 import Vista.*;
 
-public class ControladorInicio implements ActionListener {
+public class CtrInicio implements ActionListener {
 	
 	private Inicio panel;
 	
-	public ControladorInicio(Inicio p) {
+	public CtrInicio(Inicio p) {
 		panel = p;
 	}
 

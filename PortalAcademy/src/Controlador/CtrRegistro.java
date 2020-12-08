@@ -17,14 +17,14 @@ import Modelo.Usuario;
 import Vista.Main;
 import Vista.Registro;
 
-public class ControladorRegistro implements ActionListener {
+public class CtrRegistro implements ActionListener {
 
 	private Registro vista;
 	private Usuario usuario;
 
 	private BD bd;
 
-	public ControladorRegistro(Registro v) {
+	public CtrRegistro(Registro v) {
 		vista = v;
 		vista.rdbtnEstudiante.addActionListener(this);
 		vista.rdbtnOrganizacion.addActionListener(this);

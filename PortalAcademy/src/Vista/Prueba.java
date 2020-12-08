@@ -5,15 +5,15 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import Controlador.Controlador;
-import Controlador.ControladorInicio;
-import Controlador.ControladorRegistro;
+import Controlador.CtrInicio;
+import Controlador.CtrRegistro;
 
 public class Prueba extends JFrame {
 	
 	private static JFrame ventana;
 
 	public static void crearGUI(JFrame ventana) {
-		ControladorInicio c = new ControladorInicio(new Inicio());
+		CtrInicio c = new CtrInicio(new Inicio());
 		c.getPanel().controlador(c);
 		ventana.add(c.getPanel());
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
