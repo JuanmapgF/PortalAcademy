@@ -1,23 +1,24 @@
 package Vista;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JButton;
+import java.awt.Color;
 import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.JScrollPane;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import java.awt.Color;
+import javax.swing.SwingConstants;
+import javax.swing.JScrollPane;
 
-public class AdminUsuarios extends JPanel {
-	private JTextField txtBuscarUsuario;
-
+public class AdminCursos extends JPanel {
+	private JTextField txtBuscarCurso;
+	
 	public JButton bCerrarSesion, bInicio, bCursos_1, bActividades_1, bUsuarios_1, bAjustes;
 	/**
 	 * Create the panel.
 	 */
-	public AdminUsuarios() {
+	public AdminCursos() {
 		setLayout(null);
 		this.setBounds(0, 0, 1080, 650);
 		
@@ -37,6 +38,7 @@ public class AdminUsuarios extends JPanel {
 		add(bInicio);
 		
 		JButton bCursos_1 = new JButton("Cursos");
+		bCursos_1.setForeground(Color.BLUE);
 		bCursos_1.setFont(new Font("Calibri", Font.PLAIN, 12));
 		bCursos_1.setBounds(10, 116, 91, 23);
 		add(bCursos_1);
@@ -47,7 +49,6 @@ public class AdminUsuarios extends JPanel {
 		add(bActividades_1);
 		
 		JButton bUsuarios_1 = new JButton("Usuarios");
-		bUsuarios_1.setForeground(Color.BLUE);
 		bUsuarios_1.setFont(new Font("Calibri", Font.PLAIN, 12));
 		bUsuarios_1.setBounds(10, 182, 91, 23);
 		add(bUsuarios_1);
@@ -57,21 +58,21 @@ public class AdminUsuarios extends JPanel {
 		bAjustes.setBounds(10, 214, 91, 21);
 		add(bAjustes);
 		
-		txtBuscarUsuario = new JTextField();
-		txtBuscarUsuario.setForeground(Color.LIGHT_GRAY);
-		txtBuscarUsuario.setFont(new Font("Calibri", Font.PLAIN, 10));
-		txtBuscarUsuario.setText("Buscar usuario");
-		txtBuscarUsuario.setBounds(190, 148, 370, 25);
-		add(txtBuscarUsuario);
-		txtBuscarUsuario.setColumns(10);
+		txtBuscarCurso = new JTextField();
+		txtBuscarCurso.setForeground(Color.LIGHT_GRAY);
+		txtBuscarCurso.setFont(new Font("Calibri", Font.PLAIN, 10));
+		txtBuscarCurso.setText("Buscar curso");
+		txtBuscarCurso.setBounds(190, 148, 370, 25);
+		add(txtBuscarCurso);
+		txtBuscarCurso.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("Usuarios");
+		JLabel lblNewLabel_1 = new JLabel("Cursos");
 		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 60));
 		lblNewLabel_1.setBounds(160, 54, 211, 74);
 		add(lblNewLabel_1);
 		
-		JScrollPane spUsuarios = new JScrollPane();
-		spUsuarios.setBounds(190, 195, 700, 400);
-		add(spUsuarios);
+		JScrollPane spCursos = new JScrollPane();
+		spCursos.setBounds(190, 195, 700, 400);
+		add(spCursos);
 	}
 }
