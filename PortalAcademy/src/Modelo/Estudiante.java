@@ -39,9 +39,6 @@ public class Estudiante extends Usuario {
 		}
 	}
 	
-	
-
-	
 
 	public List<Curso> getCursos() {
 		return this.cursos;
