@@ -1,8 +1,0 @@
-package Modelo;
-
-public class Administrador{
-	public static void main(String[] args) {
-		BD bd = new BD();
-		bd.Select("SELECT * FROM Estudiante");
-	}
-}
