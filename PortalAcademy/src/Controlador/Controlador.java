@@ -95,6 +95,8 @@ public class Controlador implements ActionListener {
 			setVista(new Registro());
 		}
 		
+		
+		
 	}
 
 }
