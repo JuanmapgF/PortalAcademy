@@ -37,6 +37,7 @@ public class Actividad {
 	public Actividad(Integer idActividad) throws ParseException {
 		BD miBD = BD.getBD();
 		Object[] tupla = miBD.Select("SELECT * FROM Curso WHERE idActividad = " + idActividad).get(0);
+		miBD.finalize();
 		
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 		
@@ -47,14 +48,6 @@ public class Actividad {
 		this.aforo = Integer.parseInt(tupla[4].toString());
 		this.fecha = formato.parse(tupla[5].toString());
 		this.lugar = tupla[6].toString();
-		
-		this.organizacion = new Organizacion(tupla[7].toString());
-		
-		List<Object[]> tuplaParticipantes = miBD.Select("SELECT * FROM RelActividadParticipantes WHERE idActividad = " + idActividad);
-		for (Object[] o : tuplaParticipantes) {
-			this.participantes.add(new Usuario(o[0].toString()));
-		}
-		miBD.finalize();
 	}
 
 	public Integer getId() {
@@ -127,11 +120,21 @@ public class Actividad {
 		this.lugar = lugar;
 	}
 
-	public Organizacion getOrganizacion() {
+	public Organizacion getOrganizacion() throws ParseException {
+		BD miBD = BD.getBD();
+		Object[] tupla = miBD.Select("SELECT * FROM Curso WHERE idActividad = " + idActividad).get(0);
+		miBD.finalize();
+		this.organizacion = new Organizacion(tupla[7].toString());
 		return organizacion;
 	}
 	
 	public List<Usuario> getParticipantes() {
+		BD miBD = BD.getBD();
+		List<Object[]> tuplaParticipantes = miBD.Select("SELECT * FROM RelActividadParticipantes WHERE idActividad = " + idActividad);
+		for (Object[] o : tuplaParticipantes) {
+			this.participantes.add(new Usuario(o[0].toString()));
+		}
+		miBD.finalize();
 		return participantes;
 	}
 	
