@@ -53,12 +53,7 @@ public class Controlador implements ActionListener {
 	}
 	
 	public Controlador() {
-		try {
-			setVista(new Explorar(null, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		setVista(new Inicio());
 	}
 
 	@Override
@@ -93,10 +88,44 @@ public class Controlador implements ActionListener {
 		
 		if (e.getActionCommand().equals("REGISTRATE")) {
 			setVista(new Registro());
+			System.out.println(1);
+			Prueba.anyadirVentana(Prueba.getVentana(), getPanel());
 		}
 		
 		
 		
 	}
 
+	public Explorar getExplorar() {
+		return explorar;
+	}
+
+	public void setExplorar(Explorar explorar) {
+		this.explorar = explorar;
+	}
+
+	public Inicio getInicio() {
+		return inicio;
+	}
+
+	public void setInicio(Inicio inicio) {
+		this.inicio = inicio;
+	}
+
+	public Registro getRegistro() {
+		return registro;
+	}
+
+	public void setRegistro(Registro registro) {
+		this.registro = registro;
+	}
+
+	public Menu getMenu() {
+		return menu;
+	}
+
+	public void setMenu(Menu menu) {
+		this.menu = menu;
+	}
+	
 }

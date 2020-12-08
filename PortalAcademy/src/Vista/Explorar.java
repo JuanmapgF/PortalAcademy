@@ -90,11 +90,6 @@ public class Explorar extends JPanel {
 			t_actividad.setBounds(419, 159, 159, 33);
 			add(t_actividad);
 			
-			JLabel t_n = new JLabel("Curso:");
-			t_n.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-			t_n.setBounds(218, 159, 191, 33);
-			add(t_n);
-			
 			JScrollPane sp_curso = new JScrollPane();
 			sp_curso.setBounds(125, 235, 273, 339);
 			sp_curso.setViewportView(listaC);
@@ -104,10 +99,6 @@ public class Explorar extends JPanel {
 			sp_actividad.setBounds(456, 235, 273, 339);
 			sp_actividad.setViewportView(listaA);
 			add(sp_actividad);
-			
-			JScrollPane sp_n = new JScrollPane();
-			sp_n.setBounds(263, 235, 273, 339);
-			add(sp_n);
 			
 			seleccion = new JButton("Ver");
 			seleccion.setBounds(367, 610, 121, 23);
@@ -200,16 +191,18 @@ public class Explorar extends JPanel {
 	}
 	
 	public void controlador(ActionListener ctr) {
-		iniciar.addActionListener(ctr);
-		iniciar.setActionCommand("INICIAR_EXPLORAR");
-		
-		cerrar.addActionListener(ctr);
-		cerrar.setActionCommand("CERRAR");
-		
-		registrarse.addActionListener(ctr);
-		registrarse.setActionCommand("REGISTRATE");
-		
-		seleccion.addActionListener(ctr);
-		seleccion.setActionCommand("INICIAR_EXPLORAR");
+		if (iniciar != null) {
+			iniciar.addActionListener(ctr);
+			iniciar.setActionCommand("INICIAR_EXPLORAR");
+		} else if (cerrar != null) {
+			cerrar.addActionListener(ctr);
+			cerrar.setActionCommand("CERRAR");
+		} else if (registrarse != null) {
+			registrarse.addActionListener(ctr);
+			registrarse.setActionCommand("REGISTRATE");
+		} else if (seleccion != null) {
+			seleccion.addActionListener(ctr);
+			seleccion.setActionCommand("INICIAR_EXPLORAR");
+		}
 	}
 }
