@@ -6,10 +6,10 @@ import java.awt.event.ActionListener;
 import Vista.AdminActividades;
 import Vista.AdminCursos;
 
-public class ctrAdminActividades implements ActionListener{
+public class CtrAdminActividades implements ActionListener{
 	private AdminActividades vista;
 
-	public ctrAdminActividades(AdminActividades v) {
+	public CtrAdminActividades(AdminActividades v) {
 		vista = v;
 		
 		vista.bActividades_1.addActionListener(this);

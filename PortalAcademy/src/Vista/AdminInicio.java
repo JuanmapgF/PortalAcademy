@@ -11,7 +11,7 @@ import java.awt.Component;
 import javax.swing.Box;
 import java.awt.Color;
 
-public class adminInicio extends JPanel {
+public class AdminInicio extends JPanel {
 
 	public JButton bCerrarSesion, bCursos, bActividades, bUsuarios, bInicio, bCursos_1, bActividades_1, bUsuarios_1, bAjustes;
 	
@@ -19,7 +19,7 @@ public class adminInicio extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public adminInicio() {
+	public AdminInicio() {
 		
 		JButton bCerrarSesion = new JButton("Cerrar sesi\u00F3n");
 		bCerrarSesion.setFont(new Font("Calibri", Font.PLAIN, 12));

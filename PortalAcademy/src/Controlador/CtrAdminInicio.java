@@ -6,14 +6,14 @@ import java.awt.event.ActionListener;
 import Modelo.BD;
 import Vista.Main;
 
-import Vista.adminInicio;
+import Vista.AdminInicio;
 
 public class CtrAdminInicio implements ActionListener{
 
-	private adminInicio vista;
+	private AdminInicio vista;
 	private BD bd;
 	
-	public CtrAdminInicio(adminInicio v) {
+	public CtrAdminInicio(AdminInicio v) {
 		vista = v;
 		
 		vista.bActividades.addActionListener(this);
@@ -27,7 +27,7 @@ public class CtrAdminInicio implements ActionListener{
 		vista.bUsuarios_1.addActionListener(this);
 	}
 	
-	public adminInicio getpanel() {
+	public AdminInicio getpanel() {
 		return vista;
 	}
 	
