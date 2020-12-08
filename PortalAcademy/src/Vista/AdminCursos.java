@@ -2,23 +2,44 @@ package Vista;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.text.ParseException;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import Modelo.Actividad;
+import Modelo.Curso;
+
 import javax.swing.JScrollPane;
 
 public class AdminCursos extends JPanel {
 	private JTextField txtBuscarCurso;
 	
 	public JButton bCerrarSesion, bInicio, bCursos_1, bActividades_1, bUsuarios_1, bAjustes;
+
+	private DefaultListModel<String> modeloA = new DefaultListModel<String>();
+	private JList<String> listA = new JList<String>();
+
 	/**
 	 * Create the panel.
 	 */
 	public AdminCursos() {
+		
+		//para mostrar la lista de Cursos en el scrollpanel
+		listA.setModel(modeloA);
+		for (Curso c : Curso.getTodosLosCursos()) {
+			modeloA.addElement(c.toString());
+		}
+		listA.setLayoutOrientation(JList.VERTICAL);
+		//--------------------------------------------------------
+
+		
 		setLayout(null);
 		this.setBounds(0, 0, 1080, 650);
 		
@@ -73,6 +94,7 @@ public class AdminCursos extends JPanel {
 		
 		JScrollPane spCursos = new JScrollPane();
 		spCursos.setBounds(190, 195, 700, 400);
+		spCursos.setViewportView(listA);
 		add(spCursos);
 	}
 }
