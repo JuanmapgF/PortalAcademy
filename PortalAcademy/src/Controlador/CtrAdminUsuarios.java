@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Vista.AdminUsuarios;
-import Vista.adminInicio;
+import Vista.AdminInicio;
 
 public class CtrAdminUsuarios implements ActionListener{
 

@@ -111,10 +111,10 @@ public class Explorar extends JPanel {
 		this.setBounds(200, 0, 880, 650);
 	}
 	
-	public Explorar(Usuario u, List<Object> l) {
+	public Explorar(Profesor u, List<Curso> l) {
 		this.setLayout(null);
 		
-		addElements(l);
+		addElementsC(l);
 		
 		if (u instanceof Profesor) {
 			JLabel lblNewLabel = new JLabel("Explorar");
@@ -139,7 +139,17 @@ public class Explorar extends JPanel {
 			seleccion = new JButton("Ver");
 			seleccion.setBounds(367, 610, 121, 23);
 			add(seleccion);
-		} else if (u instanceof Organizacion) {
+		}
+		
+		this.setBounds(200, 0, 880, 650);
+	}
+	
+	public Explorar(Organizacion u, List<Actividad> l) {
+		this.setLayout(null);
+		
+		addElementsA(l);
+		
+		if (u instanceof Organizacion) {
 			JLabel lblNewLabel = new JLabel("Explorar");
 			lblNewLabel.setBounds(343, 30, 107, 33);
 			lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
@@ -183,7 +193,17 @@ public class Explorar extends JPanel {
 		listaA.setLayoutOrientation(JList.VERTICAL);
 	}
 	
-	public void addElements(List<Object> l) {
+	public void addElementsC(List<Curso> l) {
+		listaN.setModel(modeloN);
+		
+		for (Object o : l) {
+			modeloN.addElement(o.toString());
+		}
+		
+		listaN.setLayoutOrientation(JList.VERTICAL);
+	}
+	
+	public void addElementsA(List<Actividad> l) {
 		listaN.setModel(modeloN);
 		
 		for (Object o : l) {

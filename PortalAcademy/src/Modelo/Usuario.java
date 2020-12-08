@@ -65,7 +65,7 @@ public class Usuario {
 	public boolean equals(Object o) {
 		if (o instanceof Usuario) {
 			Usuario u = (Usuario) o;
-			return this.nick.equals(u.nick) && this.password.equals(u.password);
+			return this.getNick().equals(u.nick) && this.getPassword().equals(u.password);
 		} else {
 			return false;
 		}

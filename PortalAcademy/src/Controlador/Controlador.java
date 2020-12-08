@@ -68,7 +68,9 @@ public class Controlador implements ActionListener {
 			for (Usuario us : users) {
 				if (us.equals(u)) {
 					ini = us;
+					System.out.println("123");
 					if (ini instanceof Estudiante) {
+						
 						Menu m = new Menu(ini);
 						Explorar ex = null;
 						try {
@@ -80,7 +82,14 @@ public class Controlador implements ActionListener {
 						
 						setVista(m,ex);
 					} else {
-						
+						Menu m = new Menu(ini);
+						Explorar ex = null;
+						try {
+							ex = new Explorar(ini, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades());
+						} catch (ParseException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 					}
 				}
 			}

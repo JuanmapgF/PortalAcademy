@@ -5,12 +5,12 @@ import java.awt.event.ActionListener;
 
 import Vista.Main;
 
-public class ControladorMain implements ActionListener {
+public class CtrMain implements ActionListener {
 
 	
 	private Main vista;
 	
-	public ControladorMain(Main v) {
+	public CtrMain(Main v) {
 		vista = v;
 	}
 	
