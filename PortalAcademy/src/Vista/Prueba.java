@@ -3,13 +3,14 @@ package Vista;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
+import Controlador.Controlador;
 import Controlador.ControladorRegistro;
 
 public class Prueba extends JFrame {
 
 	public static void crearGUI(JFrame ventana) {
-		ControladorRegistro cr = new ControladorRegistro(new Registro());
-		ventana.add(cr.getPanel());
+		Controlador c = new Controlador();
+		ventana.add(c.getPanel());
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setSize(1080, 650);
 		ventana.setLocationRelativeTo(null);
