@@ -51,7 +51,7 @@ public class adminInicio extends JPanel {
 		add(bUsuarios);
 		
 		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
-		lblNewLabel.setBounds(429, 627, 222, 13);
+		lblNewLabel.setBounds(429, 627, 257, 13);
 		add(lblNewLabel);
 		
 		JButton bInicio = new JButton("Inicio");

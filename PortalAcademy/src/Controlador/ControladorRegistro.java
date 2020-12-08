@@ -2,21 +2,18 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
 import Modelo.BD;
-import Modelo.Curso;
 import Modelo.ErrorBD;
 import Modelo.Estudiante;
 import Modelo.Organizacion;
 import Modelo.Profesor;
 import Modelo.Telefono;
 import Modelo.Usuario;
-import Vista.Explorar;
 import Vista.Main;
 import Vista.Registro;
 
@@ -99,32 +96,26 @@ public class ControladorRegistro implements ActionListener {
 				}
 
 				if (vista.rdbtnEstudiante.isSelected()) {
-					usuario = new Estudiante(vista.textFieldNick.getText(),
-							vista.textFieldCorreo.getText(), new String(vista.passwordFieldContrasena.getPassword()));
-					Main.setUsuario(usuario);
-					Main.removeVentana();
-					Main.addPanel(new Explorar(usuario, c, a));
+					usuario = new Estudiante(vista.textFieldNick.getText(), vista.textFieldCorreo.getText(),
+							new String(vista.passwordFieldContrasena.getPassword()));
 				} else if (vista.rdbtnProfesor.isSelected()) {
 					usuario = new Profesor(vista.textFieldNick.getText(), vista.textFieldCorreo.getText(),
 							new String(vista.passwordFieldContrasena.getPassword()),
 							new Telefono(Integer.parseInt(vista.textFieldCodigo.getText()),
 									vista.textFieldInfoAdicional.getText()));
-					Main.setUsuario(usuario);
-					Main.removeVentana();
-					Main.addPanel(new Explorar(usuario, l));
+
 				} else if (vista.rdbtnOrganizacion.isSelected()) {
-					usuario = new Organizacion(vista.textFieldNick.getText(),
-							vista.textFieldCorreo.getText(), new String(vista.passwordFieldContrasena.getPassword()),
+					usuario = new Organizacion(vista.textFieldNick.getText(), vista.textFieldCorreo.getText(),
+							new String(vista.passwordFieldContrasena.getPassword()),
 							vista.textFieldInfoAdicional.getText());
-					Main.setUsuario(usuario);
-					Main.removeVentana();
-					Main.addPanel(new Explorar(usuario, l));
-					
+
 				}
+
+				Main.setUsuario(usuario);
+				Main.removeVentana();
 
 				JOptionPane.showMessageDialog(vista, "Cuenta creada satisfactoriamente.", "Registro correcto",
 						JOptionPane.INFORMATION_MESSAGE);
-				
 
 			} catch (ErrorBD err) {
 				JOptionPane.showMessageDialog(vista, err.getMessage(), "Error al registrarse",
@@ -133,9 +124,7 @@ public class ControladorRegistro implements ActionListener {
 		}
 
 	}
-	
-	
-	
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
