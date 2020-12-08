@@ -34,6 +34,7 @@ public class adminInicio extends JPanel {
 		this.setBounds(0,0,1080,650);
 		
 		JButton bCursos = new JButton("Cursos");
+		bCursos.setVerticalAlignment(SwingConstants.BOTTOM);
 		bCursos.setFont(new Font("Calibri", Font.PLAIN, 30));
 		bCursos.setBounds(452, 189, 175, 47);
 		add(bCursos);
@@ -46,15 +47,17 @@ public class adminInicio extends JPanel {
 		add(bActividades);
 		
 		JButton bUsuarios = new JButton("Usuarios");
+		bUsuarios.setVerticalAlignment(SwingConstants.BOTTOM);
 		bUsuarios.setFont(new Font("Calibri", Font.PLAIN, 30));
 		bUsuarios.setBounds(452, 368, 175, 47);
 		add(bUsuarios);
 		
 		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
-		lblNewLabel.setBounds(429, 627, 257, 13);
+		lblNewLabel.setBounds(429, 627, 222, 13);
 		add(lblNewLabel);
 		
 		JButton bInicio = new JButton("Inicio");
+		bInicio.setForeground(Color.BLUE);
 		bInicio.setBounds(10, 85, 91, 21);
 		add(bInicio);
 		

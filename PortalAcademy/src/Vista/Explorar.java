@@ -28,6 +28,9 @@ public class Explorar extends JPanel {
 	private JButton registrarse;
 	private JButton seleccion;
 	
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public Explorar(Usuario u, List<Curso> c, List<Actividad> a) {
 		setLayout(null);
 		

@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import java.awt.Color;
@@ -15,8 +16,7 @@ import javax.swing.JTable;
 public class AdminActividades extends JPanel {
 
 	public JButton bCerrarSesion, bInicio, bCursos_1, bActividades_1, bUsuarios_1, bAjustes;
-	private JTextField textField;
-	private JTable table;
+	private JTextField txtBuscarActividad;
 
 	/**
 	 * Create the panel.
@@ -35,6 +35,7 @@ public class AdminActividades extends JPanel {
 		add(bCursos_1);
 		
 		JButton bActividades_1 = new JButton("Actividades");
+		bActividades_1.setForeground(Color.BLUE);
 		bActividades_1.setFont(new Font("Calibri", Font.PLAIN, 12));
 		bActividades_1.setBounds(10, 149, 91, 23);
 		add(bActividades_1);
@@ -62,20 +63,20 @@ public class AdminActividades extends JPanel {
 		add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
-		lblNewLabel.setBounds(411, 627, 257, 13);
+		lblNewLabel.setBounds(429, 627, 222, 13);
 		add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setText("Buscar usuario");
-		textField.setForeground(Color.LIGHT_GRAY);
-		textField.setFont(new Font("Calibri", Font.PLAIN, 10));
-		textField.setColumns(10);
-		textField.setBounds(190, 148, 370, 25);
-		add(textField);
+		txtBuscarActividad = new JTextField();
+		txtBuscarActividad.setText("Buscar actividad");
+		txtBuscarActividad.setForeground(Color.LIGHT_GRAY);
+		txtBuscarActividad.setFont(new Font("Calibri", Font.PLAIN, 10));
+		txtBuscarActividad.setColumns(10);
+		txtBuscarActividad.setBounds(190, 148, 370, 25);
+		add(txtBuscarActividad);
 		
-		table = new JTable();
-		table.setBounds(190, 195, 700, 400);
-		add(table);
+		JScrollPane spActivadades = new JScrollPane();
+		spActivadades.setBounds(190, 195, 700, 400);
+		add(spActivadades);
 		
 	}
 }
