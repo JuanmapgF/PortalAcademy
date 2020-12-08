@@ -10,23 +10,6 @@ import Modelo.Usuario;
 @SuppressWarnings("serial")
 public class Main extends JFrame {
 	
-	private static Usuario usuario;
-	private static JFrame ventana;
-
-	
-	public static void setUsuario(Usuario u) {
-		usuario = u;
-	}
-	
-	public static void removeVentana() {
-		ventana.removeAll();
-	}
-	
-	public static void addPanel(JPanel panel) {
-		ventana.add(panel);
-	}
-	
-	
 	public static void crearGUI(JFrame ventana) {
 		ControladorRegistro cr = new ControladorRegistro(new Registro());
 		ventana.add(cr.getPanel());
