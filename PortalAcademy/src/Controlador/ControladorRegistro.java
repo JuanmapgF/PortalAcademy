@@ -111,9 +111,6 @@ public class ControladorRegistro implements ActionListener {
 
 				}
 
-				Main.setUsuario(usuario);
-				Main.removeVentana();
-
 				JOptionPane.showMessageDialog(vista, "Cuenta creada satisfactoriamente.", "Registro correcto",
 						JOptionPane.INFORMATION_MESSAGE);
 
