@@ -58,14 +58,14 @@ public class AdminUsuarios extends JPanel {
 		add(bAjustes);
 		
 		table = new JTable();
-		table.setBounds(266, 215, 548, 340);
+		table.setBounds(190, 195, 700, 400);
 		add(table);
 		
 		txtBuscarUsuario = new JTextField();
 		txtBuscarUsuario.setForeground(Color.LIGHT_GRAY);
 		txtBuscarUsuario.setFont(new Font("Calibri", Font.PLAIN, 10));
 		txtBuscarUsuario.setText("Buscar usuario");
-		txtBuscarUsuario.setBounds(266, 169, 370, 25);
+		txtBuscarUsuario.setBounds(190, 148, 370, 25);
 		add(txtBuscarUsuario);
 		txtBuscarUsuario.setColumns(10);
 		
