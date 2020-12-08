@@ -42,6 +42,7 @@ public class Curso {
 	public Curso(Integer idCurso) {
 		BD miBD = BD.getBD();
 		Object[] tupla = miBD.Select("SELECT * FROM Curso WHERE idCurso = " + idCurso).get(0);
+		miBD.finalize();
 		
 		this.idCurso = Integer.parseInt(tupla[0].toString());
 		this.nombre = tupla[1].toString();
@@ -52,16 +53,9 @@ public class Curso {
 		this.presencial = Boolean.parseBoolean(tupla[6].toString());
 		this.tieneForo = Boolean.parseBoolean(tupla[7].toString());
 		
-		this.profesor = new Profesor(tupla[8].toString());
-		
 		mensajes = new ArrayList<Mensaje>();
 		estudiantes = new ArrayList<Usuario>();
 		
-		List<Object[]> tuplaMensajes = miBD.Select("SELECT * FROM Mensaje WHERE idCurso = " + idCurso);
-		for (Object[] o : tuplaMensajes) {
-			this.mensajes.add(new Mensaje(Integer.parseInt(o[0].toString())));
-		}
-		miBD.finalize();
 	}
 
 	public Integer getId() {
@@ -147,6 +141,10 @@ public class Curso {
 	}
 
 	public Profesor getProfesor() {
+		BD miBD = BD.getBD();
+		Object[] tupla = miBD.Select("SELECT * FROM Curso WHERE idCurso = " + idCurso).get(0);
+		miBD.finalize();
+		this.profesor = new Profesor(tupla[8].toString());
 		return profesor;
 	}
 
