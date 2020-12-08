@@ -3,32 +3,22 @@ package Controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Modelo.BD;
-import Vista.Main;
+import Vista.AdminCursos;
+import Vista.AdminUsuarios;
 
-import Vista.AdminInicio;
+public class CtrAdminCursos implements ActionListener{
 
-public class CtrAdminInicio implements ActionListener{
-
-	private AdminInicio vista;
-	private BD bd;
+	private AdminCursos vista;
 	
-	public CtrAdminInicio(AdminInicio v) {
+	public CtrAdminCursos(AdminCursos v) {
 		vista = v;
 		
-		vista.bActividades.addActionListener(this);
 		vista.bActividades_1.addActionListener(this);
 		vista.bAjustes.addActionListener(this);
 		vista.bCerrarSesion.addActionListener(this);
-		vista.bCursos.addActionListener(this);
 		vista.bCursos_1.addActionListener(this);
 		vista.bInicio.addActionListener(this);
-		vista.bUsuarios.addActionListener(this);
 		vista.bUsuarios_1.addActionListener(this);
-	}
-	
-	public AdminInicio getpanel() {
-		return vista;
 	}
 	
 	@Override
@@ -36,7 +26,7 @@ public class CtrAdminInicio implements ActionListener{
 		// TODO Auto-generated method stub
 		
 		// pulsar en cualquiera de los dos botones de "ACTIVIDAD"
-		if(e.getSource() == vista.bActividades || e.getSource() == vista.bActividades_1 ) {
+		if(e.getSource() == vista.bActividades_1 ) {
 			
 		}
 		
@@ -51,7 +41,7 @@ public class CtrAdminInicio implements ActionListener{
 		}
 		
 		//pulsar en el botón "CURSOS"
-		if(e.getSource() == vista.bCursos || e.getSource() == vista.bCursos_1) {
+		if(e.getSource() == vista.bCursos_1) {
 			
 		}
 		
@@ -61,10 +51,9 @@ public class CtrAdminInicio implements ActionListener{
 		}
 		
 		//pulsar en el botón "USUARIOS"
-		if(e.getSource() == vista.bUsuarios || e.getSource() == vista.bUsuarios_1) {
+		if(e.getSource() == vista.bUsuarios_1) {
 			
 		}
-		
 		
 		
 	}

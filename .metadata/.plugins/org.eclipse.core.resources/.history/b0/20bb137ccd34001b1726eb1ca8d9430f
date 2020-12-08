@@ -1,6 +1,0 @@
-package Modelo;
-
-public class Profesor extends Usuario {
-	private String telefono;
-	
-}
