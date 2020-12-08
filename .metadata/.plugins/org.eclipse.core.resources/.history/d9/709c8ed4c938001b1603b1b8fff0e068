@@ -1,0 +1,14 @@
+package Vista;
+
+import javax.swing.JPanel;
+
+public class AdminUsuarios extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public AdminUsuarios() {
+
+	}
+
+}

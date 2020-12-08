@@ -19,7 +19,17 @@ public class ControladorInicio implements ActionListener {
 		// TODO Auto-generated method stub
 		
 		if (e.getActionCommand().equals("INICIAR")) {
+			Usuario u = new Usuario(panel.getUser(), panel.getPass());
 			List<Usuario> users = Usuario.getUsuarios();
+			Usuario ini;
+			
+			for (Usuario us : users) {
+				if (us.equals(u)) {
+					ini = us;
+					
+					//Explorar ex = new Explorar()
+				}
+			}
 		}
 	}
 

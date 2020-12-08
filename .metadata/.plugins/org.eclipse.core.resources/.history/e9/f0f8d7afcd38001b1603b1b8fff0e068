@@ -51,7 +51,7 @@ public class adminInicio extends JPanel {
 		add(bUsuarios);
 		
 		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
-		lblNewLabel.setBounds(429, 627, 257, 13);
+		lblNewLabel.setBounds(429, 627, 222, 13);
 		add(lblNewLabel);
 		
 		JButton bInicio = new JButton("Inicio");
@@ -77,11 +77,6 @@ public class adminInicio extends JPanel {
 		bAjustes.setFont(new Font("Calibri", Font.PLAIN, 12));
 		bAjustes.setBounds(10, 215, 91, 21);
 		add(bAjustes);
-		
-		JLabel lblNewLabel_1 = new JLabel("Administrador");
-		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 60));
-		lblNewLabel_1.setBounds(160, 54, 349, 74);
-		add(lblNewLabel_1);
 
 	}
 }

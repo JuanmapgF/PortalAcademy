@@ -27,6 +27,11 @@ public class Usuario {
 		bd.Insert("INSERT INTO Usuario (nick, correo, contrasena) VALUES ( '"+this.getNick().toUpperCase()+"', '"+this.getCorreo()+"', '"+this.getPassword()+"')");
 		bd.finalize();
 	}
+	
+	public Usuario(String nick, String pass) {
+		this.nick = nick;
+		this.password = pass;
+	}
 
 	public String getNick() {
 		return nick;
