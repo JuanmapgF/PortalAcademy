@@ -2,6 +2,7 @@ package Vista;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,12 +13,7 @@ import javax.swing.border.EmptyBorder;
 
 public class InicioSesion extends JFrame {
 
-	private JPanel contentPane;
-	
-	private JTextField user;
-	private JPasswordField cont;
-	private JButton iniciar = new JButton();
-	private JButton registro = new JButton();
+	private Inicio contentPane;
 
 	/**
 	 * Launch the application.
@@ -43,6 +39,20 @@ public class InicioSesion extends JFrame {
 		setBounds(0, 0, 1080, 650);
 		contentPane = new Inicio();
 		setContentPane(contentPane);
+		
+		this.setLocationRelativeTo(null);
+	}
+	
+	public void controlador(ActionListener ctr) {
+		contentPane.controlador(ctr);
+	}
+	
+	public String getUser() {
+		return contentPane.getUser();
+	}
+	
+	public String getPass() {
+		return contentPane.getPass();
 	}
 
 }
