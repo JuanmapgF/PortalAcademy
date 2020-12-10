@@ -14,6 +14,7 @@ import Modelo.*;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
+
 @SuppressWarnings("serial")
 public class Explorar extends JPanel {
 	

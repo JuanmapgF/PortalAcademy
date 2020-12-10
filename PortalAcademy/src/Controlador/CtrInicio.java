@@ -30,7 +30,7 @@ public class CtrInicio implements ActionListener {
 					bd.finalize();
 					
 					this.visible(false);
-					CtrExplorar ex = new CtrExplorar();
+					CtrExplorar ex = new CtrExplorar(ini);
 					ex.visible(true);
 					
 				} else if (Integer.parseInt(bd.SelectEscalar("SELECT COUNT(nick) FROM Organizacion WHERE nick = '" + u.getNick() + "'").toString()) == 1) {
