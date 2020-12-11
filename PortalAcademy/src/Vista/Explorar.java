@@ -29,9 +29,91 @@ public class Explorar extends JPanel {
 	private JButton registrarse;
 	private JButton seleccion;
 	
-	/**
-	 * @wbp.parser.constructor
-	 */
+	
+	public Explorar(Estudiante u, List<Curso> c, List<Actividad> a) {
+		setLayout(null);
+		addElements(c, a);
+		
+		JLabel lblNewLabel = new JLabel("Explorar");
+		lblNewLabel.setBounds(343, 30, 107, 33);
+		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
+		add(lblNewLabel);
+		
+		cerrar = new JButton("Cerrar sesi\u00F3n");
+		cerrar.setBounds(660, 37, 121, 23);
+		add(cerrar);
+		
+		JLabel t_curso = new JLabel("Curso:");
+		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		t_curso.setBounds(95, 159, 90, 33);
+		add(t_curso);
+		
+		JLabel t_actividad = new JLabel("Actividades:");
+		t_actividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		t_actividad.setBounds(419, 159, 159, 33);
+		add(t_actividad);
+		
+		JScrollPane sp_curso = new JScrollPane();
+		sp_curso.setBounds(125, 235, 273, 339);
+		sp_curso.setViewportView(listaC);
+		add(sp_curso);
+		
+		JScrollPane sp_actividad = new JScrollPane();
+		sp_actividad.setBounds(456, 235, 273, 339);
+		sp_actividad.setViewportView(listaA);
+		add(sp_actividad);
+		
+		seleccion = new JButton("Ver");
+		seleccion.setBounds(367, 610, 121, 23);
+		add(seleccion);
+		
+		this.setBounds(200, 0, 880, 650);
+	}
+	
+	public Explorar(List<Curso> c, List<Actividad> a) {
+		setLayout(null);
+		addElements(c, a);
+		
+		JLabel lblNewLabel = new JLabel("Explorar");
+		lblNewLabel.setBounds(343, 30, 107, 33);
+		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
+		add(lblNewLabel);
+		
+		iniciar = new JButton("Iniciar sesi\u00F3n");
+		iniciar.setBounds(529, 37, 121, 23);
+		add(iniciar);
+		
+		registrarse = new JButton("Registrarse");
+		registrarse.setBounds(660, 37, 121, 23);
+		add(registrarse);
+		
+		JLabel t_curso = new JLabel("Curso:");
+		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		t_curso.setBounds(95, 159, 90, 33);
+		add(t_curso);
+		
+		JLabel t_actividad = new JLabel("Actividades:");
+		t_actividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		t_actividad.setBounds(419, 159, 159, 33);
+		add(t_actividad);
+		
+		JScrollPane sp_curso = new JScrollPane();
+		sp_curso.setBounds(125, 235, 273, 339);
+		sp_curso.setViewportView(listaC);
+		add(sp_curso);
+		
+		JScrollPane sp_actividad = new JScrollPane();
+		sp_actividad.setBounds(456, 235, 273, 339);
+		sp_actividad.setViewportView(listaA);
+		add(sp_actividad);
+		
+		seleccion = new JButton("Ver");
+		seleccion.setBounds(367, 610, 121, 23);
+		add(seleccion);
+		
+		this.setBounds(200, 0, 880, 650);
+	}
+	
 	public Explorar(Usuario u, List<Curso> c, List<Actividad> a) {
 		setLayout(null);
 		
