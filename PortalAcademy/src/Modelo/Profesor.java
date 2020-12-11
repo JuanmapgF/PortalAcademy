@@ -21,26 +21,27 @@ public class Profesor extends Usuario {
 
 	public Profesor(String nick) {
 		super(nick);
-
-		bd = BD.getBD();
-		Object[] user = bd.Select("SELECT * FROM Profesor WHERE Profesor.nick = '" + nick + "'").get(0);
-		bd.finalize();
-		this.telefono = new Telefono(Integer.parseInt(user[1].toString()), user[2].toString());
-	
-		bd = BD.getBD();
-		List<Object[]> cursos = bd.Select("SELECT * FROM Curso WHERE nickProfesor = '" + this.getNick() + "'");
-		bd.finalize();
-		for (Object[] o : cursos) {
-			this.cursos.add(new Curso((int) o[0]));
-		}
-		
-	}
-
-	public List<Curso> getCursos() {
-		return this.cursos;
 	}
 
 	public Telefono getTelefono() {
+		if (telefono == null) {
+			bd = BD.getBD();
+			Object[] user = bd.Select("SELECT * FROM Profesor WHERE Profesor.nick = '" + this.getNick() + "'").get(0);
+			bd.finalize();
+			this.telefono = new Telefono(Integer.parseInt(user[1].toString()), user[2].toString());
+		}
 		return this.telefono;
+	}
+
+	public List<Curso> getCursos() {
+		if (cursos == null) {
+			bd = BD.getBD();
+			List<Object[]> cursos = bd.Select("SELECT * FROM Curso WHERE nickProfesor = '" + this.getNick() + "'");
+			bd.finalize();
+			for (Object[] o : cursos) {
+				this.cursos.add(new Curso((int) o[0]));
+			}
+		}
+		return cursos;
 	}
 }

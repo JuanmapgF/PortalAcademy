@@ -9,26 +9,25 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Controlador.CtrExplorar;
-import Controlador.CtrInicio;
 import Modelo.Actividad;
 import Modelo.Curso;
 import Modelo.Usuario;
 
 @SuppressWarnings("serial")
 public class Main extends JFrame {
-	
+
 	private static JPanel contentPane;
 	private static Main frame;
 	private static Usuario user;
-	
+
 	public Main() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1080, 650);
 		CtrExplorar c = null;
 		try {
-			c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()), new Menu(null));
+			c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()),
+					new Menu(null));
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		contentPane = c.getPanel();
@@ -50,18 +49,18 @@ public class Main extends JFrame {
 			}
 		});
 	}
-	
+
 	public static void setPanel(JPanel pane) {
 		frame.getContentPane().removeAll();
 		frame.getContentPane().invalidate();
 		frame.getContentPane().add(pane);
 		frame.getContentPane().revalidate();
 	}
-	
+
 	public static void setUser(Usuario u) {
 		user = u;
 	}
-	
+
 	public static Usuario getUser(Usuario u) {
 		return user;
 	}
