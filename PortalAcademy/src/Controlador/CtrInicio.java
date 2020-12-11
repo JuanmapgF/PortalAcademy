@@ -1,6 +1,7 @@
 package Controlador;
 
 import java.awt.event.*;
+import java.text.ParseException;
 import java.util.List;
 
 import javax.swing.JPanel;
@@ -38,10 +39,48 @@ public class CtrInicio implements ActionListener {
 				if (Integer.parseInt(bd.SelectEscalar("SELECT COUNT(nick) FROM Estudiante WHERE nick = '" + u.getNick() + "'").toString()) == 1) {
 					bd.finalize();
 					
-				} else if (Integer.parseInt(bd.SelectEscalar("SELECT COUNT(nick) FROM Organizacion WHERE nick = '" + u.getNick() + "'").toString()) == 1) {
-										
-				} else if (Integer.parseInt(bd.SelectEscalar("SELECT COUNT(nick) FROM Profesor WHERE nick = '" + u.getNick() + "'").toString()) == 1) {
+					Estudiante est = null;
+					try {
+						est = new Estudiante(ini.getNick());
+					} catch (ParseException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
 					
+					try {
+						CtrExplorar ex = new CtrExplorar(new Explorar(est, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()), new Menu(est));
+						Main.setPanel(ex.getPanel());
+					} catch (ParseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+				} else if (Integer.parseInt(bd.SelectEscalar("SELECT COUNT(nick) FROM Organizacion WHERE nick = '" + u.getNick() + "'").toString()) == 1) {
+					bd.finalize();
+					
+					Organizacion est = null;
+					try {
+						est = new Organizacion(ini.getNick());
+					} catch (ParseException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
+					
+					try {
+						CtrExplorar ex = new CtrExplorar(new Explorar(est, Actividad.getTodasLasActividades()), new Menu(est));
+						Main.setPanel(ex.getPanel());
+					} catch (ParseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				} else if (Integer.parseInt(bd.SelectEscalar("SELECT COUNT(nick) FROM Profesor WHERE nick = '" + u.getNick() + "'").toString()) == 1) {
+					bd.finalize();
+					
+					Profesor est = null;
+					est = new Profesor(ini.getNick());
+
+					CtrExplorar ex = new CtrExplorar(new Explorar(est, Curso.getTodosLosCursos()), new Menu(est));
+					Main.setPanel(ex.getPanel());
 				}
 			}
 
