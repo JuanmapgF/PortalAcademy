@@ -27,6 +27,16 @@ public class CtrInicio implements ActionListener {
 			Main.setPanel(cr.getPanel());
 		}
 		
+		if (e.getActionCommand().equals("VOLVER")) {
+			try {
+				CtrExplorar ex = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()), new Menu(null));
+				Main.setPanel(ex.getPanel());
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		
 		if (e.getActionCommand().equals("INICIAR")) {
 			Usuario u = new Usuario(ventana.getUser(), ventana.getPass());
 			List<Usuario> users = Usuario.getUsuarios();

@@ -16,6 +16,7 @@ public class Inicio extends JPanel {
 	private JPasswordField cont;
 	private JButton iniciar = new JButton();
 	private JButton registro = new JButton();
+	private JButton volver = new JButton();
 
 	/**
 	 * Create the panel.
@@ -61,6 +62,10 @@ public class Inicio extends JPanel {
 		cont.setBounds(412, 279, 242, 20);
 		add(cont);
 		
+		volver = new JButton("Explorar");
+		volver.setBounds(47, 563, 111, 20);
+		add(volver);
+		
 	}
 	
 	public void controlador(ActionListener ctr) {
@@ -69,6 +74,9 @@ public class Inicio extends JPanel {
 		
 		registro.addActionListener(ctr);
 		registro.setActionCommand("REGISTRATE");
+		
+		volver.addActionListener(ctr);
+		volver.setActionCommand("VOLVER");
 	}
 	
 	public String getUser() {
@@ -78,5 +86,4 @@ public class Inicio extends JPanel {
 	public String getPass() {
 		return String.valueOf(cont.getPassword());
 	}
-	
 }

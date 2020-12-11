@@ -55,6 +55,10 @@ public class Main extends JFrame {
 		frame.getContentPane().add(pane);
 		frame.getContentPane().revalidate();
 	}
+	
+	public static void setCPane(JPanel pane) {
+		frame.setContentPane(pane);
+	}
 
 	public static void setUser(Usuario u) {
 		user = u;
