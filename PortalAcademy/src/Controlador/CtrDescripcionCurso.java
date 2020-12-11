@@ -1,6 +1,7 @@
 package Controlador;
 
 import java.awt.event.*;
+import java.text.ParseException;
 
 import Vista.*;
 import Modelo.*;
@@ -35,6 +36,17 @@ public class CtrDescripcionCurso implements ActionListener {
 		
 		if (e.getActionCommand().equals("Unirse")) {
 			curso.addEstudiante(user);
+		}
+		
+		if (e.getActionCommand().equals("Cerrar Sesi\u00F3n")) {
+			try {
+				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()), new Menu(null));
+				Main.setPanel(c.getPanel());
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 		}
 	}
 	
