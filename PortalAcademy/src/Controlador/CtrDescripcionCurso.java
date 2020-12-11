@@ -12,7 +12,7 @@ public class CtrDescripcionCurso implements ActionListener {
 	
 	private DescripcionCurso ventana;
 	
-	public CtrDescripcionCurso(Usuario user, Curso curso, Boolean puedeUnirse) {
+	public CtrDescripcionCurso(Usuario user, Curso curso) {
 		this.user = user;
 		this.curso = curso;
 		Boolean esInvitado = user == null;
@@ -36,6 +36,7 @@ public class CtrDescripcionCurso implements ActionListener {
 		
 		if (e.getActionCommand().equals("Unirse")) {
 			curso.addEstudiante(user);
+			//TODO: Entramos en informacionCurso con su foro
 		}
 		
 		if (e.getActionCommand().equals("Cerrar Sesi\u00F3n")) {
