@@ -38,10 +38,6 @@ public class CtrInicio implements ActionListener {
 				if (Integer.parseInt(bd.SelectEscalar("SELECT COUNT(nick) FROM Estudiante WHERE nick = '" + u.getNick() + "'").toString()) == 1) {
 					bd.finalize();
 					
-					this.visible(false);
-					CtrExplorar ex = new CtrExplorar(ini);
-					ex.visible(true);
-					
 				} else if (Integer.parseInt(bd.SelectEscalar("SELECT COUNT(nick) FROM Organizacion WHERE nick = '" + u.getNick() + "'").toString()) == 1) {
 										
 				} else if (Integer.parseInt(bd.SelectEscalar("SELECT COUNT(nick) FROM Profesor WHERE nick = '" + u.getNick() + "'").toString()) == 1) {
@@ -54,9 +50,5 @@ public class CtrInicio implements ActionListener {
 	
 	public JPanel getPanel() {
 		return ventana;
-	}
-	
-	public void visible(Boolean b) {
-		ventana.setVisible(b);
 	}
 }
