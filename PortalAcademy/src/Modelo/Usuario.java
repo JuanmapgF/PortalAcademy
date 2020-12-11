@@ -8,7 +8,7 @@ public class Usuario {
 	private String nick;
 	private String correo;
 	private String password;
-	private BD bd;
+	private static BD bd;
 
 	public Usuario(String nick) {
 		bd = BD.getBD();
@@ -26,11 +26,6 @@ public class Usuario {
 		bd = BD.getBD();
 		bd.Insert("INSERT INTO Usuario (nick, correo, contrasena) VALUES ( '"+this.getNick()+"', '"+this.getCorreo()+"', '"+this.getPassword()+"')");
 		bd.finalize();
-	}
-	
-	public Usuario(String nick, String pass) {
-		this.nick = nick;
-		this.password = pass;
 	}
 
 	public String getNick() {

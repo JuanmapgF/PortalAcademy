@@ -8,7 +8,7 @@ public class Estudiante extends Usuario {
 	
 	private List<Curso> cursos;
 	private List<Actividad> actividades;
-	private BD bd;
+	private static BD bd;
 	
 	public Estudiante(String nick, String correo, String password) {
 		super(nick,correo,password);
