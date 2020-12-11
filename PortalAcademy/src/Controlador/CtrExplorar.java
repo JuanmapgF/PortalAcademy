@@ -10,14 +10,8 @@ public class CtrExplorar implements ActionListener {
 	
 	private Explorar ventana;
 	
-	public CtrExplorar(Usuario u) {
-		if (u instanceof Estudiante) {
-			ventana = new Explorer
-		} else if (u instanceof Organizacion) {
-			
-		} else {
-			
-		}
+	public CtrExplorar(Explorar v) {
+		ventana = v;
 	}
 
 	@Override

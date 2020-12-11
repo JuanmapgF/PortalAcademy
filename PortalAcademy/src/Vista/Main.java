@@ -8,12 +8,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Controlador.CtrInicio;
+import Modelo.Usuario;
 
 @SuppressWarnings("serial")
 public class Main extends JFrame {
 	
 	private static JPanel contentPane;
 	private static Main frame;
+	private static Usuario user;
 	
 	public Main() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -44,6 +46,14 @@ public class Main extends JFrame {
 		frame.getContentPane().invalidate();
 		frame.getContentPane().add(pane);
 		frame.getContentPane().revalidate();
+	}
+	
+	public static void setUser(Usuario u) {
+		user = u;
+	}
+	
+	public static Usuario getUser(Usuario u) {
+		return user;
 	}
 
 }
