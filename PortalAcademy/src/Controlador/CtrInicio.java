@@ -77,7 +77,6 @@ public class CtrInicio implements ActionListener {
 					bd.finalize();
 					
 					Profesor est = new Profesor(ini.getNick());
-
 					CtrExplorar ex = new CtrExplorar(new Explorar(est, Curso.getTodosLosCursos()), new Menu(est));
 					Main.setPanel(ex.getPanel());
 				}
