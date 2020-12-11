@@ -3,10 +3,13 @@ package Controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JPanel;
+
 import Vista.AdminActividades;
 import Vista.AdminCursos;
 
 public class CtrAdminActividades implements ActionListener{
+	
 	private AdminActividades vista;
 
 	public CtrAdminActividades(AdminActividades v) {
@@ -18,6 +21,10 @@ public class CtrAdminActividades implements ActionListener{
 		vista.bCursos_1.addActionListener(this);
 		vista.bInicio.addActionListener(this);
 		vista.bUsuarios_1.addActionListener(this);
+	}
+	
+	public AdminActividades getPanel() {
+		return vista;
 	}
 	
 	@Override
@@ -54,4 +61,6 @@ public class CtrAdminActividades implements ActionListener{
 			
 		}
 	}
+
+	
 }

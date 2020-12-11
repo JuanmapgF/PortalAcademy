@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Controlador.CtrAdminActividades;
+import Controlador.CtrAdminInicio;
 import Controlador.CtrInicio;
 
 public class MainPrueba extends JFrame {
@@ -21,7 +23,7 @@ public class MainPrueba extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainPrueba frame = new MainPrueba();
+					frame = new MainPrueba();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,13 +40,19 @@ public class MainPrueba extends JFrame {
 		setBounds(0, 0, 1080, 650);
 		// Crea el controlador aqui:
 		
-		
+		CtrAdminInicio ctr = new CtrAdminInicio(new AdminInicio());
 		//Dale el valor al contentPane del panel
-		contentPane = ;
+		contentPane = ctr.getpanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		this.setLocationRelativeTo(null);
 	}
 
+	public static void setPanel(JPanel pane) {
+		frame.getContentPane().removeAll();
+		frame.getContentPane().invalidate();
+		frame.getContentPane().add(pane);
+		frame.getContentPane().revalidate();
+	}
 }
