@@ -27,7 +27,7 @@ public class CtrExplorar implements ActionListener {
 		
 		if (e.getActionCommand().equals("INICIAR_SESION")) {
 			CtrInicio c = new CtrInicio(new Inicio());
-			Main.setPanel(c.getPanel());
+			Main.setCPane(c.getPanel());
 		}
 		
 		if (e.getActionCommand().equals("CERRAR_SESION")) {

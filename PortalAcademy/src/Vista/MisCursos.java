@@ -11,6 +11,7 @@ import javax.swing.JScrollPane;
 
 import Modelo.Curso;
 import Modelo.Estudiante;
+import Modelo.Profesor;
 
 import javax.swing.JList;
 import javax.swing.JLabel;
@@ -20,6 +21,7 @@ public class MisCursos extends JPanel {
 	private DefaultListModel<String> modeloC = new DefaultListModel<String>();
 	private JList<String> listaC = new JList<String>();
 	private JButton bVer = new JButton();
+	private JButton bVer2 = new JButton();
 	
 	public MisCursos(Estudiante u) {
 		this.setLayout(null);
@@ -43,7 +45,24 @@ public class MisCursos extends JPanel {
 	}
 	
 	public MisCursos(Profesor u) {
+		this.setLayout(null);
+		addElements(u.getCursos());
 		
+		JScrollPane sp_cursos2 = new JScrollPane();
+		sp_cursos2.setBounds(241, 75, 346, 346);
+		sp_cursos2.setViewportView(listaC);
+		add(sp_cursos2);
+		
+		JLabel t_curso2 = new JLabel("Mis cursos:");
+		t_curso2.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
+		t_curso2.setBounds(330, 31, 161, 33);
+		add(t_curso2);
+		
+		this.setBounds(200, 0, 880, 650);
+		
+		JButton bVer2 = new JButton("Ver");
+		bVer2.setBounds(362, 475, 89, 23);
+		add(bVer2);
 	}
 	
 	
@@ -59,6 +78,9 @@ public class MisCursos extends JPanel {
 	
 	public void controlador(ActionListener ctr) {
 		bVer.addActionListener(ctr);
-		bVer.setActionCommand("MISCURSOS");
+		bVer.setActionCommand("MISCURSOSUSUARIO");
+		
+		bVer2.addActionListener(ctr);
+		bVer2.setActionCommand("MISCURSOSPROFESOR");
 	}
 }
