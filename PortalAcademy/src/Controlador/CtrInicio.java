@@ -3,20 +3,29 @@ package Controlador;
 import java.awt.event.*;
 import java.util.List;
 
+import javax.swing.JPanel;
+
 import Vista.*;
 import Modelo.*;
 
 public class CtrInicio implements ActionListener {
 	
-	private InicioSesion ventana;
+	private Inicio ventana;
 	
-	public CtrInicio(InicioSesion v) {
+	public CtrInicio(Inicio v) {
 		ventana = v;
+		ventana.controlador(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		
+		if (e.getActionCommand().equals("REGISTRATE")) {
+			CtrRegistro cr = new CtrRegistro(new Registro());
+			Main.setPanel(cr.getPanel());
+		}
+		
 		if (e.getActionCommand().equals("INICIAR")) {
 			Usuario u = new Usuario(ventana.getUser(), ventana.getPass());
 			List<Usuario> users = Usuario.getUsuarios();
@@ -41,6 +50,10 @@ public class CtrInicio implements ActionListener {
 			}
 
 		}
+	}
+	
+	public JPanel getPanel() {
+		return ventana;
 	}
 	
 	public void visible(Boolean b) {

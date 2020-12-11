@@ -1,31 +1,49 @@
 package Vista;
 
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
+import javax.swing.border.EmptyBorder;
 
-import Controlador.CtrRegistro;
-import Modelo.Usuario;
+import Controlador.CtrInicio;
 
 @SuppressWarnings("serial")
 public class Main extends JFrame {
 	
-	public static void crearGUI(JFrame ventana) {
-		CtrRegistro cr = new CtrRegistro(new Registro());
-		ventana.add(cr.getPanel());
-		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		ventana.setSize(1080, 650);
-		ventana.setLocationRelativeTo(null);
-		ventana.setVisible(true);
+	private static JPanel contentPane;
+	private static Main frame;
+	
+	public Main() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(0, 0, 1080, 650);
+		CtrInicio ini = new CtrInicio(new Inicio());
+		contentPane = ini.getPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		this.setLocationRelativeTo(null);
 	}
 
 	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
+		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				ventana = new JFrame("Portal Academy");
-				crearGUI(ventana);
+				try {
+					frame = new Main();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
+	}
+	
+	public static void setPanel(JPanel pane) {
+		frame.getContentPane().removeAll();
+		frame.getContentPane().invalidate();
+		frame.getContentPane().add(pane);
+		frame.getContentPane().revalidate();
 	}
 
 }
