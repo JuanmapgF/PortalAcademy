@@ -8,9 +8,9 @@ import Vista.Explorar;
 
 public class CtrExplorar implements ActionListener {
 	
-	private Explorer ventana;
+	private Explorar ventana;
 	
-	public CtrExplorar(Usuario u, ) {
+	public CtrExplorar(Usuario u) {
 		if (u instanceof Estudiante) {
 			ventana = new Explorer
 		} else if (u instanceof Organizacion) {
