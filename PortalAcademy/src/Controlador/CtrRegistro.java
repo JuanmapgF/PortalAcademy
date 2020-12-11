@@ -110,6 +110,8 @@ public class CtrRegistro implements ActionListener {
 							vista.textFieldInfoAdicional.getText());
 
 				}
+				
+				Main.setUser(usuario);
 
 				JOptionPane.showMessageDialog(vista, "Cuenta creada satisfactoriamente.", "Registro correcto",
 						JOptionPane.INFORMATION_MESSAGE);
