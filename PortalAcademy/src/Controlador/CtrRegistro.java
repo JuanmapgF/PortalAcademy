@@ -14,6 +14,7 @@ import Modelo.Organizacion;
 import Modelo.Profesor;
 import Modelo.Telefono;
 import Modelo.Usuario;
+import Vista.Inicio;
 import Vista.Main;
 import Vista.Registro;
 
@@ -30,6 +31,7 @@ public class CtrRegistro implements ActionListener {
 		vista.rdbtnOrganizacion.addActionListener(this);
 		vista.rdbtnProfesor.addActionListener(this);
 		vista.btnRegistro.addActionListener(this);
+		vista.btnInicioSesion.addActionListener(this);
 	}
 
 	public Registro getPanel() {
@@ -38,7 +40,12 @@ public class CtrRegistro implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
+		
+		if(e.getSource() == vista.btnInicioSesion) {
+			CtrInicio ci = new CtrInicio(new Inicio());
+			Main.setPanel(ci.getPanel());
+		}
+		
 		if (e.getSource() == vista.rdbtnEstudiante) {
 			vista.lblInfoAdicional.setText("");
 			vista.lblInfoAdicional.setVisible(false);

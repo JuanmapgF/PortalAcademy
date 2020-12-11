@@ -36,10 +36,10 @@ public class Actividad {
 
 	public Actividad(Integer idActividad) throws ParseException {
 		BD miBD = BD.getBD();
-		Object[] tupla = miBD.Select("SELECT * FROM Curso WHERE idActividad = " + idActividad).get(0);
+		Object[] tupla = miBD.Select("SELECT * FROM Actividad WHERE idActividad = " + idActividad).get(0);
 		miBD.finalize();
 		
-		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 		
 		this.idActividad = Integer.parseInt(tupla[0].toString());
 		this.nombre = tupla[1].toString();
@@ -159,13 +159,16 @@ public class Actividad {
 		List<Actividad> listaActividades = new ArrayList<>();
 		BD miBD = BD.getBD();
 		List<Object[]> actividades = miBD.Select("SELECT * FROM Actividad");
+		miBD.finalize();
 		for (Object[] tupla : actividades) {
 			listaActividades.add(new Actividad(Integer.parseInt(tupla[0].toString())));
 		}
+		
 		return listaActividades;
 	}
 	
-	public String ToString() {
+	@Override
+	public String toString() {
 		return nombre;
 	}
 }

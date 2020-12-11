@@ -12,7 +12,6 @@ public class CtrAdminUsuarios implements ActionListener{
 	
 	public CtrAdminUsuarios(AdminUsuarios v) {
 		vista = v;
-		
 		vista.bActividades_1.addActionListener(this);
 		vista.bAjustes.addActionListener(this);
 		vista.bCerrarSesion.addActionListener(this);
