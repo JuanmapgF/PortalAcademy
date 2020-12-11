@@ -24,11 +24,14 @@ public class Registro extends JPanel {
 	public JButton btnRegistro;
 	public JPasswordField passwordFieldContrasena;
 	public JTextField textFieldCodigo;
+	public JButton btnInicioSesion;
 
 	/**
 	 * Create the panel.
 	 */
 	public Registro() {
+		
+		this.setBounds(0,0,1080,650);
 		setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Registro");
@@ -103,6 +106,14 @@ public class Registro extends JPanel {
 		textFieldCodigo.setBounds(411, 389, 56, 23);
 		add(textFieldCodigo);
 		textFieldCodigo.setColumns(10);
+		
+		JLabel lblNewLabel_5 = new JLabel("\u00BFYa tienes una cuenta?");
+		lblNewLabel_5.setBounds(316, 576, 118, 14);
+		add(lblNewLabel_5);
+		
+		btnInicioSesion = new JButton("Inicio Sesi\u00F3n");
+		btnInicioSesion.setBounds(477, 572, 118, 23);
+		add(btnInicioSesion);
 
 	}
 }

@@ -28,9 +28,10 @@ public class Explorar extends JPanel {
 	private JButton cerrar;
 	private JButton registrarse;
 	private JButton seleccion;
-	
+	private Usuario usuario;
 	
 	public Explorar(Estudiante u, List<Curso> c, List<Actividad> a) {
+		usuario = u;
 		setLayout(null);
 		addElements(c, a);
 		
@@ -71,6 +72,7 @@ public class Explorar extends JPanel {
 	}
 	
 	public Explorar(List<Curso> c, List<Actividad> a) {
+		usuario = null;
 		setLayout(null);
 		addElements(c, a);
 		
@@ -117,6 +119,7 @@ public class Explorar extends JPanel {
 	
 	
 	public Explorar(Profesor u, List<Curso> l) {
+		usuario = u;
 		this.setLayout(null);
 		
 		addElementsC(l);
@@ -148,6 +151,7 @@ public class Explorar extends JPanel {
 	}
 	
 	public Explorar(Organizacion u, List<Actividad> l) {
+		usuario = u;
 		this.setLayout(null);
 		
 		addElementsA(l);
@@ -197,7 +201,7 @@ public class Explorar extends JPanel {
 	public void addElementsC(List<Curso> l) {
 		listaN.setModel(modeloN);
 		
-		for (Object o : l) {
+		for (Curso o : l) {
 			modeloN.addElement(o.toString());
 		}
 		
@@ -215,18 +219,26 @@ public class Explorar extends JPanel {
 	}
 	
 	public void controlador(ActionListener ctr) {
+		
 		if (iniciar != null) {
 			iniciar.addActionListener(ctr);
-			iniciar.setActionCommand("INICIAR_EXPLORAR");
-		} else if (cerrar != null) {
+			iniciar.setActionCommand("INICIAR_SESION");
+		} 
+		if (cerrar != null) {
 			cerrar.addActionListener(ctr);
-			cerrar.setActionCommand("CERRAR");
-		} else if (registrarse != null) {
+			cerrar.setActionCommand("CERRAR_SESION");
+		} 
+		if (registrarse != null) {
 			registrarse.addActionListener(ctr);
-			registrarse.setActionCommand("REGISTRATE");
-		} else if (seleccion != null) {
+			registrarse.setActionCommand("REGISTRO");
+		} 
+		if (seleccion != null) {
 			seleccion.addActionListener(ctr);
-			seleccion.setActionCommand("INICIAR_EXPLORAR");
+			seleccion.setActionCommand("VER");
 		}
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
 	}
 }
