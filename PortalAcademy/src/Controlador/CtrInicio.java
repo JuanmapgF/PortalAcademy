@@ -58,13 +58,7 @@ public class CtrInicio implements ActionListener {
 				} else if (Integer.parseInt(bd.SelectEscalar("SELECT COUNT(nick) FROM Organizacion WHERE nick = '" + u.getNick() + "'").toString()) == 1) {
 					bd.finalize();
 					
-					Organizacion est = null;
-					try {
-						est = new Organizacion(ini.getNick());
-					} catch (ParseException e2) {
-						// TODO Auto-generated catch block
-						e2.printStackTrace();
-					}
+					Organizacion est = new Organizacion(ini.getNick());
 					
 					try {
 						CtrExplorar ex = new CtrExplorar(new Explorar(est, Actividad.getTodasLasActividades()), new Menu(est));
