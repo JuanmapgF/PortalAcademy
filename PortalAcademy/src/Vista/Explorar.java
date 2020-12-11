@@ -55,17 +55,17 @@ public class Explorar extends JPanel {
 		add(t_actividad);
 		
 		JScrollPane sp_curso = new JScrollPane();
-		sp_curso.setBounds(125, 235, 273, 339);
+		sp_curso.setBounds(125, 215, 273, 339);
 		sp_curso.setViewportView(listaC);
 		add(sp_curso);
 		
 		JScrollPane sp_actividad = new JScrollPane();
-		sp_actividad.setBounds(456, 235, 273, 339);
+		sp_actividad.setBounds(456, 215, 273, 339);
 		sp_actividad.setViewportView(listaA);
 		add(sp_actividad);
 		
 		seleccion = new JButton("Ver");
-		seleccion.setBounds(367, 610, 121, 23);
+		seleccion.setBounds(367, 575, 121, 23);
 		add(seleccion);
 		
 		this.setBounds(200, 0, 880, 650);
@@ -100,17 +100,17 @@ public class Explorar extends JPanel {
 		add(t_actividad);
 		
 		JScrollPane sp_curso = new JScrollPane();
-		sp_curso.setBounds(125, 235, 273, 339);
+		sp_curso.setBounds(125, 215, 273, 339);
 		sp_curso.setViewportView(listaC);
 		add(sp_curso);
 		
 		JScrollPane sp_actividad = new JScrollPane();
-		sp_actividad.setBounds(456, 235, 273, 339);
+		sp_actividad.setBounds(456, 215, 273, 339);
 		sp_actividad.setViewportView(listaA);
 		add(sp_actividad);
 		
 		seleccion = new JButton("Ver");
-		seleccion.setBounds(367, 610, 121, 23);
+		seleccion.setBounds(367, 575, 121, 23);
 		add(seleccion);
 		
 		this.setBounds(200, 0, 880, 650);
@@ -139,12 +139,12 @@ public class Explorar extends JPanel {
 		add(t_n);
 		
 		JScrollPane sp_n = new JScrollPane();
-		sp_n.setBounds(263, 235, 273, 339);
+		sp_n.setBounds(263, 215, 273, 339);
 		sp_n.setViewportView(listaN);
 		add(sp_n);
 		
 		seleccion = new JButton("Ver");
-		seleccion.setBounds(367, 610, 121, 23);
+		seleccion.setBounds(367, 575, 121, 23);
 		add(seleccion);
 		
 		this.setBounds(200, 0, 880, 650);
@@ -171,12 +171,12 @@ public class Explorar extends JPanel {
 		add(t_n);
 		
 		JScrollPane sp_n = new JScrollPane();
-		sp_n.setBounds(263, 235, 273, 339);
+		sp_n.setBounds(263, 215, 273, 339);
 		sp_n.setViewportView(listaN);
 		add(sp_n);
 		
 		seleccion = new JButton("Ver");
-		seleccion.setBounds(367, 610, 121, 23);
+		seleccion.setBounds(367, 575, 121, 23);
 		add(seleccion);
 		
 		this.setBounds(200, 0, 880, 650);
