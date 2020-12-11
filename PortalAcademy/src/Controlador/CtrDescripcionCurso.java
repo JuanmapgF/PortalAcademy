@@ -11,10 +11,21 @@ public class CtrDescripcionCurso implements ActionListener {
 	
 	private DescripcionCurso ventana;
 	
-	public CtrDescripcionCurso(Usuario user, Curso curso) {
+	public CtrDescripcionCurso(Usuario user, Curso curso, Boolean puedeUnirse) {
 		this.user = user;
 		this.curso = curso;
-		ventana = new DescripcionCurso(curso.getNombre(), curso.getDescripcion());
+		Boolean esInvitado = user == null;
+		Boolean esEstudiante = user != null && user instanceof Estudiante;
+		Boolean esCursoPublico = curso.getPublico();
+		Boolean quedaEspacio = curso.getAforo() < curso.getEstudiantes().size();
+		Boolean estaEnCurso;
+		if (esEstudiante) {
+			estaEnCurso = ((Estudiante) user).getCursos().contains(curso);
+		} else {
+			estaEnCurso = false;
+		}
+		Boolean usuarioPuedeUnirse = (esInvitado && esCursoPublico || esEstudiante) && quedaEspacio && !estaEnCurso;
+		ventana = new DescripcionCurso(curso.getNombre(), curso.getDescripcion(), usuarioPuedeUnirse);
 		ventana.controlador(this);
 	}
 

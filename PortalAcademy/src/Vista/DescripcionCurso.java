@@ -17,7 +17,7 @@ public class DescripcionCurso extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public DescripcionCurso(String nombre, String descripcion) {
+	public DescripcionCurso(String nombre, String descripcion, Boolean puedeUnirse) {
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
 		
@@ -29,9 +29,11 @@ public class DescripcionCurso extends JPanel {
 		descripcionCurso.setBounds(278, 102, 652, 371);
 		add(descripcionCurso);
 		
-		unirse = new JButton("Unirse");
-		unirse.setBounds(278, 511, 89, 23);
-		add(unirse);
+		if (puedeUnirse) {
+			unirse = new JButton("Unirse");
+			unirse.setBounds(278, 511, 89, 23);
+			add(unirse);
+		}
 		
 		cerrarSesion = new JButton("Cerrar Sesi\u00F3n");
 		cerrarSesion.setBounds(952, 39, 118, 23);
