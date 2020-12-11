@@ -39,7 +39,7 @@ public class Profesor extends Usuario {
 			List<Object[]> cursos = bd.Select("SELECT * FROM Curso WHERE nickProfesor = '" + this.getNick() + "'");
 			bd.finalize();
 			for (Object[] o : cursos) {
-				this.cursos.add(new Curso((int) o[0]));
+				this.cursos.add(new Curso(Integer.parseInt(o[0].toString())));
 			}
 		}
 		return cursos;
