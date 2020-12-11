@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Actividad {
-	
+
 	private Integer idActividad;
 	private String nombre;
 	private String descripcion;
@@ -15,16 +15,20 @@ public class Actividad {
 	private int aforo;
 	private Date fecha;
 	private String lugar;
-	
+
 	private Organizacion organizacion;
 	private List<Usuario> participantes;
-	
-	public Actividad(String nombre, String descripcion, String imagen, int aforo, Date fecha, String lugar, Organizacion organizacion) {
-		BD miBD = BD.getBD();
-		miBD.Insert("INSERT INTO Curso (nombre, descripcion, imagen, aforo, fecha, lugar, idOrganizacion)"
-				+ "VALUES ('"+nombre+"','"+descripcion+"','"+imagen+"',"+aforo+","+fecha+","+lugar+",'"+organizacion.getNick()+"')");
-		miBD.finalize();
-		
+
+	private static BD bd;
+
+	public Actividad(String nombre, String descripcion, String imagen, int aforo, Date fecha, String lugar,
+			Organizacion organizacion) {
+		bd = BD.getBD();
+		bd.Insert("INSERT INTO Curso (nombre, descripcion, imagen, aforo, fecha, lugar, idOrganizacion)" + "VALUES ('"
+				+ nombre + "','" + descripcion + "','" + imagen + "'," + aforo + "," + fecha + "," + lugar + ",'"
+				+ organizacion.getNick() + "')");
+		bd.finalize();
+
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.imagen = imagen;
@@ -34,19 +38,23 @@ public class Actividad {
 		this.organizacion = organizacion;
 	}
 
-	public Actividad(Integer idActividad) throws ParseException {
-		BD miBD = BD.getBD();
-		Object[] tupla = miBD.Select("SELECT * FROM Actividad WHERE idActividad = " + idActividad).get(0);
-		miBD.finalize();
-		
+	public Actividad(Integer idActividad) {
+		bd = BD.getBD();
+		Object[] tupla = bd.Select("SELECT * FROM Actividad WHERE idActividad = " + idActividad).get(0);
+		bd.finalize();
+
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-		
+
 		this.idActividad = Integer.parseInt(tupla[0].toString());
 		this.nombre = tupla[1].toString();
 		this.descripcion = tupla[2].toString();
 		this.imagen = tupla[3].toString();
 		this.aforo = Integer.parseInt(tupla[4].toString());
-		this.fecha = formato.parse(tupla[5].toString());
+		try {
+			this.fecha = formato.parse(tupla[5].toString());
+		} catch (ParseException e) {
+			throw new ErrorBD("Error en la conversión del tipo fecha: " + e.getMessage());
+		}
 		this.lugar = tupla[6].toString();
 	}
 
@@ -59,9 +67,9 @@ public class Actividad {
 	}
 
 	public void setNombre(String nombre) {
-		BD miBD = BD.getBD();
-		miBD.Update("UPDATE Actividad SET nombre = '"+nombre+"' WHERE idActividad = "+this.idActividad);
-		miBD.finalize();
+		bd = BD.getBD();
+		bd.Update("UPDATE Actividad SET nombre = '" + nombre + "' WHERE idActividad = " + this.idActividad);
+		bd.finalize();
 		this.nombre = nombre;
 	}
 
@@ -70,9 +78,9 @@ public class Actividad {
 	}
 
 	public void setDescripcion(String descripcion) {
-		BD miBD = BD.getBD();
-		miBD.Update("UPDATE Actividad SET descripcion = '"+descripcion+"' WHERE idActividad = "+this.idActividad);
-		miBD.finalize();
+		bd = BD.getBD();
+		bd.Update("UPDATE Actividad SET descripcion = '" + descripcion + "' WHERE idActividad = " + this.idActividad);
+		bd.finalize();
 		this.descripcion = descripcion;
 	}
 
@@ -81,9 +89,9 @@ public class Actividad {
 	}
 
 	public void setImagen(String imagen) {
-		BD miBD = BD.getBD();
-		miBD.Update("UPDATE Actividad SET imagen = '"+imagen+"' WHERE idActividad = "+this.idActividad);
-		miBD.finalize();
+		bd = BD.getBD();
+		bd.Update("UPDATE Actividad SET imagen = '" + imagen + "' WHERE idActividad = " + this.idActividad);
+		bd.finalize();
 		this.imagen = imagen;
 	}
 
@@ -92,9 +100,9 @@ public class Actividad {
 	}
 
 	public void setAforo(int aforo) {
-		BD miBD = BD.getBD();
-		miBD.Update("UPDATE Actividad SET aforo = "+aforo+" WHERE idActividad = "+this.idActividad);
-		miBD.finalize();
+		bd = BD.getBD();
+		bd.Update("UPDATE Actividad SET aforo = " + aforo + " WHERE idActividad = " + this.idActividad);
+		bd.finalize();
 		this.aforo = aforo;
 	}
 
@@ -103,9 +111,9 @@ public class Actividad {
 	}
 
 	public void setFecha(Date fecha) {
-		BD miBD = BD.getBD();
-		miBD.Update("UPDATE Actividad SET fecha = "+fecha+" WHERE idActividad = "+this.idActividad);
-		miBD.finalize();
+		bd = BD.getBD();
+		bd.Update("UPDATE Actividad SET fecha = " + fecha + " WHERE idActividad = " + this.idActividad);
+		bd.finalize();
 		this.fecha = fecha;
 	}
 
@@ -114,59 +122,60 @@ public class Actividad {
 	}
 
 	public void setLugar(String lugar) {
-		BD miBD = BD.getBD();
-		miBD.Update("UPDATE Actividad SET lugar = "+lugar+" WHERE idActividad = "+this.idActividad);
-		miBD.finalize();
+		bd = BD.getBD();
+		bd.Update("UPDATE Actividad SET lugar = " + lugar + " WHERE idActividad = " + this.idActividad);
+		bd.finalize();
 		this.lugar = lugar;
 	}
 
-	public Organizacion getOrganizacion() throws ParseException {
-		BD miBD = BD.getBD();
-		Object[] tupla = miBD.Select("SELECT * FROM Curso WHERE idActividad = " + idActividad).get(0);
-		miBD.finalize();
+	public Organizacion getOrganizacion() {
+		bd = BD.getBD();
+		Object[] tupla = bd.Select("SELECT * FROM Curso WHERE idActividad = " + idActividad).get(0);
+		bd.finalize();
 		this.organizacion = new Organizacion(tupla[7].toString());
 		return organizacion;
 	}
-	
+
 	public List<Usuario> getParticipantes() {
-		BD miBD = BD.getBD();
-		List<Object[]> tuplaParticipantes = miBD.Select("SELECT * FROM RelActividadParticipantes WHERE idActividad = " + idActividad);
+		bd = BD.getBD();
+		List<Object[]> tuplaParticipantes = bd
+				.Select("SELECT * FROM RelActividadParticipantes WHERE idActividad = " + idActividad);
+		bd.finalize();
 		for (Object[] o : tuplaParticipantes) {
 			this.participantes.add(new Usuario(o[0].toString()));
 		}
-		miBD.finalize();
 		return participantes;
 	}
-	
+
 	public void addParticipante(Usuario participante) {
-		BD miBD = BD.getBD();
-		miBD.Insert("INSERT INTO RelActividadUsuario (nickUsuario, idActividad) VALUES ('"+participante.getNick()+"',"+this.idActividad+")");
-		miBD.finalize();
+		bd = BD.getBD();
+		bd.Insert("INSERT INTO RelActividadUsuario (nickUsuario, idActividad) VALUES ('" + participante.getNick() + "',"
+				+ this.idActividad + ")");
+		bd.finalize();
 		this.participantes.add(participante);
 	}
-	
+
 	public void eliminarCurso() {
-		BD miBD = BD.getBD();
-    	miBD.Delete("DELETE FROM Actividad WHERE idActividad =" + idActividad);
-    	miBD.finalize();
-    	this.nombre = null;
-    	this.descripcion = null;
-    	this.imagen = null;
-    	this.lugar = null;
+		bd = BD.getBD();
+		bd.Delete("DELETE FROM Actividad WHERE idActividad =" + idActividad);
+		bd.finalize();
+		this.nombre = null;
+		this.descripcion = null;
+		this.imagen = null;
+		this.lugar = null;
 	}
-	
+
 	public static List<Actividad> getTodasLasActividades() throws ParseException {
 		List<Actividad> listaActividades = new ArrayList<>();
-		BD miBD = BD.getBD();
-		List<Object[]> actividades = miBD.Select("SELECT * FROM Actividad");
-		miBD.finalize();
+		bd = BD.getBD();
+		List<Object[]> actividades = bd.Select("SELECT * FROM Actividad");
+		bd.finalize();
 		for (Object[] tupla : actividades) {
 			listaActividades.add(new Actividad(Integer.parseInt(tupla[0].toString())));
 		}
-		
 		return listaActividades;
 	}
-	
+
 	@Override
 	public String toString() {
 		return nombre;

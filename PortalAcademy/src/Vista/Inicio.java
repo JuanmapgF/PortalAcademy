@@ -49,7 +49,7 @@ public class Inicio extends JPanel {
 		add(iniciar);
 		
 		registro = new JButton("Registrarse");
-		registro.setBounds(601, 496, 96, 20);
+		registro.setBounds(601, 496, 111, 20);
 		add(registro);
 		
 		JLabel lblNewLabel_2 = new JLabel("\u00BFA\u00FAn no tienes cuenta? ");
