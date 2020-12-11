@@ -24,7 +24,7 @@ public class Main extends JFrame {
 	public Main() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1080, 650);
-		CtrExplorar c;
+		CtrExplorar c = null;
 		try {
 			c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()), new Menu(null));
 		} catch (ParseException e) {
