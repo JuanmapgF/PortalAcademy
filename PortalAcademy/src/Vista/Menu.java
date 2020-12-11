@@ -65,9 +65,4 @@ public class Menu extends JPanel {
 		
 	}
 	
-	public void esProfesor() {
-		
-	}
-	
-	
 }
