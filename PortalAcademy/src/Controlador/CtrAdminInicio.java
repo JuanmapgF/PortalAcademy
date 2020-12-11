@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import Modelo.BD;
 import Vista.Main;
-
+import Vista.AdminActividades;
 import Vista.AdminInicio;
 
 public class CtrAdminInicio implements ActionListener{
@@ -37,7 +37,8 @@ public class CtrAdminInicio implements ActionListener{
 		
 		// pulsar en cualquiera de los dos botones de "ACTIVIDAD"
 		if(e.getSource() == vista.bActividades || e.getSource() == vista.bActividades_1 ) {
-			
+			CtrAdminActividades ctr = new CtrAdminActividades(new AdminActividades());
+			Main.setPanel(ctr.getPanel());
 		}
 		
 		//pulsar en el botón "AJUSTES"

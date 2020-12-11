@@ -3,6 +3,8 @@ package Controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JPanel;
+
 import Vista.AdminActividades;
 import Vista.AdminCursos;
 
@@ -53,5 +55,10 @@ public class CtrAdminActividades implements ActionListener{
 		if(e.getSource() == vista.bUsuarios_1) {
 			
 		}
+	}
+
+	public AdminActividades getPanel() {
+		// TODO Auto-generated method stub
+		return vista;
 	}
 }
