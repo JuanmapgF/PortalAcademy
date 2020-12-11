@@ -76,8 +76,7 @@ public class CtrInicio implements ActionListener {
 				} else if (Integer.parseInt(bd.SelectEscalar("SELECT COUNT(nick) FROM Profesor WHERE nick = '" + u.getNick() + "'").toString()) == 1) {
 					bd.finalize();
 					
-					Profesor est = null;
-					est = new Profesor(ini.getNick());
+					Profesor est = new Profesor(ini.getNick());
 
 					CtrExplorar ex = new CtrExplorar(new Explorar(est, Curso.getTodosLosCursos()), new Menu(est));
 					Main.setPanel(ex.getPanel());
