@@ -9,6 +9,7 @@ import Vista.AdminActividades;
 import Vista.AdminCursos;
 
 public class CtrAdminActividades implements ActionListener{
+	
 	private AdminActividades vista;
 
 	public CtrAdminActividades(AdminActividades v) {
@@ -20,6 +21,10 @@ public class CtrAdminActividades implements ActionListener{
 		vista.bCursos_1.addActionListener(this);
 		vista.bInicio.addActionListener(this);
 		vista.bUsuarios_1.addActionListener(this);
+	}
+	
+	public AdminActividades getPanel() {
+		return vista;
 	}
 	
 	@Override
@@ -57,8 +62,5 @@ public class CtrAdminActividades implements ActionListener{
 		}
 	}
 
-	public AdminActividades getPanel() {
-		// TODO Auto-generated method stub
-		return vista;
-	}
+	
 }
