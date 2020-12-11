@@ -200,7 +200,8 @@ public class Curso {
 		return listaCursos;
 	}
 	
-	public String ToString() {
+	@Override
+	public String toString() {
 		return nombre;
 	}
 }

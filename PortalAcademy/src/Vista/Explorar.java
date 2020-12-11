@@ -219,16 +219,20 @@ public class Explorar extends JPanel {
 	}
 	
 	public void controlador(ActionListener ctr) {
+		
 		if (iniciar != null) {
 			iniciar.addActionListener(ctr);
 			iniciar.setActionCommand("INICIAR_SESION");
-		} else if (cerrar != null) {
+		} 
+		if (cerrar != null) {
 			cerrar.addActionListener(ctr);
 			cerrar.setActionCommand("CERRAR_SESION");
-		} else if (registrarse != null) {
+		} 
+		if (registrarse != null) {
 			registrarse.addActionListener(ctr);
 			registrarse.setActionCommand("REGISTRO");
-		} else if (seleccion != null) {
+		} 
+		if (seleccion != null) {
 			seleccion.addActionListener(ctr);
 			seleccion.setActionCommand("VER");
 		}
