@@ -44,4 +44,11 @@ public class Profesor extends Usuario {
 		}
 		return cursos;
 	}
+
+	@Override
+	public void eliminarUsuario() {
+		super.eliminarUsuario();
+		telefono = null;
+		cursos = null;
+	}
 }

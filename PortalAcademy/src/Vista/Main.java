@@ -61,7 +61,7 @@ public class Main extends JFrame {
 		user = u;
 	}
 
-	public static Usuario getUser(Usuario u) {
+	public static Usuario getUser() {
 		return user;
 	}
 

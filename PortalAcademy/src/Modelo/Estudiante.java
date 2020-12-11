@@ -76,5 +76,12 @@ public class Estudiante extends Usuario {
 		bd.finalize();
 	}
 	
+	@Override
+	public void eliminarUsuario() {
+		super.eliminarUsuario();
+		cursos = null;
+		actividades = null;
+	}
+	
 
 }

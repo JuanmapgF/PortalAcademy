@@ -45,5 +45,13 @@ public class Organizacion extends Usuario {
 		}
 		return sede;
 	}
+	
+	
+	@Override
+	public void eliminarUsuario() {
+		super.eliminarUsuario();
+		sede = null;
+		actividades = null;
+	}
 
 }

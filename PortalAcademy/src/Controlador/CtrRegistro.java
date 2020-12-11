@@ -22,7 +22,6 @@ public class CtrRegistro implements ActionListener {
 
 	private Registro vista;
 	private Usuario usuario;
-
 	private BD bd;
 
 	public CtrRegistro(Registro v) {
