@@ -72,17 +72,27 @@ public class Menu extends JPanel {
 	}
 	
 	public void controlador(ActionListener ctr) {
-		explorar.addActionListener(ctr);
-		explorar.setActionCommand("EXPLORAR");
+		if (explorar != null) {
+			explorar.addActionListener(ctr);
+			explorar.setActionCommand("EXPLORAR");
+		}
 		
-		cursos.addActionListener(ctr);
-		cursos.setActionCommand("MIS_CURSOS");
+		if (cursos != null) {
+			cursos.addActionListener(ctr);
+			cursos.setActionCommand("MIS_CURSOS");
+		}
 		
-		actividades.addActionListener(ctr);
-		actividades.setActionCommand("MIS_ACTIVIDADES");
+		if (actividades != null) {
+			actividades.addActionListener(ctr);
+			actividades.setActionCommand("MIS_ACTIVIDADES");
+		}
 		
-		ajustes.addActionListener(ctr);
-		ajustes.setActionCommand("AJUSTES");
+		if (ajustes != null) {
+			ajustes.addActionListener(ctr);
+			ajustes.setActionCommand("AJUSTES");
+		}
+		
+		
 	}
 	
 }
