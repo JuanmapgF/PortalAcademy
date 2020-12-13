@@ -193,6 +193,10 @@ public class Curso {
 		this.imagen = "";
 		this.publico = null;
 	}
+	
+	public Boolean quedanPlazas() {
+		return getAforo() > getEstudiantes().size();
+	}
 
 	public static List<Curso> getTodosLosCursos() {
 		List<Curso> listaCursos = new ArrayList<>();

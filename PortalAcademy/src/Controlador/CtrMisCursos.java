@@ -26,7 +26,12 @@ public class CtrMisCursos implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
-		if (e.getActionCommand().equals("REGISTRATE")) {
+		if (e.getActionCommand().equals("MISCURSOSUSUARIO")) {
+			CtrRegistro cr = new CtrRegistro(new Registro());
+			Main.setPanel(cr.getPanel());
+		}
+		
+		if (e.getActionCommand().equals("MISCURSOSPROFESOR")) {
 			CtrRegistro cr = new CtrRegistro(new Registro());
 			Main.setPanel(cr.getPanel());
 		}
