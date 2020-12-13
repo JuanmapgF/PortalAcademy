@@ -47,7 +47,7 @@ public class CtrExplorar implements ActionListener {
 			Usuario user = ventana.getUsuario();
 			if (cur != null) {
 				CtrDescripcionCurso c = new CtrDescripcionCurso(user, cur);
-				
+				Main.setPanel(c.getPanel());
 			}
 		}
 		
@@ -55,7 +55,8 @@ public class CtrExplorar implements ActionListener {
 			Actividad act = ventana.getActividad();
 			Usuario user = ventana.getUsuario();
 			if (act != null) {
-				CtrDescripcionActividad c = new CtrDescripcionActividad();
+				CtrDescripcionActividad c = new CtrDescripcionActividad(user, act);
+				Main.setPanel(c.getPanel());
 			}
 		}
 		
