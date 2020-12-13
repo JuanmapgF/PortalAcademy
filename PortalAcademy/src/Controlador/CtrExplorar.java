@@ -12,7 +12,6 @@ import Vista.*;
 public class CtrExplorar implements ActionListener {
 	
 	private Explorar ventana;
-	private Menu menu;
 	
 	public CtrExplorar(Explorar v, Menu m) {
 		ventana = v;
