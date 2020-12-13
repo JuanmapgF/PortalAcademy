@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import Modelo.Actividad;
 import Modelo.Curso;
@@ -37,13 +39,31 @@ public class Explorar extends JPanel {
 	private JButton actividades;
 	private JButton ajustes;
 	
+	private int index;
+	
 	public Explorar(Estudiante u, List<Curso> c, List<Actividad> a) {
 		this.setBounds(0,0,1080,650);
 		usuario = u;
 		setLayout(null);
 		
 		listaC = new JList<String>();
+		listaC.addListSelectionListener(new ListSelectionListener() {
+		    public void valueChanged(ListSelectionEvent event) {
+		        if (!event.getValueIsAdjusting()){
+		        	index = listaC.getSelectedIndex();
+		            System.out.println(index);
+		        }
+		    }
+		});
 		listaA = new JList<String>();
+		listaA.addListSelectionListener(new ListSelectionListener() {
+		    public void valueChanged(ListSelectionEvent event) {
+		        if (!event.getValueIsAdjusting()){
+		        	index = listaA.getSelectedIndex();
+		            System.out.println(index);
+		        }
+		    }
+		});
 		addElements(c, a);
 		
 		JLabel lblNewLabel = new JLabel("Explorar");
@@ -101,7 +121,23 @@ public class Explorar extends JPanel {
 		setLayout(null);
 		
 		listaC = new JList<String>();
+		listaC.addListSelectionListener(new ListSelectionListener() {
+		    public void valueChanged(ListSelectionEvent event) {
+		        if (!event.getValueIsAdjusting()){
+		        	index = listaC.getSelectedIndex();
+		            System.out.println(index);
+		        }
+		    }
+		});
 		listaA = new JList<String>();
+		listaA.addListSelectionListener(new ListSelectionListener() {
+		    public void valueChanged(ListSelectionEvent event) {
+		        if (!event.getValueIsAdjusting()){
+		        	index = listaA.getSelectedIndex();
+		            System.out.println(index);
+		        }
+		    }
+		});
 		addElements(c, a);
 		
 		JLabel lblNewLabel = new JLabel("Explorar");
@@ -308,23 +344,13 @@ public class Explorar extends JPanel {
 			ajustes.addActionListener(ctr);
 			ajustes.setActionCommand("AJUSTES");
 		}
-		
-		if (listaC != null) {
-			
-		}
-		
-		if (listaA != null) {
-			
-		}
-		
-		if (listaN != null) {
-			
-		}
 	}
 	
 	public Usuario getUsuario() {
 		return usuario;
 	}
 	
-
+	public int getIndex() {
+		return index;
+	}
 }
