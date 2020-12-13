@@ -3,6 +3,8 @@ package Controlador;
 import java.awt.event.*;
 import java.text.ParseException;
 
+import javax.swing.JPanel;
+
 import Vista.*;
 import Modelo.*;
 
@@ -47,6 +49,10 @@ public class CtrDescripcionCurso implements ActionListener {
 			}
 			
 		}
+	}
+	
+	public JPanel getPanel() {
+		return ventana;
 	}
 	
 }
