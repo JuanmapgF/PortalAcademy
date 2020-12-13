@@ -76,6 +76,14 @@ public class Estudiante extends Usuario {
 		bd.finalize();
 	}
 	
+	public Boolean estaEnCurso(Curso curso) {
+		return getCursos().contains(curso);
+	}
+	
+	public Boolean estaEnActividad(Actividad actividad) {
+		return getActividades().contains(actividad);
+	}
+	
 	@Override
 	public void eliminarUsuario() {
 		super.eliminarUsuario();

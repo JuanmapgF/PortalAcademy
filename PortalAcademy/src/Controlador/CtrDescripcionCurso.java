@@ -17,15 +17,13 @@ public class CtrDescripcionCurso implements ActionListener {
 		this.curso = curso;
 		Boolean esInvitado = user == null;
 		Boolean esEstudiante = user != null && user instanceof Estudiante;
-		Boolean esCursoPublico = curso.getPublico();
-		Boolean quedaEspacio = curso.getAforo() < curso.getEstudiantes().size();
 		Boolean estaEnCurso;
 		if (esEstudiante) {
-			estaEnCurso = ((Estudiante) user).getCursos().contains(curso);
+			estaEnCurso = ((Estudiante) user).estaEnCurso(curso);
 		} else {
 			estaEnCurso = false;
 		}
-		Boolean usuarioPuedeUnirse = (esInvitado && esCursoPublico || esEstudiante) && quedaEspacio && !estaEnCurso;
+		Boolean usuarioPuedeUnirse = (esInvitado && curso.getPublico() || esEstudiante) && curso.quedanPlazas() && !estaEnCurso;
 		ventana = new DescripcionCurso(curso.getNombre(), curso.getDescripcion(), usuarioPuedeUnirse);
 		ventana.controlador(this);
 	}
@@ -41,7 +39,7 @@ public class CtrDescripcionCurso implements ActionListener {
 		
 		if (e.getActionCommand().equals("Cerrar Sesi\u00F3n")) {
 			try {
-				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()), new Menu(null));
+				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
 			} catch (ParseException e1) {
 				// TODO Auto-generated catch block

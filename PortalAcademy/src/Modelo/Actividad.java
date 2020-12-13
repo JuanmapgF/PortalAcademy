@@ -164,6 +164,10 @@ public class Actividad {
 		this.imagen = null;
 		this.lugar = null;
 	}
+	
+	public Boolean quedanPlazas() {
+		return getAforo() > getParticipantes().size();
+	}
 
 	public static List<Actividad> getTodasLasActividades() throws ParseException {
 		List<Actividad> listaActividades = new ArrayList<>();
