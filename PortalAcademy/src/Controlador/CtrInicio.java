@@ -38,6 +38,7 @@ public class CtrInicio implements ActionListener {
 		}
 		
 		if (e.getActionCommand().equals("INICIAR")) {
+			ventana.ocultarError();
 			Usuario u = new Usuario(ventana.getUser(), ventana.getPass());
 			List<Usuario> users = Usuario.getUsuarios();
 			

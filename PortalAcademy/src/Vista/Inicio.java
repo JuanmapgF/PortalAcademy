@@ -97,4 +97,8 @@ public class Inicio extends JPanel {
 	public void mostrarError() {
 		error.setVisible(true);
 	}
+	
+	public void ocultarError() {
+		error.setVisible(false);
+	}
 }
