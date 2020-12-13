@@ -13,11 +13,9 @@ public class CtrExplorar implements ActionListener {
 	
 	private Explorar ventana;
 	
-	public CtrExplorar(Explorar v, Menu m) {
+	public CtrExplorar(Explorar v) {
 		ventana = v;
 		ventana.controlador(this);
-		menu = m;
-		menu.controlador(this);
 	}
 
 	@Override
@@ -31,13 +29,12 @@ public class CtrExplorar implements ActionListener {
 		
 		if (e.getActionCommand().equals("CERRAR_SESION")) {
 			try {
-				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()), new Menu(null));
+				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
 			} catch (ParseException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
 		}
 		
 		if (e.getActionCommand().equals("REGISTRO")) {
@@ -45,17 +42,14 @@ public class CtrExplorar implements ActionListener {
 			Main.setPanel(c.getPanel());
 		}
 		
+		if (e.getActionCommand().equals("VER")) {
+			
+		}
+		
 	}
 	
 	public JPanel getPanel() {
-		JPanel pane = new JPanel();
-		pane.removeAll();
-		pane.invalidate();
-		pane.add(ventana);
-		pane.add(menu);
-		pane.revalidate();
-		
-		return pane;
+		return ventana;
 	}
 
 }

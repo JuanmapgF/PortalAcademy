@@ -70,7 +70,7 @@ public class Inicio extends JPanel {
 		
 		error = new JLabel("El usuario o la contrase\u00F1a introducidos son incorrectos");
 		error.setForeground(Color.RED);
-		error.setBounds(396, 344, 303, 14);
+		error.setBounds(373, 340, 379, 14);
 		add(error);
 		error.setVisible(false);
 	}

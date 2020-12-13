@@ -23,9 +23,9 @@ public class Explorar extends JPanel {
 	private DefaultListModel<String> modeloC = new DefaultListModel<String>();
 	private DefaultListModel<String> modeloA = new DefaultListModel<String>();
 	private DefaultListModel<String> modeloN = new DefaultListModel<String>();
-	private JList<String> listaC = new JList<String>();
-	private JList<String> listaA = new JList<String>();
-	private JList<String> listaN = new JList<String>();
+	private JList<String> listaC;
+	private JList<String> listaA;
+	private JList<String> listaN;
 	private JButton iniciar;
 	private JButton cerrar;
 	private JButton registrarse;
@@ -41,6 +41,9 @@ public class Explorar extends JPanel {
 		this.setBounds(0,0,1080,650);
 		usuario = u;
 		setLayout(null);
+		
+		listaC = new JList<String>();
+		listaA = new JList<String>();
 		addElements(c, a);
 		
 		JLabel lblNewLabel = new JLabel("Explorar");
@@ -52,7 +55,7 @@ public class Explorar extends JPanel {
 		cerrar.setBounds(860, 37, 121, 23);
 		add(cerrar);
 		
-		JLabel t_curso = new JLabel("Curso:");
+		JLabel t_curso = new JLabel("Cursos:");
 		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
 		t_curso.setBounds(295, 159, 90, 33);
 		add(t_curso);
@@ -96,6 +99,9 @@ public class Explorar extends JPanel {
 	public Explorar(List<Curso> c, List<Actividad> a) {
 		usuario = null;
 		setLayout(null);
+		
+		listaC = new JList<String>();
+		listaA = new JList<String>();
 		addElements(c, a);
 		
 		JLabel lblNewLabel = new JLabel("Explorar");
@@ -111,7 +117,7 @@ public class Explorar extends JPanel {
 		registrarse.setBounds(860, 37, 121, 23);
 		add(registrarse);
 		
-		JLabel t_curso = new JLabel("Curso:");
+		JLabel t_curso = new JLabel("Cursos:");
 		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
 		t_curso.setBounds(295, 159, 90, 33);
 		add(t_curso);
@@ -146,6 +152,7 @@ public class Explorar extends JPanel {
 		usuario = u;
 		this.setLayout(null);
 		
+		listaN = new JList<String>();
 		addElementsC(l);
 		
 		JLabel lblNewLabel = new JLabel("Explorar");
@@ -190,6 +197,7 @@ public class Explorar extends JPanel {
 		usuario = u;
 		this.setLayout(null);
 		
+		listaN = new JList<String>();
 		addElementsA(l);
 		
 		JLabel lblNewLabel = new JLabel("Explorar");
@@ -300,10 +308,23 @@ public class Explorar extends JPanel {
 			ajustes.addActionListener(ctr);
 			ajustes.setActionCommand("AJUSTES");
 		}
+		
+		if (listaC != null) {
+			
+		}
+		
+		if (listaA != null) {
+			
+		}
+		
+		if (listaN != null) {
+			
+		}
 	}
 	
 	public Usuario getUsuario() {
 		return usuario;
 	}
+	
 
 }

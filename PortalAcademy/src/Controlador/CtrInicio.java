@@ -29,7 +29,7 @@ public class CtrInicio implements ActionListener {
 		
 		if (e.getActionCommand().equals("VOLVER")) {
 			try {
-				CtrExplorar ex = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()), new Menu(null));
+				CtrExplorar ex = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(ex.getPanel());
 			} catch (ParseException e1) {
 				// TODO Auto-generated catch block
@@ -58,7 +58,7 @@ public class CtrInicio implements ActionListener {
 					}
 					
 					try {
-						CtrExplorar ex = new CtrExplorar(new Explorar(est, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()), new Menu(est));
+						CtrExplorar ex = new CtrExplorar(new Explorar(est, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 						Main.setPanel(ex.getPanel());
 					} catch (ParseException e1) {
 						// TODO Auto-generated catch block
@@ -71,7 +71,7 @@ public class CtrInicio implements ActionListener {
 					Organizacion est = new Organizacion(ini.getNick());
 					
 					try {
-						CtrExplorar ex = new CtrExplorar(new Explorar(est, Actividad.getTodasLasActividades()), new Menu(est));
+						CtrExplorar ex = new CtrExplorar(new Explorar(est, Actividad.getTodasLasActividades()));
 						Main.setPanel(ex.getPanel());
 					} catch (ParseException e1) {
 						// TODO Auto-generated catch block
@@ -81,8 +81,10 @@ public class CtrInicio implements ActionListener {
 					bd.finalize();
 					
 					Profesor est = new Profesor(ini.getNick());
-					CtrExplorar ex = new CtrExplorar(new Explorar(est, Curso.getTodosLosCursos()), new Menu(est));
+					CtrExplorar ex = new CtrExplorar(new Explorar(est, Curso.getTodosLosCursos()));
 					Main.setPanel(ex.getPanel());
+				} else {
+					ventana.mostrarError();
 				}
 			} else {
 				ventana.mostrarError();
