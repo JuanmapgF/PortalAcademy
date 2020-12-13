@@ -28,7 +28,6 @@ public class Mensaje {
 
 		this.idMensaje = Integer.parseInt(tupla[0].toString());
 		this.texto = tupla[1].toString();
-		this.emisor = new Usuario(tupla[2].toString());
 	}
 
 	public Integer getIdMensaje() {
@@ -40,6 +39,10 @@ public class Mensaje {
 	}
 
 	public Usuario getEmisor() {
+		bd = BD.getBD();
+		Object[] tupla = bd.Select("SELECT * FROM Mensaje WHERE idMensaje = " + idMensaje).get(0);
+		bd.finalize();
+		emisor = new Usuario(tupla[2].toString());
 		return emisor;
 	}
 
