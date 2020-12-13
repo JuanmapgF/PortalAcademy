@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
+import java.awt.Color;
 
 public class Inicio extends JPanel {
 	private JTextField user;
@@ -17,6 +18,7 @@ public class Inicio extends JPanel {
 	private JButton iniciar = new JButton();
 	private JButton registro = new JButton();
 	private JButton volver = new JButton();
+	private JLabel error;
 
 	/**
 	 * Create the panel.
@@ -66,6 +68,11 @@ public class Inicio extends JPanel {
 		volver.setBounds(47, 563, 111, 20);
 		add(volver);
 		
+		error = new JLabel("El usuario o la contrase\u00F1a introducidos son incorrectos");
+		error.setForeground(Color.RED);
+		error.setBounds(396, 344, 303, 14);
+		add(error);
+		error.setVisible(false);
 	}
 	
 	public void controlador(ActionListener ctr) {
@@ -85,5 +92,9 @@ public class Inicio extends JPanel {
 	
 	public String getPass() {
 		return String.valueOf(cont.getPassword());
+	}
+	
+	public void mostrarError() {
+		error.setVisible(true);
 	}
 }

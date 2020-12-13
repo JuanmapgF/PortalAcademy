@@ -84,6 +84,8 @@ public class CtrInicio implements ActionListener {
 					CtrExplorar ex = new CtrExplorar(new Explorar(est, Curso.getTodosLosCursos()), new Menu(est));
 					Main.setPanel(ex.getPanel());
 				}
+			} else {
+				ventana.mostrarError();
 			}
 
 		}
