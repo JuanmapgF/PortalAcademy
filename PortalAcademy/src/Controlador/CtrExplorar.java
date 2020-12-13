@@ -42,10 +42,38 @@ public class CtrExplorar implements ActionListener {
 			Main.setPanel(c.getPanel());
 		}
 		
-		if (e.getActionCommand().equals("VER")) {
+		if (e.getActionCommand().equals("VER_CURSO")) {
+			Curso cur = ventana.getCurso();
+			Usuario user = ventana.getUsuario();
+			if (cur != null) {
+				CtrDescripcionCurso c = new CtrDescripcionCurso(user, cur);
+				
+			}
+		}
+		
+		if (e.getActionCommand().equals("VER_ACTIVIDAD")) {
+			Actividad act = ventana.getActividad();
+			Usuario user = ventana.getUsuario();
+			if (act != null) {
+				CtrDescripcionActividad c = new CtrDescripcionActividad();
+			}
+		}
+		
+		if (e.getActionCommand().equals("EXPLORAR")) {
 			
 		}
 		
+		if (e.getActionCommand().equals("CURSO")) {
+			
+		}
+		
+		if (e.getActionCommand().equals("ACTIVIDAD")) {
+			
+		}
+		
+		if (e.getActionCommand().equals("AJUSTES")) {
+			
+		}
 	}
 	
 	public JPanel getPanel() {

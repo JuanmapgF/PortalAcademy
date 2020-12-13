@@ -31,39 +31,30 @@ public class Explorar extends JPanel {
 	private JButton iniciar;
 	private JButton cerrar;
 	private JButton registrarse;
-	private JButton seleccion;
+	private JButton seleccionC;
+	private JButton seleccionA;
 	private Usuario usuario;
+	
+	private List<Curso> lista_cursos;
+	private List<Actividad> lista_actividad;
 	
 	private JButton explorar;
 	private JButton cursos;
 	private JButton actividades;
 	private JButton ajustes;
-	
-	private int index;
-	
+
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public Explorar(Estudiante u, List<Curso> c, List<Actividad> a) {
+		lista_cursos = c;
+		lista_actividad = a;
 		this.setBounds(0,0,1080,650);
 		usuario = u;
 		setLayout(null);
 		
 		listaC = new JList<String>();
-		listaC.addListSelectionListener(new ListSelectionListener() {
-		    public void valueChanged(ListSelectionEvent event) {
-		        if (!event.getValueIsAdjusting()){
-		        	index = listaC.getSelectedIndex();
-		            System.out.println(index);
-		        }
-		    }
-		});
 		listaA = new JList<String>();
-		listaA.addListSelectionListener(new ListSelectionListener() {
-		    public void valueChanged(ListSelectionEvent event) {
-		        if (!event.getValueIsAdjusting()){
-		        	index = listaA.getSelectedIndex();
-		            System.out.println(index);
-		        }
-		    }
-		});
 		addElements(c, a);
 		
 		JLabel lblNewLabel = new JLabel("Explorar");
@@ -95,9 +86,13 @@ public class Explorar extends JPanel {
 		sp_actividad.setViewportView(listaA);
 		add(sp_actividad);
 		
-		seleccion = new JButton("Ver");
-		seleccion.setBounds(567, 575, 121, 23);
-		add(seleccion);
+		seleccionC = new JButton("Ver curso");
+		seleccionC.setBounds(399, 575, 121, 23);
+		add(seleccionC);
+		
+		seleccionA = new JButton("Ver actividad");
+		seleccionA.setBounds(741, 575, 121, 23);
+		add(seleccionA);
 		
 		explorar = new JButton("Explorar");
 		explorar.setBounds(36, 191, 131, 32);
@@ -117,27 +112,13 @@ public class Explorar extends JPanel {
 	}
 	
 	public Explorar(List<Curso> c, List<Actividad> a) {
+		lista_cursos = c;
+		lista_actividad = a;
 		usuario = null;
 		setLayout(null);
 		
 		listaC = new JList<String>();
-		listaC.addListSelectionListener(new ListSelectionListener() {
-		    public void valueChanged(ListSelectionEvent event) {
-		        if (!event.getValueIsAdjusting()){
-		        	index = listaC.getSelectedIndex();
-		            System.out.println(index);
-		        }
-		    }
-		});
 		listaA = new JList<String>();
-		listaA.addListSelectionListener(new ListSelectionListener() {
-		    public void valueChanged(ListSelectionEvent event) {
-		        if (!event.getValueIsAdjusting()){
-		        	index = listaA.getSelectedIndex();
-		            System.out.println(index);
-		        }
-		    }
-		});
 		addElements(c, a);
 		
 		JLabel lblNewLabel = new JLabel("Explorar");
@@ -173,9 +154,13 @@ public class Explorar extends JPanel {
 		sp_actividad.setViewportView(listaA);
 		add(sp_actividad);
 		
-		seleccion = new JButton("Ver");
-		seleccion.setBounds(567, 575, 121, 23);
-		add(seleccion);
+		seleccionC = new JButton("Ver curso");
+		seleccionC.setBounds(399, 575, 121, 23);
+		add(seleccionC);
+		
+		seleccionA = new JButton("Ver actividad");
+		seleccionA.setBounds(741, 575, 121, 23);
+		add(seleccionA);
 		
 		explorar = new JButton("Explorar");
 		explorar.setBounds(36, 191, 131, 32);
@@ -185,6 +170,7 @@ public class Explorar extends JPanel {
 	}
 	
 	public Explorar(Profesor u, List<Curso> l) {
+		lista_cursos = l;
 		usuario = u;
 		this.setLayout(null);
 		
@@ -210,9 +196,9 @@ public class Explorar extends JPanel {
 		sp_n.setViewportView(listaN);
 		add(sp_n);
 		
-		seleccion = new JButton("Ver");
-		seleccion.setBounds(567, 575, 121, 23);
-		add(seleccion);
+		seleccionC = new JButton("Ver");
+		seleccionC.setBounds(567, 575, 121, 23);
+		add(seleccionC);
 		
 		explorar = new JButton("Explorar");
 		explorar.setBounds(36, 191, 131, 32);
@@ -230,6 +216,7 @@ public class Explorar extends JPanel {
 	}
 	
 	public Explorar(Organizacion u, List<Actividad> l) {
+		lista_actividad = l;
 		usuario = u;
 		this.setLayout(null);
 		
@@ -255,9 +242,9 @@ public class Explorar extends JPanel {
 		sp_n.setViewportView(listaN);
 		add(sp_n);
 		
-		seleccion = new JButton("Ver");
-		seleccion.setBounds(567, 575, 121, 23);
-		add(seleccion);
+		seleccionA = new JButton("Ver");
+		seleccionA.setBounds(567, 575, 121, 23);
+		add(seleccionA);
 		
 		explorar = new JButton("Explorar");
 		explorar.setBounds(36, 191, 131, 32);
@@ -324,9 +311,13 @@ public class Explorar extends JPanel {
 			registrarse.addActionListener(ctr);
 			registrarse.setActionCommand("REGISTRO");
 		} 
-		if (seleccion != null) {
-			seleccion.addActionListener(ctr);
-			seleccion.setActionCommand("VER");
+		if (seleccionC != null) {
+			seleccionC.addActionListener(ctr);
+			seleccionC.setActionCommand("VER_CURSO");
+		}
+		if (seleccionA != null) {
+			seleccionC.addActionListener(ctr);
+			seleccionC.setActionCommand("VER_ACTIVIDAD");
 		}
 		if (explorar != null) {
 			explorar.addActionListener(ctr);
@@ -350,7 +341,19 @@ public class Explorar extends JPanel {
 		return usuario;
 	}
 	
-	public int getIndex() {
-		return index;
+	public Curso getCurso() {
+		if (listaC.isSelectionEmpty()) {
+			return null;
+		} else {
+			return lista_cursos.get(listaC.getSelectedIndex());
+		}
+	}
+	
+	public Actividad getActividad() {
+		if (listaA.isSelectionEmpty()) {
+			return null;
+		} else {
+			return lista_actividad.get(listaA.getSelectedIndex());
+		}
 	}
 }
