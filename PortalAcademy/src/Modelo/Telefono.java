@@ -14,16 +14,8 @@ public class Telefono {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
-
 	public String getNumero() {
 		return numero;
-	}
-
-	public void setNumero(String numero) {
-		this.numero = numero;
 	}
 	
 	

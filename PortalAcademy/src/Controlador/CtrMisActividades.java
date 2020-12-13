@@ -2,23 +2,19 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import javax.swing.JPanel;
 
-import Modelo.BD;
+import Modelo.Actividad;
 import Modelo.Curso;
-import Modelo.Usuario;
-import Vista.Inicio;
-import Vista.Main;
+import Vista.MisActividades;
 import Vista.MisCursos;
-import Vista.Registro;
 
-public class CtrMisCursos implements ActionListener {
+public class CtrMisActividades implements ActionListener {
+
+	private MisActividades ventana;
 	
-	private MisCursos ventana;
-	
-	public CtrMisCursos(MisCursos v) {
+	public CtrMisActividades(MisActividades v) {
 		ventana = v;
 		ventana.controlador(this);
 	}
@@ -27,16 +23,16 @@ public class CtrMisCursos implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
-		if (e.getActionCommand().equals("MISCURSOSUSUARIO")) {
-			Curso c = ventana.getC();
+		if (e.getActionCommand().equals("MISACTIVIDADESUSUARIO")) {
+			Actividad c = ventana.getA();
 			if(c!=null) {
 				//CtrRegistro cr = new CtrRegistro(new Registro());
 				//Main.setPanel(cr.getPanel());
 			}	
 		}
 		
-		if (e.getActionCommand().equals("MISCURSOSPROFESOR")) {
-			Curso c = ventana.getC();
+		if (e.getActionCommand().equals("MISACTIVIDADESORGANIZACION")) {
+			Actividad c = ventana.getA();
 			if(c!=null) {
 				//CtrRegistro cr = new CtrRegistro(new Registro());
 				//Main.setPanel(cr.getPanel());

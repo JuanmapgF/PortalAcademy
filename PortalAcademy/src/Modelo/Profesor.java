@@ -12,8 +12,7 @@ public class Profesor extends Usuario {
 		super(nick, correo, password);
 		this.telefono = telefono;
 		bd = BD.getBD();
-		bd.Insert("INSERT INTO Profesor (nick, codigoTelefono, numeroTelefono) VALUES ( '" + this.getNick() + "', "
-				+ this.getTelefono().getCodigo() + ",'" + this.getTelefono().getNumero() + "')");
+		bd.Insert("INSERT INTO Profesor (nick, codigoTelefono, numeroTelefono) VALUES ( '" + this.getNick() + "', "+ telefono.getCodigo() + ",'" + telefono.getNumero() + "')");
 		bd.finalize();
 	}
 

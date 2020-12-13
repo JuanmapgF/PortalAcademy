@@ -229,6 +229,9 @@ public class Explorar extends JPanel {
 		this.setBounds(0, 0, 1080, 650);
 	}
 	
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public Explorar(Organizacion u, List<Actividad> l) {
 		usuario = u;
 		this.setLayout(null);

@@ -22,6 +22,7 @@ public class MisCursos extends JPanel {
 	private JList<String> listaC = new JList<String>();
 	private JButton bVer = new JButton();
 	private JButton bVer2 = new JButton();
+	private List<Curso> l;
 	
 	public MisCursos(Estudiante u) {
 		this.setLayout(null);
@@ -39,7 +40,7 @@ public class MisCursos extends JPanel {
 		
 		this.setBounds(200, 0, 880, 650);
 		
-		JButton bVer = new JButton("Ver");
+		JButton bVer = new JButton("Ver curso");
 		bVer.setBounds(362, 475, 89, 23);
 		add(bVer);
 	}
@@ -60,13 +61,14 @@ public class MisCursos extends JPanel {
 		
 		this.setBounds(200, 0, 880, 650);
 		
-		JButton bVer2 = new JButton("Ver");
+		JButton bVer2 = new JButton("Ver curso");
 		bVer2.setBounds(362, 475, 89, 23);
 		add(bVer2);
 	}
 	
 	
 	public void addElements(List<Curso> l) {
+		this.l = l;
 		listaC.setModel(modeloC);
 		
 		for (Object o : l) {
@@ -74,6 +76,14 @@ public class MisCursos extends JPanel {
 		}
 		
 		listaC.setLayoutOrientation(JList.VERTICAL);
+	}
+	
+	public Curso getC(){
+		if(!listaC.isSelectionEmpty()) {
+			return l.get(listaC.getSelectedIndex());
+		}else {
+			return null;
+		}
 	}
 	
 	public void controlador(ActionListener ctr) {
