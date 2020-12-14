@@ -23,7 +23,11 @@ public class CtrExplorar implements ActionListener {
 		// TODO Auto-generated method stub
 		
 		if (e.getActionCommand().equals("INICIAR_SESION")) {
-			CtrInicio c = new CtrInicio(new Inicio());
+			Inicio i = new Inicio();
+			i.setFocusable(true);
+		    i.requestFocusInWindow();
+			CtrInicio2 c2 = new CtrInicio2(i);
+			CtrInicio c = new CtrInicio(i);
 			Main.setPanel(c.getPanel());
 		}
 		

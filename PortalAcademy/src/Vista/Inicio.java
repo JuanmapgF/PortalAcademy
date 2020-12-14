@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -84,6 +85,11 @@ public class Inicio extends JPanel {
 		
 		volver.addActionListener(ctr);
 		volver.setActionCommand("VOLVER");
+	}
+	
+	public void controladorEnter(KeyListener ctr) {
+		user.addKeyListener(ctr);
+		cont.addKeyListener(ctr);
 	}
 	
 	public String getUser() {
