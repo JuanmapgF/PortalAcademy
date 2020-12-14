@@ -56,7 +56,7 @@ public class Curso {
 		this.presencial = Boolean.parseBoolean(tupla[6].toString());
 		this.tieneForo = Boolean.parseBoolean(tupla[7].toString());
 
-		mensajes = new ArrayList<Mensaje>();
+		
 		estudiantes = new ArrayList<Usuario>();
 
 	}
@@ -152,6 +152,7 @@ public class Curso {
 	}
 
 	public List<Mensaje> getMensajes() {
+		mensajes = new ArrayList<Mensaje>();
 		if (tieneForo) {
 			bd = BD.getBD();
 			List<Object[]> tuplaMensajes = bd.Select("SELECT * FROM mensaje WHERE idCurso = " + idCurso);
@@ -166,6 +167,7 @@ public class Curso {
 	}
 
 	public List<Usuario> getEstudiantes() {
+		estudiantes = new ArrayList<Usuario>();
 		bd = BD.getBD();
 		List<Object[]> tuplaEstudiantes = bd.Select("SELECT * FROM RelCursoUsuario WHERE idCurso = " + idCurso);
 		bd.finalize();
@@ -181,7 +183,7 @@ public class Curso {
 		bd.Insert("INSERT INTO RelCursoUsuario (nickUsuario, idCurso) VALUES ('" + estudiante.getNick() + "',"
 				+ this.idCurso + ")");
 		bd.finalize();
-		this.estudiantes.add(estudiante);
+		//this.estudiantes.add(estudiante);
 	}
 
 	public void eliminarCurso() {
@@ -195,12 +197,10 @@ public class Curso {
 	}
 	
 	public Boolean quedanPlazas() {
-		List<Usuario> part = getEstudiantes();
-		if(part == null) {
-			return true;
-		}else {
-			return getAforo() > part.size();
+		if(estudiantes == null) {
+			getEstudiantes();
 		}
+		return getAforo() > estudiantes.size();
 	}
 
 	public static List<Curso> getTodosLosCursos() {

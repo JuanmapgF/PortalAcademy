@@ -137,9 +137,9 @@ public class Actividad {
 	}
 
 	public List<Usuario> getParticipantes() {
+		participantes = new ArrayList<>();
 		bd = BD.getBD();
-		List<Object[]> tuplaParticipantes = bd
-				.Select("SELECT * FROM RelActividadUsuario WHERE idActividad = " + idActividad);
+		List<Object[]> tuplaParticipantes = bd.Select("SELECT * FROM RelActividadUsuario WHERE idActividad = " + idActividad);
 		bd.finalize();
 		for (Object[] o : tuplaParticipantes) {
 			this.participantes.add(new Usuario(o[0].toString()));
@@ -152,7 +152,7 @@ public class Actividad {
 		bd.Insert("INSERT INTO RelActividadUsuario (nickUsuario, idActividad) VALUES ('" + participante.getNick() + "',"
 				+ this.idActividad + ")");
 		bd.finalize();
-		this.participantes.add(participante);
+		//this.participantes.add(participante);
 	}
 
 	public void eliminarCurso() {
@@ -166,13 +166,10 @@ public class Actividad {
 	}
 	
 	public Boolean quedanPlazas() {
-		List<Usuario> part = getParticipantes();
-		if(part == null) {
-			return true;
-		}else {
-			return getAforo() > part.size();
+		if(participantes == null) {
+			getParticipantes();
 		}
-		
+		return getAforo() > participantes.size();
 	}
 
 	public static List<Actividad> getTodasLasActividades() throws ParseException {
