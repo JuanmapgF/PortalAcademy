@@ -32,7 +32,6 @@ public class CtrDescripcionCurso implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		
 		if (e.getActionCommand().equals("Unirse")) {
 			curso.addEstudiante(user);
@@ -44,7 +43,6 @@ public class CtrDescripcionCurso implements ActionListener {
 				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
 			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			
