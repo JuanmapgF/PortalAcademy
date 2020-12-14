@@ -139,7 +139,7 @@ public class Actividad {
 	public List<Usuario> getParticipantes() {
 		bd = BD.getBD();
 		List<Object[]> tuplaParticipantes = bd
-				.Select("SELECT * FROM RelActividadParticipantes WHERE idActividad = " + idActividad);
+				.Select("SELECT * FROM RelActividadUsuario WHERE idActividad = " + idActividad);
 		bd.finalize();
 		for (Object[] o : tuplaParticipantes) {
 			this.participantes.add(new Usuario(o[0].toString()));
@@ -166,7 +166,13 @@ public class Actividad {
 	}
 	
 	public Boolean quedanPlazas() {
-		return getAforo() > getParticipantes().size();
+		List<Usuario> part = getParticipantes();
+		if(part == null) {
+			return true;
+		}else {
+			return getAforo() > part.size();
+		}
+		
 	}
 
 	public static List<Actividad> getTodasLasActividades() throws ParseException {

@@ -42,8 +42,11 @@ public class DescripcionCurso extends JPanel {
 	}
 	
 	public void controlador(ActionListener ctr) {
-		unirse.addActionListener(ctr);
-		unirse.setActionCommand("Unirse");
+		if(unirse != null) {
+			unirse.addActionListener(ctr);
+			unirse.setActionCommand("Unirse");
+		}
+		
 		
 		cerrarSesion.addActionListener(ctr);
 		cerrarSesion.setActionCommand("Cerrar Sesi\u00F3n");

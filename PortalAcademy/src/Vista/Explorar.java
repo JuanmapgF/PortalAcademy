@@ -319,8 +319,8 @@ public class Explorar extends JPanel {
 			seleccionC.setActionCommand("VER_CURSO");
 		}
 		if (seleccionA != null) {
-			seleccionC.addActionListener(ctr);
-			seleccionC.setActionCommand("VER_ACTIVIDAD");
+			seleccionA.addActionListener(ctr);
+			seleccionA.setActionCommand("VER_ACTIVIDAD");
 		}
 		if (explorar != null) {
 			explorar.addActionListener(ctr);
@@ -348,6 +348,7 @@ public class Explorar extends JPanel {
 		if (listaC.isSelectionEmpty()) {
 			return null;
 		} else {
+			System.out.println(lista_cursos.get(listaC.getSelectedIndex()).toString());
 			return lista_cursos.get(listaC.getSelectedIndex());
 		}
 	}

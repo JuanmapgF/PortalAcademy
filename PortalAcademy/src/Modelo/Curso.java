@@ -195,7 +195,12 @@ public class Curso {
 	}
 	
 	public Boolean quedanPlazas() {
-		return getAforo() > getEstudiantes().size();
+		List<Usuario> part = getEstudiantes();
+		if(part == null) {
+			return true;
+		}else {
+			return getAforo() > part.size();
+		}
 	}
 
 	public static List<Curso> getTodosLosCursos() {

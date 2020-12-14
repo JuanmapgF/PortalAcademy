@@ -43,6 +43,7 @@ public class CtrExplorar implements ActionListener {
 		}
 		
 		if (e.getActionCommand().equals("VER_CURSO")) {
+			System.out.println(1);
 			Curso cur = ventana.getCurso();
 			Usuario user = ventana.getUsuario();
 			if (cur != null) {
