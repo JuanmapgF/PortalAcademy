@@ -49,9 +49,7 @@ public class Explorar extends JPanel {
 	private JButton actividades;
 	private JButton ajustes;
 
-	/**
-	 * @wbp.parser.constructor
-	 */
+	
 	public Explorar(Estudiante u, List<Curso> c, List<Actividad> a) {
 		estudiante = true;
 		lista_cursos = c;
@@ -117,6 +115,7 @@ public class Explorar extends JPanel {
 		ajustes.setBounds(36, 413, 131, 32);
 		add(ajustes);
 	}
+	
 	
 	public Explorar(List<Curso> c, List<Actividad> a) {
 		lista_cursos = c;
@@ -221,10 +220,8 @@ public class Explorar extends JPanel {
 		
 		this.setBounds(0, 0, 1080, 650);
 	}
+
 	
-	/**
-	 * @wbp.parser.constructor
-	 */
 	public Explorar(Organizacion u, List<Actividad> l) {
 		organizacion = true;
 		lista_actividad = l;
