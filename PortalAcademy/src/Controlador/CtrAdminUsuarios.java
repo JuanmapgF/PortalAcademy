@@ -2,8 +2,13 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
+import Modelo.Actividad;
+import Modelo.Curso;
 import Vista.AdminUsuarios;
+import Vista.Explorar;
+import Vista.Main;
 import Vista.AdminInicio;
 
 public class CtrAdminUsuarios implements ActionListener{
@@ -20,7 +25,7 @@ public class CtrAdminUsuarios implements ActionListener{
 		vista.bUsuarios_1.addActionListener(this);
 	}
 	
-	public AdminUsuarios getpanel() {
+	public AdminUsuarios getPanel() {
 		return vista;
 	}
 	
@@ -40,7 +45,13 @@ public class CtrAdminUsuarios implements ActionListener{
 		
 		//pulsar en el botón "CERRARSESION"
 		if(e.getSource() == vista.bCerrarSesion ) {
-
+			try {
+				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+				Main.setPanel(c.getPanel());
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		
 		//pulsar en el botón "CURSOS"
