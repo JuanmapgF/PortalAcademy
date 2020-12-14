@@ -44,5 +44,10 @@ public class Organizacion extends Usuario {
 	public void eliminarUsuario() {
 		super.eliminarUsuario();
 	}
+	
+	@Override
+	public void setPassword(String p) {
+		super.setPassword(p);
+	}
 
 }

@@ -6,14 +6,15 @@ import java.text.ParseException;
 
 import javax.swing.JPanel;
 
-import Modelo.*;
+import Modelo.Actividad;
+import Modelo.Curso;
 import Vista.*;
 
-public class CtrExplorar implements ActionListener {
+public class CtrAjustes implements ActionListener {
 	
-	private Explorar ventana;
+	private Ajustes ventana;
 	
-	public CtrExplorar(Explorar v) {
+	public CtrAjustes(Ajustes v) {
 		ventana = v;
 		ventana.controlador(this);
 	}
@@ -22,16 +23,7 @@ public class CtrExplorar implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
-		if (e.getActionCommand().equals("INICIAR_SESION")) {
-			Inicio i = new Inicio();
-			i.setFocusable(true);
-		    i.requestFocusInWindow();
-			CtrInicio2 c2 = new CtrInicio2(i);
-			CtrInicio c = new CtrInicio(i);
-			Main.setPanel(c.getPanel());
-		}
-		
-		if (e.getActionCommand().equals("CERRAR_SESION")) {
+		if (e.getActionCommand().equals("CERRAR")) {
 			try {
 				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
@@ -41,56 +33,47 @@ public class CtrExplorar implements ActionListener {
 			}
 		}
 		
-		if (e.getActionCommand().equals("REGISTRO")) {
-			CtrRegistro c = new CtrRegistro(new Registro());
-			Main.setPanel(c.getPanel());
-		}
-		
-		if (e.getActionCommand().equals("VER_CURSO")) {
+		if (e.getActionCommand().equals("ELIMINAR")) {
 			if (ventana.esEstudiante()) {
-				Curso cur = ventana.getCurso();
-				Estudiante user = ventana.getEstudiante();
-				if (cur != null) {
-					CtrDescripcionCurso c = new CtrDescripcionCurso(user, cur);
-					Main.setPanel(c.getPanel());
-				}
+				ventana.getEstudiante().eliminarUsuario();
+			} else if (ventana.esOrganizacion()) {
+				ventana.getProfesor().eliminarUsuario();
 			} else if (ventana.esProfesor()) {
-				Curso cur = ventana.getCurso();
-				Profesor user = ventana.getProfesor();
-				if (cur != null) {
-					CtrDescripcionCurso c = new CtrDescripcionCurso(user, cur);
-					Main.setPanel(c.getPanel());
-				}
-			} else {
-				Curso cur = ventana.getCurso();
-				if (cur != null) {
-					CtrDescripcionCurso c = new CtrDescripcionCurso(null, cur);
-					Main.setPanel(c.getPanel());
-				}
+				ventana.getOrganizacion().eliminarUsuario();
+			}
+			
+			try {
+				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+				Main.setPanel(c.getPanel());
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 		}
 		
-		if (e.getActionCommand().equals("VER_ACTIVIDAD")) {
+		if (e.getActionCommand().equals("CAMBIAR")) {			
 			if (ventana.esEstudiante()) {
-				Actividad act = ventana.getActividad();
-				Estudiante user = ventana.getEstudiante();
-				if (act != null) {
-					CtrDescripcionActividad c = new CtrDescripcionActividad(user, act);
+				ventana.getEstudiante().setPassword(ventana.getTexto());
+				try {
+					CtrExplorar c = new CtrExplorar(new Explorar(ventana.getEstudiante(), Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 					Main.setPanel(c.getPanel());
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 			} else if (ventana.esOrganizacion()) {
-				Actividad act = ventana.getActividad();
-				Organizacion user = ventana.getOrganizacion();
-				if (act != null) {
-					CtrDescripcionActividad c = new CtrDescripcionActividad(user, act);
+				ventana.getOrganizacion().setPassword(ventana.getTexto());
+				try {
+					CtrExplorar c = new CtrExplorar(new Explorar(ventana.getOrganizacion(), Actividad.getTodasLasActividades()));
 					Main.setPanel(c.getPanel());
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
-			} else {
-				Actividad act = ventana.getActividad();
-				if (act != null) {
-					CtrDescripcionActividad c = new CtrDescripcionActividad(null, act);
-					Main.setPanel(c.getPanel());
-				}
+			} else if (ventana.esProfesor()) {
+				ventana.getProfesor().setPassword(ventana.getTexto());
+				CtrExplorar c = new CtrExplorar(new Explorar(ventana.getProfesor(), Curso.getTodosLosCursos()));
+				Main.setPanel(c.getPanel());
 			}
 		}
 		

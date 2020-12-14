@@ -78,5 +78,8 @@ public class Estudiante extends Usuario {
 		super.eliminarUsuario();
 	}
 	
-
+	@Override
+	public void setPassword(String p) {
+		super.setPassword(p);
+	}
 }
