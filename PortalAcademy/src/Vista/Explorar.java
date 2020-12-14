@@ -33,7 +33,13 @@ public class Explorar extends JPanel {
 	private JButton registrarse;
 	private JButton seleccionC;
 	private JButton seleccionA;
-	private Usuario usuario;
+	
+	private Estudiante est = null;
+	private Organizacion org = null;
+	private Profesor prof = null;
+	private boolean estudiante = false;
+	private boolean organizacion = false;
+	private boolean profesor = false;
 	
 	private List<Curso> lista_cursos;
 	private List<Actividad> lista_actividad;
@@ -47,10 +53,11 @@ public class Explorar extends JPanel {
 	 * @wbp.parser.constructor
 	 */
 	public Explorar(Estudiante u, List<Curso> c, List<Actividad> a) {
+		estudiante = true;
 		lista_cursos = c;
 		lista_actividad = a;
 		this.setBounds(0,0,1080,650);
-		usuario = u;
+		est = u;
 		setLayout(null);
 		
 		listaC = new JList<String>();
@@ -114,7 +121,6 @@ public class Explorar extends JPanel {
 	public Explorar(List<Curso> c, List<Actividad> a) {
 		lista_cursos = c;
 		lista_actividad = a;
-		usuario = null;
 		setLayout(null);
 		
 		listaC = new JList<String>();
@@ -170,8 +176,9 @@ public class Explorar extends JPanel {
 	}
 	
 	public Explorar(Profesor u, List<Curso> l) {
+		profesor = true;
 		lista_cursos = l;
-		usuario = u;
+		prof = u;
 		this.setLayout(null);
 		
 		listaN = new JList<String>();
@@ -219,8 +226,9 @@ public class Explorar extends JPanel {
 	 * @wbp.parser.constructor
 	 */
 	public Explorar(Organizacion u, List<Actividad> l) {
+		organizacion = true;
 		lista_actividad = l;
-		usuario = u;
+		org = u;
 		this.setLayout(null);
 		
 		listaN = new JList<String>();
@@ -340,15 +348,10 @@ public class Explorar extends JPanel {
 		}
 	}
 	
-	public Usuario getUsuario() {
-		return usuario;
-	}
-	
 	public Curso getCurso() {
 		if (listaC.isSelectionEmpty()) {
 			return null;
 		} else {
-			System.out.println(lista_cursos.get(listaC.getSelectedIndex()).toString());
 			return lista_cursos.get(listaC.getSelectedIndex());
 		}
 	}
@@ -359,5 +362,29 @@ public class Explorar extends JPanel {
 		} else {
 			return lista_actividad.get(listaA.getSelectedIndex());
 		}
+	}
+	
+	public boolean esEstudiante() {
+		return estudiante;
+	}
+	
+	public boolean esOrganizacion() {
+		return organizacion;
+	}
+	
+	public boolean esProfesor() {
+		return profesor;
+	}
+	
+	public Estudiante getEstudiante() {
+		return est;
+	}
+	
+	public Organizacion getOrganizacion() {
+		return org;
+	}
+	
+	public Profesor getProfesor() {
+		return prof;
 	}
 }
