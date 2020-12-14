@@ -71,6 +71,7 @@ public class Estudiante extends Usuario {
 	
 	public Boolean estaEnActividad(Actividad actividad) {
 		return getActividades().contains(actividad);
+		
 	}
 	
 	@Override

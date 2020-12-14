@@ -218,4 +218,13 @@ public class Curso {
 	public String toString() {
 		return nombre;
 	}
+	
+	public boolean equals(Object o) {
+		if (o instanceof Curso) {
+			Curso u = (Curso) o;
+			return this.getId().equals(u.getId());
+		} else {
+			return false;
+		}
+	}
 }

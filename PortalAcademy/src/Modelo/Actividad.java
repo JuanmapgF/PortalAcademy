@@ -187,4 +187,13 @@ public class Actividad {
 	public String toString() {
 		return nombre;
 	}
+	
+	public boolean equals(Object o) {
+		if (o instanceof Actividad) {
+			Actividad u = (Actividad) o;
+			return this.getId().equals(u.getId());
+		} else {
+			return false;
+		}
+	}
 }
