@@ -60,7 +60,7 @@ public class CtrDescripcionActividad implements ActionListener {
 		}
 		
 		if (e.getActionCommand().equals("EXPLORAR")) {
-			if (esEstudiante) {
+			if (esEstudiante != null && esEstudiante) {
 				try {
 					CtrExplorar c = new CtrExplorar(new Explorar((Estudiante)user, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 					Main.setPanel(c.getPanel());
@@ -68,6 +68,16 @@ public class CtrDescripcionActividad implements ActionListener {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+			} else if (esEstudiante != null && !esEstudiante) {
+				CtrExplorar c;
+				try {
+					c = new CtrExplorar(new Explorar((Organizacion)user, Actividad.getTodasLasActividades()));
+					Main.setPanel(c.getPanel());
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			} else {
 				try {
 					CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
@@ -80,27 +90,27 @@ public class CtrDescripcionActividad implements ActionListener {
 		}
 		
 		if (e.getActionCommand().equals("CURSO")) {
-			if (esEstudiante) {
+			if (esEstudiante != null && esEstudiante) {
 				CtrMisCursos c = new CtrMisCursos(new MisCursos((Estudiante)user));
 				Main.setPanel(c.getPanel());
 			}
 		}
 		
 		if (e.getActionCommand().equals("ACTIVIDAD")) {
-			if (esEstudiante) {
+			if (esEstudiante != null && esEstudiante) {
 				CtrMisActividades c = new CtrMisActividades(new MisActividades((Estudiante)user));
 				Main.setPanel(c.getPanel());
-			} else {
+			} else if ( esEstudiante != null && !esEstudiante) {
 				CtrMisActividades c = new CtrMisActividades(new MisActividades((Organizacion)user));
 				Main.setPanel(c.getPanel());
 			}
 		}
 		
 		if (e.getActionCommand().equals("AJUSTES")) {
-			if (esEstudiante) {
+			if (esEstudiante != null && esEstudiante) {
 				CtrAjustes c = new CtrAjustes(new Ajustes((Estudiante)user));
 				Main.setPanel(c.getPanel());
-			} else {
+			}else if (esEstudiante != null && !esEstudiante) {
 				CtrAjustes c = new CtrAjustes(new Ajustes((Organizacion)user));
 				Main.setPanel(c.getPanel());
 			}
