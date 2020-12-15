@@ -18,15 +18,23 @@ public class CtrDescripcionActividad implements ActionListener {
 	public CtrDescripcionActividad(Usuario user, Actividad actividad) {
 		this.user = user;
 		this.actividad = actividad;
-		Boolean esInvitado = user == null;
-		esEstudiante = user != null && user instanceof Estudiante;
+		
+		if (user != null && user instanceof Estudiante) {
+			esEstudiante = true;
+		} else if (user != null && user instanceof Organizacion) {
+			esEstudiante = false;
+		} else {
+			esEstudiante = null;
+		}
+		
 		Boolean estaEnActividad;
-		if (esEstudiante) {
+		if (esEstudiante != null && esEstudiante) {
 			estaEnActividad = ((Estudiante) user).estaEnActividad(actividad);
 		} else {
 			estaEnActividad = false;
 		}
-		Boolean usuarioPuedeUnirse = (esInvitado || esEstudiante) && actividad.quedanPlazas() && !estaEnActividad;
+		
+		Boolean usuarioPuedeUnirse = (esEstudiante == null || esEstudiante) && actividad.quedanPlazas() && !estaEnActividad;
 		ventana = new DescripcionActividad(actividad.getNombre(), actividad.getDescripcion(), usuarioPuedeUnirse, esEstudiante);
 		ventana.controlador(this);
 	}
