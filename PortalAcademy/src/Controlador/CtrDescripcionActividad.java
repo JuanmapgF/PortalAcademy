@@ -80,11 +80,20 @@ public class CtrDescripcionActividad implements ActionListener {
 			if (esEstudiante) {
 				CtrMisActividades c = new CtrMisActividades(new MisActividades((Estudiante)user));
 				Main.setPanel(c.getPanel());
+			} else {
+				CtrMisActividades c = new CtrMisActividades(new MisActividades((Organizacion)user));
+				Main.setPanel(c.getPanel());
 			}
 		}
 		
 		if (e.getActionCommand().equals("AJUSTES")) {
-			
+			if (esEstudiante) {
+				CtrAjustes c = new CtrAjustes(new Ajustes((Estudiante)user));
+				Main.setPanel(c.getPanel());
+			} else {
+				CtrAjustes c = new CtrAjustes(new Ajustes((Organizacion)user));
+				Main.setPanel(c.getPanel());
+			}
 		}
 		
 		if (e.getActionCommand().equals("INICIAR_SESION")) {

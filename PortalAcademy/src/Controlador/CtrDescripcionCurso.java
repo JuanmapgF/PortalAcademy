@@ -72,6 +72,9 @@ public class CtrDescripcionCurso implements ActionListener {
 			if (esEstudiante) {
 				CtrMisCursos c = new CtrMisCursos(new MisCursos((Estudiante)user));
 				Main.setPanel(c.getPanel());
+			}else {
+				CtrMisCursos c = new CtrMisCursos(new MisCursos((Profesor)user));
+				Main.setPanel(c.getPanel());
 			}
 		}
 		
@@ -83,7 +86,13 @@ public class CtrDescripcionCurso implements ActionListener {
 		}
 		
 		if (e.getActionCommand().equals("AJUSTES")) {
-			
+			if (esEstudiante) {
+				CtrAjustes c = new CtrAjustes(new Ajustes((Estudiante)user));
+				Main.setPanel(c.getPanel());
+			} else {
+				CtrAjustes c = new CtrAjustes(new Ajustes((Profesor)user));
+				Main.setPanel(c.getPanel());
+			}
 		}
 		
 		if (e.getActionCommand().equals("INICIAR_SESION")) {

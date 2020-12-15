@@ -361,6 +361,24 @@ public class Explorar extends JPanel {
 		}
 	}
 	
+	public Curso getCursoN() {
+		if (listaN.isSelectionEmpty()) {
+			return null;
+		} else {
+			return lista_cursos.get(listaN.getSelectedIndex());
+		}
+	}
+	
+	public Actividad getActividadN() {
+		if (listaN.isSelectionEmpty()) {
+			return null;
+		} else {
+			return lista_actividad.get(listaN.getSelectedIndex());
+		}
+	}
+	
+	
+	
 	public boolean esEstudiante() {
 		return estudiante;
 	}
