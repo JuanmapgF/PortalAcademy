@@ -17,15 +17,21 @@ public class CtrDescripcionCurso implements ActionListener {
 	public CtrDescripcionCurso(Usuario user, Curso curso) {
 		this.user = user;
 		this.curso = curso;
-		Boolean esInvitado = user == null;
-		esEstudiante = user != null && user instanceof Estudiante;
+		if (user != null && user instanceof Estudiante) {
+			esEstudiante = true;
+		} else if (user != null && user instanceof Profesor) {
+			esEstudiante = false;
+		} else {
+			esEstudiante = null;
+		}
 		Boolean estaEnCurso;
-		if (esEstudiante) {
+		if (esEstudiante != null && esEstudiante) {
 			estaEnCurso = ((Estudiante) user).estaEnCurso(curso);
 		} else {
 			estaEnCurso = false;
 		}
-		Boolean usuarioPuedeUnirse = (esInvitado && curso.getPublico() || esEstudiante) && curso.quedanPlazas() && !estaEnCurso;
+		Boolean usuarioPuedeUnirse = (esEstudiante == null && curso.getPublico() || esEstudiante != null && esEstudiante)
+				&& curso.quedanPlazas() && !estaEnCurso;
 		ventana = new DescripcionCurso(curso.getNombre(), curso.getDescripcion(), usuarioPuedeUnirse, esEstudiante);
 		ventana.controlador(this);
 	}
