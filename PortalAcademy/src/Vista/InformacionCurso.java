@@ -73,6 +73,16 @@ public class InformacionCurso extends JPanel {
 			JLabel lblForo = new JLabel("Foro");
 			lblForo.setBounds(278, 215, 46, 14);
 			add(lblForo);
+			
+			listaMensajes.setModel(modelo);
+			
+			for (Mensaje mensaje : mensajes) {
+				if (mensaje.getEmisor().equals(user)) {
+					modelo.addElement(new String("\t"+mensaje.toString()));
+				} else {
+					modelo.addElement(mensaje.getEmisor().toString().toUpperCase() + ":" + mensaje.toString());
+				}
+			}
 		}
 		
 		
@@ -81,15 +91,7 @@ public class InformacionCurso extends JPanel {
 		
 		// ============== Cargar mensajes ===============
 		
-		listaMensajes.setModel(modelo);
 		
-		for (Mensaje mensaje : mensajes) {
-			if (mensaje.getEmisor().equals(user)) {
-				modelo.addElement(new String("\t"+mensaje.toString()));
-			} else {
-				modelo.addElement(mensaje.getEmisor().toString().toUpperCase() + ":" + mensaje.toString());
-			}
-		}
 		
 		// ==============================================
 		
