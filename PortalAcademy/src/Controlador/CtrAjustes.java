@@ -79,6 +79,8 @@ public class CtrAjustes implements ActionListener {
 					CtrExplorar c = new CtrExplorar(new Explorar(ventana.getProfesor(), Curso.getTodosLosCursos()));
 					Main.setPanel(c.getPanel());
 				}
+				
+				JOptionPane.showMessageDialog(ventana, "La contraseña se ha actualizado satisfactoriamente");
 			} else {
 				JOptionPane.showMessageDialog(ventana, "La contraseña debe tener al menos 6 caracteres, contener al menos una mayúscula, una minúscula y un dígito");
 			}
