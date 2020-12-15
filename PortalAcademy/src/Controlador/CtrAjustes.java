@@ -3,7 +3,10 @@ package Controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Modelo.Actividad;
@@ -51,29 +54,33 @@ public class CtrAjustes implements ActionListener {
 			}
 		}
 		
-		if (e.getActionCommand().equals("CAMBIAR")) {			
-			if (ventana.esEstudiante()) {
-				ventana.getEstudiante().setPassword(ventana.getTexto());
-				try {
-					CtrExplorar c = new CtrExplorar(new Explorar(ventana.getEstudiante(), Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+		if (e.getActionCommand().equals("CAMBIAR")) {
+			if (contrasenaValida()) {
+				if (ventana.esEstudiante()) {
+					ventana.getEstudiante().setPassword(ventana.getTexto());
+					try {
+						CtrExplorar c = new CtrExplorar(new Explorar(ventana.getEstudiante(), Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+						Main.setPanel(c.getPanel());
+					} catch (ParseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				} else if (ventana.esOrganizacion()) {
+					ventana.getOrganizacion().setPassword(ventana.getTexto());
+					try {
+						CtrExplorar c = new CtrExplorar(new Explorar(ventana.getOrganizacion(), Actividad.getTodasLasActividades()));
+						Main.setPanel(c.getPanel());
+					} catch (ParseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				} else if (ventana.esProfesor()) {
+					ventana.getProfesor().setPassword(ventana.getTexto());
+					CtrExplorar c = new CtrExplorar(new Explorar(ventana.getProfesor(), Curso.getTodosLosCursos()));
 					Main.setPanel(c.getPanel());
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				}
-			} else if (ventana.esOrganizacion()) {
-				ventana.getOrganizacion().setPassword(ventana.getTexto());
-				try {
-					CtrExplorar c = new CtrExplorar(new Explorar(ventana.getOrganizacion(), Actividad.getTodasLasActividades()));
-					Main.setPanel(c.getPanel());
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			} else if (ventana.esProfesor()) {
-				ventana.getProfesor().setPassword(ventana.getTexto());
-				CtrExplorar c = new CtrExplorar(new Explorar(ventana.getProfesor(), Curso.getTodosLosCursos()));
-				Main.setPanel(c.getPanel());
+			} else {
+				JOptionPane.showMessageDialog(ventana, "La contraseña debe tener al menos 6 caracteres, contener al menos una mayúscula, una minúscula y un dígito");
 			}
 		}
 		
@@ -144,6 +151,12 @@ public class CtrAjustes implements ActionListener {
 	
 	public JPanel getPanel() {
 		return ventana;
+	}
+	
+	private boolean contrasenaValida() {
+		Pattern pattern = Pattern.compile("^(?=\\w*\\d)(?=\\w*[A-Z])(?=\\w*[a-z])\\S{6,20}$");
+		Matcher mather = pattern.matcher(new String(ventana.getTexto()));
+		return mather.find();
 	}
 
 }
