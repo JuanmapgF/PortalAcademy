@@ -11,6 +11,7 @@ import Modelo.Actividad;
 import Modelo.BD;
 import Modelo.Curso;
 import Modelo.Usuario;
+import Vista.Ajustes;
 import Vista.Explorar;
 import Vista.Inicio;
 import Vista.Main;
@@ -71,25 +72,9 @@ public class CtrMisCursos implements ActionListener {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-			} else if (ventana.esOrganizacion()) {
-				try {
-					CtrExplorar c = new CtrExplorar(new Explorar(ventana.getOrganizacion(), Actividad.getTodasLasActividades()));
-					Main.setPanel(c.getPanel());
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			} else if (ventana.esProfesor()) {
+			} else {
 				CtrExplorar c = new CtrExplorar(new Explorar(ventana.getProfesor(), Curso.getTodosLosCursos()));
 				Main.setPanel(c.getPanel());
-			} else {
-				try {
-					CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-					Main.setPanel(c.getPanel());
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
 			}
 		}
 		
@@ -107,14 +92,17 @@ public class CtrMisCursos implements ActionListener {
 			if (ventana.esEstudiante()) {
 				CtrMisActividades c = new CtrMisActividades(new MisActividades(ventana.getEstudiante()));
 				Main.setPanel(c.getPanel());
-			} else {
-				CtrMisActividades c = new CtrMisActividades(new MisActividades(ventana.getOrganizacion()));
-				Main.setPanel(c.getPanel());
 			}
 		}
 		
 		if (e.getActionCommand().equals("AJUSTES")) {
-			
+			if (ventana.esEstudiante()) {
+				CtrAjustes c = new CtrAjustes(new Ajustes(ventana.getEstudiante()));
+				Main.setPanel(c.getPanel());
+			} else {
+				CtrAjustes c = new CtrAjustes(new Ajustes(ventana.getProfesor()));
+				Main.setPanel(c.getPanel());
+			}
 		}
 		
 		

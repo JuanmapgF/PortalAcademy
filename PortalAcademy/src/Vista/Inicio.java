@@ -35,21 +35,21 @@ public class Inicio extends JPanel {
 		
 		JLabel lblNewLabel_1 = new JLabel("Usuario:");
 		lblNewLabel_1.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(260, 169, 111, 27);
+		lblNewLabel_1.setBounds(360, 169, 111, 27);
 		add(lblNewLabel_1);
 		
 		user = new JTextField();
-		user.setBounds(412, 172, 242, 20);
+		user.setBounds(512, 172, 242, 20);
 		add(user);
 		user.setColumns(10);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Contrase\u00F1a:");
 		lblNewLabel_1_1.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		lblNewLabel_1_1.setBounds(260, 276, 135, 27);
+		lblNewLabel_1_1.setBounds(360, 276, 135, 27);
 		add(lblNewLabel_1_1);
 		
 		iniciar = new JButton("Iniciar sesi\u00F3n");
-		iniciar.setBounds(479, 389, 116, 33);
+		iniciar.setBounds(529, 389, 116, 33);
 		add(iniciar);
 		
 		registro = new JButton("Registrarse");
@@ -62,16 +62,16 @@ public class Inicio extends JPanel {
 		add(lblNewLabel_2);
 		
 		cont = new JPasswordField();
-		cont.setBounds(412, 279, 242, 20);
+		cont.setBounds(512, 279, 242, 20);
 		add(cont);
 		
 		volver = new JButton("Explorar");
-		volver.setBounds(47, 563, 111, 20);
+		volver.setBounds(36, 191, 131, 32);
 		add(volver);
 		
 		error = new JLabel("El usuario o la contrase\u00F1a introducidos son incorrectos");
 		error.setForeground(Color.RED);
-		error.setBounds(373, 340, 379, 14);
+		error.setBounds(473, 340, 379, 14);
 		add(error);
 		error.setVisible(false);
 	}

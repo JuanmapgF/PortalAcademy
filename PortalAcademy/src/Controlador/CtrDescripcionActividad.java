@@ -18,15 +18,23 @@ public class CtrDescripcionActividad implements ActionListener {
 	public CtrDescripcionActividad(Usuario user, Actividad actividad) {
 		this.user = user;
 		this.actividad = actividad;
-		Boolean esInvitado = user == null;
-		esEstudiante = user != null && user instanceof Estudiante;
+		
+		if (user != null && user instanceof Estudiante) {
+			esEstudiante = true;
+		} else if (user != null && user instanceof Organizacion) {
+			esEstudiante = false;
+		} else {
+			esEstudiante = null;
+		}
+		
 		Boolean estaEnActividad;
-		if (esEstudiante) {
+		if (esEstudiante != null && esEstudiante) {
 			estaEnActividad = ((Estudiante) user).estaEnActividad(actividad);
 		} else {
 			estaEnActividad = false;
 		}
-		Boolean usuarioPuedeUnirse = (esInvitado || esEstudiante) && actividad.quedanPlazas() && !estaEnActividad;
+		
+		Boolean usuarioPuedeUnirse = (esEstudiante == null || esEstudiante) && actividad.quedanPlazas() && !estaEnActividad;
 		ventana = new DescripcionActividad(actividad.getNombre(), actividad.getDescripcion(), usuarioPuedeUnirse, esEstudiante);
 		ventana.controlador(this);
 	}
@@ -82,11 +90,20 @@ public class CtrDescripcionActividad implements ActionListener {
 			if (esEstudiante) {
 				CtrMisActividades c = new CtrMisActividades(new MisActividades((Estudiante)user));
 				Main.setPanel(c.getPanel());
+			} else {
+				CtrMisActividades c = new CtrMisActividades(new MisActividades((Organizacion)user));
+				Main.setPanel(c.getPanel());
 			}
 		}
 		
 		if (e.getActionCommand().equals("AJUSTES")) {
-			
+			if (esEstudiante) {
+				CtrAjustes c = new CtrAjustes(new Ajustes((Estudiante)user));
+				Main.setPanel(c.getPanel());
+			} else {
+				CtrAjustes c = new CtrAjustes(new Ajustes((Organizacion)user));
+				Main.setPanel(c.getPanel());
+			}
 		}
 		
 		if (e.getActionCommand().equals("INICIAR_SESION")) {

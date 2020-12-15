@@ -28,16 +28,23 @@ public class CtrInformacionCurso implements ActionListener {
 		} else {
 			esProfesor = false;
 		}
-		List<String> mensajesString = new ArrayList<>();
-		for (Mensaje m : curso.getMensajes()) {
-			mensajesString.add(m.toString());
-		}
-		ventana = new InformacionCurso(curso.getNombre(), curso.getDescripcion(), curso.getTieneForo(), mensajesString, esProfesor);
+		ventana = new InformacionCurso(curso.getNombre(), curso.getDescripcion(), curso.getTieneForo(), curso.getMensajes(), esProfesor, user);
 		ventana.controlador(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if (e.getActionCommand().equals("Enviar")) {
+			Mensaje m = new Mensaje(ventana.mensajeAEnviar(), user, curso);
+			CtrInformacionCurso c = new CtrInformacionCurso(user, curso);
+			Main.setPanel(c.getPanel());
+		}
+		
+		if (e.getActionCommand().equals("Refrescar")) {
+			CtrInformacionCurso c = new CtrInformacionCurso(user, curso);
+			Main.setPanel(c.getPanel());
+		}
+		
 		if (e.getActionCommand().equals("Cerrar Sesi\\u00F3n")) {
 			try {
 				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));

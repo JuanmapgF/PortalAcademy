@@ -67,8 +67,8 @@ public class Ajustes extends JPanel {
 		titulo.setBounds(529, 0, 118, 102);
 		add(titulo);
 		
-		cerrarSesion = new JButton("Cerrar Sesi\u00F3n");
-		cerrarSesion.setBounds(872, 42, 118, 23);
+		cerrarSesion = new JButton("Cerrar sesi\u00F3n");
+		cerrarSesion.setBounds(860, 37, 121, 23);
 		add(cerrarSesion);
 		
 		JLabel nueva = new JLabel("Nueva contrase\u00F1a:");
@@ -118,8 +118,8 @@ public class Ajustes extends JPanel {
 		titulo.setBounds(529, 0, 118, 102);
 		add(titulo);
 		
-		cerrarSesion = new JButton("Cerrar Sesi\u00F3n");
-		cerrarSesion.setBounds(872, 42, 118, 23);
+		cerrarSesion = new JButton("Cerrar sesi\u00F3n");
+		cerrarSesion.setBounds(860, 37, 121, 23);
 		add(cerrarSesion);
 		
 		JLabel nueva = new JLabel("Nueva contrase\u00F1a:");
@@ -165,8 +165,8 @@ public class Ajustes extends JPanel {
 		titulo.setBounds(529, 0, 118, 102);
 		add(titulo);
 		
-		cerrarSesion = new JButton("Cerrar Sesi\u00F3n");
-		cerrarSesion.setBounds(872, 42, 118, 23);
+		cerrarSesion = new JButton("Cerrar sesi\u00F3n");
+		cerrarSesion.setBounds(860, 37, 121, 23);
 		add(cerrarSesion);
 		
 		JLabel nueva = new JLabel("Nueva contrase\u00F1a:");

@@ -17,15 +17,21 @@ public class CtrDescripcionCurso implements ActionListener {
 	public CtrDescripcionCurso(Usuario user, Curso curso) {
 		this.user = user;
 		this.curso = curso;
-		Boolean esInvitado = user == null;
-		esEstudiante = user != null && user instanceof Estudiante;
+		if (user != null && user instanceof Estudiante) {
+			esEstudiante = true;
+		} else if (user != null && user instanceof Profesor) {
+			esEstudiante = false;
+		} else {
+			esEstudiante = null;
+		}
 		Boolean estaEnCurso;
-		if (esEstudiante) {
+		if (esEstudiante != null && esEstudiante) {
 			estaEnCurso = ((Estudiante) user).estaEnCurso(curso);
 		} else {
 			estaEnCurso = false;
 		}
-		Boolean usuarioPuedeUnirse = (esInvitado && curso.getPublico() || esEstudiante) && curso.quedanPlazas() && !estaEnCurso;
+		Boolean usuarioPuedeUnirse = (esEstudiante == null && curso.getPublico() || esEstudiante != null && esEstudiante)
+				&& curso.quedanPlazas() && !estaEnCurso;
 		ventana = new DescripcionCurso(curso.getNombre(), curso.getDescripcion(), usuarioPuedeUnirse, esEstudiante);
 		ventana.controlador(this);
 	}
@@ -73,6 +79,9 @@ public class CtrDescripcionCurso implements ActionListener {
 			if (esEstudiante) {
 				CtrMisCursos c = new CtrMisCursos(new MisCursos((Estudiante)user));
 				Main.setPanel(c.getPanel());
+			}else {
+				CtrMisCursos c = new CtrMisCursos(new MisCursos((Profesor)user));
+				Main.setPanel(c.getPanel());
 			}
 		}
 		
@@ -84,7 +93,13 @@ public class CtrDescripcionCurso implements ActionListener {
 		}
 		
 		if (e.getActionCommand().equals("AJUSTES")) {
-			
+			if (esEstudiante) {
+				CtrAjustes c = new CtrAjustes(new Ajustes((Estudiante)user));
+				Main.setPanel(c.getPanel());
+			} else {
+				CtrAjustes c = new CtrAjustes(new Ajustes((Profesor)user));
+				Main.setPanel(c.getPanel());
+			}
 		}
 		
 		if (e.getActionCommand().equals("INICIAR_SESION")) {

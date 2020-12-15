@@ -35,6 +35,7 @@ public class CtrRegistro implements ActionListener {
 		vista.rdbtnProfesor.addActionListener(this);
 		vista.btnRegistro.addActionListener(this);
 		vista.btnInicioSesion.addActionListener(this);
+		vista.volver.addActionListener(this);
 	}
 
 	public Registro getPanel() {
@@ -43,6 +44,16 @@ public class CtrRegistro implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+		if(e.getSource() == vista.volver) {
+			try {
+				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+				Main.setPanel(c.getPanel());
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 		
 		if(e.getSource() == vista.btnInicioSesion) {
 			CtrInicio ci = new CtrInicio(new Inicio());
