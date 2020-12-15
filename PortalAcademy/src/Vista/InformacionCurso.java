@@ -10,18 +10,28 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+import Modelo.Mensaje;
+import Modelo.Usuario;
 
 public class InformacionCurso extends JPanel {
+	private JList<String> listaMensajes;
+	private DefaultListModel<String> modelo = new DefaultListModel<String>();
 	private JButton cerrarSesion;
 	private JButton iniciar;
 	private JButton registrarse;
 	private JButton editar;
+	private JButton enviar;
+	private JButton refrescar;
+	private JTextField textField;
+	private String mensajeEscrito;
 
 	/**
 	 * Create the panel.
 	 *
 	 */
-	public InformacionCurso(String nombre, String descripcion, Boolean tieneForo, List<String> mensajes, Boolean esProfesor) {
+	public InformacionCurso(String nombre, String descripcion, Boolean tieneForo, List<Mensaje> mensajes, Boolean esProfesor, Usuario user) {
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
 		
@@ -29,14 +39,59 @@ public class InformacionCurso extends JPanel {
 			//TODO: Foro
 //		}
 		
+		listaMensajes = new JList<String>();
 		
 		JLabel nombreCurso = new JLabel(nombre);
 		nombreCurso.setBounds(428, 34, 269, 33);
 		add(nombreCurso);
 		
 		JTextArea descripcionCurso = new JTextArea(descripcion);
-		descripcionCurso.setBounds(278, 102, 652, 371);
+		descripcionCurso.setBounds(278, 102, 459, 102);
 		add(descripcionCurso);
+		
+		//-----
+		
+		if (tieneForo) {
+			JScrollPane foro = new JScrollPane();
+			foro.setBounds(278, 234, 459, 268);
+			foro.setViewportView(listaMensajes);
+			add(foro);
+			
+			textField = new JTextField();
+			textField.setBounds(278, 536, 459, 20);
+			add(textField);
+			textField.setColumns(10);
+			
+			enviar = new JButton("Enviar");
+			enviar.setBounds(648, 513, 89, 23);
+			add(enviar);
+			
+			refrescar = new JButton("Refrescar");
+			refrescar.setBounds(748, 234, 89, 23);
+			add(refrescar);
+			
+			JLabel lblForo = new JLabel("Foro");
+			lblForo.setBounds(278, 215, 46, 14);
+			add(lblForo);
+		}
+		
+		
+		
+		//-----
+		
+		// ============== Cargar mensajes ===============
+		
+		listaMensajes.setModel(modelo);
+		
+		for (Mensaje mensaje : mensajes) {
+			if (mensaje.getEmisor().equals(user)) {
+				modelo.addElement(new String("\t"+mensaje.toString()));
+			} else {
+				modelo.addElement(mensaje.getEmisor().toString().toUpperCase() + ":" + mensaje.toString());
+			}
+		}
+		
+		// ==============================================
 		
 		if (esProfesor != null) {
 			cerrarSesion = new JButton("Cerrar Sesi\u00F3n");
@@ -65,6 +120,17 @@ public class InformacionCurso extends JPanel {
 	
 	public void controlador(ActionListener ctr) {
 		
+		if (enviar != null) {
+			enviar.addActionListener(ctr);
+			enviar.setActionCommand("Enviar");
+		}
+		
+		if (refrescar != null) {
+			refrescar.addActionListener(ctr);
+			refrescar.setActionCommand("Refrescar");
+		}
+		
+		
 		if (cerrarSesion != null) {
 			cerrarSesion.addActionListener(ctr);
 			cerrarSesion.setActionCommand("Cerrar Sesi\u00F3n");
@@ -84,5 +150,10 @@ public class InformacionCurso extends JPanel {
 			editar.addActionListener(ctr);
 			editar.setActionCommand("Editar");
 		}
+	}
+	
+	public String mensajeAEnviar() {
+		mensajeEscrito = textField.getText();
+		return mensajeEscrito;
 	}
 }
