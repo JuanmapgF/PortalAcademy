@@ -36,6 +36,8 @@ public class CtrDescripcionActividad implements ActionListener {
 		// TODO Auto-generated method stub
 		if (e.getActionCommand().equals("Unirse")) {
 			actividad.addParticipante(user);
+			CtrInformacionActividad c = new CtrInformacionActividad(user, actividad);
+			Main.setPanel(c.getPanel());
 			//TODO: Entramos en informacionActividad
 		}
 		if (e.getActionCommand().equals("CERRAR_SESION")) {

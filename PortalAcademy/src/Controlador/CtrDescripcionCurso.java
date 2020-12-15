@@ -35,7 +35,8 @@ public class CtrDescripcionCurso implements ActionListener {
 		
 		if (e.getActionCommand().equals("Unirse")) {
 			curso.addEstudiante(user);
-			//TODO: Entramos en informacionCurso con su foro
+			CtrInformacionCurso c = new CtrInformacionCurso(user, curso);
+			Main.setPanel(c.getPanel());
 		}
 		
 		if (e.getActionCommand().equals("CERRAR_SESION")) {
