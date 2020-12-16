@@ -2,15 +2,11 @@ package Vista;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -18,9 +14,8 @@ import javax.swing.SwingConstants;
 
 import com.toedter.calendar.JCalendar;
 
-import Modelo.*;
-import javax.swing.JSlider;
-import javax.swing.JCheckBoxMenuItem;
+import Modelo.Actividad;
+import Modelo.Organizacion;
 
 public class EditarActividad extends JPanel {
 
