@@ -12,7 +12,8 @@ public class Profesor extends Usuario {
 		super(nick, correo, password);
 		this.telefono = telefono;
 		bd = BD.getBD();
-		bd.Insert("INSERT INTO Profesor (nick, codigoTelefono, numeroTelefono) VALUES ( '" + this.getNick() + "', "+ telefono.getCodigo() + ",'" + telefono.getNumero() + "')");
+		bd.Insert("INSERT INTO Profesor (nick, codigoTelefono, numeroTelefono) VALUES ( '" + this.getNick() + "', "
+				+ telefono.getCodigo() + ",'" + telefono.getNumero() + "')");
 		bd.finalize();
 	}
 
@@ -32,6 +33,7 @@ public class Profesor extends Usuario {
 		List<Curso> c = new ArrayList<Curso>();
 		bd = BD.getBD();
 		List<Object[]> cursos = bd.Select("SELECT * FROM Curso WHERE nickProfesor = '" + this.getNick() + "'");
+		BD.contadorFinalize(cursos.size() + 1);
 		bd.finalize();
 		for (Object[] o : cursos) {
 			c.add(new Curso(Integer.parseInt(o[0].toString())));
@@ -43,7 +45,7 @@ public class Profesor extends Usuario {
 	public void eliminarUsuario() {
 		super.eliminarUsuario();
 	}
-	
+
 	@Override
 	public void setPassword(String p) {
 		super.setPassword(p);

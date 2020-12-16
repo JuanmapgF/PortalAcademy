@@ -13,6 +13,7 @@ public class BD {
 	private Connection con;
 
 	private static BD bd;
+	private static int cnt = 0;
 
 	public BD() {
 		try {
@@ -36,14 +37,22 @@ public class BD {
 	// ------------------------
 
 	public void finalize() {
-
 		try {
-			if (con != null)
-				con.close();
-			bd = null;
+			if (cnt == 0) {
+				if (con != null) {
+					con.close();
+					bd = null;
+				}
+			} else {
+				cnt--;
+			}
 		} catch (SQLException e) {
 			throw new ErrorBD("Error al Cerrar la Conexi�n." + e.getMessage());
 		}
+	}
+
+	public static void contadorFinalize(int cnt) {
+		BD.cnt = cnt;
 	}
 
 	public Object SelectEscalar(String sel) {
