@@ -1,18 +1,17 @@
 package Vista;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 
-import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import java.awt.Color;
+import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class Inicio extends JPanel {
 	private JTextField user;
 	private JPasswordField cont;

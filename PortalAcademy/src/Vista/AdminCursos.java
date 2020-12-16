@@ -2,13 +2,19 @@ package Vista;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.text.ParseException;
 
-import javax.swing.*;
-import Modelo.*;
-
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
+import Modelo.Curso;
+
+@SuppressWarnings("serial")
 public class AdminCursos extends JPanel {
 	private JTextField txtBuscarCurso;
 	

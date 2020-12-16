@@ -26,7 +26,7 @@ public class CtrInformacionActividad implements ActionListener {
 		} else {
 			esOrganizacion = false;
 		}
-		ventana = new InformacionActividad(actividad.getNombre(), actividad.getDescripcion(), user);
+		ventana = new InformacionActividad(actividad, user);
 		ventana.controlador(this);
 	}
 

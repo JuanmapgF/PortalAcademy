@@ -5,15 +5,18 @@ import java.awt.event.ActionListener;
 import java.text.ParseException;
 
 import Modelo.Actividad;
-import Modelo.BD;
 import Modelo.Curso;
-import Vista.*;
+import Vista.AdminActividades;
+import Vista.AdminCursos;
+import Vista.AdminInicio;
+import Vista.AdminUsuarios;
+import Vista.Explorar;
+import Vista.Main;
 
 
 public class CtrAdminInicio implements ActionListener{
 
 	private AdminInicio vista;
-	private BD bd;
 	
 	public CtrAdminInicio(AdminInicio v) {
 		vista = v;

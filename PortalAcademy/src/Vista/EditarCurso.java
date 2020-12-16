@@ -17,6 +17,7 @@ import javax.swing.JSpinner;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 
+@SuppressWarnings("serial")
 public class EditarCurso extends JPanel {
 
 	private Curso c;

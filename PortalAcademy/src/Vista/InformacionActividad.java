@@ -1,15 +1,16 @@
 package Vista;
 
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import Modelo.*;
 
+import Modelo.*;
+import java.awt.Font;
+@SuppressWarnings("serial")
 public class InformacionActividad extends JPanel {
 	private JButton cerrarSesion;
 	private JButton iniciar;
@@ -23,18 +24,37 @@ public class InformacionActividad extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public InformacionActividad(String nombre, String descripcion, Usuario user) {
+	public InformacionActividad(Actividad actividad, Usuario user) {
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
 		
-		JLabel nombreActividad = new JLabel(nombre);
+		JLabel lblFecha = new JLabel("Fecha:");
+		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblFecha.setBounds(278, 336, 63, 14);
+		add(lblFecha);
+		
+		JLabel lblLugar = new JLabel("Lugar:");
+		lblLugar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblLugar.setBounds(278, 382, 63, 14);
+		add(lblLugar);
+		
+		JLabel nombreActividad = new JLabel(actividad.getNombre());
 		nombreActividad.setBounds(428, 34, 269, 33);
 		add(nombreActividad);
 		
-		JTextArea descripcionActividad = new JTextArea(descripcion);
-		descripcionActividad.setBounds(278, 102, 652, 371);
+		JTextArea descripcionActividad = new JTextArea(actividad.getDescripcion());
+		descripcionActividad.setBounds(278, 102, 652, 185);
 		add(descripcionActividad);
 		
+		JLabel fecha = new JLabel(actividad.getFecha().toString());
+		fecha.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		fecha.setBounds(382, 336, 95, 14);
+		add(fecha);
+		
+		JLabel lugar = new JLabel(actividad.getLugar());
+		lugar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lugar.setBounds(382, 384, 95, 14);
+		add(lugar);
 		
 		
 		if (user == null) {
@@ -82,6 +102,10 @@ public class InformacionActividad extends JPanel {
 		explorar = new JButton("Explorar");
 		explorar.setBounds(36, 191, 131, 32);
 		add(explorar);
+		
+		
+		
+		
 	}
 	
 	public void controlador(ActionListener ctr) {
