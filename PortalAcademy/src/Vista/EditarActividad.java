@@ -2,6 +2,9 @@ package Vista;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -111,7 +114,13 @@ public class EditarActividad extends JPanel {
 		add(cerrarsesion);
 		
 		calendario = new JCalendar();
-		calendario.setBounds(400, 400, 400, 200);
+		calendario.setBounds(400, 400, 311, 200);
+		calendario.setDate(a.getFecha());
+		calendario.setTodayButtonVisible(true);
+		calendario.setTodayButtonText("Hoy");
+		calendario.setNullDateButtonVisible(true);
+		calendario.setWeekOfYearVisible(false);
+		calendario.setMinSelectableDate(new Date());
 		add(calendario);
 		
 		JLabel lblFecha = new JLabel("Fecha:");
@@ -161,5 +170,9 @@ public class EditarActividad extends JPanel {
 
 	public Integer getAforo() {
 		return (Integer) aforo.getValue();
+	}
+	
+	public Date getFecha() {
+		return calendario.getDate();
 	}
 }
