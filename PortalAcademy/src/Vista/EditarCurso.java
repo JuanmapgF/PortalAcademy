@@ -183,6 +183,18 @@ public class EditarCurso extends JPanel {
 		
 		ajustes.addActionListener(ctr);
 		ajustes.setActionCommand("AJUSTES");
+		
+		publico.addActionListener(ctr);
+		publico.setActionCommand("PUBLICO");
+		
+		privado.addActionListener(ctr);
+		privado.setActionCommand("PRIVADO");
+		
+		presencial.addActionListener(ctr);
+		presencial.setActionCommand("PRESENCIAL");
+		
+		online.addActionListener(ctr);
+		online.setActionCommand("ONLINE");
 	}
 
 	public Curso getC() {
@@ -204,9 +216,17 @@ public class EditarCurso extends JPanel {
 	public boolean getPublico() {
 		return publico.isSelected();
 	}
+	
+	public void setPublico(boolean b) {
+		publico.setSelected(b);
+	}
 
 	public boolean getPrivado() {
 		return privado.isSelected();
+	}
+	
+	public void setPrivado(boolean b) {
+		privado.setSelected(b);
 	}
 
 	public Integer getAforo() {
@@ -216,9 +236,17 @@ public class EditarCurso extends JPanel {
 	public boolean getPresencial() {
 		return presencial.isSelected();
 	}
+	
+	public void setPresencial(boolean b) {
+		presencial.setSelected(b);
+	}
 
 	public boolean getOnline() {
 		return online.isSelected();
+	}
+	
+	public void setOnline(boolean b) {
+		online.setSelected(b);
 	}
 	
 	public boolean getForo() {
