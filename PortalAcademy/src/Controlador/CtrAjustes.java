@@ -52,6 +52,8 @@ public class CtrAjustes implements ActionListener {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			
+			JOptionPane.showMessageDialog(ventana, "Cuenta eliminada satisfactoriamente");
 		}
 		
 		if (e.getActionCommand().equals("CAMBIAR")) {
