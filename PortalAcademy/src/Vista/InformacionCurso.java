@@ -34,7 +34,7 @@ public class InformacionCurso extends JPanel {
 	 * Create the panel.
 	 *
 	 */
-	public InformacionCurso(String nombre, String descripcion, Boolean tieneForo, List<Mensaje> mensajes, Boolean esProfesor, Usuario user) {
+	public InformacionCurso(String nombre, String descripcion, Boolean tieneForo, List<Mensaje> mensajes, Usuario user) {
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
 		
