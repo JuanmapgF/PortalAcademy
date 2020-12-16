@@ -13,7 +13,11 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import com.toedter.calendar.JCalendar;
+
 import Modelo.*;
+import javax.swing.JSlider;
+import javax.swing.JCheckBoxMenuItem;
 
 public class EditarActividad extends JPanel {
 
@@ -31,6 +35,7 @@ public class EditarActividad extends JPanel {
 	private JButton eliminar;
 	private JButton volver;
 	private JButton cerrarsesion;
+	private JCalendar calendario;
 	
 	public EditarActividad(Actividad act, Organizacion p) {
 		usuario = p;
@@ -58,21 +63,21 @@ public class EditarActividad extends JPanel {
 		
 		JLabel lblDescripcin = new JLabel("Descripci\u00F3n:");
 		lblDescripcin.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		lblDescripcin.setBounds(264, 214, 136, 27);
+		lblDescripcin.setBounds(264, 177, 136, 27);
 		add(lblDescripcin);
 		
 		descripcion = new JTextArea();
-		descripcion.setBounds(400, 191, 311, 113);
+		descripcion.setBounds(400, 178, 311, 98);
 		descripcion.setText(a.getDescripcion());
 		add(descripcion);
 				
 		JLabel lblAforo = new JLabel("Aforo:");
 		lblAforo.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		lblAforo.setBounds(264, 446, 136, 27);
+		lblAforo.setBounds(264, 295, 136, 27);
 		add(lblAforo);
 		
 		aforo = new JSpinner();
-		aforo.setBounds(400, 449, 47, 20);
+		aforo.setBounds(400, 298, 47, 20);
 		add(aforo);
 		
 		aforo.setValue(a.getAforo());
@@ -104,6 +109,15 @@ public class EditarActividad extends JPanel {
 		cerrarsesion = new JButton("Cerrar sesi\u00F3n");
 		cerrarsesion.setBounds(867, 26, 144, 23);
 		add(cerrarsesion);
+		
+		calendario = new JCalendar();
+		calendario.setBounds(400, 400, 400, 200);
+		add(calendario);
+		
+		JLabel lblFecha = new JLabel("Fecha:");
+		lblFecha.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		lblFecha.setBounds(264, 405, 136, 27);
+		add(lblFecha);
 	}
 	
 	public void controlador(ActionListener ctr) {
@@ -148,5 +162,4 @@ public class EditarActividad extends JPanel {
 	public Integer getAforo() {
 		return (Integer) aforo.getValue();
 	}
-
 }
