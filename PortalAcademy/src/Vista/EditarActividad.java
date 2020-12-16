@@ -102,7 +102,7 @@ public class EditarActividad extends JPanel {
 		ajustes.setBounds(36, 336, 131, 32);
 		add(ajustes);
 		
-		volver = new JButton("Volver");
+		volver = new JButton("Descartar cambios");
 		volver.setBounds(867, 584, 144, 23);
 		add(volver);
 		
