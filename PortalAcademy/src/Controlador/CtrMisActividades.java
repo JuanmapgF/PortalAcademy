@@ -3,27 +3,22 @@ package Controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
-import java.util.List;
 
 import javax.swing.JPanel;
 
 import Modelo.Actividad;
-import Modelo.BD;
 import Modelo.Curso;
-import Modelo.Usuario;
 import Vista.Ajustes;
 import Vista.Explorar;
-import Vista.Inicio;
 import Vista.Main;
 import Vista.MisActividades;
 import Vista.MisCursos;
-import Vista.Registro;
 
-public class CtrMisCursos implements ActionListener {
+public class CtrMisActividades implements ActionListener {
+
+	private MisActividades ventana;
 	
-	private MisCursos ventana;
-	
-	public CtrMisCursos(MisCursos v) {
+	public CtrMisActividades(MisActividades v) {
 		ventana = v;
 		ventana.controlador(this);
 	}
@@ -42,27 +37,25 @@ public class CtrMisCursos implements ActionListener {
 			}
 		}
 		
-		if (e.getActionCommand().equals("CREARCURSO")) {
+		if (e.getActionCommand().equals("CREARACTIVIDAD")) {
 			//
 		}
 		
-		
-		if (e.getActionCommand().equals("MISCURSOSUSUARIO")) {
-			Curso c = ventana.getC();
+		if (e.getActionCommand().equals("MISACTIVIDADESUSUARIO")) {
+			Actividad c = ventana.getA();
 			if(c!=null) {
 				if(ventana.esEstudiante()) {
-					CtrInformacionCurso cr = new CtrInformacionCurso(ventana.getEstudiante(),c);
+					CtrInformacionActividad cr = new CtrInformacionActividad(ventana.getEstudiante(),c);
 					Main.setPanel(cr.getPanel());
 				}
-				
 			}	
 		}
 		
-		if (e.getActionCommand().equals("MISCURSOSPROFESOR")) {
-			Curso c = ventana.getC();
+		if (e.getActionCommand().equals("MISACTIVIDADESORGANIZACION")) {
+			Actividad c = ventana.getA();
 			if(c!=null) {
-				if(ventana.esProfesor()) {
-					CtrInformacionCurso cr = new CtrInformacionCurso(ventana.getProfesor(),c);
+				if(ventana.esOrganizacion()) {
+					CtrInformacionActividad cr = new CtrInformacionActividad(ventana.getOrganizacion(),c);
 					Main.setPanel(cr.getPanel());
 				}
 			}
@@ -72,6 +65,14 @@ public class CtrMisCursos implements ActionListener {
 			if (ventana.esEstudiante()) {
 				try {
 					CtrExplorar c = new CtrExplorar(new Explorar(ventana.getEstudiante(), Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+					Main.setPanel(c.getPanel());
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			} else if (ventana.esOrganizacion()) {
+				try {
+					CtrExplorar c = new CtrExplorar(new Explorar(ventana.getOrganizacion(), Actividad.getTodasLasActividades()));
 					Main.setPanel(c.getPanel());
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
@@ -87,15 +88,15 @@ public class CtrMisCursos implements ActionListener {
 			if (ventana.esEstudiante()) {
 				CtrMisCursos c = new CtrMisCursos(new MisCursos(ventana.getEstudiante()));
 				Main.setPanel(c.getPanel());
-			} else {
-				CtrMisCursos c = new CtrMisCursos(new MisCursos(ventana.getProfesor()));
-				Main.setPanel(c.getPanel());
 			}
 		}
 		
 		if (e.getActionCommand().equals("ACTIVIDAD")) {
 			if (ventana.esEstudiante()) {
 				CtrMisActividades c = new CtrMisActividades(new MisActividades(ventana.getEstudiante()));
+				Main.setPanel(c.getPanel());
+			} else {
+				CtrMisActividades c = new CtrMisActividades(new MisActividades(ventana.getOrganizacion()));
 				Main.setPanel(c.getPanel());
 			}
 		}
@@ -105,11 +106,10 @@ public class CtrMisCursos implements ActionListener {
 				CtrAjustes c = new CtrAjustes(new Ajustes(ventana.getEstudiante()));
 				Main.setPanel(c.getPanel());
 			} else {
-				CtrAjustes c = new CtrAjustes(new Ajustes(ventana.getProfesor()));
+				CtrAjustes c = new CtrAjustes(new Ajustes(ventana.getOrganizacion()));
 				Main.setPanel(c.getPanel());
 			}
 		}
-		
 		
 	}
 	

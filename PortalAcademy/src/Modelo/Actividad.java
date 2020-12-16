@@ -137,9 +137,9 @@ public class Actividad {
 	}
 
 	public List<Usuario> getParticipantes() {
+		participantes = new ArrayList<>();
 		bd = BD.getBD();
-		List<Object[]> tuplaParticipantes = bd
-				.Select("SELECT * FROM RelActividadParticipantes WHERE idActividad = " + idActividad);
+		List<Object[]> tuplaParticipantes = bd.Select("SELECT * FROM RelActividadUsuario WHERE idActividad = " + idActividad);
 		bd.finalize();
 		for (Object[] o : tuplaParticipantes) {
 			this.participantes.add(new Usuario(o[0].toString()));
@@ -152,7 +152,7 @@ public class Actividad {
 		bd.Insert("INSERT INTO RelActividadUsuario (nickUsuario, idActividad) VALUES ('" + participante.getNick() + "',"
 				+ this.idActividad + ")");
 		bd.finalize();
-		this.participantes.add(participante);
+		//this.participantes.add(participante);
 	}
 
 	public void eliminarCurso() {
@@ -163,6 +163,13 @@ public class Actividad {
 		this.descripcion = null;
 		this.imagen = null;
 		this.lugar = null;
+	}
+	
+	public Boolean quedanPlazas() {
+		if(participantes == null) {
+			getParticipantes();
+		}
+		return getAforo() > participantes.size();
 	}
 
 	public static List<Actividad> getTodasLasActividades() throws ParseException {
@@ -179,5 +186,14 @@ public class Actividad {
 	@Override
 	public String toString() {
 		return nombre;
+	}
+	
+	public boolean equals(Object o) {
+		if (o instanceof Actividad) {
+			Actividad u = (Actividad) o;
+			return this.getId().equals(u.getId());
+		} else {
+			return false;
+		}
 	}
 }

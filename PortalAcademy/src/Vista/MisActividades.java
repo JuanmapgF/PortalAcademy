@@ -1,29 +1,29 @@
 package Vista;
 
-import javax.swing.JPanel;
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import Modelo.Actividad;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Organizacion;
 import Modelo.Profesor;
 
-import javax.swing.JList;
-import javax.swing.JLabel;
+public class MisActividades extends JPanel {
 
-public class MisCursos extends JPanel {
-
-	private DefaultListModel<String> modeloC = new DefaultListModel<String>();
-	private JList<String> listaC = new JList<String>();
+	private DefaultListModel<String> modeloA = new DefaultListModel<String>();
+	private JList<String> listaA = new JList<String>();
 	private JButton bVer = new JButton();
 	private JButton bVer2 = new JButton();
-	private List<Curso> l;
+	private List<Actividad> l;
 	
 	private Estudiante est = null;
 	private Organizacion org = null;
@@ -32,7 +32,7 @@ public class MisCursos extends JPanel {
 	private boolean organizacion = false;
 	private boolean profesor = false;
 	
-	private JButton crearCurso;
+	private JButton crearActividad;
 	private JButton cerrar;
 	private JButton explorar;
 	private JButton cursos;
@@ -40,31 +40,30 @@ public class MisCursos extends JPanel {
 	private JButton ajustes;
 	
 	
-	
-	public MisCursos(Estudiante u) {
+	public MisActividades(Estudiante u) {
 		estudiante = true;
 		est = u;
 		this.setLayout(null);
-		addElements(u.getCursos());
+		addElements(u.getActividades());
 		
-		JScrollPane sp_cursos = new JScrollPane();
-		sp_cursos.setBounds(441, 175, 346, 346);
-		sp_cursos.setViewportView(listaC);
-		add(sp_cursos);
+		JScrollPane sp_actividades = new JScrollPane();
+		sp_actividades.setBounds(441, 175, 346, 346);
+		sp_actividades.setViewportView(listaA);
+		add(sp_actividades);
 		
 		cerrar = new JButton("Cerrar sesi\u00F3n");
 		cerrar.setBounds(860, 37, 121, 23);
 		add(cerrar);
 		
-		JLabel t_curso = new JLabel("Mis cursos:");
-		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
-		t_curso.setBounds(536, 115, 161, 33);
-		add(t_curso);
+		JLabel t_actividad = new JLabel("Mis actividades:");
+		t_actividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
+		t_actividad.setBounds(503, 115, 209, 33);
+		add(t_actividad);
 		
 		this.setBounds(0, 0, 1080, 650);
 		
-		bVer = new JButton("Ver curso");
-		bVer.setBounds(560, 551, 104, 23);
+		JButton bVer = new JButton("Ver actividad");
+		bVer.setBounds(544, 551, 153, 23);
 		add(bVer);
 		
 		explorar = new JButton("Explorar");
@@ -84,67 +83,68 @@ public class MisCursos extends JPanel {
 		add(ajustes);
 	}
 	
+	
+	
 	/**
 	 * @wbp.parser.constructor
 	 */
-	public MisCursos(Profesor u) {
-		profesor = true;
-		prof = u;
+	public MisActividades(Organizacion u) {
+		organizacion = true;
+		org = u;
 		this.setLayout(null);
-		addElements(u.getCursos());
+		addElements(u.getActividades());
 		
-		crearCurso = new JButton("Crear curso");
-		crearCurso.setBounds(860, 551, 121, 23);
-		add(crearCurso);
+		JScrollPane sp_actividades = new JScrollPane();
+		sp_actividades.setBounds(441, 175, 346, 346);
+		sp_actividades.setViewportView(listaA);
+		add(sp_actividades);
 		
-		JScrollPane sp_cursos2 = new JScrollPane();
-		sp_cursos2.setBounds(441, 175, 346, 346);
-		sp_cursos2.setViewportView(listaC);
-		add(sp_cursos2);
+		crearActividad = new JButton("Crear actividad");
+		crearActividad.setBounds(860, 551, 151, 23);
+		add(crearActividad);
 		
 		cerrar = new JButton("Cerrar sesi\u00F3n");
 		cerrar.setBounds(860, 37, 121, 23);
 		add(cerrar);
 		
-		JLabel t_curso2 = new JLabel("Mis cursos:");
-		t_curso2.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
-		t_curso2.setBounds(536, 115, 161, 33);
-		add(t_curso2);
+		JLabel t_actividad = new JLabel("Mis actividades:");
+		t_actividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
+		t_actividad.setBounds(503, 115, 209, 33);
+		add(t_actividad);
 		
 		this.setBounds(0, 0, 1080, 650);
 		
-		bVer2 = new JButton("Ver curso");
-		bVer2.setBounds(560, 551, 104, 23);
+		JButton bVer2 = new JButton("Ver actividad");
+		bVer2.setBounds(544, 551, 153, 23);
 		add(bVer2);
 		
 		explorar = new JButton("Explorar");
 		explorar.setBounds(36, 191, 131, 32);
 		add(explorar);
 		
-		cursos = new JButton("Mis cursos");
-		cursos.setBounds(36, 261, 131, 32);
-		add(cursos);
+		actividades = new JButton("Mis actividades");
+		actividades.setBounds(36, 261, 131, 32);
+		add(actividades);
 		
 		ajustes = new JButton("Ajustes");
 		ajustes.setBounds(36, 336, 131, 32);
 		add(ajustes);
 	}
 	
-	
-	public void addElements(List<Curso> l) {
+	public void addElements(List<Actividad> l) {
 		this.l = l;
-		listaC.setModel(modeloC);
+		listaA.setModel(modeloA);
 		
 		for (Object o : l) {
-			modeloC.addElement(o.toString());
+			modeloA.addElement(o.toString());
 		}
 		
-		listaC.setLayoutOrientation(JList.VERTICAL);
+		listaA.setLayoutOrientation(JList.VERTICAL);
 	}
 	
-	public Curso getC(){
-		if(!listaC.isSelectionEmpty()) {
-			return l.get(listaC.getSelectedIndex());
+	public Actividad getA(){
+		if(!listaA.isSelectionEmpty()) {
+			return l.get(listaA.getSelectedIndex());
 		}else {
 			return null;
 		}
@@ -152,14 +152,14 @@ public class MisCursos extends JPanel {
 	
 	public void controlador(ActionListener ctr) {
 		bVer.addActionListener(ctr);
-		bVer.setActionCommand("MISCURSOSUSUARIO");
+		bVer.setActionCommand("MISACTIVIDADESUSUARIO");
 		
 		bVer2.addActionListener(ctr);
-		bVer2.setActionCommand("MISCURSOSPROFESOR");
+		bVer2.setActionCommand("MISACTIVIDADESORGANIZACION");
 		
-		if (crearCurso != null) {
-		crearCurso.addActionListener(ctr);
-		crearCurso.setActionCommand("CREARCURSO");
+		if (crearActividad != null) {
+		crearActividad.addActionListener(ctr);
+		crearActividad.setActionCommand("CREARACTIVIDAD");
 		}
 		
 		if (explorar != null) {
@@ -178,6 +178,7 @@ public class MisCursos extends JPanel {
 			ajustes.addActionListener(ctr);
 			ajustes.setActionCommand("AJUSTES");
 		}
+		
 		if (cerrar != null) {
 			cerrar.addActionListener(ctr);
 			cerrar.setActionCommand("CERRAR_SESION");
@@ -207,4 +208,5 @@ public class MisCursos extends JPanel {
 	public Profesor getProfesor() {
 		return prof;
 	}
+
 }

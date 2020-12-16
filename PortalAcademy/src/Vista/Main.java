@@ -25,12 +25,12 @@ public class Main extends JFrame {
 		setBounds(0, 0, 1080, 650);
 		CtrExplorar c = null;
 		try {
-			c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()), new Menu(null));
+			c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		contentPane = c.getPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		this.setLocationRelativeTo(null);
@@ -54,10 +54,6 @@ public class Main extends JFrame {
 		frame.getContentPane().invalidate();
 		frame.getContentPane().add(pane);
 		frame.getContentPane().revalidate();
-	}
-	
-	public static void setCPane(JPanel pane) {
-		frame.setContentPane(pane);
 	}
 
 	public static void setUser(Usuario u) {

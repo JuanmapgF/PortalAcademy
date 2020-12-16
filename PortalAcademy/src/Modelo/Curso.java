@@ -51,12 +51,27 @@ public class Curso {
 		this.nombre = tupla[1].toString();
 		this.descripcion = tupla[2].toString();
 		this.imagen = tupla[3].toString();
-		this.publico = Boolean.parseBoolean(tupla[4].toString());
+		
+		if (tupla[4].toString().equals("1")) {
+			publico = true;
+		} else {
+			publico = false;
+		}
+		
 		this.aforo = Integer.parseInt(tupla[5].toString());
-		this.presencial = Boolean.parseBoolean(tupla[6].toString());
-		this.tieneForo = Boolean.parseBoolean(tupla[7].toString());
-
-		mensajes = new ArrayList<Mensaje>();
+		
+		if (tupla[6].toString().equals("1")) {
+			presencial = true;
+		} else {
+			presencial = false;
+		}
+		
+		if (tupla[7].toString().equals("1")) {
+			tieneForo = true;
+		} else {
+			tieneForo = false;
+		}
+		
 		estudiantes = new ArrayList<Usuario>();
 
 	}
@@ -152,9 +167,10 @@ public class Curso {
 	}
 
 	public List<Mensaje> getMensajes() {
+		mensajes = new ArrayList<Mensaje>();
 		if (tieneForo) {
 			bd = BD.getBD();
-			List<Object[]> tuplaMensajes = bd.Select("SELECT * FROM mensaje WHERE idCurso = " + idCurso);
+			List<Object[]> tuplaMensajes = bd.Select("SELECT * FROM Mensaje WHERE idCurso = " + idCurso);
 			bd.finalize();
 			for (Object[] o : tuplaMensajes) {
 				this.mensajes.add(new Mensaje(Integer.parseInt(o[0].toString())));
@@ -166,6 +182,7 @@ public class Curso {
 	}
 
 	public List<Usuario> getEstudiantes() {
+		estudiantes = new ArrayList<Usuario>();
 		bd = BD.getBD();
 		List<Object[]> tuplaEstudiantes = bd.Select("SELECT * FROM RelCursoUsuario WHERE idCurso = " + idCurso);
 		bd.finalize();
@@ -181,7 +198,7 @@ public class Curso {
 		bd.Insert("INSERT INTO RelCursoUsuario (nickUsuario, idCurso) VALUES ('" + estudiante.getNick() + "',"
 				+ this.idCurso + ")");
 		bd.finalize();
-		this.estudiantes.add(estudiante);
+		//this.estudiantes.add(estudiante);
 	}
 
 	public void eliminarCurso() {
@@ -192,6 +209,13 @@ public class Curso {
 		this.descripcion = "";
 		this.imagen = "";
 		this.publico = null;
+	}
+	
+	public Boolean quedanPlazas() {
+		if(estudiantes == null) {
+			getEstudiantes();
+		}
+		return getAforo() > estudiantes.size();
 	}
 
 	public static List<Curso> getTodosLosCursos() {
@@ -208,5 +232,14 @@ public class Curso {
 	@Override
 	public String toString() {
 		return nombre;
+	}
+	
+	public boolean equals(Object o) {
+		if (o instanceof Curso) {
+			Curso u = (Curso) o;
+			return this.getId().equals(u.getId());
+		} else {
+			return false;
+		}
 	}
 }

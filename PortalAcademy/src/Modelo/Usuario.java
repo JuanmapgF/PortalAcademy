@@ -81,4 +81,8 @@ public class Usuario {
 		}
 		return usuarios;
 	}
+	
+	public String toString() {
+		return getNick();
+	}
 }

@@ -2,18 +2,22 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
+import Modelo.Actividad;
 import Modelo.BD;
+import Modelo.Curso;
 import Modelo.ErrorBD;
 import Modelo.Estudiante;
 import Modelo.Organizacion;
 import Modelo.Profesor;
 import Modelo.Telefono;
 import Modelo.Usuario;
+import Vista.Explorar;
 import Vista.Inicio;
 import Vista.Main;
 import Vista.Registro;
@@ -31,6 +35,7 @@ public class CtrRegistro implements ActionListener {
 		vista.rdbtnProfesor.addActionListener(this);
 		vista.btnRegistro.addActionListener(this);
 		vista.btnInicioSesion.addActionListener(this);
+		vista.volver.addActionListener(this);
 	}
 
 	public Registro getPanel() {
@@ -39,6 +44,16 @@ public class CtrRegistro implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+		if(e.getSource() == vista.volver) {
+			try {
+				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+				Main.setPanel(c.getPanel());
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 		
 		if(e.getSource() == vista.btnInicioSesion) {
 			CtrInicio ci = new CtrInicio(new Inicio());
@@ -104,17 +119,21 @@ public class CtrRegistro implements ActionListener {
 				if (vista.rdbtnEstudiante.isSelected()) {
 					usuario = new Estudiante(vista.textFieldNick.getText(), vista.textFieldCorreo.getText(),
 							new String(vista.passwordFieldContrasena.getPassword()));
+					CtrExplorar x = new CtrExplorar(new Explorar((Estudiante)usuario,Curso.getTodosLosCursos(),Actividad.getTodasLasActividades()));
+					Main.setPanel(x.getPanel());
 				} else if (vista.rdbtnProfesor.isSelected()) {
 					usuario = new Profesor(vista.textFieldNick.getText(), vista.textFieldCorreo.getText(),
 							new String(vista.passwordFieldContrasena.getPassword()),
 							new Telefono(Integer.parseInt(vista.textFieldCodigo.getText()),
 									vista.textFieldInfoAdicional.getText()));
-
+					CtrExplorar x = new CtrExplorar(new Explorar((Profesor)usuario,Curso.getTodosLosCursos()));
+					Main.setPanel(x.getPanel());
 				} else if (vista.rdbtnOrganizacion.isSelected()) {
 					usuario = new Organizacion(vista.textFieldNick.getText(), vista.textFieldCorreo.getText(),
 							new String(vista.passwordFieldContrasena.getPassword()),
 							vista.textFieldInfoAdicional.getText());
-
+					CtrExplorar x = new CtrExplorar(new Explorar((Organizacion)usuario,Actividad.getTodasLasActividades()));
+					Main.setPanel(x.getPanel());
 				}
 				
 				Main.setUser(usuario);
@@ -125,6 +144,9 @@ public class CtrRegistro implements ActionListener {
 			} catch (ErrorBD err) {
 				JOptionPane.showMessageDialog(vista, err.getMessage(), "Error al registrarse",
 						JOptionPane.ERROR_MESSAGE);
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 		}
 

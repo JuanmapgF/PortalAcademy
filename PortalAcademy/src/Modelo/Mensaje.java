@@ -12,8 +12,8 @@ public class Mensaje {
 
 	public Mensaje(String texto, Usuario emisor, Curso curso) {
 		bd = BD.getBD();
-		bd.Insert("INSERT INTO Mensaje (texto, nickUsuario, idCurso)" + "VALUES ('" + texto + "'," + emisor.getNick()
-				+ "," + curso.getId() + ")");
+		bd.Insert("INSERT INTO Mensaje (texto, nickUsuario, idCurso)" + "VALUES ('" + texto + "', '" + emisor.getNick()
+				+ "'," + curso.getId() + ")");
 		bd.finalize();
 
 		this.texto = texto;
@@ -28,7 +28,6 @@ public class Mensaje {
 
 		this.idMensaje = Integer.parseInt(tupla[0].toString());
 		this.texto = tupla[1].toString();
-		this.emisor = new Usuario(tupla[2].toString());
 	}
 
 	public Integer getIdMensaje() {
@@ -40,6 +39,10 @@ public class Mensaje {
 	}
 
 	public Usuario getEmisor() {
+		bd = BD.getBD();
+		Object[] tupla = bd.Select("SELECT * FROM Mensaje WHERE idMensaje = " + idMensaje).get(0);
+		bd.finalize();
+		emisor = new Usuario(tupla[2].toString());
 		return emisor;
 	}
 
@@ -50,5 +53,6 @@ public class Mensaje {
 		this.curso = new Curso(Integer.parseInt(c.toString()));
 		return curso;
 	}
-
+	
+	
 }

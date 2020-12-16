@@ -1,43 +1,43 @@
 package Controlador;
 
-import java.awt.event.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.text.ParseException;
 import java.util.List;
 
-import javax.swing.JPanel;
+import Modelo.Actividad;
+import Modelo.BD;
+import Modelo.Curso;
+import Modelo.Estudiante;
+import Modelo.Organizacion;
+import Modelo.Profesor;
+import Modelo.Usuario;
+import Vista.Explorar;
+import Vista.Inicio;
+import Vista.Main;
 
-import Vista.*;
-import Modelo.*;
-
-public class CtrInicio implements ActionListener {
+public class CtrInicio2 implements KeyListener {
 	
 	private Inicio ventana;
 	
-	public CtrInicio(Inicio v) {
+	public CtrInicio2(Inicio v) {
 		ventana = v;
-		ventana.controlador(this);
+		ventana.controladorEnter(this);
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
-		if (e.getActionCommand().equals("REGISTRATE")) {
-			CtrRegistro cr = new CtrRegistro(new Registro());
-			Main.setPanel(cr.getPanel());
-		}
+		int key = e.getKeyCode();
 		
-		if (e.getActionCommand().equals("VOLVER")) {
-			try {
-				CtrExplorar ex = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-				Main.setPanel(ex.getPanel());
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
-		
-		if (e.getActionCommand().equals("INICIAR")) {
+		if (key == KeyEvent.VK_ENTER) {
 			ventana.ocultarError();
 			Usuario u = new Usuario(ventana.getUser(), ventana.getPass());
 			List<Usuario> users = Usuario.getUsuarios();
@@ -90,11 +90,13 @@ public class CtrInicio implements ActionListener {
 			} else {
 				ventana.mostrarError();
 			}
-
 		}
 	}
-	
-	public JPanel getPanel() {
-		return ventana;
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+
 	}
+
 }
