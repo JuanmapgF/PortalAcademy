@@ -4,6 +4,7 @@ import java.awt.event.*;
 import java.text.ParseException;
 import java.util.List;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Vista.*;
@@ -85,10 +86,10 @@ public class CtrInicio implements ActionListener {
 					CtrExplorar ex = new CtrExplorar(new Explorar(est, Curso.getTodosLosCursos()));
 					Main.setPanel(ex.getPanel());
 				} else {
-					ventana.mostrarError();
+					JOptionPane.showConfirmDialog(ventana, "El usuario o contraseña introducidos son erróneos");
 				}
 			} else {
-				ventana.mostrarError();
+				JOptionPane.showConfirmDialog(ventana, "El usuario o contraseña introducidos son erróneos");
 			}
 
 		}
