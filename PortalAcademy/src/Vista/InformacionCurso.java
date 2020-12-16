@@ -122,6 +122,10 @@ public class InformacionCurso extends JPanel {
 			cerrarSesion = new JButton("Cerrar Sesi\u00F3n");
 			cerrarSesion.setBounds(952, 39, 118, 23);
 			add(cerrarSesion);
+			
+			ajustes = new JButton("Ajustes");
+			ajustes.setBounds(36, 413, 131, 32);
+			add(ajustes);
 		}
 		
 		explorar = new JButton("Explorar");
