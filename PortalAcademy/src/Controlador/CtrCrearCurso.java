@@ -2,14 +2,19 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
+import Modelo.Actividad;
 import Modelo.Curso;
 import Modelo.ErrorBD;
 import Modelo.Profesor;
 import Vista.CrearCurso;
+import Vista.Explorar;
 import Vista.Main;
+import Vista.MisCursos;
 
 public class CtrCrearCurso implements ActionListener {
 
@@ -53,11 +58,18 @@ public class CtrCrearCurso implements ActionListener {
 		}
 
 		if (e.getSource() == vista.btnCancelar) {
-			// Hasta que no esté bien explorar
+			CtrMisCursos cmc = new CtrMisCursos(new MisCursos(profesor));
+			Main.setPanel(cmc.getPanel());
 		}
 
 		if (e.getSource() == vista.btnCerrarSesion) {
-			// ?
+			try {
+				CtrExplorar c = new CtrExplorar(
+						new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+				Main.setPanel(c.getPanel());
+			} catch (ParseException e1) {
+				e1.printStackTrace();
+			}
 		}
 
 	}
@@ -79,11 +91,15 @@ public class CtrCrearCurso implements ActionListener {
 	}
 
 	private boolean descripcionValida() {
-		return !(vista.textFieldImagen.getText().isEmpty() || vista.textFieldImagen.getText() == null);
+		return !(vista.textAreaDescripcion.getText().isEmpty() || vista.textAreaDescripcion.getText() == null);
 	}
 
 	private boolean nombreValido() {
 		return !(vista.textFieldNombre.getText().isEmpty() || vista.textFieldNombre.getText() == null);
+	}
+	
+	public JPanel getPanel() {
+		return vista;
 	}
 
 }

@@ -24,8 +24,9 @@ public class Curso {
 			Boolean tieneForo, Profesor profesor) {
 		bd = BD.getBD();
 		bd.Insert("INSERT INTO Curso (nombre, descripcion, imagen, publico, aforo, presencial, tieneforo, nickProfesor)"
-				+ "VALUES ('" + nombre + "','" + descripcion + "','" + imagen + "'," + ((publico) ? 1 : 0) + "," + aforo
-				+ "," + ((presencial) ? 1 : 0) + "," + tieneForo + ",'" + profesor.getNick() + ")");
+				+ "VALUES ('" + nombre + "', '" + descripcion + "', '" + imagen + "', " + ((publico) ? 1 : 0) + ", "
+				+ aforo + ", " + ((presencial) ? 1 : 0) + ", " + ((tieneForo) ? 1 : 0) + ",'" + profesor.getNick()
+				+ "')");
 		bd.finalize();
 
 		this.nombre = nombre;
