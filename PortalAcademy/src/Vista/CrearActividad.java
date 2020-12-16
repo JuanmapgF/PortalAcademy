@@ -69,7 +69,7 @@ public class CrearActividad extends JPanel {
 		add(spinnerAforo);
 
 		btnCerrarSesion = new JButton("Cerrar Sesi\u00F3n");
-		btnCerrarSesion.setBounds(893, 35, 124, 23);
+		btnCerrarSesion.setBounds(952, 39, 118, 23);
 		add(btnCerrarSesion);
 
 		btnCrearActividad = new JButton("Crear actividad");

@@ -39,7 +39,8 @@ public class InformacionActividad extends JPanel {
 		add(lblLugar);
 		
 		JLabel nombreActividad = new JLabel(actividad.getNombre());
-		nombreActividad.setBounds(428, 34, 269, 33);
+		nombreActividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
+		nombreActividad.setBounds(428, 34, 364, 33);
 		add(nombreActividad);
 		
 		JTextArea descripcionActividad = new JTextArea(actividad.getDescripcion());
@@ -49,12 +50,12 @@ public class InformacionActividad extends JPanel {
 		
 		JLabel fecha = new JLabel(actividad.getFecha().toString());
 		fecha.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		fecha.setBounds(382, 336, 95, 14);
+		fecha.setBounds(382, 336, 377, 14);
 		add(fecha);
 		
 		JLabel lugar = new JLabel(actividad.getLugar());
 		lugar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lugar.setBounds(382, 384, 95, 14);
+		lugar.setBounds(382, 384, 342, 14);
 		add(lugar);
 		
 		
@@ -79,8 +80,8 @@ public class InformacionActividad extends JPanel {
 			ajustes.setBounds(36, 413, 131, 32);
 			add(ajustes);
 			
-			cerrarSesion = new JButton("Cerrar Sesi\u00F3n");
-			cerrarSesion.setBounds(952, 39, 118, 23);
+			cerrarSesion = new JButton("Cerrar sesi\u00F3n");
+			cerrarSesion.setBounds(860, 37, 121, 23);
 			add(cerrarSesion);
 		} else if (user instanceof Organizacion) {
 			actividades = new JButton("Mis actividades");

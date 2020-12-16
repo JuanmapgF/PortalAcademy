@@ -113,8 +113,8 @@ public class InformacionCurso extends JPanel {
 			ajustes.setBounds(36, 413, 131, 32);
 			add(ajustes);
 			
-			cerrarSesion = new JButton("Cerrar Sesi\u00F3n");
-			cerrarSesion.setBounds(952, 39, 118, 23);
+			cerrarSesion = new JButton("Cerrar sesi\u00F3n");
+			cerrarSesion.setBounds(860, 37, 121, 23);
 			add(cerrarSesion);
 		} else if (user instanceof Profesor) {
 			cursos = new JButton("Mis cursos");
@@ -126,7 +126,7 @@ public class InformacionCurso extends JPanel {
 			add(editar);
 			
 			cerrarSesion = new JButton("Cerrar Sesi\u00F3n");
-			cerrarSesion.setBounds(952, 39, 118, 23);
+			cerrarSesion.setBounds(860, 37, 121, 23);
 			add(cerrarSesion);
 			
 			ajustes = new JButton("Ajustes");

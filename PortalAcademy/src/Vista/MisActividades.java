@@ -62,7 +62,7 @@ public class MisActividades extends JPanel {
 		
 		this.setBounds(0, 0, 1080, 650);
 		
-		JButton bVer = new JButton("Ver actividad");
+		bVer = new JButton("Ver actividad");
 		bVer.setBounds(544, 551, 153, 23);
 		add(bVer);
 		
@@ -114,7 +114,7 @@ public class MisActividades extends JPanel {
 		
 		this.setBounds(0, 0, 1080, 650);
 		
-		JButton bVer2 = new JButton("Ver actividad");
+		bVer2 = new JButton("Ver actividad");
 		bVer2.setBounds(544, 551, 153, 23);
 		add(bVer2);
 		
