@@ -98,7 +98,7 @@ public class DescripcionCurso extends JPanel {
 		if (iniciar != null) {
 			iniciar.addActionListener(ctr);
 			iniciar.setActionCommand("INICIAR_SESION");
-		} 
+		}
 		
 		if (explorar != null) {
 			explorar.addActionListener(ctr);
@@ -108,7 +108,7 @@ public class DescripcionCurso extends JPanel {
 		if (registrarse != null) {
 			registrarse.addActionListener(ctr);
 			registrarse.setActionCommand("REGISTRO");
-		} 
+		}
 		
 		if(unirse != null) {
 			unirse.addActionListener(ctr);
