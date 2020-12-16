@@ -2,6 +2,7 @@ package Vista;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -22,6 +23,7 @@ public class AdminCursos extends JPanel {
 
 	private DefaultListModel<String> modeloA = new DefaultListModel<String>();
 	private JList<String> listA = new JList<String>();
+	private List<Curso> lista_cursos;
 
 	/**
 	 * Create the panel.
@@ -99,5 +101,13 @@ public class AdminCursos extends JPanel {
 		bEliminar.setForeground(Color.RED);
 		bEliminar.setBounds(944, 330, 85, 74);
 		add(bEliminar);
+	}
+	
+	public Curso getCurso() {
+		if (listA.isSelectionEmpty()) {
+			return null;
+		} else {
+			return lista_cursos.get(listA.getSelectedIndex());
+		}
 	}
 }

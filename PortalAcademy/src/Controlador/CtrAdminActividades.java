@@ -15,6 +15,7 @@ import Vista.Main;
 public class CtrAdminActividades implements ActionListener{
 	
 	private AdminActividades vista;
+	private Actividad actividad;
 
 	public CtrAdminActividades(AdminActividades v) {
 		vista = v;
@@ -33,6 +34,16 @@ public class CtrAdminActividades implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+		//pulsar en el botón "ELIMINAR" tras seleccionar un curso
+		if(e.getSource() == vista.bEliminar) {
+			Actividad act = vista.getActividad();
+			if (act != null) {
+				act.eliminarActividad();
+				CtrAdminActividades ctr = new CtrAdminActividades(new AdminActividades());
+				Main.setPanel(ctr.getPanel());
+			}
+		}
 		
 		// pulsar en cualquiera de los dos botones de "ACTIVIDAD"
 		if(e.getSource() == vista.bActividades_1 ) {
@@ -68,6 +79,8 @@ public class CtrAdminActividades implements ActionListener{
 			CtrAdminUsuarios ctr = new CtrAdminUsuarios(new AdminUsuarios());
 			Main.setPanel(ctr.getPanel());
 		}
+		
+		
 	}
 
 	

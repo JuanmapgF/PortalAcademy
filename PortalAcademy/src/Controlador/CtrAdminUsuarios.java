@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import Modelo.Actividad;
 import Modelo.Curso;
+import Modelo.Usuario;
 import Vista.AdminActividades;
 import Vista.AdminCursos;
 import Vista.AdminInicio;
@@ -33,6 +34,17 @@ public class CtrAdminUsuarios implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		
+		//pulsar en el botón "ELIMINAR" tras seleccionar un curso
+		if(e.getSource() == vista.bEliminar) {
+			Usuario u = vista.getUsuario();
+			if (u != null) {
+				u.eliminarUsuario();
+				CtrAdminUsuarios ctr = new CtrAdminUsuarios(new AdminUsuarios());
+				Main.setPanel(ctr.getPanel());
+			}
+		}		
+		
 		
 		// pulsar en cualquiera de los dos botones de "ACTIVIDAD"
 		if(e.getSource() == vista.bActividades_1 ) {

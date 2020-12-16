@@ -38,6 +38,16 @@ public class CtrAdminCursos implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
+		//pulsar en el botón "ELIMINAR" tras seleccionar un curso
+		if(e.getSource() == vista.bEliminar) {
+			Curso cur = vista.getCurso();
+			if (cur != null) {
+				cur.eliminarCurso();
+				CtrAdminCursos ctr = new CtrAdminCursos(new AdminCursos());
+				Main.setPanel(ctr.getPanel());
+			}
+		}
+		
 		// pulsar en cualquiera de los dos botones de "ACTIVIDAD"
 		if(e.getSource() == vista.bActividades_1 ) {
 			CtrAdminActividades ctr = new CtrAdminActividades(new AdminActividades());

@@ -51,7 +51,7 @@ public class CtrEditarActividad implements ActionListener {
 		}
 		
 		if (e.getActionCommand().equals("ELIMINAR")) {
-			actividad.eliminarCurso();
+			actividad.eliminarActividad();
 			CtrMisActividades c = new CtrMisActividades(new MisActividades(organizacion));
 			Main.setPanel(c.getPanel());
 		}

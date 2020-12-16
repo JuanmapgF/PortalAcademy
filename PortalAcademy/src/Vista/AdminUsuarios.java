@@ -2,23 +2,43 @@ package Vista;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.List;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import Modelo.Curso;
+import Modelo.Usuario;
 
 @SuppressWarnings("serial")
 public class AdminUsuarios extends JPanel {
 	private JTextField txtBuscarUsuario;
 
 	public JButton bCerrarSesion, bInicio, bCursos_1, bActividades_1, bUsuarios_1, bAjustes, bEliminar;
+	
+	private DefaultListModel<String> modeloA = new DefaultListModel<String>();
+	private JList<String> listA = new JList<String>();
+	private List<Usuario> lista_usuarios;
 	/**
 	 * Create the panel.
 	 */
 	public AdminUsuarios() {
+		
+		//para mostrar la lista de Usuarios en el scrollpanel
+		listA.setModel(modeloA);
+		for (Usuario u : Usuario.getUsuarios()) {
+			modeloA.addElement(u.toString());
+		}
+		listA.setLayoutOrientation(JList.VERTICAL);
+		//------------------------------------------------------		
+		
+		
 		setLayout(null);
 		this.setBounds(0, 0, 1080, 650);
 		
@@ -73,6 +93,7 @@ public class AdminUsuarios extends JPanel {
 		
 		JScrollPane spUsuarios = new JScrollPane();
 		spUsuarios.setBounds(190, 195, 700, 400);
+		spUsuarios.setViewportView(listA);
 		add(spUsuarios);
 		
 		 bEliminar = new JButton("ELIMINAR");
@@ -80,5 +101,13 @@ public class AdminUsuarios extends JPanel {
 		bEliminar.setForeground(Color.RED);
 		bEliminar.setBounds(944, 330, 85, 74);
 		add(bEliminar);
+	}
+	
+	public Usuario getUsuario() {
+		if (listA.isSelectionEmpty()) {
+			return null;
+		} else {
+			return lista_usuarios.get(listA.getSelectedIndex());
+		}
 	}
 }

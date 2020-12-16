@@ -159,7 +159,7 @@ public class Actividad {
 		bd.finalize();
 	}
 
-	public void eliminarCurso() {
+	public void eliminarActividad() {
 		bd = BD.getBD();
 		bd.Delete("DELETE FROM Actividad WHERE idActividad =" + idActividad);
 		bd.finalize();
