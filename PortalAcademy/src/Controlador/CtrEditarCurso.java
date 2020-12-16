@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.text.ParseException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import Modelo.Actividad;
 import Modelo.Curso;
@@ -87,6 +88,9 @@ public class CtrEditarCurso implements ActionListener {
 			CtrAjustes c = new CtrAjustes(new Ajustes(profesor));
 			Main.setPanel(c.getPanel());
 		}
+	}
+	public JPanel getPanel() {
+		return ventana;
 	}
 
 }

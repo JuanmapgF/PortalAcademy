@@ -70,6 +70,7 @@ public class CtrInformacionCurso implements ActionListener {
 		
 		if (e.getActionCommand().equals("Editar")) {
 			CtrEditarCurso c = new CtrEditarCurso(new EditarCurso(curso, (Profesor)user));
+			Main.setPanel(c.getPanel());
 			// TODO: Accede a la vista de editar Curso
 		}
 	}
