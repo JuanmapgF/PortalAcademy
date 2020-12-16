@@ -134,7 +134,7 @@ public class InformacionCurso extends JPanel {
 		
 		if (cerrarSesion != null) {
 			cerrarSesion.addActionListener(ctr);
-			cerrarSesion.setActionCommand("Cerrar Sesi\u00F3n");
+			cerrarSesion.setActionCommand("CERRAR_SESION");
 		}
 		
 		if (iniciar != null) {

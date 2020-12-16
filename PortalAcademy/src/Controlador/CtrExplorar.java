@@ -55,7 +55,7 @@ public class CtrExplorar implements ActionListener {
 					Main.setPanel(c.getPanel());
 				}
 			} else if (ventana.esProfesor()) {
-				Curso cur = ventana.getCurso();
+				Curso cur = ventana.getCursoN();
 				Profesor user = ventana.getProfesor();
 				if (cur != null) {
 					CtrDescripcionCurso c = new CtrDescripcionCurso(user, cur);

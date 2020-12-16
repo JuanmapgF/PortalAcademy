@@ -52,7 +52,7 @@ public class CtrInformacionCurso implements ActionListener {
 			Main.setPanel(c.getPanel());
 		}
 		
-		if (e.getActionCommand().equals("Cerrar Sesi\\u00F3n")) {
+		if (e.getActionCommand().equals("CERRAR_SESION")) {
 			try {
 				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
