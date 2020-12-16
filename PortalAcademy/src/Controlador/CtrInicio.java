@@ -53,6 +53,7 @@ public class CtrInicio implements ActionListener {
 					Estudiante est = null;
 					try {
 						est = new Estudiante(ini.getNick());
+						Main.setUser(est);
 					} catch (ParseException e2) {
 						// TODO Auto-generated catch block
 						e2.printStackTrace();
@@ -70,6 +71,7 @@ public class CtrInicio implements ActionListener {
 					bd.finalize();
 					
 					Organizacion est = new Organizacion(ini.getNick());
+					Main.setUser(est);
 					
 					try {
 						CtrExplorar ex = new CtrExplorar(new Explorar(est, Actividad.getTodasLasActividades()));
@@ -82,6 +84,7 @@ public class CtrInicio implements ActionListener {
 					bd.finalize();
 					
 					Profesor est = new Profesor(ini.getNick());
+					Main.setUser(est);
 					CtrExplorar ex = new CtrExplorar(new Explorar(est, Curso.getTodosLosCursos()));
 					Main.setPanel(ex.getPanel());
 				} else {
