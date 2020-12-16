@@ -17,7 +17,7 @@ import Modelo.Actividad;
 @SuppressWarnings("serial")
 public class AdminActividades extends JPanel {
 
-	public JButton bCerrarSesion, bInicio, bCursos_1, bActividades_1, bUsuarios_1, bAjustes;
+	public JButton bCerrarSesion, bInicio, bCursos_1, bActividades_1, bUsuarios_1, bAjustes, bEliminar;
 	private JTextField txtBuscarActividad;
 	
 	private DefaultListModel<String> modeloA = new DefaultListModel<String>();
@@ -92,6 +92,12 @@ public class AdminActividades extends JPanel {
 		spActivadades.setBounds(190, 195, 700, 400);
 		spActivadades.setViewportView(listA);
 		add(spActivadades);
+		
+		 bEliminar = new JButton("ELIMINAR");
+		bEliminar.setFont(new Font("Tahoma", Font.BOLD, 10));
+		bEliminar.setForeground(Color.RED);
+		bEliminar.setBounds(944, 330, 85, 74);
+		add(bEliminar);
 		
 	}
 }
