@@ -28,6 +28,7 @@ public class CtrEditarActividad implements ActionListener {
 		ventana = v;
 		organizacion = ventana.getUsuario();
 		actividad = ventana.getC();
+		ventana.controlador(this);
 	}
 
 	@Override

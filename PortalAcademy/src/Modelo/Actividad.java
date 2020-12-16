@@ -19,11 +19,12 @@ public class Actividad {
 	private Organizacion organizacion;
 	private List<Usuario> participantes;
 
+	private SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+
 	private static BD bd;
 
 	public Actividad(String nombre, String descripcion, String imagen, int aforo, Date fecha, String lugar,
 			Organizacion organizacion) {
-		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 		bd = BD.getBD();
 		bd.Insert("INSERT INTO Actividad (nombre, descripcion, imagen, aforo, fecha, lugar, nickOrganizacion)"
 				+ "VALUES ('" + nombre + "', '" + descripcion + "', '" + imagen + "'," + aforo + ", '"
@@ -43,8 +44,6 @@ public class Actividad {
 		bd = BD.getBD();
 		Object[] tupla = bd.Select("SELECT * FROM Actividad WHERE idActividad = " + idActividad).get(0);
 		bd.finalize();
-
-		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 
 		this.idActividad = Integer.parseInt(tupla[0].toString());
 		this.nombre = tupla[1].toString();
@@ -113,7 +112,7 @@ public class Actividad {
 
 	public void setFecha(Date fecha) {
 		bd = BD.getBD();
-		bd.Update("UPDATE Actividad SET fecha = " + fecha + " WHERE idActividad = " + this.idActividad);
+		bd.Update("UPDATE Actividad SET fecha = '" + formato.format(fecha) + "' WHERE idActividad = " + this.idActividad);
 		bd.finalize();
 		this.fecha = fecha;
 	}
