@@ -58,16 +58,16 @@ public class InformacionCurso extends JPanel {
 			add(foro);
 			
 			textField = new JTextField();
-			textField.setBounds(278, 536, 459, 20);
+			textField.setBounds(278, 513, 459, 20);
 			add(textField);
 			textField.setColumns(10);
 			
 			enviar = new JButton("Enviar");
-			enviar.setBounds(648, 513, 89, 23);
+			enviar.setBounds(748, 513, 89, 23);
 			add(enviar);
 			
 			refrescar = new JButton("Refrescar");
-			refrescar.setBounds(748, 234, 89, 23);
+			refrescar.setBounds(748, 234, 100, 23);
 			add(refrescar);
 			
 			JLabel lblForo = new JLabel("Foro");
@@ -115,6 +115,7 @@ public class InformacionCurso extends JPanel {
 			
 			cerrarSesion = new JButton("Cerrar sesi\u00F3n");
 			cerrarSesion.setBounds(860, 37, 121, 23);
+
 			add(cerrarSesion);
 		} else if (user instanceof Profesor) {
 			cursos = new JButton("Mis cursos");
@@ -127,6 +128,7 @@ public class InformacionCurso extends JPanel {
 			
 			cerrarSesion = new JButton("Cerrar Sesi\u00F3n");
 			cerrarSesion.setBounds(860, 37, 121, 23);
+
 			add(cerrarSesion);
 			
 			ajustes = new JButton("Ajustes");
