@@ -41,6 +41,7 @@ public class CtrEditarActividad implements ActionListener {
 				actividad.setDescripcion(ventana.getDescripcion());
 				actividad.setNombre(ventana.getNombre());
 				actividad.setFecha(ventana.getFecha());
+				actividad.setLugar(ventana.getLugar());
 				
 				JOptionPane.showMessageDialog(ventana, "Se ha actualizado la información del curso correctamente");
 				
