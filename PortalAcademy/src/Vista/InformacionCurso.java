@@ -77,9 +77,9 @@ public class InformacionCurso extends JPanel {
 			
 			for (Mensaje mensaje : mensajes) {
 				if (mensaje.getEmisor().equals(user)) {
-					modelo.addElement(new String("\t"+mensaje.toString()));
+					modelo.addElement(new String("\t"+mensaje.getTexto()));
 				} else {
-					modelo.addElement(mensaje.getEmisor().toString().toUpperCase() + ":" + mensaje.toString());
+					modelo.addElement(mensaje.getEmisor().toString().toUpperCase() + ":" + mensaje.getTexto());
 				}
 			}
 		}

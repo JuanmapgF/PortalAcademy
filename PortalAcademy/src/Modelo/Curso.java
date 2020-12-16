@@ -170,7 +170,7 @@ public class Curso {
 		mensajes = new ArrayList<Mensaje>();
 		if (tieneForo) {
 			bd = BD.getBD();
-			List<Object[]> tuplaMensajes = bd.Select("SELECT * FROM mensaje WHERE idCurso = " + idCurso);
+			List<Object[]> tuplaMensajes = bd.Select("SELECT * FROM Mensaje WHERE idCurso = " + idCurso);
 			bd.finalize();
 			for (Object[] o : tuplaMensajes) {
 				this.mensajes.add(new Mensaje(Integer.parseInt(o[0].toString())));

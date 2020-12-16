@@ -12,8 +12,8 @@ public class Mensaje {
 
 	public Mensaje(String texto, Usuario emisor, Curso curso) {
 		bd = BD.getBD();
-		bd.Insert("INSERT INTO Mensaje (texto, nickUsuario, idCurso)" + "VALUES ('" + texto + "'," + emisor.getNick()
-				+ "," + curso.getId() + ")");
+		bd.Insert("INSERT INTO Mensaje (texto, nickUsuario, idCurso)" + "VALUES ('" + texto + "', '" + emisor.getNick()
+				+ "'," + curso.getId() + ")");
 		bd.finalize();
 
 		this.texto = texto;
@@ -53,5 +53,6 @@ public class Mensaje {
 		this.curso = new Curso(Integer.parseInt(c.toString()));
 		return curso;
 	}
-
+	
+	
 }
