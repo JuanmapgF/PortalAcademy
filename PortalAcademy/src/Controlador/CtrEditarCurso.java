@@ -53,6 +53,8 @@ public class CtrEditarCurso implements ActionListener {
 		
 		if (e.getActionCommand().equals("ELIMINAR")) {
 			curso.eliminarCurso();
+			CtrMisCursos c = new CtrMisCursos(new MisCursos(profesor));
+			Main.setPanel(c.getPanel());
 		}
 		
 		if (e.getActionCommand().equals("VOLVER")) {
@@ -87,6 +89,26 @@ public class CtrEditarCurso implements ActionListener {
 		if (e.getActionCommand().equals("AJUSTES")) {
 			CtrAjustes c = new CtrAjustes(new Ajustes(profesor));
 			Main.setPanel(c.getPanel());
+		}
+		
+		if (e.getActionCommand().equals("PUBLICO")) {
+			ventana.setPublico(true);
+			ventana.setPrivado(false);
+		}
+		
+		if (e.getActionCommand().equals("PRIVADO")) {
+			ventana.setPublico(false);
+			ventana.setPrivado(true);
+		}
+		
+		if (e.getActionCommand().equals("PRESENCIAL")) {
+			ventana.setPresencial(true);
+			ventana.setOnline(false);
+		}
+		
+		if (e.getActionCommand().equals("ONLINE")) {
+			ventana.setPresencial(false);
+			ventana.setOnline(true);
 		}
 	}
 	public JPanel getPanel() {
