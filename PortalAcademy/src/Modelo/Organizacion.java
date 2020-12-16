@@ -23,7 +23,9 @@ public class Organizacion extends Usuario {
 	public List<Actividad> getActividades() {
 		List<Actividad> ac = new ArrayList<Actividad>();
 		bd = BD.getBD();
-		List<Object[]> actividades = bd.Select("SELECT idActividad FROM Actividad WHERE nickOrganizacion = '" + this.getNick() + "'");
+		List<Object[]> actividades = bd
+				.Select("SELECT idActividad FROM Actividad WHERE nickOrganizacion = '" + this.getNick() + "'");
+		BD.contadorFinalize(actividades.size() + 1);
 		bd.finalize();
 		for (Object[] o : actividades) {
 			ac.add(new Actividad(Integer.parseInt(o[0].toString())));
@@ -33,18 +35,18 @@ public class Organizacion extends Usuario {
 
 	public String getSede() {
 		bd = BD.getBD();
-		Object[] user = bd.Select("SELECT * FROM Organizacion WHERE Organizacion.nick = '" + this.getNick() + "'").get(0);
+		Object[] user = bd.Select("SELECT * FROM Organizacion WHERE Organizacion.nick = '" + this.getNick() + "'")
+				.get(0);
 		bd.finalize();
 		this.sede = user[1].toString();
 		return sede;
 	}
-	
-	
+
 	@Override
 	public void eliminarUsuario() {
 		super.eliminarUsuario();
 	}
-	
+
 	@Override
 	public void setPassword(String p) {
 		super.setPassword(p);

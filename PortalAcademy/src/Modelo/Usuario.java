@@ -12,7 +12,7 @@ public class Usuario {
 
 	public Usuario(String nick) {
 		bd = BD.getBD();
-		Object [] user = bd.Select("SELECT * FROM Usuario WHERE Usuario.nick = '" + nick + "'").get(0);
+		Object[] user = bd.Select("SELECT * FROM Usuario WHERE Usuario.nick = '" + nick + "'").get(0);
 		bd.finalize();
 		this.nick = user[0].toString();
 		this.correo = user[1].toString();
@@ -24,10 +24,11 @@ public class Usuario {
 		this.correo = correo;
 		this.password = password;
 		bd = BD.getBD();
-		bd.Insert("INSERT INTO Usuario (nick, correo, contrasena) VALUES ( '"+this.getNick()+"', '"+this.getCorreo()+"', '"+this.getPassword()+"')");
+		bd.Insert("INSERT INTO Usuario (nick, correo, contrasena) VALUES ( '" + this.getNick() + "', '"
+				+ this.getCorreo() + "', '" + this.getPassword() + "')");
 		bd.finalize();
 	}
-	
+
 	public Usuario(String nick, String pass) {
 		this.nick = nick;
 		this.password = pass;
@@ -48,19 +49,20 @@ public class Usuario {
 	public void setPassword(String password) {
 		this.password = password;
 		bd = BD.getBD();
-		bd.Update("UPDATE Usuario SET contrasena = '"+this.getPassword()+"' WHERE Usuario.nick = '"+this.getNick()+"'");
+		bd.Update("UPDATE Usuario SET contrasena = '" + this.getPassword() + "' WHERE Usuario.nick = '" + this.getNick()
+				+ "'");
 		bd.finalize();
 	}
 
 	public void eliminarUsuario() {
 		bd = BD.getBD();
-		bd.Delete("DELETE FROM Usuario WHERE Usuario.nick = '"+this.getNick()+"'");
+		bd.Delete("DELETE FROM Usuario WHERE Usuario.nick = '" + this.getNick() + "'");
 		bd.finalize();
 		this.nick = "";
 		this.correo = "";
 		this.password = "";
 	}
-	
+
 	@Override
 	public boolean equals(Object o) {
 		if (o instanceof Usuario) {
@@ -75,13 +77,14 @@ public class Usuario {
 		List<Usuario> usuarios = new ArrayList<>();
 		BD miBD = BD.getBD();
 		List<Object[]> users = miBD.Select("SELECT nick FROM Usuario");
+		BD.contadorFinalize(users.size() + 1);
 		miBD.finalize();
 		for (Object[] tupla : users) {
 			usuarios.add(new Usuario((String) tupla[0]));
 		}
 		return usuarios;
 	}
-	
+
 	public String toString() {
 		return getNick();
 	}

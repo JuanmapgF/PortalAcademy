@@ -171,7 +171,7 @@ public class Curso {
 		if (tieneForo) {
 			bd = BD.getBD();
 			List<Object[]> tuplaMensajes = bd.Select("SELECT * FROM Mensaje WHERE idCurso = " + idCurso);
-			BD.contadorFinalize(tuplaMensajes.size() + 1);
+			BD.contadorFinalize(tuplaMensajes.size() + tuplaMensajes.size() * 2 + 1);
 			bd.finalize();
 			for (Object[] o : tuplaMensajes) {
 				this.mensajes.add(new Mensaje(Integer.parseInt(o[0].toString())));

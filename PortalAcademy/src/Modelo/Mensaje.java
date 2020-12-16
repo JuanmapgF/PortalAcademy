@@ -25,9 +25,10 @@ public class Mensaje {
 		bd = BD.getBD();
 		Object[] tupla = bd.Select("SELECT * FROM Mensaje WHERE idMensaje = " + idMensaje).get(0);
 		bd.finalize();
-
 		this.idMensaje = Integer.parseInt(tupla[0].toString());
 		this.texto = tupla[1].toString();
+		emisor = new Usuario(tupla[2].toString());
+		this.curso = new Curso(Integer.parseInt(tupla[3].toString()));
 	}
 
 	public Integer getIdMensaje() {
@@ -39,20 +40,12 @@ public class Mensaje {
 	}
 
 	public Usuario getEmisor() {
-		bd = BD.getBD();
-		Object[] tupla = bd.Select("SELECT * FROM Mensaje WHERE idMensaje = " + idMensaje).get(0);
-		bd.finalize();
-		emisor = new Usuario(tupla[2].toString());
 		return emisor;
 	}
 
 	public Curso getCurso() {
-		bd = BD.getBD();
-		Object c = bd.SelectEscalar("SELECT  FROM Mensaje WHERE idMensaje = " + idMensaje);
-		bd.finalize();
-		this.curso = new Curso(Integer.parseInt(c.toString()));
+
 		return curso;
 	}
-	
-	
+
 }

@@ -3,13 +3,20 @@ package Controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JPanel;
 
-import Modelo.*;
-import Vista.*;
+import Modelo.Actividad;
+import Modelo.Curso;
+import Modelo.Mensaje;
+import Modelo.Profesor;
+import Modelo.Usuario;
+import Vista.EditarCurso;
+import Vista.Explorar;
+import Vista.InformacionCurso;
+import Vista.Inicio;
+import Vista.Main;
+import Vista.Registro;
 
 public class CtrInformacionCurso implements ActionListener {
 	private Usuario user;
