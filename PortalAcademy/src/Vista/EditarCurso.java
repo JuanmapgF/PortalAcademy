@@ -150,6 +150,7 @@ public class EditarCurso extends JPanel {
 		
 		foro = new JCheckBox("");
 		foro.setBounds(781, 518, 97, 23);
+		
 		add(foro);
 		
 		volver = new JButton("Volver");
