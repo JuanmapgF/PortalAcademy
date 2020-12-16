@@ -56,6 +56,7 @@ public class CtrAjustes implements ActionListener {
 		
 		if (e.getActionCommand().equals("CAMBIAR")) {
 			if (contrasenaValida()) {
+				JOptionPane.showMessageDialog(ventana, "La contraseña se ha actualizado satisfactoriamente");
 				if (ventana.esEstudiante()) {
 					ventana.getEstudiante().setPassword(ventana.getTexto());
 					try {
@@ -80,7 +81,7 @@ public class CtrAjustes implements ActionListener {
 					Main.setPanel(c.getPanel());
 				}
 				
-				JOptionPane.showMessageDialog(ventana, "La contraseña se ha actualizado satisfactoriamente");
+				
 			} else {
 				JOptionPane.showMessageDialog(ventana, "La contraseña debe tener al menos 6 caracteres, contener al menos una mayúscula, una minúscula y un dígito");
 			}
