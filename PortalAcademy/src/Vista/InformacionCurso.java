@@ -75,8 +75,10 @@ public class InformacionCurso extends JPanel {
 			listaMensajes.setModel(modelo);
 			
 			for (Mensaje mensaje : mensajes) {
-				if (mensaje.getEmisor().equals(user)) {
-					modelo.addElement(new String("\t"+mensaje.getTexto()));
+				if (user != null && mensaje.getEmisor().equals(user)) {
+					modelo.addElement(new String(mensaje.getTexto()));
+				} else if (user == null) {
+					modelo.addElement(new String("INVITADO:"+mensaje.getTexto()));
 				} else {
 					modelo.addElement(mensaje.getEmisor().toString().toUpperCase() + ":" + mensaje.getTexto());
 				}
