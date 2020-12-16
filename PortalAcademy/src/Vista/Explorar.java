@@ -10,16 +10,14 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import Modelo.Actividad;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Organizacion;
 import Modelo.Profesor;
-import Modelo.Usuario;
 
+@SuppressWarnings("serial")
 public class Explorar extends JPanel {
 
 	private DefaultListModel<String> modeloC = new DefaultListModel<String>();

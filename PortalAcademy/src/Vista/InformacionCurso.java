@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 
 import Modelo.*;
 
+@SuppressWarnings("serial")
 public class InformacionCurso extends JPanel {
 	private JList<String> listaMensajes;
 	private DefaultListModel<String> modelo = new DefaultListModel<String>();

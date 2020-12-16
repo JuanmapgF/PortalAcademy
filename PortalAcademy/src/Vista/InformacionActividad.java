@@ -1,13 +1,13 @@
 package Vista;
 
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+@SuppressWarnings("serial")
 public class InformacionActividad extends JPanel {
 	private JButton cerrarSesion;
 	private JButton iniciar;

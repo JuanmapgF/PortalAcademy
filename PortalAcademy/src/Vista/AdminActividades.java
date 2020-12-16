@@ -1,8 +1,7 @@
 package Vista;
 
+import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.ParseException;
 
 import javax.swing.DefaultListModel;
@@ -11,14 +10,12 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import Modelo.Actividad;
 
-import javax.swing.JTextField;
-import java.awt.Color;
-import javax.swing.JTable;
-
+@SuppressWarnings("serial")
 public class AdminActividades extends JPanel {
 
 	public JButton bCerrarSesion, bInicio, bCursos_1, bActividades_1, bUsuarios_1, bAjustes;

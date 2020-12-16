@@ -12,11 +12,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import Modelo.Actividad;
-import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Organizacion;
 import Modelo.Profesor;
 
+@SuppressWarnings("serial")
 public class MisActividades extends JPanel {
 
 	private DefaultListModel<String> modeloA = new DefaultListModel<String>();

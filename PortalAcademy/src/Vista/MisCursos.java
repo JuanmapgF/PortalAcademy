@@ -1,12 +1,14 @@
 package Vista;
 
-import javax.swing.JPanel;
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import Modelo.Curso;
@@ -14,9 +16,7 @@ import Modelo.Estudiante;
 import Modelo.Organizacion;
 import Modelo.Profesor;
 
-import javax.swing.JList;
-import javax.swing.JLabel;
-
+@SuppressWarnings("serial")
 public class MisCursos extends JPanel {
 
 	private DefaultListModel<String> modeloC = new DefaultListModel<String>();
