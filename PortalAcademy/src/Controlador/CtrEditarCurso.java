@@ -47,6 +47,14 @@ public class CtrEditarCurso implements ActionListener {
 			curso.eliminarCurso();
 		}
 		
+		if (e.getActionCommand().equals("VOLVER")) {
+			
+		}
+		
+		if (e.getActionCommand().equals("CERRAR_SESION")) {
+			
+		}
+		
 		if (e.getActionCommand().equals("EXPLORAR")) {
 			CtrExplorar c = new CtrExplorar(new Explorar(profesor, Curso.getTodosLosCursos()));
 			Main.setPanel(c.getPanel());

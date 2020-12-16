@@ -37,6 +37,8 @@ public class EditarCurso extends JPanel {
 	private JButton eliminar;
 	private JLabel lblForo;
 	private JCheckBox foro;
+	private JButton volver;
+	private JButton cerrarsesion;
 	
 	public EditarCurso(Curso cur, Profesor p) {
 		usuario = p;
@@ -149,6 +151,14 @@ public class EditarCurso extends JPanel {
 		foro = new JCheckBox("");
 		foro.setBounds(781, 518, 97, 23);
 		add(foro);
+		
+		volver = new JButton("Volver");
+		volver.setBounds(867, 584, 144, 23);
+		add(volver);
+		
+		cerrarsesion = new JButton("Cerrar sesi\u00F3n");
+		cerrarsesion.setBounds(867, 26, 144, 23);
+		add(cerrarsesion);
 	}
 	
 	public void controlador(ActionListener ctr) {
@@ -157,6 +167,12 @@ public class EditarCurso extends JPanel {
 		
 		eliminar.addActionListener(ctr);
 		eliminar.setActionCommand("ELIMINAR");
+		
+		volver.addActionListener(ctr);
+		volver.setActionCommand("VOLVER");
+		
+		cerrarsesion.addActionListener(ctr);
+		cerrarsesion.setActionCommand("CERRAR_SESION");
 		
 		explorar.addActionListener(ctr);
 		explorar.setActionCommand("EXPLORAR");
