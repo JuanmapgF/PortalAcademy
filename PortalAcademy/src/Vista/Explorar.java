@@ -174,6 +174,7 @@ public class Explorar extends JPanel {
 		this.setBounds(0, 0, 1080, 650);
 	}
 	
+	
 	public Explorar(Profesor u, List<Curso> l) {
 		profesor = true;
 		lista_cursos = l;
@@ -202,8 +203,8 @@ public class Explorar extends JPanel {
 		sp_n.setViewportView(listaN);
 		add(sp_n);
 		
-		seleccionC = new JButton("Ver");
-		seleccionC.setBounds(567, 575, 121, 23);
+		seleccionC = new JButton("Ver curso");
+		seleccionC.setBounds(537, 575, 121, 23);
 		add(seleccionC);
 		
 		explorar = new JButton("Explorar");
@@ -222,6 +223,7 @@ public class Explorar extends JPanel {
 	}
 
 	
+
 	public Explorar(Organizacion u, List<Actividad> l) {
 		organizacion = true;
 		lista_actividad = l;
@@ -250,8 +252,8 @@ public class Explorar extends JPanel {
 		sp_n.setViewportView(listaN);
 		add(sp_n);
 		
-		seleccionA = new JButton("Ver");
-		seleccionA.setBounds(567, 575, 121, 23);
+		seleccionA = new JButton("Ver actividad");
+		seleccionA.setBounds(537, 575, 121, 23);
 		add(seleccionA);
 		
 		explorar = new JButton("Explorar");

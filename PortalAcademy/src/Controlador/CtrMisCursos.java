@@ -50,16 +50,21 @@ public class CtrMisCursos implements ActionListener {
 		if (e.getActionCommand().equals("MISCURSOSUSUARIO")) {
 			Curso c = ventana.getC();
 			if(c!=null) {
-				//CtrRegistro cr = new CtrRegistro(new Registro());
-				//Main.setPanel(cr.getPanel());
+				if(ventana.esEstudiante()) {
+					CtrInformacionCurso cr = new CtrInformacionCurso(ventana.getEstudiante(),c);
+					Main.setPanel(cr.getPanel());
+				}
+				
 			}	
 		}
 		
 		if (e.getActionCommand().equals("MISCURSOSPROFESOR")) {
 			Curso c = ventana.getC();
 			if(c!=null) {
-				//CtrRegistro cr = new CtrRegistro(new Registro());
-				//Main.setPanel(cr.getPanel());
+				if(ventana.esProfesor()) {
+					CtrInformacionCurso cr = new CtrInformacionCurso(ventana.getProfesor(),c);
+					Main.setPanel(cr.getPanel());
+				}
 			}
 		}
 		

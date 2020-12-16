@@ -37,20 +37,12 @@ public class DescripcionCurso extends JPanel {
 		descripcionCurso.setBounds(292, 131, 652, 371);
 		add(descripcionCurso);
 		
-		if(esEstudiante) {
+		if(esEstudiante != null && esEstudiante) {
 			if (puedeUnirse) {
 				unirse = new JButton("Unirse");
 				unirse.setBounds(478, 511, 89, 23);
 				add(unirse);
 			}
-			cerrar = new JButton("Cerrar Sesi\u00F3n");
-			cerrar.setBounds(860, 37, 121, 23);
-			add(cerrar);
-			
-			explorar = new JButton("Explorar");
-			explorar.setBounds(36, 191, 131, 32);
-			add(explorar);
-			
 			cursos = new JButton("Mis cursos");
 			cursos.setBounds(36, 261, 131, 32);
 			add(cursos);
@@ -62,21 +54,44 @@ public class DescripcionCurso extends JPanel {
 			ajustes = new JButton("Ajustes");
 			ajustes.setBounds(36, 413, 131, 32);
 			add(ajustes);
+			
+			cerrar = new JButton("Cerrar Sesi\u00F3n");
+			cerrar.setBounds(860, 37, 121, 23);
+			add(cerrar);
+		}else if (esEstudiante != null && !esEstudiante){
+			
+			cursos = new JButton("Mis cursos");
+			cursos.setBounds(36, 261, 131, 32);
+			add(cursos);
+			
+			ajustes = new JButton("Ajustes");
+			ajustes.setBounds(36, 336, 131, 32);
+			add(ajustes);
+			
+			cerrar = new JButton("Cerrar Sesi\u00F3n");
+			cerrar.setBounds(860, 37, 121, 23);
+			add(cerrar);
 		}else {
-			explorar = new JButton("Explorar");
-			explorar.setBounds(36, 191, 131, 32);
-			add(explorar);
+			if (puedeUnirse) {
+				unirse = new JButton("Unirse");
+				unirse.setBounds(478, 511, 89, 23);
+				add(unirse);
+			}	
 			
 			iniciar = new JButton("Iniciar sesi\u00F3n");
 			iniciar.setBounds(729, 37, 121, 23);
 			add(iniciar);
-			
+				
 			registrarse = new JButton("Registrarse");
 			registrarse.setBounds(860, 37, 121, 23);
 			add(registrarse);
+			
 		}
 		
-
+		explorar = new JButton("Explorar");
+		explorar.setBounds(36, 191, 131, 32);
+		add(explorar);
+		
 	}
 	
 	public void controlador(ActionListener ctr) {

@@ -63,7 +63,7 @@ public class MisCursos extends JPanel {
 		
 		this.setBounds(0, 0, 1080, 650);
 		
-		JButton bVer = new JButton("Ver curso");
+		bVer = new JButton("Ver curso");
 		bVer.setBounds(560, 551, 104, 23);
 		add(bVer);
 		
@@ -113,7 +113,7 @@ public class MisCursos extends JPanel {
 		
 		this.setBounds(0, 0, 1080, 650);
 		
-		JButton bVer2 = new JButton("Ver curso");
+		bVer2 = new JButton("Ver curso");
 		bVer2.setBounds(560, 551, 104, 23);
 		add(bVer2);
 		

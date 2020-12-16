@@ -35,19 +35,12 @@ public class DescripcionActividad extends JPanel {
 		JTextArea descripcionActividad = new JTextArea(descripcion);
 		descripcionActividad.setBounds(292, 131, 652, 371);
 		add(descripcionActividad);
-		if(esEstudiante) {
+		if(esEstudiante != null && esEstudiante) {
 			if (puedeUnirse) {
 				unirse = new JButton("Unirse");
 				unirse.setBounds(478, 511, 89, 23);
 				add(unirse);
 			}
-			cerrar = new JButton("Cerrar Sesi\u00F3n");
-			cerrar.setBounds(860, 37, 121, 23);
-			add(cerrar);
-			
-			explorar = new JButton("Explorar");
-			explorar.setBounds(36, 191, 131, 32);
-			add(explorar);
 			
 			cursos = new JButton("Mis cursos");
 			cursos.setBounds(36, 261, 131, 32);
@@ -60,15 +53,31 @@ public class DescripcionActividad extends JPanel {
 			ajustes = new JButton("Ajustes");
 			ajustes.setBounds(36, 413, 131, 32);
 			add(ajustes);
+			
+			cerrar = new JButton("Cerrar Sesi\u00F3n");
+			cerrar.setBounds(860, 37, 121, 23);
+			add(cerrar);
+			
+		} else if (esEstudiante != null && !esEstudiante) {
+			
+			actividades = new JButton("Mis actividades");
+			actividades.setBounds(36, 261, 131, 32);
+			add(actividades);
+			
+			ajustes = new JButton("Ajustes");
+			ajustes.setBounds(36, 336, 131, 32);
+			add(ajustes);
+			
+			cerrar = new JButton("Cerrar Sesi\u00F3n");
+			cerrar.setBounds(860, 37, 121, 23);
+			add(cerrar);
+			
 		}else {
 			if (puedeUnirse) {
 				unirse = new JButton("Unirse");
 				unirse.setBounds(478, 511, 89, 23);
 				add(unirse);
 			}	
-			explorar = new JButton("Explorar");
-			explorar.setBounds(36, 191, 131, 32);
-			add(explorar);
 			
 			iniciar = new JButton("Iniciar sesi\u00F3n");
 			iniciar.setBounds(729, 37, 121, 23);
@@ -77,7 +86,12 @@ public class DescripcionActividad extends JPanel {
 			registrarse = new JButton("Registrarse");
 			registrarse.setBounds(860, 37, 121, 23);
 			add(registrarse);
+			
 		}
+		
+		explorar = new JButton("Explorar");
+		explorar.setBounds(36, 191, 131, 32);
+		add(explorar);
 	}
 	
 	public void controlador(ActionListener ctr) {
