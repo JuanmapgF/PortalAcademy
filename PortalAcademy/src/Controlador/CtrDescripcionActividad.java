@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Modelo.*;
@@ -43,9 +44,17 @@ public class CtrDescripcionActividad implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getActionCommand().equals("Unirse")) {
-			actividad.addParticipante(user);
-			CtrInformacionActividad c = new CtrInformacionActividad(user, actividad);
-			Main.setPanel(c.getPanel());
+			if(esEstudiante != null && esEstudiante) {
+				actividad.addParticipante(user);
+				CtrInformacionActividad c = new CtrInformacionActividad(user, actividad);
+				JOptionPane.showMessageDialog(ventana, "Se ha unido a la actividad correctamente");
+				Main.setPanel(c.getPanel());
+			}else {
+				CtrInformacionActividad c = new CtrInformacionActividad(null, actividad);
+				JOptionPane.showMessageDialog(ventana, "Se ha unido a la actividad correctamente");
+				Main.setPanel(c.getPanel());
+			}
+			
 			//TODO: Entramos en informacionActividad
 		}
 		if (e.getActionCommand().equals("CERRAR_SESION")) {

@@ -35,7 +35,7 @@ public class InformacionActividad extends JPanel {
 			add(cerrarSesion);
 		}
 		
-		if (esOrganizacion) {
+		if (esOrganizacion != null && esOrganizacion) {
 			editar = new JButton("Editar");
 			editar.setBounds(752, 68, 89, 23);
 			add(editar);

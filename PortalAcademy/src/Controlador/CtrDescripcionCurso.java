@@ -3,6 +3,7 @@ package Controlador;
 import java.awt.event.*;
 import java.text.ParseException;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Vista.*;
@@ -40,9 +41,17 @@ public class CtrDescripcionCurso implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		if (e.getActionCommand().equals("Unirse")) {
-			curso.addEstudiante(user);
-			CtrInformacionCurso c = new CtrInformacionCurso(user, curso);
-			Main.setPanel(c.getPanel());
+			if(esEstudiante != null && esEstudiante) {
+				curso.addEstudiante(user);
+				CtrInformacionCurso c = new CtrInformacionCurso(user, curso);
+				JOptionPane.showMessageDialog(ventana, "Se ha unido al curso correctamente");
+				Main.setPanel(c.getPanel());
+			}else {
+				CtrInformacionCurso c = new CtrInformacionCurso(null, curso);
+				JOptionPane.showMessageDialog(ventana, "Se ha unido al curso correctamente");
+				Main.setPanel(c.getPanel());
+			}
+			
 		}
 		
 		if (e.getActionCommand().equals("CERRAR_SESION")) {

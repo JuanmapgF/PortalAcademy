@@ -100,7 +100,7 @@ public class InformacionCurso extends JPanel {
 			add(cerrarSesion);
 		}
 		
-		if (esProfesor) {
+		if (esProfesor != null && esProfesor) {
 			editar = new JButton("Editar");
 			editar.setBounds(752, 68, 89, 23);
 			add(editar);
