@@ -2,9 +2,11 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.JOptionPane;
 
+import Modelo.Actividad;
 import Modelo.Curso;
 import Modelo.Profesor;
 import Vista.Ajustes;
@@ -38,6 +40,11 @@ public class CtrEditarCurso implements ActionListener {
 				curso.setPresencial(ventana.getPresencial());
 				curso.setPublico(ventana.getPublico());
 				curso.setTieneForo(ventana.getForo());
+				
+				JOptionPane.showMessageDialog(ventana, "Se ha actualizado la información del curso correctamente");
+				
+				CtrInformacionCurso c = new CtrInformacionCurso(profesor, curso);
+				Main.setPanel(c.getPanel());
 			} else {
 				JOptionPane.showMessageDialog(ventana, "El aforo debe ser un entero positivo");
 			}
@@ -48,11 +55,22 @@ public class CtrEditarCurso implements ActionListener {
 		}
 		
 		if (e.getActionCommand().equals("VOLVER")) {
+			int res = JOptionPane.showConfirmDialog(ventana, "¿Salir sin guardar?");
 			
+			if (res == 0) {
+				CtrInformacionCurso c = new CtrInformacionCurso(profesor, curso);
+				Main.setPanel(c.getPanel());
+			}
 		}
 		
 		if (e.getActionCommand().equals("CERRAR_SESION")) {
-			
+			try {
+				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+				Main.setPanel(c.getPanel());
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		
 		if (e.getActionCommand().equals("EXPLORAR")) {
