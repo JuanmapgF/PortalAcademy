@@ -48,6 +48,7 @@ public class InformacionCurso extends JPanel {
 		JTextArea descripcionCurso = new JTextArea(descripcion);
 		descripcionCurso.setBounds(278, 102, 459, 102);
 		add(descripcionCurso);
+		descripcionCurso.setEditable(false);
 		
 		//-----
 		if (tieneForo) {
