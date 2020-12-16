@@ -54,7 +54,8 @@ public class CtrInformacionActividad implements ActionListener {
 		}
 
 		if (e.getActionCommand().equals("Editar")) {
-			// TODO: Accede a la vista de editar Curso
+			CtrEditarActividad c = new CtrEditarActividad(new EditarActividad(actividad, (Organizacion) user));
+			Main.setPanel(c.getPanel());
 		}
 
 		if (e.getActionCommand().equals("EXPLORAR")) {

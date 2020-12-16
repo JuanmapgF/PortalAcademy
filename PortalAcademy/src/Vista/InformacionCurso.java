@@ -76,12 +76,14 @@ public class InformacionCurso extends JPanel {
 			listaMensajes.setModel(modelo);
 			
 			for (Mensaje mensaje : mensajes) {
-				if (user != null && mensaje.getEmisor().equals(user)) {
-					modelo.addElement(new String(mensaje.getTexto()));
-				} else if (user == null) {
-					modelo.addElement(new String("INVITADO:"+mensaje.getTexto()));
+				if (mensaje.getEmisor() == null) {
+					modelo.addElement("<INVITADO> : " + mensaje.getTexto());
+				} else if (mensaje.getEmisor().equals(user)) {
+					modelo.addElement("<TU> : " + mensaje.getTexto());
+				} else if (mensaje.getEmisor() instanceof Profesor) {
+					modelo.addElement("<PROFESOR> : " + mensaje.getTexto());
 				} else {
-					modelo.addElement(mensaje.getEmisor().toString().toUpperCase() + ":" + mensaje.getTexto());
+					modelo.addElement("<" +mensaje.getEmisor().toString().toUpperCase() + "> : " + mensaje.getTexto());
 				}
 			}
 		}
