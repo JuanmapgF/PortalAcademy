@@ -50,7 +50,6 @@ public class InformacionCurso extends JPanel {
 		add(descripcionCurso);
 		
 		//-----
-		
 		if (tieneForo) {
 			JScrollPane foro = new JScrollPane();
 			foro.setBounds(278, 234, 459, 268);
