@@ -40,12 +40,13 @@ public class CtrAdminInicio implements ActionListener{
 		// pulsar en cualquiera de los dos botones de "ACTIVIDAD"
 		if(e.getSource() == vista.bActividades || e.getSource() == vista.bActividades_1 ) {
 			CtrAdminActividades ctr = new CtrAdminActividades(new AdminActividades());
-			MainPrueba.setPanel(ctr.getPanel());
+			Main.setPanel(ctr.getPanel());
 		}
 		
 		//pulsar en el botón "AJUSTES"
 		if(e.getSource() == vista.bAjustes ) {
-			
+//			CtrAjustes ctr = new CtrAjustes(new Ajustes());
+//			Main.setPanel(ctr.getPanel());
 		}
 		
 		//pulsar en el botón "CERRARSESION"
@@ -62,18 +63,19 @@ public class CtrAdminInicio implements ActionListener{
 		//pulsar en el botón "CURSOS"
 		if(e.getSource() == vista.bCursos || e.getSource() == vista.bCursos_1) {
 			CtrAdminCursos ctr = new CtrAdminCursos(new AdminCursos());
-			MainPrueba.setPanel(ctr.getPanel());
+			Main.setPanel(ctr.getPanel());
 		}
 		
 		//pulsar en el botón "INICIO"
 		if(e.getSource() == vista.bInicio) {
-			
+			CtrAdminInicio ctr = new CtrAdminInicio(new AdminInicio());
+			Main.setPanel(ctr.getPanel());
 		}
 		
 		//pulsar en el botón "USUARIOS"
 		if(e.getSource() == vista.bUsuarios || e.getSource() == vista.bUsuarios_1) {
 			CtrAdminUsuarios ctr = new CtrAdminUsuarios(new AdminUsuarios());
-			MainPrueba.setPanel(ctr.getPanel());
+			Main.setPanel(ctr.getPanel());
 		}
 		
 		
