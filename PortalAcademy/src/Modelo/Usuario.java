@@ -82,7 +82,7 @@ public class Usuario {
 		return usuarios;
 	}
 	
-	public String ToString() {
+	public String toString() {
 		return getNick();
 	}
 }
