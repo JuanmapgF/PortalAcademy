@@ -13,7 +13,7 @@ public class Profesor extends Usuario {
 		this.telefono = telefono;
 		bd = BD.getBD();
 		bd.Insert("INSERT INTO Profesor (nick, codigoTelefono, numeroTelefono) VALUES ( '" + this.getNick() + "', "
-				+ telefono.getCodigo() + ",'" + telefono.getNumero() + "')");
+				+ getTelefono().getCodigo() + ",'" + getTelefono().getNumero() + "')");
 		bd.finalize();
 	}
 
@@ -22,10 +22,12 @@ public class Profesor extends Usuario {
 	}
 
 	public Telefono getTelefono() {
-		bd = BD.getBD();
-		Object[] user = bd.Select("SELECT * FROM Profesor WHERE Profesor.nick = '" + this.getNick() + "'").get(0);
-		bd.finalize();
-		this.telefono = new Telefono(Integer.parseInt(user[1].toString()), user[2].toString());
+		if(telefono == null) {
+			bd = BD.getBD();
+			Object[] user = bd.Select("SELECT * FROM Profesor WHERE Profesor.nick = '" + this.getNick() + "'").get(0);
+			bd.finalize();
+			this.telefono = new Telefono(Integer.parseInt(user[1].toString()), user[2].toString());
+		}
 		return this.telefono;
 	}
 
