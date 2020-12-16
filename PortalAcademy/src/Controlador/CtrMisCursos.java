@@ -2,7 +2,6 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 
 import javax.swing.JPanel;
 
@@ -29,14 +28,11 @@ public class CtrMisCursos implements ActionListener {
 		// TODO Auto-generated method stub
 
 		if (e.getActionCommand().equals("CERRAR_SESION")) {
-			try {
-				CtrExplorar c = new CtrExplorar(
-						new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-				Main.setPanel(c.getPanel());
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+
+			CtrExplorar c = new CtrExplorar(
+					new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+			Main.setPanel(c.getPanel());
+
 		}
 
 		if (e.getActionCommand().equals("CREARCURSO")) {
@@ -67,14 +63,11 @@ public class CtrMisCursos implements ActionListener {
 
 		if (e.getActionCommand().equals("EXPLORAR")) {
 			if (ventana.esEstudiante()) {
-				try {
-					CtrExplorar c = new CtrExplorar(new Explorar(ventana.getEstudiante(), Curso.getTodosLosCursos(),
-							Actividad.getTodasLasActividades()));
-					Main.setPanel(c.getPanel());
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+
+				CtrExplorar c = new CtrExplorar(new Explorar(ventana.getEstudiante(), Curso.getTodosLosCursos(),
+						Actividad.getTodasLasActividades()));
+				Main.setPanel(c.getPanel());
+
 			} else {
 				CtrExplorar c = new CtrExplorar(new Explorar(ventana.getProfesor(), Curso.getTodosLosCursos()));
 				Main.setPanel(c.getPanel());

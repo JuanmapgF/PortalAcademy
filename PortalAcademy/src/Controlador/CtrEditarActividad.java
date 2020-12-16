@@ -2,13 +2,18 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import Modelo.*;
-import Vista.*;
+import Modelo.Actividad;
+import Modelo.Curso;
+import Modelo.Organizacion;
+import Vista.Ajustes;
+import Vista.EditarActividad;
+import Vista.Explorar;
+import Vista.Main;
+import Vista.MisActividades;
 
 public class CtrEditarActividad implements ActionListener {
 	
@@ -58,24 +63,16 @@ public class CtrEditarActividad implements ActionListener {
 		}
 
 		if (e.getActionCommand().equals("CERRAR_SESION")) {
-			try {
+			
 				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			
 		}
 
 		if (e.getActionCommand().equals("EXPLORAR")) {
 			CtrExplorar c;
-			try {
-				c = new CtrExplorar(new Explorar(organizacion, Actividad.getTodasLasActividades()));
-				Main.setPanel(c.getPanel());
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			c = new CtrExplorar(new Explorar(organizacion, Actividad.getTodasLasActividades()));
+			Main.setPanel(c.getPanel());
 		}
 		
 		if (e.getActionCommand().equals("ACTIVIDADES")) {

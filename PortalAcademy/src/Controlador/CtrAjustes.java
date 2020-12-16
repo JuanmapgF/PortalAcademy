@@ -2,7 +2,6 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,7 +10,11 @@ import javax.swing.JPanel;
 
 import Modelo.Actividad;
 import Modelo.Curso;
-import Vista.*;
+import Vista.Ajustes;
+import Vista.Explorar;
+import Vista.Main;
+import Vista.MisActividades;
+import Vista.MisCursos;
 
 public class CtrAjustes implements ActionListener {
 	
@@ -27,13 +30,8 @@ public class CtrAjustes implements ActionListener {
 		// TODO Auto-generated method stub
 		
 		if (e.getActionCommand().equals("CERRAR")) {
-			try {
-				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-				Main.setPanel(c.getPanel());
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+			Main.setPanel(c.getPanel());
 		}
 		
 		if (e.getActionCommand().equals("ELIMINAR")) {
@@ -45,13 +43,8 @@ public class CtrAjustes implements ActionListener {
 				ventana.getOrganizacion().eliminarUsuario();
 			}
 			
-			try {
-				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-				Main.setPanel(c.getPanel());
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+			Main.setPanel(c.getPanel());
 			
 			JOptionPane.showMessageDialog(ventana, "Cuenta eliminada satisfactoriamente");
 		}
@@ -61,22 +54,12 @@ public class CtrAjustes implements ActionListener {
 				JOptionPane.showMessageDialog(ventana, "La contraseña se ha actualizado satisfactoriamente");
 				if (ventana.esEstudiante()) {
 					ventana.getEstudiante().setPassword(ventana.getTexto());
-					try {
-						CtrExplorar c = new CtrExplorar(new Explorar(ventana.getEstudiante(), Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-						Main.setPanel(c.getPanel());
-					} catch (ParseException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+					CtrExplorar c = new CtrExplorar(new Explorar(ventana.getEstudiante(), Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+					Main.setPanel(c.getPanel());
 				} else if (ventana.esOrganizacion()) {
 					ventana.getOrganizacion().setPassword(ventana.getTexto());
-					try {
-						CtrExplorar c = new CtrExplorar(new Explorar(ventana.getOrganizacion(), Actividad.getTodasLasActividades()));
-						Main.setPanel(c.getPanel());
-					} catch (ParseException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+					CtrExplorar c = new CtrExplorar(new Explorar(ventana.getOrganizacion(), Actividad.getTodasLasActividades()));
+					Main.setPanel(c.getPanel());
 				} else if (ventana.esProfesor()) {
 					ventana.getProfesor().setPassword(ventana.getTexto());
 					CtrExplorar c = new CtrExplorar(new Explorar(ventana.getProfesor(), Curso.getTodosLosCursos()));
@@ -91,32 +74,17 @@ public class CtrAjustes implements ActionListener {
 		
 		if (e.getActionCommand().equals("EXPLORAR")) {
 			if (ventana.esEstudiante()) {
-				try {
-					CtrExplorar c = new CtrExplorar(new Explorar(ventana.getEstudiante(), Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-					Main.setPanel(c.getPanel());
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				CtrExplorar c = new CtrExplorar(new Explorar(ventana.getEstudiante(), Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+				Main.setPanel(c.getPanel());
 			} else if (ventana.esOrganizacion()) {
-				try {
-					CtrExplorar c = new CtrExplorar(new Explorar(ventana.getOrganizacion(), Actividad.getTodasLasActividades()));
-					Main.setPanel(c.getPanel());
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				CtrExplorar c = new CtrExplorar(new Explorar(ventana.getOrganizacion(), Actividad.getTodasLasActividades()));
+				Main.setPanel(c.getPanel());
 			} else if (ventana.esProfesor()) {
 				CtrExplorar c = new CtrExplorar(new Explorar(ventana.getProfesor(), Curso.getTodosLosCursos()));
 				Main.setPanel(c.getPanel());
 			} else {
-				try {
-					CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-					Main.setPanel(c.getPanel());
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+				Main.setPanel(c.getPanel());
 			}
 		}
 		

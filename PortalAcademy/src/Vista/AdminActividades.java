@@ -31,13 +31,8 @@ public class AdminActividades extends JPanel {
 		
 		//para mostrar la lista de actividades en el scrollpanel
 		listA.setModel(modeloA);
-		try {
-			for (Actividad d : Actividad.getTodasLasActividades()) {
-				modeloA.addElement(d.toString());
-			}
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		for (Actividad d : Actividad.getTodasLasActividades()) {
+			modeloA.addElement(d.toString());
 		}
 		listA.setLayoutOrientation(JList.VERTICAL);
 		//--------------------------------------------------------

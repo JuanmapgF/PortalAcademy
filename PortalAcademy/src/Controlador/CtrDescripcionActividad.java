@@ -2,13 +2,23 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import Modelo.*;
-import Vista.*;
+import Modelo.Actividad;
+import Modelo.Curso;
+import Modelo.Estudiante;
+import Modelo.Organizacion;
+import Modelo.Usuario;
+import Vista.Ajustes;
+import Vista.DescripcionActividad;
+import Vista.Explorar;
+import Vista.Inicio;
+import Vista.Main;
+import Vista.MisActividades;
+import Vista.MisCursos;
+import Vista.Registro;
 
 public class CtrDescripcionActividad implements ActionListener {
 	private Usuario user;
@@ -58,43 +68,23 @@ public class CtrDescripcionActividad implements ActionListener {
 			//TODO: Entramos en informacionActividad
 		}
 		if (e.getActionCommand().equals("CERRAR_SESION")) {
-			try {
-				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-				Main.setPanel(c.getPanel());
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+			Main.setPanel(c.getPanel());
 			
 		}
 		
 		if (e.getActionCommand().equals("EXPLORAR")) {
 			if (esEstudiante != null && esEstudiante) {
-				try {
-					CtrExplorar c = new CtrExplorar(new Explorar((Estudiante)user, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-					Main.setPanel(c.getPanel());
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				CtrExplorar c = new CtrExplorar(new Explorar((Estudiante)user, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+				Main.setPanel(c.getPanel());
 			} else if (esEstudiante != null && !esEstudiante) {
 				CtrExplorar c;
-				try {
-					c = new CtrExplorar(new Explorar((Organizacion)user, Actividad.getTodasLasActividades()));
-					Main.setPanel(c.getPanel());
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				c = new CtrExplorar(new Explorar((Organizacion)user, Actividad.getTodasLasActividades()));
+				Main.setPanel(c.getPanel());
 				
 			} else {
-				try {
-					CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-					Main.setPanel(c.getPanel());
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+				Main.setPanel(c.getPanel());
 			}
 		}
 		

@@ -2,7 +2,6 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -52,6 +51,9 @@ public class CtrCrearCurso implements ActionListener {
 				JOptionPane.showMessageDialog(vista,
 						"El curso " + curso.getNombre() + " ha sido creado satisfactoriamente.", "Curso creado",
 						JOptionPane.INFORMATION_MESSAGE);
+				CtrExplorar c = new CtrExplorar(
+						new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+				Main.setPanel(c.getPanel());
 			} catch (ErrorBD err) {
 				JOptionPane.showMessageDialog(vista, err.getMessage(), "Error crear curso", JOptionPane.ERROR_MESSAGE);
 			}
@@ -63,13 +65,9 @@ public class CtrCrearCurso implements ActionListener {
 		}
 
 		if (e.getSource() == vista.btnCerrarSesion) {
-			try {
-				CtrExplorar c = new CtrExplorar(
-						new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-				Main.setPanel(c.getPanel());
-			} catch (ParseException e1) {
-				e1.printStackTrace();
-			}
+			CtrExplorar c = new CtrExplorar(
+					new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+			Main.setPanel(c.getPanel());
 		}
 
 	}
@@ -97,7 +95,7 @@ public class CtrCrearCurso implements ActionListener {
 	private boolean nombreValido() {
 		return !(vista.textFieldNombre.getText().isEmpty() || vista.textFieldNombre.getText() == null);
 	}
-	
+
 	public JPanel getPanel() {
 		return vista;
 	}

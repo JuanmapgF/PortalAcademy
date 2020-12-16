@@ -173,7 +173,7 @@ public class Actividad {
 		return getAforo() > participantes.size();
 	}
 
-	public static List<Actividad> getTodasLasActividades() throws ParseException {
+	public static List<Actividad> getTodasLasActividades() {
 		List<Actividad> listaActividades = new ArrayList<>();
 		bd = BD.getBD();
 		List<Object[]> actividades = bd.Select("SELECT * FROM Actividad");
