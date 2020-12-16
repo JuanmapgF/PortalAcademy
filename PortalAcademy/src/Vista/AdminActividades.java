@@ -2,6 +2,7 @@ package Vista;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -13,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import Modelo.Actividad;
+import Modelo.Curso;
 
 @SuppressWarnings("serial")
 public class AdminActividades extends JPanel {
@@ -22,6 +24,9 @@ public class AdminActividades extends JPanel {
 	
 	private DefaultListModel<String> modeloA = new DefaultListModel<String>();
 	private JList<String> listA = new JList<String>();
+	private List<Actividad> lista_actividades;
+	
+	
 
 	/**
 	 * Create the panel.
@@ -99,5 +104,15 @@ public class AdminActividades extends JPanel {
 		bEliminar.setBounds(944, 330, 85, 74);
 		add(bEliminar);
 		
+		
+		
+	}
+	
+	public Actividad getActividad() {
+		if (listA.isSelectionEmpty()) {
+			return null;
+		} else {
+			return lista_actividades.get(listA.getSelectedIndex());
+		}
 	}
 }
