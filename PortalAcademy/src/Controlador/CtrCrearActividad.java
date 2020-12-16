@@ -43,6 +43,10 @@ public class CtrCrearActividad implements ActionListener {
 					throw new ErrorBD("El aforo debe ser un número mayor que 0");
 				}
 
+				if (!fechaValida()) {
+					throw new ErrorBD("La fecha debe ser asignada para algún día");
+				}				
+				
 				Actividad actividad = new Actividad(vista.textFieldNombre.getText(),
 						vista.textAreaDescripcion.getText(), vista.textFieldImagen.getText(),
 						Integer.parseInt(vista.spinnerAforo.getValue().toString()), vista.dateChooser.getDate(),
@@ -70,6 +74,10 @@ public class CtrCrearActividad implements ActionListener {
 			Main.setPanel(c.getPanel());
 		}
 
+	}
+
+	private boolean fechaValida() {
+		return vista.dateChooser.getDate() != null;
 	}
 
 	private boolean aforoValido() {

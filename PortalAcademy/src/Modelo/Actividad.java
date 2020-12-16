@@ -23,10 +23,11 @@ public class Actividad {
 
 	public Actividad(String nombre, String descripcion, String imagen, int aforo, Date fecha, String lugar,
 			Organizacion organizacion) {
+		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 		bd = BD.getBD();
-		bd.Insert("INSERT INTO Curso (nombre, descripcion, imagen, aforo, fecha, lugar, idOrganizacion)" + "VALUES ('"
-				+ nombre + "','" + descripcion + "','" + imagen + "'," + aforo + "," + fecha + "," + lugar + ",'"
-				+ organizacion.getNick() + "')");
+		bd.Insert("INSERT INTO Actividad (nombre, descripcion, imagen, aforo, fecha, lugar, nickOrganizacion)"
+				+ "VALUES ('" + nombre + "', '" + descripcion + "', '" + imagen + "'," + aforo + ", '"
+				+ formato.format(fecha) + "','" + lugar + "','" + organizacion.getNick() + "')");
 		bd.finalize();
 
 		this.nombre = nombre;
@@ -129,10 +130,12 @@ public class Actividad {
 	}
 
 	public Organizacion getOrganizacion() {
-		bd = BD.getBD();
-		Object[] tupla = bd.Select("SELECT * FROM Curso WHERE idActividad = " + idActividad).get(0);
-		bd.finalize();
-		this.organizacion = new Organizacion(tupla[7].toString());
+		if (organizacion == null) {
+			bd = BD.getBD();
+			Object[] tupla = bd.Select("SELECT nickOrganizacion FROM Curso WHERE idActividad = " + idActividad).get(0);
+			bd.finalize();
+			this.organizacion = new Organizacion(tupla[7].toString());
+		}
 		return organizacion;
 	}
 

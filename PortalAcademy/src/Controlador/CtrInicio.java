@@ -54,10 +54,12 @@ public class CtrInicio implements ActionListener {
 					Estudiante est = null;
 					try {
 						est = new Estudiante(ini.getNick());
-						Main.setUser(est);
+
 					} catch (ParseException e2) {
 						// TODO Auto-generated catch block
 						e2.printStackTrace();
+					} finally {
+						Main.setUser(est);
 					}
 
 					CtrExplorar ex = new CtrExplorar(
@@ -68,9 +70,12 @@ public class CtrInicio implements ActionListener {
 						bd.SelectEscalar("SELECT COUNT(nick) FROM Organizacion WHERE nick = '" + u.getNick() + "'")
 								.toString()) == 1) {
 					bd.finalize();
-
-					Organizacion est = new Organizacion(ini.getNick());
-					Main.setUser(est);
+					Organizacion est = null;
+					try {
+						est = new Organizacion(ini.getNick());
+					} finally {
+						Main.setUser(est);
+					}
 
 					CtrExplorar ex = new CtrExplorar(new Explorar(est, Actividad.getTodasLasActividades()));
 					Main.setPanel(ex.getPanel());
@@ -79,16 +84,25 @@ public class CtrInicio implements ActionListener {
 						bd.SelectEscalar("SELECT COUNT(nick) FROM Profesor WHERE nick = '" + u.getNick() + "'")
 								.toString()) == 1) {
 					bd.finalize();
+					Profesor est = null;
+					try {
+						est = new Profesor(ini.getNick());
+					} finally {
+						Main.setUser(est);
+					}
 
-					Profesor est = new Profesor(ini.getNick());
 					Main.setUser(est);
 					CtrExplorar ex = new CtrExplorar(new Explorar(est, Curso.getTodosLosCursos()));
 					Main.setPanel(ex.getPanel());
 				} else if (Integer.parseInt(
 						bd.SelectEscalar("SELECT COUNT(nick) FROM Administrador WHERE nick = '" + u.getNick() + "'")
 								.toString()) == 1) {
-					Administrador est = new Administrador(ini.getNick());
-					Main.setUser(est);
+					Administrador est = null;
+					try {
+						est = new Administrador(ini.getNick());
+					} finally {
+						Main.setUser(est);
+					}
 					CtrAdminInicio cai = new CtrAdminInicio(new AdminInicio());
 					Main.setPanel(cai.getPanel());
 				} else {
