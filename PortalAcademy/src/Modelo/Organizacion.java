@@ -12,7 +12,7 @@ public class Organizacion extends Usuario {
 		super(nick, correo, password);
 		this.sede = sede;
 		bd = BD.getBD();
-		bd.Insert("INSERT INTO Organizacion (nick,sede) VALUES ('" + this.getNick() + "','" + this.getSede() + "')");
+		bd.Insert("INSERT INTO Organizacion (nick,sede) VALUES ('" + this.getNick() + "', '" + this.getSede() + "')");
 		bd.finalize();
 	}
 
@@ -34,11 +34,13 @@ public class Organizacion extends Usuario {
 	}
 
 	public String getSede() {
-		bd = BD.getBD();
-		Object[] user = bd.Select("SELECT * FROM Organizacion WHERE Organizacion.nick = '" + this.getNick() + "'")
-				.get(0);
-		bd.finalize();
-		this.sede = user[1].toString();
+		if (sede.isEmpty()) {
+			bd = BD.getBD();
+			Object user = bd
+					.SelectEscalar("SELECT sede FROM Organizacion WHERE Organizacion.nick = '" + this.getNick() + "'");
+			bd.finalize();
+			this.sede = user.toString();
+		}
 		return sede;
 	}
 
