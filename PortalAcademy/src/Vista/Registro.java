@@ -36,12 +36,13 @@ public class Registro extends JPanel {
 		setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Registro");
-		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 30));
-		lblNewLabel.setBounds(544, 39, 107, 35);
+		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
+		lblNewLabel.setBounds(486, 27, 209, 50);
 		add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("Nick:");
-		lblNewLabel_1.setBounds(371, 130, 86, 23);
+		lblNewLabel_1.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		lblNewLabel_1.setBounds(371, 130, 163, 23);
 		add(lblNewLabel_1);
 
 		textFieldNick = new JTextField();
@@ -50,7 +51,8 @@ public class Registro extends JPanel {
 		textFieldNick.setColumns(10);
 
 		JLabel lblNewLabel_2 = new JLabel("Correo:");
-		lblNewLabel_2.setBounds(371, 190, 86, 23);
+		lblNewLabel_2.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		lblNewLabel_2.setBounds(371, 190, 180, 23);
 		add(lblNewLabel_2);
 
 		textFieldCorreo = new JTextField();
@@ -59,11 +61,13 @@ public class Registro extends JPanel {
 		textFieldCorreo.setColumns(10);
 
 		JLabel lblNewLabel_3 = new JLabel("Contrase\u00F1a:");
-		lblNewLabel_3.setBounds(371, 247, 86, 23);
+		lblNewLabel_3.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		lblNewLabel_3.setBounds(371, 247, 196, 23);
 		add(lblNewLabel_3);
 
 		JLabel lblNewLabel_4 = new JLabel("Rol:");
-		lblNewLabel_4.setBounds(371, 313, 86, 23);
+		lblNewLabel_4.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		lblNewLabel_4.setBounds(371, 313, 116, 23);
 		add(lblNewLabel_4);
 
 		volver = new JButton("Explorar");
@@ -113,7 +117,8 @@ public class Registro extends JPanel {
 		textFieldCodigo.setColumns(10);
 		
 		JLabel lblNewLabel_5 = new JLabel("\u00BFYa tienes una cuenta?");
-		lblNewLabel_5.setBounds(416, 576, 118, 14);
+		lblNewLabel_5.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		lblNewLabel_5.setBounds(314, 567, 259, 32);
 		add(lblNewLabel_5);
 		
 		btnInicioSesion = new JButton("Inicio Sesi\u00F3n");
