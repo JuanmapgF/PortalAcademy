@@ -139,7 +139,9 @@ public class Actividad {
 	public List<Usuario> getParticipantes() {
 		participantes = new ArrayList<>();
 		bd = BD.getBD();
-		List<Object[]> tuplaParticipantes = bd.Select("SELECT * FROM RelActividadUsuario WHERE idActividad = " + idActividad);
+		List<Object[]> tuplaParticipantes = bd
+				.Select("SELECT * FROM RelActividadUsuario WHERE idActividad = " + idActividad);
+		BD.contadorFinalize(tuplaParticipantes.size() + 1);
 		bd.finalize();
 		for (Object[] o : tuplaParticipantes) {
 			this.participantes.add(new Usuario(o[0].toString()));
@@ -152,7 +154,6 @@ public class Actividad {
 		bd.Insert("INSERT INTO RelActividadUsuario (nickUsuario, idActividad) VALUES ('" + participante.getNick() + "',"
 				+ this.idActividad + ")");
 		bd.finalize();
-		//this.participantes.add(participante);
 	}
 
 	public void eliminarCurso() {
@@ -164,9 +165,9 @@ public class Actividad {
 		this.imagen = null;
 		this.lugar = null;
 	}
-	
+
 	public Boolean quedanPlazas() {
-		if(participantes == null) {
+		if (participantes == null) {
 			getParticipantes();
 		}
 		return getAforo() > participantes.size();
@@ -176,6 +177,7 @@ public class Actividad {
 		List<Actividad> listaActividades = new ArrayList<>();
 		bd = BD.getBD();
 		List<Object[]> actividades = bd.Select("SELECT * FROM Actividad");
+		BD.contadorFinalize(actividades.size() + 1);
 		bd.finalize();
 		for (Object[] tupla : actividades) {
 			listaActividades.add(new Actividad(Integer.parseInt(tupla[0].toString())));
@@ -187,7 +189,7 @@ public class Actividad {
 	public String toString() {
 		return nombre;
 	}
-	
+
 	public boolean equals(Object o) {
 		if (o instanceof Actividad) {
 			Actividad u = (Actividad) o;

@@ -1,14 +1,18 @@
 package Vista;
 
-import java.awt.BorderLayout;
-
-import javax.swing.*;
-
-import Modelo.*;
-
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+
+import Modelo.Estudiante;
+import Modelo.Organizacion;
+import Modelo.Profesor;
+
+@SuppressWarnings("serial")
 public class Ajustes extends JPanel {
 	
 	private JPasswordField texto;
