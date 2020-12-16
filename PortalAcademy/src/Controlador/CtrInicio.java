@@ -84,6 +84,13 @@ public class CtrInicio implements ActionListener {
 					Main.setUser(est);
 					CtrExplorar ex = new CtrExplorar(new Explorar(est, Curso.getTodosLosCursos()));
 					Main.setPanel(ex.getPanel());
+				} else if (Integer.parseInt(
+						bd.SelectEscalar("SELECT COUNT(nick) FROM Administrador WHERE nick = '" + u.getNick() + "'")
+								.toString()) == 1) {
+					Administrador est = new Administrador(ini.getNick());
+					Main.setUser(est);
+					CtrAdminInicio cai = new CtrAdminInicio(new AdminInicio());
+					Main.setPanel(cai.getPanel());
 				} else {
 					JOptionPane.showConfirmDialog(ventana, "El usuario o contraseña introducidos son erróneos");
 				}

@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import com.toedter.calendar.JCalendar;
+
 import Modelo.Actividad;
 import Modelo.Curso;
 import Modelo.Organizacion;
@@ -20,6 +22,7 @@ public class CtrEditarActividad implements ActionListener {
 	private EditarActividad ventana;
 	private Organizacion organizacion;
 	private Actividad actividad;
+	private JCalendar calendario;
 	
 	public CtrEditarActividad(EditarActividad v) {
 		ventana = v;
