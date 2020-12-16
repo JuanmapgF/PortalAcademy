@@ -85,19 +85,19 @@ public class InformacionActividad extends JPanel {
 			add(cerrarSesion);
 		} else if (user instanceof Organizacion) {
 			actividades = new JButton("Mis actividades");
-			actividades.setBounds(36, 336, 131, 32);
+			actividades.setBounds(36, 261, 131, 32);
 			add(actividades);
 			
 			editar = new JButton("Editar");
 			editar.setBounds(752, 68, 89, 23);
 			add(editar);
 			
-			cerrarSesion = new JButton("Cerrar Sesi\u00F3n");
-			cerrarSesion.setBounds(952, 39, 118, 23);
+			cerrarSesion = new JButton("Cerrar sesi\u00F3n");
+			cerrarSesion.setBounds(860, 37, 121, 23);
 			add(cerrarSesion);
 			
 			ajustes = new JButton("Ajustes");
-			ajustes.setBounds(36, 413, 131, 32);
+			ajustes.setBounds(36, 336, 131, 32);
 			add(ajustes);
 		}
 		

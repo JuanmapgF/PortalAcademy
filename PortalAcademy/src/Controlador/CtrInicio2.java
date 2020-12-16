@@ -111,10 +111,10 @@ public class CtrInicio2 implements KeyListener {
 					CtrAdminInicio cai = new CtrAdminInicio(new AdminInicio());
 					Main.setPanel(cai.getPanel());
 				} else {
-					JOptionPane.showConfirmDialog(ventana, "El usuario o contraseña introducidos son erróneos");
+					JOptionPane.showMessageDialog(ventana, "El usuario o contraseña introducidos son erróneos");
 				}
 			} else {
-				JOptionPane.showConfirmDialog(ventana, "El usuario o contraseña introducidos son erróneos");
+				JOptionPane.showMessageDialog(ventana, "El usuario o contraseña introducidos son erróneos");
 			}
 		}
 	}
