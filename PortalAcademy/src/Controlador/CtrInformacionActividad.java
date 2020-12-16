@@ -26,18 +26,17 @@ public class CtrInformacionActividad implements ActionListener {
 		} else {
 			esOrganizacion = false;
 		}
-		ventana = new InformacionActividad(actividad.getNombre(), actividad.getDescripcion(), esOrganizacion);
+		ventana = new InformacionActividad(actividad, user);
 		ventana.controlador(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equals("Cerrar Sesi\\u00F3n")) {
+		if (e.getActionCommand().equals("CERRAR_SESION")) {
 			try {
 				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
 			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
@@ -57,6 +56,63 @@ public class CtrInformacionActividad implements ActionListener {
 		
 		if (e.getActionCommand().equals("Editar")) {
 			// TODO: Accede a la vista de editar Curso
+		}
+		
+		if (e.getActionCommand().equals("EXPLORAR")) {
+			if (user != null && user instanceof Estudiante) {
+				try {
+					CtrExplorar c = new CtrExplorar(new Explorar((Estudiante)user, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+					Main.setPanel(c.getPanel());
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			} else if (user != null && user instanceof Organizacion) {
+				CtrExplorar c = null;
+				try {
+					c = new CtrExplorar(new Explorar((Organizacion)user, Actividad.getTodasLasActividades()));
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				Main.setPanel(c.getPanel());
+				
+			} else {
+				try {
+					CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+					Main.setPanel(c.getPanel());
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		}
+		
+		if (e.getActionCommand().equals("CURSO")) {
+			if (user != null && user instanceof Estudiante) {
+				CtrMisCursos c = new CtrMisCursos(new MisCursos((Estudiante)user));
+				Main.setPanel(c.getPanel());
+			}
+		}
+		
+		if (e.getActionCommand().equals("ACTIVIDAD")) {
+			if (user != null && user instanceof Estudiante) {
+				CtrMisActividades c = new CtrMisActividades(new MisActividades((Estudiante)user));
+				Main.setPanel(c.getPanel());
+			} else if (user != null && user instanceof Organizacion) {
+				CtrMisActividades c = new CtrMisActividades(new MisActividades((Organizacion)user));
+				Main.setPanel(c.getPanel());
+			}
+		}
+		
+		if (e.getActionCommand().equals("AJUSTES")) {
+			if (user != null && user instanceof Estudiante) {
+				CtrAjustes c = new CtrAjustes(new Ajustes((Estudiante)user));
+				Main.setPanel(c.getPanel());
+			}else if (user != null && user instanceof Organizacion) {
+				CtrAjustes c = new CtrAjustes(new Ajustes((Organizacion)user));
+				Main.setPanel(c.getPanel());
+			}
 		}
 	}
 	

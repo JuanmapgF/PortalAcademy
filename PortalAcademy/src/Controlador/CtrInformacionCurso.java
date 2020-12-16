@@ -26,7 +26,7 @@ public class CtrInformacionCurso implements ActionListener {
 		} else {
 			esProfesor = false;
 		}
-		ventana = new InformacionCurso(curso.getNombre(), curso.getDescripcion(), curso.getTieneForo(), curso.getMensajes(), esProfesor, user);
+		ventana = new InformacionCurso(curso.getNombre(), curso.getDescripcion(), curso.getTieneForo(), curso.getMensajes(), user);
 		ventana.controlador(this);
 	}
 
