@@ -51,11 +51,26 @@ public class Curso {
 		this.nombre = tupla[1].toString();
 		this.descripcion = tupla[2].toString();
 		this.imagen = tupla[3].toString();
-		this.publico = Boolean.parseBoolean(tupla[4].toString());
+		
+		if (tupla[4].toString().equals("1")) {
+			publico = true;
+		} else {
+			publico = false;
+		}
+		
 		this.aforo = Integer.parseInt(tupla[5].toString());
-		this.presencial = Boolean.parseBoolean(tupla[6].toString());
-		this.tieneForo = Boolean.parseBoolean(tupla[7].toString());
-
+		
+		if (tupla[6].toString().equals("1")) {
+			presencial = true;
+		} else {
+			presencial = false;
+		}
+		
+		if (tupla[7].toString().equals("1")) {
+			tieneForo = true;
+		} else {
+			tieneForo = false;
+		}
 		
 		estudiantes = new ArrayList<Usuario>();
 

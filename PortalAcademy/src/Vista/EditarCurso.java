@@ -4,17 +4,27 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import Modelo.Curso;
+import Modelo.Profesor;
+
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 
 public class EditarCurso extends JPanel {
 
 	private Curso c;
+	private Profesor usuario;
+	
+	private JButton explorar;
+	private JButton cursos;
+	private JButton ajustes;
 	
 	private JTextField nombre;
 	private JTextArea descripcion;
@@ -25,8 +35,13 @@ public class EditarCurso extends JPanel {
 	private JRadioButton online;
 	private JButton guardar;
 	private JButton eliminar;
+	private JLabel lblForo;
+	private JCheckBox foro;
+	private JButton volver;
+	private JButton cerrarsesion;
 	
-	public EditarCurso(Curso cur) {
+	public EditarCurso(Curso cur, Profesor p) {
+		usuario = p;
 		c = cur;
 		this.setLayout(null);
 		this.setBounds(0, 0, 1080, 650);
@@ -114,6 +129,98 @@ public class EditarCurso extends JPanel {
 		
 		eliminar = new JButton("Eliminar curso");
 		eliminar.setBounds(867, 350, 144, 23);
-		add(eliminar);		
+		add(eliminar);
+		
+		explorar = new JButton("Explorar");
+		explorar.setBounds(36, 191, 131, 32);
+		add(explorar);
+		
+		cursos = new JButton("Mis cursos");
+		cursos.setBounds(36, 261, 131, 32);
+		add(cursos);
+		
+		ajustes = new JButton("Ajustes");
+		ajustes.setBounds(36, 336, 131, 32);
+		add(ajustes);
+		
+		lblForo = new JLabel("Foro:");
+		lblForo.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		lblForo.setBounds(704, 518, 136, 27);
+		add(lblForo);
+		
+		foro = new JCheckBox("");
+		foro.setBounds(781, 518, 97, 23);
+		add(foro);
+		
+		volver = new JButton("Volver");
+		volver.setBounds(867, 584, 144, 23);
+		add(volver);
+		
+		cerrarsesion = new JButton("Cerrar sesi\u00F3n");
+		cerrarsesion.setBounds(867, 26, 144, 23);
+		add(cerrarsesion);
+	}
+	
+	public void controlador(ActionListener ctr) {
+		guardar.addActionListener(ctr);
+		guardar.setActionCommand("GUARDAR");
+		
+		eliminar.addActionListener(ctr);
+		eliminar.setActionCommand("ELIMINAR");
+		
+		volver.addActionListener(ctr);
+		volver.setActionCommand("VOLVER");
+		
+		cerrarsesion.addActionListener(ctr);
+		cerrarsesion.setActionCommand("CERRAR_SESION");
+		
+		explorar.addActionListener(ctr);
+		explorar.setActionCommand("EXPLORAR");
+		
+		cursos.addActionListener(ctr);
+		cursos.setActionCommand("CURSOS");
+		
+		ajustes.addActionListener(ctr);
+		ajustes.setActionCommand("AJUSTES");
+	}
+
+	public Curso getC() {
+		return c;
+	}
+
+	public Profesor getUsuario() {
+		return usuario;
+	}
+
+	public String getNombre() {
+		return nombre.getText();
+	}
+
+	public String getDescripcion() {
+		return descripcion.getText();
+	}
+
+	public boolean getPublico() {
+		return publico.isSelected();
+	}
+
+	public boolean getPrivado() {
+		return privado.isSelected();
+	}
+
+	public Integer getAforo() {
+		return (Integer) aforo.getValue();
+	}
+
+	public boolean getPresencial() {
+		return presencial.isSelected();
+	}
+
+	public boolean getOnline() {
+		return online.isSelected();
+	}
+	
+	public boolean getForo() {
+		return foro.isSelected();
 	}
 }
