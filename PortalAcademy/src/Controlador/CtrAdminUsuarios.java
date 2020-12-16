@@ -4,15 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 
-import Modelo.Actividad;
-import Modelo.Curso;
-import Vista.AdminUsuarios;
-import Vista.Explorar;
-import Vista.Main;
-import Vista.MainPrueba;
-import Vista.AdminActividades;
-import Vista.AdminCursos;
-import Vista.AdminInicio;
+import Modelo.*;
+import Vista.*;
 
 public class CtrAdminUsuarios implements ActionListener{
 
@@ -39,7 +32,7 @@ public class CtrAdminUsuarios implements ActionListener{
 		// pulsar en cualquiera de los dos botones de "ACTIVIDAD"
 		if(e.getSource() == vista.bActividades_1 ) {
 			CtrAdminActividades ctr = new CtrAdminActividades(new AdminActividades());
-			MainPrueba.setPanel(ctr.getPanel());
+			Main.setPanel(ctr.getPanel());
 		}
 		
 		//pulsar en el botón "AJUSTES"
@@ -61,18 +54,19 @@ public class CtrAdminUsuarios implements ActionListener{
 		//pulsar en el botón "CURSOS"
 		if(e.getSource() == vista.bCursos_1) {
 			CtrAdminCursos ctr = new CtrAdminCursos(new AdminCursos());
-			MainPrueba.setPanel(ctr.getPanel());
+			Main.setPanel(ctr.getPanel());
 		}
 		
 		//pulsar en el botón "INICIO"
 		if(e.getSource() == vista.bInicio) {
 			CtrAdminInicio ctr = new CtrAdminInicio(new AdminInicio());
-			MainPrueba.setPanel(ctr.getPanel());
+			Main.setPanel(ctr.getPanel());
 		}
 		
 		//pulsar en el botón "USUARIOS"
 		if(e.getSource() == vista.bUsuarios_1) {
-			//no se hace nada que nos mantenemos en la vista actual
+			CtrAdminUsuarios ctr = new CtrAdminUsuarios(new AdminUsuarios());
+			Main.setPanel(ctr.getPanel());
 		}
 	}
 

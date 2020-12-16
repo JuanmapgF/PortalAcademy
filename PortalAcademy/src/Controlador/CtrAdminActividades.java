@@ -2,11 +2,18 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.JPanel;
 
+import Modelo.Actividad;
+import Modelo.Curso;
 import Vista.AdminActividades;
 import Vista.AdminCursos;
+import Vista.AdminInicio;
+import Vista.AdminUsuarios;
+import Vista.Explorar;
+import Vista.Main;
 
 public class CtrAdminActividades implements ActionListener{
 	
@@ -33,7 +40,8 @@ public class CtrAdminActividades implements ActionListener{
 		
 		// pulsar en cualquiera de los dos botones de "ACTIVIDAD"
 		if(e.getSource() == vista.bActividades_1 ) {
-			
+			CtrAdminActividades ctr = new CtrAdminActividades(new AdminActividades());
+			Main.setPanel(ctr.getPanel());
 		}
 		
 		//pulsar en el botón "AJUSTES"
@@ -43,22 +51,31 @@ public class CtrAdminActividades implements ActionListener{
 		
 		//pulsar en el botón "CERRARSESION"
 		if(e.getSource() == vista.bCerrarSesion ) {
-
+			try {
+				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+				Main.setPanel(c.getPanel());
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		
 		//pulsar en el botón "CURSOS"
 		if(e.getSource() == vista.bCursos_1) {
-			
+			CtrAdminCursos ctr = new CtrAdminCursos(new AdminCursos());
+			Main.setPanel(ctr.getPanel());
 		}
 		
 		//pulsar en el botón "INICIO"
 		if(e.getSource() == vista.bInicio) {
-			
+			CtrAdminInicio ctr = new CtrAdminInicio(new AdminInicio());
+			Main.setPanel(ctr.getPanel());
 		}
 		
 		//pulsar en el botón "USUARIOS"
 		if(e.getSource() == vista.bUsuarios_1) {
-			
+			CtrAdminUsuarios ctr = new CtrAdminUsuarios(new AdminUsuarios());
+			Main.setPanel(ctr.getPanel());
 		}
 	}
 
