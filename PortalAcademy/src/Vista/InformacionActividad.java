@@ -45,6 +45,7 @@ public class InformacionActividad extends JPanel {
 		JTextArea descripcionActividad = new JTextArea(actividad.getDescripcion());
 		descripcionActividad.setBounds(278, 102, 652, 185);
 		add(descripcionActividad);
+		descripcionActividad.setEditable(false);
 		
 		JLabel fecha = new JLabel(actividad.getFecha().toString());
 		fecha.setFont(new Font("Tahoma", Font.PLAIN, 14));

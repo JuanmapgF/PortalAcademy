@@ -35,6 +35,8 @@ public class DescripcionActividad extends JPanel {
 		JTextArea descripcionActividad = new JTextArea(descripcion);
 		descripcionActividad.setBounds(292, 131, 652, 371);
 		add(descripcionActividad);
+		descripcionActividad.setEditable(false);
+		
 		if(esEstudiante != null && esEstudiante) {
 			if (puedeUnirse) {
 				unirse = new JButton("Unirse");
