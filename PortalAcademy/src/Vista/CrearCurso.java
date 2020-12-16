@@ -9,6 +9,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class CrearCurso extends JPanel {
@@ -28,6 +29,7 @@ public class CrearCurso extends JPanel {
 	public JButton btnCancelar;
 	private JLabel lblForo;
 	public JCheckBox chckbxForo;
+	private JLabel lblNewLabel_1;
 
 	/**
 	 * Create the panel.
@@ -119,5 +121,10 @@ public class CrearCurso extends JPanel {
 		chckbxForo = new JCheckBox("");
 		chckbxForo.setBounds(470, 476, 39, 23);
 		add(chckbxForo);
+		
+		lblNewLabel_1 = new JLabel("Crear Curso");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		lblNewLabel_1.setBounds(195, 35, 148, 40);
+		add(lblNewLabel_1);
 	}
 }

@@ -9,21 +9,21 @@ import javax.swing.JPanel;
 import Modelo.Actividad;
 import Modelo.Curso;
 import Modelo.ErrorBD;
-import Modelo.Profesor;
-import Vista.CrearCurso;
+import Modelo.Organizacion;
+import Vista.CrearActividad;
 import Vista.Explorar;
 import Vista.Main;
-import Vista.MisCursos;
+import Vista.MisActividades;
 
-public class CtrCrearCurso implements ActionListener {
+public class CtrCrearActividad implements ActionListener {
 
-	private CrearCurso vista;
-	private Profesor profesor;
+	private CrearActividad vista;
+	private Organizacion organizacion;
 
-	public CtrCrearCurso(CrearCurso v) {
+	public CtrCrearActividad(CrearActividad v) {
 		vista = v;
-		profesor = new Profesor(Main.getUser().getNick());
-		vista.btnCrearCurso.addActionListener(this);
+		organizacion = new Organizacion(Main.getUser().getNick());
+		vista.btnCrearActividad.addActionListener(this);
 		vista.btnCancelar.addActionListener(this);
 		vista.btnCerrarSesion.addActionListener(this);
 	}
@@ -31,7 +31,7 @@ public class CtrCrearCurso implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getSource() == vista.btnCrearCurso) {
+		if (e.getSource() == vista.btnCrearActividad) {
 			try {
 				if (!nombreValido()) {
 					throw new ErrorBD("El nombre no puede estar vacío.");
@@ -43,24 +43,25 @@ public class CtrCrearCurso implements ActionListener {
 					throw new ErrorBD("El aforo debe ser un número mayor que 0");
 				}
 
-				Curso curso = new Curso(vista.textFieldNombre.getText(), vista.textAreaDescripcion.getText(),
-						vista.textFieldImagen.getText(), getPublico(),
-						Integer.parseInt(vista.spinnerAforo.getValue().toString()), getPresencial(), getTieneForo(),
-						profesor);
+				Actividad actividad = new Actividad(vista.textFieldNombre.getText(),
+						vista.textAreaDescripcion.getText(), vista.textFieldImagen.getText(),
+						Integer.parseInt(vista.spinnerAforo.getValue().toString()), vista.dateChooser.getDate(),
+						vista.textFieldLugar.getText(), organizacion);
 
 				JOptionPane.showMessageDialog(vista,
-						"El curso " + curso.getNombre() + " ha sido creado satisfactoriamente.", "Curso creado",
-						JOptionPane.INFORMATION_MESSAGE);
-				CtrInformacionCurso cic = new CtrInformacionCurso(profesor, curso);
-				Main.setPanel(cic.getPanel());
+						"La actividad " + actividad.getNombre() + " ha sido creado satisfactoriamente.",
+						"Actividad creada", JOptionPane.INFORMATION_MESSAGE);
+				CtrInformacionActividad cia = new CtrInformacionActividad(organizacion, actividad);
+				Main.setPanel(cia.getPanel());
 			} catch (ErrorBD err) {
-				JOptionPane.showMessageDialog(vista, err.getMessage(), "Error crear curso", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(vista, err.getMessage(), "Error crear actividad",
+						JOptionPane.ERROR_MESSAGE);
 			}
 		}
 
 		if (e.getSource() == vista.btnCancelar) {
-			CtrMisCursos cmc = new CtrMisCursos(new MisCursos(profesor));
-			Main.setPanel(cmc.getPanel());
+			CtrMisActividades cma = new CtrMisActividades(new MisActividades(organizacion));
+			Main.setPanel(cma.getPanel());
 		}
 
 		if (e.getSource() == vista.btnCerrarSesion) {
@@ -69,18 +70,6 @@ public class CtrCrearCurso implements ActionListener {
 			Main.setPanel(c.getPanel());
 		}
 
-	}
-
-	private Boolean getTieneForo() {
-		return vista.chckbxForo.isSelected();
-	}
-
-	private Boolean getPresencial() {
-		return vista.rdbtnPresencial.isSelected();
-	}
-
-	private Boolean getPublico() {
-		return vista.rdbtnPublico.isSelected();
 	}
 
 	private boolean aforoValido() {

@@ -17,6 +17,7 @@ import com.toedter.calendar.JCalendar;
 import Modelo.Actividad;
 import Modelo.Organizacion;
 
+@SuppressWarnings("serial")
 public class EditarActividad extends JPanel {
 
 	private Actividad a;
