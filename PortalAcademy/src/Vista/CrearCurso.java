@@ -1,5 +1,6 @@
 package Vista;
 
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.ButtonGroup;
@@ -49,6 +50,7 @@ public class CrearCurso extends JPanel {
 		add(explorar);
 
 		cursos = new JButton("Mis cursos");
+		cursos.setForeground(Color.BLUE);
 		cursos.setBounds(36, 261, 131, 32);
 		add(cursos);
 
@@ -149,7 +151,7 @@ public class CrearCurso extends JPanel {
 		add(lblNewLabel_1);
 
 		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + Main.getUser().getNick());
-		lblNewLabel_2.setBounds(10, 11, 121, 20);
+		lblNewLabel_2.setBounds(10, 11, 240, 20);
 		add(lblNewLabel_2);
 	}
 }

@@ -1,5 +1,6 @@
 package Vista;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
@@ -62,12 +63,17 @@ public class InformacionActividad extends JPanel {
 		lugar.setBounds(382, 384, 342, 14);
 		add(lugar);
 		
+		explorar = new JButton("Explorar");
+		explorar.setBounds(36, 191, 131, 32);
+		add(explorar);
 		
 		if (user == null) {
 			iniciar = new JButton("Iniciar sesi\u00F3n");
 			iniciar.setBounds(729, 37, 121, 23);
 			add(iniciar);
-				
+			
+			explorar.setForeground(Color.BLUE);
+			
 			registrarse = new JButton("Registrarse");
 			registrarse.setBounds(860, 37, 121, 23);
 			add(registrarse);
@@ -78,6 +84,7 @@ public class InformacionActividad extends JPanel {
 			
 			actividades = new JButton("Mis actividades");
 			actividades.setBounds(36, 336, 131, 32);
+			actividades.setForeground(Color.BLUE);
 			add(actividades);
 			
 			ajustes = new JButton("Ajustes");
@@ -87,8 +94,13 @@ public class InformacionActividad extends JPanel {
 			cerrarSesion = new JButton("Cerrar sesi\u00F3n");
 			cerrarSesion.setBounds(860, 37, 121, 23);
 			add(cerrarSesion);
+			
+			JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
+			lblNewLabel_2.setBounds(10, 11, 240, 20);
+			add(lblNewLabel_2);
 		} else if (user instanceof Organizacion) {
 			actividades = new JButton("Mis actividades");
+			actividades.setForeground(Color.BLUE);
 			actividades.setBounds(36, 261, 131, 32);
 			add(actividades);
 			
@@ -103,15 +115,15 @@ public class InformacionActividad extends JPanel {
 			ajustes = new JButton("Ajustes");
 			ajustes.setBounds(36, 336, 131, 32);
 			add(ajustes);
+			
+			JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
+			lblNewLabel_2.setBounds(10, 11, 240, 20);
+			add(lblNewLabel_2);
 		}
 		
-		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
-		add(explorar);
 		
-		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
-		lblNewLabel_2.setBounds(10, 11, 121, 20);
-		add(lblNewLabel_2);
+		
+		
 	}
 	
 	public void controlador(ActionListener ctr) {

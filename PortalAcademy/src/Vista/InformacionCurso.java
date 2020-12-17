@@ -1,5 +1,6 @@
 package Vista;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -97,19 +98,24 @@ public class InformacionCurso extends JPanel {
 		}
 		
 		
-		
+		explorar = new JButton("Explorar");
+		explorar.setBounds(36, 191, 131, 32);
+		add(explorar);
 		
 		if (user == null) {
 			iniciar = new JButton("Iniciar sesi\u00F3n");
 			iniciar.setBounds(729, 37, 121, 23);
 			add(iniciar);
-				
+			
+			explorar.setForeground(Color.BLUE);
+			
 			registrarse = new JButton("Registrarse");
 			registrarse.setBounds(860, 37, 121, 23);
 			add(registrarse);
 		} else if (user instanceof Estudiante) {
 			cursos = new JButton("Mis cursos");
 			cursos.setBounds(36, 261, 131, 32);
+			cursos.setForeground(Color.BLUE);
 			add(cursos);
 			
 			actividades = new JButton("Mis actividades");
@@ -126,11 +132,12 @@ public class InformacionCurso extends JPanel {
 			add(cerrarSesion);
 			
 			JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
-			lblNewLabel_2.setBounds(10, 11, 121, 20);
+			lblNewLabel_2.setBounds(10, 11, 240, 20);
 			add(lblNewLabel_2);
 		} else if (user instanceof Profesor) {
 			cursos = new JButton("Mis cursos");
 			cursos.setBounds(36, 261, 131, 32);
+			cursos.setForeground(Color.BLUE);
 			add(cursos);
 			
 			editar = new JButton("Editar");
@@ -147,13 +154,11 @@ public class InformacionCurso extends JPanel {
 			add(ajustes);
 			
 			JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
-			lblNewLabel_2.setBounds(10, 11, 121, 20);
+			lblNewLabel_2.setBounds(10, 11, 240, 20);
 			add(lblNewLabel_2);
 		}
 		
-		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
-		add(explorar);
+		
 		
 	}
 
