@@ -14,7 +14,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import Modelo.Actividad;
-import Modelo.Curso;
 
 @SuppressWarnings("serial")
 public class AdminActividades extends JPanel {

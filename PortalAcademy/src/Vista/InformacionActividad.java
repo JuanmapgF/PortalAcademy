@@ -1,5 +1,6 @@
 package Vista;
 
+import java.awt.Font;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -7,9 +8,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-
-import Modelo.*;
-import java.awt.Font;
+import Modelo.Actividad;
+import Modelo.Estudiante;
+import Modelo.Organizacion;
+import Modelo.Usuario;
 @SuppressWarnings("serial")
 public class InformacionActividad extends JPanel {
 	private JButton cerrarSesion;

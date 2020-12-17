@@ -1,5 +1,6 @@
 package Vista;
 
+import java.awt.Font;
 import java.util.Date;
 
 import javax.swing.JButton;
@@ -10,7 +11,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.toedter.calendar.JDateChooser;
-import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class CrearActividad extends JPanel {

@@ -13,7 +13,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import Modelo.Curso;
 import Modelo.Usuario;
 
 @SuppressWarnings("serial")

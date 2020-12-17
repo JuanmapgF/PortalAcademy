@@ -1,21 +1,20 @@
 package Vista;
 
+import java.awt.Font;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSpinner;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import Modelo.Curso;
 import Modelo.Profesor;
-
-import javax.swing.JLabel;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import javax.swing.JRadioButton;
-import javax.swing.JSpinner;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
 
 @SuppressWarnings("serial")
 public class EditarCurso extends JPanel {

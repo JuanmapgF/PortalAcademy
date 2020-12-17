@@ -6,9 +6,9 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.JPasswordField;
 
 @SuppressWarnings("serial")
 public class Registro extends JPanel {

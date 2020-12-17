@@ -1,14 +1,26 @@
 package Controlador;
 
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.util.List;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import Vista.*;
-import Modelo.*;
+import Modelo.Actividad;
+import Modelo.Administrador;
+import Modelo.BD;
+import Modelo.Curso;
+import Modelo.Estudiante;
+import Modelo.Organizacion;
+import Modelo.Profesor;
+import Modelo.Usuario;
+import Vista.AdminInicio;
+import Vista.Explorar;
+import Vista.Inicio;
+import Vista.Main;
+import Vista.Registro;
 
 public class CtrInicio implements ActionListener {
 

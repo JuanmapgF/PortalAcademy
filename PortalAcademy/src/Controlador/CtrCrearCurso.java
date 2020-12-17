@@ -14,7 +14,6 @@ import Vista.Ajustes;
 import Vista.CrearCurso;
 import Vista.Explorar;
 import Vista.Main;
-import Vista.MisActividades;
 import Vista.MisCursos;
 
 public class CtrCrearCurso implements ActionListener {

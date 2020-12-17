@@ -13,7 +13,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import Modelo.*;
+import Modelo.Estudiante;
+import Modelo.Mensaje;
+import Modelo.Profesor;
+import Modelo.Usuario;
 
 @SuppressWarnings("serial")
 public class InformacionCurso extends JPanel {
