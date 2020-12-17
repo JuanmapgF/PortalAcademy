@@ -19,7 +19,7 @@ public class Actividad {
 	private Organizacion organizacion;
 	private List<Usuario> participantes;
 
-	private SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+	private static SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 
 	private static BD bd;
 
@@ -112,7 +112,8 @@ public class Actividad {
 
 	public void setFecha(Date fecha) {
 		bd = BD.getBD();
-		bd.Update("UPDATE Actividad SET fecha = '" + formato.format(fecha) + "' WHERE idActividad = " + this.idActividad);
+		bd.Update(
+				"UPDATE Actividad SET fecha = '" + formato.format(fecha) + "' WHERE idActividad = " + this.idActividad);
 		bd.finalize();
 		this.fecha = fecha;
 	}
@@ -123,7 +124,7 @@ public class Actividad {
 
 	public void setLugar(String lugar) {
 		bd = BD.getBD();
-		bd.Update("UPDATE Actividad SET lugar = " + lugar + " WHERE idActividad = " + this.idActividad);
+		bd.Update("UPDATE Actividad SET lugar = '" + lugar + "' WHERE idActividad = " + this.idActividad);
 		bd.finalize();
 		this.lugar = lugar;
 	}
@@ -160,12 +161,17 @@ public class Actividad {
 
 	public void eliminarActividad() {
 		bd = BD.getBD();
-		bd.Delete("DELETE FROM Actividad WHERE idActividad =" + idActividad);
+		bd.Delete("DELETE FROM Actividad WHERE idActividad = " + idActividad);
 		bd.finalize();
-		this.nombre = null;
-		this.descripcion = null;
-		this.imagen = null;
-		this.lugar = null;
+		this.nombre = "";
+		this.descripcion = "";
+		this.imagen = "";
+		this.lugar = "";
+		this.aforo = -1;
+		this.fecha = null;
+		this.idActividad = -1;
+		this.organizacion = null;
+		this.participantes = null;
 	}
 
 	public Boolean quedanPlazas() {

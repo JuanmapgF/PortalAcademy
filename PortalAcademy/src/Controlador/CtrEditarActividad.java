@@ -6,8 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import com.toedter.calendar.JCalendar;
-
 import Modelo.Actividad;
 import Modelo.Curso;
 import Modelo.Organizacion;
@@ -18,12 +16,11 @@ import Vista.Main;
 import Vista.MisActividades;
 
 public class CtrEditarActividad implements ActionListener {
-	
+
 	private EditarActividad ventana;
 	private Organizacion organizacion;
 	private Actividad actividad;
-	private JCalendar calendario;
-	
+
 	public CtrEditarActividad(EditarActividad v) {
 		ventana = v;
 		organizacion = ventana.getUsuario();
@@ -34,7 +31,7 @@ public class CtrEditarActividad implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+
 		if (e.getActionCommand().equals("GUARDAR")) {
 			if (ventana.getAforo() > 0) {
 				actividad.setAforo(ventana.getAforo());
@@ -42,16 +39,16 @@ public class CtrEditarActividad implements ActionListener {
 				actividad.setNombre(ventana.getNombre());
 				actividad.setFecha(ventana.getFecha());
 				actividad.setLugar(ventana.getLugar());
-				
+
 				JOptionPane.showMessageDialog(ventana, "Se ha actualizado la información del curso correctamente");
-				
+
 				CtrInformacionActividad c = new CtrInformacionActividad(organizacion, actividad);
 				Main.setPanel(c.getPanel());
 			} else {
 				JOptionPane.showMessageDialog(ventana, "El aforo debe ser un entero positivo");
 			}
 		}
-		
+
 		if (e.getActionCommand().equals("ELIMINAR")) {
 			actividad.eliminarActividad();
 			CtrMisActividades c = new CtrMisActividades(new MisActividades(organizacion));
@@ -60,7 +57,7 @@ public class CtrEditarActividad implements ActionListener {
 
 		if (e.getActionCommand().equals("VOLVER")) {
 			int res = JOptionPane.showConfirmDialog(ventana, "¿Salir sin guardar?");
-			
+
 			if (res == 0) {
 				CtrMisActividades c = new CtrMisActividades(new MisActividades(organizacion));
 				Main.setPanel(c.getPanel());
@@ -68,10 +65,11 @@ public class CtrEditarActividad implements ActionListener {
 		}
 
 		if (e.getActionCommand().equals("CERRAR_SESION")) {
-			
-				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-				Main.setPanel(c.getPanel());
-			
+
+			CtrExplorar c = new CtrExplorar(
+					new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+			Main.setPanel(c.getPanel());
+
 		}
 
 		if (e.getActionCommand().equals("EXPLORAR")) {
@@ -79,18 +77,18 @@ public class CtrEditarActividad implements ActionListener {
 			c = new CtrExplorar(new Explorar(organizacion, Actividad.getTodasLasActividades()));
 			Main.setPanel(c.getPanel());
 		}
-		
+
 		if (e.getActionCommand().equals("ACTIVIDADES")) {
 			CtrMisActividades c = new CtrMisActividades(new MisActividades(organizacion));
 			Main.setPanel(c.getPanel());
 		}
-		
+
 		if (e.getActionCommand().equals("AJUSTES")) {
 			CtrAjustes c = new CtrAjustes(new Ajustes(organizacion));
 			Main.setPanel(c.getPanel());
 		}
 	}
-	
+
 	public JPanel getPanel() {
 		return ventana;
 	}

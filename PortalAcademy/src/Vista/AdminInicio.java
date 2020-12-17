@@ -85,6 +85,10 @@ public class AdminInicio extends JPanel {
 		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 60));
 		lblNewLabel_1.setBounds(160, 54, 349, 74);
 		add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
+		lblNewLabel_2.setBounds(10, 11, 121, 20);
+		add(lblNewLabel_2);
 
 	}
 }

@@ -100,6 +100,10 @@ public class AdminUsuarios extends JPanel {
 		bEliminar.setForeground(Color.RED);
 		bEliminar.setBounds(944, 330, 85, 74);
 		add(bEliminar);
+		
+		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
+		lblNewLabel_2.setBounds(10, 11, 121, 20);
+		add(lblNewLabel_2);
 	}
 	
 	public Usuario getUsuario() {

@@ -110,6 +110,10 @@ public class Ajustes extends JPanel {
 		ajustes.setForeground(Color.BLUE);
 		ajustes.setBounds(36, 413, 131, 32);
 		add(ajustes);
+		
+		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
+		lblNewLabel_2.setBounds(10, 11, 121, 20);
+		add(lblNewLabel_2);
 
 		this.setBounds(0, 0, 1080, 650);
 	}
@@ -158,6 +162,10 @@ public class Ajustes extends JPanel {
 		ajustes.setForeground(Color.BLUE);
 		ajustes.setBounds(36, 336, 131, 32);
 		add(ajustes);
+		
+		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
+		lblNewLabel_2.setBounds(10, 11, 121, 20);
+		add(lblNewLabel_2);
 
 		this.setBounds(0, 0, 1080, 650);
 	}
@@ -206,6 +214,10 @@ public class Ajustes extends JPanel {
 		ajustes.setForeground(Color.BLUE);
 		ajustes.setBounds(36, 336, 131, 32);
 		add(ajustes);
+		
+		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
+		lblNewLabel_2.setBounds(10, 11, 121, 20);
+		add(lblNewLabel_2);
 
 		this.setBounds(0, 0, 1080, 650);
 	}

@@ -8,6 +8,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -70,9 +71,10 @@ public class EditarCurso extends JPanel {
 		add(lblDescripcin);
 		
 		descripcion = new JTextArea();
-		descripcion.setBounds(400, 191, 311, 113);
 		descripcion.setText(c.getDescripcion());
-		add(descripcion);
+		JScrollPane jsp = new JScrollPane(descripcion);
+		jsp.setBounds(400, 191, 311, 113);
+		add(jsp);
 		
 		JLabel lblPrivacidad = new JLabel("Privacidad:");
 		lblPrivacidad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
@@ -160,6 +162,10 @@ public class EditarCurso extends JPanel {
 		cerrarsesion = new JButton("Cerrar sesi\u00F3n");
 		cerrarsesion.setBounds(867, 26, 144, 23);
 		add(cerrarsesion);
+		
+		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
+		lblNewLabel_2.setBounds(10, 11, 121, 20);
+		add(lblNewLabel_2);
 	}
 	
 	public void controlador(ActionListener ctr) {

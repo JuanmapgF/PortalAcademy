@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import Modelo.Actividad;
@@ -46,9 +47,10 @@ public class InformacionActividad extends JPanel {
 		add(nombreActividad);
 		
 		JTextArea descripcionActividad = new JTextArea(actividad.getDescripcion());
-		descripcionActividad.setBounds(278, 102, 652, 185);
-		add(descripcionActividad);
 		descripcionActividad.setEditable(false);
+		JScrollPane jsp = new JScrollPane(descripcionActividad);
+		jsp.setBounds(278, 102, 652, 185);
+		add(jsp);
 		
 		JLabel fecha = new JLabel(actividad.getFecha().toString());
 		fecha.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -107,9 +109,9 @@ public class InformacionActividad extends JPanel {
 		explorar.setBounds(36, 191, 131, 32);
 		add(explorar);
 		
-		
-		
-		
+		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
+		lblNewLabel_2.setBounds(10, 11, 121, 20);
+		add(lblNewLabel_2);
 	}
 	
 	public void controlador(ActionListener ctr) {

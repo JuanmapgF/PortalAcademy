@@ -51,9 +51,11 @@ public class InformacionCurso extends JPanel {
 		add(nombreCurso);
 		
 		JTextArea descripcionCurso = new JTextArea(descripcion);
-		descripcionCurso.setBounds(278, 102, 459, 102);
-		add(descripcionCurso);
+		
 		descripcionCurso.setEditable(false);
+		JScrollPane jsp = new JScrollPane(descripcionCurso);
+		jsp.setBounds(278, 102, 459, 102);
+		add(jsp);
 		
 		//-----
 		if (tieneForo) {
@@ -122,6 +124,10 @@ public class InformacionCurso extends JPanel {
 			cerrarSesion.setBounds(860, 37, 121, 23);
 
 			add(cerrarSesion);
+			
+			JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
+			lblNewLabel_2.setBounds(10, 11, 121, 20);
+			add(lblNewLabel_2);
 		} else if (user instanceof Profesor) {
 			cursos = new JButton("Mis cursos");
 			cursos.setBounds(36, 261, 131, 32);
@@ -139,6 +145,10 @@ public class InformacionCurso extends JPanel {
 			ajustes = new JButton("Ajustes");
 			ajustes.setBounds(36, 336, 131, 32);
 			add(ajustes);
+			
+			JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
+			lblNewLabel_2.setBounds(10, 11, 121, 20);
+			add(lblNewLabel_2);
 		}
 		
 		explorar = new JButton("Explorar");

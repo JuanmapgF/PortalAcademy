@@ -8,6 +8,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -31,7 +32,7 @@ public class CrearCurso extends JPanel {
 	private JLabel lblForo;
 	public JCheckBox chckbxForo;
 	private JLabel lblNewLabel_1;
-	
+
 	public JButton explorar;
 	public JButton cursos;
 	public JButton ajustes;
@@ -46,15 +47,15 @@ public class CrearCurso extends JPanel {
 		explorar = new JButton("Explorar");
 		explorar.setBounds(36, 191, 131, 32);
 		add(explorar);
-		
+
 		cursos = new JButton("Mis cursos");
 		cursos.setBounds(36, 261, 131, 32);
 		add(cursos);
-		
+
 		ajustes = new JButton("Ajustes");
 		ajustes.setBounds(36, 336, 131, 32);
 		add(ajustes);
-		
+
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		lblNewLabel.setBounds(297, 140, 66, 14);
 		add(lblNewLabel);
@@ -90,8 +91,11 @@ public class CrearCurso extends JPanel {
 		add(textFieldImagen);
 
 		textAreaDescripcion = new JTextArea();
-		textAreaDescripcion.setBounds(441, 241, 242, 47);
-		add(textAreaDescripcion);
+		JScrollPane jsp = new JScrollPane(textAreaDescripcion);
+		jsp.setBounds(441, 241, 242, 47);
+		add(jsp);
+		
+		
 
 		rdbtnPublico = new JRadioButton("P\u00FAblico");
 		rdbtnPublico.setSelected(true);
@@ -130,18 +134,22 @@ public class CrearCurso extends JPanel {
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(908, 546, 109, 35);
 		add(btnCancelar);
-		
+
 		lblForo = new JLabel("Foro:");
 		lblForo.setBounds(297, 480, 76, 14);
 		add(lblForo);
-		
+
 		chckbxForo = new JCheckBox("");
 		chckbxForo.setBounds(470, 476, 39, 23);
 		add(chckbxForo);
-		
+
 		lblNewLabel_1 = new JLabel("Crear Curso");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		lblNewLabel_1.setBounds(395, 35, 148, 40);
 		add(lblNewLabel_1);
+
+		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + Main.getUser().getNick());
+		lblNewLabel_2.setBounds(10, 11, 121, 20);
+		add(lblNewLabel_2);
 	}
 }

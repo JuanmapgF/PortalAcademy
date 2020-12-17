@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -26,31 +27,30 @@ public class CrearActividad extends JPanel {
 	private JLabel lblLugar;
 	public JTextField textFieldLugar;
 	private JLabel lblNewLabel_1;
-	
+
 	public JButton explorar;
 	public JButton actividades;
 	public JButton ajustes;
-	
-	
+
 	/**
 	 * Create the panel.
 	 */
 	public CrearActividad() {
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
-		
+
 		explorar = new JButton("Explorar");
 		explorar.setBounds(36, 191, 131, 32);
 		add(explorar);
-		
+
 		actividades = new JButton("Mis actividades");
 		actividades.setBounds(36, 261, 131, 32);
 		add(actividades);
-		
+
 		ajustes = new JButton("Ajustes");
 		ajustes.setBounds(36, 336, 131, 32);
 		add(ajustes);
-		
+
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		lblNewLabel.setBounds(397, 140, 66, 14);
 		add(lblNewLabel);
@@ -78,8 +78,9 @@ public class CrearActividad extends JPanel {
 		add(textFieldImagen);
 
 		textAreaDescripcion = new JTextArea();
-		textAreaDescripcion.setBounds(541, 241, 242, 47);
-		add(textAreaDescripcion);
+		JScrollPane jsp = new JScrollPane(textAreaDescripcion);
+		jsp.setBounds(541, 241, 242, 47);
+		add(jsp);
 
 		spinnerAforo = new JSpinner();
 		spinnerAforo.setBounds(612, 377, 90, 20);
@@ -120,10 +121,14 @@ public class CrearActividad extends JPanel {
 		textFieldLugar.setColumns(10);
 		textFieldLugar.setBounds(541, 326, 242, 20);
 		add(textFieldLugar);
-		
+
 		lblNewLabel_1 = new JLabel("Crear Actividad");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		lblNewLabel_1.setBounds(402, 35, 171, 40);
 		add(lblNewLabel_1);
+
+		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + Main.getUser().getNick());
+		lblNewLabel_2.setBounds(10, 11, 121, 20);
+		add(lblNewLabel_2);
 	}
 }

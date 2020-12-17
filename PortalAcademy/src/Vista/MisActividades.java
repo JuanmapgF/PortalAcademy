@@ -83,6 +83,10 @@ public class MisActividades extends JPanel {
 		ajustes = new JButton("Ajustes");
 		ajustes.setBounds(36, 413, 131, 32);
 		add(ajustes);
+		
+		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
+		lblNewLabel_2.setBounds(10, 11, 121, 20);
+		add(lblNewLabel_2);
 	}
 	
 	public MisActividades(Organizacion u) {
@@ -127,6 +131,10 @@ public class MisActividades extends JPanel {
 		ajustes = new JButton("Ajustes");
 		ajustes.setBounds(36, 336, 131, 32);
 		add(ajustes);
+		
+		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
+		lblNewLabel_2.setBounds(10, 11, 121, 20);
+		add(lblNewLabel_2);
 	}
 	
 	public void addElements(List<Actividad> l) {
