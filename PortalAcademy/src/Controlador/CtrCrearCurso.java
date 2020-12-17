@@ -10,9 +10,11 @@ import Modelo.Actividad;
 import Modelo.Curso;
 import Modelo.ErrorBD;
 import Modelo.Profesor;
+import Vista.Ajustes;
 import Vista.CrearCurso;
 import Vista.Explorar;
 import Vista.Main;
+import Vista.MisActividades;
 import Vista.MisCursos;
 
 public class CtrCrearCurso implements ActionListener {
@@ -26,11 +28,30 @@ public class CtrCrearCurso implements ActionListener {
 		vista.btnCrearCurso.addActionListener(this);
 		vista.btnCancelar.addActionListener(this);
 		vista.btnCerrarSesion.addActionListener(this);
+		vista.cursos.addActionListener(this);
+		vista.ajustes.addActionListener(this);
+		vista.explorar.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
+		if(e.getSource() == vista.explorar) {
+			CtrExplorar c = new CtrExplorar(
+					new Explorar(profesor, Curso.getTodosLosCursos()));
+			Main.setPanel(c.getPanel());
+		}
+		
+		if(e.getSource() == vista.cursos) {
+			CtrMisCursos c = new CtrMisCursos(new MisCursos(profesor));
+			Main.setPanel(c.getPanel());
+		}
+		if(e.getSource() == vista.ajustes) {
+			CtrAjustes c = new CtrAjustes(new Ajustes(profesor));
+			Main.setPanel(c.getPanel());
+		}
+		
+		
+		
 		if (e.getSource() == vista.btnCrearCurso) {
 			try {
 				if (!nombreValido()) {

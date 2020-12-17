@@ -35,6 +35,7 @@ public class EditarActividad extends JPanel {
 	private JButton volver;
 	private JButton cerrarsesion;
 	private JCalendar calendario;
+	private JTextField lugar;
 	
 	public EditarActividad(Actividad act, Organizacion p) {
 		usuario = p;
@@ -101,8 +102,8 @@ public class EditarActividad extends JPanel {
 		ajustes.setBounds(36, 336, 131, 32);
 		add(ajustes);
 		
-		volver = new JButton("Volver");
-		volver.setBounds(867, 584, 144, 23);
+		volver = new JButton("Descartar cambios");
+		volver.setBounds(867, 439, 144, 23);
 		add(volver);
 		
 		cerrarsesion = new JButton("Cerrar sesi\u00F3n");
@@ -114,7 +115,6 @@ public class EditarActividad extends JPanel {
 		calendario.setDate(a.getFecha());
 		calendario.setTodayButtonVisible(true);
 		calendario.setTodayButtonText("Hoy");
-		calendario.setNullDateButtonVisible(true);
 		calendario.setWeekOfYearVisible(false);
 		calendario.setMinSelectableDate(new Date());
 		add(calendario);
@@ -123,6 +123,17 @@ public class EditarActividad extends JPanel {
 		lblFecha.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
 		lblFecha.setBounds(264, 405, 136, 27);
 		add(lblFecha);
+		
+		JLabel lblLugar = new JLabel("Lugar:");
+		lblLugar.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		lblLugar.setBounds(264, 346, 136, 27);
+		add(lblLugar);
+		
+		lugar = new JTextField();
+		lugar.setBounds(400, 351, 311, 20);
+		lugar.setText(a.getLugar());
+		add(lugar);
+		lugar.setColumns(10);
 	}
 	
 	public void controlador(ActionListener ctr) {
@@ -170,5 +181,9 @@ public class EditarActividad extends JPanel {
 	
 	public Date getFecha() {
 		return calendario.getDate();
+	}
+	
+	public String getLugar() {
+		return lugar.getText();
 	}
 }

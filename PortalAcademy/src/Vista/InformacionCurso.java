@@ -1,5 +1,6 @@
 package Vista;
 
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.List;
 
@@ -42,7 +43,8 @@ public class InformacionCurso extends JPanel {
 		listaMensajes = new JList<String>();
 		
 		JLabel nombreCurso = new JLabel(nombre);
-		nombreCurso.setBounds(428, 34, 269, 33);
+		nombreCurso.setBounds(428, 34, 364, 33);
+		nombreCurso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 		add(nombreCurso);
 		
 		JTextArea descripcionCurso = new JTextArea(descripcion);
@@ -58,16 +60,16 @@ public class InformacionCurso extends JPanel {
 			add(foro);
 			
 			textField = new JTextField();
-			textField.setBounds(278, 536, 459, 20);
+			textField.setBounds(278, 513, 459, 20);
 			add(textField);
 			textField.setColumns(10);
 			
 			enviar = new JButton("Enviar");
-			enviar.setBounds(648, 513, 89, 23);
+			enviar.setBounds(748, 513, 89, 23);
 			add(enviar);
 			
 			refrescar = new JButton("Refrescar");
-			refrescar.setBounds(748, 234, 89, 23);
+			refrescar.setBounds(748, 234, 100, 23);
 			add(refrescar);
 			
 			JLabel lblForo = new JLabel("Foro");
@@ -113,8 +115,9 @@ public class InformacionCurso extends JPanel {
 			ajustes.setBounds(36, 413, 131, 32);
 			add(ajustes);
 			
-			cerrarSesion = new JButton("Cerrar Sesi\u00F3n");
-			cerrarSesion.setBounds(952, 39, 118, 23);
+			cerrarSesion = new JButton("Cerrar sesi\u00F3n");
+			cerrarSesion.setBounds(860, 37, 121, 23);
+
 			add(cerrarSesion);
 		} else if (user instanceof Profesor) {
 			cursos = new JButton("Mis cursos");
@@ -125,12 +128,13 @@ public class InformacionCurso extends JPanel {
 			editar.setBounds(752, 68, 89, 23);
 			add(editar);
 			
-			cerrarSesion = new JButton("Cerrar Sesi\u00F3n");
-			cerrarSesion.setBounds(952, 39, 118, 23);
+			cerrarSesion = new JButton("Cerrar sesi\u00F3n");
+			cerrarSesion.setBounds(860, 37, 121, 23);
+
 			add(cerrarSesion);
 			
 			ajustes = new JButton("Ajustes");
-			ajustes.setBounds(36, 413, 131, 32);
+			ajustes.setBounds(36, 336, 131, 32);
 			add(ajustes);
 		}
 		

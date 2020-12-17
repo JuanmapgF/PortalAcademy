@@ -30,6 +30,10 @@ public class CrearCurso extends JPanel {
 	private JLabel lblForo;
 	public JCheckBox chckbxForo;
 	private JLabel lblNewLabel_1;
+	
+	public JButton explorar;
+	public JButton cursos;
+	public JButton ajustes;
 
 	/**
 	 * Create the panel.
@@ -38,8 +42,20 @@ public class CrearCurso extends JPanel {
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
 
+		explorar = new JButton("Explorar");
+		explorar.setBounds(36, 191, 131, 32);
+		add(explorar);
+		
+		cursos = new JButton("Mis cursos");
+		cursos.setBounds(36, 261, 131, 32);
+		add(cursos);
+		
+		ajustes = new JButton("Ajustes");
+		ajustes.setBounds(36, 336, 131, 32);
+		add(ajustes);
+		
 		JLabel lblNewLabel = new JLabel("Nombre:");
-		lblNewLabel.setBounds(297, 140, 46, 14);
+		lblNewLabel.setBounds(297, 140, 66, 14);
 		add(lblNewLabel);
 
 		JLabel lblImagenes = new JLabel("Imagenes:");
@@ -102,12 +118,12 @@ public class CrearCurso extends JPanel {
 		spinnerAforo.setBounds(511, 365, 90, 20);
 		add(spinnerAforo);
 
-		btnCerrarSesion = new JButton("Cerrar Sesi\u00F3n");
-		btnCerrarSesion.setBounds(893, 35, 124, 23);
+		btnCerrarSesion = new JButton("Cerrar sesi\u00F3n");
+		btnCerrarSesion.setBounds(860, 37, 121, 23);
 		add(btnCerrarSesion);
 
 		btnCrearCurso = new JButton("Crear curso");
-		btnCrearCurso.setBounds(200, 546, 109, 35);
+		btnCrearCurso.setBounds(400, 546, 109, 35);
 		add(btnCrearCurso);
 
 		btnCancelar = new JButton("Cancelar");
@@ -124,7 +140,7 @@ public class CrearCurso extends JPanel {
 		
 		lblNewLabel_1 = new JLabel("Crear Curso");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		lblNewLabel_1.setBounds(195, 35, 148, 40);
+		lblNewLabel_1.setBounds(395, 35, 148, 40);
 		add(lblNewLabel_1);
 	}
 }

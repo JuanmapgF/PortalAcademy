@@ -154,8 +154,8 @@ public class EditarCurso extends JPanel {
 		foro.setSelected(c.getTieneForo());
 		add(foro);
 		
-		volver = new JButton("Volver");
-		volver.setBounds(867, 584, 144, 23);
+		volver = new JButton("Descartar cambios");
+		volver.setBounds(867, 434, 144, 23);
 		add(volver);
 		
 		cerrarsesion = new JButton("Cerrar sesi\u00F3n");
