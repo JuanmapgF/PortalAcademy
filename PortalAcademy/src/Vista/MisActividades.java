@@ -1,5 +1,6 @@
 package Vista;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -75,6 +76,7 @@ public class MisActividades extends JPanel {
 		add(cursos);
 		
 		actividades = new JButton("Mis actividades");
+		actividades.setForeground(Color.BLUE);
 		actividades.setBounds(36, 336, 131, 32);
 		add(actividades);
 		
@@ -83,11 +85,6 @@ public class MisActividades extends JPanel {
 		add(ajustes);
 	}
 	
-	
-	
-	/**
-	 * @wbp.parser.constructor
-	 */
 	public MisActividades(Organizacion u) {
 		organizacion = true;
 		org = u;
@@ -123,6 +120,7 @@ public class MisActividades extends JPanel {
 		add(explorar);
 		
 		actividades = new JButton("Mis actividades");
+		actividades.setForeground(Color.BLUE);
 		actividades.setBounds(36, 261, 131, 32);
 		add(actividades);
 		
