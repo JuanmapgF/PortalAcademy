@@ -1,5 +1,6 @@
 package Vista;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.util.Date;
 
@@ -44,6 +45,7 @@ public class CrearActividad extends JPanel {
 		add(explorar);
 
 		actividades = new JButton("Mis actividades");
+		actividades.setForeground(Color.BLUE);
 		actividades.setBounds(36, 261, 131, 32);
 		add(actividades);
 
@@ -128,7 +130,7 @@ public class CrearActividad extends JPanel {
 		add(lblNewLabel_1);
 
 		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + Main.getUser().getNick());
-		lblNewLabel_2.setBounds(10, 11, 121, 20);
+		lblNewLabel_2.setBounds(10, 11, 240, 20);
 		add(lblNewLabel_2);
 	}
 }

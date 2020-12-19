@@ -1,5 +1,6 @@
 package Vista;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
@@ -61,7 +62,7 @@ public class DescripcionCurso extends JPanel {
 			add(cerrar);
 
 			JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + Main.getUser().getNick());
-			lblNewLabel_2.setBounds(10, 11, 121, 20);
+			lblNewLabel_2.setBounds(10, 11, 240, 20);
 			add(lblNewLabel_2);
 		} else if (esEstudiante != null && !esEstudiante) {
 
@@ -78,7 +79,7 @@ public class DescripcionCurso extends JPanel {
 			add(cerrar);
 
 			JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + Main.getUser().getNick());
-			lblNewLabel_2.setBounds(10, 11, 121, 20);
+			lblNewLabel_2.setBounds(10, 11, 240, 20);
 			add(lblNewLabel_2);
 
 		} else {
@@ -99,6 +100,7 @@ public class DescripcionCurso extends JPanel {
 		}
 
 		explorar = new JButton("Explorar");
+		explorar.setForeground(Color.BLUE);
 		explorar.setBounds(36, 191, 131, 32);
 		add(explorar);
 

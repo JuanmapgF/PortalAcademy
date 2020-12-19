@@ -79,6 +79,7 @@ public class CtrInformacionCurso implements ActionListener {
 			i.setFocusable(true);
 			i.requestFocusInWindow();
 			CtrInicio c = new CtrInicio(i);
+			CtrInicio2 c2 = new CtrInicio2(i);
 			Main.setPanel(c.getPanel());
 		}
 

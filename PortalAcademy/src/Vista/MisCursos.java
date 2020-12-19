@@ -84,7 +84,7 @@ public class MisCursos extends JPanel {
 		add(ajustes);
 
 		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
-		lblNewLabel_2.setBounds(10, 11, 121, 20);
+		lblNewLabel_2.setBounds(10, 11, 240, 20);
 		add(lblNewLabel_2);
 	}
 
@@ -132,7 +132,7 @@ public class MisCursos extends JPanel {
 		add(ajustes);
 
 		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
-		lblNewLabel_2.setBounds(10, 11, 121, 20);
+		lblNewLabel_2.setBounds(10, 11, 240, 20);
 		add(lblNewLabel_2);
 	}
 
