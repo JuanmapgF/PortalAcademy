@@ -32,6 +32,11 @@ public class Explorar extends JPanel {
 	private JButton verCurso;
 	private JButton verActividad;
 	
+	private JButton explorar;
+	private JButton cursos;
+	private JButton actividades;
+	private JButton ajustes;
+	
 	private Estudiante est = null;
 	private Organizacion org = null;
 	private Profesor prof = null;
@@ -52,19 +57,152 @@ public class Explorar extends JPanel {
 		
 		listaC = new JList<String>();
 		listaA = new JList<String>();
-		addElements();
+		addElementsEstudiante();
+		
+		JLabel lblNewLabel = new JLabel("Explorar");
+		lblNewLabel.setBounds(543, 30, 107, 33);
+		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
+		add(lblNewLabel);
+
+		cerrar = new JButton("Cerrar sesi\u00F3n");
+		cerrar.setBounds(860, 37, 121, 23);
+		add(cerrar);
+
+		JLabel t_curso = new JLabel("Cursos:");
+		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		t_curso.setBounds(295, 159, 90, 33);
+		add(t_curso);
+
+		JLabel t_actividad = new JLabel("Actividades:");
+		t_actividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		t_actividad.setBounds(619, 159, 159, 33);
+		add(t_actividad);
+
+		JScrollPane sp_curso = new JScrollPane();
+		sp_curso.setBounds(325, 215, 273, 339);
+		sp_curso.setViewportView(listaC);
+		add(sp_curso);
+
+		JScrollPane sp_actividad = new JScrollPane();
+		sp_actividad.setBounds(656, 215, 273, 339);
+		sp_actividad.setViewportView(listaA);
+		add(sp_actividad);
+
+		verCurso = new JButton("Ver curso");
+		verCurso.setBounds(399, 575, 121, 23);
+		add(verCurso);
+
+		verActividad = new JButton("Ver actividad");
+		verActividad.setBounds(741, 575, 121, 23);
+		add(verActividad);
+
+		explorar = new JButton("Explorar");
+		explorar.setForeground(Color.BLUE);
+		explorar.setBounds(36, 191, 131, 32);
+		add(explorar);
+
+		cursos = new JButton("Mis cursos");
+		cursos.setBounds(36, 261, 131, 32);
+		add(cursos);
+
+		actividades = new JButton("Mis actividades");
+		actividades.setBounds(36, 336, 131, 32);
+		add(actividades);
+
+		ajustes = new JButton("Ajustes");
+		ajustes.setBounds(36, 413, 131, 32);
+		add(ajustes);
+		
+		add(Main.getLabel());
 	}
 	
-	public void addElements() {
+	public Explorar(Profesor e, List<Curso> lc, List<Actividad> la) {
+		profesor = true;
+		lista_cursos = lc;
+		lista_actividades = la;
+		this.setBounds(0, 0, 1080, 650);
+		prof = e;
+		setLayout(null);
+		
+		listaC = new JList<String>();
+		listaA = new JList<String>();
+		addElementsProfesor();
+		
+		JLabel lblNewLabel = new JLabel("Explorar");
+		lblNewLabel.setBounds(543, 30, 107, 33);
+		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
+		add(lblNewLabel);
+
+		cerrar = new JButton("Cerrar sesi\u00F3n");
+		cerrar.setBounds(860, 37, 121, 23);
+		add(cerrar);
+
+		JLabel t_curso = new JLabel("Cursos:");
+		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		t_curso.setBounds(295, 159, 90, 33);
+		add(t_curso);
+
+		JLabel t_actividad = new JLabel("Actividades:");
+		t_actividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		t_actividad.setBounds(619, 159, 159, 33);
+		add(t_actividad);
+
+		JScrollPane sp_curso = new JScrollPane();
+		sp_curso.setBounds(325, 215, 273, 339);
+		sp_curso.setViewportView(listaC);
+		add(sp_curso);
+
+		JScrollPane sp_actividad = new JScrollPane();
+		sp_actividad.setBounds(656, 215, 273, 339);
+		sp_actividad.setViewportView(listaA);
+		add(sp_actividad);
+
+		verCurso = new JButton("Ver curso");
+		verCurso.setBounds(399, 575, 121, 23);
+		add(verCurso);
+
+		verActividad = new JButton("Ver actividad");
+		verActividad.setBounds(741, 575, 121, 23);
+		add(verActividad);
+
+		explorar = new JButton("Explorar");
+		explorar.setForeground(Color.BLUE);
+		explorar.setBounds(36, 191, 131, 32);
+		add(explorar);
+
+		cursos = new JButton("Mis cursos");
+		cursos.setBounds(36, 261, 131, 32);
+		add(cursos);
+
+		actividades = new JButton("Mis actividades");
+		actividades.setBounds(36, 336, 131, 32);
+		add(actividades);
+
+		ajustes = new JButton("Ajustes");
+		ajustes.setBounds(36, 413, 131, 32);
+		add(ajustes);
+		
+		add(Main.getLabel());
+	}
+	
+	public void addElementsEstudiante() {
 		listaC.setModel(modeloC);
 		listaA.setModel(modeloA);
 
 		for (Curso o : lista_cursos) {
-			modeloC.addElement(o.toString());
+			if (est.estaEnCurso(o)) {
+				modeloC.addElement("✔ - " + o.toString());
+			} else {
+				modeloC.addElement(o.toString());
+			}			
 		}
 
 		for (Actividad d : lista_actividades) {
-			modeloA.addElement(d.toString());
+			if (est.estaEnActividad(d)) {
+				modeloA.addElement("✔ - " + d.toString());
+			} else {
+				modeloA.addElement(d.toString());
+			}
 		}
 
 		listaC.setLayoutOrientation(JList.VERTICAL);
@@ -348,7 +486,7 @@ public class Explorar extends JPanel {
 
 		this.setBounds(0, 0, 1080, 650);
 		
-		JLabel lblNewLabel_2 = new JLabel("Sesi�n iniciada como: "+Main.getUser().getNick());
+		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
 		lblNewLabel_2.setBounds(10, 11, 240, 20);
 		add(lblNewLabel_2);
 	}
