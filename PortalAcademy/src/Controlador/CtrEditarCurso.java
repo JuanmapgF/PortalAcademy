@@ -8,11 +8,13 @@ import javax.swing.JPanel;
 
 import Modelo.Actividad;
 import Modelo.Curso;
+import Modelo.Estudiante;
 import Modelo.Profesor;
 import Vista.Ajustes;
 import Vista.EditarCurso;
 import Vista.Explorar;
 import Vista.Main;
+import Vista.MisActividades;
 import Vista.MisCursos;
 
 public class CtrEditarCurso implements ActionListener {
@@ -83,6 +85,11 @@ public class CtrEditarCurso implements ActionListener {
 			Main.setPanel(c.getPanel());
 		}
 
+		if (e.getActionCommand().equals("ACTIVIDAD")) {
+			CtrMisActividades c = new CtrMisActividades (new MisActividades(profesor));
+			Main.setPanel(c.getPanel());
+		}
+		
 		if (e.getActionCommand().equals("AJUSTES")) {
 			CtrAjustes c = new CtrAjustes(new Ajustes(profesor));
 			Main.setPanel(c.getPanel());

@@ -9,6 +9,7 @@ import Modelo.Actividad;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Organizacion;
+import Modelo.Profesor;
 import Modelo.Usuario;
 import Vista.Ajustes;
 import Vista.EditarActividad;
@@ -98,6 +99,9 @@ public class CtrInformacionActividad implements ActionListener {
 				CtrMisCursos c = new CtrMisCursos(new MisCursos((Estudiante) user));
 				Main.setPanel(c.getPanel());
 			}
+		}else if (user != null && user instanceof Profesor) {
+			CtrMisCursos c = new CtrMisCursos(new MisCursos((Profesor) user));
+			Main.setPanel(c.getPanel());
 		}
 
 		if (e.getActionCommand().equals("ACTIVIDAD")) {
@@ -106,6 +110,9 @@ public class CtrInformacionActividad implements ActionListener {
 				Main.setPanel(c.getPanel());
 			} else if (user != null && user instanceof Organizacion) {
 				CtrMisActividades c = new CtrMisActividades(new MisActividades((Organizacion) user));
+				Main.setPanel(c.getPanel());
+			}else if (user != null && user instanceof Profesor) {
+				CtrMisActividades c = new CtrMisActividades(new MisActividades((Profesor) user));
 				Main.setPanel(c.getPanel());
 			}
 		}

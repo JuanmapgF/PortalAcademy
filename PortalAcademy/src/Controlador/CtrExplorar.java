@@ -130,8 +130,11 @@ public class CtrExplorar implements ActionListener {
 			if (ventana.esEstudiante()) {
 				CtrMisCursos c = new CtrMisCursos(new MisCursos(ventana.getEstudiante()));
 				Main.setPanel(c.getPanel());
-			} else {
+			} else if (ventana.esProfesor()){
 				CtrMisCursos c = new CtrMisCursos(new MisCursos(ventana.getProfesor()));
+				Main.setPanel(c.getPanel());
+			} else {
+				CtrMisCursos c = new CtrMisCursos(new MisCursos(ventana.getOrganizacion()));
 				Main.setPanel(c.getPanel());
 			}
 		}
@@ -140,8 +143,11 @@ public class CtrExplorar implements ActionListener {
 			if (ventana.esEstudiante()) {
 				CtrMisActividades c = new CtrMisActividades(new MisActividades(ventana.getEstudiante()));
 				Main.setPanel(c.getPanel());
-			} else {
+			} else if (ventana.esOrganizacion()) {
 				CtrMisActividades c = new CtrMisActividades(new MisActividades(ventana.getOrganizacion()));
+				Main.setPanel(c.getPanel());
+			} else {
+				CtrMisActividades c = new CtrMisActividades(new MisActividades(ventana.getProfesor()));
 				Main.setPanel(c.getPanel());
 			}
 		}

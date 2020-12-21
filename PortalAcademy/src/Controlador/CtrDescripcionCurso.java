@@ -100,6 +100,9 @@ public class CtrDescripcionCurso implements ActionListener {
 			if (esEstudiante != null && esEstudiante) {
 				CtrMisActividades c = new CtrMisActividades(new MisActividades((Estudiante)user));
 				Main.setPanel(c.getPanel());
+			}else if ( esEstudiante != null && !esEstudiante) {
+				CtrMisActividades c = new CtrMisActividades(new MisActividades((Profesor)user));
+				Main.setPanel(c.getPanel());
 			}
 		}
 		
