@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import Modelo.*;
+
 @SuppressWarnings("serial")
 public class DescripcionCurso extends JPanel {
 	private JButton unirse;
@@ -24,27 +26,39 @@ public class DescripcionCurso extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public DescripcionCurso(String nombre, String descripcion, Boolean puedeUnirse, Boolean esEstudiante) {
+	public DescripcionCurso(Usuario user, Curso curso) {
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
 
-		JLabel nombreCurso = new JLabel(nombre);
+		JLabel nombreCurso = new JLabel(curso.getNombre());
 		nombreCurso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 		nombreCurso.setBounds(460, 70, 269, 33);
 		add(nombreCurso);
 
-		JTextArea descripcionCurso = new JTextArea(descripcion);
+		JTextArea descripcionCurso = new JTextArea(curso.getDescripcion());
 		descripcionCurso.setEditable(false);
 		JScrollPane jsp = new JScrollPane(descripcionCurso);
 		jsp.setBounds(292, 131, 652, 371);
 		add(jsp);
 
-		if (esEstudiante != null && esEstudiante) {
-			if (puedeUnirse) {
+		if (user == null) {
+
+			iniciar = new JButton("Iniciar sesi\u00F3n");
+			iniciar.setBounds(729, 37, 121, 23);
+			add(iniciar);
+
+			registrarse = new JButton("Registrarse");
+			registrarse.setBounds(860, 37, 121, 23);
+			add(registrarse);
+			
+			if (curso.getPublico() && curso.quedanPlazas()) {
 				unirse = new JButton("Unirse");
 				unirse.setBounds(478, 511, 89, 23);
 				add(unirse);
 			}
+
+		} else {
+			
 			cursos = new JButton("Mis cursos");
 			cursos.setBounds(36, 261, 131, 32);
 			add(cursos);
@@ -60,42 +74,16 @@ public class DescripcionCurso extends JPanel {
 			cerrar = new JButton("Cerrar Sesi\u00F3n");
 			cerrar.setBounds(860, 37, 121, 23);
 			add(cerrar);
-
+			
 			JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + Main.getUser().getNick());
 			lblNewLabel_2.setBounds(10, 11, 240, 20);
 			add(lblNewLabel_2);
-		} else if (esEstudiante != null && !esEstudiante) {
-
-			cursos = new JButton("Mis cursos");
-			cursos.setBounds(36, 261, 131, 32);
-			add(cursos);
-
-			ajustes = new JButton("Ajustes");
-			ajustes.setBounds(36, 336, 131, 32);
-			add(ajustes);
-
-			cerrar = new JButton("Cerrar Sesi\u00F3n");
-			cerrar.setBounds(860, 37, 121, 23);
-			add(cerrar);
-
-			JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + Main.getUser().getNick());
-			lblNewLabel_2.setBounds(10, 11, 240, 20);
-			add(lblNewLabel_2);
-
-		} else {
-			if (puedeUnirse) {
+			
+			if (curso.quedanPlazas() && (!((Estudiante) user).estaEnCurso(curso) || !((Profesor) user).estaEnCurso(curso))) {
 				unirse = new JButton("Unirse");
 				unirse.setBounds(478, 511, 89, 23);
 				add(unirse);
 			}
-
-			iniciar = new JButton("Iniciar sesi\u00F3n");
-			iniciar.setBounds(729, 37, 121, 23);
-			add(iniciar);
-
-			registrarse = new JButton("Registrarse");
-			registrarse.setBounds(860, 37, 121, 23);
-			add(registrarse);
 
 		}
 

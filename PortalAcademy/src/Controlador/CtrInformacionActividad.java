@@ -9,6 +9,7 @@ import Modelo.Actividad;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Organizacion;
+import Modelo.Profesor;
 import Modelo.Usuario;
 import Vista.Ajustes;
 import Vista.EditarActividad;
@@ -29,14 +30,6 @@ public class CtrInformacionActividad implements ActionListener {
 	public CtrInformacionActividad(Usuario user, Actividad actividad) {
 		this.user = user;
 		this.actividad = actividad;
-		Boolean esOrganizacion;
-		if (user == null) {
-			esOrganizacion = null;
-		} else if (user instanceof Organizacion) {
-			esOrganizacion = true;
-		} else {
-			esOrganizacion = false;
-		}
 		ventana = new InformacionActividad(actividad, user);
 		ventana.controlador(this);
 	}
@@ -71,51 +64,53 @@ public class CtrInformacionActividad implements ActionListener {
 		}
 
 		if (e.getActionCommand().equals("EXPLORAR")) {
-			if (user != null && user instanceof Estudiante) {
-
-				CtrExplorar c = new CtrExplorar(
-						new Explorar((Estudiante) user, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+			if (user == null) {
+				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
-
-			} else if (user != null && user instanceof Organizacion) {
-				CtrExplorar c = null;
-
-				c = new CtrExplorar(new Explorar((Organizacion) user, Actividad.getTodasLasActividades()));
-
+			} else if (user instanceof Estudiante) {
+				CtrExplorar c = new CtrExplorar(new Explorar((Estudiante)user, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
-
+			} else if (user instanceof Organizacion) {
+				CtrExplorar c = new CtrExplorar(new Explorar((Organizacion)user, Actividad.getTodasLasActividades()));
+				Main.setPanel(c.getPanel());
 			} else {
-
-				CtrExplorar c = new CtrExplorar(
-						new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+				CtrExplorar c = new CtrExplorar(new Explorar((Profesor)user, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
-
 			}
 		}
 
 		if (e.getActionCommand().equals("CURSO")) {
-			if (user != null && user instanceof Estudiante) {
+			if (user instanceof Estudiante) {
 				CtrMisCursos c = new CtrMisCursos(new MisCursos((Estudiante) user));
+				Main.setPanel(c.getPanel());
+			} else {
+				CtrMisCursos c = new CtrMisCursos(new MisCursos((Profesor) user));
 				Main.setPanel(c.getPanel());
 			}
 		}
 
 		if (e.getActionCommand().equals("ACTIVIDAD")) {
-			if (user != null && user instanceof Estudiante) {
+			if (user instanceof Estudiante) {
 				CtrMisActividades c = new CtrMisActividades(new MisActividades((Estudiante) user));
 				Main.setPanel(c.getPanel());
-			} else if (user != null && user instanceof Organizacion) {
+			} else if (user instanceof Profesor) {
+				CtrMisActividades c = new CtrMisActividades(new MisActividades((Profesor) user));
+				Main.setPanel(c.getPanel());
+			} else {
 				CtrMisActividades c = new CtrMisActividades(new MisActividades((Organizacion) user));
 				Main.setPanel(c.getPanel());
 			}
 		}
 
 		if (e.getActionCommand().equals("AJUSTES")) {
-			if (user != null && user instanceof Estudiante) {
-				CtrAjustes c = new CtrAjustes(new Ajustes((Estudiante) user));
+			if (user instanceof Estudiante) {
+				CtrAjustes c = new CtrAjustes(new Ajustes((Estudiante)user));
 				Main.setPanel(c.getPanel());
-			} else if (user != null && user instanceof Organizacion) {
-				CtrAjustes c = new CtrAjustes(new Ajustes((Organizacion) user));
+			}else if (user instanceof Profesor) {
+				CtrAjustes c = new CtrAjustes(new Ajustes((Profesor)user));
+				Main.setPanel(c.getPanel());
+			} else {
+				CtrAjustes c = new CtrAjustes(new Ajustes((Organizacion)user));
 				Main.setPanel(c.getPanel());
 			}
 		}

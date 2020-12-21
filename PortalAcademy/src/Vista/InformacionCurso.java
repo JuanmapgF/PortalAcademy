@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Mensaje;
 import Modelo.Profesor;
@@ -40,18 +41,18 @@ public class InformacionCurso extends JPanel {
 	 * Create the panel.
 	 *
 	 */
-	public InformacionCurso(String nombre, String descripcion, Boolean tieneForo, List<Mensaje> mensajes, Usuario user) {
+	public InformacionCurso(Usuario user, Curso curso) {
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
 		
 		listaMensajes = new JList<String>();
 		
-		JLabel nombreCurso = new JLabel(nombre);
+		JLabel nombreCurso = new JLabel(curso.getNombre());
 		nombreCurso.setBounds(428, 34, 364, 33);
 		nombreCurso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 		add(nombreCurso);
 		
-		JTextArea descripcionCurso = new JTextArea(descripcion);
+		JTextArea descripcionCurso = new JTextArea(curso.getDescripcion());
 		
 		descripcionCurso.setEditable(false);
 		JScrollPane jsp = new JScrollPane(descripcionCurso);
@@ -59,7 +60,7 @@ public class InformacionCurso extends JPanel {
 		add(jsp);
 		
 		//-----
-		if (tieneForo) {
+		if (curso.getTieneForo()) {
 			JScrollPane foro = new JScrollPane();
 			foro.setBounds(278, 234, 459, 268);
 			foro.setViewportView(listaMensajes);
@@ -84,12 +85,12 @@ public class InformacionCurso extends JPanel {
 			
 			listaMensajes.setModel(modelo);
 			
-			for (Mensaje mensaje : mensajes) {
+			for (Mensaje mensaje : curso.getMensajes()) {
 				if (mensaje.getEmisor() == null) {
 					modelo.addElement("<INVITADO> : " + mensaje.getTexto());
 				} else if (mensaje.getEmisor().equals(user)) {
 					modelo.addElement("<TU> : " + mensaje.getTexto());
-				} else if (mensaje.getEmisor() instanceof Profesor) {
+				} else if (mensaje.getEmisor().equals(curso.getProfesor())) {
 					modelo.addElement("<PROFESOR> : " + mensaje.getTexto());
 				} else {
 					modelo.addElement("<" +mensaje.getEmisor().toString().toUpperCase() + "> : " + mensaje.getTexto());
@@ -112,7 +113,7 @@ public class InformacionCurso extends JPanel {
 			registrarse = new JButton("Registrarse");
 			registrarse.setBounds(860, 37, 121, 23);
 			add(registrarse);
-		} else if (user instanceof Estudiante) {
+		} else {
 			cursos = new JButton("Mis cursos");
 			cursos.setBounds(36, 261, 131, 32);
 			cursos.setForeground(Color.BLUE);
@@ -134,29 +135,16 @@ public class InformacionCurso extends JPanel {
 			JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
 			lblNewLabel_2.setBounds(10, 11, 240, 20);
 			add(lblNewLabel_2);
-		} else if (user instanceof Profesor) {
-			cursos = new JButton("Mis cursos");
-			cursos.setBounds(36, 261, 131, 32);
-			cursos.setForeground(Color.BLUE);
-			add(cursos);
 			
-			editar = new JButton("Editar");
-			editar.setBounds(752, 68, 89, 23);
-			add(editar);
-			
-			cerrarSesion = new JButton("Cerrar sesi\u00F3n");
-			cerrarSesion.setBounds(860, 37, 121, 23);
-
-			add(cerrarSesion);
-			
-			ajustes = new JButton("Ajustes");
-			ajustes.setBounds(36, 336, 131, 32);
-			add(ajustes);
-			
-			JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
-			lblNewLabel_2.setBounds(10, 11, 240, 20);
-			add(lblNewLabel_2);
-		}
+			if (user.equals(curso.getProfesor())) {
+				editar = new JButton("Editar");
+				editar.setBounds(752, 68, 89, 23);
+				add(editar);
+			}
+		} 
+		
+		
+		
 		
 		
 		

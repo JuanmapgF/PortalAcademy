@@ -77,27 +77,6 @@ public class InformacionActividad extends JPanel {
 			registrarse = new JButton("Registrarse");
 			registrarse.setBounds(860, 37, 121, 23);
 			add(registrarse);
-		} else if (user instanceof Estudiante) {
-			cursos = new JButton("Mis cursos");
-			cursos.setBounds(36, 261, 131, 32);
-			add(cursos);
-			
-			actividades = new JButton("Mis actividades");
-			actividades.setBounds(36, 336, 131, 32);
-			actividades.setForeground(Color.BLUE);
-			add(actividades);
-			
-			ajustes = new JButton("Ajustes");
-			ajustes.setBounds(36, 413, 131, 32);
-			add(ajustes);
-			
-			cerrarSesion = new JButton("Cerrar sesi\u00F3n");
-			cerrarSesion.setBounds(860, 37, 121, 23);
-			add(cerrarSesion);
-			
-			JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
-			lblNewLabel_2.setBounds(10, 11, 240, 20);
-			add(lblNewLabel_2);
 		} else if (user instanceof Organizacion) {
 			actividades = new JButton("Mis actividades");
 			actividades.setForeground(Color.BLUE);
@@ -119,7 +98,28 @@ public class InformacionActividad extends JPanel {
 			JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
 			lblNewLabel_2.setBounds(10, 11, 240, 20);
 			add(lblNewLabel_2);
-		}
+		} else {
+			cursos = new JButton("Mis cursos");
+			cursos.setBounds(36, 261, 131, 32);
+			add(cursos);
+			
+			actividades = new JButton("Mis actividades");
+			actividades.setBounds(36, 336, 131, 32);
+			actividades.setForeground(Color.BLUE);
+			add(actividades);
+			
+			ajustes = new JButton("Ajustes");
+			ajustes.setBounds(36, 413, 131, 32);
+			add(ajustes);
+			
+			cerrarSesion = new JButton("Cerrar sesi\u00F3n");
+			cerrarSesion.setBounds(860, 37, 121, 23);
+			add(cerrarSesion);
+			
+			JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
+			lblNewLabel_2.setBounds(10, 11, 240, 20);
+			add(lblNewLabel_2);
+		} 
 		
 		
 		
