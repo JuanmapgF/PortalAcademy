@@ -21,10 +21,14 @@ import Modelo.Profesor;
 public class MisCursos extends JPanel {
 
 	private DefaultListModel<String> modeloC = new DefaultListModel<String>();
+	private DefaultListModel<String> modeloCA = new DefaultListModel<String>();
 	private JList<String> listaC = new JList<String>();
+	private JList<String> listaCA = new JList<String>();
 	private JButton bVer = new JButton();
 	private JButton bVer2 = new JButton();
+	private JButton bVer3 = new JButton();
 	private List<Curso> l;
+	private List<Curso> l1;
 
 	private Estudiante est = null;
 	private Organizacion org = null;
@@ -88,20 +92,29 @@ public class MisCursos extends JPanel {
 		add(lblNewLabel_2);
 	}
 
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public MisCursos(Profesor u) {
 		profesor = true;
 		prof = u;
 		this.setLayout(null);
-		addElements(u.getCursos());
+		addElements(u.getCursosImpartidos());
+		addElements2(u.getCursosApuntados());
 
 		crearCurso = new JButton("Crear curso");
 		crearCurso.setBounds(860, 551, 121, 23);
 		add(crearCurso);
 
-		JScrollPane sp_cursos2 = new JScrollPane();
-		sp_cursos2.setBounds(441, 175, 346, 346);
-		sp_cursos2.setViewportView(listaC);
-		add(sp_cursos2);
+		JScrollPane sp_cursosImpartidos = new JScrollPane();
+		sp_cursosImpartidos.setBounds(641, 175, 200, 346);
+		sp_cursosImpartidos.setViewportView(listaC);
+		add(sp_cursosImpartidos);
+		
+		JScrollPane sp_cursosApuntados = new JScrollPane();
+		sp_cursosApuntados.setBounds(341, 175, 200, 346);
+		sp_cursosApuntados.setViewportView(listaCA);
+		add(sp_cursosApuntados);
 
 		cerrar = new JButton("Cerrar sesi\u00F3n");
 		cerrar.setBounds(860, 37, 121, 23);
@@ -115,8 +128,12 @@ public class MisCursos extends JPanel {
 		this.setBounds(0, 0, 1080, 650);
 
 		bVer2 = new JButton("Ver curso");
-		bVer2.setBounds(560, 551, 104, 23);
+		bVer2.setBounds(690, 551, 104, 23);
 		add(bVer2);
+		
+		bVer3 = new JButton("Ver curso");
+		bVer3.setBounds(383, 551, 104, 23);
+		add(bVer3);
 
 		explorar = new JButton("Explorar");
 		explorar.setBounds(36, 191, 131, 32);
@@ -146,10 +163,29 @@ public class MisCursos extends JPanel {
 
 		listaC.setLayoutOrientation(JList.VERTICAL);
 	}
+	
+	public void addElements2(List<Curso> l) {
+		this.l = l;
+		listaCA.setModel(modeloCA);
+
+		for (Object o : l) {
+			modeloCA.addElement(o.toString());
+		}
+
+		listaCA.setLayoutOrientation(JList.VERTICAL);
+	}
 
 	public Curso getC() {
 		if (!listaC.isSelectionEmpty()) {
 			return l.get(listaC.getSelectedIndex());
+		} else {
+			return null;
+		}
+	}
+	
+	public Curso getCA() {
+		if (!listaCA.isSelectionEmpty()) {
+			return l1.get(listaCA.getSelectedIndex());
 		} else {
 			return null;
 		}
@@ -161,6 +197,9 @@ public class MisCursos extends JPanel {
 
 		bVer2.addActionListener(ctr);
 		bVer2.setActionCommand("MISCURSOSPROFESOR");
+		
+		bVer3.addActionListener(ctr);
+		bVer3.setActionCommand("MISCURSOSPROFESORAPUNTADOS");
 
 		if (crearCurso != null) {
 			crearCurso.addActionListener(ctr);

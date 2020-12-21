@@ -31,7 +31,7 @@ public class Profesor extends Usuario {
 		return this.telefono;
 	}
 
-	public List<Curso> getCursos() {
+	public List<Curso> getCursosImpartidos() {
 		List<Curso> c = new ArrayList<Curso>();
 		bd = BD.getBD();
 		List<Object[]> cursos = bd.Select("SELECT * FROM Curso WHERE nickProfesor = '" + this.getNick() + "'");
@@ -42,7 +42,41 @@ public class Profesor extends Usuario {
 		}
 		return c;
 	}
+	
+	public List<Actividad> getActividades() {
+		List<Actividad> ac = new ArrayList<Actividad>();
+		bd = BD.getBD();
+		List<Object[]> actividades = bd
+				.Select("SELECT * FROM RelActividadUsuario WHERE nickUsuario = '" + this.getNick() + "'");
+		BD.contadorFinalize(actividades.size() + 1);
+		bd.finalize();
+		for (Object[] e : actividades) {
+			ac.add(new Actividad((int) e[1]));
+		}
+		return ac;
+	}
+	
+	public List<Curso> getCursosApuntados(){
+		List<Curso> c = new ArrayList<Curso>();
+		bd = BD.getBD();
+		List<Object[]> cursos = bd.Select("SELECT * FROM RelCursoUsuario WHERE nickUsuario = '" + this.getNick() + "'");
+		BD.contadorFinalize(cursos.size() + 1);
+		bd.finalize();
+		for (Object[] o : cursos) {
+			c.add(new Curso((int) o[1]));
+		}
+		return c;
+	}
+	
+	public Boolean estaEnCurso(Curso curso) {
+		return getCursosApuntados().contains(curso);
+	}
 
+	public Boolean estaEnActividad(Actividad actividad) {
+		return getActividades().contains(actividad);
+
+	}
+	
 	@Override
 	public void eliminarUsuario() {
 		super.eliminarUsuario();
