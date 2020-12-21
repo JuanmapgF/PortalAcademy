@@ -14,8 +14,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import Controlador.CtrMenu;
+import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Mensaje;
+import Modelo.Organizacion;
 import Modelo.Profesor;
 import Modelo.Usuario;
 
@@ -23,16 +26,11 @@ import Modelo.Usuario;
 public class InformacionCurso extends JPanel {
 	private JList<String> listaMensajes;
 	private DefaultListModel<String> modelo = new DefaultListModel<String>();
-	private JButton cerrarSesion;
-	private JButton iniciar;
-	private JButton registrarse;
+	
 	private JButton editar;
 	private JButton enviar;
 	private JButton refrescar;
-	private JButton cursos;
-	private JButton actividades;
-	private JButton ajustes;
-	private JButton explorar;
+
 	private JTextField textField;
 	private String mensajeEscrito;
 
@@ -40,18 +38,18 @@ public class InformacionCurso extends JPanel {
 	 * Create the panel.
 	 *
 	 */
-	public InformacionCurso(String nombre, String descripcion, Boolean tieneForo, List<Mensaje> mensajes, Usuario user) {
+	public InformacionCurso(Usuario user, Curso curso) {
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
 		
 		listaMensajes = new JList<String>();
 		
-		JLabel nombreCurso = new JLabel(nombre);
+		JLabel nombreCurso = new JLabel(curso.getNombre());
 		nombreCurso.setBounds(428, 34, 364, 33);
 		nombreCurso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 		add(nombreCurso);
 		
-		JTextArea descripcionCurso = new JTextArea(descripcion);
+		JTextArea descripcionCurso = new JTextArea(curso.getDescripcion());
 		
 		descripcionCurso.setEditable(false);
 		JScrollPane jsp = new JScrollPane(descripcionCurso);
@@ -59,7 +57,7 @@ public class InformacionCurso extends JPanel {
 		add(jsp);
 		
 		//-----
-		if (tieneForo) {
+		if (curso.getTieneForo()) {
 			JScrollPane foro = new JScrollPane();
 			foro.setBounds(278, 234, 459, 268);
 			foro.setViewportView(listaMensajes);
@@ -84,12 +82,12 @@ public class InformacionCurso extends JPanel {
 			
 			listaMensajes.setModel(modelo);
 			
-			for (Mensaje mensaje : mensajes) {
+			for (Mensaje mensaje : curso.getMensajes()) {
 				if (mensaje.getEmisor() == null) {
 					modelo.addElement("<INVITADO> : " + mensaje.getTexto());
 				} else if (mensaje.getEmisor().equals(user)) {
 					modelo.addElement("<TU> : " + mensaje.getTexto());
-				} else if (mensaje.getEmisor() instanceof Profesor) {
+				} else if (mensaje.getEmisor().equals(curso.getProfesor())) {
 					modelo.addElement("<PROFESOR> : " + mensaje.getTexto());
 				} else {
 					modelo.addElement("<" +mensaje.getEmisor().toString().toUpperCase() + "> : " + mensaje.getTexto());
@@ -97,69 +95,24 @@ public class InformacionCurso extends JPanel {
 			}
 		}
 		
-		
-		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
-		add(explorar);
-		
 		if (user == null) {
-			iniciar = new JButton("Iniciar sesi\u00F3n");
-			iniciar.setBounds(729, 37, 121, 23);
-			add(iniciar);
-			
-			explorar.setForeground(Color.BLUE);
-			
-			registrarse = new JButton("Registrarse");
-			registrarse.setBounds(860, 37, 121, 23);
-			add(registrarse);
-		} else if (user instanceof Estudiante) {
-			cursos = new JButton("Mis cursos");
-			cursos.setBounds(36, 261, 131, 32);
-			cursos.setForeground(Color.BLUE);
-			add(cursos);
-			
-			actividades = new JButton("Mis actividades");
-			actividades.setBounds(36, 336, 131, 32);
-			add(actividades);
-			
-			ajustes = new JButton("Ajustes");
-			ajustes.setBounds(36, 413, 131, 32);
-			add(ajustes);
-			
-			cerrarSesion = new JButton("Cerrar sesi\u00F3n");
-			cerrarSesion.setBounds(860, 37, 121, 23);
-
-			add(cerrarSesion);
-			
-			JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
-			lblNewLabel_2.setBounds(10, 11, 240, 20);
-			add(lblNewLabel_2);
-		} else if (user instanceof Profesor) {
-			cursos = new JButton("Mis cursos");
-			cursos.setBounds(36, 261, 131, 32);
-			cursos.setForeground(Color.BLUE);
-			add(cursos);
-			
-			editar = new JButton("Editar");
-			editar.setBounds(752, 68, 89, 23);
-			add(editar);
-			
-			cerrarSesion = new JButton("Cerrar sesi\u00F3n");
-			cerrarSesion.setBounds(860, 37, 121, 23);
-
-			add(cerrarSesion);
-			
-			ajustes = new JButton("Ajustes");
-			ajustes.setBounds(36, 336, 131, 32);
-			add(ajustes);
-			
-			JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
-			lblNewLabel_2.setBounds(10, 11, 240, 20);
-			add(lblNewLabel_2);
+			CtrMenu menu = new CtrMenu(new Menu());
+			add(menu.getPanel());
+		}  else if (user instanceof Profesor) {
+			if(user.equals(curso.getProfesor())) {
+				editar = new JButton("Editar");
+				editar.setBounds(752, 68, 89, 23);
+				add(editar);
+			}
+			CtrMenu menu = new CtrMenu(new Menu((Profesor)user));
+			add(menu.getPanel());
+		} else if(user instanceof Organizacion){
+			CtrMenu menu = new CtrMenu(new Menu((Organizacion)user));
+			add(menu.getPanel());
+		} else {
+			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user));
+			add(menu.getPanel());
 		}
-		
-		
-		
 	}
 
 	
@@ -176,43 +129,12 @@ public class InformacionCurso extends JPanel {
 		}
 		
 		
-		if (cerrarSesion != null) {
-			cerrarSesion.addActionListener(ctr);
-			cerrarSesion.setActionCommand("CERRAR_SESION");
-		}
-		
-		if (iniciar != null) {
-			iniciar.addActionListener(ctr);
-			iniciar.setActionCommand("Iniciar");
-		}
-		
-		if (registrarse != null) {
-			registrarse.addActionListener(ctr);
-			registrarse.setActionCommand("Registrarse");
-		}
 		
 		if (editar != null) {
 			editar.addActionListener(ctr);
 			editar.setActionCommand("Editar");
 		}
 		
-		if (cursos != null) {
-			cursos.addActionListener(ctr);
-			cursos.setActionCommand("CURSO");
-		}
-		if (actividades != null) {
-			actividades.addActionListener(ctr);
-			actividades.setActionCommand("ACTIVIDAD");
-		}
-		if (ajustes != null) {
-			ajustes.addActionListener(ctr);
-			ajustes.setActionCommand("AJUSTES");
-		}
-		
-		if (explorar != null) {
-			explorar.addActionListener(ctr);
-			explorar.setActionCommand("EXPLORAR");
-		}
 	}
 	
 	public String mensajeAEnviar() {

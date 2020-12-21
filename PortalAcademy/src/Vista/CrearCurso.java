@@ -16,6 +16,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import Controlador.CtrMenu;
+import Modelo.Organizacion;
+import Modelo.Profesor;
+
 @SuppressWarnings("serial")
 public class CrearCurso extends JPanel {
 
@@ -28,16 +32,13 @@ public class CrearCurso extends JPanel {
 	public JRadioButton rdbtnPresencial;
 	public JRadioButton rdbtnOnline;
 	public JSpinner spinnerAforo;
-	public JButton btnCerrarSesion;
+
 	public JButton btnCrearCurso;
 	public JButton btnCancelar;
 	private JLabel lblForo;
 	public JCheckBox chckbxForo;
 	private JLabel lblNewLabel_1;
 
-	public JButton explorar;
-	public JButton cursos;
-	public JButton ajustes;
 	public JButton btnSeleccionar;
 	public JFileChooser fileChooserImagen;
 	public JLabel lblImagenSeleccionada;
@@ -49,18 +50,6 @@ public class CrearCurso extends JPanel {
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
 
-		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
-		add(explorar);
-
-		cursos = new JButton("Mis cursos");
-		cursos.setForeground(Color.BLUE);
-		cursos.setBounds(36, 261, 131, 32);
-		add(cursos);
-
-		ajustes = new JButton("Ajustes");
-		ajustes.setBounds(36, 336, 131, 32);
-		add(ajustes);
 
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		lblNewLabel.setBounds(297, 140, 66, 14);
@@ -122,9 +111,6 @@ public class CrearCurso extends JPanel {
 		spinnerAforo.setBounds(511, 365, 90, 20);
 		add(spinnerAforo);
 
-		btnCerrarSesion = new JButton("Cerrar sesi\u00F3n");
-		btnCerrarSesion.setBounds(860, 37, 121, 23);
-		add(btnCerrarSesion);
 
 		btnCrearCurso = new JButton("Crear curso");
 		btnCrearCurso.setBounds(400, 546, 109, 35);
@@ -147,10 +133,6 @@ public class CrearCurso extends JPanel {
 		lblNewLabel_1.setBounds(395, 35, 148, 40);
 		add(lblNewLabel_1);
 
-		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + Main.getUser().getNick());
-		lblNewLabel_2.setBounds(10, 11, 240, 20);
-		add(lblNewLabel_2);
-
 		btnSeleccionar = new JButton("Seleccionar");
 		btnSeleccionar.setBounds(574, 196, 109, 23);
 		add(btnSeleccionar);
@@ -162,5 +144,9 @@ public class CrearCurso extends JPanel {
 
 		fileChooserImagen = new JFileChooser();
 		fileChooserImagen.setFileSelectionMode(JFileChooser.FILES_ONLY);
+		
+		CtrMenu menu = new CtrMenu(new Menu((new Profesor(Main.getUser().getNick()))));
+		add(menu.getPanel());
+		
 	}
 }

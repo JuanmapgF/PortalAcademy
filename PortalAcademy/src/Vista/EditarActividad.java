@@ -16,8 +16,10 @@ import javax.swing.SwingConstants;
 
 import com.toedter.calendar.JCalendar;
 
+import Controlador.CtrMenu;
 import Modelo.Actividad;
 import Modelo.Organizacion;
+import Modelo.Profesor;
 
 @SuppressWarnings("serial")
 public class EditarActividad extends JPanel {
@@ -25,9 +27,6 @@ public class EditarActividad extends JPanel {
 	private Actividad a;
 	private Organizacion usuario;
 
-	private JButton explorar;
-	private JButton actividades;
-	private JButton ajustes;
 
 	private JTextField nombre;
 	private JTextArea descripcion;
@@ -35,7 +34,7 @@ public class EditarActividad extends JPanel {
 	private JButton guardar;
 	private JButton eliminar;
 	private JButton volver;
-	private JButton cerrarsesion;
+	
 	private JCalendar calendario;
 	private JTextField lugar;
 
@@ -93,26 +92,11 @@ public class EditarActividad extends JPanel {
 		eliminar.setBounds(867, 350, 144, 23);
 		add(eliminar);
 
-		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
-		add(explorar);
-
-		actividades = new JButton("Mis actividades");
-		actividades.setForeground(Color.BLUE);
-		actividades.setBounds(36, 261, 131, 32);
-		add(actividades);
-
-		ajustes = new JButton("Ajustes");
-		ajustes.setBounds(36, 336, 131, 32);
-		add(ajustes);
+		
 
 		volver = new JButton("Descartar cambios");
 		volver.setBounds(867, 439, 144, 23);
 		add(volver);
-
-		cerrarsesion = new JButton("Cerrar sesi\u00F3n");
-		cerrarsesion.setBounds(867, 26, 144, 23);
-		add(cerrarsesion);
 
 		calendario = new JCalendar();
 		calendario.setBounds(400, 400, 311, 200);
@@ -139,9 +123,8 @@ public class EditarActividad extends JPanel {
 		add(lugar);
 		lugar.setColumns(10);
 
-		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + Main.getUser().getNick());
-		lblNewLabel_2.setBounds(10, 11, 240, 20);
-		add(lblNewLabel_2);
+		CtrMenu menu = new CtrMenu(new Menu(p));
+		add(menu.getPanel());
 	}
 
 	public void controlador(ActionListener ctr) {
@@ -154,17 +137,6 @@ public class EditarActividad extends JPanel {
 		volver.addActionListener(ctr);
 		volver.setActionCommand("VOLVER");
 
-		cerrarsesion.addActionListener(ctr);
-		cerrarsesion.setActionCommand("CERRAR_SESION");
-
-		explorar.addActionListener(ctr);
-		explorar.setActionCommand("EXPLORAR");
-
-		actividades.addActionListener(ctr);
-		actividades.setActionCommand("ACTIVIDADES");
-
-		ajustes.addActionListener(ctr);
-		ajustes.setActionCommand("AJUSTES");
 	}
 
 	public Actividad getC() {

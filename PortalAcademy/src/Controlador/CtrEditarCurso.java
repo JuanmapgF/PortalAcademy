@@ -8,11 +8,13 @@ import javax.swing.JPanel;
 
 import Modelo.Actividad;
 import Modelo.Curso;
+import Modelo.Estudiante;
 import Modelo.Profesor;
 import Vista.Ajustes;
 import Vista.EditarCurso;
 import Vista.Explorar;
 import Vista.Main;
+import Vista.MisActividades;
 import Vista.MisCursos;
 
 public class CtrEditarCurso implements ActionListener {
@@ -65,28 +67,8 @@ public class CtrEditarCurso implements ActionListener {
 			}
 		}
 
-		if (e.getActionCommand().equals("CERRAR_SESION")) {
 
-			CtrExplorar c = new CtrExplorar(
-					new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-			Main.setPanel(c.getPanel());
-
-		}
-
-		if (e.getActionCommand().equals("EXPLORAR")) {
-			CtrExplorar c = new CtrExplorar(new Explorar(profesor, Curso.getTodosLosCursos()));
-			Main.setPanel(c.getPanel());
-		}
-
-		if (e.getActionCommand().equals("CURSOS")) {
-			CtrMisCursos c = new CtrMisCursos(new MisCursos(profesor));
-			Main.setPanel(c.getPanel());
-		}
-
-		if (e.getActionCommand().equals("AJUSTES")) {
-			CtrAjustes c = new CtrAjustes(new Ajustes(profesor));
-			Main.setPanel(c.getPanel());
-		}
+		
 
 		if (e.getActionCommand().equals("PUBLICO")) {
 			ventana.setPublico(true);

@@ -15,6 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import Controlador.CtrMenu;
 import Modelo.Curso;
 import Modelo.Profesor;
 
@@ -23,10 +24,6 @@ public class EditarCurso extends JPanel {
 
 	private Curso c;
 	private Profesor usuario;
-	
-	private JButton explorar;
-	private JButton cursos;
-	private JButton ajustes;
 	
 	private JTextField nombre;
 	private JTextArea descripcion;
@@ -40,7 +37,6 @@ public class EditarCurso extends JPanel {
 	private JLabel lblForo;
 	private JCheckBox foro;
 	private JButton volver;
-	private JButton cerrarsesion;
 	
 	public EditarCurso(Curso cur, Profesor p) {
 		usuario = p;
@@ -132,20 +128,8 @@ public class EditarCurso extends JPanel {
 		
 		eliminar = new JButton("Eliminar curso");
 		eliminar.setBounds(867, 350, 144, 23);
-		add(eliminar);
+		add(eliminar);	
 		
-		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
-		add(explorar);
-		
-		cursos = new JButton("Mis cursos");
-		cursos.setForeground(Color.BLUE);
-		cursos.setBounds(36, 261, 131, 32);
-		add(cursos);
-		
-		ajustes = new JButton("Ajustes");
-		ajustes.setBounds(36, 336, 131, 32);
-		add(ajustes);
 		
 		lblForo = new JLabel("Foro:");
 		lblForo.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
@@ -161,13 +145,8 @@ public class EditarCurso extends JPanel {
 		volver.setBounds(867, 434, 144, 23);
 		add(volver);
 		
-		cerrarsesion = new JButton("Cerrar sesi\u00F3n");
-		cerrarsesion.setBounds(867, 26, 144, 23);
-		add(cerrarsesion);
-		
-		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
-		lblNewLabel_2.setBounds(10, 11, 240, 20);
-		add(lblNewLabel_2);
+		CtrMenu menu = new CtrMenu(new Menu(p));
+		add(menu.getPanel());
 	}
 	
 	public void controlador(ActionListener ctr) {
@@ -179,18 +158,6 @@ public class EditarCurso extends JPanel {
 		
 		volver.addActionListener(ctr);
 		volver.setActionCommand("VOLVER");
-		
-		cerrarsesion.addActionListener(ctr);
-		cerrarsesion.setActionCommand("CERRAR_SESION");
-		
-		explorar.addActionListener(ctr);
-		explorar.setActionCommand("EXPLORAR");
-		
-		cursos.addActionListener(ctr);
-		cursos.setActionCommand("CURSOS");
-		
-		ajustes.addActionListener(ctr);
-		ajustes.setActionCommand("AJUSTES");
 		
 		publico.addActionListener(ctr);
 		publico.setActionCommand("PUBLICO");

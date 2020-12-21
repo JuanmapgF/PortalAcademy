@@ -55,7 +55,6 @@ public class Curso {
 						+ idCurso)
 				.get(0);
 		miBD.finalize();
-
 		this.idCurso = Integer.parseInt(tupla[0].toString());
 		this.nombre = tupla[1].toString();
 		this.descripcion = tupla[2].toString();
@@ -65,7 +64,6 @@ public class Curso {
 		this.tieneForo = tupla[6].toString().equals("1") ? true : false;
 		this.estudiantes = new ArrayList<Usuario>();
 		this.mensajes = new ArrayList<Mensaje>();
-
 	}
 
 	public Integer getId() {
@@ -152,12 +150,10 @@ public class Curso {
 	}
 
 	public Profesor getProfesor() {
-		if (profesor == null) {
-			bd = BD.getBD();
-			Object[] tupla = bd.Select("SELECT * FROM Curso WHERE idCurso = " + idCurso).get(0);
-			bd.finalize();
-			this.profesor = new Profesor(tupla[8].toString());
-		}
+		bd = BD.getBD();
+		Object[] tupla = bd.Select("SELECT * FROM Curso WHERE idCurso = " + idCurso).get(0);
+		bd.finalize();
+		this.profesor = new Profesor(tupla[7].toString());
 		return profesor;
 	}
 
@@ -208,10 +204,7 @@ public class Curso {
 	}
 
 	public Boolean quedanPlazas() {
-		if (estudiantes == null) {
-			getEstudiantes();
-		}
-		return getAforo() > estudiantes.size();
+		return getAforo() > getEstudiantes().size();
 	}
 
 	public static List<Curso> getTodosLosCursos() {

@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -18,8 +19,11 @@ public class Main extends JFrame {
 	private static JPanel contentPane;
 	private static Main frame;
 	private static Usuario user;
+	private static JLabel userName;
 
 	public Main() {
+		userName = new JLabel();
+		userName.setBounds(10, 11, 240, 20);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1080, 650);
 		CtrExplorar c = null;
@@ -53,10 +57,19 @@ public class Main extends JFrame {
 
 	public static void setUser(Usuario u) {
 		user = u;
+		setLabel();
 	}
 
 	public static Usuario getUser() {
 		return user;
+	}
+	
+	public static void setLabel() {
+		userName.setText(user.getNick());
+	}
+	
+	public static JLabel getLabel() {
+		return userName;
 	}
 
 }

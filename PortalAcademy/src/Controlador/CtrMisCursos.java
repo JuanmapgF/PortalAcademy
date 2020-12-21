@@ -27,32 +27,28 @@ public class CtrMisCursos implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 
-		if (e.getActionCommand().equals("CERRAR_SESION")) {
-
-			CtrExplorar c = new CtrExplorar(
-					new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-			Main.setPanel(c.getPanel());
-
-		}
 
 		if (e.getActionCommand().equals("CREARCURSO")) {
 			CtrCrearCurso ccc = new CtrCrearCurso(new CrearCurso());
 			Main.setPanel(ccc.getPanel());
 		}
 
-		if (e.getActionCommand().equals("MISCURSOSUSUARIO")) {
+		if (e.getActionCommand().equals("VERCURSO")) {
 			Curso c = ventana.getC();
 			if (c != null) {
 				if (ventana.esEstudiante()) {
 					CtrInformacionCurso cr = new CtrInformacionCurso(ventana.getEstudiante(), c);
+					Main.setPanel(cr.getPanel());
+				}else {
+					CtrInformacionCurso cr = new CtrInformacionCurso(ventana.getProfesor(), c);
 					Main.setPanel(cr.getPanel());
 				}
 
 			}
 		}
 
-		if (e.getActionCommand().equals("MISCURSOSPROFESOR")) {
-			Curso c = ventana.getC();
+		if (e.getActionCommand().equals("VERCURSOA")) {
+			Curso c = ventana.getCA();
 			if (c != null) {
 				if (ventana.esProfesor()) {
 					CtrInformacionCurso cr = new CtrInformacionCurso(ventana.getProfesor(), c);
@@ -60,46 +56,8 @@ public class CtrMisCursos implements ActionListener {
 				}
 			}
 		}
-
-		if (e.getActionCommand().equals("EXPLORAR")) {
-			if (ventana.esEstudiante()) {
-
-				CtrExplorar c = new CtrExplorar(new Explorar(ventana.getEstudiante(), Curso.getTodosLosCursos(),
-						Actividad.getTodasLasActividades()));
-				Main.setPanel(c.getPanel());
-
-			} else {
-				CtrExplorar c = new CtrExplorar(new Explorar(ventana.getProfesor(), Curso.getTodosLosCursos()));
-				Main.setPanel(c.getPanel());
-			}
-		}
-
-		if (e.getActionCommand().equals("CURSO")) {
-			if (ventana.esEstudiante()) {
-				CtrMisCursos c = new CtrMisCursos(new MisCursos(ventana.getEstudiante()));
-				Main.setPanel(c.getPanel());
-			} else {
-				CtrMisCursos c = new CtrMisCursos(new MisCursos(ventana.getProfesor()));
-				Main.setPanel(c.getPanel());
-			}
-		}
-
-		if (e.getActionCommand().equals("ACTIVIDAD")) {
-			if (ventana.esEstudiante()) {
-				CtrMisActividades c = new CtrMisActividades(new MisActividades(ventana.getEstudiante()));
-				Main.setPanel(c.getPanel());
-			}
-		}
-
-		if (e.getActionCommand().equals("AJUSTES")) {
-			if (ventana.esEstudiante()) {
-				CtrAjustes c = new CtrAjustes(new Ajustes(ventana.getEstudiante()));
-				Main.setPanel(c.getPanel());
-			} else {
-				CtrAjustes c = new CtrAjustes(new Ajustes(ventana.getProfesor()));
-				Main.setPanel(c.getPanel());
-			}
-		}
+		
+	
 
 	}
 

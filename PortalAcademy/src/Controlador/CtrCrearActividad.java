@@ -26,28 +26,10 @@ public class CtrCrearActividad implements ActionListener {
 		organizacion = new Organizacion(Main.getUser().getNick());
 		vista.btnCrearActividad.addActionListener(this);
 		vista.btnCancelar.addActionListener(this);
-		vista.btnCerrarSesion.addActionListener(this);
-		vista.actividades.addActionListener(this);
-		vista.ajustes.addActionListener(this);
-		vista.explorar.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == vista.explorar) {
-			CtrExplorar c = new CtrExplorar(
-					new Explorar(organizacion, Actividad.getTodasLasActividades()));
-			Main.setPanel(c.getPanel());
-		}
-		
-		if(e.getSource() == vista.actividades) {
-			CtrMisActividades c = new CtrMisActividades(new MisActividades(organizacion));
-			Main.setPanel(c.getPanel());
-		}
-		if(e.getSource() == vista.ajustes) {
-			CtrAjustes c = new CtrAjustes(new Ajustes(organizacion));
-			Main.setPanel(c.getPanel());
-		}
 		
 		if (e.getSource() == vista.btnCrearActividad) {
 			try {
@@ -84,12 +66,6 @@ public class CtrCrearActividad implements ActionListener {
 		if (e.getSource() == vista.btnCancelar) {
 			CtrMisActividades cma = new CtrMisActividades(new MisActividades(organizacion));
 			Main.setPanel(cma.getPanel());
-		}
-
-		if (e.getSource() == vista.btnCerrarSesion) {
-			CtrExplorar c = new CtrExplorar(
-					new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-			Main.setPanel(c.getPanel());
 		}
 
 	}

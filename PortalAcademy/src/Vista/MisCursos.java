@@ -12,6 +12,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import Controlador.CtrMenu;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Organizacion;
@@ -21,10 +22,13 @@ import Modelo.Profesor;
 public class MisCursos extends JPanel {
 
 	private DefaultListModel<String> modeloC = new DefaultListModel<String>();
+	private DefaultListModel<String> modeloCA = new DefaultListModel<String>();
 	private JList<String> listaC = new JList<String>();
+	private JList<String> listaCA = new JList<String>();
 	private JButton bVer = new JButton();
 	private JButton bVer2 = new JButton();
 	private List<Curso> l;
+	private List<Curso> l1;
 
 	private Estudiante est = null;
 	private Organizacion org = null;
@@ -34,11 +38,6 @@ public class MisCursos extends JPanel {
 	private boolean profesor = false;
 
 	private JButton crearCurso;
-	private JButton cerrar;
-	private JButton explorar;
-	private JButton cursos;
-	private JButton actividades;
-	private JButton ajustes;
 
 	public MisCursos(Estudiante u) {
 		estudiante = true;
@@ -51,9 +50,6 @@ public class MisCursos extends JPanel {
 		sp_cursos.setViewportView(listaC);
 		add(sp_cursos);
 
-		cerrar = new JButton("Cerrar sesi\u00F3n");
-		cerrar.setBounds(860, 37, 121, 23);
-		add(cerrar);
 
 		JLabel t_curso = new JLabel("Mis cursos:");
 		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
@@ -66,46 +62,33 @@ public class MisCursos extends JPanel {
 		bVer.setBounds(560, 551, 104, 23);
 		add(bVer);
 
-		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
-		add(explorar);
-
-		cursos = new JButton("Mis cursos");
-		cursos.setForeground(Color.BLUE);
-		cursos.setBounds(36, 261, 131, 32);
-		add(cursos);
-
-		actividades = new JButton("Mis actividades");
-		actividades.setBounds(36, 336, 131, 32);
-		add(actividades);
-
-		ajustes = new JButton("Ajustes");
-		ajustes.setBounds(36, 413, 131, 32);
-		add(ajustes);
-
-		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
-		lblNewLabel_2.setBounds(10, 11, 240, 20);
-		add(lblNewLabel_2);
+		CtrMenu menu = new CtrMenu(new Menu(u));
+		add(menu.getPanel());
 	}
 
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public MisCursos(Profesor u) {
 		profesor = true;
 		prof = u;
 		this.setLayout(null);
-		addElements(u.getCursos());
+		addElements(u.getCursosImpartidos());
+		addElements2(u.getCursosApuntados());
 
 		crearCurso = new JButton("Crear curso");
 		crearCurso.setBounds(860, 551, 121, 23);
 		add(crearCurso);
 
-		JScrollPane sp_cursos2 = new JScrollPane();
-		sp_cursos2.setBounds(441, 175, 346, 346);
-		sp_cursos2.setViewportView(listaC);
-		add(sp_cursos2);
-
-		cerrar = new JButton("Cerrar sesi\u00F3n");
-		cerrar.setBounds(860, 37, 121, 23);
-		add(cerrar);
+		JScrollPane sp_cursosImpartidos = new JScrollPane();
+		sp_cursosImpartidos.setBounds(641, 175, 200, 346);
+		sp_cursosImpartidos.setViewportView(listaC);
+		add(sp_cursosImpartidos);
+		
+		JScrollPane sp_cursosApuntados = new JScrollPane();
+		sp_cursosApuntados.setBounds(341, 175, 200, 346);
+		sp_cursosApuntados.setViewportView(listaCA);
+		add(sp_cursosApuntados);
 
 		JLabel t_curso2 = new JLabel("Mis cursos:");
 		t_curso2.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
@@ -114,26 +97,17 @@ public class MisCursos extends JPanel {
 
 		this.setBounds(0, 0, 1080, 650);
 
+		bVer = new JButton("Ver curso");
+		bVer.setBounds(690, 551, 104, 23);
+		add(bVer);
+		
 		bVer2 = new JButton("Ver curso");
-		bVer2.setBounds(560, 551, 104, 23);
+		bVer2.setBounds(383, 551, 104, 23);
 		add(bVer2);
+		
+		CtrMenu menu = new CtrMenu(new Menu(u));
+		add(menu.getPanel());
 
-		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
-		add(explorar);
-
-		cursos = new JButton("Mis cursos");
-		cursos.setForeground(Color.BLUE);
-		cursos.setBounds(36, 261, 131, 32);
-		add(cursos);
-
-		ajustes = new JButton("Ajustes");
-		ajustes.setBounds(36, 336, 131, 32);
-		add(ajustes);
-
-		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
-		lblNewLabel_2.setBounds(10, 11, 240, 20);
-		add(lblNewLabel_2);
 	}
 
 	public void addElements(List<Curso> l) {
@@ -146,6 +120,17 @@ public class MisCursos extends JPanel {
 
 		listaC.setLayoutOrientation(JList.VERTICAL);
 	}
+	
+	public void addElements2(List<Curso> l) {
+		this.l1 = l;
+		listaCA.setModel(modeloCA);
+
+		for (Object o : l1) {
+			modeloCA.addElement(o.toString());
+		}
+
+		listaCA.setLayoutOrientation(JList.VERTICAL);
+	}
 
 	public Curso getC() {
 		if (!listaC.isSelectionEmpty()) {
@@ -154,39 +139,23 @@ public class MisCursos extends JPanel {
 			return null;
 		}
 	}
+	
+	public Curso getCA() {
+		if (!listaCA.isSelectionEmpty()) {
+			return l1.get(listaCA.getSelectedIndex());
+		} else {
+			return null;
+		}
+	}
 
 	public void controlador(ActionListener ctr) {
 		bVer.addActionListener(ctr);
-		bVer.setActionCommand("MISCURSOSUSUARIO");
+		bVer.setActionCommand("VERCURSO");
 
 		bVer2.addActionListener(ctr);
-		bVer2.setActionCommand("MISCURSOSPROFESOR");
+		bVer2.setActionCommand("VERCURSOA");
+		
 
-		if (crearCurso != null) {
-			crearCurso.addActionListener(ctr);
-			crearCurso.setActionCommand("CREARCURSO");
-		}
-
-		if (explorar != null) {
-			explorar.addActionListener(ctr);
-			explorar.setActionCommand("EXPLORAR");
-		}
-		if (cursos != null) {
-			cursos.addActionListener(ctr);
-			cursos.setActionCommand("CURSO");
-		}
-		if (actividades != null) {
-			actividades.addActionListener(ctr);
-			actividades.setActionCommand("ACTIVIDAD");
-		}
-		if (ajustes != null) {
-			ajustes.addActionListener(ctr);
-			ajustes.setActionCommand("AJUSTES");
-		}
-		if (cerrar != null) {
-			cerrar.addActionListener(ctr);
-			cerrar.setActionCommand("CERRAR_SESION");
-		}
 	}
 
 	public boolean esEstudiante() {
