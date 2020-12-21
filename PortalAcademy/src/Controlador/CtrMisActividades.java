@@ -49,6 +49,16 @@ public class CtrMisActividades implements ActionListener {
 				}
 			}
 		}
+		
+		if (e.getActionCommand().equals("MISACTIVIDADESPROFESOR")) {
+			Actividad c = ventana.getA();
+			if (c != null) {
+				if (ventana.esProfesor()) {
+					CtrInformacionActividad cr = new CtrInformacionActividad(ventana.getProfesor(), c);
+					Main.setPanel(cr.getPanel());
+				}
+			}
+		}
 
 		if (e.getActionCommand().equals("MISACTIVIDADESORGANIZACION")) {
 			Actividad c = ventana.getA();
@@ -90,8 +100,11 @@ public class CtrMisActividades implements ActionListener {
 			if (ventana.esEstudiante()) {
 				CtrMisActividades c = new CtrMisActividades(new MisActividades(ventana.getEstudiante()));
 				Main.setPanel(c.getPanel());
-			} else {
+			} else if (ventana.esOrganizacion()) {
 				CtrMisActividades c = new CtrMisActividades(new MisActividades(ventana.getOrganizacion()));
+				Main.setPanel(c.getPanel());
+			} else {
+				CtrMisActividades c = new CtrMisActividades(new MisActividades(ventana.getProfesor()));
 				Main.setPanel(c.getPanel());
 			}
 		}

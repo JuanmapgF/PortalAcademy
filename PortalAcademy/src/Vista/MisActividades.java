@@ -24,6 +24,7 @@ public class MisActividades extends JPanel {
 	private JList<String> listaA = new JList<String>();
 	private JButton bVer = new JButton();
 	private JButton bVer2 = new JButton();
+	private JButton bVer3 = new JButton();
 	private List<Actividad> l;
 	
 	private Estudiante est = null;
@@ -137,6 +138,54 @@ public class MisActividades extends JPanel {
 		add(lblNewLabel_2);
 	}
 	
+	public MisActividades(Profesor u) {
+		profesor = true;
+		prof = u;
+		this.setLayout(null);
+		addElements(u.getActividades());
+		
+		JScrollPane sp_actividades = new JScrollPane();
+		sp_actividades.setBounds(441, 175, 346, 346);
+		sp_actividades.setViewportView(listaA);
+		add(sp_actividades);
+		
+		cerrar = new JButton("Cerrar sesi\u00F3n");
+		cerrar.setBounds(860, 37, 121, 23);
+		add(cerrar);
+		
+		JLabel t_actividad = new JLabel("Mis actividades:");
+		t_actividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
+		t_actividad.setBounds(503, 115, 209, 33);
+		add(t_actividad);
+		
+		this.setBounds(0, 0, 1080, 650);
+		
+		bVer3 = new JButton("Ver actividad");
+		bVer3.setBounds(544, 551, 153, 23);
+		add(bVer3);
+		
+		explorar = new JButton("Explorar");
+		explorar.setBounds(36, 191, 131, 32);
+		add(explorar);
+		
+		cursos = new JButton("Mis cursos");
+		cursos.setBounds(36, 261, 131, 32);
+		add(cursos);
+		
+		actividades = new JButton("Mis actividades");
+		actividades.setForeground(Color.BLUE);
+		actividades.setBounds(36, 336, 131, 32);
+		add(actividades);
+		
+		ajustes = new JButton("Ajustes");
+		ajustes.setBounds(36, 413, 131, 32);
+		add(ajustes);
+		
+		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
+		lblNewLabel_2.setBounds(10, 11, 240, 20);
+		add(lblNewLabel_2);
+	}
+	
 	public void addElements(List<Actividad> l) {
 		this.l = l;
 		listaA.setModel(modeloA);
@@ -162,6 +211,9 @@ public class MisActividades extends JPanel {
 		
 		bVer2.addActionListener(ctr);
 		bVer2.setActionCommand("MISACTIVIDADESORGANIZACION");
+		
+		bVer3.addActionListener(ctr);
+		bVer3.setActionCommand("MISACTIVIDADESPROFESOR");
 		
 		if (crearActividad != null) {
 		crearActividad.addActionListener(ctr);
