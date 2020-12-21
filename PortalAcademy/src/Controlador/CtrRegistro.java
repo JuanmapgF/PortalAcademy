@@ -124,14 +124,14 @@ public class CtrRegistro implements ActionListener {
 							new String(vista.passwordFieldContrasena.getPassword()),
 							new Telefono(Integer.parseInt(vista.textFieldCodigo.getText()),
 									vista.textFieldInfoAdicional.getText()));
-					CtrExplorar x = new CtrExplorar(new Explorar((Profesor) usuario, Curso.getTodosLosCursos()));
+					CtrExplorar x = new CtrExplorar(new Explorar((Profesor) usuario, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 					Main.setPanel(x.getPanel());
 				} else if (vista.rdbtnOrganizacion.isSelected()) {
 					usuario = new Organizacion(vista.textFieldNick.getText(), vista.textFieldCorreo.getText(),
 							new String(vista.passwordFieldContrasena.getPassword()),
 							vista.textFieldInfoAdicional.getText());
 					CtrExplorar x = new CtrExplorar(
-							new Explorar((Organizacion) usuario, Actividad.getTodasLasActividades()));
+							new Explorar((Organizacion) usuario, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 					Main.setPanel(x.getPanel());
 				}
 

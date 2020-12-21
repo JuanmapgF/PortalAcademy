@@ -6,47 +6,19 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import Modelo.Actividad;
-import Modelo.Curso;
-import Modelo.Estudiante;
-import Modelo.Organizacion;
-import Modelo.Usuario;
-import Vista.Ajustes;
-import Vista.DescripcionActividad;
-import Vista.Explorar;
-import Vista.Inicio;
-import Vista.Main;
-import Vista.MisActividades;
-import Vista.MisCursos;
-import Vista.Registro;
+import Modelo.*;
+import Vista.*;
 
 public class CtrDescripcionActividad implements ActionListener {
 	private Usuario user;
 	private Actividad actividad;
-	private Boolean esEstudiante;
 	private DescripcionActividad ventana;
 	
 	public CtrDescripcionActividad(Usuario user, Actividad actividad) {
 		this.user = user;
 		this.actividad = actividad;
 		
-		if (user != null && user instanceof Estudiante) {
-			esEstudiante = true;
-		} else if (user != null && user instanceof Organizacion) {
-			esEstudiante = false;
-		} else {
-			esEstudiante = null;
-		}
-		
-		Boolean estaEnActividad;
-		if (esEstudiante != null && esEstudiante) {
-			estaEnActividad = ((Estudiante) user).estaEnActividad(actividad);
-		} else {
-			estaEnActividad = false;
-		}
-		
-		Boolean usuarioPuedeUnirse = (esEstudiante == null || esEstudiante) && actividad.quedanPlazas() && !estaEnActividad;
-		ventana = new DescripcionActividad(actividad.getNombre(), actividad.getDescripcion(), usuarioPuedeUnirse, esEstudiante);
+		ventana = new DescripcionActividad(user, actividad);
 		ventana.controlador(this);
 	}
 
@@ -54,13 +26,13 @@ public class CtrDescripcionActividad implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getActionCommand().equals("Unirse")) {
-			if(esEstudiante != null && esEstudiante) {
+			if(user == null) {
+				CtrInformacionActividad c = new CtrInformacionActividad(null, actividad);
+				JOptionPane.showMessageDialog(ventana, "Se ha unido a la actividad correctamente");
+				Main.setPanel(c.getPanel());		
+			} else {
 				actividad.addParticipante(user);
 				CtrInformacionActividad c = new CtrInformacionActividad(user, actividad);
-				JOptionPane.showMessageDialog(ventana, "Se ha unido a la actividad correctamente");
-				Main.setPanel(c.getPanel());
-			}else {
-				CtrInformacionActividad c = new CtrInformacionActividad(null, actividad);
 				JOptionPane.showMessageDialog(ventana, "Se ha unido a la actividad correctamente");
 				Main.setPanel(c.getPanel());
 			}
@@ -74,42 +46,52 @@ public class CtrDescripcionActividad implements ActionListener {
 		}
 		
 		if (e.getActionCommand().equals("EXPLORAR")) {
-			if (esEstudiante != null && esEstudiante) {
+			if (user == null) {
+				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+				Main.setPanel(c.getPanel());
+			} else if (user instanceof Estudiante) {
 				CtrExplorar c = new CtrExplorar(new Explorar((Estudiante)user, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
-			} else if (esEstudiante != null && !esEstudiante) {
-				CtrExplorar c;
-				c = new CtrExplorar(new Explorar((Organizacion)user, Actividad.getTodasLasActividades()));
+			} else if (user instanceof Organizacion) {
+				CtrExplorar c = new CtrExplorar(new Explorar((Organizacion)user, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
-				
 			} else {
-				CtrExplorar c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+				CtrExplorar c = new CtrExplorar(new Explorar((Profesor)user, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
 			}
 		}
 		
 		if (e.getActionCommand().equals("CURSO")) {
-			if (esEstudiante != null && esEstudiante) {
+			if (user instanceof Estudiante) {
 				CtrMisCursos c = new CtrMisCursos(new MisCursos((Estudiante)user));
+				Main.setPanel(c.getPanel());
+			} else {
+				CtrMisCursos c = new CtrMisCursos(new MisCursos((Profesor)user));
 				Main.setPanel(c.getPanel());
 			}
 		}
 		
 		if (e.getActionCommand().equals("ACTIVIDAD")) {
-			if (esEstudiante != null && esEstudiante) {
+			if (user instanceof Estudiante) {
 				CtrMisActividades c = new CtrMisActividades(new MisActividades((Estudiante)user));
 				Main.setPanel(c.getPanel());
-			} else if ( esEstudiante != null && !esEstudiante) {
+			} else if (user instanceof Profesor) {
+				CtrMisActividades c = new CtrMisActividades(new MisActividades((Profesor)user));
+				Main.setPanel(c.getPanel());
+			} else {
 				CtrMisActividades c = new CtrMisActividades(new MisActividades((Organizacion)user));
 				Main.setPanel(c.getPanel());
 			}
 		}
 		
 		if (e.getActionCommand().equals("AJUSTES")) {
-			if (esEstudiante != null && esEstudiante) {
+			if (user instanceof Estudiante) {
 				CtrAjustes c = new CtrAjustes(new Ajustes((Estudiante)user));
 				Main.setPanel(c.getPanel());
-			}else if (esEstudiante != null && !esEstudiante) {
+			}else if (user instanceof Profesor) {
+				CtrAjustes c = new CtrAjustes(new Ajustes((Profesor)user));
+				Main.setPanel(c.getPanel());
+			} else {
 				CtrAjustes c = new CtrAjustes(new Ajustes((Organizacion)user));
 				Main.setPanel(c.getPanel());
 			}

@@ -89,7 +89,7 @@ public class CtrInicio implements ActionListener {
 						Main.setUser(est);
 					}
 
-					CtrExplorar ex = new CtrExplorar(new Explorar(est, Actividad.getTodasLasActividades()));
+					CtrExplorar ex = new CtrExplorar(new Explorar(est, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 					Main.setPanel(ex.getPanel());
 
 				} else if (Integer.parseInt(
@@ -104,7 +104,7 @@ public class CtrInicio implements ActionListener {
 					}
 
 					Main.setUser(est);
-					CtrExplorar ex = new CtrExplorar(new Explorar(est, Curso.getTodosLosCursos()));
+					CtrExplorar ex = new CtrExplorar(new Explorar(est, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 					Main.setPanel(ex.getPanel());
 				} else if (Integer.parseInt(
 						bd.SelectEscalar("SELECT COUNT(nick) FROM Administrador WHERE nick = '" + u.getNick() + "'")

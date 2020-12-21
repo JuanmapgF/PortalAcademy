@@ -36,7 +36,7 @@ public class CtrCrearCurso implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == vista.explorar) {
 			CtrExplorar c = new CtrExplorar(
-					new Explorar(profesor, Curso.getTodosLosCursos()));
+					new Explorar(profesor, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 			Main.setPanel(c.getPanel());
 		}
 		

@@ -62,8 +62,15 @@ public class CtrExplorar implements ActionListener {
 					Main.setPanel(c.getPanel());
 				}
 			} else if (ventana.esProfesor()) {
-				Curso cur = ventana.getCursoN();
+				Curso cur = ventana.getCurso();
 				Profesor user = ventana.getProfesor();
+				if (cur != null) {
+					CtrDescripcionCurso c = new CtrDescripcionCurso(user, cur);
+					Main.setPanel(c.getPanel());
+				}
+			} else if (ventana.esOrganizacion()) {
+				Curso cur = ventana.getCurso();
+				Organizacion user = ventana.getOrganizacion();
 				if (cur != null) {
 					CtrDescripcionCurso c = new CtrDescripcionCurso(user, cur);
 					Main.setPanel(c.getPanel());
@@ -86,8 +93,15 @@ public class CtrExplorar implements ActionListener {
 					Main.setPanel(c.getPanel());
 				}
 			} else if (ventana.esOrganizacion()) {
-				Actividad act = ventana.getActividadN();
+				Actividad act = ventana.getActividad();
 				Organizacion user = ventana.getOrganizacion();
+				if (act != null) {
+					CtrDescripcionActividad c = new CtrDescripcionActividad(user, act);
+					Main.setPanel(c.getPanel());
+				}
+			} else if (ventana.esProfesor()) {
+				Actividad act = ventana.getActividad();
+				Profesor user = ventana.getProfesor();
 				if (act != null) {
 					CtrDescripcionActividad c = new CtrDescripcionActividad(user, act);
 					Main.setPanel(c.getPanel());
@@ -111,11 +125,11 @@ public class CtrExplorar implements ActionListener {
 			} else if (ventana.esOrganizacion()) {
 
 				CtrExplorar c = new CtrExplorar(
-						new Explorar(ventana.getOrganizacion(), Actividad.getTodasLasActividades()));
+						new Explorar(ventana.getOrganizacion(), Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
 
 			} else if (ventana.esProfesor()) {
-				CtrExplorar c = new CtrExplorar(new Explorar(ventana.getProfesor(), Curso.getTodosLosCursos()));
+				CtrExplorar c = new CtrExplorar(new Explorar(ventana.getProfesor(), Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
 			} else {
 

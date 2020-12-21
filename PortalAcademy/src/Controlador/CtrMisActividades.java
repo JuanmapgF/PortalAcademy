@@ -80,11 +80,11 @@ public class CtrMisActividades implements ActionListener {
 			} else if (ventana.esOrganizacion()) {
 
 				CtrExplorar c = new CtrExplorar(
-						new Explorar(ventana.getOrganizacion(), Actividad.getTodasLasActividades()));
+						new Explorar(ventana.getOrganizacion(), Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
 
 			} else {
-				CtrExplorar c = new CtrExplorar(new Explorar(ventana.getProfesor(), Curso.getTodosLosCursos()));
+				CtrExplorar c = new CtrExplorar(new Explorar(ventana.getProfesor(), Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
 			}
 		}
