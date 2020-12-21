@@ -80,7 +80,7 @@ public class CtrInformacionActividad implements ActionListener {
 			} else if (user != null && user instanceof Organizacion) {
 				CtrExplorar c = null;
 
-				c = new CtrExplorar(new Explorar((Organizacion) user, Actividad.getTodasLasActividades()));
+				c = new CtrExplorar(new Explorar((Organizacion) user, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 
 				Main.setPanel(c.getPanel());
 

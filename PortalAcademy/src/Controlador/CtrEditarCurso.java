@@ -74,7 +74,7 @@ public class CtrEditarCurso implements ActionListener {
 		}
 
 		if (e.getActionCommand().equals("EXPLORAR")) {
-			CtrExplorar c = new CtrExplorar(new Explorar(profesor, Curso.getTodosLosCursos()));
+			CtrExplorar c = new CtrExplorar(new Explorar(profesor, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 			Main.setPanel(c.getPanel());
 		}
 

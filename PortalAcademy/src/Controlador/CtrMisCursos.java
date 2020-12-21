@@ -79,7 +79,7 @@ public class CtrMisCursos implements ActionListener {
 				Main.setPanel(c.getPanel());
 
 			} else {
-				CtrExplorar c = new CtrExplorar(new Explorar(ventana.getProfesor(), Curso.getTodosLosCursos()));
+				CtrExplorar c = new CtrExplorar(new Explorar(ventana.getProfesor(), Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
 			}
 		}

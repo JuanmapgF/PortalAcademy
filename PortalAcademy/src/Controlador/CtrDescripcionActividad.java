@@ -79,7 +79,7 @@ public class CtrDescripcionActividad implements ActionListener {
 				Main.setPanel(c.getPanel());
 			} else if (esEstudiante != null && !esEstudiante) {
 				CtrExplorar c;
-				c = new CtrExplorar(new Explorar((Organizacion)user, Actividad.getTodasLasActividades()));
+				c = new CtrExplorar(new Explorar((Organizacion)user, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
 				
 			} else {
