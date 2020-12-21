@@ -265,9 +265,13 @@ public class Explorar extends JPanel {
 		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 		add(lblNewLabel);
 
-		cerrar = new JButton("Cerrar sesi\u00F3n");
-		cerrar.setBounds(860, 37, 121, 23);
-		add(cerrar);
+		iniciar = new JButton("Iniciar sesi\u00F3n");
+		iniciar.setBounds(729, 37, 121, 23);
+		add(iniciar);
+
+		registrarse = new JButton("Registrarse");
+		registrarse.setBounds(860, 37, 121, 23);
+		add(registrarse);
 
 		JLabel t_curso = new JLabel("Cursos:");
 		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
