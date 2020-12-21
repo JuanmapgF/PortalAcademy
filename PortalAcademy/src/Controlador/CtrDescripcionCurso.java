@@ -52,7 +52,7 @@ public class CtrDescripcionCurso implements ActionListener {
 				CtrExplorar c = new CtrExplorar(new Explorar((Estudiante)user, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
 			} else {
-				CtrExplorar c = new CtrExplorar(new Explorar((Profesor)user, Curso.getTodosLosCursos()));
+				CtrExplorar c = new CtrExplorar(new Explorar((Profesor)user, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
 			}
 		}
