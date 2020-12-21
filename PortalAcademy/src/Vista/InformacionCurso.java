@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import Controlador.CtrMenu;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Mensaje;
@@ -24,16 +25,11 @@ import Modelo.Usuario;
 public class InformacionCurso extends JPanel {
 	private JList<String> listaMensajes;
 	private DefaultListModel<String> modelo = new DefaultListModel<String>();
-	private JButton cerrarSesion;
-	private JButton iniciar;
-	private JButton registrarse;
+	
 	private JButton editar;
 	private JButton enviar;
 	private JButton refrescar;
-	private JButton cursos;
-	private JButton actividades;
-	private JButton ajustes;
-	private JButton explorar;
+
 	private JTextField textField;
 	private String mensajeEscrito;
 
@@ -98,44 +94,12 @@ public class InformacionCurso extends JPanel {
 			}
 		}
 		
-		
-		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
-		add(explorar);
-		
 		if (user == null) {
-			iniciar = new JButton("Iniciar sesi\u00F3n");
-			iniciar.setBounds(729, 37, 121, 23);
-			add(iniciar);
-			
-			explorar.setForeground(Color.BLUE);
-			
-			registrarse = new JButton("Registrarse");
-			registrarse.setBounds(860, 37, 121, 23);
-			add(registrarse);
+			CtrMenu menu = new CtrMenu(new Menu());
+			add(menu.getPanel());
 		} else {
-			cursos = new JButton("Mis cursos");
-			cursos.setBounds(36, 261, 131, 32);
-			cursos.setForeground(Color.BLUE);
-			add(cursos);
-			
-			actividades = new JButton("Mis actividades");
-			actividades.setBounds(36, 336, 131, 32);
-			add(actividades);
-			
-			ajustes = new JButton("Ajustes");
-			ajustes.setBounds(36, 413, 131, 32);
-			add(ajustes);
-			
-			cerrarSesion = new JButton("Cerrar sesi\u00F3n");
-			cerrarSesion.setBounds(860, 37, 121, 23);
-
-			add(cerrarSesion);
-			
-			JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
-			lblNewLabel_2.setBounds(10, 11, 240, 20);
-			add(lblNewLabel_2);
-			
+			CtrMenu menu = new CtrMenu(new Menu(curso.getProfesor()));
+			add(menu.getPanel());
 			if (user.equals(curso.getProfesor())) {
 				editar = new JButton("Editar");
 				editar.setBounds(752, 68, 89, 23);
@@ -164,43 +128,12 @@ public class InformacionCurso extends JPanel {
 		}
 		
 		
-		if (cerrarSesion != null) {
-			cerrarSesion.addActionListener(ctr);
-			cerrarSesion.setActionCommand("CERRAR_SESION");
-		}
-		
-		if (iniciar != null) {
-			iniciar.addActionListener(ctr);
-			iniciar.setActionCommand("Iniciar");
-		}
-		
-		if (registrarse != null) {
-			registrarse.addActionListener(ctr);
-			registrarse.setActionCommand("Registrarse");
-		}
 		
 		if (editar != null) {
 			editar.addActionListener(ctr);
 			editar.setActionCommand("Editar");
 		}
 		
-		if (cursos != null) {
-			cursos.addActionListener(ctr);
-			cursos.setActionCommand("CURSO");
-		}
-		if (actividades != null) {
-			actividades.addActionListener(ctr);
-			actividades.setActionCommand("ACTIVIDAD");
-		}
-		if (ajustes != null) {
-			ajustes.addActionListener(ctr);
-			ajustes.setActionCommand("AJUSTES");
-		}
-		
-		if (explorar != null) {
-			explorar.addActionListener(ctr);
-			explorar.setActionCommand("EXPLORAR");
-		}
 	}
 	
 	public String mensajeAEnviar() {

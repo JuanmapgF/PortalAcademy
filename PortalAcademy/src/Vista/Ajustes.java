@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
+import Controlador.CtrMenu;
 import Modelo.Estudiante;
 import Modelo.Organizacion;
 import Modelo.Profesor;
@@ -19,7 +20,6 @@ public class Ajustes extends JPanel {
 	private JPasswordField texto;
 	private JButton eliminar;
 	private JButton cambiar;
-	private JButton cerrarSesion;
 
 	private Estudiante estudiante;
 	private Profesor prof;
@@ -28,10 +28,7 @@ public class Ajustes extends JPanel {
 	private boolean esProfesor = false;
 	private boolean esOrganizacion = false;
 
-	private JButton explorar;
-	private JButton cursos;
-	private JButton actividades;
-	private JButton ajustes;
+
 
 	public String getTexto() {
 		return String.valueOf(texto.getPassword());
@@ -72,9 +69,6 @@ public class Ajustes extends JPanel {
 		titulo.setBounds(529, 0, 118, 102);
 		add(titulo);
 
-		cerrarSesion = new JButton("Cerrar sesi\u00F3n");
-		cerrarSesion.setBounds(860, 37, 121, 23);
-		add(cerrarSesion);
 
 		JLabel nueva = new JLabel("Nueva contrase\u00F1a:");
 		nueva.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 16));
@@ -93,27 +87,9 @@ public class Ajustes extends JPanel {
 		eliminar = new JButton("Eliminar cuenta");
 		eliminar.setBounds(509, 456, 129, 23);
 		add(eliminar);
-
-		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
-		add(explorar);
-
-		cursos = new JButton("Mis cursos");
-		cursos.setBounds(36, 261, 131, 32);
-		add(cursos);
-
-		actividades = new JButton("Mis actividades");
-		actividades.setBounds(36, 336, 131, 32);
-		add(actividades);
-
-		ajustes = new JButton("Ajustes");
-		ajustes.setForeground(Color.BLUE);
-		ajustes.setBounds(36, 413, 131, 32);
-		add(ajustes);
 		
-		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
-		lblNewLabel_2.setBounds(10, 11, 240, 20);
-		add(lblNewLabel_2);
+		CtrMenu menu = new CtrMenu(new Menu(u));
+		add(menu.getPanel());
 
 		this.setBounds(0, 0, 1080, 650);
 	}
@@ -128,9 +104,6 @@ public class Ajustes extends JPanel {
 		titulo.setBounds(529, 0, 118, 102);
 		add(titulo);
 
-		cerrarSesion = new JButton("Cerrar sesi\u00F3n");
-		cerrarSesion.setBounds(860, 37, 121, 23);
-		add(cerrarSesion);
 
 		JLabel nueva = new JLabel("Nueva contrase\u00F1a:");
 		nueva.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 16));
@@ -149,23 +122,9 @@ public class Ajustes extends JPanel {
 		eliminar = new JButton("Eliminar cuenta");
 		eliminar.setBounds(509, 456, 129, 23);
 		add(eliminar);
-
-		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
-		add(explorar);
-
-		cursos = new JButton("Mis cursos");
-		cursos.setBounds(36, 261, 131, 32);
-		add(cursos);
-
-		ajustes = new JButton("Ajustes");
-		ajustes.setForeground(Color.BLUE);
-		ajustes.setBounds(36, 336, 131, 32);
-		add(ajustes);
 		
-		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
-		lblNewLabel_2.setBounds(10, 11, 240, 20);
-		add(lblNewLabel_2);
+		CtrMenu menu = new CtrMenu(new Menu(u));
+		add(menu.getPanel());
 
 		this.setBounds(0, 0, 1080, 650);
 	}
@@ -180,10 +139,6 @@ public class Ajustes extends JPanel {
 		titulo.setBounds(529, 0, 118, 102);
 		add(titulo);
 
-		cerrarSesion = new JButton("Cerrar sesi\u00F3n");
-		cerrarSesion.setBounds(860, 37, 121, 23);
-		add(cerrarSesion);
-
 		JLabel nueva = new JLabel("Nueva contrase\u00F1a:");
 		nueva.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 16));
 		nueva.setBounds(283, 183, 158, 102);
@@ -202,29 +157,13 @@ public class Ajustes extends JPanel {
 		eliminar.setBounds(509, 456, 129, 23);
 		add(eliminar);
 
-		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
-		add(explorar);
-
-		actividades = new JButton("Mis actividades");
-		actividades.setBounds(36, 261, 131, 32);
-		add(actividades);
-
-		ajustes = new JButton("Ajustes");
-		ajustes.setForeground(Color.BLUE);
-		ajustes.setBounds(36, 336, 131, 32);
-		add(ajustes);
-		
-		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
-		lblNewLabel_2.setBounds(10, 11, 240, 20);
-		add(lblNewLabel_2);
+		CtrMenu menu = new CtrMenu(new Menu(u));
+		add(menu.getPanel());
 
 		this.setBounds(0, 0, 1080, 650);
 	}
 
 	public void controlador(ActionListener ctr) {
-		cerrarSesion.addActionListener(ctr);
-		cerrarSesion.setActionCommand("CERRAR");
 
 		eliminar.addActionListener(ctr);
 		eliminar.setActionCommand("ELIMINAR");
@@ -232,21 +171,5 @@ public class Ajustes extends JPanel {
 		cambiar.addActionListener(ctr);
 		cambiar.setActionCommand("CAMBIAR");
 
-		if (explorar != null) {
-			explorar.addActionListener(ctr);
-			explorar.setActionCommand("EXPLORAR");
-		}
-		if (cursos != null) {
-			cursos.addActionListener(ctr);
-			cursos.setActionCommand("CURSO");
-		}
-		if (actividades != null) {
-			actividades.addActionListener(ctr);
-			actividades.setActionCommand("ACTIVIDAD");
-		}
-		if (ajustes != null) {
-			ajustes.addActionListener(ctr);
-			ajustes.setActionCommand("AJUSTES");
-		}
 	}
 }

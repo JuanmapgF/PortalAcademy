@@ -163,7 +163,7 @@ public class Curso {
 		bd = BD.getBD();
 		Object[] tupla = bd.Select("SELECT * FROM Curso WHERE idCurso = " + idCurso).get(0);
 		bd.finalize();
-		this.profesor = new Profesor(tupla[8].toString());
+		this.profesor = new Profesor(tupla[7].toString());
 		return profesor;
 	}
 

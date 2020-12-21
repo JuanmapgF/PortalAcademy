@@ -132,9 +132,9 @@ public class Actividad {
 	public Organizacion getOrganizacion() {
 		if (organizacion == null) {
 			bd = BD.getBD();
-			Object[] tupla = bd.Select("SELECT nickOrganizacion FROM Curso WHERE idActividad = " + idActividad).get(0);
+			Object tupla = bd.SelectEscalar("SELECT nickOrganizacion FROM Actividad WHERE idActividad = " + idActividad);
 			bd.finalize();
-			this.organizacion = new Organizacion(tupla[7].toString());
+			this.organizacion = new Organizacion(tupla.toString());
 		}
 		return organizacion;
 	}

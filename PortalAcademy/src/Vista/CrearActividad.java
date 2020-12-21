@@ -14,6 +14,10 @@ import javax.swing.JTextField;
 
 import com.toedter.calendar.JDateChooser;
 
+import Controlador.CtrMenu;
+import Modelo.Organizacion;
+import Modelo.Profesor;
+
 @SuppressWarnings("serial")
 public class CrearActividad extends JPanel {
 
@@ -21,7 +25,7 @@ public class CrearActividad extends JPanel {
 	public JTextField textFieldImagen;
 	public JTextArea textAreaDescripcion;
 	public JSpinner spinnerAforo;
-	public JButton btnCerrarSesion;
+	
 	public JButton btnCrearActividad;
 	public JButton btnCancelar;
 	public JDateChooser dateChooser;
@@ -29,9 +33,6 @@ public class CrearActividad extends JPanel {
 	public JTextField textFieldLugar;
 	private JLabel lblNewLabel_1;
 
-	public JButton explorar;
-	public JButton actividades;
-	public JButton ajustes;
 
 	/**
 	 * Create the panel.
@@ -39,19 +40,6 @@ public class CrearActividad extends JPanel {
 	public CrearActividad() {
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
-
-		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
-		add(explorar);
-
-		actividades = new JButton("Mis actividades");
-		actividades.setForeground(Color.BLUE);
-		actividades.setBounds(36, 261, 131, 32);
-		add(actividades);
-
-		ajustes = new JButton("Ajustes");
-		ajustes.setBounds(36, 336, 131, 32);
-		add(ajustes);
 
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		lblNewLabel.setBounds(397, 140, 66, 14);
@@ -88,9 +76,6 @@ public class CrearActividad extends JPanel {
 		spinnerAforo.setBounds(612, 377, 90, 20);
 		add(spinnerAforo);
 
-		btnCerrarSesion = new JButton("Cerrar sesi\u00F3n");
-		btnCerrarSesion.setBounds(860, 37, 121, 23);
-		add(btnCerrarSesion);
 
 		btnCrearActividad = new JButton("Crear actividad");
 		btnCrearActividad.setBounds(400, 546, 139, 35);
@@ -129,8 +114,7 @@ public class CrearActividad extends JPanel {
 		lblNewLabel_1.setBounds(402, 35, 171, 40);
 		add(lblNewLabel_1);
 
-		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + Main.getUser().getNick());
-		lblNewLabel_2.setBounds(10, 11, 240, 20);
-		add(lblNewLabel_2);
+		CtrMenu menu = new CtrMenu(new Menu((new Organizacion(Main.getUser().getNick()))));
+		add(menu.getPanel());
 	}
 }

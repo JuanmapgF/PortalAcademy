@@ -10,18 +10,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import Controlador.CtrMenu;
 import Modelo.*;
 
 @SuppressWarnings("serial")
 public class DescripcionCurso extends JPanel {
 	private JButton unirse;
 	private JButton cerrar;
-	private JButton explorar;
-	private JButton cursos;
-	private JButton actividades;
-	private JButton ajustes;
-	private JButton iniciar;
-	private JButton registrarse;
+
 
 	/**
 	 * Create the panel.
@@ -43,13 +39,8 @@ public class DescripcionCurso extends JPanel {
 
 		if (user == null) {
 
-			iniciar = new JButton("Iniciar sesi\u00F3n");
-			iniciar.setBounds(729, 37, 121, 23);
-			add(iniciar);
-
-			registrarse = new JButton("Registrarse");
-			registrarse.setBounds(860, 37, 121, 23);
-			add(registrarse);
+			CtrMenu menu = new CtrMenu(new Menu());
+			add(menu.getPanel());
 			
 			if (curso.getPublico() && curso.quedanPlazas()) {
 				unirse = new JButton("Unirse");
@@ -59,25 +50,16 @@ public class DescripcionCurso extends JPanel {
 
 		} else {
 			
-			cursos = new JButton("Mis cursos");
-			cursos.setBounds(36, 261, 131, 32);
-			add(cursos);
-
-			actividades = new JButton("Mis actividades");
-			actividades.setBounds(36, 336, 131, 32);
-			add(actividades);
-
-			ajustes = new JButton("Ajustes");
-			ajustes.setBounds(36, 413, 131, 32);
-			add(ajustes);
-
-			cerrar = new JButton("Cerrar Sesi\u00F3n");
-			cerrar.setBounds(860, 37, 121, 23);
-			add(cerrar);
-			
-			JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + Main.getUser().getNick());
-			lblNewLabel_2.setBounds(10, 11, 240, 20);
-			add(lblNewLabel_2);
+			if(user instanceof Profesor) {
+				CtrMenu menu = new CtrMenu(new Menu((Profesor)user));
+				add(menu.getPanel());
+			}else if (user instanceof Estudiante) {
+				CtrMenu menu = new CtrMenu(new Menu((Estudiante)user));
+				add(menu.getPanel());
+			}else {
+				CtrMenu menu = new CtrMenu(new Menu((Organizacion)user));
+				add(menu.getPanel());
+			}
 			
 			if (curso.quedanPlazas() && (!((Estudiante) user).estaEnCurso(curso) || !((Profesor) user).estaEnCurso(curso))) {
 				unirse = new JButton("Unirse");
@@ -87,46 +69,14 @@ public class DescripcionCurso extends JPanel {
 
 		}
 
-		explorar = new JButton("Explorar");
-		explorar.setForeground(Color.BLUE);
-		explorar.setBounds(36, 191, 131, 32);
-		add(explorar);
-
 	}
 
 	public void controlador(ActionListener ctr) {
-		if (iniciar != null) {
-			iniciar.addActionListener(ctr);
-			iniciar.setActionCommand("INICIAR_SESION");
-		}
-
-		if (explorar != null) {
-			explorar.addActionListener(ctr);
-			explorar.setActionCommand("EXPLORAR");
-		}
-
-		if (registrarse != null) {
-			registrarse.addActionListener(ctr);
-			registrarse.setActionCommand("REGISTRO");
-		}
-
 		if (unirse != null) {
 			unirse.addActionListener(ctr);
 			unirse.setActionCommand("Unirse");
 		}
 
-		if (cursos != null) {
-			cursos.addActionListener(ctr);
-			cursos.setActionCommand("CURSO");
-		}
-		if (actividades != null) {
-			actividades.addActionListener(ctr);
-			actividades.setActionCommand("ACTIVIDAD");
-		}
-		if (ajustes != null) {
-			ajustes.addActionListener(ctr);
-			ajustes.setActionCommand("AJUSTES");
-		}
 		if (cerrar != null) {
 			cerrar.addActionListener(ctr);
 			cerrar.setActionCommand("CERRAR_SESION");

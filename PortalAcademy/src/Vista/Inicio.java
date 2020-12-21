@@ -11,13 +11,14 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import Controlador.CtrMenu;
+
 @SuppressWarnings("serial")
 public class Inicio extends JPanel {
 	private JTextField user;
 	private JPasswordField cont;
 	private JButton iniciar = new JButton();
 	private JButton registro = new JButton();
-	private JButton volver = new JButton();
 	private JLabel error;
 
 	/**
@@ -47,13 +48,6 @@ public class Inicio extends JPanel {
 		lblNewLabel_1_1.setBounds(360, 276, 135, 27);
 		add(lblNewLabel_1_1);
 		
-		iniciar = new JButton("Iniciar sesi\u00F3n");
-		iniciar.setBounds(529, 389, 116, 33);
-		add(iniciar);
-		
-		registro = new JButton("Registrarse");
-		registro.setBounds(601, 496, 111, 20);
-		add(registro);
 		
 		JLabel lblNewLabel_2 = new JLabel("\u00BFA\u00FAn no tienes cuenta? ");
 		lblNewLabel_2.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
@@ -64,26 +58,14 @@ public class Inicio extends JPanel {
 		cont.setBounds(512, 279, 242, 20);
 		add(cont);
 		
-		volver = new JButton("Explorar");
-		volver.setBounds(36, 191, 131, 32);
-		add(volver);
-		
 		error = new JLabel("El usuario o la contrase\u00F1a introducidos son incorrectos");
 		error.setForeground(Color.RED);
 		error.setBounds(473, 340, 379, 14);
 		add(error);
 		error.setVisible(false);
-	}
-	
-	public void controlador(ActionListener ctr) {
-		iniciar.addActionListener(ctr);
-		iniciar.setActionCommand("INICIAR");
 		
-		registro.addActionListener(ctr);
-		registro.setActionCommand("REGISTRATE");
-		
-		volver.addActionListener(ctr);
-		volver.setActionCommand("VOLVER");
+		CtrMenu menu = new CtrMenu(new Menu());
+		add(menu.getPanel());
 	}
 	
 	public void controladorEnter(KeyListener ctr) {
