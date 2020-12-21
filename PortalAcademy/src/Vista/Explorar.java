@@ -209,7 +209,29 @@ public class Explorar extends JPanel {
 		listaA.setLayoutOrientation(JList.VERTICAL);
 	}
 	
-	
+	public void addElementsProfesor() {
+		listaC.setModel(modeloC);
+		listaA.setModel(modeloA);
+
+		for (Curso o : lista_cursos) {
+			if (prof.estaEnCurso(o)) {
+				modeloC.addElement("✔ - " + o.toString());
+			} else {
+				modeloC.addElement(o.toString());
+			}			
+		}
+
+		for (Actividad d : lista_actividades) {
+			if (prof.estaEnActividad(d)) {
+				modeloA.addElement("✔ - " + d.toString());
+			} else {
+				modeloA.addElement(d.toString());
+			}
+		}
+
+		listaC.setLayoutOrientation(JList.VERTICAL);
+		listaA.setLayoutOrientation(JList.VERTICAL);
+	}
 	
 	/*
 	private DefaultListModel<String> modeloC = new DefaultListModel<String>();
