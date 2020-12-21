@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ public class Curso {
 	private Integer idCurso;
 	private String nombre;
 	private String descripcion;
-	private String imagen;
+	private File imagen;
 	private Boolean publico;
 	private Integer aforo;
 	private Boolean presencial;
@@ -20,14 +21,8 @@ public class Curso {
 
 	private static BD bd;
 
-	public Curso(String nombre, String descripcion, String imagen, Boolean publico, Integer aforo, Boolean presencial,
+	public Curso(String nombre, String descripcion, File imagen, Boolean publico, Integer aforo, Boolean presencial,
 			Boolean tieneForo, Profesor profesor) {
-		bd = BD.getBD();
-		bd.Insert("INSERT INTO Curso (nombre, descripcion, imagen, publico, aforo, presencial, tieneforo, nickProfesor)"
-				+ "VALUES ('" + nombre + "', '" + descripcion + "', '" + imagen + "', " + ((publico) ? 1 : 0) + ", "
-				+ aforo + ", " + ((presencial) ? 1 : 0) + ", " + ((tieneForo) ? 1 : 0) + ",'" + profesor.getNick()
-				+ "')");
-		bd.finalize();
 
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -38,42 +33,38 @@ public class Curso {
 		this.tieneForo = tieneForo;
 		this.profesor = profesor;
 
+		bd = BD.getBD();
+		if (imagen == null) {
+			bd.Insert(
+					"INSERT INTO Curso (nombre, descripcion, imagen, publico, aforo, presencial, tieneforo, nickProfesor)"
+							+ "VALUES ('" + nombre + "', '" + descripcion + "', '" + null + "', "
+							+ ((publico) ? 1 : 0) + ", " + aforo + ", " + ((presencial) ? 1 : 0) + ", "
+							+ ((tieneForo) ? 1 : 0) + ",'" + profesor.getNick() + "')");
+		} else {
+			bd.InsertCursoConImagen(nombre, descripcion, imagen, publico, aforo, presencial, tieneForo, profesor);
+		}
+		bd.finalize();
 		mensajes = new ArrayList<Mensaje>();
 		estudiantes = new ArrayList<Usuario>();
 	}
 
 	public Curso(Integer idCurso) {
 		BD miBD = BD.getBD();
-		Object[] tupla = miBD.Select("SELECT * FROM Curso WHERE idCurso = " + idCurso).get(0);
+		Object[] tupla = miBD.Select(
+				"SELECT idCurso,nombre,descripcion,publico,aforo,presencial,tieneForo FROM Curso WHERE idCurso = "
+						+ idCurso)
+				.get(0);
 		miBD.finalize();
 
 		this.idCurso = Integer.parseInt(tupla[0].toString());
 		this.nombre = tupla[1].toString();
 		this.descripcion = tupla[2].toString();
-		this.imagen = tupla[3].toString();
-
-		if (tupla[4].toString().equals("1")) {
-			publico = true;
-		} else {
-			publico = false;
-		}
-
-		this.aforo = Integer.parseInt(tupla[5].toString());
-
-		if (tupla[6].toString().equals("1")) {
-			presencial = true;
-		} else {
-			presencial = false;
-		}
-
-		if (tupla[7].toString().equals("1")) {
-			tieneForo = true;
-		} else {
-			tieneForo = false;
-		}
-
-		estudiantes = new ArrayList<Usuario>();
-		mensajes = new ArrayList<Mensaje>();
+		this.publico = tupla[3].toString().equals("1") ? true : false;
+		this.aforo = Integer.parseInt(tupla[4].toString());
+		this.presencial = tupla[5].toString().equals("1") ? true : false;
+		this.tieneForo = tupla[6].toString().equals("1") ? true : false;
+		this.estudiantes = new ArrayList<Usuario>();
+		this.mensajes = new ArrayList<Mensaje>();
 
 	}
 
@@ -103,15 +94,16 @@ public class Curso {
 		this.descripcion = descripcion;
 	}
 
-	public String getImagen() {
+	public File getImagen() {
+		this.imagen = bd.SelectImagenCurso(this.idCurso);
 		return imagen;
 	}
 
-	public void setImagen(String imagen) {
-		bd = BD.getBD();
-		bd.Update("UPDATE Curso SET imagen = '" + imagen + "' WHERE idCurso = " + this.idCurso);
-		bd.finalize();
-		this.imagen = imagen;
+	public void setImagen(File imagen) { // Redefinir con archivos
+//		bd = BD.getBD();
+//		bd.Update("UPDATE Curso SET imagen = '" + imagen + "' WHERE idCurso = " + this.idCurso);
+//		bd.finalize();
+//		this.imagen = imagen;
 	}
 
 	public Boolean getPublico() {
@@ -120,7 +112,7 @@ public class Curso {
 
 	public void setPublico(Boolean publico) {
 		bd = BD.getBD();
-		bd.Update("UPDATE Curso SET publico = " + publico + " WHERE idCurso = " + this.idCurso);
+		bd.Update("UPDATE Curso SET publico = " + ((publico) ? 1 : 0) + " WHERE idCurso = " + this.idCurso);
 		bd.finalize();
 		this.publico = publico;
 	}
@@ -142,7 +134,7 @@ public class Curso {
 
 	public void setPresencial(Boolean presencial) {
 		bd = BD.getBD();
-		bd.Update("UPDATE Curso SET presencial = " + presencial + " WHERE idCurso = " + this.idCurso);
+		bd.Update("UPDATE Curso SET presencial = " + ((presencial) ? 1 : 0) + " WHERE idCurso = " + this.idCurso);
 		bd.finalize();
 		this.presencial = presencial;
 
@@ -154,16 +146,18 @@ public class Curso {
 
 	public void setTieneForo(Boolean tieneForo) {
 		bd = BD.getBD();
-		bd.Update("UPDATE Curso SET tieneforo = " + tieneForo + " WHERE idCurso = " + this.idCurso);
+		bd.Update("UPDATE Curso SET tieneforo = " + ((tieneForo) ? 1 : 0) + " WHERE idCurso = " + this.idCurso);
 		bd.finalize();
 		this.tieneForo = tieneForo;
 	}
 
 	public Profesor getProfesor() {
-		bd = BD.getBD();
-		Object[] tupla = bd.Select("SELECT * FROM Curso WHERE idCurso = " + idCurso).get(0);
-		bd.finalize();
-		this.profesor = new Profesor(tupla[8].toString());
+		if (profesor == null) {
+			bd = BD.getBD();
+			Object[] tupla = bd.Select("SELECT * FROM Curso WHERE idCurso = " + idCurso).get(0);
+			bd.finalize();
+			this.profesor = new Profesor(tupla[8].toString());
+		}
 		return profesor;
 	}
 
@@ -209,7 +203,7 @@ public class Curso {
 		bd.finalize();
 		this.nombre = "";
 		this.descripcion = "";
-		this.imagen = "";
+		this.imagen = null;
 		this.publico = null;
 	}
 

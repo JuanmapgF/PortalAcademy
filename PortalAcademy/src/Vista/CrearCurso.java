@@ -6,6 +6,7 @@ import java.awt.Font;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -13,12 +14,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class CrearCurso extends JPanel {
 
 	public JTextField textFieldNombre;
-	public JTextField textFieldImagen;
 	private final ButtonGroup buttonGroupPrivacidad = new ButtonGroup();
 	private final ButtonGroup buttonGroupModo = new ButtonGroup();
 	public JTextArea textAreaDescripcion;
@@ -37,6 +38,9 @@ public class CrearCurso extends JPanel {
 	public JButton explorar;
 	public JButton cursos;
 	public JButton ajustes;
+	public JButton btnSeleccionar;
+	public JFileChooser fileChooserImagen;
+	public JLabel lblImagenSeleccionada;
 
 	/**
 	 * Create the panel.
@@ -62,7 +66,7 @@ public class CrearCurso extends JPanel {
 		lblNewLabel.setBounds(297, 140, 66, 14);
 		add(lblNewLabel);
 
-		JLabel lblImagenes = new JLabel("Imagenes:");
+		JLabel lblImagenes = new JLabel("Imagen:");
 		lblImagenes.setBounds(297, 193, 76, 14);
 		add(lblImagenes);
 
@@ -87,17 +91,10 @@ public class CrearCurso extends JPanel {
 		add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 
-		textFieldImagen = new JTextField();
-		textFieldImagen.setColumns(10);
-		textFieldImagen.setBounds(441, 190, 242, 20);
-		add(textFieldImagen);
-
 		textAreaDescripcion = new JTextArea();
 		JScrollPane jsp = new JScrollPane(textAreaDescripcion);
 		jsp.setBounds(441, 241, 242, 47);
 		add(jsp);
-		
-		
 
 		rdbtnPublico = new JRadioButton("P\u00FAblico");
 		rdbtnPublico.setSelected(true);
@@ -153,5 +150,17 @@ public class CrearCurso extends JPanel {
 		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + Main.getUser().getNick());
 		lblNewLabel_2.setBounds(10, 11, 240, 20);
 		add(lblNewLabel_2);
+
+		btnSeleccionar = new JButton("Seleccionar");
+		btnSeleccionar.setBounds(574, 196, 109, 23);
+		add(btnSeleccionar);
+		
+		lblImagenSeleccionada = new JLabel("");
+		lblImagenSeleccionada.setHorizontalAlignment(SwingConstants.LEFT);
+		lblImagenSeleccionada.setBounds(441, 200, 138, 14);
+		add(lblImagenSeleccionada);
+
+		fileChooserImagen = new JFileChooser();
+		fileChooserImagen.setFileSelectionMode(JFileChooser.FILES_ONLY);
 	}
 }

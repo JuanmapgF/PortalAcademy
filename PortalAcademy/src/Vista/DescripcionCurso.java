@@ -2,8 +2,11 @@ package Vista;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionListener;
+import java.io.File;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,7 +27,8 @@ public class DescripcionCurso extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public DescripcionCurso(String nombre, String descripcion, Boolean puedeUnirse, Boolean esEstudiante) {
+	public DescripcionCurso(String nombre, String descripcion, Boolean puedeUnirse, Boolean esEstudiante,
+			File imagenCurso) {
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
 
@@ -32,12 +36,13 @@ public class DescripcionCurso extends JPanel {
 		nombreCurso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 		nombreCurso.setBounds(460, 70, 269, 33);
 		add(nombreCurso);
+		JScrollPane jsp = new JScrollPane();
+		jsp.setBounds(470, 132, 471, 371);
+		add(jsp);
 
 		JTextArea descripcionCurso = new JTextArea(descripcion);
+		jsp.setViewportView(descripcionCurso);
 		descripcionCurso.setEditable(false);
-		JScrollPane jsp = new JScrollPane(descripcionCurso);
-		jsp.setBounds(292, 131, 652, 371);
-		add(jsp);
 
 		if (esEstudiante != null && esEstudiante) {
 			if (puedeUnirse) {
@@ -103,6 +108,9 @@ public class DescripcionCurso extends JPanel {
 		explorar.setForeground(Color.BLUE);
 		explorar.setBounds(36, 191, 131, 32);
 		add(explorar);
+		JPanelImagen jpi = new JPanelImagen(imagenCurso != null ? imagenCurso.getName() : null);
+		jpi.setBounds(202, 132, 250, 225);
+		add(jpi);
 
 	}
 
@@ -144,5 +152,4 @@ public class DescripcionCurso extends JPanel {
 			cerrar.setActionCommand("CERRAR_SESION");
 		}
 	}
-
 }

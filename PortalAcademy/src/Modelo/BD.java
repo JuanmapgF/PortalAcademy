@@ -1,5 +1,14 @@
 package Modelo;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -110,6 +119,39 @@ public class BD {
 		return lista;
 	}
 
+	public File SelectImagenCurso(Integer idCurso) {
+		File file = null;
+		try {
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT imagen FROM Curso WHERE idCurso = " + idCurso);
+			if (rs.next()) {
+				Blob blob = rs.getBlob("imagen");
+				if (blob != null) {
+					file = new File("Curso" + idCurso + ".jpg");
+					InputStream lecturaFich = blob.getBinaryStream();
+					BufferedInputStream in = new BufferedInputStream(lecturaFich);
+					BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(file));
+					byte[] buffer = new byte[8096];
+					int length = 0;
+					while ((length = in.read(buffer)) > 0) {
+						out.write(buffer, 0, length);
+					}
+					out.flush();
+					out.close();
+					in.close();
+				}
+			}
+		} catch (FileNotFoundException e) {
+			throw new ErrorBD("Error al encontrar la imagen. " + e.getMessage());
+		} catch (SQLException e) {
+			throw new ErrorBD("Error en el Select de la imagen. " + e.getMessage());
+		} catch (IOException e) {
+			throw new ErrorBD("Error al leer la Imagen. " + e.getMessage());
+		}
+
+		return file;
+	}
+
 	public void Insert(String ins) {
 		if (!ins.toUpperCase().startsWith("INSERT"))
 			throw new ErrorBD("INSERT Sytanx Error: " + ins);
@@ -120,6 +162,29 @@ public class BD {
 			stmt.close();
 		} catch (SQLException e) {
 			throw new ErrorBD("Error en el INSERT: " + ins + ". " + e.getMessage());
+		}
+	}
+
+	public void InsertCursoConImagen(String nombre, String descripcion, File imagen, Boolean publico, Integer aforo,
+			Boolean presencial, Boolean tieneForo, Profesor profesor) {
+		try {
+			FileInputStream fis = new FileInputStream(imagen);
+			PreparedStatement ps = con.prepareStatement(
+					"INSERT INTO Curso 	(nombre, descripcion, imagen, publico, aforo, presencial, tieneForo, nickProfesor) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+			ps.setString(1, nombre);
+			ps.setString(2, descripcion);
+			ps.setBlob(3, fis, imagen.length());
+			ps.setInt(4, ((publico) ? 1 : 0));
+			ps.setInt(5, aforo);
+			ps.setInt(6, ((presencial) ? 1 : 0));
+			ps.setInt(7, ((tieneForo) ? 1 : 0));
+			ps.setString(8, profesor.getNick());
+			ps.execute();
+			ps.close();
+		} catch (FileNotFoundException e) {
+			throw new ErrorBD("Error al encontrar el archivo. " + e.getMessage());
+		} catch (SQLException e) {
+			throw new ErrorBD("Error en el insert de imagen. " + e.getMessage());
 		}
 	}
 

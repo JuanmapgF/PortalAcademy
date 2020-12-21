@@ -2,7 +2,9 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -20,6 +22,7 @@ public class CtrCrearCurso implements ActionListener {
 
 	private CrearCurso vista;
 	private Profesor profesor;
+	private File imagen;
 
 	public CtrCrearCurso(CrearCurso v) {
 		vista = v;
@@ -30,27 +33,32 @@ public class CtrCrearCurso implements ActionListener {
 		vista.cursos.addActionListener(this);
 		vista.ajustes.addActionListener(this);
 		vista.explorar.addActionListener(this);
+		vista.btnSeleccionar.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == vista.explorar) {
-			CtrExplorar c = new CtrExplorar(
-					new Explorar(profesor, Curso.getTodosLosCursos()));
+		if (e.getSource() == vista.btnSeleccionar) {
+			if (vista.fileChooserImagen.showOpenDialog(vista.fileChooserImagen) == JFileChooser.APPROVE_OPTION) {
+				imagen = vista.fileChooserImagen.getSelectedFile();
+				vista.lblImagenSeleccionada.setText(imagen.getName());
+			}
+		}
+
+		if (e.getSource() == vista.explorar) {
+			CtrExplorar c = new CtrExplorar(new Explorar(profesor, Curso.getTodosLosCursos()));
 			Main.setPanel(c.getPanel());
 		}
-		
-		if(e.getSource() == vista.cursos) {
+
+		if (e.getSource() == vista.cursos) {
 			CtrMisCursos c = new CtrMisCursos(new MisCursos(profesor));
 			Main.setPanel(c.getPanel());
 		}
-		if(e.getSource() == vista.ajustes) {
+		if (e.getSource() == vista.ajustes) {
 			CtrAjustes c = new CtrAjustes(new Ajustes(profesor));
 			Main.setPanel(c.getPanel());
 		}
-		
-		
-		
+
 		if (e.getSource() == vista.btnCrearCurso) {
 			try {
 				if (!nombreValido()) {
@@ -64,7 +72,7 @@ public class CtrCrearCurso implements ActionListener {
 				}
 
 				Curso curso = new Curso(vista.textFieldNombre.getText(), vista.textAreaDescripcion.getText(),
-						vista.textFieldImagen.getText(), getPublico(),
+						vista.fileChooserImagen.getSelectedFile(), getPublico(),
 						Integer.parseInt(vista.spinnerAforo.getValue().toString()), getPresencial(), getTieneForo(),
 						profesor);
 
