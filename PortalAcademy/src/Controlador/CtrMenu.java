@@ -64,11 +64,11 @@ public class CtrMenu implements ActionListener{
 			} else if (ventana.esOrganizacion()) {
 
 				CtrExplorar c = new CtrExplorar(
-						new Explorar(ventana.getOrganizacion(), Actividad.getTodasLasActividades()));
+						new Explorar(ventana.getOrganizacion(),Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
 
 			} else if (ventana.esProfesor()) {
-				CtrExplorar c = new CtrExplorar(new Explorar(ventana.getProfesor(), Curso.getTodosLosCursos()));
+				CtrExplorar c = new CtrExplorar(new Explorar(ventana.getProfesor(), Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 				Main.setPanel(c.getPanel());
 			} else {
 
