@@ -24,8 +24,6 @@ public class MisActividades extends JPanel {
 	private DefaultListModel<String> modeloA = new DefaultListModel<String>();
 	private JList<String> listaA = new JList<String>();
 	private JButton bVer = new JButton();
-	private JButton bVer2 = new JButton();
-	private JButton bVer3 = new JButton();
 	private List<Actividad> l;
 	
 	private Estudiante est = null;
@@ -86,9 +84,9 @@ public class MisActividades extends JPanel {
 		
 		this.setBounds(0, 0, 1080, 650);
 		
-		bVer2 = new JButton("Ver actividad");
-		bVer2.setBounds(544, 551, 153, 23);
-		add(bVer2);
+		bVer = new JButton("Ver actividad");
+		bVer.setBounds(544, 551, 153, 23);
+		add(bVer);
 		
 		CtrMenu menu = new CtrMenu(new Menu(u));
 		add(menu.getPanel());
@@ -112,9 +110,9 @@ public class MisActividades extends JPanel {
 		
 		this.setBounds(0, 0, 1080, 650);
 		
-		bVer3 = new JButton("Ver actividad");
-		bVer3.setBounds(544, 551, 153, 23);
-		add(bVer3);
+		bVer = new JButton("Ver actividad");
+		bVer.setBounds(544, 551, 153, 23);
+		add(bVer);
 		
 		CtrMenu menu = new CtrMenu(new Menu(u));
 		add(menu.getPanel());
@@ -141,13 +139,7 @@ public class MisActividades extends JPanel {
 	
 	public void controlador(ActionListener ctr) {
 		bVer.addActionListener(ctr);
-		bVer.setActionCommand("MISACTIVIDADESUSUARIO");
-		
-		bVer2.addActionListener(ctr);
-		bVer2.setActionCommand("MISACTIVIDADESORGANIZACION");
-		
-		bVer3.addActionListener(ctr);
-		bVer3.setActionCommand("MISACTIVIDADESPROFESOR");
+		bVer.setActionCommand("VERACTIVIDAD");
 		
 		if (crearActividad != null) {
 		crearActividad.addActionListener(ctr);

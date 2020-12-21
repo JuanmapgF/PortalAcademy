@@ -15,7 +15,7 @@ import Modelo.*;
 
 @SuppressWarnings("serial")
 public class DescripcionActividad extends JPanel {
-	private JButton unirse;
+	private JButton unirse = new JButton();
 
 	/**
 	 * Create the panel.
@@ -36,7 +36,10 @@ public class DescripcionActividad extends JPanel {
 		jsp.setBounds(292, 131, 652, 371);
 		add(jsp);
 		
-		
+		unirse = new JButton("Unirse");
+		unirse.setBounds(478, 511, 89, 23);
+		unirse.setVisible(false);
+		add(unirse);
 
 		if (user == null) {
 
@@ -44,9 +47,7 @@ public class DescripcionActividad extends JPanel {
 			add(menu.getPanel());
 			
 			if (actividad.quedanPlazas()) {
-				unirse = new JButton("Unirse");
-				unirse.setBounds(478, 511, 89, 23);
-				add(unirse);
+				unirse.setVisible(true);
 			}
 
 		}else{
@@ -61,10 +62,8 @@ public class DescripcionActividad extends JPanel {
 				add(menu.getPanel());
 			}
 			
-			if (actividad.quedanPlazas() && (!((Estudiante) user).estaEnActividad(actividad) || !((Profesor) user).estaEnActividad(actividad))) {
-				unirse = new JButton("Unirse");
-				unirse.setBounds(478, 511, 89, 23);
-				add(unirse);
+			if (actividad.quedanPlazas() && ((user instanceof Estudiante && !((Estudiante) user).estaEnActividad(actividad)) || (user instanceof Profesor && !((Profesor) user).estaEnActividad(actividad)))) {
+				unirse.setVisible(true);
 			}
 		}	
 	}

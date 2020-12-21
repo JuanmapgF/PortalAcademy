@@ -63,30 +63,6 @@ public class CtrEditarActividad implements ActionListener {
 				Main.setPanel(c.getPanel());
 			}
 		}
-
-		if (e.getActionCommand().equals("CERRAR_SESION")) {
-
-			CtrExplorar c = new CtrExplorar(
-					new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-			Main.setPanel(c.getPanel());
-
-		}
-
-		if (e.getActionCommand().equals("EXPLORAR")) {
-			CtrExplorar c;
-			c = new CtrExplorar(new Explorar(organizacion, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-			Main.setPanel(c.getPanel());
-		}
-
-		if (e.getActionCommand().equals("ACTIVIDADES")) {
-			CtrMisActividades c = new CtrMisActividades(new MisActividades(organizacion));
-			Main.setPanel(c.getPanel());
-		}
-
-		if (e.getActionCommand().equals("AJUSTES")) {
-			CtrAjustes c = new CtrAjustes(new Ajustes(organizacion));
-			Main.setPanel(c.getPanel());
-		}
 	}
 
 	public JPanel getPanel() {

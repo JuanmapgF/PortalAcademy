@@ -33,28 +33,21 @@ public class CtrMisCursos implements ActionListener {
 			Main.setPanel(ccc.getPanel());
 		}
 
-		if (e.getActionCommand().equals("MISCURSOSUSUARIO")) {
+		if (e.getActionCommand().equals("VERCURSO")) {
 			Curso c = ventana.getC();
 			if (c != null) {
 				if (ventana.esEstudiante()) {
 					CtrInformacionCurso cr = new CtrInformacionCurso(ventana.getEstudiante(), c);
 					Main.setPanel(cr.getPanel());
-				}
-
-			}
-		}
-
-		if (e.getActionCommand().equals("MISCURSOSPROFESOR")) {
-			Curso c = ventana.getC();
-			if (c != null) {
-				if (ventana.esProfesor()) {
+				}else {
 					CtrInformacionCurso cr = new CtrInformacionCurso(ventana.getProfesor(), c);
 					Main.setPanel(cr.getPanel());
 				}
+
 			}
 		}
-		
-		if (e.getActionCommand().equals("MISCURSOSPROFESORAPUNTADOS")) {
+
+		if (e.getActionCommand().equals("VERCURSOA")) {
 			Curso c = ventana.getCA();
 			if (c != null) {
 				if (ventana.esProfesor()) {
@@ -63,6 +56,8 @@ public class CtrMisCursos implements ActionListener {
 				}
 			}
 		}
+		
+	
 
 	}
 

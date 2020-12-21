@@ -18,6 +18,7 @@ import Controlador.CtrMenu;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Mensaje;
+import Modelo.Organizacion;
 import Modelo.Profesor;
 import Modelo.Usuario;
 
@@ -97,21 +98,21 @@ public class InformacionCurso extends JPanel {
 		if (user == null) {
 			CtrMenu menu = new CtrMenu(new Menu());
 			add(menu.getPanel());
-		} else {
-			CtrMenu menu = new CtrMenu(new Menu(curso.getProfesor()));
-			add(menu.getPanel());
-			if (user.equals(curso.getProfesor())) {
+		}  else if (user instanceof Profesor) {
+			if(user.equals(curso.getProfesor())) {
 				editar = new JButton("Editar");
 				editar.setBounds(752, 68, 89, 23);
 				add(editar);
 			}
-		} 
-		
-		
-		
-		
-		
-		
+			CtrMenu menu = new CtrMenu(new Menu((Profesor)user));
+			add(menu.getPanel());
+		} else if(user instanceof Organizacion){
+			CtrMenu menu = new CtrMenu(new Menu((Organizacion)user));
+			add(menu.getPanel());
+		} else {
+			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user));
+			add(menu.getPanel());
+		}
 	}
 
 	

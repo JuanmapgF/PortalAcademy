@@ -27,7 +27,6 @@ public class MisCursos extends JPanel {
 	private JList<String> listaCA = new JList<String>();
 	private JButton bVer = new JButton();
 	private JButton bVer2 = new JButton();
-	private JButton bVer3 = new JButton();
 	private List<Curso> l;
 	private List<Curso> l1;
 
@@ -98,13 +97,13 @@ public class MisCursos extends JPanel {
 
 		this.setBounds(0, 0, 1080, 650);
 
-		bVer2 = new JButton("Ver curso");
-		bVer2.setBounds(690, 551, 104, 23);
-		add(bVer2);
+		bVer = new JButton("Ver curso");
+		bVer.setBounds(690, 551, 104, 23);
+		add(bVer);
 		
-		bVer3 = new JButton("Ver curso");
-		bVer3.setBounds(383, 551, 104, 23);
-		add(bVer3);
+		bVer2 = new JButton("Ver curso");
+		bVer2.setBounds(383, 551, 104, 23);
+		add(bVer2);
 		
 		CtrMenu menu = new CtrMenu(new Menu(u));
 		add(menu.getPanel());
@@ -151,13 +150,11 @@ public class MisCursos extends JPanel {
 
 	public void controlador(ActionListener ctr) {
 		bVer.addActionListener(ctr);
-		bVer.setActionCommand("MISCURSOSUSUARIO");
+		bVer.setActionCommand("VERCURSO");
 
 		bVer2.addActionListener(ctr);
-		bVer2.setActionCommand("MISCURSOSPROFESOR");
+		bVer2.setActionCommand("VERCURSOA");
 		
-		bVer3.addActionListener(ctr);
-		bVer3.setActionCommand("MISCURSOSPROFESORAPUNTADOS");
 
 	}
 

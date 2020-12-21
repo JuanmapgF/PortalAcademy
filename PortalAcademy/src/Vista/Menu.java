@@ -132,11 +132,11 @@ public class Menu extends JPanel{
 		add(explorar);
 
 		actividades = new JButton("Mis actividades");
-		actividades.setBounds(36, 336, 131, 32);
+		actividades.setBounds(36, 261, 131, 32);
 		add(actividades);
 
 		ajustes = new JButton("Ajustes");
-		ajustes.setBounds(36, 413, 131, 32);
+		ajustes.setBounds(36, 336, 131, 32);
 		add(ajustes);
 
 		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+organizacion.getNick());

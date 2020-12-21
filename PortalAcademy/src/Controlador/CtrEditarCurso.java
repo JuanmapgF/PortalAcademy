@@ -67,33 +67,8 @@ public class CtrEditarCurso implements ActionListener {
 			}
 		}
 
-		if (e.getActionCommand().equals("CERRAR_SESION")) {
 
-			CtrExplorar c = new CtrExplorar(
-					new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-			Main.setPanel(c.getPanel());
-
-		}
-
-		if (e.getActionCommand().equals("EXPLORAR")) {
-			CtrExplorar c = new CtrExplorar(new Explorar(profesor, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-			Main.setPanel(c.getPanel());
-		}
-
-		if (e.getActionCommand().equals("CURSOS")) {
-			CtrMisCursos c = new CtrMisCursos(new MisCursos(profesor));
-			Main.setPanel(c.getPanel());
-		}
-
-		if (e.getActionCommand().equals("ACTIVIDAD")) {
-			CtrMisActividades c = new CtrMisActividades (new MisActividades(profesor));
-			Main.setPanel(c.getPanel());
-		}
 		
-		if (e.getActionCommand().equals("AJUSTES")) {
-			CtrAjustes c = new CtrAjustes(new Ajustes(profesor));
-			Main.setPanel(c.getPanel());
-		}
 
 		if (e.getActionCommand().equals("PUBLICO")) {
 			ventana.setPublico(true);

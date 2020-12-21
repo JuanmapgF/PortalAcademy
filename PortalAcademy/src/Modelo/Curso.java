@@ -50,23 +50,23 @@ public class Curso {
 		this.idCurso = Integer.parseInt(tupla[0].toString());
 		this.nombre = tupla[1].toString();
 		this.descripcion = tupla[2].toString();
-		this.imagen = tupla[3].toString();
+		//this.imagen = tupla[8].toString();
 
-		if (tupla[4].toString().equals("1")) {
+		if (tupla[3].toString().equals("1")) {
 			publico = true;
 		} else {
 			publico = false;
 		}
 
-		this.aforo = Integer.parseInt(tupla[5].toString());
+		this.aforo = Integer.parseInt(tupla[4].toString());
 
-		if (tupla[6].toString().equals("1")) {
+		if (tupla[5].toString().equals("1")) {
 			presencial = true;
 		} else {
 			presencial = false;
 		}
 
-		if (tupla[7].toString().equals("1")) {
+		if (tupla[6].toString().equals("1")) {
 			tieneForo = true;
 		} else {
 			tieneForo = false;
@@ -214,10 +214,7 @@ public class Curso {
 	}
 
 	public Boolean quedanPlazas() {
-		if (estudiantes == null) {
-			getEstudiantes();
-		}
-		return getAforo() > estudiantes.size();
+		return getAforo() > getEstudiantes().size();
 	}
 
 	public static List<Curso> getTodosLosCursos() {

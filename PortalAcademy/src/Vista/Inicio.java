@@ -19,6 +19,7 @@ public class Inicio extends JPanel {
 	private JPasswordField cont;
 	private JButton iniciar = new JButton();
 	private JButton registro = new JButton();
+	private JButton volver = new JButton();
 	private JLabel error;
 
 	/**
@@ -64,8 +65,28 @@ public class Inicio extends JPanel {
 		add(error);
 		error.setVisible(false);
 		
-		CtrMenu menu = new CtrMenu(new Menu());
-		add(menu.getPanel());
+		iniciar = new JButton("Iniciar sesi\u00F3n");
+		iniciar.setBounds(529, 389, 116, 33);
+		add(iniciar);
+		
+		registro = new JButton("Registrarse");
+		registro.setBounds(601, 496, 111, 20);
+		add(registro);
+		
+		volver = new JButton("Explorar");
+		volver.setBounds(36, 191, 131, 32);
+		add(volver);
+	}
+	
+	public void controlador(ActionListener ctr) {
+		iniciar.addActionListener(ctr);
+		iniciar.setActionCommand("INICIAR");
+		
+		registro.addActionListener(ctr);
+		registro.setActionCommand("REGISTRATE");
+		
+		volver.addActionListener(ctr);
+		volver.setActionCommand("VOLVER");
 	}
 	
 	public void controladorEnter(KeyListener ctr) {

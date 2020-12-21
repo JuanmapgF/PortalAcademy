@@ -175,10 +175,7 @@ public class Actividad {
 	}
 
 	public Boolean quedanPlazas() {
-		if (participantes == null) {
-			getParticipantes();
-		}
-		return getAforo() > participantes.size();
+		return getAforo() > getParticipantes().size();
 	}
 
 	public static List<Actividad> getTodasLasActividades() {

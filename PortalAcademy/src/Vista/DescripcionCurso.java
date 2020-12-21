@@ -36,16 +36,18 @@ public class DescripcionCurso extends JPanel {
 		JScrollPane jsp = new JScrollPane(descripcionCurso);
 		jsp.setBounds(292, 131, 652, 371);
 		add(jsp);
+		
+		unirse = new JButton("Unirse");
+		unirse.setBounds(478, 511, 89, 23);
+		unirse.setVisible(false);
+		add(unirse);
 
 		if (user == null) {
-
 			CtrMenu menu = new CtrMenu(new Menu());
 			add(menu.getPanel());
 			
 			if (curso.getPublico() && curso.quedanPlazas()) {
-				unirse = new JButton("Unirse");
-				unirse.setBounds(478, 511, 89, 23);
-				add(unirse);
+				unirse.setVisible(true);
 			}
 
 		} else {
@@ -61,10 +63,11 @@ public class DescripcionCurso extends JPanel {
 				add(menu.getPanel());
 			}
 			
-			if (curso.quedanPlazas() && (!((Estudiante) user).estaEnCurso(curso) || !((Profesor) user).estaEnCurso(curso))) {
-				unirse = new JButton("Unirse");
-				unirse.setBounds(478, 511, 89, 23);
-				add(unirse);
+			
+			
+			if (curso.quedanPlazas() && ((user instanceof Estudiante && !((Estudiante) user).estaEnCurso(curso)) || (user instanceof Profesor && !curso.getProfesor().equals(user) && !((Profesor) user).estaEnCurso(curso)))) {
+				unirse.setVisible(true);
+				
 			}
 
 		}

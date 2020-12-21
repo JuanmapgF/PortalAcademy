@@ -96,7 +96,7 @@ public class CtrMenu implements ActionListener{
 			} else if (ventana.esOrganizacion()) {
 				CtrMisActividades c = new CtrMisActividades(new MisActividades(ventana.getOrganizacion()));
 				Main.setPanel(c.getPanel());
-			} else if (ventana.esOrganizacion()) {
+			} else if (ventana.esProfesor()) {
 				CtrMisActividades c = new CtrMisActividades(new MisActividades(ventana.getProfesor()));
 				Main.setPanel(c.getPanel());
 			}
