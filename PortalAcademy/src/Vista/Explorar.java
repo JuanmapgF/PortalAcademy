@@ -12,6 +12,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import Controlador.CtrMenu;
 import Modelo.Actividad;
 import Modelo.Curso;
 import Modelo.Estudiante;
@@ -265,13 +266,13 @@ public class Explorar extends JPanel {
 		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 		add(lblNewLabel);
 
-		iniciar = new JButton("Iniciar sesi\u00F3n");
-		iniciar.setBounds(729, 37, 121, 23);
-		add(iniciar);
-
-		registrarse = new JButton("Registrarse");
-		registrarse.setBounds(860, 37, 121, 23);
-		add(registrarse);
+//		iniciar = new JButton("Iniciar sesi\u00F3n");
+//		iniciar.setBounds(729, 37, 121, 23);
+//		add(iniciar);
+//
+//		registrarse = new JButton("Registrarse");
+//		registrarse.setBounds(860, 37, 121, 23);
+//		add(registrarse);
 
 		JLabel t_curso = new JLabel("Cursos:");
 		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
@@ -300,11 +301,15 @@ public class Explorar extends JPanel {
 		verActividad = new JButton("Ver actividad");
 		verActividad.setBounds(741, 575, 121, 23);
 		add(verActividad);
-
-		explorar = new JButton("Explorar");
-		explorar.setForeground(Color.BLUE);
-		explorar.setBounds(36, 191, 131, 32);
-		add(explorar);
+		
+		
+		CtrMenu menu = new CtrMenu(new Menu());
+		add(menu.getPanel());
+		
+//		explorar = new JButton("Explorar");
+//		explorar.setForeground(Color.BLUE);
+//		explorar.setBounds(36, 191, 131, 32);
+//		add(explorar);
 		
 		add(Main.getLabel());
 	}
