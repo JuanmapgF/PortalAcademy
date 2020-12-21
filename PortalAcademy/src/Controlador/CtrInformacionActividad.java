@@ -102,9 +102,6 @@ public class CtrInformacionActividad implements ActionListener {
 			} else {
 				CtrMisActividades c = new CtrMisActividades(new MisActividades((Organizacion) user));
 				Main.setPanel(c.getPanel());
-			}else if (user != null && user instanceof Profesor) {
-				CtrMisActividades c = new CtrMisActividades(new MisActividades((Profesor) user));
-				Main.setPanel(c.getPanel());
 			}
 		}
 

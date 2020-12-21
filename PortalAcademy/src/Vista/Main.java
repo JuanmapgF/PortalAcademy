@@ -22,6 +22,7 @@ public class Main extends JFrame {
 	private static JLabel userName;
 
 	public Main() {
+		userName = new JLabel();
 		userName.setBounds(10, 11, 240, 20);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1080, 650);

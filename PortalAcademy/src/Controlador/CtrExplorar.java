@@ -147,9 +147,6 @@ public class CtrExplorar implements ActionListener {
 			} else if (ventana.esProfesor()){
 				CtrMisCursos c = new CtrMisCursos(new MisCursos(ventana.getProfesor()));
 				Main.setPanel(c.getPanel());
-			} else {
-				CtrMisCursos c = new CtrMisCursos(new MisCursos(ventana.getOrganizacion()));
-				Main.setPanel(c.getPanel());
 			}
 		}
 
