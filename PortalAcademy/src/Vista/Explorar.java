@@ -27,16 +27,8 @@ public class Explorar extends JPanel {
 	private DefaultListModel<String> modeloA = new DefaultListModel<String>();
 	private JList<String> listaC;
 	private JList<String> listaA;
-	private JButton iniciar;
-	private JButton cerrar;
-	private JButton registrarse;
 	private JButton verCurso;
 	private JButton verActividad;
-	
-	private JButton explorar;
-	private JButton cursos;
-	private JButton actividades;
-	private JButton ajustes;
 	
 	private Estudiante est = null;
 	private Organizacion org = null;
