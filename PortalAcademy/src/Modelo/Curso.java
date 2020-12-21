@@ -245,4 +245,14 @@ public class Curso {
 			return false;
 		}
 	}
+	
+	public boolean estaApuntado(Estudiante est) {
+		boolean res = false;
+		List<Usuario> lista = this.getEstudiantes();
+		if (lista.contains(est)) {
+			res = true;
+		}
+		
+		return res;
+	}
 }
