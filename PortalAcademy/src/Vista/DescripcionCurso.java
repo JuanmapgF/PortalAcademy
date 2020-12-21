@@ -20,7 +20,6 @@ import Modelo.*;
 public class DescripcionCurso extends JPanel {
 	private JButton unirse;
 
-
 	/**
 	 * Create the panel.
 	 */
@@ -32,54 +31,56 @@ public class DescripcionCurso extends JPanel {
 		nombreCurso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 		nombreCurso.setBounds(460, 70, 269, 33);
 		add(nombreCurso);
-		JScrollPane jsp = new JScrollPane();
-		jsp.setBounds(470, 132, 471, 371);
-		add(jsp);
 
 		JTextArea descripcionCurso = new JTextArea(curso.getDescripcion());
 		descripcionCurso.setEditable(false);
 		JScrollPane jsp = new JScrollPane(descripcionCurso);
-		jsp.setBounds(292, 131, 652, 371);
 		add(jsp);
-		
+
 		unirse = new JButton("Unirse");
 		unirse.setBounds(478, 511, 89, 23);
 		unirse.setVisible(false);
 		add(unirse);
 
+		File imagen = curso.getImagen();
+		if (imagen == null) {
+			jsp.setBounds(292, 131, 652, 371);
+		} else {
+			jsp.setBounds(470, 132, 471, 371);
+		}
+		JPanelImagen jpi = new JPanelImagen(imagen != null ? imagen.getName() : null);
+		jpi.setBounds(202, 132, 250, 225);
+		add(jpi);
+
 		if (user == null) {
 			CtrMenu menu = new CtrMenu(new Menu());
 			add(menu.getPanel());
-			
+
 			if (curso.getPublico() && curso.quedanPlazas()) {
 				unirse.setVisible(true);
 			}
 
 		} else {
-			
-			if(user instanceof Profesor) {
-				CtrMenu menu = new CtrMenu(new Menu((Profesor)user));
+
+			if (user instanceof Profesor) {
+				CtrMenu menu = new CtrMenu(new Menu((Profesor) user));
 				add(menu.getPanel());
-			}else if (user instanceof Estudiante) {
-				CtrMenu menu = new CtrMenu(new Menu((Estudiante)user));
+			} else if (user instanceof Estudiante) {
+				CtrMenu menu = new CtrMenu(new Menu((Estudiante) user));
 				add(menu.getPanel());
-			}else {
-				CtrMenu menu = new CtrMenu(new Menu((Organizacion)user));
+			} else {
+				CtrMenu menu = new CtrMenu(new Menu((Organizacion) user));
 				add(menu.getPanel());
 			}
-			
-			
-			
-			if (curso.quedanPlazas() && ((user instanceof Estudiante && !((Estudiante) user).estaEnCurso(curso)) || (user instanceof Profesor && !curso.getProfesor().equals(user) && !((Profesor) user).estaEnCurso(curso)))) {
+
+			if (curso.quedanPlazas() && ((user instanceof Estudiante && !((Estudiante) user).estaEnCurso(curso))
+					|| (user instanceof Profesor && !curso.getProfesor().equals(user)
+							&& !((Profesor) user).estaEnCurso(curso)))) {
 				unirse.setVisible(true);
-				
+
 			}
 
 		}
-
-		JPanelImagen jpi = new JPanelImagen(curso.getImagen() != null ? curso.getImagen().getName() : null);
-		jpi.setBounds(202, 132, 250, 225);
-		add(jpi);
 
 	}
 
