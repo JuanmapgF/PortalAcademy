@@ -70,8 +70,7 @@ public class ChatPrivado extends JPanel {
 		chatsAbiertos.getColumnModel().getColumn(0).setCellEditor(new ButtonEditor(new JTextField()));
 		chatsAbiertos.setTableHeader(null);
 		chatsAbiertos.setCellSelectionEnabled(false);
-		chatsAbiertos.setShowGrid(false);
-		chatsAbiertos.setIntercellSpacing(new Dimension(0, 0));
+		chatsAbiertos.setShowVerticalLines(false);
 	}
 
 	private class ButtonRenderer extends JButton implements TableCellRenderer {
