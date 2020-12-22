@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -52,6 +53,8 @@ public class Menu extends JPanel{
 	
 	}
 
+
+
 	public Menu(Estudiante estudiante) {
 		this.estudiante = true;
 		this.est = estudiante;
@@ -80,8 +83,18 @@ public class Menu extends JPanel{
 		add(ajustes);
 
 		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+estudiante.getNick());
-		lblNewLabel_2.setBounds(10, 11, 240, 20);
+		lblNewLabel_2.setBounds(68, 11, 240, 20);
 		add(lblNewLabel_2);
+		
+		JButton btnChat = new JButton("");
+		btnChat.setBounds(318, 11, 46, 23);
+		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat.png")));
+		add(btnChat);
+		
+		JLabel imagenUsuario = new JLabel("");
+		imagenUsuario.setBounds(0, 0, 64, 60);
+		imagenUsuario.setIcon(new ImageIcon(getClass().getResource("/img/usuario.png")));
+		add(imagenUsuario);
 	}
 	
 	public Menu(Profesor profesor) {
@@ -112,9 +125,20 @@ public class Menu extends JPanel{
 		add(ajustes);
 
 		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+profesor.getNick());
-		lblNewLabel_2.setBounds(10, 11, 240, 20);
+		lblNewLabel_2.setBounds(68, 11, 240, 20);
 		add(lblNewLabel_2);
+		
+		JButton btnChat = new JButton("");
+		btnChat.setBounds(318, 11, 46, 23);
+		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat.png")));
+		add(btnChat);
+		
+		JLabel imagenUsuario = new JLabel("");
+		imagenUsuario.setBounds(0, 0, 64, 60);
+		imagenUsuario.setIcon(new ImageIcon(getClass().getResource("/img/usuario.png")));
+		add(imagenUsuario);
 	}
+	
 	
 	public Menu(Organizacion organizacion) {
 		this.org = organizacion;
@@ -140,8 +164,18 @@ public class Menu extends JPanel{
 		add(ajustes);
 
 		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+organizacion.getNick());
-		lblNewLabel_2.setBounds(10, 11, 240, 20);
+		lblNewLabel_2.setBounds(68, 11, 240, 20);
 		add(lblNewLabel_2);
+		
+		JButton btnChat = new JButton("");
+		btnChat.setBounds(318, 11, 46, 23);
+		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat.png")));
+		add(btnChat);
+		
+		JLabel imagenUsuario = new JLabel("");
+		imagenUsuario.setBounds(0, 0, 64, 60);
+		imagenUsuario.setIcon(new ImageIcon(getClass().getResource("/img/usuario.png")));
+		add(imagenUsuario);
 	}
 	
 	public void controlador(ActionListener ctr) {
@@ -199,5 +233,4 @@ public class Menu extends JPanel{
 	public Profesor getProfesor() {
 		return prof;
 	}
-	
 }
