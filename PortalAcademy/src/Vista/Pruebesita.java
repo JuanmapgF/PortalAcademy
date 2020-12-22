@@ -44,8 +44,6 @@ public class Pruebesita extends JFrame {
 	}
 	
 	private class ButtonRenderer extends JButton implements TableCellRenderer {
-
-		
 		public ButtonRenderer() {
 			setOpaque(true);
 		}
@@ -56,7 +54,6 @@ public class Pruebesita extends JFrame {
 			this.setText((value==null) ? "":value.toString());
 			return this;
 		}
-		
 	}
 	
 	private class ButtonEditor extends DefaultCellEditor {
