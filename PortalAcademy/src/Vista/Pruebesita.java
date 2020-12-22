@@ -29,6 +29,7 @@ import Modelo.Curso;
 
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 
 public class Pruebesita extends JFrame {
 
@@ -180,5 +181,15 @@ public class Pruebesita extends JFrame {
 		scroll.setViewportView(table);
 		
 		contentPane.add(scroll);
+		
+		JToggleButton tglbtnNewToggleButton = new JToggleButton("New toggle button");
+		tglbtnNewToggleButton.setBounds(10, 253, 121, 23);
+		contentPane.add(tglbtnNewToggleButton);
+		
+		JLabel label = new JLabel("Pruebesita");
+		label.setBounds(26, 162, 94, 14);
+		contentPane.add(label);
+		
+		
 	}
 }

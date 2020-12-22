@@ -305,25 +305,25 @@ public class Explorar extends JPanel {
 		cursos.setTableHeader(null);
 		cursos.setCellSelectionEnabled(false);
 		
-		datosActividad = new Object[lista_cursos.size()][3];
-		
-		k = 0;
-		for (Actividad actividad : lista_actividades) {
-			datosActividad[k][0] = actividad.getImagen();
-			datosActividad[k][1] = actividad.getNombre();
-			datosActividad[k][2] = "Disponible";
-			k++;
-		}
-		
-		String[] columnHeadersActividad = {"Imagen", "Actividad", "Acceso"};
-		
-		
-		actividades = new JTable(datosActividad, columnHeadersActividad);
-		actividades.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
-		actividades.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
-		actividades.getColumnModel().getColumn(1).setCellEditor(editorActividad);
-		actividades.setTableHeader(null);
-		actividades.setCellSelectionEnabled(false);
+//		datosActividad = new Object[lista_cursos.size()][3];
+//		
+//		k = 0;
+//		for (Actividad actividad : lista_actividades) {
+//			datosActividad[k][0] = actividad.getImagen();
+//			datosActividad[k][1] = actividad.getNombre();
+//			datosActividad[k][2] = "Disponible";
+//			k++;
+//		}
+//		
+//		String[] columnHeadersActividad = {"Imagen", "Actividad", "Acceso"};
+//		
+//		
+//		actividades = new JTable(datosActividad, columnHeadersActividad);
+//		actividades.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+//		actividades.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
+//		actividades.getColumnModel().getColumn(1).setCellEditor(editorActividad);
+//		actividades.setTableHeader(null);
+//		actividades.setCellSelectionEnabled(false);
 	}
 	
 	public Curso getCurso() {

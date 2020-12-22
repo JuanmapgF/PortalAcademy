@@ -33,25 +33,25 @@ public class Menu extends JPanel{
 	private boolean organizacion = false;
 	private boolean profesor = false;
 	
-//	public Menu() {
-//		
-//		this.setBounds(0, 0, 1080, 650);
-//		setLayout(null);
-//
-//		iniciar = new JButton("Iniciar sesi\u00F3n");
-//		iniciar.setBounds(729, 37, 121, 23);
-//		add(iniciar);
-//
-//		registrarse = new JButton("Registrarse");
-//		registrarse.setBounds(860, 37, 121, 23);
-//		add(registrarse);
-//
-//
-//		explorar = new JButton("Explorar");
-//		explorar.setBounds(36, 191, 131, 32);
-//		add(explorar);
-//
-//	}
+	public Menu() {
+		
+		this.setBounds(0, 0, 1080, 650);
+		setLayout(null);
+
+		iniciar = new JButton("Iniciar sesi\u00F3n");
+		iniciar.setBounds(729, 37, 121, 23);
+		add(iniciar);
+
+		registrarse = new JButton("Registrarse");
+		registrarse.setBounds(860, 37, 121, 23);
+		add(registrarse);
+
+
+		explorar = new JButton("Explorar");
+		explorar.setBounds(36, 191, 131, 32);
+		add(explorar);
+
+	}
 	
 
 	public Menu(Estudiante estudiante) {
