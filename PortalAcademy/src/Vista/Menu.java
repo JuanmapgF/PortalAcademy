@@ -33,25 +33,25 @@ public class Menu extends JPanel{
 	private boolean organizacion = false;
 	private boolean profesor = false;
 	
-	public Menu() {
-		
-		this.setBounds(0, 0, 1080, 650);
-		setLayout(null);
-
-		iniciar = new JButton("Iniciar sesi\u00F3n");
-		iniciar.setBounds(729, 37, 121, 23);
-		add(iniciar);
-
-		registrarse = new JButton("Registrarse");
-		registrarse.setBounds(860, 37, 121, 23);
-		add(registrarse);
-
-
-		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
-		add(explorar);
-
-	}
+//	public Menu() {
+//		
+//		this.setBounds(0, 0, 1080, 650);
+//		setLayout(null);
+//
+//		iniciar = new JButton("Iniciar sesi\u00F3n");
+//		iniciar.setBounds(729, 37, 121, 23);
+//		add(iniciar);
+//
+//		registrarse = new JButton("Registrarse");
+//		registrarse.setBounds(860, 37, 121, 23);
+//		add(registrarse);
+//
+//
+//		explorar = new JButton("Explorar");
+//		explorar.setBounds(36, 191, 131, 32);
+//		add(explorar);
+//
+//	}
 	
 
 	public Menu(Estudiante estudiante) {
@@ -86,8 +86,11 @@ public class Menu extends JPanel{
 		add(lblNewLabel_2);
 		
 		btnChat = new JButton("");
-		btnChat.setBounds(318, 11, 46, 23);
+		btnChat.setBounds(318, 11, 46, 32);
 		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
+		btnChat.setContentAreaFilled(false);
+		btnChat.setFocusPainted(false);
+		btnChat.setBorderPainted(false);
 		add(btnChat);
 		
 		JLabel imagenUsuario = new JLabel("");
@@ -128,8 +131,11 @@ public class Menu extends JPanel{
 		add(lblNewLabel_2);
 		
 		btnChat = new JButton("");
-		btnChat.setBounds(318, 11, 46, 23);
+		btnChat.setBounds(318, 11, 46, 32);
 		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
+		btnChat.setContentAreaFilled(false);
+		btnChat.setFocusPainted(false);
+		btnChat.setBorderPainted(false);
 		add(btnChat);
 		
 		JLabel imagenUsuario = new JLabel("");
@@ -167,8 +173,11 @@ public class Menu extends JPanel{
 		add(lblNewLabel_2);
 		
 		btnChat = new JButton("");
-		btnChat.setBounds(318, 11, 46, 23);
+		btnChat.setBounds(318, 11, 46, 32);
 		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
+		btnChat.setContentAreaFilled(false);
+		btnChat.setFocusPainted(false);
+		btnChat.setBorderPainted(false);
 		add(btnChat);
 		
 		JLabel imagenUsuario = new JLabel("");
