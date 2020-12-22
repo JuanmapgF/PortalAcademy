@@ -34,6 +34,7 @@ public class Explorar extends JPanel {
 	private JTable cursos;
 	private JTable actividades;
 	private ButtonEditorCurso editorCurso = new ButtonEditorCurso(new JTextField());
+	private ButtonEditorActividad editorActividad = new ButtonEditorActividad(new JTextField());
 	
 	private Estudiante est = null;
 	private Organizacion org = null;
@@ -54,6 +55,121 @@ public class Explorar extends JPanel {
 		lista_actividades = la;
 		this.setBounds(0, 0, 1080, 650);
 		est = e;
+		setLayout(null);
+		
+		datosTablaUsuario();
+		
+		JLabel lblNewLabel = new JLabel("Explorar");
+		lblNewLabel.setBounds(543, 30, 107, 33);
+		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
+		add(lblNewLabel);
+
+		JLabel t_curso = new JLabel("Cursos:");
+		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		t_curso.setBounds(295, 159, 90, 33);
+		add(t_curso);
+
+		JLabel t_actividad = new JLabel("Actividades:");
+		t_actividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		t_actividad.setBounds(619, 159, 159, 33);
+		add(t_actividad);
+
+		JScrollPane sp_curso = new JScrollPane();
+		sp_curso.setBounds(325, 215, 273, 339);
+		sp_curso.setViewportView(cursos);
+		add(sp_curso);
+
+		JScrollPane sp_actividad = new JScrollPane();
+		sp_actividad.setBounds(656, 215, 273, 339);
+		sp_actividad.setViewportView(actividades);
+		add(sp_actividad);
+		
+		CtrMenu menu = new CtrMenu(new Menu(e));
+		add(menu.getPanel());
+	}
+	
+	public Explorar(List<Curso> lc, List<Actividad> la) {
+		lista_cursos = lc;
+		lista_actividades = la;
+		this.setBounds(0, 0, 1080, 650);
+		setLayout(null);
+		
+		datosTabla();
+		
+		JLabel lblNewLabel = new JLabel("Explorar");
+		lblNewLabel.setBounds(543, 30, 107, 33);
+		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
+		add(lblNewLabel);
+
+		JLabel t_curso = new JLabel("Cursos:");
+		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		t_curso.setBounds(295, 159, 90, 33);
+		add(t_curso);
+
+		JLabel t_actividad = new JLabel("Actividades:");
+		t_actividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		t_actividad.setBounds(619, 159, 159, 33);
+		add(t_actividad);
+
+		JScrollPane sp_curso = new JScrollPane();
+		sp_curso.setBounds(325, 215, 273, 339);
+		sp_curso.setViewportView(cursos);
+		add(sp_curso);
+
+		JScrollPane sp_actividad = new JScrollPane();
+		sp_actividad.setBounds(656, 215, 273, 339);
+		sp_actividad.setViewportView(actividades);
+		add(sp_actividad);
+		
+		CtrMenu menu = new CtrMenu(new Menu());
+		add(menu.getPanel());
+	}
+	
+	public Explorar(Profesor e, List<Curso> lc, List<Actividad> la) {
+		profesor = true;
+		lista_cursos = lc;
+		lista_actividades = la;
+		this.setBounds(0, 0, 1080, 650);
+		prof = e;
+		setLayout(null);
+		
+		datosTablaUsuario();
+		
+		JLabel lblNewLabel = new JLabel("Explorar");
+		lblNewLabel.setBounds(543, 30, 107, 33);
+		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
+		add(lblNewLabel);
+
+		JLabel t_curso = new JLabel("Cursos:");
+		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		t_curso.setBounds(295, 159, 90, 33);
+		add(t_curso);
+
+		JLabel t_actividad = new JLabel("Actividades:");
+		t_actividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		t_actividad.setBounds(619, 159, 159, 33);
+		add(t_actividad);
+
+		JScrollPane sp_curso = new JScrollPane();
+		sp_curso.setBounds(325, 215, 273, 339);
+		sp_curso.setViewportView(cursos);
+		add(sp_curso);
+
+		JScrollPane sp_actividad = new JScrollPane();
+		sp_actividad.setBounds(656, 215, 273, 339);
+		sp_actividad.setViewportView(actividades);
+		add(sp_actividad);
+		
+		CtrMenu menu = new CtrMenu(new Menu(e));
+		add(menu.getPanel());
+	}
+	
+	public Explorar(Organizacion e, List<Curso> lc, List<Actividad> la) {
+		organizacion = true;
+		lista_cursos = lc;
+		lista_actividades = la;
+		this.setBounds(0, 0, 1080, 650);
+		org = e;
 		setLayout(null);
 		
 		datosTabla();
@@ -83,64 +199,13 @@ public class Explorar extends JPanel {
 		sp_actividad.setViewportView(actividades);
 		add(sp_actividad);
 
-		verCurso = new JButton("Ver curso");
-		verCurso.setBounds(399, 575, 121, 23);
-		add(verCurso);
-
-		verActividad = new JButton("Ver actividad");
-		verActividad.setBounds(741, 575, 121, 23);
-		add(verActividad);
-		
 		CtrMenu menu = new CtrMenu(new Menu(e));
 		add(menu.getPanel());
 	}
 	
-	public Explorar(List<Curso> lc, List<Actividad> la) {
-		lista_cursos = lc;
-		lista_actividades = la;
-		this.setBounds(0, 0, 1080, 650);
-		setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Explorar");
-		lblNewLabel.setBounds(543, 30, 107, 33);
-		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
-		add(lblNewLabel);
-
-		JLabel t_curso = new JLabel("Cursos:");
-		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		t_curso.setBounds(295, 159, 90, 33);
-		add(t_curso);
-
-		JLabel t_actividad = new JLabel("Actividades:");
-		t_actividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		t_actividad.setBounds(619, 159, 159, 33);
-		add(t_actividad);
-
-		JScrollPane sp_curso = new JScrollPane();
-		sp_curso.setBounds(325, 215, 273, 339);
-		sp_curso.setViewportView(cursos);
-		add(sp_curso);
-
-		JScrollPane sp_actividad = new JScrollPane();
-		sp_actividad.setBounds(656, 215, 273, 339);
-		sp_actividad.setViewportView(actividades);
-		add(sp_actividad);
-
-		verCurso = new JButton("Ver curso");
-		verCurso.setBounds(399, 575, 121, 23);
-		add(verCurso);
-
-		verActividad = new JButton("Ver actividad");
-		verActividad.setBounds(741, 575, 121, 23);
-		add(verActividad);
-		
-		CtrMenu menu = new CtrMenu(new Menu());
-		add(menu.getPanel());
-		
-	}
-	
 	public void controlador(ActionListener ctr) {
 		editorCurso.controlador(ctr);
+		editorActividad.controlador(ctr);
 	}
 	
 	public boolean esEstudiante() {
@@ -167,7 +232,7 @@ public class Explorar extends JPanel {
 		return prof;
 	}
 	
-	public void datosTablaEstudiante() {
+	public void datosTablaUsuario() {
 		datosCurso = new Object[lista_cursos.size()][3];
 		
 		int k = 0;
@@ -190,18 +255,43 @@ public class Explorar extends JPanel {
 		cursos.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
 		cursos.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
 		cursos.getColumnModel().getColumn(1).setCellEditor(editorCurso);
+		cursos.setTableHeader(null);
+		cursos.setCellSelectionEnabled(false);
 		
 		datosActividad = new Object[lista_cursos.size()][3];
 		
 		k = 0;
 		for (Actividad actividad : lista_actividades) {
-			datosCurso[k][0] = actividad.getImagen();
-			datosCurso[k][1] = actividad.getNombre();
+			datosActividad[k][0] = actividad.getImagen();
+			datosActividad[k][1] = actividad.getNombre();
 			if (est.estaEnActividad(actividad)) {
-				datosCurso[k][2] = "✔";
+				datosActividad[k][2] = "✔";
 			} else {
-				datosCurso[k][2] = "Disponible";
+				datosActividad[k][2] = "Disponible";
 			}
+			k++;
+		}
+		
+		String[] columnHeadersActividad = {"Imagen", "Actividad", "Acceso"};
+		
+		
+		actividades = new JTable(datosActividad, columnHeadersActividad);
+		actividades.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+		actividades.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
+		actividades.getColumnModel().getColumn(1).setCellEditor(editorActividad);
+		actividades.setTableHeader(null);
+		actividades.setCellSelectionEnabled(false);
+	}
+	
+	public void datosTabla() {
+		datosCurso = new Object[lista_cursos.size()][3];
+		
+		int k = 0;
+		for (Curso curso : lista_cursos) {
+			datosCurso[k][0] = curso.getImagen();
+			datosCurso[k][1] = curso.getNombre();
+			datosCurso[k][2] = "Disponible";
+			
 			k++;
 		}
 		
@@ -212,6 +302,36 @@ public class Explorar extends JPanel {
 		cursos.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
 		cursos.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
 		cursos.getColumnModel().getColumn(1).setCellEditor(editorCurso);
+		cursos.setTableHeader(null);
+		cursos.setCellSelectionEnabled(false);
+		
+		datosActividad = new Object[lista_cursos.size()][3];
+		
+		k = 0;
+		for (Actividad actividad : lista_actividades) {
+			datosActividad[k][0] = actividad.getImagen();
+			datosActividad[k][1] = actividad.getNombre();
+			datosActividad[k][2] = "Disponible";
+			k++;
+		}
+		
+		String[] columnHeadersActividad = {"Imagen", "Actividad", "Acceso"};
+		
+		
+		actividades = new JTable(datosActividad, columnHeadersActividad);
+		actividades.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+		actividades.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
+		actividades.getColumnModel().getColumn(1).setCellEditor(editorActividad);
+		actividades.setTableHeader(null);
+		actividades.setCellSelectionEnabled(false);
+	}
+	
+	public Curso getCurso() {
+		return lista_cursos.get(cursos.getSelectedRow());
+	}
+	
+	public Actividad getActividad() {
+		return lista_actividades.get(actividades.getSelectedRow());
 	}
 	
 	/*private DefaultListModel<String> modeloC = new DefaultListModel<String>();
