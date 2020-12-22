@@ -114,6 +114,10 @@ public class CtrMenu implements ActionListener{
 				Main.setPanel(c.getPanel());
 			}
 		}
+		
+		if (e.getActionCommand().equals("CHAT")) {
+			//Llama a ventana con chats privados
+		}
 	}
 
 	public JPanel getPanel() {

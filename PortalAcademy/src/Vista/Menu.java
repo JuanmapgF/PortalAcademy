@@ -209,7 +209,8 @@ public class Menu extends JPanel{
 		}
 		
 		if (btnChat != null) {
-			
+			btnChat.addActionListener(ctr);
+			btnChat.setActionCommand("CHAT");
 		}
 	}
 	
