@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -23,6 +24,7 @@ public class Menu extends JPanel{
 	private JButton cerrar;
 	private JButton ajustes;
 	private JButton registrarse;
+	private JButton btnChat;
 	
 	private Estudiante est = null;
 	private Organizacion org = null;
@@ -49,8 +51,8 @@ public class Menu extends JPanel{
 		explorar.setBounds(36, 191, 131, 32);
 		add(explorar);
 
-	
 	}
+	
 
 	public Menu(Estudiante estudiante) {
 		this.estudiante = true;
@@ -80,8 +82,21 @@ public class Menu extends JPanel{
 		add(ajustes);
 
 		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+estudiante.getNick());
-		lblNewLabel_2.setBounds(10, 11, 240, 20);
+		lblNewLabel_2.setBounds(68, 11, 240, 20);
 		add(lblNewLabel_2);
+		
+		btnChat = new JButton("");
+		btnChat.setBounds(318, 11, 46, 32);
+		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
+		btnChat.setContentAreaFilled(false);
+		btnChat.setFocusPainted(false);
+		btnChat.setBorderPainted(false);
+		add(btnChat);
+		
+		JLabel imagenUsuario = new JLabel("");
+		imagenUsuario.setBounds(0, 0, 64, 60);
+		imagenUsuario.setIcon(new ImageIcon(getClass().getResource("/img/usuario.png")));
+		add(imagenUsuario);
 	}
 	
 	public Menu(Profesor profesor) {
@@ -112,9 +127,23 @@ public class Menu extends JPanel{
 		add(ajustes);
 
 		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+profesor.getNick());
-		lblNewLabel_2.setBounds(10, 11, 240, 20);
+		lblNewLabel_2.setBounds(68, 11, 240, 20);
 		add(lblNewLabel_2);
+		
+		btnChat = new JButton("");
+		btnChat.setBounds(318, 11, 46, 32);
+		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
+		btnChat.setContentAreaFilled(false);
+		btnChat.setFocusPainted(false);
+		btnChat.setBorderPainted(false);
+		add(btnChat);
+		
+		JLabel imagenUsuario = new JLabel("");
+		imagenUsuario.setBounds(0, 0, 64, 60);
+		imagenUsuario.setIcon(new ImageIcon(getClass().getResource("/img/usuario.png")));
+		add(imagenUsuario);
 	}
+	
 	
 	public Menu(Organizacion organizacion) {
 		this.org = organizacion;
@@ -140,8 +169,21 @@ public class Menu extends JPanel{
 		add(ajustes);
 
 		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+organizacion.getNick());
-		lblNewLabel_2.setBounds(10, 11, 240, 20);
+		lblNewLabel_2.setBounds(68, 11, 240, 20);
 		add(lblNewLabel_2);
+		
+		btnChat = new JButton("");
+		btnChat.setBounds(318, 11, 46, 32);
+		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
+		btnChat.setContentAreaFilled(false);
+		btnChat.setFocusPainted(false);
+		btnChat.setBorderPainted(false);
+		add(btnChat);
+		
+		JLabel imagenUsuario = new JLabel("");
+		imagenUsuario.setBounds(0, 0, 64, 60);
+		imagenUsuario.setIcon(new ImageIcon(getClass().getResource("/img/usuario.png")));
+		add(imagenUsuario);
 	}
 	
 	public void controlador(ActionListener ctr) {
@@ -174,6 +216,11 @@ public class Menu extends JPanel{
 			registrarse.addActionListener(ctr);
 			registrarse.setActionCommand("REGISTRARSE");
 		}
+		
+		if (btnChat != null) {
+			btnChat.addActionListener(ctr);
+			btnChat.setActionCommand("CHAT");
+		}
 	}
 	
 	public boolean esEstudiante() {
@@ -199,5 +246,4 @@ public class Menu extends JPanel{
 	public Profesor getProfesor() {
 		return prof;
 	}
-	
 }
