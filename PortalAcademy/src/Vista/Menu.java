@@ -24,6 +24,7 @@ public class Menu extends JPanel{
 	private JButton cerrar;
 	private JButton ajustes;
 	private JButton registrarse;
+	private JButton btnChat;
 	
 	private Estudiante est = null;
 	private Organizacion org = null;
@@ -50,10 +51,8 @@ public class Menu extends JPanel{
 		explorar.setBounds(36, 191, 131, 32);
 		add(explorar);
 
-	
 	}
-
-
+	
 
 	public Menu(Estudiante estudiante) {
 		this.estudiante = true;
@@ -86,9 +85,9 @@ public class Menu extends JPanel{
 		lblNewLabel_2.setBounds(68, 11, 240, 20);
 		add(lblNewLabel_2);
 		
-		JButton btnChat = new JButton("");
+		btnChat = new JButton("");
 		btnChat.setBounds(318, 11, 46, 23);
-		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat.png")));
+		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
 		add(btnChat);
 		
 		JLabel imagenUsuario = new JLabel("");
@@ -128,9 +127,9 @@ public class Menu extends JPanel{
 		lblNewLabel_2.setBounds(68, 11, 240, 20);
 		add(lblNewLabel_2);
 		
-		JButton btnChat = new JButton("");
+		btnChat = new JButton("");
 		btnChat.setBounds(318, 11, 46, 23);
-		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat.png")));
+		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
 		add(btnChat);
 		
 		JLabel imagenUsuario = new JLabel("");
@@ -167,9 +166,9 @@ public class Menu extends JPanel{
 		lblNewLabel_2.setBounds(68, 11, 240, 20);
 		add(lblNewLabel_2);
 		
-		JButton btnChat = new JButton("");
+		btnChat = new JButton("");
 		btnChat.setBounds(318, 11, 46, 23);
-		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat.png")));
+		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
 		add(btnChat);
 		
 		JLabel imagenUsuario = new JLabel("");
@@ -207,6 +206,10 @@ public class Menu extends JPanel{
 		if (registrarse != null) {
 			registrarse.addActionListener(ctr);
 			registrarse.setActionCommand("REGISTRARSE");
+		}
+		
+		if (btnChat != null) {
+			
 		}
 	}
 	
