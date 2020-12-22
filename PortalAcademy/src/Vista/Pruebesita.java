@@ -5,18 +5,26 @@ import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 
 import javax.swing.DefaultCellEditor;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 
 import Modelo.Actividad;
+import Modelo.BD;
 import Modelo.Curso;
 
 import javax.swing.JTable;
@@ -121,6 +129,21 @@ public class Pruebesita extends JFrame {
 			super.fireEditingStopped();
 		}
 	}
+	
+	private class ImageRenderer extends JPanel implements TableCellRenderer {
+
+		public Component getTableCellRendererComponent(JTable jtable, Object value, boolean isSelected,
+				boolean hasFocus, int row, int column) {
+			
+			if (value != null) {
+				return new JPanelImagen(((File) value).getName());
+			} else {
+				return new JPanelImagen(getClass().getResource("/img/curso_default.png"));
+			}
+			
+		}
+		
+	}
 
 	
 	public Pruebesita(List<Curso> lc) {
@@ -132,10 +155,12 @@ public class Pruebesita extends JFrame {
 		contentPane.setLayout(null);
 		
 		Object[][] data = new Object[lc.size()][3];
+		BD bd = BD.getBD();
+		
 		
 		int k = 0;
-		for (Curso curso : lc) {
-			data[k][0] = "Imagen de " + curso.getNombre();
+		for (Curso curso : lc) {			
+			data[k][0] = curso.getImagen();
 			data[k][1] = curso.getNombre();
 			data[k][2] = "Ver curso";
 			k++;
@@ -145,9 +170,10 @@ public class Pruebesita extends JFrame {
 		
 		table = new JTable(data, columnHeaders);
 		table.setBounds(165, 11, 600, 400);
+		table.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
 		table.getColumnModel().getColumn(2).setCellRenderer(new ButtonRenderer());
 		table.getColumnModel().getColumn(2).setCellEditor(new ButtonEditor(new JTextField()));
-		
+		table.setRowHeight(90);
 		
 		JScrollPane scroll = new JScrollPane();
 		scroll.setBounds(165, 11, 600, 400);
