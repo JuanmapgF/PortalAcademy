@@ -27,7 +27,6 @@ public class CtrMisCursos implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 
-
 		if (e.getActionCommand().equals("CREARCURSO")) {
 			CtrCrearCurso ccc = new CtrCrearCurso(new CrearCurso());
 			Main.setPanel(ccc.getPanel());
@@ -39,7 +38,7 @@ public class CtrMisCursos implements ActionListener {
 				if (ventana.esEstudiante()) {
 					CtrInformacionCurso cr = new CtrInformacionCurso(ventana.getEstudiante(), c);
 					Main.setPanel(cr.getPanel());
-				}else {
+				} else {
 					CtrInformacionCurso cr = new CtrInformacionCurso(ventana.getProfesor(), c);
 					Main.setPanel(cr.getPanel());
 				}
@@ -56,8 +55,6 @@ public class CtrMisCursos implements ActionListener {
 				}
 			}
 		}
-		
-	
 
 	}
 

@@ -15,6 +15,8 @@ import javax.swing.JTextArea;
 
 import Controlador.CtrMenu;
 import Modelo.*;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
 
 @SuppressWarnings("serial")
 public class DescripcionCurso extends JPanel {

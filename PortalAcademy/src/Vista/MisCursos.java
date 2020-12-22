@@ -1,6 +1,5 @@
 package Vista;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -50,7 +49,6 @@ public class MisCursos extends JPanel {
 		sp_cursos.setViewportView(listaC);
 		add(sp_cursos);
 
-
 		JLabel t_curso = new JLabel("Mis cursos:");
 		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 		t_curso.setBounds(536, 115, 161, 33);
@@ -66,9 +64,7 @@ public class MisCursos extends JPanel {
 		add(menu.getPanel());
 	}
 
-	/**
-	 * @wbp.parser.constructor
-	 */
+	
 	public MisCursos(Profesor u) {
 		profesor = true;
 		prof = u;
@@ -84,7 +80,7 @@ public class MisCursos extends JPanel {
 		sp_cursosImpartidos.setBounds(641, 175, 200, 346);
 		sp_cursosImpartidos.setViewportView(listaC);
 		add(sp_cursosImpartidos);
-		
+
 		JScrollPane sp_cursosApuntados = new JScrollPane();
 		sp_cursosApuntados.setBounds(341, 175, 200, 346);
 		sp_cursosApuntados.setViewportView(listaCA);
@@ -100,11 +96,11 @@ public class MisCursos extends JPanel {
 		bVer = new JButton("Ver curso");
 		bVer.setBounds(690, 551, 104, 23);
 		add(bVer);
-		
+
 		bVer2 = new JButton("Ver curso");
 		bVer2.setBounds(383, 551, 104, 23);
 		add(bVer2);
-		
+
 		CtrMenu menu = new CtrMenu(new Menu(u));
 		add(menu.getPanel());
 
@@ -120,7 +116,7 @@ public class MisCursos extends JPanel {
 
 		listaC.setLayoutOrientation(JList.VERTICAL);
 	}
-	
+
 	public void addElements2(List<Curso> l) {
 		this.l1 = l;
 		listaCA.setModel(modeloCA);
@@ -139,7 +135,7 @@ public class MisCursos extends JPanel {
 			return null;
 		}
 	}
-	
+
 	public Curso getCA() {
 		if (!listaCA.isSelectionEmpty()) {
 			return l1.get(listaCA.getSelectedIndex());
@@ -151,10 +147,10 @@ public class MisCursos extends JPanel {
 	public void controlador(ActionListener ctr) {
 		bVer.addActionListener(ctr);
 		bVer.setActionCommand("VERCURSO");
-
+		crearCurso.addActionListener(ctr);
+		crearCurso.setActionCommand("CREARCURSO");
 		bVer2.addActionListener(ctr);
 		bVer2.setActionCommand("VERCURSOA");
-		
 
 	}
 
