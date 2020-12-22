@@ -62,6 +62,19 @@ public class Usuario {
 		this.correo = "";
 		this.password = "";
 	}
+	
+	public List<Usuario> usuariosCompartiendoChat() {
+		List<Usuario> usuarios = new ArrayList<>();
+		BD miBD = BD.getBD();
+		List<Object[]> users = miBD.Select("SELECT nickUsuarioEmisor FROM MensajePrivado WHERE nickUsuarioReceptor = '" + this.nick + "'"
+				+ "UNION SELECT nickUsuarioReceptor FROM MensajePrivado WHERE nickUsuarioEmisor = '" + this.nick + "'");
+		BD.contadorFinalize(users.size() + 1);
+		miBD.finalize();
+		for (Object[] tupla : users) {
+			usuarios.add(new Usuario((String) tupla[0]));
+		}
+		return usuarios;
+	}
 
 	@Override
 	public boolean equals(Object o) {

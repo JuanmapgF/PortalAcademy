@@ -116,7 +116,17 @@ public class CtrMenu implements ActionListener{
 		}
 		
 		if (e.getActionCommand().equals("CHAT")) {
-			//Llama a ventana con chats privados
+			if (ventana.esEstudiante()) {
+				CtrChatPrivado c = new CtrChatPrivado(ventana.getEstudiante());
+				Main.setPanel(c.getPanel());
+			} else if (ventana.esProfesor()) {
+				CtrChatPrivado c = new CtrChatPrivado(ventana.getProfesor());
+				Main.setPanel(c.getPanel());
+			} else if (ventana.esOrganizacion()) {
+				CtrChatPrivado c = new CtrChatPrivado(ventana.getOrganizacion());
+				Main.setPanel(c.getPanel());
+			}
+			
 		}
 	}
 
