@@ -1,40 +1,38 @@
 package Vista;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionListener;
 
-import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 
+import Controlador.CtrButtonDynamic;
 import Modelo.Estudiante;
 import Modelo.Organizacion;
 import Modelo.Profesor;
 
-public class Menu extends JPanel{
-	
+@SuppressWarnings("serial")
+public class Menu extends JPanel {
+
 	private JButton iniciar;
 	private JButton explorar;
-	private JButton cursos;	
+	private JButton cursos;
 	private JButton actividades;
-	private JButton cerrar;
+	private JButtonDynamic cerrar;
 	private JButton ajustes;
 	private JButton registrarse;
 	private JButton btnChat;
-	
+
 	private Estudiante est = null;
 	private Organizacion org = null;
 	private Profesor prof = null;
 	private boolean estudiante = false;
 	private boolean organizacion = false;
 	private boolean profesor = false;
-	
+
 	public Menu() {
-		
+
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
 
@@ -46,24 +44,23 @@ public class Menu extends JPanel{
 		registrarse.setBounds(860, 37, 121, 23);
 		add(registrarse);
 
-
 		explorar = new JButton("Explorar");
 		explorar.setBounds(36, 191, 131, 32);
 		add(explorar);
 
 	}
-	
 
 	public Menu(Estudiante estudiante) {
 		this.estudiante = true;
 		this.est = estudiante;
-				
+
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
-		
-		cerrar = new JButton("Cerrar sesi\u00F3n");
-		cerrar.setBounds(860, 37, 121, 23);
-		add(cerrar);
+
+		cerrar = new JButtonDynamic("Cerrar Sesión", JButtonDynamic.CERRAR_SESION);
+		cerrar.setBounds(860, 37, cerrar.getWidth(), cerrar.getHeight());
+		CtrButtonDynamic cbd = new CtrButtonDynamic(cerrar);
+		add(cbd.getBoton());
 
 		explorar = new JButton("Explorar");
 		explorar.setBounds(36, 191, 131, 32);
@@ -81,10 +78,10 @@ public class Menu extends JPanel{
 		ajustes.setBounds(36, 413, 131, 32);
 		add(ajustes);
 
-		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+estudiante.getNick());
+		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + estudiante.getNick());
 		lblNewLabel_2.setBounds(68, 11, 240, 20);
 		add(lblNewLabel_2);
-		
+
 		btnChat = new JButton("");
 		btnChat.setBounds(318, 11, 46, 32);
 		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
@@ -92,23 +89,24 @@ public class Menu extends JPanel{
 		btnChat.setFocusPainted(false);
 		btnChat.setBorderPainted(false);
 		add(btnChat);
-		
+
 		JLabel imagenUsuario = new JLabel("");
 		imagenUsuario.setBounds(0, 0, 64, 60);
 		imagenUsuario.setIcon(new ImageIcon(getClass().getResource("/img/usuario.png")));
 		add(imagenUsuario);
 	}
-	
+
 	public Menu(Profesor profesor) {
 		this.prof = profesor;
 		this.profesor = true;
-		
+
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
-		
-		cerrar = new JButton("Cerrar sesi\u00F3n");
-		cerrar.setBounds(860, 37, 121, 23);
-		add(cerrar);
+
+		cerrar = new JButtonDynamic("Cerrar Sesión", JButtonDynamic.CERRAR_SESION);
+		cerrar.setBounds(860, 37, cerrar.getWidth(), cerrar.getHeight());
+		CtrButtonDynamic cbd = new CtrButtonDynamic(cerrar);
+		add(cbd.getBoton());
 
 		explorar = new JButton("Explorar");
 		explorar.setBounds(36, 191, 131, 32);
@@ -126,10 +124,10 @@ public class Menu extends JPanel{
 		ajustes.setBounds(36, 413, 131, 32);
 		add(ajustes);
 
-		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+profesor.getNick());
+		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + profesor.getNick());
 		lblNewLabel_2.setBounds(68, 11, 240, 20);
 		add(lblNewLabel_2);
-		
+
 		btnChat = new JButton("");
 		btnChat.setBounds(318, 11, 46, 32);
 		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
@@ -137,24 +135,24 @@ public class Menu extends JPanel{
 		btnChat.setFocusPainted(false);
 		btnChat.setBorderPainted(false);
 		add(btnChat);
-		
+
 		JLabel imagenUsuario = new JLabel("");
 		imagenUsuario.setBounds(0, 0, 64, 60);
 		imagenUsuario.setIcon(new ImageIcon(getClass().getResource("/img/usuario.png")));
 		add(imagenUsuario);
 	}
-	
-	
+
 	public Menu(Organizacion organizacion) {
 		this.org = organizacion;
 		this.organizacion = true;
-		
+
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
-		
-		cerrar = new JButton("Cerrar sesi\u00F3n");
-		cerrar.setBounds(860, 37, 121, 23);
-		add(cerrar);
+
+		cerrar = new JButtonDynamic("Cerrar Sesión", JButtonDynamic.CERRAR_SESION);
+		cerrar.setBounds(860, 37, cerrar.getWidth(), cerrar.getHeight());
+		CtrButtonDynamic cbd = new CtrButtonDynamic(cerrar);
+		add(cbd.getBoton());
 
 		explorar = new JButton("Explorar");
 		explorar.setBounds(36, 191, 131, 32);
@@ -168,10 +166,10 @@ public class Menu extends JPanel{
 		ajustes.setBounds(36, 336, 131, 32);
 		add(ajustes);
 
-		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+organizacion.getNick());
+		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + organizacion.getNick());
 		lblNewLabel_2.setBounds(68, 11, 240, 20);
 		add(lblNewLabel_2);
-		
+
 		btnChat = new JButton("");
 		btnChat.setBounds(318, 11, 46, 32);
 		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
@@ -179,13 +177,13 @@ public class Menu extends JPanel{
 		btnChat.setFocusPainted(false);
 		btnChat.setBorderPainted(false);
 		add(btnChat);
-		
+
 		JLabel imagenUsuario = new JLabel("");
 		imagenUsuario.setBounds(0, 0, 64, 60);
 		imagenUsuario.setIcon(new ImageIcon(getClass().getResource("/img/usuario.png")));
 		add(imagenUsuario);
 	}
-	
+
 	public void controlador(ActionListener ctr) {
 		if (explorar != null) {
 			explorar.addActionListener(ctr);
@@ -211,18 +209,18 @@ public class Menu extends JPanel{
 			iniciar.addActionListener(ctr);
 			iniciar.setActionCommand("INICIAR_SESION");
 		}
-		
+
 		if (registrarse != null) {
 			registrarse.addActionListener(ctr);
 			registrarse.setActionCommand("REGISTRARSE");
 		}
-		
+
 		if (btnChat != null) {
 			btnChat.addActionListener(ctr);
 			btnChat.setActionCommand("CHAT");
 		}
 	}
-	
+
 	public boolean esEstudiante() {
 		return estudiante;
 	}
