@@ -12,7 +12,7 @@ import Controlador.CtrButtonDynamic;
 public class prueba extends JFrame {
 
 	private JPanel contentPane;
-	private JButtonDynamic cerrar;
+	private ButtonDynamic cerrar;
 
 	/**
 	 * Launch the application.
@@ -41,7 +41,7 @@ public class prueba extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		cerrar = new JButtonDynamic("Cerrar Sesion", JButtonDynamic.CERRAR_SESION);
+		cerrar = new ButtonDynamic("Cerrar Sesion", ButtonDynamic.CERRAR_SESION);
 		CtrButtonDynamic cbd = new CtrButtonDynamic(cerrar);
 		cerrar.setBounds(156, 98, 114, 52);
 		getContentPane().add(cbd.getBoton());

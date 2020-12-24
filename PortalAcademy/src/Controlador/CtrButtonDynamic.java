@@ -3,13 +3,13 @@ package Controlador;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import Vista.JButtonDynamic;
+import Vista.ButtonDynamic;
 
 public class CtrButtonDynamic extends MouseAdapter {
 	
-	private JButtonDynamic btn;
+	private ButtonDynamic btn;
 
-	public CtrButtonDynamic(JButtonDynamic jbd) {
+	public CtrButtonDynamic(ButtonDynamic jbd) {
 		btn = jbd;
 		btn.addMouseListener(this);
 	}
@@ -24,7 +24,7 @@ public class CtrButtonDynamic extends MouseAdapter {
 		btn.setText("");
 	}
 
-	public JButtonDynamic getBoton() {
+	public ButtonDynamic getBoton() {
 		return btn;
 	}
 

@@ -19,7 +19,7 @@ public class Menu extends JPanel {
 	private JButton explorar;
 	private JButton cursos;
 	private JButton actividades;
-	private JButtonDynamic cerrar;
+	private ButtonDynamic cerrar;
 	private JButton ajustes;
 	private JButton registrarse;
 	private JButton btnChat;
@@ -57,7 +57,7 @@ public class Menu extends JPanel {
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
 
-		cerrar = new JButtonDynamic("Cerrar Sesión", JButtonDynamic.CERRAR_SESION);
+		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
 		cerrar.setBounds(860, 37, (int) cerrar.getPreferredSize().getWidth(),
 				(int) cerrar.getPreferredSize().getHeight());
 		CtrButtonDynamic cbd = new CtrButtonDynamic(cerrar);
@@ -104,7 +104,7 @@ public class Menu extends JPanel {
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
 
-		cerrar = new JButtonDynamic("Cerrar Sesión", JButtonDynamic.CERRAR_SESION);
+		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
 		cerrar.setBounds(860, 37, (int) cerrar.getPreferredSize().getWidth(),
 				(int) cerrar.getPreferredSize().getHeight());
 		CtrButtonDynamic cbd = new CtrButtonDynamic(cerrar);
@@ -151,7 +151,7 @@ public class Menu extends JPanel {
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
 
-		cerrar = new JButtonDynamic("Cerrar Sesión", JButtonDynamic.CERRAR_SESION);
+		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
 		cerrar.setBounds(860, 37, (int) cerrar.getPreferredSize().getWidth(),
 				(int) cerrar.getPreferredSize().getHeight());
 		CtrButtonDynamic cbd = new CtrButtonDynamic(cerrar);

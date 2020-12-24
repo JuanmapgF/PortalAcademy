@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 @SuppressWarnings("serial")
-public class JButtonDynamic extends JButton {
+public class ButtonDynamic extends JButton {
 
 	public static final String CERRAR_SESION = "resources/img/cerrarSesion.png";
 	private static final int CERRAR_SESION_WIDTH = 114;
@@ -15,7 +15,7 @@ public class JButtonDynamic extends JButton {
 
 	private String name;
 
-	public JButtonDynamic(String name, String icono) {
+	public ButtonDynamic(String name, String icono) {
 		super();
 		this.name = name;
 		setIcon(new ImageIcon(icono));
