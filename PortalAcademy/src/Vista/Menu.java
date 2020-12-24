@@ -58,7 +58,8 @@ public class Menu extends JPanel {
 		setLayout(null);
 
 		cerrar = new JButtonDynamic("Cerrar Sesión", JButtonDynamic.CERRAR_SESION);
-		cerrar.setBounds(860, 37, cerrar.getWidth(), cerrar.getHeight());
+		cerrar.setBounds(860, 37, (int) cerrar.getPreferredSize().getWidth(),
+				(int) cerrar.getPreferredSize().getHeight());
 		CtrButtonDynamic cbd = new CtrButtonDynamic(cerrar);
 		add(cbd.getBoton());
 
@@ -104,7 +105,8 @@ public class Menu extends JPanel {
 		setLayout(null);
 
 		cerrar = new JButtonDynamic("Cerrar Sesión", JButtonDynamic.CERRAR_SESION);
-		cerrar.setBounds(860, 37, cerrar.getWidth(), cerrar.getHeight());
+		cerrar.setBounds(860, 37, (int) cerrar.getPreferredSize().getWidth(),
+				(int) cerrar.getPreferredSize().getHeight());
 		CtrButtonDynamic cbd = new CtrButtonDynamic(cerrar);
 		add(cbd.getBoton());
 
@@ -150,7 +152,8 @@ public class Menu extends JPanel {
 		setLayout(null);
 
 		cerrar = new JButtonDynamic("Cerrar Sesión", JButtonDynamic.CERRAR_SESION);
-		cerrar.setBounds(860, 37, cerrar.getWidth(), cerrar.getHeight());
+		cerrar.setBounds(860, 37, (int) cerrar.getPreferredSize().getWidth(),
+				(int) cerrar.getPreferredSize().getHeight());
 		CtrButtonDynamic cbd = new CtrButtonDynamic(cerrar);
 		add(cbd.getBoton());
 

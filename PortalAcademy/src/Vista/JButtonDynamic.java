@@ -1,5 +1,6 @@
 package Vista;
 
+import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.ImageIcon;
@@ -24,8 +25,9 @@ public class JButtonDynamic extends JButton {
 		setHorizontalAlignment(CENTER);
 		setVerticalTextPosition(BOTTOM);
 		setVerticalAlignment(CENTER);
+
 		if (icono == CERRAR_SESION) {
-			setBounds(0, 0, CERRAR_SESION_WIDTH, CERRAR_SESION_HEIGHT);
+			setPreferredSize(new Dimension(CERRAR_SESION_WIDTH, CERRAR_SESION_HEIGHT));
 		}
 	}
 
