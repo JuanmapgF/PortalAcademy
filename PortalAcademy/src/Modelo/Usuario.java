@@ -66,8 +66,10 @@ public class Usuario {
 	public List<Usuario> usuariosCompartiendoChat() {
 		List<Usuario> usuarios = new ArrayList<>();
 		BD miBD = BD.getBD();
-		List<Object[]> users = miBD.Select("SELECT nickUsuarioEmisor FROM MensajePrivado WHERE nickUsuarioReceptor = '" + this.nick + "'"
-				+ "UNION SELECT nickUsuarioReceptor FROM MensajePrivado WHERE nickUsuarioEmisor = '" + this.nick + "'");
+		List<Object[]> users = miBD.Select("SELECT nickUsuarioEmisor FROM MensajePrivado "
+				+ "WHERE nickUsuarioReceptor = '" + this.nick + "'"
+				+ "UNION SELECT nickUsuarioReceptor FROM MensajePrivado WHERE nickUsuarioEmisor = '" + this.nick
+				+ "' ORDER BY idMensajePrivado DESC");
 		BD.contadorFinalize(users.size() + 1);
 		miBD.finalize();
 		for (Object[] tupla : users) {
