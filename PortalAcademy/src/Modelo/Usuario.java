@@ -66,14 +66,21 @@ public class Usuario {
 	public List<Usuario> usuariosCompartiendoChat() {
 		List<Usuario> usuarios = new ArrayList<>();
 		BD miBD = BD.getBD();
-		List<Object[]> users = miBD.Select("SELECT idMensajePrivado, nickUsuarioEmisor "
-				+ "FROM (SELECT MAX(idMensajePrivado), nickUsuarioEmisor FROM MensajePrivado WHERE nickUsuarioReceptor = '" + this.getNick() + "') AS a "
-				+ "WHERE idMensajePrivado > "
-				+ "(SELECT MAX(idMensajePrivado) FROM MensajePrivado as s1 WHERE nickUsuarioEmisor = '" + this.getNick() + "' AND nickUsuarioReceptor = a.nickUsuarioEmisor) "
-				+ "UNION SELECT idMensajePrivado, nickUsuarioReceptor "
-				+ "FROM (SELECT MAX(idMensajePrivado), nickUsuarioReceptor FROM MensajePrivado WHERE nickUsuarioEmisor = '" + this.getNick() + "') AS b "
-				+ "WHERE idMensajePrivado > "
-				+ "(SELECT MAX(idMensajePrivado) FROM MensajePrivado as s2 WHERE nickUsuarioReceptor = '" + this.getNick() + "' AND nickUsuarioEmisor = b.nickUsuarioReceptor)");
+		List<Object[]> users = miBD.Select("SELECT a.idMensajePrivado, a.nickUsuarioEmisor, a.nickUsuarioReceptor "
+				+ "FROM MensajePrivado AS a "
+				+ "WHERE nickUsuarioReceptor = '" + this.getNick() + "' AND "
+						+ "NOT EXISTS (SELECT s1.idMensajePrivado, s1.nickUsuarioEmisor, s1.nickUsuarioReceptor FROM MensajePrivado AS s1 WHERE s1.nickUsuarioReceptor = '" + this.getNick() + "' "
+						+ "AND a.idMensajePrivado < s1.idMensajePrivado) AND "
+						+ "NOT EXISTS (SELECT s2.idMensajePrivado, s2.nickUsuarioEmisor, s2.nickUsuarioReceptor FROM MensajePrivado AS s2 WHERE s2.nickUsuarioEmisor = '" + this.getNick() + "' "
+								+ "AND a.nickUsuarioEmisor = s2.nickUsuarioReceptor AND a.idMensajePrivado < s2.idMensajePrivado) "
+				+ "UNION SELECT b.idMensajePrivado, b.nickUsuarioReceptor, b.nickUsuarioReceptor "
+				+ "FROM MensajePrivado AS b "
+				+ "WHERE nickUsuarioEmisor = '" + this.getNick() + "' AND "
+						+ "NOT EXISTS (SELECT s3.idMensajePrivado, s3.nickUsuarioEmisor, s3.nickUsuarioReceptor FROM MensajePrivado AS s3 WHERE s3.nickUsuarioEmisor = '" + this.getNick() + "' "
+						+ "AND b.idMensajePrivado < s3.idMensajePrivado) AND "
+						+ "NOT EXISTS (SELECT s4.idMensajePrivado, s4.nickUsuarioEmisor, s4.nickUsuarioReceptor FROM MensajePrivado AS s4 WHERE s4.nickUsuarioReceptor = '" + this.getNick() + "' "
+								+ "AND b.nickUsuarioReceptor = s4.nickUsuarioEmisor AND b.idMensajePrivado < s4.idMensajePrivado) "
+				+ "ORDER BY 1");
 		BD.contadorFinalize(users.size() + 1);
 		miBD.finalize();
 		for (Object[] tupla : users) {

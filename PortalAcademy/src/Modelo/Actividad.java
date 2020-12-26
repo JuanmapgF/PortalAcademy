@@ -48,7 +48,7 @@ public class Actividad {
 		this.idActividad = Integer.parseInt(tupla[0].toString());
 		this.nombre = tupla[1].toString();
 		this.descripcion = tupla[2].toString();
-		this.imagen = tupla[3].toString();
+//		this.imagen = tupla[3].toString();
 		this.aforo = Integer.parseInt(tupla[4].toString());
 		try {
 			this.fecha = formato.parse(tupla[5].toString());
