@@ -66,14 +66,18 @@ public class Usuario {
 	public List<Usuario> usuariosCompartiendoChat() {
 		List<Usuario> usuarios = new ArrayList<>();
 		BD miBD = BD.getBD();
-		List<Object[]> users = miBD.Select("SELECT nickUsuarioEmisor FROM MensajePrivado "
-				+ "WHERE nickUsuarioReceptor = '" + this.nick + "'"
-				+ "UNION SELECT nickUsuarioReceptor FROM MensajePrivado WHERE nickUsuarioEmisor = '" + this.nick
-				+ "' ORDER BY idMensajePrivado DESC");
+		List<Object[]> users = miBD.Select("SELECT idMensajePrivado, nickUsuarioEmisor "
+				+ "FROM (SELECT MAX(idMensajePrivado), nickUsuarioEmisor FROM MensajePrivado WHERE nickUsuarioReceptor = '" + this.getNick() + "') AS a "
+				+ "WHERE idMensajePrivado > "
+				+ "(SELECT MAX(idMensajePrivado) FROM MensajePrivado as s1 WHERE nickUsuarioEmisor = '" + this.getNick() + "' AND nickUsuarioReceptor = a.nickUsuarioEmisor) "
+				+ "UNION SELECT idMensajePrivado, nickUsuarioReceptor "
+				+ "FROM (SELECT MAX(idMensajePrivado), nickUsuarioReceptor FROM MensajePrivado WHERE nickUsuarioEmisor = '" + this.getNick() + "') AS b "
+				+ "WHERE idMensajePrivado > "
+				+ "(SELECT MAX(idMensajePrivado) FROM MensajePrivado as s2 WHERE nickUsuarioReceptor = '" + this.getNick() + "' AND nickUsuarioEmisor = b.nickUsuarioReceptor)");
 		BD.contadorFinalize(users.size() + 1);
 		miBD.finalize();
 		for (Object[] tupla : users) {
-			usuarios.add(new Usuario((String) tupla[0]));
+			usuarios.add(new Usuario((String) tupla[1]));
 		}
 		return usuarios;
 	}

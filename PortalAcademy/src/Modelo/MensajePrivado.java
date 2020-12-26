@@ -42,7 +42,7 @@ public class MensajePrivado {
 	public Usuario getEmisor() {
 		if (this.emisor == null) {
 			bd = BD.getBD();
-			Object[] tupla = bd.Select("SELECT emisor FROM MensajePrivado WHERE idMensajePrivado = " + idMensajePrivado).get(0);
+			Object[] tupla = bd.Select("SELECT nickUsuarioEmisor FROM MensajePrivado WHERE idMensajePrivado = " + idMensajePrivado).get(0);
 			bd.finalize();
 			this.emisor = new Usuario(tupla[0].toString());
 		}
@@ -52,7 +52,7 @@ public class MensajePrivado {
 	public Usuario getReceptor() {
 		if (this.receptor == null) {
 			bd = BD.getBD();
-			Object[] tupla = bd.Select("SELECT receptor FROM MensajePrivado WHERE idMensajePrivado = " + idMensajePrivado).get(0);
+			Object[] tupla = bd.Select("SELECT nickUsuarioReceptor FROM MensajePrivado WHERE idMensajePrivado = " + idMensajePrivado).get(0);
 			bd.finalize();
 			this.receptor = new Usuario(tupla[0].toString());
 		}
@@ -63,8 +63,8 @@ public class MensajePrivado {
 		List<MensajePrivado> mensajes = new ArrayList<>();
 		bd = BD.getBD();
 		List<Object[]> tuplas = bd.Select("SELECT idMensajePrivado FROM MensajePrivado "
-				+ "WHERE emisor = '" + user.getNick() + "' AND receptor = '" + seleccionado.getNick() 
-				+ "' OR emisor = '" + seleccionado.getNick() + "' AND receptor = '" + user.getNick() + "' ORDER BY idMensajePrivado ASC");
+				+ "WHERE nickUsuarioEmisor = '" + user.getNick() + "' AND nickUsuarioReceptor = '" + seleccionado.getNick() 
+				+ "' OR nickUsuarioEmisor = '" + seleccionado.getNick() + "' AND nickUsuarioReceptor = '" + user.getNick() + "' ORDER BY idMensajePrivado ASC");
 		BD.contadorFinalize(tuplas.size() + 1);
 		bd.finalize();
 		for (Object[] tupla : tuplas) {
