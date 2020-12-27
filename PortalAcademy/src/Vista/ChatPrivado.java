@@ -24,6 +24,9 @@ public class ChatPrivado extends JPanel {
 	
 	private Usuario user;
 	private JTable chatsAbiertos;
+	private List<Usuario> users;
+	
+	private ButtonChatEditor chatEditor = new ButtonChatEditor(new JTextField());
 
 	public ChatPrivado(Usuario user) {
 		this.setBounds(0, 0, 1080, 650);
@@ -32,7 +35,6 @@ public class ChatPrivado extends JPanel {
 		this.user = user;
 		
 		getChatsAbiertos();
-		
 		
 		JScrollPane sp = new JScrollPane();
 		sp.setBounds(230, 105, 273, 479);
@@ -55,7 +57,7 @@ public class ChatPrivado extends JPanel {
 	}
 
 	private void getChatsAbiertos() {
-		List<Usuario> users = user.usuariosCompartiendoChat();
+		users = user.usuariosCompartiendoChat();
 		Object[][] datos = new Object[users.size()][1];
 		int k = 0;
 		for (Usuario usuarioChat : users) {
@@ -63,19 +65,27 @@ public class ChatPrivado extends JPanel {
 			k++;
 		}
 		
-		String[] columnHeaders = {"Imagen", "Curso", "Acceso"};
+		String[] columnHeaders = {"Chat"};
 		
 		chatsAbiertos = new JTable(datos, columnHeaders);
-		chatsAbiertos.getColumnModel().getColumn(0).setCellRenderer(new ButtonRenderer());
-		chatsAbiertos.getColumnModel().getColumn(0).setCellEditor(new ButtonEditor(new JTextField()));
+		chatsAbiertos.getColumnModel().getColumn(0).setCellRenderer(new ButtonChatRenderer());
+		chatsAbiertos.getColumnModel().getColumn(0).setCellEditor(chatEditor);
 		chatsAbiertos.setTableHeader(null);
 		chatsAbiertos.setCellSelectionEnabled(false);
 		chatsAbiertos.setShowVerticalLines(false);
 	}
+	
+	public Usuario getUsuarioSeleccionado() {
+		return users.get(chatsAbiertos.getSelectedRow());
+	}
+	
+	public void controlador(ActionListener ctr) {
+		chatEditor.controlador(ctr);
+	}
 
-	private class ButtonRenderer extends JButton implements TableCellRenderer {
+	private class ButtonChatRenderer extends JButton implements TableCellRenderer {
 		
-		public ButtonRenderer() {
+		public ButtonChatRenderer() {
 			setOpaque(true);
 		}
 
@@ -91,12 +101,12 @@ public class ChatPrivado extends JPanel {
 
 	}
 	
-	private class ButtonEditor extends DefaultCellEditor {
+	private class ButtonChatEditor extends DefaultCellEditor {
 		private JButton btn;
 		private String lbl;
 		private Boolean clicked;
 		 
-		 public ButtonEditor(JTextField txt) {
+		 public ButtonChatEditor(JTextField txt) {
 			super(txt);
 			
 			btn = new JButton();
@@ -112,7 +122,7 @@ public class ChatPrivado extends JPanel {
 			});
 		}
 		 
-		 //OVERRIDE A COUPLE OF METHODS
+//		 OVERRIDE A COUPLE OF METHODS
 		 @Override
 		public Component getTableCellEditorComponent(JTable table, Object obj, boolean selected, int row, int col) {
 

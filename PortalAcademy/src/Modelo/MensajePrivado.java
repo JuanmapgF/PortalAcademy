@@ -1,5 +1,8 @@
 package Modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MensajePrivado {
 	private Integer idMensajePrivado;
 	private String texto;
@@ -26,8 +29,6 @@ public class MensajePrivado {
 		bd.finalize();
 		this.idMensajePrivado = Integer.parseInt(tupla[0].toString());
 		this.texto = tupla[1].toString();
-		this.emisor = new Usuario(tupla[2].toString());
-		this.receptor = new Usuario(tupla[3].toString());
 	}
 	
 	public Integer getIdMensaje() {
@@ -39,10 +40,37 @@ public class MensajePrivado {
 	}
 
 	public Usuario getEmisor() {
+		if (this.emisor == null) {
+			bd = BD.getBD();
+			Object[] tupla = bd.Select("SELECT nickUsuarioEmisor FROM MensajePrivado WHERE idMensajePrivado = " + idMensajePrivado).get(0);
+			bd.finalize();
+			this.emisor = new Usuario(tupla[0].toString());
+		}
 		return emisor;
 	}
 
 	public Usuario getReceptor() {
+		if (this.receptor == null) {
+			bd = BD.getBD();
+			Object[] tupla = bd.Select("SELECT nickUsuarioReceptor FROM MensajePrivado WHERE idMensajePrivado = " + idMensajePrivado).get(0);
+			bd.finalize();
+			this.receptor = new Usuario(tupla[0].toString());
+		}
 		return receptor;
+	}
+	
+	public static List<MensajePrivado> getMensajesDeConversacion(Usuario user, Usuario seleccionado) {
+		List<MensajePrivado> mensajes = new ArrayList<>();
+		bd = BD.getBD();
+		List<Object[]> tuplas = bd.Select("SELECT idMensajePrivado FROM MensajePrivado "
+				+ "WHERE nickUsuarioEmisor = '" + user.getNick() + "' AND nickUsuarioReceptor = '" + seleccionado.getNick() 
+				+ "' OR nickUsuarioEmisor = '" + seleccionado.getNick() + "' AND nickUsuarioReceptor = '" + user.getNick() + "' ORDER BY idMensajePrivado ASC");
+		BD.contadorFinalize(tuplas.size() + 1);
+		bd.finalize();
+		for (Object[] tupla : tuplas) {
+			mensajes.add(new MensajePrivado(Integer.parseInt(tupla[0].toString())));
+		}
+		return mensajes;
+		
 	}
 }

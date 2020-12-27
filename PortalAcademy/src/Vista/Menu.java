@@ -1,5 +1,6 @@
 package Vista;
 
+import java.awt.Cursor;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
@@ -90,6 +91,7 @@ public class Menu extends JPanel {
 		btnChat.setContentAreaFilled(false);
 		btnChat.setFocusPainted(false);
 		btnChat.setBorderPainted(false);
+		btnChat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		add(btnChat);
 
 	}
@@ -134,6 +136,7 @@ public class Menu extends JPanel {
 		btnChat.setContentAreaFilled(false);
 		btnChat.setFocusPainted(false);
 		btnChat.setBorderPainted(false);
+		btnChat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		add(btnChat);
 
 	}
@@ -174,6 +177,7 @@ public class Menu extends JPanel {
 		btnChat.setContentAreaFilled(false);
 		btnChat.setFocusPainted(false);
 		btnChat.setBorderPainted(false);
+		btnChat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		add(btnChat);
 
 	}

@@ -53,7 +53,7 @@ public class Actividad {
 		try {
 			this.fecha = formato.parse(tupla[3].toString());
 		} catch (ParseException e) {
-			throw new ErrorBD("Error en la conversión del tipo fecha: " + e.getMessage());
+			throw new ErrorBD("Error en la conversiï¿½n del tipo fecha: " + e.getMessage());
 		}
 		this.lugar = tupla[4].toString();
 	}
