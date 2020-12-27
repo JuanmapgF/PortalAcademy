@@ -17,7 +17,7 @@ public class ButtonDynamic extends JButton {
 	public static final String USUARIO = "resources/img/usuario.png";
 	public static final int USUARIO_WIDTH_I = 84;
 	public static final int USUARIO_HEIGHT_I = 73;
-	public static final int USUARIO_WIDTH_F = 8473;
+	public static final int USUARIO_WIDTH_F = 325;
 	public static final int USUARIO_HEIGHT_F = 73;
 
 	private String name;
