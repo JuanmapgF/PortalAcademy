@@ -41,9 +41,9 @@ public class prueba extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		cerrar = new ButtonDynamic("Cerrar Sesion", ButtonDynamic.CERRAR_SESION);
+		cerrar = new ButtonDynamic("Sesion iniciada como: xxxxxxxxxxxxx", ButtonDynamic.USUARIO);
 		CtrButtonDynamic cbd = new CtrButtonDynamic(cerrar);
-		cerrar.setBounds(156, 98, 114, 52);
+		cerrar.setBounds(10, 100, 84, 73);
 		getContentPane().add(cbd.getBoton());
 	}
 

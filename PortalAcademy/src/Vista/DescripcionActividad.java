@@ -21,6 +21,8 @@ public class DescripcionActividad extends JPanel {
 	 * Create the panel.
 	 */
 	public DescripcionActividad(Usuario user, Actividad actividad) {
+		
+		// TODO (Juanma) Que aparezca la imagen.
 
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);

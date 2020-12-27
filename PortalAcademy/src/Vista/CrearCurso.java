@@ -1,6 +1,5 @@
 package Vista;
 
-import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.ButtonGroup;
@@ -17,7 +16,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import Controlador.CtrMenu;
-import Modelo.Organizacion;
 import Modelo.Profesor;
 
 @SuppressWarnings("serial")
@@ -49,7 +47,6 @@ public class CrearCurso extends JPanel {
 	public CrearCurso() {
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
-
 
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		lblNewLabel.setBounds(297, 140, 66, 14);

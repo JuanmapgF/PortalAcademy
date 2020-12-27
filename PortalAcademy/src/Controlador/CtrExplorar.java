@@ -29,7 +29,6 @@ public class CtrExplorar implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 
 		if (e.getActionCommand().equals("VER_CURSO")) {
 			if (ventana.esEstudiante()) {

@@ -24,6 +24,10 @@ public class Curso {
 	public Curso(String nombre, String descripcion, File imagen, Boolean publico, Integer aforo, Boolean presencial,
 			Boolean tieneForo, Profesor profesor) {
 
+		bd = BD.getBD();
+		bd.InsertCurso(nombre, descripcion, imagen, publico, aforo, presencial, tieneForo, profesor.getNick());
+		bd.finalize();
+
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.imagen = imagen;
@@ -32,18 +36,6 @@ public class Curso {
 		this.presencial = presencial;
 		this.tieneForo = tieneForo;
 		this.profesor = profesor;
-
-		bd = BD.getBD();
-		if (imagen == null) {
-			bd.Insert(
-					"INSERT INTO Curso (nombre, descripcion, imagen, publico, aforo, presencial, tieneforo, nickProfesor)"
-							+ "VALUES ('" + nombre + "', '" + descripcion + "', '" + null + "', "
-							+ ((publico) ? 1 : 0) + ", " + aforo + ", " + ((presencial) ? 1 : 0) + ", "
-							+ ((tieneForo) ? 1 : 0) + ",'" + profesor.getNick() + "')");
-		} else {
-			bd.InsertCursoConImagen(nombre, descripcion, imagen, publico, aforo, presencial, tieneForo, profesor);
-		}
-		bd.finalize();
 		mensajes = new ArrayList<Mensaje>();
 		estudiantes = new ArrayList<Usuario>();
 	}
@@ -93,15 +85,17 @@ public class Curso {
 	}
 
 	public File getImagen() {
+		bd = BD.getBD();
 		this.imagen = bd.SelectImagenCurso(this.idCurso);
+		bd.finalize();
 		return imagen;
 	}
 
-	public void setImagen(File imagen) { // Redefinir con archivos
-//		bd = BD.getBD();
-//		bd.Update("UPDATE Curso SET imagen = '" + imagen + "' WHERE idCurso = " + this.idCurso);
-//		bd.finalize();
-//		this.imagen = imagen;
+	public void setImagen(File imagen) {
+		bd = BD.getBD();
+		bd.UpdateImagenCurso(imagen, idCurso);
+		bd.finalize();
+		this.imagen = imagen;
 	}
 
 	public Boolean getPublico() {
@@ -151,9 +145,9 @@ public class Curso {
 
 	public Profesor getProfesor() {
 		bd = BD.getBD();
-		Object[] tupla = bd.Select("SELECT * FROM Curso WHERE idCurso = " + idCurso).get(0);
+		Object tupla = bd.SelectEscalar("SELECT nickProfesor FROM Curso WHERE idCurso = " + idCurso);
 		bd.finalize();
-		this.profesor = new Profesor(tupla[7].toString());
+		this.profesor = new Profesor(tupla.toString());
 		return profesor;
 	}
 

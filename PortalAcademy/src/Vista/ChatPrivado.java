@@ -82,7 +82,6 @@ public class ChatPrivado extends JPanel {
 		@Override
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
 				int row, int column) {
-			// TODO Auto-generated method stub
 			this.setText((String) value);
 			this.setContentAreaFilled(false);
 			this.setFocusPainted(false);
@@ -148,7 +147,6 @@ public class ChatPrivado extends JPanel {
 		 
 		 @Override
 		public void fireEditingStopped() {
-			// TODO Auto-generated method stub
 			super.fireEditingStopped();
 		}
 		 

@@ -1,31 +1,30 @@
 package Vista;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.util.Date;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import com.toedter.calendar.JDateChooser;
 
 import Controlador.CtrMenu;
 import Modelo.Organizacion;
-import Modelo.Profesor;
 
 @SuppressWarnings("serial")
 public class CrearActividad extends JPanel {
 
 	public JTextField textFieldNombre;
-	public JTextField textFieldImagen;
 	public JTextArea textAreaDescripcion;
 	public JSpinner spinnerAforo;
-	
+
 	public JButton btnCrearActividad;
 	public JButton btnCancelar;
 	public JDateChooser dateChooser;
@@ -33,11 +32,15 @@ public class CrearActividad extends JPanel {
 	public JTextField textFieldLugar;
 	private JLabel lblNewLabel_1;
 
+	public JButton btnSeleccionar;
+	public JFileChooser fileChooserImagen;
+	public JLabel lblImagenSeleccionada;
 
 	/**
 	 * Create the panel.
 	 */
 	public CrearActividad() {
+
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
 
@@ -62,11 +65,6 @@ public class CrearActividad extends JPanel {
 		add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 
-		textFieldImagen = new JTextField();
-		textFieldImagen.setColumns(10);
-		textFieldImagen.setBounds(541, 190, 242, 20);
-		add(textFieldImagen);
-
 		textAreaDescripcion = new JTextArea();
 		JScrollPane jsp = new JScrollPane(textAreaDescripcion);
 		jsp.setBounds(541, 241, 242, 47);
@@ -75,7 +73,6 @@ public class CrearActividad extends JPanel {
 		spinnerAforo = new JSpinner();
 		spinnerAforo.setBounds(612, 377, 90, 20);
 		add(spinnerAforo);
-
 
 		btnCrearActividad = new JButton("Crear actividad");
 		btnCrearActividad.setBounds(400, 546, 139, 35);
@@ -113,6 +110,18 @@ public class CrearActividad extends JPanel {
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		lblNewLabel_1.setBounds(402, 35, 171, 40);
 		add(lblNewLabel_1);
+		
+		btnSeleccionar = new JButton("Seleccionar");
+		btnSeleccionar.setBounds(675, 196, 109, 23);
+		add(btnSeleccionar);
+
+		lblImagenSeleccionada = new JLabel("");
+		lblImagenSeleccionada.setHorizontalAlignment(SwingConstants.LEFT);
+		lblImagenSeleccionada.setBounds(540, 200, 138, 14);
+		add(lblImagenSeleccionada);
+
+		fileChooserImagen = new JFileChooser();
+		fileChooserImagen.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
 		CtrMenu menu = new CtrMenu(new Menu((new Organizacion(Main.getUser().getNick()))));
 		add(menu.getPanel());

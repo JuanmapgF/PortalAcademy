@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ public class Actividad {
 	private Integer idActividad;
 	private String nombre;
 	private String descripcion;
-	private String imagen;
+	private File imagen;
 	private int aforo;
 	private Date fecha;
 	private String lugar;
@@ -23,12 +24,10 @@ public class Actividad {
 
 	private static BD bd;
 
-	public Actividad(String nombre, String descripcion, String imagen, int aforo, Date fecha, String lugar,
+	public Actividad(String nombre, String descripcion, File imagen, int aforo, Date fecha, String lugar,
 			Organizacion organizacion) {
 		bd = BD.getBD();
-		bd.Insert("INSERT INTO Actividad (nombre, descripcion, imagen, aforo, fecha, lugar, nickOrganizacion)"
-				+ "VALUES ('" + nombre + "', '" + descripcion + "', '" + imagen + "'," + aforo + ", '"
-				+ formato.format(fecha) + "','" + lugar + "','" + organizacion.getNick() + "')");
+		bd.InsertActividad(nombre, descripcion, imagen, aforo, formato.format(fecha), lugar, organizacion.getNick());
 		bd.finalize();
 
 		this.nombre = nombre;
@@ -42,20 +41,21 @@ public class Actividad {
 
 	public Actividad(Integer idActividad) {
 		bd = BD.getBD();
-		Object[] tupla = bd.Select("SELECT * FROM Actividad WHERE idActividad = " + idActividad).get(0);
+		Object[] tupla = bd.Select(
+				"SELECT nombre, descripcion, aforo, fecha, lugar FROM Actividad WHERE idActividad = " + idActividad)
+				.get(0);
 		bd.finalize();
 
-		this.idActividad = Integer.parseInt(tupla[0].toString());
-		this.nombre = tupla[1].toString();
-		this.descripcion = tupla[2].toString();
-		this.imagen = tupla[3].toString();
-		this.aforo = Integer.parseInt(tupla[4].toString());
+		this.idActividad = idActividad;
+		this.nombre = tupla[0].toString();
+		this.descripcion = tupla[1].toString();
+		this.aforo = Integer.parseInt(tupla[2].toString());
 		try {
-			this.fecha = formato.parse(tupla[5].toString());
+			this.fecha = formato.parse(tupla[3].toString());
 		} catch (ParseException e) {
 			throw new ErrorBD("Error en la conversión del tipo fecha: " + e.getMessage());
 		}
-		this.lugar = tupla[6].toString();
+		this.lugar = tupla[4].toString();
 	}
 
 	public Integer getId() {
@@ -84,13 +84,16 @@ public class Actividad {
 		this.descripcion = descripcion;
 	}
 
-	public String getImagen() {
+	public File getImagen() {
+		bd = BD.getBD();
+		this.imagen = bd.SelectImagenActividad(idActividad);
+		bd.finalize();
 		return imagen;
 	}
 
-	public void setImagen(String imagen) {
+	public void setImagen(File imagen) {
 		bd = BD.getBD();
-		bd.Update("UPDATE Actividad SET imagen = '" + imagen + "' WHERE idActividad = " + this.idActividad);
+		bd.UpdateImagenActividad(imagen, idActividad);
 		bd.finalize();
 		this.imagen = imagen;
 	}
@@ -132,7 +135,8 @@ public class Actividad {
 	public Organizacion getOrganizacion() {
 		if (organizacion == null) {
 			bd = BD.getBD();
-			Object tupla = bd.SelectEscalar("SELECT nickOrganizacion FROM Actividad WHERE idActividad = " + idActividad);
+			Object tupla = bd
+					.SelectEscalar("SELECT nickOrganizacion FROM Actividad WHERE idActividad = " + idActividad);
 			bd.finalize();
 			this.organizacion = new Organizacion(tupla.toString());
 		}
@@ -165,7 +169,7 @@ public class Actividad {
 		bd.finalize();
 		this.nombre = "";
 		this.descripcion = "";
-		this.imagen = "";
+		this.imagen = null;
 		this.lugar = "";
 		this.aforo = -1;
 		this.fecha = null;
@@ -181,7 +185,7 @@ public class Actividad {
 	public static List<Actividad> getTodasLasActividades() {
 		List<Actividad> listaActividades = new ArrayList<>();
 		bd = BD.getBD();
-		List<Object[]> actividades = bd.Select("SELECT * FROM Actividad");
+		List<Object[]> actividades = bd.Select("SELECT idActividad FROM Actividad");
 		BD.contadorFinalize(actividades.size() + 1);
 		bd.finalize();
 		for (Object[] tupla : actividades) {

@@ -9,29 +9,50 @@ import javax.swing.JButton;
 @SuppressWarnings("serial")
 public class ButtonDynamic extends JButton {
 
-	public static final String CERRAR_SESION = "resources/img/cerrarSesion.png";
-	private static final int CERRAR_SESION_WIDTH = 114;
-	private static final int CERRAR_SESION_HEIGHT = 52;
+	public static final String CERRAR_SESION = "resources/img/cerrar_sesion.png";
+	public static final int CERRAR_SESION_WIDTH_I = 114;
+	public static final int CERRAR_SESION_HEIGHT_I = 52;
+	public static final int CERRAR_SESION_WIDTH_F = 114;
+	public static final int CERRAR_SESION_HEIGHT_F = 52;
+	public static final String USUARIO = "resources/img/usuario.png";
+	public static final int USUARIO_WIDTH_I = 84;
+	public static final int USUARIO_HEIGHT_I = 73;
+	public static final int USUARIO_WIDTH_F = 8473;
+	public static final int USUARIO_HEIGHT_F = 73;
 
 	private String name;
+	private String icono;
 
 	public ButtonDynamic(String name, String icono) {
 		super();
 		this.name = name;
+		this.icono = icono;
 		setIcon(new ImageIcon(icono));
 		setFont(new Font("HP Simplified", Font.ITALIC, 15));
 		setContentAreaFilled(false);
-		setHorizontalTextPosition(CENTER);
-		setHorizontalAlignment(CENTER);
-		setVerticalTextPosition(BOTTOM);
-		setVerticalAlignment(CENTER);
+		setBorderPainted(false);
 
 		if (icono == CERRAR_SESION) {
-			setPreferredSize(new Dimension(CERRAR_SESION_WIDTH, CERRAR_SESION_HEIGHT));
+			setHorizontalTextPosition(CENTER);
+			setHorizontalAlignment(CENTER);
+			setVerticalTextPosition(BOTTOM);
+			setVerticalAlignment(CENTER);
+			setPreferredSize(new Dimension(CERRAR_SESION_WIDTH_I, CERRAR_SESION_HEIGHT_I));
+
+		} else if (icono == USUARIO) {
+			setHorizontalTextPosition(RIGHT);
+			setHorizontalAlignment(LEFT);
+			setVerticalTextPosition(CENTER);
+			setVerticalAlignment(CENTER);
+			setPreferredSize(new Dimension(USUARIO_WIDTH_I, USUARIO_HEIGHT_I));
 		}
 	}
 
 	public String getName() {
 		return name;
+	}
+
+	public String getIcono() {
+		return icono;
 	}
 }

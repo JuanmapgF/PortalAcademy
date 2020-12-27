@@ -32,7 +32,8 @@ public class CtrEditarCurso implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		
+		// TODO (Juanma) Añadir el cambio de la imagen.
 
 		if (e.getActionCommand().equals("GUARDAR")) {
 			if (ventana.getAforo() > 0) {

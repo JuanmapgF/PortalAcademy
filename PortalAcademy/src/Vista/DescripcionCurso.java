@@ -1,12 +1,9 @@
 package Vista;
 
-import java.awt.Color;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,9 +11,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import Controlador.CtrMenu;
-import Modelo.*;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
+import Modelo.Curso;
+import Modelo.Estudiante;
+import Modelo.Organizacion;
+import Modelo.Profesor;
+import Modelo.Usuario;
 
 @SuppressWarnings("serial")
 public class DescripcionCurso extends JPanel {
@@ -45,11 +44,8 @@ public class DescripcionCurso extends JPanel {
 		add(unirse);
 
 		File imagen = curso.getImagen();
-		if (imagen == null) {
-			jsp.setBounds(292, 131, 652, 371);
-		} else {
-			jsp.setBounds(470, 132, 471, 371);
-		}
+		jsp.setBounds(292, 131, 652, 371);
+		jsp.setBounds(470, 132, 471, 371);
 		JPanelImagen jpi = new JPanelImagen(imagen != null ? imagen.getName() : null);
 		jpi.setBounds(202, 132, 250, 225);
 		add(jpi);

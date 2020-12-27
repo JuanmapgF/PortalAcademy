@@ -37,7 +37,6 @@ public class CtrAdminInicio implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		
 		// pulsar en cualquiera de los dos botones de "ACTIVIDAD"
 		if(e.getSource() == vista.bActividades || e.getSource() == vista.bActividades_1 ) {

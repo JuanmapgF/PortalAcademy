@@ -58,7 +58,6 @@ public class Pruebesita extends JFrame {
 		}
 		@Override
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-			// TODO Auto-generated method stub
 			
 			this.setText((value==null) ? "":value.toString());
 			return this;
@@ -123,7 +122,6 @@ public class Pruebesita extends JFrame {
 		 
 		 @Override
 		protected void fireEditingStopped() {
-			// TODO Auto-generated method stub
 			super.fireEditingStopped();
 		}
 	}

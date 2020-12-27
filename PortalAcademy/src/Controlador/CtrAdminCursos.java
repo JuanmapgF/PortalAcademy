@@ -37,8 +37,6 @@ public class CtrAdminCursos implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-
 		// pulsar en el botón "ELIMINAR" tras seleccionar un curso
 		if (e.getSource() == vista.bEliminar) {
 			Curso cur = vista.getCurso();

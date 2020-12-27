@@ -4,7 +4,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Controlador.CtrButtonDynamic;
@@ -23,6 +22,7 @@ public class Menu extends JPanel {
 	private JButton ajustes;
 	private JButton registrarse;
 	private JButton btnChat;
+	private ButtonDynamic user;
 
 	private Estudiante est = null;
 	private Organizacion org = null;
@@ -60,8 +60,8 @@ public class Menu extends JPanel {
 		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
 		cerrar.setBounds(860, 37, (int) cerrar.getPreferredSize().getWidth(),
 				(int) cerrar.getPreferredSize().getHeight());
-		CtrButtonDynamic cbd = new CtrButtonDynamic(cerrar);
-		add(cbd.getBoton());
+		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
+		add(cbdCerrar.getBoton());
 
 		explorar = new JButton("Explorar");
 		explorar.setBounds(36, 191, 131, 32);
@@ -79,9 +79,10 @@ public class Menu extends JPanel {
 		ajustes.setBounds(36, 413, 131, 32);
 		add(ajustes);
 
-		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + estudiante.getNick());
-		lblNewLabel_2.setBounds(68, 11, 240, 20);
-		add(lblNewLabel_2);
+		user = new ButtonDynamic("Sesión iniciada como: " + estudiante.getNick(), ButtonDynamic.USUARIO);
+		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
+		user.setBounds(0, 11, (int) user.getPreferredSize().getWidth(), (int) user.getPreferredSize().getHeight());
+		add(cbdUser.getBoton());
 
 		btnChat = new JButton("");
 		btnChat.setBounds(318, 11, 46, 32);
@@ -91,10 +92,6 @@ public class Menu extends JPanel {
 		btnChat.setBorderPainted(false);
 		add(btnChat);
 
-		JLabel imagenUsuario = new JLabel("");
-		imagenUsuario.setBounds(0, 0, 64, 60);
-		imagenUsuario.setIcon(new ImageIcon(getClass().getResource("/img/usuario.png")));
-		add(imagenUsuario);
 	}
 
 	public Menu(Profesor profesor) {
@@ -107,8 +104,8 @@ public class Menu extends JPanel {
 		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
 		cerrar.setBounds(860, 37, (int) cerrar.getPreferredSize().getWidth(),
 				(int) cerrar.getPreferredSize().getHeight());
-		CtrButtonDynamic cbd = new CtrButtonDynamic(cerrar);
-		add(cbd.getBoton());
+		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
+		add(cbdCerrar.getBoton());
 
 		explorar = new JButton("Explorar");
 		explorar.setBounds(36, 191, 131, 32);
@@ -126,9 +123,10 @@ public class Menu extends JPanel {
 		ajustes.setBounds(36, 413, 131, 32);
 		add(ajustes);
 
-		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + profesor.getNick());
-		lblNewLabel_2.setBounds(68, 11, 240, 20);
-		add(lblNewLabel_2);
+		user = new ButtonDynamic("Sesión iniciada como: " + profesor.getNick(), ButtonDynamic.USUARIO);
+		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
+		user.setBounds(0, 11, (int) user.getPreferredSize().getWidth(), (int) user.getPreferredSize().getHeight());
+		add(cbdUser.getBoton());
 
 		btnChat = new JButton("");
 		btnChat.setBounds(318, 11, 46, 32);
@@ -138,10 +136,6 @@ public class Menu extends JPanel {
 		btnChat.setBorderPainted(false);
 		add(btnChat);
 
-		JLabel imagenUsuario = new JLabel("");
-		imagenUsuario.setBounds(0, 0, 64, 60);
-		imagenUsuario.setIcon(new ImageIcon(getClass().getResource("/img/usuario.png")));
-		add(imagenUsuario);
 	}
 
 	public Menu(Organizacion organizacion) {
@@ -154,8 +148,8 @@ public class Menu extends JPanel {
 		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
 		cerrar.setBounds(860, 37, (int) cerrar.getPreferredSize().getWidth(),
 				(int) cerrar.getPreferredSize().getHeight());
-		CtrButtonDynamic cbd = new CtrButtonDynamic(cerrar);
-		add(cbd.getBoton());
+		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
+		add(cbdCerrar.getBoton());
 
 		explorar = new JButton("Explorar");
 		explorar.setBounds(36, 191, 131, 32);
@@ -169,9 +163,10 @@ public class Menu extends JPanel {
 		ajustes.setBounds(36, 336, 131, 32);
 		add(ajustes);
 
-		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + organizacion.getNick());
-		lblNewLabel_2.setBounds(68, 11, 240, 20);
-		add(lblNewLabel_2);
+		user = new ButtonDynamic("Sesión iniciada como: " + organizacion.getNick(), ButtonDynamic.USUARIO);
+		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
+		user.setBounds(0, 11, (int) user.getPreferredSize().getWidth(), (int) user.getPreferredSize().getHeight());
+		add(cbdUser.getBoton());
 
 		btnChat = new JButton("");
 		btnChat.setBounds(318, 11, 46, 32);
@@ -181,10 +176,6 @@ public class Menu extends JPanel {
 		btnChat.setBorderPainted(false);
 		add(btnChat);
 
-		JLabel imagenUsuario = new JLabel("");
-		imagenUsuario.setBounds(0, 0, 64, 60);
-		imagenUsuario.setIcon(new ImageIcon(getClass().getResource("/img/usuario.png")));
-		add(imagenUsuario);
 	}
 
 	public void controlador(ActionListener ctr) {

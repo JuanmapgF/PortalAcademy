@@ -31,13 +31,11 @@ public class CtrInicio2 implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
 
 		int key = e.getKeyCode();
 
@@ -61,7 +59,6 @@ public class CtrInicio2 implements KeyListener {
 						est = new Estudiante(ini.getNick());
 
 					} catch (ParseException e2) {
-						// TODO Auto-generated catch block
 						e2.printStackTrace();
 					} finally {
 						Main.setUser(est);
@@ -121,7 +118,6 @@ public class CtrInicio2 implements KeyListener {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 

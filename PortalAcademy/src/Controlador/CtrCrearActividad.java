@@ -2,35 +2,45 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Modelo.Actividad;
-import Modelo.Curso;
 import Modelo.ErrorBD;
 import Modelo.Organizacion;
-import Vista.Ajustes;
 import Vista.CrearActividad;
-import Vista.Explorar;
 import Vista.Main;
 import Vista.MisActividades;
 
 public class CtrCrearActividad implements ActionListener {
 
+	// TODO (Juanma) Añadir cambio de la imagen.
+
 	private CrearActividad vista;
 	private Organizacion organizacion;
+	private File imagen;
 
 	public CtrCrearActividad(CrearActividad v) {
 		vista = v;
 		organizacion = new Organizacion(Main.getUser().getNick());
 		vista.btnCrearActividad.addActionListener(this);
 		vista.btnCancelar.addActionListener(this);
+		vista.btnSeleccionar.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+
+		if (e.getSource() == vista.btnSeleccionar) {
+			if (vista.fileChooserImagen.showOpenDialog(vista.fileChooserImagen) == JFileChooser.APPROVE_OPTION) {
+				imagen = vista.fileChooserImagen.getSelectedFile();
+				vista.lblImagenSeleccionada.setText(imagen.getName());
+			}
+		}
+
 		if (e.getSource() == vista.btnCrearActividad) {
 			try {
 				if (!nombreValido()) {
@@ -45,10 +55,10 @@ public class CtrCrearActividad implements ActionListener {
 
 				if (!fechaValida()) {
 					throw new ErrorBD("La fecha debe ser asignada para algún día");
-				}				
-				
+				}
+
 				Actividad actividad = new Actividad(vista.textFieldNombre.getText(),
-						vista.textAreaDescripcion.getText(), vista.textFieldImagen.getText(),
+						vista.textAreaDescripcion.getText(), vista.fileChooserImagen.getSelectedFile(),
 						Integer.parseInt(vista.spinnerAforo.getValue().toString()), vista.dateChooser.getDate(),
 						vista.textFieldLugar.getText(), organizacion);
 

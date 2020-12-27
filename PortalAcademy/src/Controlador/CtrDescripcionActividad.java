@@ -24,7 +24,6 @@ public class CtrDescripcionActividad implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		if (e.getActionCommand().equals("Unirse")) {
 			if(user == null) {
 				CtrInformacionActividad c = new CtrInformacionActividad(null, actividad);

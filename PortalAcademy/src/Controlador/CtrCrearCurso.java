@@ -8,13 +8,10 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import Modelo.Actividad;
 import Modelo.Curso;
 import Modelo.ErrorBD;
 import Modelo.Profesor;
-import Vista.Ajustes;
 import Vista.CrearCurso;
-import Vista.Explorar;
 import Vista.Main;
 import Vista.MisCursos;
 
@@ -41,7 +38,6 @@ public class CtrCrearCurso implements ActionListener {
 			}
 		}
 
-		
 		if (e.getSource() == vista.btnCrearCurso) {
 			try {
 				if (!nombreValido()) {

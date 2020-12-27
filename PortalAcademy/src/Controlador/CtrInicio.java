@@ -33,7 +33,6 @@ public class CtrInicio implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 
 		if (e.getActionCommand().equals("REGISTRATE")) {
 			CtrRegistro cr = new CtrRegistro(new Registro());
@@ -68,7 +67,6 @@ public class CtrInicio implements ActionListener {
 						est = new Estudiante(ini.getNick());
 
 					} catch (ParseException e2) {
-						// TODO Auto-generated catch block
 						e2.printStackTrace();
 					} finally {
 						Main.setUser(est);

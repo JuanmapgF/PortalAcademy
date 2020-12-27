@@ -7,9 +7,6 @@ import javax.swing.JPanel;
 
 import Modelo.Actividad;
 import Modelo.Curso;
-import Modelo.Estudiante;
-import Modelo.Organizacion;
-import Modelo.Profesor;
 import Vista.Ajustes;
 import Vista.Explorar;
 import Vista.Inicio;
@@ -29,7 +26,6 @@ public class CtrMenu implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 
 		if (e.getActionCommand().equals("INICIAR_SESION")) {
 			Inicio i = new Inicio();

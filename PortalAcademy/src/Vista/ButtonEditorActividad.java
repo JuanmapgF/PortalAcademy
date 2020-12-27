@@ -65,7 +65,6 @@ public class ButtonEditorActividad extends DefaultCellEditor {
 	 
 	 @Override
 	public void fireEditingStopped() {
-		// TODO Auto-generated method stub
 		super.fireEditingStopped();
 	}
 	 

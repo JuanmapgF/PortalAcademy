@@ -133,7 +133,7 @@ public class Explorar extends JPanel {
 		prof = e;
 		setLayout(null);
 		
-		datosTablaUsuario();
+//		datosTablaUsuario();
 		
 		JLabel lblNewLabel = new JLabel("Explorar");
 		lblNewLabel.setBounds(543, 30, 107, 33);
