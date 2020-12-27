@@ -37,23 +37,34 @@ public class CtrChatPrivado implements ActionListener {
 			}
 			seleccionado = ventana.getUsuarioSeleccionado();
 			conversacion = new Conversacion(user, seleccionado);
+			
 			ventana.add(conversacion);
-			ventana.controlador(this);
+			conversacion.controlador(this);
+			conversacion.revalidate();
+			conversacion.repaint();
 		}
 		
 		if (e.getActionCommand().equals("ENVIAR")) {
 			ventana.remove(conversacion);
 			new MensajePrivado(conversacion.getMensaje(), user, seleccionado);
 			conversacion = new Conversacion(user, seleccionado);
+			
 			ventana.add(conversacion);
-			ventana.controlador(this);
+			conversacion.controlador(this);
+			conversacion.revalidate();
+			conversacion.repaint();
+			
 		}
 		
 		if (e.getActionCommand().equals("REFRESCAR")) {
 			ventana.remove(conversacion);
 			conversacion = new Conversacion(user, seleccionado);
+			
 			ventana.add(conversacion);
-			ventana.controlador(this);
+			conversacion.controlador(this);
+			conversacion.revalidate();
+			conversacion.repaint();
+			
 		}
 	}
 	

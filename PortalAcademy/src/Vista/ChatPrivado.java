@@ -36,7 +36,6 @@ public class ChatPrivado extends JPanel {
 		
 		getChatsAbiertos();
 		
-		
 		JScrollPane sp = new JScrollPane();
 		sp.setBounds(230, 105, 273, 479);
 		sp.setViewportView(chatsAbiertos);
@@ -66,7 +65,7 @@ public class ChatPrivado extends JPanel {
 			k++;
 		}
 		
-		String[] columnHeaders = {"Imagen", "Curso", "Acceso"};
+		String[] columnHeaders = {"Chat"};
 		
 		chatsAbiertos = new JTable(datos, columnHeaders);
 		chatsAbiertos.getColumnModel().getColumn(0).setCellRenderer(new ButtonChatRenderer());
@@ -124,7 +123,7 @@ public class ChatPrivado extends JPanel {
 			});
 		}
 		 
-		 //OVERRIDE A COUPLE OF METHODS
+//		 OVERRIDE A COUPLE OF METHODS
 		 @Override
 		public Component getTableCellEditorComponent(JTable table, Object obj, boolean selected, int row, int col) {
 

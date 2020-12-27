@@ -50,19 +50,19 @@ public class Conversacion extends JPanel {
 		
 		getMensajes();
 		
-		JScrollPane sp = new JScrollPane();	
-		sp.setBounds(500, 105, 273, 446);
+		JScrollPane sp = new JScrollPane();
+		sp.setBounds(550, 105, 273, 446);
 		sp.setViewportView(tablaMensajes);
 		add(sp);
 		
 		textField = new JTextField();
-		textField.setBounds(500, 562, 240, 20);
+		textField.setBounds(550, 562, 240, 20);
 		add(textField);
 		textField.setColumns(20);
 		
 		enviar = new JButton("");
 		enviar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		enviar.setBounds(746, 554, 40, 36);
+		enviar.setBounds(796, 554, 40, 36);
 		enviar.setIcon(new ImageIcon(getClass().getResource("/img/enviar.png")));
 		enviar.setContentAreaFilled(false);
 		enviar.setFocusPainted(false);
@@ -71,7 +71,7 @@ public class Conversacion extends JPanel {
 		
 		refrescar = new JButton("");
 		refrescar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		refrescar.setBounds(733, 58, 40, 36);
+		refrescar.setBounds(783, 58, 40, 36);
 		refrescar.setIcon(new ImageIcon(getClass().getResource("/img/refrescar.png")));
 		refrescar.setContentAreaFilled(false);
 		refrescar.setFocusPainted(false);
@@ -81,7 +81,7 @@ public class Conversacion extends JPanel {
 		JLabel nombreReceptor = new JLabel(seleccionado.getNick());
 		nombreReceptor.setHorizontalAlignment(SwingConstants.CENTER);
 		nombreReceptor.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		nombreReceptor.setBounds(500, 58, 223, 36);
+		nombreReceptor.setBounds(550, 58, 223, 36);
 		add(nombreReceptor);
 		
 		
