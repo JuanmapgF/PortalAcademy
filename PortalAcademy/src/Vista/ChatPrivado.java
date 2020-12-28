@@ -137,7 +137,7 @@ public class ChatPrivado extends JPanel {
 	}
 
 	private void getChatsAbiertos() {
-		users = user.usuariosCompartiendoChat();
+		users = MensajePrivado.usuariosCompartiendoChat(user);
 		Object[][] datos = new Object[users.size()][1];
 		int k = 0;
 		for (Usuario usuarioChat : users) {

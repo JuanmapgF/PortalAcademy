@@ -74,4 +74,31 @@ public class MensajePrivado {
 		return mensajes;
 		
 	}
+	
+	public static List<Usuario> usuariosCompartiendoChat(Usuario user) {
+		List<Usuario> usuarios = new ArrayList<>();
+		BD miBD = BD.getBD();
+		List<Object[]> users = miBD.Select("SELECT a.idMensajePrivado, a.nickUsuarioEmisor, a.nickUsuarioReceptor "
+				+ "FROM MensajePrivado AS a "
+				+ "WHERE nickUsuarioReceptor = '" + user.getNick() + "' AND "
+						+ "NOT EXISTS (SELECT s1.idMensajePrivado, s1.nickUsuarioEmisor, s1.nickUsuarioReceptor FROM MensajePrivado AS s1 WHERE s1.nickUsuarioReceptor = '" + user.getNick() + "' "
+						+ "AND a.idMensajePrivado < s1.idMensajePrivado) AND "
+						+ "NOT EXISTS (SELECT s2.idMensajePrivado, s2.nickUsuarioEmisor, s2.nickUsuarioReceptor FROM MensajePrivado AS s2 WHERE s2.nickUsuarioEmisor = '" + user.getNick() + "' "
+								+ "AND a.nickUsuarioEmisor = s2.nickUsuarioReceptor AND a.idMensajePrivado < s2.idMensajePrivado) "
+				+ "UNION SELECT b.idMensajePrivado, b.nickUsuarioReceptor, b.nickUsuarioReceptor "
+				+ "FROM MensajePrivado AS b "
+				+ "WHERE nickUsuarioEmisor = '" + user.getNick() + "' AND "
+						+ "NOT EXISTS (SELECT s3.idMensajePrivado, s3.nickUsuarioEmisor, s3.nickUsuarioReceptor FROM MensajePrivado AS s3 WHERE s3.nickUsuarioEmisor = '" + user.getNick() + "' "
+						+ "AND b.idMensajePrivado < s3.idMensajePrivado) AND "
+						+ "NOT EXISTS (SELECT s4.idMensajePrivado, s4.nickUsuarioEmisor, s4.nickUsuarioReceptor FROM MensajePrivado AS s4 WHERE s4.nickUsuarioReceptor = '" + user.getNick() + "' "
+								+ "AND b.nickUsuarioReceptor = s4.nickUsuarioEmisor AND b.idMensajePrivado < s4.idMensajePrivado) "
+				+ "ORDER BY 1");
+		BD.contadorFinalize(users.size() + 1);
+		miBD.finalize();
+		for (Object[] tupla : users) {
+			usuarios.add(new Usuario((String) tupla[1]));
+		}
+		return usuarios;
+	}
+
 }
