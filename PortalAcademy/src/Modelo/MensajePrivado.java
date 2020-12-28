@@ -29,6 +29,7 @@ public class MensajePrivado {
 		bd.finalize();
 		this.idMensajePrivado = Integer.parseInt(tupla[0].toString());
 		this.texto = tupla[1].toString();
+		this.emisor = (new Usuario(tupla[2].toString()));
 	}
 	
 	public Integer getIdMensaje() {
@@ -65,7 +66,7 @@ public class MensajePrivado {
 		List<Object[]> tuplas = bd.Select("SELECT idMensajePrivado FROM MensajePrivado "
 				+ "WHERE nickUsuarioEmisor = '" + user.getNick() + "' AND nickUsuarioReceptor = '" + seleccionado.getNick() 
 				+ "' OR nickUsuarioEmisor = '" + seleccionado.getNick() + "' AND nickUsuarioReceptor = '" + user.getNick() + "' ORDER BY idMensajePrivado ASC");
-		BD.contadorFinalize(tuplas.size() + 1);
+		BD.contadorFinalize(2 * tuplas.size() + 1);
 		bd.finalize();
 		for (Object[] tupla : tuplas) {
 			mensajes.add(new MensajePrivado(Integer.parseInt(tupla[0].toString())));
