@@ -16,6 +16,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import Controlador.CtrMenu;
@@ -39,6 +42,7 @@ public class ChatPrivado extends JPanel {
 	private JButton enviar;
 	private JButton refrescar;
 	
+	private MensajeRenderer mensajeRenderer = new MensajeRenderer(this);
 	private ButtonChatEditor chatEditor = new ButtonChatEditor(this, new JTextField());
 	
 	private JTextField textFieldNuevoChat;
@@ -65,7 +69,12 @@ public class ChatPrivado extends JPanel {
 		textFieldNuevoChat.setColumns(10);
 		
 		buttonAgregarChat = new JButton("");
-		buttonAgregarChat.setBounds(230, 73, 23, 23);
+		buttonAgregarChat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		buttonAgregarChat.setBounds(220, 65, 34, 36);
+		buttonAgregarChat.setIcon(new ImageIcon(getClass().getResource("/img/agregar_chat.png")));
+		buttonAgregarChat.setContentAreaFilled(false);
+		buttonAgregarChat.setFocusPainted(false);
+		buttonAgregarChat.setBorderPainted(false);
 		add(buttonAgregarChat);
 		
 		
@@ -82,6 +91,7 @@ public class ChatPrivado extends JPanel {
 	}
 	
 
+	
 	public ChatPrivado(Usuario user, Usuario seleccionado) {
 		
 		this.setBounds(0, 0, 1080, 650);
@@ -99,14 +109,17 @@ public class ChatPrivado extends JPanel {
 		add(sp);
 		chatsAbiertos.setRowHeight(75);
 		
+		
 		getMensajes();
 		
 		JScrollPane chat = new JScrollPane();
 		chat.setBounds(550, 105, 273, 446);
 		chat.setViewportView(tablaMensajes);
+		chat.setAutoscrolls(true);
 		add(chat);
-		tablaMensajes.setRowHeight(50);
-//		chat.setBorder(BorderFactory.createEmptyBorder());
+		
+		tablaMensajes.setRowHeight(80);
+		chat.setBorder(BorderFactory.createEmptyBorder());
 		
 		textField = new JTextField();
 		textField.setBounds(550, 562, 240, 20);
@@ -145,7 +158,12 @@ public class ChatPrivado extends JPanel {
 		textFieldNuevoChat.setColumns(10);
 		
 		buttonAgregarChat = new JButton("");
-		buttonAgregarChat.setBounds(230, 73, 23, 23);
+		buttonAgregarChat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		buttonAgregarChat.setBounds(220, 65, 34, 36);
+		buttonAgregarChat.setIcon(new ImageIcon(getClass().getResource("/img/agregar_chat.png")));
+		buttonAgregarChat.setContentAreaFilled(false);
+		buttonAgregarChat.setFocusPainted(false);
+		buttonAgregarChat.setBorderPainted(false);
 		add(buttonAgregarChat);
 		
 		if (user instanceof Profesor) {
@@ -162,18 +180,31 @@ public class ChatPrivado extends JPanel {
 
 	private void getChatsAbiertos() {
 		users = MensajePrivado.usuariosCompartiendoChat(user);
-		Object[][] datos = new Object[users.size()][1];
+		Object[][] datos = new Object[users.size()][2];
+		MensajePrivado aux;
 		int k = 0;
 		for (Usuario usuarioChat : users) {
 			datos[k][0] = usuarioChat.getNick();
+			aux = MensajePrivado.getUltimoMensaje(user, usuarioChat);
+			if (aux.getEmisor().equals(user)) {
+				datos[k][1] = true;
+			} else {
+				if (aux.getLeido()) {
+					datos[k][1] = true;
+				} else {
+					datos[k][1] = false;
+				}
+			}
+			
 			k++;
 		}
 		
-		String[] columnHeaders = {"Chat"};
+		String[] columnHeaders = {"Chat", "Notificacion"};
 		
 		chatsAbiertos = new JTable(datos, columnHeaders);
 		chatsAbiertos.getColumnModel().getColumn(0).setCellRenderer(new ButtonChatRenderer(this));
 		chatsAbiertos.getColumnModel().getColumn(0).setCellEditor(chatEditor);
+		chatsAbiertos.getColumnModel().getColumn(1).setCellRenderer(new ButtonChatRenderer(this));
 		chatsAbiertos.setTableHeader(null);
 		chatsAbiertos.setCellSelectionEnabled(false);
 		chatsAbiertos.setShowVerticalLines(false);
@@ -181,31 +212,39 @@ public class ChatPrivado extends JPanel {
 	
 	private void getMensajes() {
 		mensajes = MensajePrivado.getMensajesDeConversacion(user, seleccionado);
-		Object[][] datos = new Object[mensajes.size()][2];
+		
+		String[] columnHeadersConver = {"Receptor", "Emisor"};
+		Object[][] datosConver;
+		
+		datosConver = new Object[mensajes.size()][2];
+		
 		int k = 0;
 		for (MensajePrivado mensajeChat : mensajes) {
 			if (mensajeChat.getEmisor().equals(user)) {
-				datos[k][0] = "";
-				datos[k][1] = mensajeChat.getTexto();
+				datosConver[k][0] = "";
+				datosConver[k][1] = mensajeChat.getTexto();
 			} else {
-				datos[k][0] = mensajeChat.getTexto();
-				datos[k][1] = "";
+				datosConver[k][0] = mensajeChat.getTexto();
+				datosConver[k][1] = "";
 			}
 			k++;
 		}
 		
-		String[] columnHeaders = {"Receptor", "Emisor"};
-		
-		tablaMensajes = new JTable(datos, columnHeaders);
-		tablaMensajes.getColumnModel().getColumn(0).setCellRenderer(new MensajeRenderer(this));
-		tablaMensajes.getColumnModel().getColumn(1).setCellRenderer(new MensajeRenderer(this));
+		tablaMensajes = new JTable(datosConver, columnHeadersConver);
+		Border border = mensajeRenderer.getBorder();
+    	Border margin = new EmptyBorder(5,5,5,5);
+    	mensajeRenderer.setBorder(new CompoundBorder(border, margin));
+		tablaMensajes.getColumnModel().getColumn(0).setCellRenderer(mensajeRenderer);
+		tablaMensajes.getColumnModel().getColumn(1).setCellRenderer(mensajeRenderer);
 		tablaMensajes.setTableHeader(null);
 		tablaMensajes.setCellSelectionEnabled(false);
 		tablaMensajes.setGridColor(Color.decode("#F0F0F0"));
+		
 	}
 	
+	
 	public Usuario getUsuarioSeleccionado() {
-		if (seleccionado == null) {
+		if (chatsAbiertos.getSelectedRow() >= 0) {
 			this.seleccionado = users.get(chatsAbiertos.getSelectedRow());
 		}
 		return seleccionado;

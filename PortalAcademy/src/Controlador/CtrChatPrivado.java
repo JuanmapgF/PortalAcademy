@@ -3,6 +3,7 @@ package Controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Modelo.MensajePrivado;
@@ -48,7 +49,12 @@ public class CtrChatPrivado implements ActionListener {
 		
 		if (e.getActionCommand().equals("ENVIAR")) {
 			String mensaje = ventana.getMensaje();
-			if (mensaje != "") {
+			
+			if (mensaje.length() > 80) {
+				JOptionPane.showMessageDialog(ventana, "El mensaje ha superado los 80 caracteres permitidos");
+			} else if(mensaje.equals("")) {
+				JOptionPane.showMessageDialog(ventana, "El mensaje debe tener algun caracter");
+			} else {
 				new MensajePrivado(ventana.getMensaje(), user, seleccionado);
 			}
 			seleccionado = ventana.getUsuarioSeleccionado();
