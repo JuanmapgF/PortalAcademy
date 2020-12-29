@@ -24,6 +24,7 @@ import Modelo.MensajePrivado;
 import Modelo.Organizacion;
 import Modelo.Profesor;
 import Modelo.Usuario;
+import javax.swing.JList;
 
 public class ChatPrivado extends JPanel {
 	
@@ -37,9 +38,11 @@ public class ChatPrivado extends JPanel {
 	private JTextField textField;
 	private JButton enviar;
 	private JButton refrescar;
-	private JScrollPane chat;
 	
 	private ButtonChatEditor chatEditor = new ButtonChatEditor(this, new JTextField());
+	
+	private JTextField textFieldNuevoChat;
+	private JButton buttonAgregarChat;
 
 	public ChatPrivado(Usuario user) {
 		this.setBounds(0, 0, 1080, 650);
@@ -54,6 +57,16 @@ public class ChatPrivado extends JPanel {
 		sp.setViewportView(chatsAbiertos);
 		add(sp);
 		chatsAbiertos.setRowHeight(75);
+		
+		textFieldNuevoChat = new JTextField();
+		textFieldNuevoChat.setToolTipText("");
+		textFieldNuevoChat.setBounds(263, 74, 240, 20);
+		add(textFieldNuevoChat);
+		textFieldNuevoChat.setColumns(10);
+		
+		buttonAgregarChat = new JButton("");
+		buttonAgregarChat.setBounds(230, 73, 23, 23);
+		add(buttonAgregarChat);
 		
 		
 		if (user instanceof Profesor) {
@@ -110,6 +123,7 @@ public class ChatPrivado extends JPanel {
 		add(enviar);
 		
 		refrescar = new JButton("");
+		refrescar.setToolTipText("Refresca el chat para ver nuevos mensajes");
 		refrescar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		refrescar.setBounds(783, 58, 40, 36);
 		refrescar.setIcon(new ImageIcon(getClass().getResource("/img/refrescar.png")));
@@ -123,6 +137,16 @@ public class ChatPrivado extends JPanel {
 		nombreReceptor.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		nombreReceptor.setBounds(550, 58, 223, 36);
 		add(nombreReceptor);
+		
+		textFieldNuevoChat = new JTextField();
+		textFieldNuevoChat.setToolTipText("");
+		textFieldNuevoChat.setBounds(263, 74, 240, 20);
+		add(textFieldNuevoChat);
+		textFieldNuevoChat.setColumns(10);
+		
+		buttonAgregarChat = new JButton("");
+		buttonAgregarChat.setBounds(230, 73, 23, 23);
+		add(buttonAgregarChat);
 		
 		if (user instanceof Profesor) {
 			CtrMenu menu = new CtrMenu(new Menu((Profesor) user));
@@ -190,6 +214,9 @@ public class ChatPrivado extends JPanel {
 	public void controlador(ActionListener ctr) {
 		chatEditor.controlador(ctr);
 		
+		buttonAgregarChat.addActionListener(ctr);
+		buttonAgregarChat.setActionCommand("NUEVO_CHAT");
+		
 		if (enviar != null) {
 			enviar.addActionListener(ctr);
 			enviar.setActionCommand("ENVIAR");
@@ -205,7 +232,8 @@ public class ChatPrivado extends JPanel {
 	public String getMensaje() {
 		return textField.getText();
 	}
-    
-    
-    
+	
+	public String getNuevoUsuario() {
+		return textFieldNuevoChat.getText();
+	}
 }

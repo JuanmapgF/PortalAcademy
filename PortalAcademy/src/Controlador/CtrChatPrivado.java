@@ -31,6 +31,21 @@ public class CtrChatPrivado implements ActionListener {
 			Main.setPanel(ventana);
 		}
 		
+		if (e.getActionCommand().equals("NUEVO_CHAT")) {
+			String nick = ventana.getNuevoUsuario();
+			try {
+				if (!user.getNick().equals(nick)) {
+					seleccionado = new Usuario(nick);
+					ventana = new ChatPrivado(user, seleccionado);
+					ventana.controlador(this);
+					Main.setPanel(ventana);
+				}
+				
+			} catch (Exception e1) {
+				
+			}
+		}
+		
 		if (e.getActionCommand().equals("ENVIAR")) {
 			String mensaje = ventana.getMensaje();
 			if (mensaje != "") {
