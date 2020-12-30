@@ -5,6 +5,7 @@ import java.awt.Component;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.table.TableCellRenderer;
 
 public class ButtonChatRenderer extends JButton implements TableCellRenderer {
@@ -16,7 +17,7 @@ public class ButtonChatRenderer extends JButton implements TableCellRenderer {
 
 	public ButtonChatRenderer(ChatPrivado chatPrivado) {
 		ButtonChatRenderer = chatPrivado;
-		setOpaque(true);
+		setOpaque(false);
 	}
 
 	@Override
@@ -24,6 +25,7 @@ public class ButtonChatRenderer extends JButton implements TableCellRenderer {
 			int row, int column) {
 		
 		this.setText((String) value);
+		this.setHorizontalAlignment(SwingConstants.LEFT);;
 		
 		this.setContentAreaFilled(false);
 		this.setFocusPainted(false);

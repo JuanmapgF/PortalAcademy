@@ -48,7 +48,8 @@ public class MensajePrivado {
 	
 	public void setLeido() {
 		bd = BD.getBD();
-		bd.Update("UPDATE MensajePrivado SET leido = 1 WHERE idMensaje = " + this.getIdMensaje());
+		bd.Update("UPDATE MensajePrivado SET leido = 1 WHERE idMensajePrivado = " + this.getIdMensaje());
+		bd.finalize();
 	}
 
 	public Usuario getEmisor() {
@@ -77,16 +78,19 @@ public class MensajePrivado {
 		List<Object[]> tuplas = bd.Select("SELECT idMensajePrivado FROM MensajePrivado "
 				+ "WHERE nickUsuarioEmisor = '" + user.getNick() + "' AND nickUsuarioReceptor = '" + seleccionado.getNick() 
 				+ "' OR nickUsuarioEmisor = '" + seleccionado.getNick() + "' AND nickUsuarioReceptor = '" + user.getNick() + "' ORDER BY idMensajePrivado ASC");
+		// Dos consultas mas por cada MensajePrivado creado y una por cada mensaje setLeido() (3 * tuplas.size())
 		BD.contadorFinalize(3 * tuplas.size() + 1);
 		bd.finalize();
 		
 		MensajePrivado aux;
 		for (Object[] tupla : tuplas) {
 			aux = new MensajePrivado(Integer.parseInt(tupla[0].toString()));
-			if (aux.getEmisor().equals(seleccionado))
+			if (aux.getEmisor().equals(seleccionado) && !aux.getLeido()) {
 				aux.setLeido();
-			else
+			} else {
 				bd.finalize();
+			}
+			
 			mensajes.add(aux);
 		}
 		
@@ -112,7 +116,8 @@ public class MensajePrivado {
 						+ "NOT EXISTS (SELECT s4.idMensajePrivado, s4.nickUsuarioEmisor, s4.nickUsuarioReceptor FROM MensajePrivado AS s4 WHERE s4.nickUsuarioReceptor = '" + user.getNick() + "' "
 								+ "AND b.nickUsuarioReceptor = s4.nickUsuarioEmisor AND b.idMensajePrivado < s4.idMensajePrivado) "
 				+ "ORDER BY 1 DESC");
-		BD.contadorFinalize(users.size() + 1);
+		// Una consulta mas para crear un usuario y otras tres para getUltimoMensaje por cada uno (4 * user.size())
+		BD.contadorFinalize(4 * users.size() + 1);
 		bd.finalize();
 		for (Object[] tupla : users) {
 			usuarios.add(new Usuario((String) tupla[1]));
@@ -121,8 +126,12 @@ public class MensajePrivado {
 	}
 
 	public static MensajePrivado getUltimoMensaje(Usuario user, Usuario usuarioChat) {
-		
-		return null;
+		bd = BD.getBD();
+		Object[] tupla = bd.Select("SELECT MAX(idMensajePrivado) "
+				+ "FROM MensajePrivado "
+				+ "WHERE nickUsuarioEmisor = '" + usuarioChat.getNick() + "' AND nickUsuarioReceptor = '" + user.getNick() + "'").get(0);
+		bd.finalize();
+		return tupla[0] != null ? new MensajePrivado(Integer.parseInt(tupla[0].toString())) : null;
 	}
 
 }

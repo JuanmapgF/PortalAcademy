@@ -101,6 +101,15 @@ public class ChatPrivado extends JPanel {
 		
 		this.seleccionado = seleccionado;
 		
+		getMensajes();
+
+		JScrollPane chat = new JScrollPane();
+		chat.setBounds(550, 105, 273, 446);
+		chat.setViewportView(tablaMensajes);
+		chat.setAutoscrolls(true);
+		add(chat);
+		tablaMensajes.setRowHeight(80);
+		
 		getChatsAbiertos();
 		
 		JScrollPane sp = new JScrollPane();
@@ -109,17 +118,6 @@ public class ChatPrivado extends JPanel {
 		add(sp);
 		chatsAbiertos.setRowHeight(75);
 		
-		
-		getMensajes();
-		
-		JScrollPane chat = new JScrollPane();
-		chat.setBounds(550, 105, 273, 446);
-		chat.setViewportView(tablaMensajes);
-		chat.setAutoscrolls(true);
-		add(chat);
-		
-		tablaMensajes.setRowHeight(80);
-		chat.setBorder(BorderFactory.createEmptyBorder());
 		
 		textField = new JTextField();
 		textField.setBounds(550, 562, 240, 20);
@@ -186,14 +184,10 @@ public class ChatPrivado extends JPanel {
 		for (Usuario usuarioChat : users) {
 			datos[k][0] = usuarioChat.getNick();
 			aux = MensajePrivado.getUltimoMensaje(user, usuarioChat);
-			if (aux.getEmisor().equals(user)) {
+			if (aux == null) { // Si el ultimo mensaje lo envie yo ya he visto los suyos
 				datos[k][1] = true;
 			} else {
-				if (aux.getLeido()) {
-					datos[k][1] = true;
-				} else {
-					datos[k][1] = false;
-				}
+				datos[k][1] = aux.getLeido();
 			}
 			
 			k++;
@@ -204,7 +198,8 @@ public class ChatPrivado extends JPanel {
 		chatsAbiertos = new JTable(datos, columnHeaders);
 		chatsAbiertos.getColumnModel().getColumn(0).setCellRenderer(new ButtonChatRenderer(this));
 		chatsAbiertos.getColumnModel().getColumn(0).setCellEditor(chatEditor);
-		chatsAbiertos.getColumnModel().getColumn(1).setCellRenderer(new ButtonChatRenderer(this));
+		chatsAbiertos.getColumnModel().getColumn(1).setCellRenderer(new NotificacionRenderer());
+		chatsAbiertos.getColumnModel().getColumn(1).setCellEditor(chatEditor);
 		chatsAbiertos.setTableHeader(null);
 		chatsAbiertos.setCellSelectionEnabled(false);
 		chatsAbiertos.setShowVerticalLines(false);

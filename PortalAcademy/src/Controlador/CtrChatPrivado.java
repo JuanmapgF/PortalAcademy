@@ -35,16 +35,18 @@ public class CtrChatPrivado implements ActionListener {
 		if (e.getActionCommand().equals("NUEVO_CHAT")) {
 			String nick = ventana.getNuevoUsuario();
 			try {
-				if (!user.getNick().equals(nick)) {
+				if (user.getNick().equals(nick)) {
+					JOptionPane.showMessageDialog(ventana, "No puedes chatear contigo mismo");
+				} else {
 					seleccionado = new Usuario(nick);
 					ventana = new ChatPrivado(user, seleccionado);
 					ventana.controlador(this);
 					Main.setPanel(ventana);
 				}
-				
 			} catch (Exception e1) {
-				
+				JOptionPane.showMessageDialog(ventana, "No se ha encontrado ningún usuario con ese nick");
 			}
+			
 		}
 		
 		if (e.getActionCommand().equals("ENVIAR")) {
@@ -62,10 +64,7 @@ public class CtrChatPrivado implements ActionListener {
 			ventana.controlador(this);
 				
 			Main.setPanel(ventana);
-				
 			
-			// Si no se ha introducido nada no se hace nada (?)
-			// TODO: Controlar limite de caracteres
 			
 		}
 		
