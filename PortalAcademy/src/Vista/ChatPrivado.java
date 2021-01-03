@@ -2,12 +2,10 @@ package Vista;
 
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -19,7 +17,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableCellRenderer;
 
 import Controlador.CtrMenu;
 import Modelo.Estudiante;
@@ -27,7 +24,6 @@ import Modelo.MensajePrivado;
 import Modelo.Organizacion;
 import Modelo.Profesor;
 import Modelo.Usuario;
-import javax.swing.JList;
 
 public class ChatPrivado extends JPanel {
 	

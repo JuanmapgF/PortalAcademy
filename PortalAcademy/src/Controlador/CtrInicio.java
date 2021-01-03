@@ -65,7 +65,8 @@ public class CtrInicio implements ActionListener {
 					Estudiante est = null;
 					try {
 						est = new Estudiante(ini.getNick());
-
+						est.setListaCursos();
+						est.setListaActividades();
 					} catch (ParseException e2) {
 						e2.printStackTrace();
 					} finally {
@@ -83,11 +84,14 @@ public class CtrInicio implements ActionListener {
 					Organizacion est = null;
 					try {
 						est = new Organizacion(ini.getNick());
+						est.setListaActividades();
+						est.setListaCursos();
 					} finally {
 						Main.setUser(est);
 					}
 
-					CtrExplorar ex = new CtrExplorar(new Explorar(est, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+					CtrExplorar ex = new CtrExplorar(
+							new Explorar(est, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 					Main.setPanel(ex.getPanel());
 
 				} else if (Integer.parseInt(
@@ -97,12 +101,15 @@ public class CtrInicio implements ActionListener {
 					Profesor est = null;
 					try {
 						est = new Profesor(ini.getNick());
+						est.setListaActividades();
+						est.setListaCursos();
 					} finally {
 						Main.setUser(est);
 					}
 
 					Main.setUser(est);
-					CtrExplorar ex = new CtrExplorar(new Explorar(est, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+					CtrExplorar ex = new CtrExplorar(
+							new Explorar(est, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 					Main.setPanel(ex.getPanel());
 				} else if (Integer.parseInt(
 						bd.SelectEscalar("SELECT COUNT(nick) FROM Administrador WHERE nick = '" + u.getNick() + "'")

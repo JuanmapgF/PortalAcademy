@@ -42,7 +42,8 @@ public class MisCursos extends JPanel {
 		estudiante = true;
 		est = u;
 		this.setLayout(null);
-		addElements(u.getCursos());
+		u.setListaCursos();
+		addElements(u.getListaCursos());
 
 		JScrollPane sp_cursos = new JScrollPane();
 		sp_cursos.setBounds(441, 175, 346, 346);
@@ -64,7 +65,6 @@ public class MisCursos extends JPanel {
 		add(menu.getPanel());
 	}
 
-	
 	public MisCursos(Profesor u) {
 		profesor = true;
 		prof = u;

@@ -44,7 +44,6 @@ public class Actividad {
 		Object[] tupla = bd.Select(
 				"SELECT nombre, descripcion, aforo, fecha, lugar FROM Actividad WHERE idActividad = " + idActividad)
 				.get(0);
-		bd.finalize();
 
 		this.idActividad = idActividad;
 		this.nombre = tupla[0].toString();
@@ -56,6 +55,8 @@ public class Actividad {
 			throw new ErrorBD("Error en la conversi�n del tipo fecha: " + e.getMessage());
 		}
 		this.lugar = tupla[4].toString();
+		this.imagen = bd.SelectImagenActividad(idActividad);
+		bd.finalize();
 	}
 
 	public Integer getId() {
@@ -85,9 +86,6 @@ public class Actividad {
 	}
 
 	public File getImagen() {
-		bd = BD.getBD();
-		this.imagen = bd.SelectImagenActividad(idActividad);
-		bd.finalize();
 		return imagen;
 	}
 

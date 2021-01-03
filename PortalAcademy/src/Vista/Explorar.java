@@ -1,21 +1,14 @@
 package Vista;
 
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.DefaultCellEditor;
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.TableCellRenderer;
 
 import Controlador.CtrMenu;
 import Modelo.Actividad;
@@ -23,13 +16,9 @@ import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Organizacion;
 import Modelo.Profesor;
-import Modelo.Usuario;
 
 @SuppressWarnings("serial")
 public class Explorar extends JPanel {
-	
-	private JButton verCurso;
-	private JButton verActividad;
 	
 	private JTable cursos;
 	private JTable actividades;
@@ -290,6 +279,7 @@ public class Explorar extends JPanel {
 	}
 	
 	public void datosTabla() {
+		
 		datosCurso = new Object[lista_cursos.size()][3];
 		
 		int k = 0;

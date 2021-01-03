@@ -41,12 +41,12 @@ public class Curso {
 	}
 
 	public Curso(Integer idCurso) {
-		BD miBD = BD.getBD();
-		Object[] tupla = miBD.Select(
-				"SELECT idCurso,nombre,descripcion,publico,aforo,presencial,tieneForo FROM Curso WHERE idCurso = "
+		BD bd = BD.getBD();
+		Object[] tupla = bd.Select(
+				"SELECT idCurso,nombre,descripcion,publico,aforo,presencial,tieneForo,imagen FROM Curso WHERE idCurso = "
 						+ idCurso)
 				.get(0);
-		miBD.finalize();
+
 		this.idCurso = Integer.parseInt(tupla[0].toString());
 		this.nombre = tupla[1].toString();
 		this.descripcion = tupla[2].toString();
@@ -56,6 +56,8 @@ public class Curso {
 		this.tieneForo = tupla[6].toString().equals("1") ? true : false;
 		this.estudiantes = new ArrayList<Usuario>();
 		this.mensajes = new ArrayList<Mensaje>();
+		this.imagen = bd.SelectImagenCurso(this.idCurso);
+		bd.finalize();
 	}
 
 	public Integer getId() {
@@ -85,9 +87,6 @@ public class Curso {
 	}
 
 	public File getImagen() {
-		bd = BD.getBD();
-		this.imagen = bd.SelectImagenCurso(this.idCurso);
-		bd.finalize();
 		return imagen;
 	}
 
@@ -204,7 +203,7 @@ public class Curso {
 	public static List<Curso> getTodosLosCursos() {
 		List<Curso> listaCursos = new ArrayList<>();
 		bd = BD.getBD();
-		List<Object[]> cursos = bd.Select("SELECT * FROM Curso");
+		List<Object[]> cursos = bd.Select("SELECT idCurso FROM Curso");
 		BD.contadorFinalize(cursos.size() + 1);
 		bd.finalize();
 		for (Object[] tupla : cursos) {

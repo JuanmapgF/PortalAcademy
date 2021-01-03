@@ -9,6 +9,8 @@ public class Usuario {
 	private String correo;
 	private String password;
 	private static BD bd;
+	private static List<Curso> listaCursos;
+	private static List<Actividad> listaActividades;
 
 	public Usuario(String nick) {
 		bd = BD.getBD();
@@ -46,6 +48,14 @@ public class Usuario {
 		return password;
 	}
 
+	public List<Curso> getListaCursos() {
+		return listaCursos;
+	}
+
+	public List<Actividad> getListaActividades() {
+		return listaActividades;
+	}
+
 	public void setPassword(String password) {
 		this.password = password;
 		bd = BD.getBD();
@@ -61,9 +71,10 @@ public class Usuario {
 		this.nick = "";
 		this.correo = "";
 		this.password = "";
+		listaCursos = null;
+		listaActividades = null;
 	}
-	
-	
+
 	@Override
 	public boolean equals(Object o) {
 		if (o instanceof Usuario) {
@@ -88,5 +99,38 @@ public class Usuario {
 
 	public String toString() {
 		return getNick();
+	}
+
+	public void setListaCursos() {
+		List<Curso> c = new ArrayList<Curso>();
+		bd = BD.getBD();
+		List<Object[]> cursos = bd.Select("SELECT * FROM RelCursoUsuario WHERE nickUsuario = '" + this.getNick() + "'");
+		BD.contadorFinalize(cursos.size() + 1);
+		bd.finalize();
+		for (Object[] o : cursos) {
+			c.add(new Curso((int) o[1]));
+		}
+		listaCursos = c;
+	}
+
+	public void setListaActividades() {
+		List<Actividad> ac = new ArrayList<Actividad>();
+		bd = BD.getBD();
+		List<Object[]> actividades = bd
+				.Select("SELECT * FROM RelActividadUsuario WHERE nickUsuario = '" + this.getNick() + "'");
+		BD.contadorFinalize(actividades.size() + 1);
+		bd.finalize();
+		for (Object[] e : actividades) {
+			ac.add(new Actividad((int) e[1]));
+		}
+		listaActividades = ac;
+	}
+
+	public Boolean estaEnCurso(Curso curso) {
+		return getListaCursos().contains(curso);
+	}
+
+	public Boolean estaEnActividad(Actividad actividad) {
+		return getListaActividades().contains(actividad);
 	}
 }

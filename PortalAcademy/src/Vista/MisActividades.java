@@ -1,6 +1,5 @@
 package Vista;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -40,7 +39,8 @@ public class MisActividades extends JPanel {
 		estudiante = true;
 		est = u;
 		this.setLayout(null);
-		addElements(u.getActividades());
+		u.setListaActividades();
+		addElements(u.getListaActividades());
 		
 		JScrollPane sp_actividades = new JScrollPane();
 		sp_actividades.setBounds(441, 175, 346, 346);
