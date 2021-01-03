@@ -133,7 +133,7 @@ public class Explorar extends JPanel {
 		prof = e;
 		setLayout(null);
 		
-//		datosTablaUsuario();
+		datosTablaUsuario();
 		
 		JLabel lblNewLabel = new JLabel("Explorar");
 		lblNewLabel.setBounds(543, 30, 107, 33);
@@ -241,7 +241,10 @@ public class Explorar extends JPanel {
 			datosCurso[k][1] = curso.getNombre();
 			if (est.estaEnCurso(curso)) {
 				datosCurso[k][2] = "✔";
-			} else {
+			}else if(!curso.quedanPlazas()) {
+				datosCurso[k][2] = "Lleno";
+			} 
+			else {
 				datosCurso[k][2] = "Disponible";
 			}
 			
@@ -266,7 +269,10 @@ public class Explorar extends JPanel {
 			datosActividad[k][1] = actividad.getNombre();
 			if (est.estaEnActividad(actividad)) {
 				datosActividad[k][2] = "✔";
-			} else {
+			}else if(!actividad.quedanPlazas()) {
+				datosActividad[k][2] = "Lleno";
+			}
+			else {
 				datosActividad[k][2] = "Disponible";
 			}
 			k++;
@@ -290,7 +296,11 @@ public class Explorar extends JPanel {
 		for (Curso curso : lista_cursos) {
 			datosCurso[k][0] = curso.getImagen();
 			datosCurso[k][1] = curso.getNombre();
-			datosCurso[k][2] = "Disponible";
+			if(!curso.quedanPlazas()) {
+				datosCurso[k][2] = "Lleno";
+			}else {
+				datosCurso[k][2] = "Disponible";
+			}
 			
 			k++;
 		}
@@ -305,25 +315,29 @@ public class Explorar extends JPanel {
 		cursos.setTableHeader(null);
 		cursos.setCellSelectionEnabled(false);
 		
-//		datosActividad = new Object[lista_cursos.size()][3];
-//		
-//		k = 0;
-//		for (Actividad actividad : lista_actividades) {
-//			datosActividad[k][0] = actividad.getImagen();
-//			datosActividad[k][1] = actividad.getNombre();
-//			datosActividad[k][2] = "Disponible";
-//			k++;
-//		}
-//		
-//		String[] columnHeadersActividad = {"Imagen", "Actividad", "Acceso"};
-//		
-//		
-//		actividades = new JTable(datosActividad, columnHeadersActividad);
-//		actividades.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
-//		actividades.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
-//		actividades.getColumnModel().getColumn(1).setCellEditor(editorActividad);
-//		actividades.setTableHeader(null);
-//		actividades.setCellSelectionEnabled(false);
+		datosActividad = new Object[lista_cursos.size()][3];
+		
+		k = 0;
+		for (Actividad actividad : lista_actividades) {
+			datosActividad[k][0] = actividad.getImagen();
+			datosActividad[k][1] = actividad.getNombre();
+			if(!actividad.quedanPlazas()) {
+				datosActividad[k][2] = "Lleno";
+			}else {
+				datosActividad[k][2] = "Disponible";
+			}
+			k++;
+		}
+		
+		String[] columnHeadersActividad = {"Imagen", "Actividad", "Acceso"};
+		
+		
+		actividades = new JTable(datosActividad, columnHeadersActividad);
+		actividades.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+		actividades.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
+		actividades.getColumnModel().getColumn(1).setCellEditor(editorActividad);
+		actividades.setTableHeader(null);
+		actividades.setCellSelectionEnabled(false);
 	}
 	
 	public Curso getCurso() {
