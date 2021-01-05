@@ -27,19 +27,25 @@ public class CtrAjustes implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getActionCommand().equals("ELIMINAR")) {
-			if (ventana.esEstudiante()) {
-				ventana.getEstudiante().eliminarUsuario();
-			} else if (ventana.esOrganizacion()) {
-				ventana.getProfesor().eliminarUsuario();
-			} else if (ventana.esProfesor()) {
-				ventana.getOrganizacion().eliminarUsuario();
+			
+			
+			if (JOptionPane.showConfirmDialog(ventana, "¿Está seguro de que desea eliminar su cuenta?", "Eliminar cuenta", JOptionPane.OK_CANCEL_OPTION) == 0) {
+				
+				if (ventana.esEstudiante()) {
+					ventana.getEstudiante().eliminarUsuario();
+				} else if (ventana.esOrganizacion()) {
+					ventana.getProfesor().eliminarUsuario();
+				} else if (ventana.esProfesor()) {
+					ventana.getOrganizacion().eliminarUsuario();
+				}
+
+				CtrExplorar c = new CtrExplorar(
+						new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+				Main.setPanel(c.getPanel());
+
+				JOptionPane.showMessageDialog(ventana, "Cuenta eliminada satisfactoriamente");
 			}
-
-			CtrExplorar c = new CtrExplorar(
-					new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
-			Main.setPanel(c.getPanel());
-
-			JOptionPane.showMessageDialog(ventana, "Cuenta eliminada satisfactoriamente");
+			
 		}
 
 		if (e.getActionCommand().equals("CAMBIAR")) {

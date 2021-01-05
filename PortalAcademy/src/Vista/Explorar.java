@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -69,11 +70,13 @@ public class Explorar extends JPanel {
 		sp_curso.setBounds(325, 215, 273, 339);
 		sp_curso.setViewportView(cursos);
 		add(sp_curso);
+		sp_curso.setBorder(BorderFactory.createEmptyBorder());
 
 		JScrollPane sp_actividad = new JScrollPane();
 		sp_actividad.setBounds(656, 215, 273, 339);
 		sp_actividad.setViewportView(actividades);
 		add(sp_actividad);
+		sp_curso.setBorder(BorderFactory.createEmptyBorder());
 
 		CtrMenu menu = new CtrMenu(new Menu(e));
 		add(menu.getPanel());
@@ -106,6 +109,7 @@ public class Explorar extends JPanel {
 		sp_curso.setBounds(325, 215, 273, 339);
 		sp_curso.setViewportView(cursos);
 		add(sp_curso);
+//		sp_curso.setBorder(BorderFactory.createEmptyBorder());
 
 		JScrollPane sp_actividad = new JScrollPane();
 		sp_actividad.setBounds(656, 215, 273, 339);
