@@ -80,12 +80,10 @@ public class CtrMenu implements ActionListener {
 
 		if (e.getActionCommand().equals("CURSO")) {
 			if (ventana.esEstudiante()) {
-				Main.getUser().setListaActividades();
 				Main.getUser().setListaCursos();
 				CtrMisCursos c = new CtrMisCursos(new MisCursos(ventana.getEstudiante()));
 				Main.setPanel(c.getPanel());
 			} else if (ventana.esProfesor()) {
-				Main.getUser().setListaActividades();
 				Main.getUser().setListaCursos();
 				CtrMisCursos c = new CtrMisCursos(new MisCursos(ventana.getProfesor()));
 				Main.setPanel(c.getPanel());
@@ -95,17 +93,14 @@ public class CtrMenu implements ActionListener {
 		if (e.getActionCommand().equals("ACTIVIDAD")) {
 			if (ventana.esEstudiante()) {
 				Main.getUser().setListaActividades();
-				Main.getUser().setListaCursos();
 				CtrMisActividades c = new CtrMisActividades(new MisActividades(ventana.getEstudiante()));
 				Main.setPanel(c.getPanel());
 			} else if (ventana.esOrganizacion()) {
 				Main.getUser().setListaActividades();
-				Main.getUser().setListaCursos();
 				CtrMisActividades c = new CtrMisActividades(new MisActividades(ventana.getOrganizacion()));
 				Main.setPanel(c.getPanel());
 			} else if (ventana.esProfesor()) {
 				Main.getUser().setListaActividades();
-				Main.getUser().setListaCursos();
 				CtrMisActividades c = new CtrMisActividades(new MisActividades(ventana.getProfesor()));
 				Main.setPanel(c.getPanel());
 			}
