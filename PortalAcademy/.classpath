@@ -10,5 +10,6 @@
 	<classpathentry kind="lib" path="mysql-connector-java-5.1.49-bin.jar"/>
 	<classpathentry kind="lib" path="jcalendar-1.4.jar"/>
 	<classpathentry kind="lib" path="javax.mail.jar"/>
+	<classpathentry kind="lib" path="javax.activation-1.2.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
