@@ -147,8 +147,10 @@ public class MisCursos extends JPanel {
 	public void controlador(ActionListener ctr) {
 		bVer.addActionListener(ctr);
 		bVer.setActionCommand("VERCURSO");
-		crearCurso.addActionListener(ctr);
-		crearCurso.setActionCommand("CREARCURSO");
+		if(crearCurso!=null) {
+			crearCurso.addActionListener(ctr);
+			crearCurso.setActionCommand("CREARCURSO");
+		}
 		bVer2.addActionListener(ctr);
 		bVer2.setActionCommand("VERCURSOA");
 
