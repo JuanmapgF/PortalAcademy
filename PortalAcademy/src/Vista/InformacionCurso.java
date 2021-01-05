@@ -26,6 +26,7 @@ public class InformacionCurso extends JPanel {
 	private DefaultListModel<String> modelo = new DefaultListModel<String>();
 	
 	private JButton editar;
+	private JButton editarParticipantes;
 	private JButton enviar;
 	private JButton refrescar;
 
@@ -98,9 +99,13 @@ public class InformacionCurso extends JPanel {
 			add(menu.getPanel());
 		}  else if (user instanceof Profesor) {
 			if(user.equals(curso.getProfesor())) {
-				editar = new JButton("Editar");
+				editar = new JButton("Editar Curso");
 				editar.setBounds(752, 68, 89, 23);
 				add(editar);
+				
+				editarParticipantes = new JButton("Editar Participantes");
+				editar.setBounds(752, 168, 89, 23);
+				add(editarParticipantes);
 			}
 			CtrMenu menu = new CtrMenu(new Menu((Profesor)user));
 			add(menu.getPanel());
@@ -126,7 +131,10 @@ public class InformacionCurso extends JPanel {
 			refrescar.setActionCommand("Refrescar");
 		}
 		
-		
+		if (editarParticipantes != null) {
+			editarParticipantes.addActionListener(ctr);
+			editarParticipantes.setActionCommand("EditarParticipantes");
+		}
 		
 		if (editar != null) {
 			editar.addActionListener(ctr);

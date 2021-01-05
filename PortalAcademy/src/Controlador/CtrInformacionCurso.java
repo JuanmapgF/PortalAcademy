@@ -61,7 +61,12 @@ public class CtrInformacionCurso implements ActionListener {
 			CtrEditarCurso c = new CtrEditarCurso(new EditarCurso(curso, (Profesor) user));
 			Main.setPanel(c.getPanel());
 		}
-
+		
+		if (e.getActionCommand().equals("EditarParticipantes")) {
+			CtrEditarParticipantes c = new CtrEditarParticipantes(new EditarParticipantes(curso, (Profesor) user));
+			Main.setPanel(c.getPanel());
+		}
+		
 	}
 
 	public JPanel getPanel() {
