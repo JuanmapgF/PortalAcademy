@@ -13,11 +13,11 @@ public class CtrDescripcionActividad implements ActionListener {
 	private Usuario user;
 	private Actividad actividad;
 	private DescripcionActividad ventana;
-	
+
 	public CtrDescripcionActividad(Usuario user, Actividad actividad) {
 		this.user = user;
 		this.actividad = actividad;
-		
+
 		ventana = new DescripcionActividad(user, actividad);
 		ventana.controlador(this);
 	}
@@ -25,21 +25,26 @@ public class CtrDescripcionActividad implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("Unirse")) {
-			if(user == null) {
+			if (user == null) {
 				CtrInformacionActividad c = new CtrInformacionActividad(null, actividad);
 				JOptionPane.showMessageDialog(ventana, "Se ha unido a la actividad correctamente");
-				Main.setPanel(c.getPanel());		
+				Main.setPanel(c.getPanel());
 			} else {
 				actividad.addParticipante(user);
 				CtrInformacionActividad c = new CtrInformacionActividad(user, actividad);
 				JOptionPane.showMessageDialog(ventana, "Se ha unido a la actividad correctamente");
+				EnviarCorreo.enviarGmailUnico(Main.getUser().getCorreo(), "PortalAcademy", "Queridisísimo "
+						+ Main.getUser().getNick()
+						+ ": \n\nEnhorabuena formará parte de los participantes de la actividad "
+						+ actividad.getNombre()
+						+ ". Disfrútalo esperamos que disfrute la experiencia.\n\nUn cordial saludo de la comunidad NoTrabaJava.");
 				Main.setPanel(c.getPanel());
 			}
-			
-			//TODO: Entramos en informacionActividad
+
+			// TODO: Entramos en informacionActividad
 		}
 	}
-	
+
 	public JPanel getPanel() {
 		return ventana;
 	}

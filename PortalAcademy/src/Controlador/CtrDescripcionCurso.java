@@ -29,16 +29,16 @@ public class CtrDescripcionCurso implements ActionListener {
 				curso.addEstudiante(user);
 				CtrInformacionCurso c = new CtrInformacionCurso(user, curso);
 				JOptionPane.showMessageDialog(ventana, "Se ha unido al curso correctamente");
-				EnviarCorreo.enviarGmailUnico(Main.getUser().getCorreo(), "PortalAcademy",
-						"Enhorabuena formará parte de los participantes del curso gratuito " + curso.getNombre()
-								+ ". Disfrútalo esperamos que aprenda mucho.\nUn cordial saludo de la comunidad NoTrabaJava.");
+				EnviarCorreo.enviarGmailUnico(Main.getUser().getCorreo(), "PortalAcademy", "Queridisísimo "
+						+ Main.getUser().getNick()
+						+ ": \n\nEnhorabuena formará parte de los participantes del curso gratuito " + curso.getNombre()
+						+ ". Disfrútalo esperamos que aprenda mucho.\n\nUn cordial saludo de la comunidad NoTrabaJava.");
 				Main.setPanel(c.getPanel());
 			} else {
 				CtrInformacionCurso c = new CtrInformacionCurso(null, curso);
 				JOptionPane.showMessageDialog(ventana, "Se ha unido al curso correctamente");
 				Main.setPanel(c.getPanel());
 			}
-
 		}
 
 	}

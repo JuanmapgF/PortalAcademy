@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -12,6 +14,8 @@ import Modelo.Actividad;
 import Modelo.Administrador;
 import Modelo.BD;
 import Modelo.Curso;
+import Modelo.EnviarCorreo;
+import Modelo.ErrorBD;
 import Modelo.Estudiante;
 import Modelo.Organizacion;
 import Modelo.Profesor;
@@ -37,6 +41,32 @@ public class CtrInicio implements ActionListener {
 		if (e.getActionCommand().equals("REGISTRATE")) {
 			CtrRegistro cr = new CtrRegistro(new Registro());
 			Main.setPanel(cr.getPanel());
+		}
+
+		if (e.getActionCommand().equals("RECUPERAR")) {
+			try {
+				if (!correoValido()) {
+					throw new ErrorBD("Introduzca un correo válido.");
+				}
+				if (!correoRegistrado()) {
+					throw new ErrorBD("El correo introducido no está vinculado con ninguna cuenta");
+				}
+				JOptionPane.showMessageDialog(ventana,
+						"Se ha enviado un correo al indicado con las instrucciones para recuperar tu cuenta.",
+						"Recuperar contraseña", JOptionPane.INFORMATION_MESSAGE);
+				BD bd = new BD();
+				String pass = bd
+						.SelectEscalar("SELECT contrasena FROM Usuario WHERE correo = '" + ventana.getCorreo() + "'")
+						.toString();
+				bd.finalize();
+				EnviarCorreo.enviarGmailUnico(ventana.getCorreo(), "PortalAcademy",
+						"Hola buenas,\n\nLe envío su contraseña actual. Recuerde que en caso de tener algún problema para recordarla siempre cambiarla en la pestaña de Ajustes.\nLa contraseña es: "
+								+ pass + "\n\nUn cordial saludo de la comunidad NoTrabaJava.");
+			} catch (ErrorBD err) {
+				JOptionPane.showMessageDialog(ventana, err.getMessage(), "Recuperar contraseña",
+						JOptionPane.ERROR_MESSAGE);
+			}
+
 		}
 
 		if (e.getActionCommand().equals("VOLVER")) {
@@ -130,6 +160,22 @@ public class CtrInicio implements ActionListener {
 			}
 
 		}
+	}
+
+	public boolean correoValido() {
+		Pattern pattern = Pattern.compile(
+				"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,4})$");
+		Matcher mather = pattern.matcher(ventana.getCorreo());
+		return mather.find();
+	}
+
+	private boolean correoRegistrado() {
+		BD bd = BD.getBD();
+		int ccorreo = Integer.parseInt(bd
+				.SelectEscalar("SELECT COUNT(correo) FROM Usuario WHERE Usuario.correo = '" + ventana.getCorreo() + "'")
+				.toString());
+		bd.finalize();
+		return ccorreo == 0;
 	}
 
 	public JPanel getPanel() {

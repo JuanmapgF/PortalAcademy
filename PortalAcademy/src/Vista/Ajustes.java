@@ -1,6 +1,5 @@
 package Vista;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
@@ -58,6 +57,9 @@ public class Ajustes extends JPanel {
 		return esOrganizacion;
 	}
 
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public Ajustes(Estudiante u) {
 		estudiante = u;
 		esEstudiante = true;

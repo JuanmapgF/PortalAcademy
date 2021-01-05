@@ -1,6 +1,5 @@
 package Vista;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
@@ -11,7 +10,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import Controlador.CtrMenu;
-import Modelo.*;
+import Modelo.Actividad;
+import Modelo.Estudiante;
+import Modelo.Organizacion;
+import Modelo.Profesor;
+import Modelo.Usuario;
 
 @SuppressWarnings("serial")
 public class DescripcionActividad extends JPanel {
