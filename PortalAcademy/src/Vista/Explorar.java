@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import Controlador.CtrMenu;
 import Modelo.Actividad;
@@ -279,6 +280,7 @@ public class Explorar extends JPanel {
 		String[] columnHeadersActividad = { "Imagen", "Actividad", "Acceso" };
 
 		actividades = new JTable(datosActividad, columnHeadersActividad);
+
 		actividades.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
 		actividades.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
 		actividades.getColumnModel().getColumn(1).setCellEditor(editorActividad);

@@ -10,7 +10,6 @@ import javax.swing.table.TableCellRenderer;
 public class ImageRenderer extends JPanel implements TableCellRenderer {
 	public Component getTableCellRendererComponent(JTable jtable, Object value, boolean isSelected,
 			boolean hasFocus, int row, int column) {
-		
 		if (value != null) {
 			return new JPanelImagen(((File) value).getName());
 		} else {
