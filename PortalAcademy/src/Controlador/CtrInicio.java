@@ -175,7 +175,7 @@ public class CtrInicio implements ActionListener {
 				.SelectEscalar("SELECT COUNT(correo) FROM Usuario WHERE Usuario.correo = '" + ventana.getCorreo() + "'")
 				.toString());
 		bd.finalize();
-		return ccorreo == 0;
+		return ccorreo == 1;
 	}
 
 	public JPanel getPanel() {
