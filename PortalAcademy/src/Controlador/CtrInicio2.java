@@ -57,7 +57,8 @@ public class CtrInicio2 implements KeyListener {
 					Estudiante est = null;
 					try {
 						est = new Estudiante(ini.getNick());
-
+						est.setListaActividades();
+						est.setListaCursos();
 					} catch (ParseException e2) {
 						e2.printStackTrace();
 					} finally {
@@ -75,11 +76,14 @@ public class CtrInicio2 implements KeyListener {
 					Organizacion est = null;
 					try {
 						est = new Organizacion(ini.getNick());
+						est.setListaActividades();
+						est.setListaCursos();
 					} finally {
 						Main.setUser(est);
 					}
 
-					CtrExplorar ex = new CtrExplorar(new Explorar(est, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+					CtrExplorar ex = new CtrExplorar(
+							new Explorar(est, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 					Main.setPanel(ex.getPanel());
 
 				} else if (Integer.parseInt(
@@ -89,12 +93,15 @@ public class CtrInicio2 implements KeyListener {
 					Profesor est = null;
 					try {
 						est = new Profesor(ini.getNick());
+						est.setListaActividades();
+						est.setListaCursos();
 					} finally {
 						Main.setUser(est);
 					}
 
 					Main.setUser(est);
-					CtrExplorar ex = new CtrExplorar(new Explorar(est, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
+					CtrExplorar ex = new CtrExplorar(
+							new Explorar(est, Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 					Main.setPanel(ex.getPanel());
 				} else if (Integer.parseInt(
 						bd.SelectEscalar("SELECT COUNT(nick) FROM Administrador WHERE nick = '" + u.getNick() + "'")

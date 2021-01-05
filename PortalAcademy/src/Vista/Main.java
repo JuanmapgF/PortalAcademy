@@ -63,11 +63,11 @@ public class Main extends JFrame {
 	public static Usuario getUser() {
 		return user;
 	}
-	
+
 	public static void setLabel() {
 		userName.setText(user.getNick());
 	}
-	
+
 	public static JLabel getLabel() {
 		return userName;
 	}
