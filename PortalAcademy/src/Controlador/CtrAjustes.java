@@ -34,9 +34,9 @@ public class CtrAjustes implements ActionListener {
 				if (ventana.esEstudiante()) {
 					ventana.getEstudiante().eliminarUsuario();
 				} else if (ventana.esOrganizacion()) {
-					ventana.getProfesor().eliminarUsuario();
-				} else if (ventana.esProfesor()) {
 					ventana.getOrganizacion().eliminarUsuario();
+				} else if (ventana.esProfesor()) {
+					ventana.getProfesor().eliminarUsuario();
 				}
 
 				CtrExplorar c = new CtrExplorar(
