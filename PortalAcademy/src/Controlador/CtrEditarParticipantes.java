@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import Modelo.Curso;
 import Modelo.Profesor;
+import Modelo.Usuario;
 import Vista.EditarCurso;
 import Vista.EditarParticipantes;
 import Vista.Main;
@@ -16,53 +17,35 @@ import Vista.MisCursos;
 public class CtrEditarParticipantes implements ActionListener {
 
 	private EditarParticipantes ventana;
-	private Curso curso;
+	private Usuario usuario;
 	private Profesor profesor;
+	private Curso curso;
 
 	public CtrEditarParticipantes (EditarParticipantes v) {
 		ventana = v;
 		ventana.controlador(this);
-		curso = ventana.getC();
-		profesor = ventana.getUsuario();
+		curso = ventana.getCurso();
+		profesor = ventana.getProfesor();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		// TODO (Juanma) Añadir el cambio de la imagen.
-
-		if (e.getActionCommand().equals("GUARDAR")) {
-			if (ventana.getAforo() > 0) {
-				curso.setAforo(ventana.getAforo());
-				curso.setDescripcion(ventana.getDescripcion());
-				curso.setNombre(ventana.getNombre());
-				curso.setPresencial(ventana.getPresencial());
-				curso.setPublico(ventana.getPublico());
-				curso.setTieneForo(ventana.getForo());
-
-				JOptionPane.showMessageDialog(ventana, "Se ha actualizado la información del curso correctamente");
-
-				CtrInformacionCurso c = new CtrInformacionCurso(profesor, curso);
-				Main.setPanel(c.getPanel());
-			} else {
-				JOptionPane.showMessageDialog(ventana, "El aforo debe ser un entero positivo");
-			}
-		}
 
 		if (e.getActionCommand().equals("ELIMINAR")) {
-			curso.eliminarCurso();
-			CtrMisCursos c = new CtrMisCursos(new MisCursos(profesor));
-			Main.setPanel(c.getPanel());
-			JOptionPane.showMessageDialog(ventana, "Se ha eliminado al usuario del curso correctamente");
-		}
-
-		if (e.getActionCommand().equals("VOLVER")) {
-				CtrInformacionCurso c = new CtrInformacionCurso(profesor, curso);
+			usuario = ventana.getUsuario();
+			if (usuario != null) {
+				curso.eliminarUsuario(usuario);
+				JOptionPane.showMessageDialog(ventana, "Se ha eliminado al usuario del curso correctamente");
+				CtrEditarParticipantes c = new CtrEditarParticipantes(new EditarParticipantes(curso, profesor));
 				Main.setPanel(c.getPanel());
 			}
+			
 		}
-
-
+		
+		if (e.getActionCommand().equals("VOLVER")) {
+			CtrInformacionCurso c = new CtrInformacionCurso(profesor, curso);
+			Main.setPanel(c.getPanel());
+		}
 	}
 
 	public JPanel getPanel() {
