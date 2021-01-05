@@ -72,7 +72,7 @@ public class InformacionCurso extends JPanel {
 			add(enviar);
 			
 			refrescar = new JButton("Refrescar");
-			refrescar.setBounds(748, 234, 100, 23);
+			refrescar.setBounds(748, 274, 100, 23);
 			add(refrescar);
 			
 			JLabel lblForo = new JLabel("Foro");
@@ -100,11 +100,11 @@ public class InformacionCurso extends JPanel {
 		}  else if (user instanceof Profesor) {
 			if(user.equals(curso.getProfesor())) {
 				editar = new JButton("Editar Curso");
-				editar.setBounds(752, 68, 89, 23);
+				editar.setBounds(752, 68, 119, 23);
 				add(editar);
 				
 				editarParticipantes = new JButton("Editar Participantes");
-				editar.setBounds(752, 168, 89, 23);
+				editarParticipantes.setBounds(752, 168, 149, 23);
 				add(editarParticipantes);
 			}
 			CtrMenu menu = new CtrMenu(new Menu((Profesor)user));

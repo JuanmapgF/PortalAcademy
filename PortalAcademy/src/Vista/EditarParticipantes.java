@@ -45,7 +45,7 @@ public class EditarParticipantes extends JPanel {
 		add(t_curso);
 		
 		bEliminar = new JButton("Eliminar usuario");
-		bEliminar.setBounds(860, 551, 121, 23);
+		bEliminar.setBounds(860, 551, 151, 23);
 		add(bEliminar);
 		
 		bVolver = new JButton("Volver");

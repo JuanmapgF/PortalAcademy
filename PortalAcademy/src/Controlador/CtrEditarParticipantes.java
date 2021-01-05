@@ -25,7 +25,6 @@ public class CtrEditarParticipantes implements ActionListener {
 		ventana = v;
 		ventana.controlador(this);
 		curso = ventana.getCurso();
-		usuario = ventana.getUsuario();
 		profesor = ventana.getProfesor();
 	}
 
@@ -33,10 +32,14 @@ public class CtrEditarParticipantes implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getActionCommand().equals("ELIMINAR")) {
-			curso.eliminarUsuario(usuario);
-			JOptionPane.showMessageDialog(ventana, "Se ha eliminado al usuario del curso correctamente");
-			CtrEditarParticipantes c = new CtrEditarParticipantes(new EditarParticipantes(curso, profesor));
-			Main.setPanel(c.getPanel());
+			usuario = ventana.getUsuario();
+			if (usuario != null) {
+				curso.eliminarUsuario(usuario);
+				JOptionPane.showMessageDialog(ventana, "Se ha eliminado al usuario del curso correctamente");
+				CtrEditarParticipantes c = new CtrEditarParticipantes(new EditarParticipantes(curso, profesor));
+				Main.setPanel(c.getPanel());
+			}
+			
 		}
 		
 		if (e.getActionCommand().equals("VOLVER")) {
