@@ -195,6 +195,12 @@ public class Curso {
 		this.imagen = null;
 		this.publico = null;
 	}
+	
+	public void eliminarUsuario(Usuario u) {
+		bd = BD.getBD();
+		bd.Delete("DELETE FROM RelCursoUsuario WHERE nickUsuario = '" + u.getNick() +"'");
+		bd.finalize();
+	}
 
 	public Boolean quedanPlazas() {
 		return getAforo() > getEstudiantes().size();

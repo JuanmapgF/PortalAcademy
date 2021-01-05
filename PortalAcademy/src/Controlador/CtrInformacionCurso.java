@@ -13,6 +13,7 @@ import Modelo.Profesor;
 import Modelo.Usuario;
 import Vista.Ajustes;
 import Vista.EditarCurso;
+import Vista.EditarParticipantes;
 import Vista.Explorar;
 import Vista.InformacionCurso;
 import Vista.Inicio;
