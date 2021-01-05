@@ -99,7 +99,7 @@ public class Inicio extends JPanel {
 		volver.setActionCommand("VOLVER");
 
 		btnRecuperar.addActionListener(ctr);
-		btnRecuperar.setActionCommand("RECUPERARAR");
+		btnRecuperar.setActionCommand("RECUPERAR");
 	}
 
 	public void controladorEnter(KeyListener ctr) {
