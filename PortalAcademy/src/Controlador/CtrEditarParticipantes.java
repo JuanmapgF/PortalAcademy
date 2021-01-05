@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import Modelo.Curso;
 import Modelo.Profesor;
 import Vista.EditarCurso;
+import Vista.EditarParticipantes;
 import Vista.Main;
 import Vista.MisCursos;
 

@@ -25,10 +25,13 @@ public class CtrDescripcionCurso implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getActionCommand().equals("Unirse")) {
-			if(user != null) {
+			if (user != null) {
 				curso.addEstudiante(user);
 				CtrInformacionCurso c = new CtrInformacionCurso(user, curso);
 				JOptionPane.showMessageDialog(ventana, "Se ha unido al curso correctamente");
+				EnviarCorreo.enviarGmailUnico(Main.getUser().getCorreo(), "PortalAcademy",
+						"Enhorabuena formará parte de los participantes del curso gratuito " + curso.getNombre()
+								+ ". Disfrútalo esperamos que aprenda mucho.\nUn cordial saludo de la comunidad NoTrabaJava.");
 				Main.setPanel(c.getPanel());
 			} else {
 				CtrInformacionCurso c = new CtrInformacionCurso(null, curso);
@@ -37,7 +40,7 @@ public class CtrDescripcionCurso implements ActionListener {
 			}
 
 		}
-		
+
 	}
 
 	public JPanel getPanel() {
