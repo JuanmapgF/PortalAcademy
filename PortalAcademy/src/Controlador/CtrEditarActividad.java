@@ -31,7 +31,7 @@ public class CtrEditarActividad implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		// TODO (Juanma) Añadir el cambio de la imagen.
+		// TODO (Juanma) Añadir el cambio de la imagen y cambio del formato de la fecha que utiliza para seleccionarla.
 
 		if (e.getActionCommand().equals("GUARDAR")) {
 			if (ventana.getAforo() > 0) {

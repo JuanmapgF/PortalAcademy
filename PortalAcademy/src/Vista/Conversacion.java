@@ -120,7 +120,6 @@ public class Conversacion extends JPanel {
         @Override
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
 				int row, int column) {
-			// TODO Auto-generated method stub
         	JLabel lbl = new JLabel();
         	
 			if (value.equals("")) {
@@ -140,7 +139,6 @@ public class Conversacion extends JPanel {
         @Override
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
 				int row, int column) {
-			// TODO Auto-generated method stub
         	JLabel lbl = new JLabel();
         	
         	if (value.equals("")) {

@@ -28,6 +28,8 @@ public class DescripcionCurso extends JPanel {
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
 
+		// TODO (Juanma) Hacer que aparezca la por defecto.
+		
 		JLabel nombreCurso = new JLabel(curso.getNombre());
 		nombreCurso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 		nombreCurso.setBounds(460, 70, 269, 33);

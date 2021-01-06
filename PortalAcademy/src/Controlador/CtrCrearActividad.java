@@ -17,8 +17,6 @@ import Vista.MisActividades;
 
 public class CtrCrearActividad implements ActionListener {
 
-	// TODO (Juanma) Añadir cambio de la imagen.
-
 	private CrearActividad vista;
 	private Organizacion organizacion;
 	private File imagen;

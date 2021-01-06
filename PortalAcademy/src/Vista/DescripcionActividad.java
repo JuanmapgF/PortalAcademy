@@ -25,7 +25,7 @@ public class DescripcionActividad extends JPanel {
 	 */
 	public DescripcionActividad(Usuario user, Actividad actividad) {
 		
-		// TODO (Juanma) Que aparezca la imagen.
+		// TODO (Juanma) Hacer que aparezca la imagen normal y la por defecto.
 
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
