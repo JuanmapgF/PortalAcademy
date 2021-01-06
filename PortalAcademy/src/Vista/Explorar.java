@@ -262,7 +262,7 @@ public class Explorar extends JPanel {
 		String[] columnHeadersCurso = { "Imagen", "Curso", "Acceso" };
 
 		cursos = new JTable(datosCurso, columnHeadersCurso);
-		cursos.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+		cursos.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer(true));
 		cursos.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
 		cursos.getColumnModel().getColumn(1).setCellEditor(editorCurso);
 		cursos.setTableHeader(null);
@@ -288,7 +288,7 @@ public class Explorar extends JPanel {
 
 		actividades = new JTable(datosActividad, columnHeadersActividad);
 
-		actividades.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+		actividades.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer(false));
 		actividades.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
 		actividades.getColumnModel().getColumn(1).setCellEditor(editorActividad);
 		actividades.setTableHeader(null);
@@ -315,7 +315,7 @@ public class Explorar extends JPanel {
 		String[] columnHeadersCurso = { "Imagen", "Curso", "Acceso" };
 
 		cursos = new JTable(datosCurso, columnHeadersCurso);
-		cursos.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+		cursos.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer(true));
 		cursos.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
 		cursos.getColumnModel().getColumn(1).setCellEditor(editorCurso);
 		cursos.setTableHeader(null);
@@ -338,7 +338,7 @@ public class Explorar extends JPanel {
 		String[] columnHeadersActividad = { "Imagen", "Actividad", "Acceso" };
 
 		actividades = new JTable(datosActividad, columnHeadersActividad);
-		actividades.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+		actividades.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer(false));
 		actividades.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
 		actividades.getColumnModel().getColumn(1).setCellEditor(editorActividad);
 		actividades.setTableHeader(null);
