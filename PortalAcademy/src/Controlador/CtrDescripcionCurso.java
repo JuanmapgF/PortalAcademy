@@ -29,7 +29,7 @@ public class CtrDescripcionCurso implements ActionListener {
 				curso.addEstudiante(user);
 				CtrInformacionCurso c = new CtrInformacionCurso(user, curso);
 				JOptionPane.showMessageDialog(ventana, "Se ha unido al curso correctamente");
-				EnviarCorreo.enviarGmailUnico(Main.getUser().getCorreo(), "PortalAcademy", "Queridisísimo "
+				EnviarCorreo.enviarGmailUnico(Main.getUser().getCorreo(), "PortalAcademy", "Queridísimo "
 						+ Main.getUser().getNick()
 						+ ": \n\nEnhorabuena formará parte de los participantes del curso gratuito " + curso.getNombre()
 						+ ". Disfrútalo esperamos que aprenda mucho.\n\nUn cordial saludo de la comunidad NoTrabaJava.");

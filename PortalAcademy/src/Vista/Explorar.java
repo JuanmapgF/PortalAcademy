@@ -248,7 +248,6 @@ public class Explorar extends JPanel {
 			} else {
 				datosCurso[k][2] = "Disponible";
 			}
-
 			k++;
 		}
 
@@ -261,7 +260,7 @@ public class Explorar extends JPanel {
 		cursos.setTableHeader(null);
 		cursos.setCellSelectionEnabled(false);
 
-		datosActividad = new Object[lista_cursos.size()][3];
+		datosActividad = new Object[lista_actividades.size()][3];
 
 		k = 0;
 		for (Actividad actividad : lista_actividades) {

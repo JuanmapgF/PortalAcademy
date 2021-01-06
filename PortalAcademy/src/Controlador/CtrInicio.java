@@ -60,7 +60,7 @@ public class CtrInicio implements ActionListener {
 						.toString();
 				bd.finalize();
 				EnviarCorreo.enviarGmailUnico(ventana.getCorreo(), "PortalAcademy",
-						"Hola buenas,\n\nLe envío su contraseña actual. Recuerde que en caso de tener algún problema para recordarla siempre cambiarla en la pestaña de Ajustes.\nLa contraseña es: "
+						"Hola buenas,\n\nLe envío su contraseña actual. Recuerde que en caso de tener algún problema para recordarla siempre puede cambiarla en la pestaña de Ajustes.\nLa contraseña es: "
 								+ pass + "\n\nUn cordial saludo de la comunidad NoTrabaJava.");
 			} catch (ErrorBD err) {
 				JOptionPane.showMessageDialog(ventana, err.getMessage(), "Recuperar contraseña",

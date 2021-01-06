@@ -33,11 +33,11 @@ public class CtrDescripcionActividad implements ActionListener {
 				actividad.addParticipante(user);
 				CtrInformacionActividad c = new CtrInformacionActividad(user, actividad);
 				JOptionPane.showMessageDialog(ventana, "Se ha unido a la actividad correctamente");
-				EnviarCorreo.enviarGmailUnico(Main.getUser().getCorreo(), "PortalAcademy", "Queridisísimo "
+				EnviarCorreo.enviarGmailUnico(Main.getUser().getCorreo(), "PortalAcademy", "Queridísimo "
 						+ Main.getUser().getNick()
 						+ ": \n\nEnhorabuena formará parte de los participantes de la actividad "
 						+ actividad.getNombre()
-						+ ". Disfrútalo esperamos que disfrute la experiencia.\n\nUn cordial saludo de la comunidad NoTrabaJava.");
+						+ ". Esperamos que disfrute la experiencia.\n\nUn cordial saludo de la comunidad NoTrabaJava.");
 				Main.setPanel(c.getPanel());
 			}
 
