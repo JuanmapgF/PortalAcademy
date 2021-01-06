@@ -70,13 +70,12 @@ public class Explorar extends JPanel {
 		sp_curso.setBounds(325, 215, 273, 339);
 		sp_curso.setViewportView(cursos);
 		add(sp_curso);
-		sp_curso.setBorder(BorderFactory.createEmptyBorder());
 
 		JScrollPane sp_actividad = new JScrollPane();
 		sp_actividad.setBounds(656, 215, 273, 339);
 		sp_actividad.setViewportView(actividades);
 		add(sp_actividad);
-		sp_curso.setBorder(BorderFactory.createEmptyBorder());
+		
 
 		CtrMenu menu = new CtrMenu(new Menu(e));
 		add(menu.getPanel());
@@ -109,12 +108,17 @@ public class Explorar extends JPanel {
 		sp_curso.setBounds(325, 215, 273, 339);
 		sp_curso.setViewportView(cursos);
 		add(sp_curso);
-//		sp_curso.setBorder(BorderFactory.createEmptyBorder());
+		sp_curso.setBorder(BorderFactory.createEmptyBorder());
+		cursos.setRowHeight(90);
+		cursos.setShowVerticalLines(false);
 
 		JScrollPane sp_actividad = new JScrollPane();
 		sp_actividad.setBounds(656, 215, 273, 339);
 		sp_actividad.setViewportView(actividades);
 		add(sp_actividad);
+		sp_curso.setBorder(BorderFactory.createEmptyBorder());
+		actividades.setRowHeight(90);
+		actividades.setShowVerticalLines(false);
 
 		CtrMenu menu = new CtrMenu(new Menu());
 		add(menu.getPanel());
