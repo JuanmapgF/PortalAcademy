@@ -25,7 +25,7 @@ public class ButtonChatRenderer extends JButton implements TableCellRenderer {
 			int row, int column) {
 		
 		this.setText((String) value);
-		this.setHorizontalAlignment(SwingConstants.LEFT);;
+		this.setHorizontalAlignment(SwingConstants.LEFT);
 		
 		this.setContentAreaFilled(false);
 		this.setFocusPainted(false);
