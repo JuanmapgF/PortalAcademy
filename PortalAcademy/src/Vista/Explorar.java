@@ -1,5 +1,6 @@
 package Vista;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -18,6 +19,9 @@ import Modelo.Estudiante;
 import Modelo.Organizacion;
 import Modelo.Profesor;
 import Modelo.Usuario;
+import javax.swing.border.EmptyBorder;
+import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 
 @SuppressWarnings("serial")
 public class Explorar extends JPanel {
@@ -55,33 +59,54 @@ public class Explorar extends JPanel {
 		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 		add(lblNewLabel);
 
-		JLabel t_curso = new JLabel("Cursos:");
+		JLabel t_curso = new JLabel("Cursos");
+		t_curso.setBorder(new LineBorder(Color.BLACK));
+		t_curso.setHorizontalAlignment(SwingConstants.CENTER);
 		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		t_curso.setBounds(295, 159, 90, 33);
+		t_curso.setBounds(263, 108, 275, 33);
 		add(t_curso);
 
-		JLabel t_actividad = new JLabel("Actividades:");
+		JLabel t_actividad = new JLabel("Actividades");
+		t_actividad.setBorder(new LineBorder(Color.BLACK));
+		t_actividad.setHorizontalAlignment(SwingConstants.CENTER);
 		t_actividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		t_actividad.setBounds(619, 159, 159, 33);
+		t_actividad.setBounds(565, 108, 275, 33);
 		add(t_actividad);
 
 		JScrollPane sp_curso = new JScrollPane();
-		sp_curso.setBounds(325, 215, 273, 339);
+		sp_curso.setBounds(263, 152, 275, 452);
 		sp_curso.setViewportView(cursos);
-		cursos.setRowHeight(90);
 		add(sp_curso);
+		sp_curso.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		cursos.setRowHeight(75);
+		cursos.setShowVerticalLines(false);
+		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
+		cursos.getColumnModel().getColumn(0).setMinWidth(75);
+		cursos.getColumnModel().getColumn(1).setMaxWidth(125);
+		cursos.getColumnModel().getColumn(1).setMinWidth(125);
+		cursos.getColumnModel().getColumn(2).setMaxWidth(75);
+		cursos.getColumnModel().getColumn(2).setMinWidth(75);
 
 		JScrollPane sp_actividad = new JScrollPane();
-		sp_actividad.setBounds(656, 215, 273, 339);
+		sp_actividad.setBounds(565, 152, 275, 452);
 		sp_actividad.setViewportView(actividades);
-		actividades.setRowHeight(90);
 		add(sp_actividad);
+		sp_actividad.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		actividades.setRowHeight(75);
+		actividades.setShowVerticalLines(false);
+		actividades.getColumnModel().getColumn(0).setMaxWidth(75);
+		actividades.getColumnModel().getColumn(0).setMinWidth(75);
+		actividades.getColumnModel().getColumn(1).setMaxWidth(125);
+		actividades.getColumnModel().getColumn(1).setMinWidth(125);
+		actividades.getColumnModel().getColumn(2).setMaxWidth(75);
+		actividades.getColumnModel().getColumn(2).setMinWidth(75);
 		
 
 		CtrMenu menu = new CtrMenu(new Menu(e));
 		add(menu.getPanel());
 	}
 
+	
 	public Explorar(List<Curso> lc, List<Actividad> la) {
 		lista_cursos = lc;
 		lista_actividades = la;
@@ -95,31 +120,47 @@ public class Explorar extends JPanel {
 		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 		add(lblNewLabel);
 
-		JLabel t_curso = new JLabel("Cursos:");
+		JLabel t_curso = new JLabel("Cursos");
+		t_curso.setBorder(new LineBorder(Color.BLACK));
+		t_curso.setHorizontalAlignment(SwingConstants.CENTER);
 		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		t_curso.setBounds(295, 159, 90, 33);
+		t_curso.setBounds(263, 108, 275, 33);
 		add(t_curso);
 
-		JLabel t_actividad = new JLabel("Actividades:");
+		JLabel t_actividad = new JLabel("Actividades");
+		t_actividad.setBorder(new LineBorder(Color.BLACK));
+		t_actividad.setHorizontalAlignment(SwingConstants.CENTER);
 		t_actividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		t_actividad.setBounds(619, 159, 159, 33);
+		t_actividad.setBounds(565, 108, 275, 33);
 		add(t_actividad);
 
 		JScrollPane sp_curso = new JScrollPane();
-		sp_curso.setBounds(325, 215, 273, 339);
+		sp_curso.setBounds(263, 152, 275, 452);
 		sp_curso.setViewportView(cursos);
 		add(sp_curso);
-		sp_curso.setBorder(BorderFactory.createEmptyBorder());
-		cursos.setRowHeight(90);
+		sp_curso.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		cursos.setRowHeight(75);
 		cursos.setShowVerticalLines(false);
+		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
+		cursos.getColumnModel().getColumn(0).setMinWidth(75);
+		cursos.getColumnModel().getColumn(1).setMaxWidth(125);
+		cursos.getColumnModel().getColumn(1).setMinWidth(125);
+		cursos.getColumnModel().getColumn(2).setMaxWidth(75);
+		cursos.getColumnModel().getColumn(2).setMinWidth(75);
 
 		JScrollPane sp_actividad = new JScrollPane();
-		sp_actividad.setBounds(656, 215, 273, 339);
+		sp_actividad.setBounds(565, 152, 275, 452);
 		sp_actividad.setViewportView(actividades);
 		add(sp_actividad);
-		sp_curso.setBorder(BorderFactory.createEmptyBorder());
-		actividades.setRowHeight(90);
+		sp_actividad.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		actividades.setRowHeight(75);
 		actividades.setShowVerticalLines(false);
+		actividades.getColumnModel().getColumn(0).setMaxWidth(75);
+		actividades.getColumnModel().getColumn(0).setMinWidth(75);
+		actividades.getColumnModel().getColumn(1).setMaxWidth(125);
+		actividades.getColumnModel().getColumn(1).setMinWidth(125);
+		actividades.getColumnModel().getColumn(2).setMaxWidth(75);
+		actividades.getColumnModel().getColumn(2).setMinWidth(75);
 
 		CtrMenu menu = new CtrMenu(new Menu());
 		add(menu.getPanel());
@@ -140,27 +181,47 @@ public class Explorar extends JPanel {
 		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 		add(lblNewLabel);
 
-		JLabel t_curso = new JLabel("Cursos:");
+		JLabel t_curso = new JLabel("Cursos");
+		t_curso.setBorder(new LineBorder(Color.BLACK));
+		t_curso.setHorizontalAlignment(SwingConstants.CENTER);
 		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		t_curso.setBounds(295, 159, 90, 33);
+		t_curso.setBounds(263, 108, 275, 33);
 		add(t_curso);
 
-		JLabel t_actividad = new JLabel("Actividades:");
+		JLabel t_actividad = new JLabel("Actividades");
+		t_actividad.setBorder(new LineBorder(Color.BLACK));
+		t_actividad.setHorizontalAlignment(SwingConstants.CENTER);
 		t_actividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		t_actividad.setBounds(619, 159, 159, 33);
+		t_actividad.setBounds(565, 108, 275, 33);
 		add(t_actividad);
 
 		JScrollPane sp_curso = new JScrollPane();
-		sp_curso.setBounds(325, 215, 273, 339);
+		sp_curso.setBounds(263, 152, 275, 452);
 		sp_curso.setViewportView(cursos);
-		cursos.setRowHeight(90);
 		add(sp_curso);
+		sp_curso.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		cursos.setRowHeight(75);
+		cursos.setShowVerticalLines(false);
+		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
+		cursos.getColumnModel().getColumn(0).setMinWidth(75);
+		cursos.getColumnModel().getColumn(1).setMaxWidth(125);
+		cursos.getColumnModel().getColumn(1).setMinWidth(125);
+		cursos.getColumnModel().getColumn(2).setMaxWidth(75);
+		cursos.getColumnModel().getColumn(2).setMinWidth(75);
 
 		JScrollPane sp_actividad = new JScrollPane();
-		sp_actividad.setBounds(656, 215, 273, 339);
+		sp_actividad.setBounds(565, 152, 275, 452);
 		sp_actividad.setViewportView(actividades);
-		actividades.setRowHeight(90);
 		add(sp_actividad);
+		sp_actividad.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		actividades.setRowHeight(75);
+		actividades.setShowVerticalLines(false);
+		actividades.getColumnModel().getColumn(0).setMaxWidth(75);
+		actividades.getColumnModel().getColumn(0).setMinWidth(75);
+		actividades.getColumnModel().getColumn(1).setMaxWidth(125);
+		actividades.getColumnModel().getColumn(1).setMinWidth(125);
+		actividades.getColumnModel().getColumn(2).setMaxWidth(75);
+		actividades.getColumnModel().getColumn(2).setMinWidth(75);
 
 		CtrMenu menu = new CtrMenu(new Menu(e));
 		add(menu.getPanel());
@@ -181,27 +242,47 @@ public class Explorar extends JPanel {
 		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 		add(lblNewLabel);
 
-		JLabel t_curso = new JLabel("Cursos:");
+		JLabel t_curso = new JLabel("Cursos");
+		t_curso.setBorder(new LineBorder(Color.BLACK));
+		t_curso.setHorizontalAlignment(SwingConstants.CENTER);
 		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		t_curso.setBounds(295, 159, 90, 33);
+		t_curso.setBounds(263, 108, 275, 33);
 		add(t_curso);
 
-		JLabel t_actividad = new JLabel("Actividades:");
+		JLabel t_actividad = new JLabel("Actividades");
+		t_actividad.setBorder(new LineBorder(Color.BLACK));
+		t_actividad.setHorizontalAlignment(SwingConstants.CENTER);
 		t_actividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		t_actividad.setBounds(619, 159, 159, 33);
+		t_actividad.setBounds(565, 108, 275, 33);
 		add(t_actividad);
 
 		JScrollPane sp_curso = new JScrollPane();
-		sp_curso.setBounds(325, 215, 273, 339);
+		sp_curso.setBounds(263, 152, 275, 452);
 		sp_curso.setViewportView(cursos);
-		cursos.setRowHeight(90);
 		add(sp_curso);
+		sp_curso.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		cursos.setRowHeight(75);
+		cursos.setShowVerticalLines(false);
+		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
+		cursos.getColumnModel().getColumn(0).setMinWidth(75);
+		cursos.getColumnModel().getColumn(1).setMaxWidth(125);
+		cursos.getColumnModel().getColumn(1).setMinWidth(125);
+		cursos.getColumnModel().getColumn(2).setMaxWidth(75);
+		cursos.getColumnModel().getColumn(2).setMinWidth(75);
 
 		JScrollPane sp_actividad = new JScrollPane();
-		sp_actividad.setBounds(656, 215, 273, 339);
+		sp_actividad.setBounds(565, 152, 275, 452);
 		sp_actividad.setViewportView(actividades);
-		actividades.setRowHeight(90);
 		add(sp_actividad);
+		sp_actividad.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		actividades.setRowHeight(75);
+		actividades.setShowVerticalLines(false);
+		actividades.getColumnModel().getColumn(0).setMaxWidth(75);
+		actividades.getColumnModel().getColumn(0).setMinWidth(75);
+		actividades.getColumnModel().getColumn(1).setMaxWidth(125);
+		actividades.getColumnModel().getColumn(1).setMinWidth(125);
+		actividades.getColumnModel().getColumn(2).setMaxWidth(75);
+		actividades.getColumnModel().getColumn(2).setMinWidth(75);
 
 		CtrMenu menu = new CtrMenu(new Menu(e));
 		add(menu.getPanel());

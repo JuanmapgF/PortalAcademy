@@ -17,7 +17,7 @@ public class ButtonRenderer extends JButton implements TableCellRenderer {
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
 			int row, int column) {
 		
-		this.setText((String) value);
+		this.setText("<html><p style=\"width:75px\">" + (String) value + "</p></html>");
 		this.setContentAreaFilled(false);
 		this.setFocusPainted(false);
 		this.setBorderPainted(false);
