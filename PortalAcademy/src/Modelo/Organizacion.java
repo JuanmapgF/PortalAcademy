@@ -1,6 +1,8 @@
 package Modelo;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class Organizacion extends Usuario {
@@ -43,7 +45,23 @@ public class Organizacion extends Usuario {
 		}
 		return sede;
 	}
-
+	
+	public List<Actividad> getActividadesFechaA(Date d) {
+		List<Actividad> p = getActividades();
+		Calendar cal = Calendar.getInstance();
+	    cal.setTime(d);
+		//JLabel lblNewLabel = new JLabel("Eventos del día " + cal.get(Calendar.DAY_OF_MONTH) + "/" + (cal.get(Calendar.MONTH)+1) + "/" + cal.get(Calendar.YEAR));
+		List<Actividad> c = new ArrayList<Actividad>();
+		for(Actividad x : p) {
+			Calendar cal1 = Calendar.getInstance();
+		    cal1.setTime(x.getFecha());
+			if(cal.get(Calendar.DAY_OF_MONTH)   == cal1.get(Calendar.DAY_OF_MONTH) &&cal.get(Calendar.MONTH) == cal1.get(Calendar.MONTH) &&  cal.get(Calendar.YEAR) ==  cal1.get(Calendar.YEAR)) {
+				c.add(x);
+			}
+		}
+		return c;
+	}
+	
 	@Override
 	public void eliminarUsuario() {
 		super.eliminarUsuario();
