@@ -42,7 +42,7 @@ import javax.swing.table.TableCellRenderer;
 			if (column == 0) {
 				setBackground(Color.decode("#BDC1D6"));
 			} else {
-				setBackground(Color.decode("#00BABB"));
+				setBackground(Color.decode("#6AC6F5"));
 			}
 		}
 		return this;
