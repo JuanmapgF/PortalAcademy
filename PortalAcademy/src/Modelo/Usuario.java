@@ -3,8 +3,11 @@ package Modelo;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import javax.swing.JLabel;
 
 public class Usuario {
 
@@ -155,9 +158,37 @@ public class Usuario {
 		return c;
 	}
 	
-	public void addFecha(Date fecha) {
+	public List<String> getInformacion(Date d) {
+		List<String> c = new ArrayList<String>();
 		bd = BD.getBD();
-		bd.Insert("INSERT INTO Actividad VALUES ( " + this.getNick() + ", '" +  formato.format(fecha) + "');") ;
+		List<Object[]> info = bd.Select("SELECT informacion FROM FechasUsuarios WHERE nickUsuario = '"+ this.getNick() + "' AND fecha = '" + formato.format(d) + "'");
+		bd.finalize();
+		for (Object[] o : info) {
+				c.add(o[0].toString());
+		}
+		return c;
+	}
+	
+	public List<Actividad> getActividadesFecha(Date d) {
+		setListaActividades();
+		List<Actividad> p = getListaActividades();
+		Calendar cal = Calendar.getInstance();
+	    cal.setTime(d);
+		//JLabel lblNewLabel = new JLabel("Eventos del día " + cal.get(Calendar.DAY_OF_MONTH) + "/" + (cal.get(Calendar.MONTH)+1) + "/" + cal.get(Calendar.YEAR));
+		List<Actividad> c = new ArrayList<Actividad>();
+		for(Actividad x : p) {
+			Calendar cal1 = Calendar.getInstance();
+		    cal1.setTime(x.getFecha());
+			if(cal.get(Calendar.DAY_OF_MONTH)   == cal1.get(Calendar.DAY_OF_MONTH) &&cal.get(Calendar.MONTH) == cal1.get(Calendar.MONTH) &&  cal.get(Calendar.YEAR) ==  cal1.get(Calendar.YEAR)) {
+				c.add(x);
+			}
+		}
+		return c;
+	}
+	
+	public void addFecha(Date fecha, String informacion) {
+		bd = BD.getBD();
+		bd.Insert("INSERT INTO FechasUsuarios VALUES ( " + this.getNick() + ", '" +  formato.format(fecha) + "', '" + informacion + "');") ;
 		bd.finalize();
 	}
 }

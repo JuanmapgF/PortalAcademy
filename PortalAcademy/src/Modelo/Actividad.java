@@ -205,4 +205,15 @@ public class Actividad {
 			return false;
 		}
 	}
+	
+	public static List<Actividad> getActividadFecha(Date d) {
+		List <Actividad> acts = new ArrayList<Actividad>();
+		bd = BD.getBD();
+		List<Object[]> tuplaAc = bd.Select("SELECT * FROM Actividad WHERE fecha = '" + formato.format(d) + "';");
+		bd.finalize();
+		for (Object[] o : tuplaAc) {
+			acts.add(new Actividad((int)o[0]));
+		}
+		return acts;
+	}
 }
