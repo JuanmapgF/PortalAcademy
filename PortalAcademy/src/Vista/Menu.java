@@ -69,7 +69,7 @@ public class Menu extends JPanel {
 		add(explorar);
 		
 		JCalendar jc = new JCalendar();
-		jc.setBounds(10, 469, 205, 153);
+		jc.setBounds(10, 455, 205, 153);
 	    HighlightEvaluator evaluator = new HighlightEvaluator();
 	    for(Actividad a : Actividad.getTodasLasActividades()) {
 			evaluator.add(a.getFecha());
@@ -77,19 +77,19 @@ public class Menu extends JPanel {
 //			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-09"));
 //			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-10"));
 	   
-//	    jc.getDayChooser().addDateEvaluator(evaluator);
-//	    jc.setCalendar(jc.getCalendar());  
-//		add(jc);
-//		jc.setWeekOfYearVisible(false);
-//		jc.getDayChooser().addPropertyChangeListener("day", new PropertyChangeListener() {
-//
-//		    @Override
-//		    public void propertyChange(PropertyChangeEvent e) {
-//		    	CtrCalendario c = new CtrCalendario(new Calendario(jc.getDate()));
-//				Main.setPanel(c.getPanel());
-//
-//		    }
-//		});
+	    jc.getDayChooser().addDateEvaluator(evaluator);
+	    jc.setCalendar(jc.getCalendar());  
+		add(jc);
+		jc.setWeekOfYearVisible(false);
+		jc.getDayChooser().addPropertyChangeListener("day", new PropertyChangeListener() {
+
+		    @Override
+		    public void propertyChange(PropertyChangeEvent e) {
+		    	CtrCalendario c = new CtrCalendario(new Calendario(jc.getDate()));
+				Main.setPanel(c.getPanel());
+
+		    }
+		});
 
 	}
 
@@ -142,7 +142,7 @@ public class Menu extends JPanel {
 		add(btnChat);
 		
 		JCalendar jc = new JCalendar();
-		jc.setBounds(10, 469, 205, 153);
+		jc.setBounds(10, 455, 205, 153);
 	    HighlightEvaluator evaluator = new HighlightEvaluator();
 	    for(Actividad a : estudiante.getListaActividades()) {
 			evaluator.add(a.getFecha());
@@ -156,7 +156,16 @@ public class Menu extends JPanel {
 	    jc.getDayChooser().addDateEvaluator(evaluator);
 	    jc.setCalendar(jc.getCalendar());  
 		add(jc);
-		
+		jc.setWeekOfYearVisible(false);
+		jc.getDayChooser().addPropertyChangeListener("day", new PropertyChangeListener() {
+
+		    @Override
+		    public void propertyChange(PropertyChangeEvent e) {
+		    	CtrCalendario c = new CtrCalendario(new Calendario(estudiante,jc.getDate()));
+				Main.setPanel(c.getPanel());
+
+		    }
+		});
 	}
 
 	public Menu(Profesor profesor) {
@@ -203,7 +212,7 @@ public class Menu extends JPanel {
 		add(btnChat);
 		
 		JCalendar jc = new JCalendar();
-		jc.setBounds(10, 469, 205, 153);
+		jc.setBounds(10, 455, 205, 153);
 	    HighlightEvaluator evaluator = new HighlightEvaluator();
 	    
 	    for(Actividad a : profesor.getListaActividades()) {
@@ -270,7 +279,7 @@ public class Menu extends JPanel {
 		add(btnChat);
 		
 		JCalendar jc = new JCalendar();
-		jc.setBounds(10, 469, 205, 153);
+		jc.setBounds(10, 455, 205, 153);
 	    HighlightEvaluator evaluator = new HighlightEvaluator();
 
 	    for(Actividad a : organizacion.getActividades()) {
@@ -286,7 +295,16 @@ public class Menu extends JPanel {
 	    jc.getDayChooser().addDateEvaluator(evaluator);
 	    jc.setCalendar(jc.getCalendar());  
 		add(jc);
-		
+		jc.setWeekOfYearVisible(false);
+		jc.getDayChooser().addPropertyChangeListener("day", new PropertyChangeListener() {
+
+		    @Override
+		    public void propertyChange(PropertyChangeEvent e) {
+		    	CtrCalendario c = new CtrCalendario(new Calendario(organizacion,jc.getDate()));
+				Main.setPanel(c.getPanel());
+
+		    }
+		});
 	}
 
 	public void controlador(ActionListener ctr) {
