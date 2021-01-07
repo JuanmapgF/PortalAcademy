@@ -1,6 +1,7 @@
 package Modelo;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class Curso {
 
 	private static BD bd;
 
+	
 	public Curso(String nombre, String descripcion, File imagen, Boolean publico, Integer aforo, Boolean presencial,
 			Boolean tieneForo, Profesor profesor) {
 
