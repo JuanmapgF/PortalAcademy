@@ -30,6 +30,7 @@ import Modelo.Profesor;
 
 import com.toedter.calendar.IDateEvaluator;
 import com.toedter.calendar.JCalendar;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class Menu extends JPanel {
@@ -53,23 +54,26 @@ public class Menu extends JPanel {
 
 	public Menu() {
 
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
 		iniciar = new JButton("Iniciar sesi\u00F3n");
-		iniciar.setBounds(729, 37, 121, 23);
+		iniciar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		iniciar.setBounds(1358, 78, 189, 48);
 		add(iniciar);
 
 		registrarse = new JButton("Registrarse");
-		registrarse.setBounds(860, 37, 121, 23);
+		registrarse.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		registrarse.setBounds(1642, 78, 184, 48);
 		add(registrarse);
 
 		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
+		explorar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		explorar.setBounds(60, 191, 205, 48);
 		add(explorar);
 		
 		JCalendar jc = new JCalendar();
-		jc.setBounds(10, 455, 205, 153);
+		jc.setBounds(60, 755, 205, 153);
 	    HighlightEvaluator evaluator = new HighlightEvaluator();
 	    for(Actividad a : Actividad.getTodasLasActividades()) {
 			evaluator.add(a.getFecha());
@@ -98,42 +102,47 @@ public class Menu extends JPanel {
 	
 	
 	
+	
 	public Menu(Estudiante estudiante) {
 		this.estudiante = true;
 		this.est = estudiante;
 
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
 		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
-		cerrar.setBounds(900, 37, (int) cerrar.getPreferredSize().getWidth(),
-				(int) cerrar.getPreferredSize().getHeight());
+		cerrar.setBounds(1705, 47, 156,
+				122);
 		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
 		add(cbdCerrar.getBoton());
 
 		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
+		explorar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		explorar.setBounds(60, 233, 205, 48);
 		add(explorar);
 
 		cursos = new JButton("Mis cursos");
-		cursos.setBounds(36, 261, 131, 32);
+		cursos.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		cursos.setBounds(60, 365, 205, 48);
 		add(cursos);
 
 		actividades = new JButton("Mis actividades");
-		actividades.setBounds(36, 336, 131, 32);
+		actividades.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		actividades.setBounds(60, 489, 205, 48);
 		add(actividades);
 
 		ajustes = new JButton("Ajustes");
-		ajustes.setBounds(36, 413, 131, 32);
+		ajustes.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		ajustes.setBounds(60, 612, 205, 48);
 		add(ajustes);
 
 		user = new ButtonDynamic("Sesión iniciada como: " + estudiante.getNick(), ButtonDynamic.USUARIO);
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
-		user.setBounds(0, 6, (int) user.getPreferredSize().getWidth(), (int) user.getPreferredSize().getHeight());
+		user.setBounds(82, 22, 150, 136);
 		add(cbdUser.getBoton());
 
 		btnChat = new JButton("");
-		btnChat.setBounds(860, 47, 46, 32);
+		btnChat.setBounds(1501, 47, 81, 74);
 		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
 		btnChat.setContentAreaFilled(false);
 		btnChat.setFocusPainted(false);
@@ -142,7 +151,7 @@ public class Menu extends JPanel {
 		add(btnChat);
 		
 		JCalendar jc = new JCalendar();
-		jc.setBounds(10, 455, 205, 153);
+		jc.setBounds(60, 755, 205, 153);
 	    HighlightEvaluator evaluator = new HighlightEvaluator();
 	    for(Actividad a : estudiante.getListaActividades()) {
 			evaluator.add(a.getFecha());
@@ -168,42 +177,47 @@ public class Menu extends JPanel {
 		});
 	}
 
+	
 	public Menu(Profesor profesor) {
 		this.prof = profesor;
 		this.profesor = true;
 
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
 		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
-		cerrar.setBounds(900, 37, (int) cerrar.getPreferredSize().getWidth(),
-				(int) cerrar.getPreferredSize().getHeight());
+		cerrar.setBounds(1705, 47, 156,
+				122);
 		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
 		add(cbdCerrar.getBoton());
 
 		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
+		explorar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		explorar.setBounds(60, 233, 205, 48);
 		add(explorar);
 
 		cursos = new JButton("Mis cursos");
-		cursos.setBounds(36, 261, 131, 32);
+		cursos.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		cursos.setBounds(60, 365, 205, 48);
 		add(cursos);
 
 		actividades = new JButton("Mis actividades");
-		actividades.setBounds(36, 336, 131, 32);
+		actividades.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		actividades.setBounds(60, 489, 205, 48);
 		add(actividades);
 
 		ajustes = new JButton("Ajustes");
-		ajustes.setBounds(36, 413, 131, 32);
+		ajustes.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		ajustes.setBounds(60, 612, 205, 48);
 		add(ajustes);
 
 		user = new ButtonDynamic("Sesión iniciada como: " + profesor.getNick(), ButtonDynamic.USUARIO);
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
-		user.setBounds(0, 6, (int) user.getPreferredSize().getWidth(), (int) user.getPreferredSize().getHeight());
+		user.setBounds(82, 22, 150, 136);
 		add(cbdUser.getBoton());
 
 		btnChat = new JButton("");
-		btnChat.setBounds(860, 47, 46, 32);
+		btnChat.setBounds(1501, 47, 81, 74);
 		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
 		btnChat.setContentAreaFilled(false);
 		btnChat.setFocusPainted(false);
@@ -212,7 +226,7 @@ public class Menu extends JPanel {
 		add(btnChat);
 		
 		JCalendar jc = new JCalendar();
-		jc.setBounds(10, 455, 205, 153);
+		jc.setBounds(60, 755, 205, 153);
 	    HighlightEvaluator evaluator = new HighlightEvaluator();
 	    
 	    for(Actividad a : profesor.getListaActividades()) {
@@ -239,38 +253,44 @@ public class Menu extends JPanel {
 		});
 	}
 
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public Menu(Organizacion organizacion) {
 		this.org = organizacion;
 		this.organizacion = true;
 
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
 		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
-		cerrar.setBounds(900, 37, (int) cerrar.getPreferredSize().getWidth(),
-				(int) cerrar.getPreferredSize().getHeight());
+		cerrar.setBounds(1705, 47, 156,
+				122);
 		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
 		add(cbdCerrar.getBoton());
 
 		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
+		explorar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		explorar.setBounds(60, 233, 205, 48);
 		add(explorar);
 
 		actividades = new JButton("Mis actividades");
-		actividades.setBounds(36, 261, 131, 32);
+		actividades.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		actividades.setBounds(60, 365, 205, 48);
 		add(actividades);
 
 		ajustes = new JButton("Ajustes");
-		ajustes.setBounds(36, 336, 131, 32);
+		ajustes.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		ajustes.setBounds(60, 489, 205, 48);
 		add(ajustes);
 
 		user = new ButtonDynamic("Sesión iniciada como: " + organizacion.getNick(), ButtonDynamic.USUARIO);
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
-		user.setBounds(0, 6, (int) user.getPreferredSize().getWidth(), (int) user.getPreferredSize().getHeight());
+		user.setBounds(82, 22, 150, 136);
 		add(cbdUser.getBoton());
 
 		btnChat = new JButton("");
-		btnChat.setBounds(860, 47, 46, 32);
+		btnChat.setBounds(1501, 47, 81, 74);
 		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
 		btnChat.setContentAreaFilled(false);
 		btnChat.setFocusPainted(false);
@@ -279,7 +299,7 @@ public class Menu extends JPanel {
 		add(btnChat);
 		
 		JCalendar jc = new JCalendar();
-		jc.setBounds(10, 455, 205, 153);
+		jc.setBounds(60, 755, 205, 153);
 	    HighlightEvaluator evaluator = new HighlightEvaluator();
 
 	    for(Actividad a : organizacion.getActividades()) {

@@ -65,7 +65,8 @@ public class Curso {
 	public Integer getId() {
 		return idCurso;
 	}
-
+	
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -232,5 +233,12 @@ public class Curso {
 		} else {
 			return false;
 		}
+	}
+	
+	public static Curso cogerId(Profesor prof) {
+		bd = BD.getBD();
+		Object[] tuplaEstudiantes = bd.Select("SELECT idCurso FROM Curso WHERE nickProfesor = '" + prof.getNick() + "' ORDER BY idCurso DESC;").get(0);
+		bd.finalize();
+		return new Curso((int)((tuplaEstudiantes[0])));
 	}
 }

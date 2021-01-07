@@ -233,7 +233,7 @@ public class BD {
 				fis = new FileInputStream(imagen);
 			}
 			PreparedStatement ps = con.prepareStatement(
-					"INSERT INTO Actividad (nombre, descripcion, imagen, aforo, fecha, lugar, nickOrganizacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+					"INSERT INTO Actividad (nombre, descripcion, imagen, aforo, fecha, lugar, nickOrganizacion) VALUES (?, ?, ?, ?, ?, ?, ?)");
 			ps.setString(1, nombre);
 			ps.setString(2, descripcion);
 			ps.setBlob(3, fis);

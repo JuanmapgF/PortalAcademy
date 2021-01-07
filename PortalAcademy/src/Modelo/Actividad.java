@@ -216,4 +216,12 @@ public class Actividad {
 		}
 		return acts;
 	}
+	
+	public static Actividad cogerId(Organizacion org) {
+		bd = BD.getBD();
+		Object[] tuplaEstudiantes = bd.Select("SELECT idActividad FROM Actividad WHERE nickOrganizacion = '" + org.getNick() + "' ORDER BY idActividad DESC;").get(0);
+		bd.finalize();
+		return new Actividad((int)((tuplaEstudiantes[0])));
+	}
+	
 }
