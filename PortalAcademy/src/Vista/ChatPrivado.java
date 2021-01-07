@@ -25,6 +25,7 @@ import Modelo.Organizacion;
 import Modelo.Profesor;
 import Modelo.Usuario;
 
+@SuppressWarnings("serial")
 public class ChatPrivado extends JPanel {
 	
 	private Usuario user;
@@ -44,6 +45,7 @@ public class ChatPrivado extends JPanel {
 	private JTextField textFieldNuevoChat;
 	private JButton buttonAgregarChat;
 
+
 	public ChatPrivado(Usuario user) {
 		this.setBounds(0, 0, 1080, 650);
 		setLayout(null);
@@ -53,20 +55,20 @@ public class ChatPrivado extends JPanel {
 		getChatsAbiertos();
 		
 		JScrollPane sp = new JScrollPane();
-		sp.setBounds(230, 105, 273, 479);
+		sp.setBounds(230, 115, 273, 469);
 		sp.setViewportView(chatsAbiertos);
 		add(sp);
 		chatsAbiertos.setRowHeight(75);
 		
 		textFieldNuevoChat = new JTextField();
 		textFieldNuevoChat.setToolTipText("");
-		textFieldNuevoChat.setBounds(263, 74, 240, 20);
+		textFieldNuevoChat.setBounds(263, 83, 240, 20);
 		add(textFieldNuevoChat);
 		textFieldNuevoChat.setColumns(10);
 		
 		buttonAgregarChat = new JButton("");
 		buttonAgregarChat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		buttonAgregarChat.setBounds(220, 65, 34, 36);
+		buttonAgregarChat.setBounds(220, 75, 34, 36);
 		buttonAgregarChat.setIcon(new ImageIcon(getClass().getResource("/img/agregar_chat.png")));
 		buttonAgregarChat.setContentAreaFilled(false);
 		buttonAgregarChat.setFocusPainted(false);
@@ -109,7 +111,7 @@ public class ChatPrivado extends JPanel {
 		getChatsAbiertos();
 		
 		JScrollPane sp = new JScrollPane();
-		sp.setBounds(230, 105, 273, 479);
+		sp.setBounds(230, 115, 273, 469);
 		sp.setViewportView(chatsAbiertos);
 		add(sp);
 		chatsAbiertos.setRowHeight(75);
@@ -141,19 +143,19 @@ public class ChatPrivado extends JPanel {
 		
 		JLabel nombreReceptor = new JLabel(seleccionado.getNick());
 		nombreReceptor.setHorizontalAlignment(SwingConstants.CENTER);
-		nombreReceptor.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		nombreReceptor.setFont(new Font("Tahoma", Font.BOLD, 16));
 		nombreReceptor.setBounds(550, 58, 223, 36);
 		add(nombreReceptor);
 		
 		textFieldNuevoChat = new JTextField();
 		textFieldNuevoChat.setToolTipText("");
-		textFieldNuevoChat.setBounds(263, 74, 240, 20);
+		textFieldNuevoChat.setBounds(263, 83, 240, 20);
 		add(textFieldNuevoChat);
 		textFieldNuevoChat.setColumns(10);
 		
 		buttonAgregarChat = new JButton("");
 		buttonAgregarChat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		buttonAgregarChat.setBounds(220, 65, 34, 36);
+		buttonAgregarChat.setBounds(220, 75, 34, 36);
 		buttonAgregarChat.setIcon(new ImageIcon(getClass().getResource("/img/agregar_chat.png")));
 		buttonAgregarChat.setContentAreaFilled(false);
 		buttonAgregarChat.setFocusPainted(false);

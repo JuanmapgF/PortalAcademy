@@ -128,11 +128,11 @@ public class Menu extends JPanel {
 
 		user = new ButtonDynamic("Sesión iniciada como: " + estudiante.getNick(), ButtonDynamic.USUARIO);
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
-		user.setBounds(0, 11, (int) user.getPreferredSize().getWidth(), (int) user.getPreferredSize().getHeight());
+		user.setBounds(0, 6, (int) user.getPreferredSize().getWidth(), (int) user.getPreferredSize().getHeight());
 		add(cbdUser.getBoton());
 
 		btnChat = new JButton("");
-		btnChat.setBounds(860, 37, 46, 32);
+		btnChat.setBounds(860, 47, 46, 32);
 		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
 		btnChat.setContentAreaFilled(false);
 		btnChat.setFocusPainted(false);
@@ -189,11 +189,11 @@ public class Menu extends JPanel {
 
 		user = new ButtonDynamic("Sesión iniciada como: " + profesor.getNick(), ButtonDynamic.USUARIO);
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
-		user.setBounds(0, 11, (int) user.getPreferredSize().getWidth(), (int) user.getPreferredSize().getHeight());
+		user.setBounds(0, 6, (int) user.getPreferredSize().getWidth(), (int) user.getPreferredSize().getHeight());
 		add(cbdUser.getBoton());
 
 		btnChat = new JButton("");
-		btnChat.setBounds(860, 37, 46, 32);
+		btnChat.setBounds(860, 47, 46, 32);
 		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
 		btnChat.setContentAreaFilled(false);
 		btnChat.setFocusPainted(false);
@@ -247,11 +247,11 @@ public class Menu extends JPanel {
 
 		user = new ButtonDynamic("Sesión iniciada como: " + organizacion.getNick(), ButtonDynamic.USUARIO);
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
-		user.setBounds(0, 11, (int) user.getPreferredSize().getWidth(), (int) user.getPreferredSize().getHeight());
+		user.setBounds(0, 6, (int) user.getPreferredSize().getWidth(), (int) user.getPreferredSize().getHeight());
 		add(cbdUser.getBoton());
 
 		btnChat = new JButton("");
-		btnChat.setBounds(860, 37, 46, 32);
+		btnChat.setBounds(860, 47, 46, 32);
 		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
 		btnChat.setContentAreaFilled(false);
 		btnChat.setFocusPainted(false);
