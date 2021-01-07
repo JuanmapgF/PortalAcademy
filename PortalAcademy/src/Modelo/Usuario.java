@@ -1,6 +1,9 @@
 package Modelo;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Usuario {
@@ -12,6 +15,8 @@ public class Usuario {
 	private static List<Curso> listaCursos;
 	private static List<Actividad> listaActividades;
 
+	private static SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+	
 	public Usuario(String nick) {
 		bd = BD.getBD();
 		Object[] user = bd.Select("SELECT * FROM Usuario WHERE Usuario.nick = '" + nick + "'").get(0);
@@ -132,5 +137,27 @@ public class Usuario {
 
 	public Boolean estaEnActividad(Actividad actividad) {
 		return getListaActividades().contains(actividad);
+	}
+	
+	public List<Date> getFechas() {
+		List<Date> c = new ArrayList<Date>();
+		bd = BD.getBD();
+		List<Object[]> fechas = bd.Select("SELECT fecha FROM FechasUsuarios WHERE nickUsuario = '" + this.getNick() + "'");
+		bd.finalize();
+		for (Object[] o : fechas) {
+			try {
+				c.add(formato.parse(o[0].toString()));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return c;
+	}
+	
+	public void addFecha(Date fecha) {
+		bd = BD.getBD();
+		bd.Insert("INSERT INTO Actividad VALUES ( " + this.getNick() + ", '" +  formato.format(fecha) + "');") ;
+		bd.finalize();
 	}
 }
