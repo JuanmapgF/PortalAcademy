@@ -22,6 +22,7 @@ import Modelo.Usuario;
 import javax.swing.border.EmptyBorder;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 
 @SuppressWarnings("serial")
 public class Explorar extends JPanel {
@@ -76,6 +77,7 @@ public class Explorar extends JPanel {
 		JScrollPane sp_curso = new JScrollPane();
 		sp_curso.setBounds(263, 152, 275, 452);
 		sp_curso.setViewportView(cursos);
+		sp_curso.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_curso);
 		sp_curso.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		cursos.setRowHeight(75);
@@ -90,6 +92,7 @@ public class Explorar extends JPanel {
 		JScrollPane sp_actividad = new JScrollPane();
 		sp_actividad.setBounds(565, 152, 275, 452);
 		sp_actividad.setViewportView(actividades);
+		sp_actividad.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_actividad);
 		sp_actividad.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		actividades.setRowHeight(75);
@@ -137,6 +140,7 @@ public class Explorar extends JPanel {
 		JScrollPane sp_curso = new JScrollPane();
 		sp_curso.setBounds(263, 152, 275, 452);
 		sp_curso.setViewportView(cursos);
+		sp_curso.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_curso);
 		sp_curso.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		cursos.setRowHeight(75);
@@ -151,6 +155,7 @@ public class Explorar extends JPanel {
 		JScrollPane sp_actividad = new JScrollPane();
 		sp_actividad.setBounds(565, 152, 275, 452);
 		sp_actividad.setViewportView(actividades);
+		sp_actividad.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_actividad);
 		sp_actividad.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		actividades.setRowHeight(75);
@@ -198,6 +203,7 @@ public class Explorar extends JPanel {
 		JScrollPane sp_curso = new JScrollPane();
 		sp_curso.setBounds(263, 152, 275, 452);
 		sp_curso.setViewportView(cursos);
+		sp_curso.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_curso);
 		sp_curso.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		cursos.setRowHeight(75);
@@ -212,6 +218,7 @@ public class Explorar extends JPanel {
 		JScrollPane sp_actividad = new JScrollPane();
 		sp_actividad.setBounds(565, 152, 275, 452);
 		sp_actividad.setViewportView(actividades);
+		sp_actividad.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_actividad);
 		sp_actividad.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		actividades.setRowHeight(75);
@@ -259,6 +266,7 @@ public class Explorar extends JPanel {
 		JScrollPane sp_curso = new JScrollPane();
 		sp_curso.setBounds(263, 152, 275, 452);
 		sp_curso.setViewportView(cursos);
+		sp_curso.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_curso);
 		sp_curso.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		cursos.setRowHeight(75);
@@ -273,6 +281,7 @@ public class Explorar extends JPanel {
 		JScrollPane sp_actividad = new JScrollPane();
 		sp_actividad.setBounds(565, 152, 275, 452);
 		sp_actividad.setViewportView(actividades);
+		sp_actividad.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_actividad);
 		sp_actividad.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		actividades.setRowHeight(75);

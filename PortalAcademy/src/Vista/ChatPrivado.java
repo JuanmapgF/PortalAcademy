@@ -14,9 +14,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.basic.BasicScrollBarUI;
+import javax.swing.plaf.metal.MetalScrollBarUI;
+import javax.swing.plaf.multi.MultiScrollBarUI;
+import javax.swing.plaf.synth.SynthScrollBarUI;
+
 
 import Controlador.CtrMenu;
 import Modelo.Estudiante;
@@ -57,8 +63,10 @@ public class ChatPrivado extends JPanel {
 		JScrollPane sp = new JScrollPane();
 		sp.setBounds(230, 115, 273, 469);
 		sp.setViewportView(chatsAbiertos);
+		sp.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp);
 		chatsAbiertos.setRowHeight(75);
+		
 		
 		textFieldNuevoChat = new JTextField();
 		textFieldNuevoChat.setToolTipText("");
@@ -105,6 +113,8 @@ public class ChatPrivado extends JPanel {
 		chat.setBounds(550, 105, 273, 446);
 		chat.setViewportView(tablaMensajes);
 		chat.setAutoscrolls(true);
+		chat.getVerticalScrollBar().setUI(new BasicScrollBarUI());
+		chat.getVerticalScrollBar().setValue(chat.getVerticalScrollBar().getMaximum());
 		add(chat);
 		tablaMensajes.setRowHeight(80);
 		
@@ -113,6 +123,7 @@ public class ChatPrivado extends JPanel {
 		JScrollPane sp = new JScrollPane();
 		sp.setBounds(230, 115, 273, 469);
 		sp.setViewportView(chatsAbiertos);
+		sp.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp);
 		chatsAbiertos.setRowHeight(75);
 		
