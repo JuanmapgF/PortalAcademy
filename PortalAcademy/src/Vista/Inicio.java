@@ -28,63 +28,69 @@ public class Inicio extends JPanel {
 	 * Create the panel.
 	 */
 	public Inicio() {
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		this.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Inicio de sesi\u00F3n");
-		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
-		lblNewLabel.setBounds(428, 34, 269, 33);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		lblNewLabel.setBounds(771, 89, 286, 49);
 		add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("Usuario:");
-		lblNewLabel_1.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(360, 169, 111, 27);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel_1.setBounds(677, 292, 111, 27);
 		add(lblNewLabel_1);
 
 		user = new JTextField();
-		user.setBounds(512, 172, 242, 20);
+		user.setBounds(895, 286, 341, 46);
 		add(user);
 		user.setColumns(10);
 
 		JLabel lblNewLabel_1_1 = new JLabel("Contrase\u00F1a:");
-		lblNewLabel_1_1.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		lblNewLabel_1_1.setBounds(360, 276, 135, 27);
+		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel_1_1.setBounds(647, 423, 135, 27);
 		add(lblNewLabel_1_1);
 
 		JLabel lblNewLabel_2 = new JLabel("\u00BFA\u00FAn no tienes cuenta? ");
 		lblNewLabel_2.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		lblNewLabel_2.setBounds(334, 490, 261, 33);
+		lblNewLabel_2.setBounds(647, 724, 261, 33);
 		add(lblNewLabel_2);
 
 		cont = new JPasswordField();
-		cont.setBounds(512, 279, 242, 20);
+		cont.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		cont.setBounds(895, 414, 341, 46);
 		add(cont);
 
 		error = new JLabel("El usuario o la contrase\u00F1a introducidos son incorrectos");
+		error.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		error.setForeground(Color.RED);
-		error.setBounds(473, 340, 379, 14);
+		error.setBounds(647, 512, 506, 27);
 		add(error);
 		error.setVisible(false);
 
 		iniciar = new JButton("Iniciar sesi\u00F3n");
-		iniciar.setBounds(529, 389, 116, 33);
+		iniciar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		iniciar.setBounds(805, 572, 196, 46);
 		add(iniciar);
 
 		registro = new JButton("Registrarse");
-		registro.setBounds(601, 496, 111, 20);
+		registro.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		registro.setBounds(946, 713, 196, 46);
 		add(registro);
 
 		volver = new JButton("Explorar");
-		volver.setBounds(36, 191, 131, 32);
+		volver.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		volver.setBounds(60, 191, 205, 48);
 		add(volver);
 
 		textFieldCorreo = new JTextField();
-		textFieldCorreo.setBounds(428, 559, 182, 27);
+		textFieldCorreo.setBounds(515, 886, 341, 46);
 		add(textFieldCorreo);
 		textFieldCorreo.setColumns(10);
 
 		btnRecuperar = new JButton("Recuperar contrase\u00F1a");
-		btnRecuperar.setBounds(637, 559, 215, 25);
+		btnRecuperar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnRecuperar.setBounds(946, 882, 242, 46);
 		add(btnRecuperar);
 	}
 

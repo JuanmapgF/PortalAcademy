@@ -28,12 +28,12 @@ public class ButtonDynamic extends JButton {
 		this.name = name;
 		this.icono = icono;
 		setIcon(new ImageIcon(icono));
-		setFont(new Font("HP Simplified", Font.ITALIC, 15));
+		setFont(new Font("Tahoma", Font.ITALIC, 20));
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 
 		if (icono == CERRAR_SESION) {
-			setHorizontalTextPosition(CENTER);
+			setHorizontalTextPosition(LEFT);
 			setHorizontalAlignment(CENTER);
 			setVerticalTextPosition(BOTTOM);
 			setVerticalAlignment(CENTER);

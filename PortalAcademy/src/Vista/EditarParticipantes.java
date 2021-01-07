@@ -32,27 +32,30 @@ public class EditarParticipantes extends JPanel {
 		this.curso = cur;
 		this.prof = p;
 		this.setLayout(null);
+		
+		this.setBounds(0, 0, 1920, 1080);
+		
 		addElements(cur.getEstudiantes());
 		
 		JScrollPane sp_cursos = new JScrollPane();
-		sp_cursos.setBounds(441, 175, 346, 346);
+		sp_cursos.setBounds(591, 275, 465, 500);
 		sp_cursos.setViewportView(listaC);
 		add(sp_cursos);
 		
 		JLabel t_curso = new JLabel("Estudiantes:");
-		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
-		t_curso.setBounds(536, 115, 161, 33);
+		t_curso.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		t_curso.setBounds(591, 215, 215, 49);
 		add(t_curso);
 		
 		bEliminar = new JButton("Eliminar usuario");
-		bEliminar.setBounds(860, 551, 151, 23);
+		bEliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		bEliminar.setBounds(1165, 424, 191, 40);
 		add(bEliminar);
 		
 		bVolver = new JButton("Volver");
-		bVolver.setBounds(250, 551, 121, 23);
+		bVolver.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		bVolver.setBounds(1184, 944, 129, 40);
 		add(bVolver);
-		
-		this.setBounds(0, 0, 1080, 650);
 		
 		CtrMenu menu = new CtrMenu(new Menu(p));
 		add(menu.getPanel());

@@ -45,37 +45,40 @@ public class Explorar extends JPanel {
 	private Object[][] datosCurso = null;
 	private Object[][] datosActividad = null;
 
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public Explorar(Estudiante e, List<Curso> lc, List<Actividad> la) {
 		estudiante = true;
 		lista_cursos = lc;
 		lista_actividades = la;
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		est = e;
 		setLayout(null);
 
 		datosTablaUsuario();
 
 		JLabel lblNewLabel = new JLabel("Explorar");
-		lblNewLabel.setBounds(543, 30, 107, 33);
-		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
+		lblNewLabel.setBounds(904, 60, 170, 49);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		add(lblNewLabel);
 
 		JLabel t_curso = new JLabel("Cursos");
 		t_curso.setBorder(new LineBorder(Color.BLACK));
 		t_curso.setHorizontalAlignment(SwingConstants.CENTER);
-		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		t_curso.setBounds(263, 108, 275, 33);
+		t_curso.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		t_curso.setBounds(431, 451, 465, 41);
 		add(t_curso);
 
 		JLabel t_actividad = new JLabel("Actividades");
 		t_actividad.setBorder(new LineBorder(Color.BLACK));
 		t_actividad.setHorizontalAlignment(SwingConstants.CENTER);
-		t_actividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		t_actividad.setBounds(565, 108, 275, 33);
+		t_actividad.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		t_actividad.setBounds(1089, 451, 465, 41);
 		add(t_actividad);
 
 		JScrollPane sp_curso = new JScrollPane();
-		sp_curso.setBounds(263, 152, 275, 452);
+		sp_curso.setBounds(431, 497, 465, 500);
 		sp_curso.setViewportView(cursos);
 		sp_curso.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_curso);
@@ -90,7 +93,7 @@ public class Explorar extends JPanel {
 		cursos.getColumnModel().getColumn(2).setMinWidth(75);
 
 		JScrollPane sp_actividad = new JScrollPane();
-		sp_actividad.setBounds(565, 152, 275, 452);
+		sp_actividad.setBounds(1089, 497, 465, 500);
 		sp_actividad.setViewportView(actividades);
 		sp_actividad.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_actividad);
@@ -113,32 +116,32 @@ public class Explorar extends JPanel {
 	public Explorar(List<Curso> lc, List<Actividad> la) {
 		lista_cursos = lc;
 		lista_actividades = la;
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
 		datosTabla();
 
 		JLabel lblNewLabel = new JLabel("Explorar");
-		lblNewLabel.setBounds(543, 30, 107, 33);
-		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
+		lblNewLabel.setBounds(904, 60, 170, 49);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		add(lblNewLabel);
 
 		JLabel t_curso = new JLabel("Cursos");
 		t_curso.setBorder(new LineBorder(Color.BLACK));
 		t_curso.setHorizontalAlignment(SwingConstants.CENTER);
-		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		t_curso.setBounds(263, 108, 275, 33);
+		t_curso.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		t_curso.setBounds(431, 451, 465, 41);
 		add(t_curso);
 
 		JLabel t_actividad = new JLabel("Actividades");
 		t_actividad.setBorder(new LineBorder(Color.BLACK));
 		t_actividad.setHorizontalAlignment(SwingConstants.CENTER);
-		t_actividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		t_actividad.setBounds(565, 108, 275, 33);
+		t_actividad.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		t_actividad.setBounds(1089, 451, 465, 41);
 		add(t_actividad);
 
 		JScrollPane sp_curso = new JScrollPane();
-		sp_curso.setBounds(263, 152, 275, 452);
+		sp_curso.setBounds(431, 497, 465, 500);
 		sp_curso.setViewportView(cursos);
 		sp_curso.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_curso);
@@ -153,7 +156,7 @@ public class Explorar extends JPanel {
 		cursos.getColumnModel().getColumn(2).setMinWidth(75);
 
 		JScrollPane sp_actividad = new JScrollPane();
-		sp_actividad.setBounds(565, 152, 275, 452);
+		sp_actividad.setBounds(1089, 497, 465, 500);
 		sp_actividad.setViewportView(actividades);
 		sp_actividad.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_actividad);
@@ -175,33 +178,33 @@ public class Explorar extends JPanel {
 		profesor = true;
 		lista_cursos = lc;
 		lista_actividades = la;
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		prof = e;
 		setLayout(null);
 
 		datosTablaUsuario();
 
 		JLabel lblNewLabel = new JLabel("Explorar");
-		lblNewLabel.setBounds(543, 30, 107, 33);
-		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
+		lblNewLabel.setBounds(904, 60, 170, 49);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		add(lblNewLabel);
 
 		JLabel t_curso = new JLabel("Cursos");
 		t_curso.setBorder(new LineBorder(Color.BLACK));
 		t_curso.setHorizontalAlignment(SwingConstants.CENTER);
-		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		t_curso.setBounds(263, 108, 275, 33);
+		t_curso.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		t_curso.setBounds(431, 451, 465, 41);
 		add(t_curso);
 
 		JLabel t_actividad = new JLabel("Actividades");
 		t_actividad.setBorder(new LineBorder(Color.BLACK));
 		t_actividad.setHorizontalAlignment(SwingConstants.CENTER);
-		t_actividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		t_actividad.setBounds(565, 108, 275, 33);
+		t_actividad.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		t_actividad.setBounds(1089, 451, 465, 41);
 		add(t_actividad);
 
 		JScrollPane sp_curso = new JScrollPane();
-		sp_curso.setBounds(263, 152, 275, 452);
+		sp_curso.setBounds(431, 497, 465, 500);
 		sp_curso.setViewportView(cursos);
 		sp_curso.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_curso);
@@ -216,7 +219,7 @@ public class Explorar extends JPanel {
 		cursos.getColumnModel().getColumn(2).setMinWidth(75);
 
 		JScrollPane sp_actividad = new JScrollPane();
-		sp_actividad.setBounds(565, 152, 275, 452);
+		sp_actividad.setBounds(1089, 497, 465, 500);
 		sp_actividad.setViewportView(actividades);
 		sp_actividad.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_actividad);
@@ -238,33 +241,33 @@ public class Explorar extends JPanel {
 		organizacion = true;
 		lista_cursos = lc;
 		lista_actividades = la;
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		org = e;
 		setLayout(null);
 
 		datosTabla();
 
 		JLabel lblNewLabel = new JLabel("Explorar");
-		lblNewLabel.setBounds(543, 30, 107, 33);
-		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
+		lblNewLabel.setBounds(904, 60, 170, 49);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		add(lblNewLabel);
 
 		JLabel t_curso = new JLabel("Cursos");
 		t_curso.setBorder(new LineBorder(Color.BLACK));
 		t_curso.setHorizontalAlignment(SwingConstants.CENTER);
-		t_curso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		t_curso.setBounds(263, 108, 275, 33);
+		t_curso.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		t_curso.setBounds(431, 451, 465, 41);
 		add(t_curso);
 
 		JLabel t_actividad = new JLabel("Actividades");
 		t_actividad.setBorder(new LineBorder(Color.BLACK));
 		t_actividad.setHorizontalAlignment(SwingConstants.CENTER);
-		t_actividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		t_actividad.setBounds(565, 108, 275, 33);
+		t_actividad.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		t_actividad.setBounds(1089, 451, 465, 41);
 		add(t_actividad);
 
 		JScrollPane sp_curso = new JScrollPane();
-		sp_curso.setBounds(263, 152, 275, 452);
+		sp_curso.setBounds(431, 497, 465, 500);
 		sp_curso.setViewportView(cursos);
 		sp_curso.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_curso);
@@ -279,7 +282,7 @@ public class Explorar extends JPanel {
 		cursos.getColumnModel().getColumn(2).setMinWidth(75);
 
 		JScrollPane sp_actividad = new JScrollPane();
-		sp_actividad.setBounds(565, 152, 275, 452);
+		sp_actividad.setBounds(1089, 497, 465, 500);
 		sp_actividad.setViewportView(actividades);
 		sp_actividad.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_actividad);

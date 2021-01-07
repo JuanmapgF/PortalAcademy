@@ -264,7 +264,7 @@ public class Menu extends JPanel {
 		setLayout(null);
 
 		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
-		cerrar.setBounds(1705, 47, 156,
+		cerrar.setBounds(1643, 47, 267,
 				122);
 		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
 		add(cbdCerrar.getBoton());
@@ -286,7 +286,7 @@ public class Menu extends JPanel {
 
 		user = new ButtonDynamic("Sesión iniciada como: " + organizacion.getNick(), ButtonDynamic.USUARIO);
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
-		user.setBounds(82, 22, 150, 136);
+		user.setBounds(82, 22, 590, 136);
 		add(cbdUser.getBoton());
 
 		btnChat = new JButton("");
