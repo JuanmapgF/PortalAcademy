@@ -20,6 +20,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Controlador.CtrButtonDynamic;
+import Controlador.CtrCalendario;
+import Controlador.CtrRegistro;
 import Modelo.Actividad;
 import Modelo.Curso;
 import Modelo.Estudiante;
@@ -82,7 +84,8 @@ public class Menu extends JPanel {
 
 		    @Override
 		    public void propertyChange(PropertyChangeEvent e) {
-		        System.out.println(jc.getDate().toString());
+		    	CtrCalendario c = new CtrCalendario(new Calendario(jc.getDate()));
+				Main.setPanel(c.getPanel());
 
 		    }
 		});
