@@ -31,6 +31,7 @@ public class CtrCrearCurso implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
 		if (e.getSource() == vista.btnSeleccionar) {
 			if (vista.fileChooserImagen.showOpenDialog(vista.fileChooserImagen) == JFileChooser.APPROVE_OPTION) {
 				imagen = vista.fileChooserImagen.getSelectedFile();

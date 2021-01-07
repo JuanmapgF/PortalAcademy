@@ -108,7 +108,6 @@ public class CrearCurso extends JPanel {
 		spinnerAforo.setBounds(511, 365, 90, 20);
 		add(spinnerAforo);
 
-
 		btnCrearCurso = new JButton("Crear curso");
 		btnCrearCurso.setBounds(400, 546, 109, 35);
 		add(btnCrearCurso);
@@ -133,7 +132,7 @@ public class CrearCurso extends JPanel {
 		btnSeleccionar = new JButton("Seleccionar");
 		btnSeleccionar.setBounds(574, 196, 109, 23);
 		add(btnSeleccionar);
-		
+
 		lblImagenSeleccionada = new JLabel("");
 		lblImagenSeleccionada.setHorizontalAlignment(SwingConstants.LEFT);
 		lblImagenSeleccionada.setBounds(441, 200, 138, 14);
@@ -141,9 +140,9 @@ public class CrearCurso extends JPanel {
 
 		fileChooserImagen = new JFileChooser();
 		fileChooserImagen.setFileSelectionMode(JFileChooser.FILES_ONLY);
-		
+
 		CtrMenu menu = new CtrMenu(new Menu((new Profesor(Main.getUser().getNick()))));
 		add(menu.getPanel());
-		
+
 	}
 }

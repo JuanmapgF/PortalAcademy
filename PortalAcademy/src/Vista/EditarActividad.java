@@ -1,11 +1,11 @@
 package Vista;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.Date;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -19,7 +19,6 @@ import com.toedter.calendar.JCalendar;
 import Controlador.CtrMenu;
 import Modelo.Actividad;
 import Modelo.Organizacion;
-import Modelo.Profesor;
 
 @SuppressWarnings("serial")
 public class EditarActividad extends JPanel {
@@ -27,16 +26,19 @@ public class EditarActividad extends JPanel {
 	private Actividad a;
 	private Organizacion usuario;
 
-
 	private JTextField nombre;
 	private JTextArea descripcion;
 	private JSpinner aforo;
 	private JButton guardar;
 	private JButton eliminar;
 	private JButton volver;
-	
+
 	private JCalendar calendario;
 	private JTextField lugar;
+
+	private JButton btnSeleccionar;
+	private JFileChooser fileChooserImagen;
+	private JLabel lblImagenSeleccionada;
 
 	public EditarActividad(Actividad act, Organizacion p) {
 		usuario = p;
@@ -62,15 +64,32 @@ public class EditarActividad extends JPanel {
 		add(nombre);
 		nombre.setColumns(10);
 
+		JLabel lblImagen = new JLabel("Imagen:");
+		lblImagen.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+		lblImagen.setBounds(264, 165, 136, 27);
+		add(lblImagen);
+
+		lblImagenSeleccionada = new JLabel("");
+		lblImagenSeleccionada.setHorizontalAlignment(SwingConstants.LEFT);
+		lblImagenSeleccionada.setBounds(400, 170, 190, 14);
+		add(lblImagenSeleccionada);
+
+		fileChooserImagen = new JFileChooser();
+		fileChooserImagen.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+		btnSeleccionar = new JButton("Seleccionar");
+		btnSeleccionar.setBounds(590, 165, 120, 23);
+		add(btnSeleccionar);
+
 		JLabel lblDescripcin = new JLabel("Descripci\u00F3n:");
 		lblDescripcin.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		lblDescripcin.setBounds(264, 177, 136, 27);
+		lblDescripcin.setBounds(264, 210, 136, 27);
 		add(lblDescripcin);
 
 		descripcion = new JTextArea();
 		JScrollPane jsp = new JScrollPane(descripcion);
 		descripcion.setText(a.getDescripcion());
-		jsp.setBounds(400, 178, 311, 98);
+		jsp.setBounds(400, 210, 311, 75);
 		add(jsp);
 
 		JLabel lblAforo = new JLabel("Aforo:");
@@ -91,8 +110,6 @@ public class EditarActividad extends JPanel {
 		eliminar = new JButton("Eliminar actividad");
 		eliminar.setBounds(867, 350, 144, 23);
 		add(eliminar);
-
-		
 
 		volver = new JButton("Descartar cambios");
 		volver.setBounds(867, 439, 144, 23);
@@ -128,6 +145,7 @@ public class EditarActividad extends JPanel {
 	}
 
 	public void controlador(ActionListener ctr) {
+		
 		guardar.addActionListener(ctr);
 		guardar.setActionCommand("GUARDAR");
 
@@ -137,6 +155,17 @@ public class EditarActividad extends JPanel {
 		volver.addActionListener(ctr);
 		volver.setActionCommand("VOLVER");
 
+		btnSeleccionar.addActionListener(ctr);
+		btnSeleccionar.setActionCommand("SELECCIONAR");
+
+	}
+
+	public void setLabelImagen(String img) {
+		lblImagenSeleccionada.setText(img);
+	}
+
+	public JFileChooser getFileChooserImagen() {
+		return fileChooserImagen;
 	}
 
 	public Actividad getC() {

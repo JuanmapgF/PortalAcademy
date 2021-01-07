@@ -281,7 +281,7 @@ public class BD {
 			if (imagen != null) {
 				fis = new FileInputStream(imagen);
 			}
-			PreparedStatement ps = con.prepareStatement("UPDATE Actividad SET imagen = ? WHERE idCurso = ?");
+			PreparedStatement ps = con.prepareStatement("UPDATE Curso SET imagen = ? WHERE idCurso = ?");
 			ps.setBlob(1, fis);
 			ps.setInt(2, idCurso);
 			ps.execute();
@@ -289,7 +289,7 @@ public class BD {
 		} catch (FileNotFoundException e) {
 			throw new ErrorBD("Error al encontrar el archivo. " + e.getMessage());
 		} catch (SQLException e) {
-			throw new ErrorBD("Error en el insert de imagen. " + e.getMessage());
+			throw new ErrorBD("Error en el update de imagen. " + e.getMessage());
 		}
 	}
 
@@ -307,7 +307,7 @@ public class BD {
 		} catch (FileNotFoundException e) {
 			throw new ErrorBD("Error al encontrar el archivo. " + e.getMessage());
 		} catch (SQLException e) {
-			throw new ErrorBD("Error en el insert de imagen. " + e.getMessage());
+			throw new ErrorBD("Error en el update de imagen. " + e.getMessage());
 		}
 	}
 
