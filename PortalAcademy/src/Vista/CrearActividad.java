@@ -41,49 +41,68 @@ public class CrearActividad extends JPanel {
 	 */
 	public CrearActividad() {
 
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Nombre:");
-		lblNewLabel.setBounds(397, 140, 66, 14);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel.setBounds(575, 310, 109, 26);
 		add(lblNewLabel);
 
-		JLabel lblImagenes = new JLabel("Imagenes:");
-		lblImagenes.setBounds(397, 193, 76, 14);
+		JLabel lblImagenes = new JLabel("Imagen:");
+		lblImagenes.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblImagenes.setBounds(575, 410, 109, 26);
 		add(lblImagenes);
 
-		JLabel lblDescripcin = new JLabel("Descripci\u00F3n");
-		lblDescripcin.setBounds(397, 246, 76, 14);
+		JLabel lblDescripcin = new JLabel("Descripci\u00F3n:");
+		lblDescripcin.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblDescripcin.setBounds(540, 510, 121, 42);
 		add(lblDescripcin);
 
+		JLabel lblPrivacidad = new JLabel("Lugar:");
+		lblPrivacidad.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblPrivacidad.setBounds(590, 610, 109, 35);
+		add(lblPrivacidad);
+
 		JLabel lblAforo = new JLabel("Aforo:");
-		lblAforo.setBounds(397, 380, 76, 14);
+		lblAforo.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblAforo.setBounds(595, 710, 76, 25);
 		add(lblAforo);
 
+		JLabel lblModo = new JLabel("Fecha:");
+		lblModo.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblModo.setBounds(595, 810, 76, 35);
+		add(lblModo);
+
 		textFieldNombre = new JTextField();
-		textFieldNombre.setBounds(541, 137, 242, 20);
+		textFieldNombre.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		textFieldNombre.setBounds(750, 305, 242, 40);
 		add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 
 		textAreaDescripcion = new JTextArea();
+		textAreaDescripcion.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		JScrollPane jsp = new JScrollPane(textAreaDescripcion);
-		jsp.setBounds(541, 241, 242, 47);
+		jsp.setBounds(750, 510, 242, 47);
 		add(jsp);
 
 		spinnerAforo = new JSpinner();
-		spinnerAforo.setBounds(612, 377, 90, 20);
+		spinnerAforo.setBounds(750, 710, 90, 40);
 		add(spinnerAforo);
 
+
 		btnCrearActividad = new JButton("Crear actividad");
-		btnCrearActividad.setBounds(400, 546, 139, 35);
+		btnCrearActividad.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnCrearActividad.setBounds(1300, 446, 179, 40);
 		add(btnCrearActividad);
 
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(908, 546, 109, 35);
+		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnCancelar.setBounds(1310, 910, 150, 35);
 		add(btnCancelar);
 
 		dateChooser = new JDateChooser("yyyy-MM-dd", "####-##-##", '_');
-		dateChooser.setBounds(612, 442, 90, 20);
+		dateChooser.setBounds(750, 810, 90, 40);
 		Date hoy = new Date();
 		dateChooser.getJCalendar().setDate(hoy);
 		dateChooser.getJCalendar().setTodayButtonVisible(true);
@@ -93,31 +112,27 @@ public class CrearActividad extends JPanel {
 		dateChooser.getJCalendar().setMinSelectableDate(hoy);
 		add(dateChooser);
 
-		JLabel lblFecha = new JLabel("Fecha:");
-		lblFecha.setBounds(397, 448, 76, 14);
-		add(lblFecha);
-
-		lblLugar = new JLabel("Lugar:");
-		lblLugar.setBounds(397, 329, 76, 14);
-		add(lblLugar);
+		
 
 		textFieldLugar = new JTextField();
 		textFieldLugar.setColumns(10);
-		textFieldLugar.setBounds(541, 326, 242, 20);
+		textFieldLugar.setBounds(750, 610, 242, 40);
 		add(textFieldLugar);
 
 		lblNewLabel_1 = new JLabel("Crear Actividad");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		lblNewLabel_1.setBounds(402, 35, 171, 40);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		lblNewLabel_1.setBounds(675, 200, 270, 49);
 		add(lblNewLabel_1);
 		
 		btnSeleccionar = new JButton("Seleccionar");
-		btnSeleccionar.setBounds(675, 196, 109, 23);
+		btnSeleccionar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnSeleccionar.setBounds(975, 410, 140, 40);
 		add(btnSeleccionar);
 
 		lblImagenSeleccionada = new JLabel("");
+		lblImagenSeleccionada.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblImagenSeleccionada.setHorizontalAlignment(SwingConstants.LEFT);
-		lblImagenSeleccionada.setBounds(540, 200, 138, 14);
+		lblImagenSeleccionada.setBounds(750, 410, 170, 40);
 		add(lblImagenSeleccionada);
 
 		fileChooserImagen = new JFileChooser();

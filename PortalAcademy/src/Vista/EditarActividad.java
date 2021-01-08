@@ -44,79 +44,86 @@ public class EditarActividad extends JPanel {
 		usuario = p;
 		a = act;
 		this.setLayout(null);
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 
 		JLabel titulo = new JLabel("");
-		titulo.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
-		titulo.setBounds(239, 11, 545, 49);
+		titulo.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		titulo.setBounds(558, 121, 545, 49);
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
 		titulo.setText(a.getNombre());
 		add(titulo);
 
 		JLabel lblNewLabel = new JLabel("Nombre:");
-		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		lblNewLabel.setBounds(264, 123, 136, 27);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel.setBounds(607, 255, 136, 27);
 		add(lblNewLabel);
 
 		nombre = new JTextField();
-		nombre.setBounds(400, 126, 311, 20);
+		nombre.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		nombre.setBounds(792, 252, 311, 40);
 		nombre.setText(a.getNombre());
 		add(nombre);
 		nombre.setColumns(10);
 
 		JLabel lblImagen = new JLabel("Imagen:");
-		lblImagen.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		lblImagen.setBounds(264, 165, 136, 27);
+		lblImagen.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblImagen.setBounds(607, 366, 136, 27);
 		add(lblImagen);
 
 		lblImagenSeleccionada = new JLabel("");
+		lblImagenSeleccionada.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblImagenSeleccionada.setHorizontalAlignment(SwingConstants.LEFT);
-		lblImagenSeleccionada.setBounds(400, 170, 190, 14);
+		lblImagenSeleccionada.setBounds(792, 359, 190, 40);
 		add(lblImagenSeleccionada);
 
 		fileChooserImagen = new JFileChooser();
 		fileChooserImagen.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
 		btnSeleccionar = new JButton("Seleccionar");
-		btnSeleccionar.setBounds(590, 165, 120, 23);
+		btnSeleccionar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnSeleccionar.setBounds(1046, 359, 166, 40);
 		add(btnSeleccionar);
 
 		JLabel lblDescripcin = new JLabel("Descripci\u00F3n:");
-		lblDescripcin.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		lblDescripcin.setBounds(264, 210, 136, 27);
+		lblDescripcin.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblDescripcin.setBounds(576, 462, 136, 27);
 		add(lblDescripcin);
 
 		descripcion = new JTextArea();
+		descripcion.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		JScrollPane jsp = new JScrollPane(descripcion);
 		descripcion.setText(a.getDescripcion());
-		jsp.setBounds(400, 210, 311, 75);
+		jsp.setBounds(800, 650, 311, 75);
 		add(jsp);
 
 		JLabel lblAforo = new JLabel("Aforo:");
-		lblAforo.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		lblAforo.setBounds(264, 295, 136, 27);
+		lblAforo.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblAforo.setBounds(632, 559, 136, 27);
 		add(lblAforo);
 
 		aforo = new JSpinner();
-		aforo.setBounds(400, 298, 47, 20);
+		aforo.setBounds(792, 556, 47, 40);
 		add(aforo);
 
 		aforo.setValue(a.getAforo());
 
 		guardar = new JButton("Guardar cambios");
-		guardar.setBounds(867, 255, 144, 23);
+		guardar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		guardar.setBounds(1307, 455, 197, 40);
 		add(guardar);
 
 		eliminar = new JButton("Eliminar actividad");
-		eliminar.setBounds(867, 350, 144, 23);
+		eliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		eliminar.setBounds(1307, 607, 197, 40);
 		add(eliminar);
 
 		volver = new JButton("Descartar cambios");
-		volver.setBounds(867, 439, 144, 23);
+		volver.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		volver.setBounds(1307, 762, 197, 40);
 		add(volver);
 
 		calendario = new JCalendar();
-		calendario.setBounds(400, 400, 311, 200);
+		calendario.setBounds(800, 800, 311, 200);
 		calendario.setDate(a.getFecha());
 		calendario.setTodayButtonVisible(true);
 		calendario.setTodayButtonText("Hoy");
@@ -125,17 +132,18 @@ public class EditarActividad extends JPanel {
 		add(calendario);
 
 		JLabel lblFecha = new JLabel("Fecha:");
-		lblFecha.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		lblFecha.setBounds(264, 405, 136, 27);
+		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblFecha.setBounds(632, 816, 136, 27);
 		add(lblFecha);
 
 		JLabel lblLugar = new JLabel("Lugar:");
-		lblLugar.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		lblLugar.setBounds(264, 346, 136, 27);
+		lblLugar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblLugar.setBounds(632, 668, 136, 27);
 		add(lblLugar);
 
 		lugar = new JTextField();
-		lugar.setBounds(400, 351, 311, 20);
+		lugar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lugar.setBounds(792, 456, 311, 40);
 		lugar.setText(a.getLugar());
 		add(lugar);
 		lugar.setColumns(10);

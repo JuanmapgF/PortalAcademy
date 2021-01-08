@@ -42,6 +42,7 @@ public class Inicio extends JPanel {
 		add(lblNewLabel_1);
 
 		user = new JTextField();
+		user.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		user.setBounds(895, 286, 341, 46);
 		add(user);
 		user.setColumns(10);

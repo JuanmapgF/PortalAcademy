@@ -25,31 +25,38 @@ public class DescripcionCurso extends JPanel {
 	 * Create the panel.
 	 */
 	public DescripcionCurso(Usuario user, Curso curso) {
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
 		// TODO (Juanma) Hacer que aparezca la por defecto.
 		
 		JLabel nombreCurso = new JLabel(curso.getNombre());
-		nombreCurso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
-		nombreCurso.setBounds(460, 70, 269, 33);
+		nombreCurso.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		nombreCurso.setBounds(486, 79, 853, 51);
 		add(nombreCurso);
 
 		JTextArea descripcionCurso = new JTextArea(curso.getDescripcion());
+		descripcionCurso.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		descripcionCurso.setEditable(false);
+		
 		JScrollPane jsp = new JScrollPane(descripcionCurso);
+		jsp.setBounds(750, 300, 652, 371);
 		add(jsp);
 
 		unirse = new JButton("Unirse");
-		unirse.setBounds(478, 511, 89, 23);
+		unirse.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		unirse.setBounds(750, 702, 89, 40);
 		unirse.setVisible(false);
 		add(unirse);
 
 		File imagen = curso.getImagen();
-		jsp.setBounds(292, 131, 652, 371);
-		jsp.setBounds(470, 132, 471, 371);
-		JPanelImagen jpi = new JPanelImagen(imagen != null ? imagen.getName() : null);
-		jpi.setBounds(202, 132, 250, 225);
+		JPanelImagen jpi;
+		if(imagen!=null) {
+			jpi = new JPanelImagen(imagen.getName());
+		}else{
+			jpi = new JPanelImagen(getClass().getResource("/img/curso_default.png"));
+		}
+		jpi.setBounds(449, 300, 250, 225);
 		add(jpi);
 
 		if (user == null) {
