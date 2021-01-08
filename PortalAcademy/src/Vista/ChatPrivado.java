@@ -117,7 +117,6 @@ public class ChatPrivado extends JPanel {
 		JScrollPane chat = new JScrollPane();
 		chat.setBounds(861, 237, 371, 570);
 		chat.setViewportView(tablaMensajes);
-		chat.setAutoscrolls(true);
 		chat.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		chat.getVerticalScrollBar().setValue(chat.getVerticalScrollBar().getMaximum());
 		add(chat);

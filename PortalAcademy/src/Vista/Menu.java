@@ -19,6 +19,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import Controlador.CtrButtonDynamic;
 import Controlador.CtrCalendario;
@@ -71,7 +72,7 @@ public class Menu extends JPanel {
 
 		iniciar = new JButton(INICIAR_SESION);
 		iniciar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		iniciar.setBounds(1358, 78, 189, 60);
+		iniciar.setBounds(1358, 47, 189, 60);
 		iniciar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		iniciar.setContentAreaFilled(false);
 		iniciar.setFocusPainted(false);
@@ -80,7 +81,7 @@ public class Menu extends JPanel {
 
 		registrarse = new JButton(REGISTRARSE);
 		registrarse.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		registrarse.setBounds(1642, 78, 184, 60);
+		registrarse.setBounds(1642, 47, 184, 60);
 		registrarse.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		registrarse.setContentAreaFilled(false);
 		registrarse.setFocusPainted(false);
@@ -97,8 +98,9 @@ public class Menu extends JPanel {
 		add(explorar);
 		
 		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(676, 1010, 593, 40);
+		lblNewLabel.setBounds(680, 975, 593, 40);
 		add(lblNewLabel);
 		
 		JCalendar jc = new JCalendar();
@@ -160,8 +162,9 @@ public class Menu extends JPanel {
 		add(cursos);
 
 		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(676, 1010, 593, 40);
+		lblNewLabel.setBounds(680, 975, 593, 40);
 		add(lblNewLabel);
 		
 		actividades = new JButton(MIS_ACTIVIDADES);
@@ -273,8 +276,9 @@ public class Menu extends JPanel {
 		add(actividades);
 
 		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(676, 1010, 593, 40);
+		lblNewLabel.setBounds(680, 975, 593, 40);
 		add(lblNewLabel);
 		
 		ajustes = new JButton(AJUSTES);
@@ -368,8 +372,9 @@ public class Menu extends JPanel {
 		add(actividades);
 
 		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(676, 1010, 593, 40);
+		lblNewLabel.setBounds(680, 975, 593, 40);
 		add(lblNewLabel);
 		
 		ajustes = new JButton(AJUSTES);

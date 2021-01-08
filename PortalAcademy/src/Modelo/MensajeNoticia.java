@@ -46,12 +46,17 @@ public class MensajeNoticia {
 	public Date getFecha() {
 		return fecha;
 	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	
+	public static List<MensajeNoticia> getTodasLasNoticias() {
+		List<MensajeNoticia> listaNoticias = new ArrayList<>();
+		bd = BD.getBD();
+		List<Object[]> noticias = bd.Select("SELECT idMensajeNoticia FROM MensajeNoticia ORDER BY idMensajeNoticia DESC");
+		BD.contadorFinalize(noticias.size() + 1);
+		bd.finalize();
+		for (Object[] tupla : noticias) {
+			listaNoticias.add(new MensajeNoticia(Integer.parseInt(tupla[0].toString())));
+		}
+		return listaNoticias;
 	}
-
-	public void setTexto(String texto) {
-		this.texto = texto;
-	}
+	
 }
