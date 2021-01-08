@@ -26,7 +26,10 @@ import Modelo.Profesor;
 public class MisCursos extends JPanel {
 
 	private JTable cursos;
-	private ButtonEditorCurso editorCurso = new ButtonEditorCurso(new JTextField()); 
+	private ButtonEditorCurso editorCurso = new ButtonEditorCurso(new JTextField());
+	
+	private JTable impartidos;
+	private ButtonEditorCurso editorImpartidos = new ButtonEditorCurso(new JTextField());
 
 	private Estudiante est = null;
 	private Organizacion org = null;
@@ -89,23 +92,38 @@ public class MisCursos extends JPanel {
 		lista_cursos = u.getCursosApuntados();
 		lista_impartidos = u.getCursosImpartidos();
 		
-//		addElements(u.getCursosImpartidos());
-//		addElements2(u.getCursosApuntados());
+		datosTablaProfesor();
 
 		crearCurso = new JButton("Crear curso");
 		crearCurso.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		crearCurso.setBounds(1599, 400, 171, 40);
 		add(crearCurso);
 
-//		JScrollPane sp_cursosImpartidos = new JScrollPane();
-//		sp_cursosImpartidos.setBounds(1041, 400, 400, 546);
-//		sp_cursosImpartidos.setViewportView(listaC);
-//		add(sp_cursosImpartidos);
-//
-//		JScrollPane sp_cursosApuntados = new JScrollPane();
-//		sp_cursosApuntados.setBounds(441, 400, 400, 546);
-//		sp_cursosApuntados.setViewportView(listaCA);
-//		add(sp_cursosApuntados);
+		JScrollPane sp_curso = new JScrollPane();
+		sp_curso.setBounds(441, 400, 400, 546);
+		sp_curso.setViewportView(cursos);
+		sp_curso.getVerticalScrollBar().setUI(new BasicScrollBarUI());
+		add(sp_curso);
+		sp_curso.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		cursos.setRowHeight(75);
+		cursos.setShowVerticalLines(false);
+		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
+		cursos.getColumnModel().getColumn(0).setMinWidth(75);
+		cursos.getColumnModel().getColumn(1).setMaxWidth(315);
+		cursos.getColumnModel().getColumn(1).setMinWidth(315);
+		
+		JScrollPane sp_curso1 = new JScrollPane();
+		sp_curso1.setBounds(1041, 400, 400, 546);
+		sp_curso1.setViewportView(impartidos);
+		sp_curso1.getVerticalScrollBar().setUI(new BasicScrollBarUI());
+		add(sp_curso1);
+		sp_curso1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		impartidos.setRowHeight(75);
+		impartidos.setShowVerticalLines(false);
+		impartidos.getColumnModel().getColumn(0).setMaxWidth(75);
+		impartidos.getColumnModel().getColumn(0).setMinWidth(75);
+		impartidos.getColumnModel().getColumn(1).setMaxWidth(315);
+		impartidos.getColumnModel().getColumn(1).setMinWidth(315);
 
 		JLabel t_curso2 = new JLabel("Mis cursos");
 		t_curso2.setFont(new Font("Tahoma", Font.PLAIN, 40));
@@ -121,7 +139,6 @@ public class MisCursos extends JPanel {
 		t_curso4.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		t_curso4.setBounds(1041, 356, 256, 33);
 		add(t_curso4);
-	
 
 		CtrMenu menu = new CtrMenu(new Menu(u));
 		add(menu.getPanel());
@@ -165,15 +182,33 @@ public class MisCursos extends JPanel {
 		cursos.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer(true));
 		cursos.getColumnModel().getColumn(1).setCellEditor(editorCurso);
 		cursos.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
-		cursos.getColumnModel().getColumn(1).setCellEditor(editorCurso);
 		cursos.setTableHeader(null);
 		cursos.setCellSelectionEnabled(false);
 		
+		propios = new Object[lista_impartidos.size()][2];
 		
+		k = 0;
+		for (Curso c : lista_impartidos) {
+			propios[k][0] = c.getImagen();
+			propios[k][1] = c.getNombre();
+			k++;
+		}
+		
+		impartidos = new JTable(propios, columnHeadersCurso);
+		impartidos.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer(true));
+		impartidos.getColumnModel().getColumn(1).setCellEditor(editorImpartidos);
+		impartidos.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
+		impartidos.getColumnModel().getColumn(0).setCellEditor(editorImpartidos);
+		impartidos.setTableHeader(null);
+		impartidos.setCellSelectionEnabled(false);
 	}
 	
 	public Curso getCurso() {
 		return lista_cursos.get(cursos.getSelectedRow());
+	}
+	
+	public Curso getCursoProfesor() {
+		return lista_impartidos.get(cursos.getSelectedRow());
 	}
 
 	public void controlador(ActionListener ctr) {
@@ -182,6 +217,7 @@ public class MisCursos extends JPanel {
 			crearCurso.addActionListener(ctr);
 			crearCurso.setActionCommand("CREARCURSO");
 		}
+		editorImpartidos.controladorMisCursosProfesor(ctr);
 	}
 
 	public boolean esEstudiante() {

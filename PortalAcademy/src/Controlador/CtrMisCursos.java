@@ -46,7 +46,7 @@ public class CtrMisCursos implements ActionListener {
 		}
 
 		if (e.getActionCommand().equals("VERCURSOA")) {
-			Curso c = ventana.getCurso();
+			Curso c = ventana.getCursoProfesor();
 			if (c != null) {
 				if (ventana.esProfesor()) {
 					CtrInformacionCurso cr = new CtrInformacionCurso(ventana.getProfesor(), c);

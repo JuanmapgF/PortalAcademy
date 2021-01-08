@@ -78,4 +78,9 @@ public class ButtonEditorCurso extends DefaultCellEditor {
 		btn.addActionListener(ctr);
 		btn.setActionCommand("VERCURSO");
 	}
+	
+	public void controladorMisCursosProfesor(ActionListener ctr) {
+		btn.addActionListener(ctr);
+		btn.setActionCommand("VERCURSOA");
+	}
 }
