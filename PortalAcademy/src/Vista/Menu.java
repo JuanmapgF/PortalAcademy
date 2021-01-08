@@ -43,6 +43,7 @@ public class Menu extends JPanel {
 	private JButton ajustes;
 	private JButton registrarse;
 	private JButton btnChat;
+	private JButton cerrarSesion;
 	private ButtonDynamic user;
 
 	private Estudiante est = null;
@@ -51,25 +52,47 @@ public class Menu extends JPanel {
 	private boolean estudiante = false;
 	private boolean organizacion = false;
 	private boolean profesor = false;
+	
+	private final ImageIcon EXPLORAR = new ImageIcon(getClass().getResource("/img/explorar.png"));
+	private final ImageIcon MIS_CURSOS = new ImageIcon(getClass().getResource("/img/misCursos.png"));
+	private final ImageIcon MIS_ACTIVIDADES = new ImageIcon(getClass().getResource("/img/misActividades.png"));
+	private final ImageIcon AJUSTES = new ImageIcon(getClass().getResource("/img/ajustes.png"));
+	private final ImageIcon INICIAR_SESION = new ImageIcon(getClass().getResource("/img/iniciarSesion.png"));
+	private final ImageIcon REGISTRARSE = new ImageIcon(getClass().getResource("/img/registrarse.png"));
+	private final ImageIcon CHAT_PRIVADO = new ImageIcon(getClass().getResource("/img/chatPrivado.png"));
+	private final ImageIcon CERRAR_SESION = new ImageIcon(getClass().getResource("/img/cerrarSesion.png"));
+	
 
 	public Menu() {
 
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
-		iniciar = new JButton("Iniciar sesi\u00F3n");
+		iniciar = new JButton(INICIAR_SESION);
 		iniciar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		iniciar.setBounds(1358, 78, 189, 48);
+		iniciar.setBounds(1358, 78, 189, 60);
+		iniciar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		iniciar.setContentAreaFilled(false);
+		iniciar.setFocusPainted(false);
+		iniciar.setBorderPainted(false);
 		add(iniciar);
 
-		registrarse = new JButton("Registrarse");
+		registrarse = new JButton(REGISTRARSE);
 		registrarse.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		registrarse.setBounds(1642, 78, 184, 48);
+		registrarse.setBounds(1642, 78, 184, 60);
+		registrarse.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		registrarse.setContentAreaFilled(false);
+		registrarse.setFocusPainted(false);
+		registrarse.setBorderPainted(false);
 		add(registrarse);
 
-		explorar = new JButton("Explorar");
+		explorar = new JButton(EXPLORAR);
 		explorar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		explorar.setBounds(60, 191, 205, 48);
+		explorar.setBounds(60, 191, 205, 60);
+		explorar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		explorar.setContentAreaFilled(false);
+		explorar.setFocusPainted(false);
+		explorar.setBorderPainted(false);
 		add(explorar);
 		
 		JCalendar jc = new JCalendar();
@@ -96,13 +119,9 @@ public class Menu extends JPanel {
 		});
 
 	}
+	
+	
 
-	
-	
-	
-	
-	
-	
 	public Menu(Estudiante estudiante) {
 		this.estudiante = true;
 		this.est = estudiante;
@@ -110,40 +129,64 @@ public class Menu extends JPanel {
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
-		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
-		cerrar.setBounds(1705, 47, 156,
-				122);
-		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
-		add(cbdCerrar.getBoton());
+//		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
+//		cerrar.setBounds(1705, 47, 156,
+//				122);
+//		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
+//		add(cbdCerrar.getBoton());
 
-		explorar = new JButton("Explorar");
+		explorar = new JButton(EXPLORAR);
 		explorar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		explorar.setBounds(60, 233, 205, 48);
+		explorar.setBounds(60, 191, 205, 60);
+		explorar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		explorar.setContentAreaFilled(false);
+		explorar.setFocusPainted(false);
+		explorar.setBorderPainted(false);
 		add(explorar);
 
-		cursos = new JButton("Mis cursos");
+		cursos = new JButton(MIS_CURSOS);
 		cursos.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		cursos.setBounds(60, 365, 205, 48);
+		cursos.setBounds(60, 365, 205, 60);
+		cursos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		cursos.setContentAreaFilled(false);
+		cursos.setFocusPainted(false);
+		cursos.setBorderPainted(false);
 		add(cursos);
 
-		actividades = new JButton("Mis actividades");
+		actividades = new JButton(MIS_ACTIVIDADES);
 		actividades.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		actividades.setBounds(60, 489, 205, 48);
+		actividades.setBounds(60, 489, 205, 60);
+		actividades.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		actividades.setContentAreaFilled(false);
+		actividades.setFocusPainted(false);
+		actividades.setBorderPainted(false);
 		add(actividades);
 
-		ajustes = new JButton("Ajustes");
+		ajustes = new JButton(AJUSTES);
 		ajustes.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		ajustes.setBounds(60, 612, 205, 48);
+		ajustes.setBounds(1627, 47, 81, 74);
+		ajustes.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ajustes.setContentAreaFilled(false);
+		ajustes.setFocusPainted(false);
+		ajustes.setBorderPainted(false);
 		add(ajustes);
 
 		user = new ButtonDynamic("Sesión iniciada como: " + estudiante.getNick(), ButtonDynamic.USUARIO);
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
 		user.setBounds(82, 22, 150, 136);
 		add(cbdUser.getBoton());
+		
+		cerrarSesion = new JButton(CERRAR_SESION);
+		cerrarSesion.setBounds(1718, 47, 81, 74);
+		cerrarSesion.setContentAreaFilled(false);
+		cerrarSesion.setFocusPainted(false);
+		cerrarSesion.setBorderPainted(false);
+		cerrarSesion.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		add(cerrarSesion);
 
 		btnChat = new JButton("");
 		btnChat.setBounds(1501, 47, 81, 74);
-		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
+		btnChat.setIcon(CHAT_PRIVADO);
 		btnChat.setContentAreaFilled(false);
 		btnChat.setFocusPainted(false);
 		btnChat.setBorderPainted(false);
@@ -185,40 +228,64 @@ public class Menu extends JPanel {
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
-		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
-		cerrar.setBounds(1705, 47, 156,
-				122);
-		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
-		add(cbdCerrar.getBoton());
+//		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
+//		cerrar.setBounds(1705, 47, 156,
+//				122);
+//		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
+//		add(cbdCerrar.getBoton());
 
-		explorar = new JButton("Explorar");
+		explorar = new JButton(EXPLORAR);
 		explorar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		explorar.setBounds(60, 233, 205, 48);
+		explorar.setBounds(60, 191, 205, 60);
+		explorar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		explorar.setContentAreaFilled(false);
+		explorar.setFocusPainted(false);
+		explorar.setBorderPainted(false);
 		add(explorar);
 
-		cursos = new JButton("Mis cursos");
+		cursos = new JButton(MIS_CURSOS);
 		cursos.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		cursos.setBounds(60, 365, 205, 48);
+		cursos.setBounds(60, 365, 205, 60);
+		cursos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		cursos.setContentAreaFilled(false);
+		cursos.setFocusPainted(false);
+		cursos.setBorderPainted(false);
 		add(cursos);
 
-		actividades = new JButton("Mis actividades");
+		actividades = new JButton(MIS_ACTIVIDADES);
 		actividades.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		actividades.setBounds(60, 489, 205, 48);
+		actividades.setBounds(60, 489, 205, 60);
+		actividades.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		actividades.setContentAreaFilled(false);
+		actividades.setFocusPainted(false);
+		actividades.setBorderPainted(false);
 		add(actividades);
 
-		ajustes = new JButton("Ajustes");
+		ajustes = new JButton(AJUSTES);
 		ajustes.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		ajustes.setBounds(60, 612, 205, 48);
+		ajustes.setBounds(1627, 47, 81, 74);
+		ajustes.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ajustes.setContentAreaFilled(false);
+		ajustes.setFocusPainted(false);
+		ajustes.setBorderPainted(false);
 		add(ajustes);
 
 		user = new ButtonDynamic("Sesión iniciada como: " + profesor.getNick(), ButtonDynamic.USUARIO);
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
 		user.setBounds(82, 22, 150, 136);
 		add(cbdUser.getBoton());
+		
+		cerrarSesion = new JButton(CERRAR_SESION);
+		cerrarSesion.setBounds(1718, 47, 81, 74);
+		cerrarSesion.setContentAreaFilled(false);
+		cerrarSesion.setFocusPainted(false);
+		cerrarSesion.setBorderPainted(false);
+		cerrarSesion.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		add(cerrarSesion);
 
 		btnChat = new JButton("");
 		btnChat.setBounds(1501, 47, 81, 74);
-		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
+		btnChat.setIcon(CHAT_PRIVADO);
 		btnChat.setContentAreaFilled(false);
 		btnChat.setFocusPainted(false);
 		btnChat.setBorderPainted(false);
@@ -253,9 +320,6 @@ public class Menu extends JPanel {
 		});
 	}
 
-	/**
-	 * @wbp.parser.constructor
-	 */
 	public Menu(Organizacion organizacion) {
 		this.org = organizacion;
 		this.organizacion = true;
@@ -263,35 +327,55 @@ public class Menu extends JPanel {
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
-		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
-		cerrar.setBounds(1643, 47, 267,
-				122);
-		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
-		add(cbdCerrar.getBoton());
+//		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
+//		cerrar.setBounds(1643, 47, 267,
+//				122);
+//		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
+//		add(cbdCerrar.getBoton());
 
-		explorar = new JButton("Explorar");
+		explorar = new JButton(EXPLORAR);
 		explorar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		explorar.setBounds(60, 233, 205, 48);
+		explorar.setBounds(60, 191, 205, 60);
+		explorar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		explorar.setContentAreaFilled(false);
+		explorar.setFocusPainted(false);
+		explorar.setBorderPainted(false);
 		add(explorar);
 
-		actividades = new JButton("Mis actividades");
+		actividades = new JButton(MIS_ACTIVIDADES);
 		actividades.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		actividades.setBounds(60, 365, 205, 48);
+		actividades.setBounds(60, 489, 205, 60);
+		actividades.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		actividades.setContentAreaFilled(false);
+		actividades.setFocusPainted(false);
+		actividades.setBorderPainted(false);
 		add(actividades);
 
-		ajustes = new JButton("Ajustes");
+		ajustes = new JButton(AJUSTES);
 		ajustes.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		ajustes.setBounds(60, 489, 205, 48);
+		ajustes.setBounds(1627, 47, 81, 74);
+		ajustes.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ajustes.setContentAreaFilled(false);
+		ajustes.setFocusPainted(false);
+		ajustes.setBorderPainted(false);
 		add(ajustes);
 
 		user = new ButtonDynamic("Sesión iniciada como: " + organizacion.getNick(), ButtonDynamic.USUARIO);
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
 		user.setBounds(82, 22, 590, 136);
 		add(cbdUser.getBoton());
+		
+		cerrarSesion = new JButton(CERRAR_SESION);
+		cerrarSesion.setBounds(1718, 47, 81, 74);
+		cerrarSesion.setContentAreaFilled(false);
+		cerrarSesion.setFocusPainted(false);
+		cerrarSesion.setBorderPainted(false);
+		cerrarSesion.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		add(cerrarSesion);
 
 		btnChat = new JButton("");
 		btnChat.setBounds(1501, 47, 81, 74);
-		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
+		btnChat.setIcon(CHAT_PRIVADO);
 		btnChat.setContentAreaFilled(false);
 		btnChat.setFocusPainted(false);
 		btnChat.setBorderPainted(false);
@@ -344,9 +428,9 @@ public class Menu extends JPanel {
 			ajustes.addActionListener(ctr);
 			ajustes.setActionCommand("AJUSTES");
 		}
-		if (cerrar != null) {
-			cerrar.addActionListener(ctr);
-			cerrar.setActionCommand("CERRAR_SESION");
+		if (cerrarSesion != null) {
+			cerrarSesion.addActionListener(ctr);
+			cerrarSesion.setActionCommand("CERRAR_SESION");
 		}
 		if (iniciar != null) {
 			iniciar.addActionListener(ctr);
