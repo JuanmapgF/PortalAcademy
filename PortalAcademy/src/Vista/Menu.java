@@ -17,6 +17,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Controlador.CtrButtonDynamic;
@@ -95,6 +96,11 @@ public class Menu extends JPanel {
 		explorar.setBorderPainted(false);
 		add(explorar);
 		
+		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel.setBounds(676, 1010, 593, 40);
+		add(lblNewLabel);
+		
 		JCalendar jc = new JCalendar();
 		jc.setBounds(60, 755, 205, 153);
 	    HighlightEvaluator evaluator = new HighlightEvaluator();
@@ -153,6 +159,11 @@ public class Menu extends JPanel {
 		cursos.setBorderPainted(false);
 		add(cursos);
 
+		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel.setBounds(676, 1010, 593, 40);
+		add(lblNewLabel);
+		
 		actividades = new JButton(MIS_ACTIVIDADES);
 		actividades.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		actividades.setBounds(60, 489, 205, 60);
@@ -261,6 +272,11 @@ public class Menu extends JPanel {
 		actividades.setBorderPainted(false);
 		add(actividades);
 
+		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel.setBounds(676, 1010, 593, 40);
+		add(lblNewLabel);
+		
 		ajustes = new JButton(AJUSTES);
 		ajustes.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		ajustes.setBounds(1627, 47, 81, 74);
@@ -351,6 +367,11 @@ public class Menu extends JPanel {
 		actividades.setBorderPainted(false);
 		add(actividades);
 
+		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel.setBounds(676, 1010, 593, 40);
+		add(lblNewLabel);
+		
 		ajustes = new JButton(AJUSTES);
 		ajustes.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		ajustes.setBounds(1627, 47, 81, 74);

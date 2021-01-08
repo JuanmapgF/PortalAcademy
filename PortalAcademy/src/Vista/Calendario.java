@@ -51,26 +51,29 @@ public class Calendario extends JPanel {
 	private boolean organizacion = false;
 	private boolean profesor = false;
 	
+	
 	public Calendario (Date d) {
-			this.setBounds(0, 0, 1080, 650);
+			this.setBounds(0, 0, 1920, 1080);
 			setLayout(null);
 			
 			addElements(Actividad.getActividadFecha(d));
 			
 			JScrollPane sp_ac = new JScrollPane();
-			sp_ac.setBounds(375, 225, 346, 346);
+			sp_ac.setBounds(700, 375, 346, 346);
+			listaC.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			sp_ac.setViewportView(listaC);
 			add(sp_ac);
 			
 			bVer = new JButton("Ver actividad");
-			bVer.setBounds(752, 412, 151, 23);
+			bVer.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			bVer.setBounds(1254, 504, 151, 40);
 			add(bVer);
 			
 			Calendar cal = Calendar.getInstance();
 		    cal.setTime(d);
 			JLabel lblNewLabel = new JLabel("Eventos del día " + cal.get(Calendar.DAY_OF_MONTH) + "/" + (cal.get(Calendar.MONTH)+1) + "/" + cal.get(Calendar.YEAR));
-			lblNewLabel.setBounds(381, 149, 403, 33);
-			lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
+			lblNewLabel.setBounds(712, 154, 403, 49);
+			lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
 			add(lblNewLabel);
 			
 			
@@ -78,66 +81,70 @@ public class Calendario extends JPanel {
 			add(menu.getPanel());
 		}
 		
+		
 		public Calendario(Profesor p, Date d) {
 			prof = p;
 			profesor = true;
-			this.setBounds(0, 0, 1080, 650);
+			this.setBounds(0, 0, 1920, 1080);
 			setLayout(null);
 
 			addElements(p.getActividadesFecha(d));
 			addElements2(p.getInformacion(d));
 
-			JLabel lblNewLabel2 = new JLabel("Mis actividades");
-			lblNewLabel2.setBounds(375, 169, 151, 33);
-			lblNewLabel2.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+			JLabel lblNewLabel2 = new JLabel("Mis actividades:");
+			lblNewLabel2.setBounds(700, 290, 217, 49);
+			lblNewLabel2.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 			add(lblNewLabel2);
 
 			JLabel lblNewLabel5 = new JLabel("Fecha:");
-			lblNewLabel5.setBounds(755, 432, 151, 23);
-			lblNewLabel5.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 15));
+			lblNewLabel5.setBounds(1320, 669, 151, 40);
+			lblNewLabel5.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			add(lblNewLabel5);
 
 			JLabel lblNewLabel6 = new JLabel("Información:");
-			lblNewLabel6.setBounds(755, 490, 151, 23);
-			lblNewLabel6.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 15));
+			lblNewLabel6.setBounds(1320, 779, 151, 33);
+			lblNewLabel6.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			add(lblNewLabel6);
 
-			JLabel lblNewLabel3 = new JLabel("Mis eventos");
-			lblNewLabel3.setBounds(375, 386, 126, 33);
-			lblNewLabel3.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+			JLabel lblNewLabel3 = new JLabel("Mis eventos:");
+			lblNewLabel3.setBounds(700, 623, 201, 49);
+			lblNewLabel3.setFont(new Font("Tahoma", Font.PLAIN, 30));
 			add(lblNewLabel3);
 
 			JScrollPane sp_ac = new JScrollPane();
-			sp_ac.setBounds(375, 205, 346, 170);
+			sp_ac.setBounds(700, 350, 500, 200);
 			sp_ac.setViewportView(listaC);
 			add(sp_ac);
 
 			JScrollPane sp_ac2 = new JScrollPane();
-			sp_ac2.setBounds(375, 420, 346, 170);
+			sp_ac2.setBounds(700, 700, 500, 200);
 			sp_ac2.setViewportView(listaC2);
 			add(sp_ac2);
 
 			bVer2 = new JButton("Ver actividad");
-			bVer2.setBounds(755, 300, 151, 23);
+			bVer2.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			bVer2.setBounds(1306, 431, 175, 40);
 			add(bVer2);
 
 			bAnadir = new JButton("Añadir evento");
-			bAnadir.setBounds(755, 547, 151, 23);
+			bAnadir.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			bAnadir.setBounds(1320, 885, 170, 40);
 			add(bAnadir);
 
 			Calendar cal = Calendar.getInstance();
 			cal.setTime(d);
 			JLabel lblNewLabel = new JLabel("Eventos del día " + cal.get(Calendar.DAY_OF_MONTH) + "/"
 					+ (cal.get(Calendar.MONTH) + 1) + "/" + cal.get(Calendar.YEAR));
-			lblNewLabel.setBounds(385, 100, 403, 33);
+			lblNewLabel.setBounds(798, 174, 403, 33);
 			lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 			add(lblNewLabel);
 
-			dateChooser.setBounds(755, 456, 151, 23);
+			dateChooser.setBounds(1320, 720, 170, 40);
 			add(dateChooser);
+			textField.setFont(new Font("Tahoma", Font.PLAIN, 20));
 
 			textField.setBackground(Color.WHITE);
-			textField.setBounds(755, 513, 151, 23);
+			textField.setBounds(1320, 823, 170, 40);
 			add(textField);
 			textField.setColumns(10);
 
@@ -149,63 +156,67 @@ public class Calendario extends JPanel {
 		public Calendario (Estudiante e, Date d) {
 			est = e;
 			estudiante = true;
-			this.setBounds(0, 0, 1080, 650);
+			this.setBounds(0, 0, 1920, 1080);
 			setLayout(null);
 			
 			addElements(e.getActividadesFecha(d));
 			addElements2(e.getInformacion(d));
 			
 			
-			JLabel lblNewLabel2 = new JLabel("Mis actividades");
-			lblNewLabel2.setBounds(375, 169, 151, 33);
-			lblNewLabel2.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+			JLabel lblNewLabel2 = new JLabel("Mis actividades:");
+			lblNewLabel2.setBounds(700, 290, 217, 49);
+			lblNewLabel2.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 			add(lblNewLabel2);
-			
+
 			JLabel lblNewLabel5 = new JLabel("Fecha:");
-			lblNewLabel5.setBounds(755, 432, 151, 23);
-			lblNewLabel5.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 15));
+			lblNewLabel5.setBounds(1320, 669, 151, 40);
+			lblNewLabel5.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			add(lblNewLabel5);
-			
+
 			JLabel lblNewLabel6 = new JLabel("Información:");
-			lblNewLabel6.setBounds(755, 490, 151, 23);
-			lblNewLabel6.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 15));
+			lblNewLabel6.setBounds(1320, 779, 151, 33);
+			lblNewLabel6.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			add(lblNewLabel6);
-			
-			JLabel lblNewLabel3 = new JLabel("Mis eventos");
-			lblNewLabel3.setBounds(375, 386, 126, 33);
-			lblNewLabel3.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+
+			JLabel lblNewLabel3 = new JLabel("Mis eventos:");
+			lblNewLabel3.setBounds(700, 623, 201, 49);
+			lblNewLabel3.setFont(new Font("Tahoma", Font.PLAIN, 30));
 			add(lblNewLabel3);
-			
+
 			JScrollPane sp_ac = new JScrollPane();
-			sp_ac.setBounds(375, 205, 346, 170);
+			sp_ac.setBounds(700, 350, 500, 200);
 			sp_ac.setViewportView(listaC);
 			add(sp_ac);
-			
+
 			JScrollPane sp_ac2 = new JScrollPane();
-			sp_ac2.setBounds(375, 420, 346, 170);
+			sp_ac2.setBounds(700, 700, 500, 200);
 			sp_ac2.setViewportView(listaC2);
 			add(sp_ac2);
-			
+
 			bVer2 = new JButton("Ver actividad");
-			bVer2.setBounds(755, 300, 151, 23);
+			bVer2.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			bVer2.setBounds(1306, 431, 175, 40);
 			add(bVer2);
-			
+
 			bAnadir = new JButton("Añadir evento");
-			bAnadir.setBounds(755, 547, 151, 23);
+			bAnadir.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			bAnadir.setBounds(1320, 885, 170, 40);
 			add(bAnadir);
-			
+
 			Calendar cal = Calendar.getInstance();
-		    cal.setTime(d);
-			JLabel lblNewLabel = new JLabel("Eventos del día " + cal.get(Calendar.DAY_OF_MONTH) + "/" + (cal.get(Calendar.MONTH)+1) + "/" + cal.get(Calendar.YEAR));
-			lblNewLabel.setBounds(385, 100, 403, 33);
+			cal.setTime(d);
+			JLabel lblNewLabel = new JLabel("Eventos del día " + cal.get(Calendar.DAY_OF_MONTH) + "/"
+					+ (cal.get(Calendar.MONTH) + 1) + "/" + cal.get(Calendar.YEAR));
+			lblNewLabel.setBounds(798, 174, 403, 33);
 			lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 			add(lblNewLabel);
-			
-			dateChooser.setBounds(755, 456, 151, 23);
+
+			dateChooser.setBounds(1320, 720, 170, 40);
 			add(dateChooser);
-			
+			textField.setFont(new Font("Tahoma", Font.PLAIN, 20));
+
 			textField.setBackground(Color.WHITE);
-			textField.setBounds(755, 513, 151, 23);
+			textField.setBounds(1320, 823, 170, 40);
 			add(textField);
 			textField.setColumns(10);
 			
@@ -213,66 +224,73 @@ public class Calendario extends JPanel {
 			add(menu.getPanel());
 		}	
 		
+		/**
+		 * @wbp.parser.constructor
+		 */
 		public Calendario (Organizacion o, Date d) {
 			org = o;
 			organizacion = true;
-			this.setBounds(0, 0, 1080, 650);
+			this.setBounds(0, 0, 1920, 1080);
 			setLayout(null);
 			
 			addElements(o.getActividadesFechaA(d));
 			addElements2(o.getInformacion(d));
 			
 			
-			JLabel lblNewLabel2 = new JLabel("Mis actividades");
-			lblNewLabel2.setBounds(375, 169, 151, 33);
-			lblNewLabel2.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+			JLabel lblNewLabel2 = new JLabel("Mis actividades:");
+			lblNewLabel2.setBounds(700, 290, 217, 49);
+			lblNewLabel2.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 			add(lblNewLabel2);
-			
+
 			JLabel lblNewLabel5 = new JLabel("Fecha:");
-			lblNewLabel5.setBounds(755, 432, 151, 23);
-			lblNewLabel5.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 15));
+			lblNewLabel5.setBounds(1320, 669, 151, 40);
+			lblNewLabel5.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			add(lblNewLabel5);
-			
+
 			JLabel lblNewLabel6 = new JLabel("Información:");
-			lblNewLabel6.setBounds(755, 490, 151, 23);
-			lblNewLabel6.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 15));
+			lblNewLabel6.setBounds(1320, 779, 151, 33);
+			lblNewLabel6.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			add(lblNewLabel6);
-			
-			JLabel lblNewLabel3 = new JLabel("Mis eventos");
-			lblNewLabel3.setBounds(375, 386, 126, 33);
-			lblNewLabel3.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+
+			JLabel lblNewLabel3 = new JLabel("Mis eventos:");
+			lblNewLabel3.setBounds(700, 623, 201, 49);
+			lblNewLabel3.setFont(new Font("Tahoma", Font.PLAIN, 30));
 			add(lblNewLabel3);
-			
+
 			JScrollPane sp_ac = new JScrollPane();
-			sp_ac.setBounds(375, 205, 346, 170);
+			sp_ac.setBounds(700, 350, 500, 200);
 			sp_ac.setViewportView(listaC);
 			add(sp_ac);
-			
+
 			JScrollPane sp_ac2 = new JScrollPane();
-			sp_ac2.setBounds(375, 420, 346, 170);
+			sp_ac2.setBounds(700, 700, 500, 200);
 			sp_ac2.setViewportView(listaC2);
 			add(sp_ac2);
-			
+
 			bVer2 = new JButton("Ver actividad");
-			bVer2.setBounds(755, 300, 151, 23);
+			bVer2.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			bVer2.setBounds(1306, 431, 175, 40);
 			add(bVer2);
-			
+
 			bAnadir = new JButton("Añadir evento");
-			bAnadir.setBounds(755, 547, 151, 23);
+			bAnadir.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			bAnadir.setBounds(1320, 885, 170, 40);
 			add(bAnadir);
-			
+
 			Calendar cal = Calendar.getInstance();
-		    cal.setTime(d);
-			JLabel lblNewLabel = new JLabel("Eventos del día " + cal.get(Calendar.DAY_OF_MONTH) + "/" + (cal.get(Calendar.MONTH)+1) + "/" + cal.get(Calendar.YEAR));
-			lblNewLabel.setBounds(385, 100, 403, 33);
+			cal.setTime(d);
+			JLabel lblNewLabel = new JLabel("Eventos del día " + cal.get(Calendar.DAY_OF_MONTH) + "/"
+					+ (cal.get(Calendar.MONTH) + 1) + "/" + cal.get(Calendar.YEAR));
+			lblNewLabel.setBounds(798, 174, 403, 33);
 			lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 			add(lblNewLabel);
-			
-			dateChooser.setBounds(755, 456, 151, 23);
+
+			dateChooser.setBounds(1320, 720, 170, 40);
 			add(dateChooser);
-			
+			textField.setFont(new Font("Tahoma", Font.PLAIN, 20));
+
 			textField.setBackground(Color.WHITE);
-			textField.setBounds(755, 513, 151, 23);
+			textField.setBounds(1320, 823, 170, 40);
 			add(textField);
 			textField.setColumns(10);
 			
