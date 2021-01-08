@@ -361,8 +361,10 @@ public class Explorar extends JPanel {
 
 		cursos = new JTable(datosCurso, columnHeadersCurso);
 		cursos.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer(true));
+		cursos.getColumnModel().getColumn(0).setCellEditor(editorCurso);
 		cursos.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
 		cursos.getColumnModel().getColumn(1).setCellEditor(editorCurso);
+		cursos.getColumnModel().getColumn(2).setCellEditor(editorCurso);
 		cursos.setTableHeader(null);
 		cursos.setCellSelectionEnabled(false);
 
@@ -387,8 +389,10 @@ public class Explorar extends JPanel {
 		actividades = new JTable(datosActividad, columnHeadersActividad);
 
 		actividades.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer(false));
+		actividades.getColumnModel().getColumn(0).setCellEditor(editorActividad);
 		actividades.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
 		actividades.getColumnModel().getColumn(1).setCellEditor(editorActividad);
+		actividades.getColumnModel().getColumn(2).setCellEditor(editorActividad);
 		actividades.setTableHeader(null);
 		actividades.setCellSelectionEnabled(false);
 	}
@@ -414,8 +418,10 @@ public class Explorar extends JPanel {
 
 		cursos = new JTable(datosCurso, columnHeadersCurso);
 		cursos.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer(true));
+		cursos.getColumnModel().getColumn(0).setCellEditor(editorCurso);
 		cursos.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
 		cursos.getColumnModel().getColumn(1).setCellEditor(editorCurso);
+		cursos.getColumnModel().getColumn(2).setCellEditor(editorCurso);
 		cursos.setTableHeader(null);
 		cursos.setCellSelectionEnabled(false);
 
@@ -437,8 +443,10 @@ public class Explorar extends JPanel {
 
 		actividades = new JTable(datosActividad, columnHeadersActividad);
 		actividades.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer(false));
+		actividades.getColumnModel().getColumn(0).setCellEditor(editorActividad);
 		actividades.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
 		actividades.getColumnModel().getColumn(1).setCellEditor(editorActividad);
+		actividades.getColumnModel().getColumn(2).setCellEditor(editorActividad);
 		actividades.setTableHeader(null);
 		actividades.setCellSelectionEnabled(false);
 	}
