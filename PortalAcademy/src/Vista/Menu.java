@@ -381,7 +381,7 @@ public class Menu extends JPanel {
 		ajustes.setBorderPainted(false);
 		add(ajustes);
 
-		user = new ButtonDynamic("organizacion.getNick(), ButtonDynamic.USUARIO);
+		user = new ButtonDynamic(organizacion.getNick(), ButtonDynamic.USUARIO);
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
 		user.setBounds(82, 22, 590, 136);
 		add(cbdUser.getBoton());
