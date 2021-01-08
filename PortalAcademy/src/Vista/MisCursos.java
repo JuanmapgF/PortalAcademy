@@ -208,7 +208,7 @@ public class MisCursos extends JPanel {
 	}
 	
 	public Curso getCursoProfesor() {
-		return lista_impartidos.get(cursos.getSelectedRow());
+		return lista_impartidos.get(impartidos.getSelectedRow());
 	}
 
 	public void controlador(ActionListener ctr) {
