@@ -67,18 +67,18 @@ public class Explorar extends JPanel {
 		t_curso.setBorder(new LineBorder(Color.BLACK));
 		t_curso.setHorizontalAlignment(SwingConstants.CENTER);
 		t_curso.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		t_curso.setBounds(431, 451, 465, 41);
+		t_curso.setBounds(431, 451, 475, 41);
 		add(t_curso);
 
 		JLabel t_actividad = new JLabel("Actividades");
 		t_actividad.setBorder(new LineBorder(Color.BLACK));
 		t_actividad.setHorizontalAlignment(SwingConstants.CENTER);
 		t_actividad.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		t_actividad.setBounds(1089, 451, 465, 41);
+		t_actividad.setBounds(1089, 451, 475, 41);
 		add(t_actividad);
 
 		JScrollPane sp_curso = new JScrollPane();
-		sp_curso.setBounds(431, 497, 465, 500);
+		sp_curso.setBounds(431, 497, 475, 500);
 		sp_curso.setViewportView(cursos);
 		sp_curso.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_curso);
@@ -87,13 +87,13 @@ public class Explorar extends JPanel {
 		cursos.setShowVerticalLines(false);
 		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
 		cursos.getColumnModel().getColumn(0).setMinWidth(75);
-		cursos.getColumnModel().getColumn(1).setMaxWidth(125);
-		cursos.getColumnModel().getColumn(1).setMinWidth(125);
+		cursos.getColumnModel().getColumn(1).setMaxWidth(315);
+		cursos.getColumnModel().getColumn(1).setMinWidth(315);
 		cursos.getColumnModel().getColumn(2).setMaxWidth(75);
 		cursos.getColumnModel().getColumn(2).setMinWidth(75);
 
 		JScrollPane sp_actividad = new JScrollPane();
-		sp_actividad.setBounds(1089, 497, 465, 500);
+		sp_actividad.setBounds(1089, 497, 475, 500);
 		sp_actividad.setViewportView(actividades);
 		sp_actividad.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_actividad);
@@ -102,8 +102,8 @@ public class Explorar extends JPanel {
 		actividades.setShowVerticalLines(false);
 		actividades.getColumnModel().getColumn(0).setMaxWidth(75);
 		actividades.getColumnModel().getColumn(0).setMinWidth(75);
-		actividades.getColumnModel().getColumn(1).setMaxWidth(125);
-		actividades.getColumnModel().getColumn(1).setMinWidth(125);
+		actividades.getColumnModel().getColumn(1).setMaxWidth(315);
+		actividades.getColumnModel().getColumn(1).setMinWidth(315);
 		actividades.getColumnModel().getColumn(2).setMaxWidth(75);
 		actividades.getColumnModel().getColumn(2).setMinWidth(75);
 		
@@ -130,18 +130,18 @@ public class Explorar extends JPanel {
 		t_curso.setBorder(new LineBorder(Color.BLACK));
 		t_curso.setHorizontalAlignment(SwingConstants.CENTER);
 		t_curso.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		t_curso.setBounds(431, 451, 465, 41);
+		t_curso.setBounds(431, 451, 475, 41);
 		add(t_curso);
 
 		JLabel t_actividad = new JLabel("Actividades");
 		t_actividad.setBorder(new LineBorder(Color.BLACK));
 		t_actividad.setHorizontalAlignment(SwingConstants.CENTER);
 		t_actividad.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		t_actividad.setBounds(1089, 451, 465, 41);
+		t_actividad.setBounds(1089, 451, 475, 41);
 		add(t_actividad);
 
 		JScrollPane sp_curso = new JScrollPane();
-		sp_curso.setBounds(431, 497, 465, 500);
+		sp_curso.setBounds(431, 497, 475, 500);
 		sp_curso.setViewportView(cursos);
 		sp_curso.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_curso);
@@ -150,13 +150,13 @@ public class Explorar extends JPanel {
 		cursos.setShowVerticalLines(false);
 		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
 		cursos.getColumnModel().getColumn(0).setMinWidth(75);
-		cursos.getColumnModel().getColumn(1).setMaxWidth(125);
-		cursos.getColumnModel().getColumn(1).setMinWidth(125);
+		cursos.getColumnModel().getColumn(1).setMaxWidth(315);
+		cursos.getColumnModel().getColumn(1).setMinWidth(315);
 		cursos.getColumnModel().getColumn(2).setMaxWidth(75);
 		cursos.getColumnModel().getColumn(2).setMinWidth(75);
 
 		JScrollPane sp_actividad = new JScrollPane();
-		sp_actividad.setBounds(1089, 497, 465, 500);
+		sp_actividad.setBounds(1089, 497, 475, 500);
 		sp_actividad.setViewportView(actividades);
 		sp_actividad.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_actividad);
@@ -165,8 +165,8 @@ public class Explorar extends JPanel {
 		actividades.setShowVerticalLines(false);
 		actividades.getColumnModel().getColumn(0).setMaxWidth(75);
 		actividades.getColumnModel().getColumn(0).setMinWidth(75);
-		actividades.getColumnModel().getColumn(1).setMaxWidth(125);
-		actividades.getColumnModel().getColumn(1).setMinWidth(125);
+		actividades.getColumnModel().getColumn(1).setMaxWidth(315);
+		actividades.getColumnModel().getColumn(1).setMinWidth(315);
 		actividades.getColumnModel().getColumn(2).setMaxWidth(75);
 		actividades.getColumnModel().getColumn(2).setMinWidth(75);
 
@@ -193,18 +193,18 @@ public class Explorar extends JPanel {
 		t_curso.setBorder(new LineBorder(Color.BLACK));
 		t_curso.setHorizontalAlignment(SwingConstants.CENTER);
 		t_curso.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		t_curso.setBounds(431, 451, 465, 41);
+		t_curso.setBounds(431, 451, 475, 41);
 		add(t_curso);
 
 		JLabel t_actividad = new JLabel("Actividades");
 		t_actividad.setBorder(new LineBorder(Color.BLACK));
 		t_actividad.setHorizontalAlignment(SwingConstants.CENTER);
 		t_actividad.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		t_actividad.setBounds(1089, 451, 465, 41);
+		t_actividad.setBounds(1089, 451, 475, 41);
 		add(t_actividad);
 
 		JScrollPane sp_curso = new JScrollPane();
-		sp_curso.setBounds(431, 497, 465, 500);
+		sp_curso.setBounds(431, 497, 475, 500);
 		sp_curso.setViewportView(cursos);
 		sp_curso.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_curso);
@@ -213,13 +213,13 @@ public class Explorar extends JPanel {
 		cursos.setShowVerticalLines(false);
 		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
 		cursos.getColumnModel().getColumn(0).setMinWidth(75);
-		cursos.getColumnModel().getColumn(1).setMaxWidth(125);
-		cursos.getColumnModel().getColumn(1).setMinWidth(125);
+		cursos.getColumnModel().getColumn(1).setMaxWidth(315);
+		cursos.getColumnModel().getColumn(1).setMinWidth(315);
 		cursos.getColumnModel().getColumn(2).setMaxWidth(75);
 		cursos.getColumnModel().getColumn(2).setMinWidth(75);
 
 		JScrollPane sp_actividad = new JScrollPane();
-		sp_actividad.setBounds(1089, 497, 465, 500);
+		sp_actividad.setBounds(1089, 497, 475, 500);
 		sp_actividad.setViewportView(actividades);
 		sp_actividad.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_actividad);
@@ -228,8 +228,8 @@ public class Explorar extends JPanel {
 		actividades.setShowVerticalLines(false);
 		actividades.getColumnModel().getColumn(0).setMaxWidth(75);
 		actividades.getColumnModel().getColumn(0).setMinWidth(75);
-		actividades.getColumnModel().getColumn(1).setMaxWidth(125);
-		actividades.getColumnModel().getColumn(1).setMinWidth(125);
+		actividades.getColumnModel().getColumn(1).setMaxWidth(315);
+		actividades.getColumnModel().getColumn(1).setMinWidth(315);
 		actividades.getColumnModel().getColumn(2).setMaxWidth(75);
 		actividades.getColumnModel().getColumn(2).setMinWidth(75);
 
@@ -256,18 +256,18 @@ public class Explorar extends JPanel {
 		t_curso.setBorder(new LineBorder(Color.BLACK));
 		t_curso.setHorizontalAlignment(SwingConstants.CENTER);
 		t_curso.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		t_curso.setBounds(431, 451, 465, 41);
+		t_curso.setBounds(431, 451, 475, 41);
 		add(t_curso);
 
 		JLabel t_actividad = new JLabel("Actividades");
 		t_actividad.setBorder(new LineBorder(Color.BLACK));
 		t_actividad.setHorizontalAlignment(SwingConstants.CENTER);
 		t_actividad.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		t_actividad.setBounds(1089, 451, 465, 41);
+		t_actividad.setBounds(1089, 451, 475, 41);
 		add(t_actividad);
 
 		JScrollPane sp_curso = new JScrollPane();
-		sp_curso.setBounds(431, 497, 465, 500);
+		sp_curso.setBounds(431, 497, 475, 500);
 		sp_curso.setViewportView(cursos);
 		sp_curso.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_curso);
@@ -276,13 +276,13 @@ public class Explorar extends JPanel {
 		cursos.setShowVerticalLines(false);
 		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
 		cursos.getColumnModel().getColumn(0).setMinWidth(75);
-		cursos.getColumnModel().getColumn(1).setMaxWidth(125);
-		cursos.getColumnModel().getColumn(1).setMinWidth(125);
+		cursos.getColumnModel().getColumn(1).setMaxWidth(315);
+		cursos.getColumnModel().getColumn(1).setMinWidth(315);
 		cursos.getColumnModel().getColumn(2).setMaxWidth(75);
 		cursos.getColumnModel().getColumn(2).setMinWidth(75);
 
 		JScrollPane sp_actividad = new JScrollPane();
-		sp_actividad.setBounds(1089, 497, 465, 500);
+		sp_actividad.setBounds(1089, 497, 475, 500);
 		sp_actividad.setViewportView(actividades);
 		sp_actividad.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_actividad);
@@ -291,8 +291,8 @@ public class Explorar extends JPanel {
 		actividades.setShowVerticalLines(false);
 		actividades.getColumnModel().getColumn(0).setMaxWidth(75);
 		actividades.getColumnModel().getColumn(0).setMinWidth(75);
-		actividades.getColumnModel().getColumn(1).setMaxWidth(125);
-		actividades.getColumnModel().getColumn(1).setMinWidth(125);
+		actividades.getColumnModel().getColumn(1).setMaxWidth(315);
+		actividades.getColumnModel().getColumn(1).setMinWidth(315);
 		actividades.getColumnModel().getColumn(2).setMaxWidth(75);
 		actividades.getColumnModel().getColumn(2).setMinWidth(75);
 
