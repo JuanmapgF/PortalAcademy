@@ -185,7 +185,7 @@ public class Menu extends JPanel {
 		ajustes.setBorderPainted(false);
 		add(ajustes);
 
-		user = new ButtonDynamic("Sesión iniciada como: " + estudiante.getNick(), ButtonDynamic.USUARIO);
+		user = new ButtonDynamic(estudiante.getNick(), ButtonDynamic.USUARIO);
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
 		user.setBounds(82, 22, 150, 136);
 		add(cbdUser.getBoton());
@@ -290,7 +290,7 @@ public class Menu extends JPanel {
 		ajustes.setBorderPainted(false);
 		add(ajustes);
 
-		user = new ButtonDynamic("Sesión iniciada como: " + profesor.getNick(), ButtonDynamic.USUARIO);
+		user = new ButtonDynamic(profesor.getNick(), ButtonDynamic.USUARIO);
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
 		user.setBounds(82, 22, 150, 136);
 		add(cbdUser.getBoton());
@@ -386,7 +386,7 @@ public class Menu extends JPanel {
 		ajustes.setBorderPainted(false);
 		add(ajustes);
 
-		user = new ButtonDynamic("Sesión iniciada como: " + organizacion.getNick(), ButtonDynamic.USUARIO);
+		user = new ButtonDynamic(organizacion.getNick(), ButtonDynamic.USUARIO);
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
 		user.setBounds(82, 22, 590, 136);
 		add(cbdUser.getBoton());

@@ -34,7 +34,6 @@ public class MisActividades extends JPanel {
 	
 	private JButton crearActividad;
 	
-	
 	public MisActividades(Estudiante u) {
 		estudiante = true;
 		est = u;
