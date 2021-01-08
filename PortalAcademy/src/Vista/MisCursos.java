@@ -40,6 +40,9 @@ public class MisCursos extends JPanel {
 	private List<Curso> lista_cursos = null;
 	private Object[][] datos = null;
 	
+	private List<Curso> lista_impartidos = null;
+	private Object[][] propios = null;
+	
 	public MisCursos(Estudiante u) {
 		estudiante = true;
 		est = u;
@@ -83,6 +86,8 @@ public class MisCursos extends JPanel {
 		this.setLayout(null);
 		
 		this.setBounds(0, 0, 1920, 1080);
+		lista_cursos = u.getCursosApuntados();
+		lista_impartidos = u.getCursosImpartidos();
 		
 //		addElements(u.getCursosImpartidos());
 //		addElements2(u.getCursosApuntados());
@@ -142,6 +147,29 @@ public class MisCursos extends JPanel {
 		cursos.getColumnModel().getColumn(1).setCellEditor(editorCurso);
 		cursos.setTableHeader(null);
 		cursos.setCellSelectionEnabled(false);
+	}
+	
+	public void datosTablaProfesor() {
+		datos = new Object[lista_cursos.size()][2];
+		
+		int k = 0;
+		for (Curso c : lista_cursos) {
+			datos[k][0] = c.getImagen();
+			datos[k][1] = c.getNombre();
+			k++;
+		}
+		
+		String[] columnHeadersCurso = {"Imagen", "Curso"};
+		
+		cursos = new JTable(datos, columnHeadersCurso);
+		cursos.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer(true));
+		cursos.getColumnModel().getColumn(1).setCellEditor(editorCurso);
+		cursos.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
+		cursos.getColumnModel().getColumn(1).setCellEditor(editorCurso);
+		cursos.setTableHeader(null);
+		cursos.setCellSelectionEnabled(false);
+		
+		
 	}
 	
 	public Curso getCurso() {
