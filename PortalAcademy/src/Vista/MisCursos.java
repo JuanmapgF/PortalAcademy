@@ -71,11 +71,7 @@ public class MisCursos extends JPanel {
 		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
 		cursos.getColumnModel().getColumn(0).setMinWidth(75);
 //		cursos.getColumnModel().getColumn(1).setMaxWidth(315);
-<<<<<<< Updated upstream
 //		cursos.getColumnModel().getColumn(1).setMinWidth(315);
-=======
-		cursos.getColumnModel().getColumn(1).setMinWidth(315);
->>>>>>> Stashed changes
 
 		this.setBounds(0, 0, 1920, 1080);
 
@@ -114,11 +110,7 @@ public class MisCursos extends JPanel {
 		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
 		cursos.getColumnModel().getColumn(0).setMinWidth(75);
 //		cursos.getColumnModel().getColumn(1).setMaxWidth(315);
-<<<<<<< Updated upstream
 //		cursos.getColumnModel().getColumn(1).setMinWidth(315);
-=======
-		cursos.getColumnModel().getColumn(1).setMinWidth(315);
->>>>>>> Stashed changes
 		
 		JScrollPane sp_curso1 = new JScrollPane();
 		sp_curso1.setBounds(1041, 400, 400, 546);
@@ -128,14 +120,10 @@ public class MisCursos extends JPanel {
 		sp_curso1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		impartidos.setRowHeight(75);
 		impartidos.setShowVerticalLines(false);
-		impartidos.getColumnModel().getColumn(0).setMaxWidth(75);
-		impartidos.getColumnModel().getColumn(0).setMinWidth(75);
-//		impartidos.getColumnModel().getColumn(1).setMaxWidth(315);
-<<<<<<< Updated upstream
-//		impartidos.getColumnModel().getColumn(1).setMinWidth(315);
-=======
-		impartidos.getColumnModel().getColumn(1).setMinWidth(315);
->>>>>>> Stashed changes
+		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
+		cursos.getColumnModel().getColumn(0).setMinWidth(75);
+//		cursos.getColumnModel().getColumn(1).setMaxWidth(315);
+//		cursos.getColumnModel().getColumn(1).setMinWidth(315);
 
 		JLabel t_curso2 = new JLabel("Mis cursos");
 		t_curso2.setFont(new Font("Tahoma", Font.PLAIN, 40));
