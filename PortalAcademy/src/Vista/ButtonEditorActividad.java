@@ -72,4 +72,9 @@ public class ButtonEditorActividad extends DefaultCellEditor {
 		btn.addActionListener(ctr);
 		btn.setActionCommand("VER_ACTIVIDAD");
 	}
+	
+	public void controladorMisActividades(ActionListener ctr) {
+		btn.addActionListener(ctr);
+		btn.setActionCommand("VERACTIVIDAD");
+	}
 }

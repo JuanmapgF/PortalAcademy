@@ -1,6 +1,7 @@
 package Vista;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -11,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -64,9 +66,12 @@ public class Calendario extends JPanel {
 			sp_ac.setViewportView(listaC);
 			add(sp_ac);
 			
-			bVer = new JButton("Ver actividad");
-			bVer.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			bVer.setBounds(1254, 504, 151, 40);
+			bVer = new JButton(new ImageIcon(getClass().getResource("/img/verActividad.png")));
+			bVer.setBounds(1306, 431, 175, 60);
+			bVer.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			bVer.setContentAreaFilled(false);
+			bVer.setFocusPainted(false);
+			bVer.setBorderPainted(false);
 			add(bVer);
 			
 			Calendar cal = Calendar.getInstance();
@@ -121,14 +126,20 @@ public class Calendario extends JPanel {
 			sp_ac2.setViewportView(listaC2);
 			add(sp_ac2);
 
-			bVer2 = new JButton("Ver actividad");
-			bVer2.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			bVer2.setBounds(1306, 431, 175, 40);
+			bVer2 = new JButton(new ImageIcon(getClass().getResource("/img/verActividad.png")));
+			bVer2.setBounds(1306, 431, 175, 60);
+			bVer2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			bVer2.setContentAreaFilled(false);
+			bVer2.setFocusPainted(false);
+			bVer2.setBorderPainted(false);
 			add(bVer2);
 
-			bAnadir = new JButton("Añadir evento");
-			bAnadir.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			bAnadir.setBounds(1320, 885, 170, 40);
+			bAnadir = new JButton(new ImageIcon(getClass().getResource("/img/anadirEvento.png")));
+			bAnadir.setBounds(1320, 885, 170, 60);
+			bAnadir.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			bAnadir.setContentAreaFilled(false);
+			bAnadir.setFocusPainted(false);
+			bAnadir.setBorderPainted(false);
 			add(bAnadir);
 
 			Calendar cal = Calendar.getInstance();
@@ -193,14 +204,20 @@ public class Calendario extends JPanel {
 			sp_ac2.setViewportView(listaC2);
 			add(sp_ac2);
 
-			bVer2 = new JButton("Ver actividad");
-			bVer2.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			bVer2.setBounds(1306, 431, 175, 40);
+			bVer2 = new JButton(new ImageIcon(getClass().getResource("/img/verActividad.png")));
+			bVer2.setBounds(1306, 431, 175, 60);
+			bVer2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			bVer2.setContentAreaFilled(false);
+			bVer2.setFocusPainted(false);
+			bVer2.setBorderPainted(false);
 			add(bVer2);
 
-			bAnadir = new JButton("Añadir evento");
-			bAnadir.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			bAnadir.setBounds(1320, 885, 170, 40);
+			bAnadir = new JButton(new ImageIcon(getClass().getResource("/img/anadirEvento.png")));
+			bAnadir.setBounds(1320, 885, 170, 60);
+			bAnadir.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			bAnadir.setContentAreaFilled(false);
+			bAnadir.setFocusPainted(false);
+			bAnadir.setBorderPainted(false);
 			add(bAnadir);
 
 			Calendar cal = Calendar.getInstance();
@@ -267,14 +284,20 @@ public class Calendario extends JPanel {
 			sp_ac2.setViewportView(listaC2);
 			add(sp_ac2);
 
-			bVer2 = new JButton("Ver actividad");
-			bVer2.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			bVer2.setBounds(1306, 431, 175, 40);
+			bVer2 = new JButton(new ImageIcon(getClass().getResource("/img/verActividad.png")));
+			bVer2.setBounds(1306, 431, 175, 60);
+			bVer2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			bVer2.setContentAreaFilled(false);
+			bVer2.setFocusPainted(false);
+			bVer2.setBorderPainted(false);
 			add(bVer2);
 
-			bAnadir = new JButton("Añadir evento");
-			bAnadir.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			bAnadir.setBounds(1320, 885, 170, 40);
+			bAnadir = new JButton(new ImageIcon(getClass().getResource("/img/anadirEvento.png")));
+			bAnadir.setBounds(1320, 885, 170, 60);
+			bAnadir.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			bAnadir.setContentAreaFilled(false);
+			bAnadir.setFocusPainted(false);
+			bAnadir.setBorderPainted(false);
 			add(bAnadir);
 
 			Calendar cal = Calendar.getInstance();

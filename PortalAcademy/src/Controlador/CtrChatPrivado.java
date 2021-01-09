@@ -1,5 +1,6 @@
 package Controlador;
 
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,6 +25,8 @@ public class CtrChatPrivado implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		ventana.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+		
 		if (e.getActionCommand().equals("VER_CHAT")) {
 			seleccionado = ventana.getUsuarioSeleccionado();
 			ventana = new ChatPrivado(user, seleccionado);
