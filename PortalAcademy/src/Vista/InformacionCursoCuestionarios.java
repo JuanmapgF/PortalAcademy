@@ -21,17 +21,21 @@ public class InformacionCursoCuestionarios extends JPanel {
 	 */
 	public InformacionCursoCuestionarios(Usuario user, Curso curso) {
 		
+//		CtrMenu menu_1 = new CtrMenu(new Menu((Profesor)user));
+//		add(menu_1.getPanel());
+		
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 		
 		JButton bInicio = new JButton("Inicio");
 		bInicio.setVerticalAlignment(SwingConstants.TOP);
-		bInicio.setForeground(new Color(0, 0, 255));
+		bInicio.setForeground(new Color(0, 0, 0));
 		bInicio.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 18));
 		bInicio.setBounds(429, 102, 77, 29);
 		add(bInicio);
 		
 		JButton bCuestionarios = new JButton("Cuestionarios");
+		bCuestionarios.setForeground(new Color(0, 0, 255));
 		bCuestionarios.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 18));
 		bCuestionarios.setBounds(516, 102, 143, 29);
 		add(bCuestionarios);
