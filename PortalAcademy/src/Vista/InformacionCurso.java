@@ -25,16 +25,9 @@ import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class InformacionCurso extends JPanel {
-	private JList<String> listaMensajes;
-	private DefaultListModel<String> modelo = new DefaultListModel<String>();
 	
 	private JButton editar;
 	private JButton editarParticipantes;
-	private JButton enviar;
-	private JButton refrescar;
-
-	private JTextField textField;
-	private String mensajeEscrito;
 
 	/**
 	 * Create the panel.
@@ -44,7 +37,6 @@ public class InformacionCurso extends JPanel {
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 		
-		listaMensajes = new JList<String>();
 		
 		JLabel nombreCurso = new JLabel(curso.getNombre());
 		nombreCurso.setBounds(429, 189, 364, 33);
@@ -60,55 +52,9 @@ public class InformacionCurso extends JPanel {
 		jsp.setBounds(429, 258, 777, 345);
 		add(jsp);
 		
-		JButton bInicio = new JButton("Inicio");
-		bInicio.setVerticalAlignment(SwingConstants.TOP);
-		bInicio.setForeground(new Color(0, 0, 255));
-		bInicio.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 18));
-		bInicio.setBounds(429, 102, 77, 29);
-		add(bInicio);
-		
-		JButton bCuestionarios = new JButton("Cuestionarios");
-		bCuestionarios.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 18));
-		bCuestionarios.setBounds(516, 102, 143, 29);
-		add(bCuestionarios);
-		
 		//-----
 		if (curso.getTieneForo()) {
-			JScrollPane foro = new JScrollPane();
-			foro.setBounds(278, 234, 459, 268);
-			foro.setViewportView(listaMensajes);
-			add(foro);
 			
-			textField = new JTextField();
-			textField.setBounds(278, 513, 459, 20);
-			add(textField);
-			textField.setColumns(10);
-			
-			enviar = new JButton("Enviar");
-			enviar.setBounds(748, 513, 89, 23);
-			add(enviar);
-			
-			refrescar = new JButton("Refrescar");
-			refrescar.setBounds(748, 274, 100, 23);
-			add(refrescar);
-			
-			JLabel lblForo = new JLabel("Foro");
-			lblForo.setBounds(278, 215, 46, 14);
-			add(lblForo);
-			
-			listaMensajes.setModel(modelo);
-			
-			for (Mensaje mensaje : curso.getMensajes()) {
-				if (mensaje.getEmisor() == null) {
-					modelo.addElement("<INVITADO> : " + mensaje.getTexto());
-				} else if (mensaje.getEmisor().equals(user)) {
-					modelo.addElement("<TU> : " + mensaje.getTexto());
-				} else if (mensaje.getEmisor().equals(curso.getProfesor())) {
-					modelo.addElement("<PROFESOR> : " + mensaje.getTexto());
-				} else {
-					modelo.addElement("<" +mensaje.getEmisor().toString().toUpperCase() + "> : " + mensaje.getTexto());
-				}
-			}
 		}
 		
 		if (user == null) {
@@ -138,15 +84,7 @@ public class InformacionCurso extends JPanel {
 	
 	public void controlador(ActionListener ctr) {
 		
-		if (enviar != null) {
-			enviar.addActionListener(ctr);
-			enviar.setActionCommand("Enviar");
-		}
 		
-		if (refrescar != null) {
-			refrescar.addActionListener(ctr);
-			refrescar.setActionCommand("Refrescar");
-		}
 		
 		if (editarParticipantes != null) {
 			editarParticipantes.addActionListener(ctr);
@@ -160,8 +98,5 @@ public class InformacionCurso extends JPanel {
 		
 	}
 	
-	public String mensajeAEnviar() {
-		mensajeEscrito = textField.getText();
-		return mensajeEscrito;
-	}
+	
 }

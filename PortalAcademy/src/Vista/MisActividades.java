@@ -85,7 +85,7 @@ public class MisActividades extends JPanel {
 		datosTabla();
 		
 		JScrollPane sp_actividad = new JScrollPane();
-		sp_actividad.setBounds(591, 275, 465, 500);
+		sp_actividad.setBounds(600, 275, 465, 500);
 		sp_actividad.setViewportView(actividades);
 		sp_actividad.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_actividad);
