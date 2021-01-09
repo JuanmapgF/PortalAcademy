@@ -70,8 +70,13 @@ public class InformacionCurso extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		bInicio.setBounds(429, 102, 85, 21);
+		bInicio.setBounds(429, 102, 77, 29);
 		menu_1.add(bInicio);
+		
+		JButton bCuestionarios = new JButton("Cuestionarios");
+		bCuestionarios.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 18));
+		bCuestionarios.setBounds(516, 102, 143, 29);
+		menu_1.add(bCuestionarios);
 		
 		//-----
 		if (curso.getTieneForo()) {
