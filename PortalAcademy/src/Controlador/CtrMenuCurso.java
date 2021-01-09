@@ -22,17 +22,17 @@ public class CtrMenuCurso  implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getActionCommand().equals("INICIO")) {
-			CtrInformacionCursoInicio c = new CtrInformacionCursoInicio(Main.getUser(),ventana.getCurso());
+			CtrInformacionCurso c = new CtrInformacionCurso(Main.getUser(),ventana.getCurso());
 			Main.setPanel(c.getPanel());
 		}
 		
-		if (e.getActionCommand().equals("TEMARIO")) {
-			CtrInformacionCursoTemario c = new CtrInformacionCursoTemario(Main.getUser(),ventana.getCurso());
-			Main.setPanel(c.getPanel());
-		}
+//		if (e.getActionCommand().equals("TEMARIO")) {
+//			//CtrInformacionCursoTemario c = new CtrInformacionCursoTemario(Main.getUser(),ventana.getCurso());
+//			Main.setPanel(c.getPanel());
+//		}
 		
 		if (e.getActionCommand().equals("CUESTIONARIOS")) {
-			CtrInformacionCursoCuestionarios c = new CtrInformacionCursoCuestionarios(Main.getUser(),ventana.getCurso());
+			CtrInformacionCursoCuestionario c = new CtrInformacionCursoCuestionario(Main.getUser(),ventana.getCurso());
 			Main.setPanel(c.getPanel());
 		}
 		

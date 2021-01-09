@@ -22,15 +22,15 @@ public class CtrMenuActividad  implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getActionCommand().equals("INICIO")) {
-			CtrInformacionActividadInicio c = new CtrInformacionActividadInicio(Main.getUser(),ventana.getActividad());
+			CtrInformacionActividad c = new CtrInformacionActividad(Main.getUser(),ventana.getActividad());
 			Main.setPanel(c.getPanel());
 		}
 		
 		
-		if (e.getActionCommand().equals("CUESTIONARIOS")) {
-			CtrInformacionActividadCuestionarios c = new CtrInformacionActividadCuestionarios(Main.getUser(),ventana.getActividad());
-			Main.setPanel(c.getPanel());
-		}
+//		if (e.getActionCommand().equals("CUESTIONARIOS")) {
+//			CtrInformacionActividadCuestionario c = new CtrInformacionActividadCuestionario (Main.getUser(),ventana.getActividad());
+//			Main.setPanel(c.getPanel());
+//		}
 
 		
 	}

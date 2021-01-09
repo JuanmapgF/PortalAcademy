@@ -11,6 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import Controlador.CtrMenu;
+import Controlador.CtrMenuCurso;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Mensaje;
@@ -80,6 +81,9 @@ public class InformacionCursoForo extends JPanel {
 			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user));
 			add(menu.getPanel());
 		}
+		
+		CtrMenuCurso menuc = new CtrMenuCurso(new MenuCurso(curso));
+		add(menuc.getPanel());
 	}
 	
 	public void controlador(ActionListener ctr) {

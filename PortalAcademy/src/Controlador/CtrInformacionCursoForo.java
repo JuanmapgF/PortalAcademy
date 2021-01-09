@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import Modelo.Curso;
 import Modelo.Mensaje;
@@ -51,6 +52,8 @@ public class CtrInformacionCursoForo implements ActionListener {
 		}
 	}
 	
-	
+	public JPanel getPanel() {
+		return ventana;
+	}
 
 }

@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import Controlador.CtrMenu;
+import Controlador.CtrMenuCurso;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Organizacion;
@@ -60,6 +61,7 @@ public class InformacionCursoCuestionarios extends JPanel {
 			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user));
 			add(menu.getPanel());
 		}
-		
+		CtrMenuCurso menuc = new CtrMenuCurso(new MenuCurso(curso));
+		add(menuc.getPanel());
 	}
 }
