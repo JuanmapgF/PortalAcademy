@@ -80,7 +80,7 @@ public class ChatPrivado extends JPanel {
 		buttonAgregarChat = new JButton("");
 		buttonAgregarChat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		buttonAgregarChat.setBounds(770, 167, 57, 59);
-		buttonAgregarChat.setIcon(new ImageIcon(getClass().getResource("/img/agregar_chat.png")));
+		buttonAgregarChat.setIcon(new ImageIcon(getClass().getResource("/img/agregar.png")));
 		buttonAgregarChat.setContentAreaFilled(false);
 		buttonAgregarChat.setFocusPainted(false);
 		buttonAgregarChat.setBorderPainted(false);
@@ -173,7 +173,7 @@ public class ChatPrivado extends JPanel {
 		buttonAgregarChat = new JButton("");
 		buttonAgregarChat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		buttonAgregarChat.setBounds(770, 167, 57, 59);
-		buttonAgregarChat.setIcon(new ImageIcon(getClass().getResource("/img/agregar_chat.png")));
+		buttonAgregarChat.setIcon(new ImageIcon(getClass().getResource("/img/agregar.png")));
 		buttonAgregarChat.setContentAreaFilled(false);
 		buttonAgregarChat.setFocusPainted(false);
 		buttonAgregarChat.setBorderPainted(false);

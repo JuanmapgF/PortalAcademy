@@ -14,12 +14,11 @@ public class MensajeNoticia {
 	private static BD bd;
 	private static SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 	
-	public MensajeNoticia(String texto, Date fecha) {
-		bd.Insert("INSERT INTO MensajeNoticia (texto, fecha)" + "VALUES ('" + texto + "','" + formato.format(fecha) + "')");
+	public MensajeNoticia(String texto) {
+		bd.Insert("INSERT INTO MensajeNoticia (texto, fecha)" + "VALUES ('" + texto + "', SYSDATE())");
 		bd.finalize();
 
 		this.texto = texto;
-		this.fecha = fecha;
 	}
 
 	public MensajeNoticia(Integer idMensajeNoticia) {
@@ -35,16 +34,18 @@ public class MensajeNoticia {
 		}
 	}
 	
-	public Integer getIdMensaje() {
-		return idMensajeNoticia;
-	}
-
+	
+	
 	public String getTexto() {
 		return texto;
 	}
 
 	public Date getFecha() {
 		return fecha;
+	}
+
+	public Integer getIdMensaje() {
+		return idMensajeNoticia;
 	}
 	
 	public static List<MensajeNoticia> getTodasLasNoticias() {
