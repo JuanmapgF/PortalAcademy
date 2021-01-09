@@ -1,8 +1,10 @@
 package Vista;
 
+import java.awt.Cursor;
 import java.awt.Font;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -72,8 +74,12 @@ public class Registro extends JPanel {
 		lblNewLabel_4.setBounds(749, 491, 46, 23);
 		add(lblNewLabel_4);
 
-		volver = new JButton("Explorar");
-		volver.setBounds(36, 191, 131, 32);
+		volver = new JButton(new ImageIcon(getClass().getResource("/img/explorar.png")));
+		volver.setBounds(60, 191, 205, 60);
+		volver.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		volver.setContentAreaFilled(false);
+		volver.setFocusPainted(false);
+		volver.setBorderPainted(false);
 		add(volver);
 		
 		rdbtnEstudiante = new JRadioButton("Estudiante");
@@ -101,9 +107,12 @@ public class Registro extends JPanel {
 		lblInfoAdicional.setBounds(696, 565, 169, 46);
 		add(lblInfoAdicional);
 
-		btnRegistro = new JButton("Registro");
-		btnRegistro.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnRegistro.setBounds(825, 672, 196, 46);
+		btnRegistro = new JButton(new ImageIcon(getClass().getResource("/img/registro.png")));
+		btnRegistro.setBounds(825, 672, 196, 60);
+		btnRegistro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnRegistro.setContentAreaFilled(false);
+		btnRegistro.setFocusPainted(false);
+		btnRegistro.setBorderPainted(false);
 		add(btnRegistro);
 
 		textFieldInfoAdicional = new JTextField();
@@ -131,9 +140,12 @@ public class Registro extends JPanel {
 		lblNewLabel_5.setBounds(674, 882, 292, 40);
 		add(lblNewLabel_5);
 		
-		btnInicioSesion = new JButton("Inicio Sesi\u00F3n");
-		btnInicioSesion.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnInicioSesion.setBounds(1009, 879, 163, 40);
+		btnInicioSesion = new JButton(new ImageIcon(getClass().getResource("/img/iniciarSesion.png")));
+		btnInicioSesion.setBounds(1009, 879, 163, 60);
+		btnInicioSesion.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnInicioSesion.setContentAreaFilled(false);
+		btnInicioSesion.setFocusPainted(false);
+		btnInicioSesion.setBorderPainted(false);
 		add(btnInicioSesion);
 
 	}

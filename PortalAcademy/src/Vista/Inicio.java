@@ -1,15 +1,19 @@
 package Vista;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import Controlador.CtrMenu;
 
@@ -44,6 +48,7 @@ public class Inicio extends JPanel {
 		user = new JTextField();
 		user.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		user.setBounds(895, 286, 341, 46);
+		user.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		add(user);
 		user.setColumns(10);
 
@@ -60,6 +65,7 @@ public class Inicio extends JPanel {
 		cont = new JPasswordField();
 		cont.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		cont.setBounds(895, 414, 341, 46);
+		cont.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		add(cont);
 
 		error = new JLabel("El usuario o la contrase\u00F1a introducidos son incorrectos");
@@ -69,29 +75,42 @@ public class Inicio extends JPanel {
 		add(error);
 		error.setVisible(false);
 
-		iniciar = new JButton("Iniciar sesi\u00F3n");
-		iniciar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		iniciar.setBounds(805, 572, 196, 46);
+		iniciar = new JButton(new ImageIcon(getClass().getResource("/img/iniciarSesion.png")));
+		iniciar.setBounds(805, 572, 196, 60);
+		iniciar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		iniciar.setContentAreaFilled(false);
+		iniciar.setFocusPainted(false);
+		iniciar.setBorderPainted(false);
 		add(iniciar);
 
-		registro = new JButton("Registrarse");
-		registro.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		registro.setBounds(946, 713, 196, 46);
+		registro = new JButton(new ImageIcon(getClass().getResource("/img/registrarse.png")));
+		registro.setBounds(946, 713, 196, 60);
+		registro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		registro.setContentAreaFilled(false);
+		registro.setFocusPainted(false);
+		registro.setBorderPainted(false);
 		add(registro);
 
-		volver = new JButton("Explorar");
-		volver.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		volver.setBounds(60, 191, 205, 48);
+		volver = new JButton(new ImageIcon(getClass().getResource("/img/explorar.png")));
+		volver.setBounds(60, 191, 205, 60);
+		volver.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		volver.setContentAreaFilled(false);
+		volver.setFocusPainted(false);
+		volver.setBorderPainted(false);
 		add(volver);
 
 		textFieldCorreo = new JTextField();
 		textFieldCorreo.setBounds(515, 886, 341, 46);
+		textFieldCorreo.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		add(textFieldCorreo);
 		textFieldCorreo.setColumns(10);
 
-		btnRecuperar = new JButton("Recuperar contrase\u00F1a");
-		btnRecuperar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnRecuperar.setBounds(946, 882, 242, 46);
+		btnRecuperar = new JButton(new ImageIcon(getClass().getResource("/img/recuperarContrasena.png")));
+		btnRecuperar.setBounds(946, 882, 242, 60);
+		btnRecuperar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnRecuperar.setContentAreaFilled(false);
+		btnRecuperar.setFocusPainted(false);
+		btnRecuperar.setBorderPainted(false);
 		add(btnRecuperar);
 	}
 

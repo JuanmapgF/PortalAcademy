@@ -1,8 +1,10 @@
 package Vista;
 
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -81,14 +83,20 @@ public class Ajustes extends JPanel {
 		add(texto);
 		texto.setColumns(10);
 
-		cambiar = new JButton("Cambiar contrase\u00F1a");
-		cambiar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		cambiar.setBounds(685, 419, 218, 40);
+		cambiar = new JButton(new ImageIcon(getClass().getResource("/img/cambiarContrasena.png")));
+		cambiar.setBounds(685, 419, 218, 60);
+		cambiar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		cambiar.setContentAreaFilled(false);
+		cambiar.setFocusPainted(false);
+		cambiar.setBorderPainted(false);
 		add(cambiar);
 
-		eliminar = new JButton("Eliminar cuenta");
-		eliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		eliminar.setBounds(685, 673, 218, 40);
+		eliminar = new JButton(new ImageIcon(getClass().getResource("/img/eliminarCuenta.png")));
+		eliminar.setBounds(685, 673, 218, 60);
+		eliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		eliminar.setContentAreaFilled(false);
+		eliminar.setFocusPainted(false);
+		eliminar.setBorderPainted(false);
 		add(eliminar);
 		
 		CtrMenu menu = new CtrMenu(new Menu(u));
@@ -120,14 +128,20 @@ public class Ajustes extends JPanel {
 		add(texto);
 		texto.setColumns(10);
 
-		cambiar = new JButton("Cambiar contrase\u00F1a");
-		cambiar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		cambiar.setBounds(685, 419, 218, 40);
+		cambiar = new JButton(new ImageIcon(getClass().getResource("/img/cambiarContrasena.png")));
+		cambiar.setBounds(685, 419, 218, 60);
+		cambiar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		cambiar.setContentAreaFilled(false);
+		cambiar.setFocusPainted(false);
+		cambiar.setBorderPainted(false);
 		add(cambiar);
 
-		eliminar = new JButton("Eliminar cuenta");
-		eliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		eliminar.setBounds(685, 673, 218, 40);
+		eliminar = new JButton(new ImageIcon(getClass().getResource("/img/eliminarCuenta.png")));
+		eliminar.setBounds(685, 673, 218, 60);
+		eliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		eliminar.setContentAreaFilled(false);
+		eliminar.setFocusPainted(false);
+		eliminar.setBorderPainted(false);
 		add(eliminar);
 		
 		CtrMenu menu = new CtrMenu(new Menu(u));
@@ -161,14 +175,20 @@ public class Ajustes extends JPanel {
 		add(texto);
 		texto.setColumns(10);
 
-		cambiar = new JButton("Cambiar contrase\u00F1a");
-		cambiar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		cambiar.setBounds(685, 419, 218, 40);
+		cambiar = new JButton(new ImageIcon(getClass().getResource("/img/cambiarContrasena.png")));
+		cambiar.setBounds(685, 419, 218, 60);
+		cambiar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		cambiar.setContentAreaFilled(false);
+		cambiar.setFocusPainted(false);
+		cambiar.setBorderPainted(false);
 		add(cambiar);
 
-		eliminar = new JButton("Eliminar cuenta");
-		eliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		eliminar.setBounds(685, 673, 218, 40);
+		eliminar = new JButton(new ImageIcon(getClass().getResource("/img/eliminarCuenta.png")));
+		eliminar.setBounds(685, 673, 218, 60);
+		eliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		eliminar.setContentAreaFilled(false);
+		eliminar.setFocusPainted(false);
+		eliminar.setBorderPainted(false);
 		add(eliminar);
 		
 		CtrMenu menu = new CtrMenu(new Menu(u));
