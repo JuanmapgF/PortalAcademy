@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
+import Modelo.BD;
 import Modelo.Curso;
 import Modelo.Usuario;
 import Vista.InformacionCursoCuestionarios;
@@ -16,14 +17,13 @@ public class CtrInformacionCursoCuestionario implements ActionListener{
 	private Curso curso;
 	private Usuario user;
 	
+	
+
+	
 	public CtrInformacionCursoCuestionario(Usuario user, Curso c) {
 		vista = new InformacionCursoCuestionarios(user,c);
 		curso = c;
 		this.user = user;
-		
-		vista.bCuestionarios.addActionListener(this);
-		vista.bHacerCuestionario.addActionListener(this);
-		vista.bInicio.addActionListener(this);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -33,7 +33,13 @@ public class CtrInformacionCursoCuestionario implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		if(e.getActionCommand().equals("Crear")) {
+			curso.setSatisfaccion(true);
+		}
 		
+		if(e.getActionCommand().equals("Borrar")) {
+			curso.setSatisfaccion(false);
+		}
 		
 		
 	}
