@@ -436,11 +436,10 @@ public class Explorar extends JPanel {
 		return prof;
 	}
 	
-	public void cargarNoticias() {
+	private void cargarNoticias() {
 		datosNoticias = new Object[2][lista_noticias.size()];
 		
 		int k = 0;
-		JLabel aux;
 		
 		for (MensajeNoticia noticia : lista_noticias) {
 			datosNoticias[0][k] = noticia.getTexto();
@@ -461,7 +460,7 @@ public class Explorar extends JPanel {
 		noticias.setCellSelectionEnabled(false);
 	}
 
-	public void datosTablaUsuario() {
+	private void datosTablaUsuario() {
 		
 		datosCurso = new Object[lista_cursos.size()][3];
 
@@ -530,7 +529,7 @@ public class Explorar extends JPanel {
 		actividades.setCellSelectionEnabled(false);
 	}
 
-	public void datosTabla() {
+	private void datosTabla() {
 
 		datosCurso = new Object[lista_cursos.size()][3];
 

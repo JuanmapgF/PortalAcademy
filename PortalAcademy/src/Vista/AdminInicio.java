@@ -13,7 +13,7 @@ import javax.swing.SwingConstants;
 @SuppressWarnings("serial")
 public class AdminInicio extends JPanel {
 
-	public JButton bCerrarSesion, bCursos, bActividades, bUsuarios, bInicio, bCursos_1, bActividades_1, bUsuarios_1, bAjustes;
+	public JButton bCerrarSesion, bCursos, bActividades, bUsuarios, bInicio, bCursos_1, bActividades_1, bUsuarios_1, bAjustes, bNoticias;
 	
 	
 	/**
@@ -32,7 +32,7 @@ public class AdminInicio extends JPanel {
 		bCursos.setFont(new Font("Calibri", Font.PLAIN, 30));
 		bCursos.setBounds(764, 229, 199, 47);
 		add(bCursos);
-		add(bCerrarSesion);
+		
 		
 		 bActividades = new JButton("Actividades");
 		bActividades.setVerticalAlignment(SwingConstants.BOTTOM);
@@ -95,8 +95,14 @@ public class AdminInicio extends JPanel {
 		JButton bForos = new JButton("Foros");
 		bForos.setVerticalAlignment(SwingConstants.BOTTOM);
 		bForos.setFont(new Font("Calibri", Font.PLAIN, 30));
-		bForos.setBounds(764, 518, 199, 47);
+		bForos.setBounds(764, 510, 199, 47);
 		add(bForos);
+		
+		bNoticias = new JButton("Noticias");
+		bNoticias.setVerticalAlignment(SwingConstants.BOTTOM);
+		bNoticias.setFont(new Font("Calibri", Font.PLAIN, 30));
+		bNoticias.setBounds(764, 602, 199, 47);
+		add(bNoticias);
 
 	}
 }
