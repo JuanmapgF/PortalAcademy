@@ -19,6 +19,9 @@ import Modelo.Mensaje;
 import Modelo.Organizacion;
 import Modelo.Profesor;
 import Modelo.Usuario;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class InformacionCurso extends JPanel {
@@ -38,22 +41,37 @@ public class InformacionCurso extends JPanel {
 	 *
 	 */
 	public InformacionCurso(Usuario user, Curso curso) {
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 		
 		listaMensajes = new JList<String>();
 		
 		JLabel nombreCurso = new JLabel(curso.getNombre());
-		nombreCurso.setBounds(428, 34, 364, 33);
+		nombreCurso.setBounds(429, 189, 364, 33);
 		nombreCurso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 		add(nombreCurso);
+		
+		Menu menu_1 = new Menu((Estudiante) null);
+		menu_1.setBounds(0, 0, 1920, 1080);
+		add(menu_1);
 		
 		JTextArea descripcionCurso = new JTextArea(curso.getDescripcion());
 		
 		descripcionCurso.setEditable(false);
 		JScrollPane jsp = new JScrollPane(descripcionCurso);
-		jsp.setBounds(278, 102, 459, 102);
-		add(jsp);
+		jsp.setBounds(429, 258, 777, 345);
+		menu_1.add(jsp);
+		
+		JButton bInicio = new JButton("Inicio");
+		bInicio.setVerticalAlignment(SwingConstants.TOP);
+		bInicio.setForeground(new Color(0, 0, 255));
+		bInicio.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 18));
+		bInicio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		bInicio.setBounds(429, 102, 85, 21);
+		menu_1.add(bInicio);
 		
 		//-----
 		if (curso.getTieneForo()) {
