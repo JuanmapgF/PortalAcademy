@@ -60,8 +60,8 @@ public class MisActividades extends JPanel {
 		actividades.setShowVerticalLines(false);
 		actividades.getColumnModel().getColumn(0).setMaxWidth(75);
 		actividades.getColumnModel().getColumn(0).setMinWidth(75);
-		actividades.getColumnModel().getColumn(1).setMaxWidth(315);
-		actividades.getColumnModel().getColumn(1).setMinWidth(315);
+//		actividades.getColumnModel().getColumn(1).setMaxWidth(315);
+//		actividades.getColumnModel().getColumn(1).setMinWidth(315);
 		
 		JLabel t_actividad = new JLabel("Mis actividades");
 		t_actividad.setFont(new Font("Tahoma", Font.PLAIN, 40));
@@ -94,8 +94,8 @@ public class MisActividades extends JPanel {
 		actividades.setShowVerticalLines(false);
 		actividades.getColumnModel().getColumn(0).setMaxWidth(75);
 		actividades.getColumnModel().getColumn(0).setMinWidth(75);
-		actividades.getColumnModel().getColumn(1).setMaxWidth(315);
-		actividades.getColumnModel().getColumn(1).setMinWidth(315);
+//		actividades.getColumnModel().getColumn(1).setMaxWidth(315);
+//		actividades.getColumnModel().getColumn(1).setMinWidth(315);
 		
 		crearActividad = new JButton("Crear actividad");
 		crearActividad.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -130,8 +130,8 @@ public class MisActividades extends JPanel {
 		actividades.setShowVerticalLines(false);
 		actividades.getColumnModel().getColumn(0).setMaxWidth(75);
 		actividades.getColumnModel().getColumn(0).setMinWidth(75);
-		actividades.getColumnModel().getColumn(1).setMaxWidth(315);
-		actividades.getColumnModel().getColumn(1).setMinWidth(315);
+//		actividades.getColumnModel().getColumn(1).setMaxWidth(315);
+//		actividades.getColumnModel().getColumn(1).setMinWidth(315);
 		
 		JLabel t_actividad = new JLabel("Mis actividades");
 		t_actividad.setFont(new Font("Tahoma", Font.PLAIN, 40));
