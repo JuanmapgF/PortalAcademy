@@ -51,32 +51,26 @@ public class InformacionCurso extends JPanel {
 		nombreCurso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
 		add(nombreCurso);
 		
-		Menu menu_1 = new Menu((Estudiante) null);
-		menu_1.setBounds(0, 0, 1920, 1080);
-		add(menu_1);
+		
 		
 		JTextArea descripcionCurso = new JTextArea(curso.getDescripcion());
 		
 		descripcionCurso.setEditable(false);
 		JScrollPane jsp = new JScrollPane(descripcionCurso);
 		jsp.setBounds(429, 258, 777, 345);
-		menu_1.add(jsp);
+		add(jsp);
 		
 		JButton bInicio = new JButton("Inicio");
 		bInicio.setVerticalAlignment(SwingConstants.TOP);
 		bInicio.setForeground(new Color(0, 0, 255));
 		bInicio.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 18));
-		bInicio.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		bInicio.setBounds(429, 102, 77, 29);
-		menu_1.add(bInicio);
+		add(bInicio);
 		
 		JButton bCuestionarios = new JButton("Cuestionarios");
 		bCuestionarios.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 18));
 		bCuestionarios.setBounds(516, 102, 143, 29);
-		menu_1.add(bCuestionarios);
+		add(bCuestionarios);
 		
 		//-----
 		if (curso.getTieneForo()) {
