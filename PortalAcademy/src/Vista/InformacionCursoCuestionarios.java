@@ -18,7 +18,7 @@ import javax.swing.JScrollPane;
 
 public class InformacionCursoCuestionarios extends JPanel {
 	
-	public JButton bInicio, bCuestionarios,bHacerCuestionario;
+	public JButton bInicio, bCuestionarios,bHacerCuestionario, bCrear, bBorrar;
 
 	/**
 	 * Create the panel.
@@ -45,14 +45,33 @@ public class InformacionCursoCuestionarios extends JPanel {
 		labelCuestionario.setBounds(429, 544, 264, 22);
 		add(labelCuestionario);
 		
-		JButton bHacerCuestionario = new JButton("Hacer");
-		bHacerCuestionario.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 18));
+		bHacerCuestionario = new JButton("Hacer");
+		bHacerCuestionario.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		bHacerCuestionario.setBounds(747, 541, 79, 29);
 		add(bHacerCuestionario);
+		
+		bCrear = new JButton("Crear");
+		bCrear.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		bCrear.setBounds(968, 537, 75, 31);
+		add(bCrear);
+		bCrear.setVisible(false);
+		
+		bBorrar = new JButton("Borrar");
+		bBorrar.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		bBorrar.setBounds(1053, 537, 83, 31);
+		add(bBorrar);
+		bBorrar.setVisible(false);
 		
 		if(user instanceof Profesor) {
 			CtrMenu menu = new CtrMenu(new Menu((Profesor)user));
 			add(menu.getPanel());
+			
+			if(curso.getSatisfaccion()) {
+				bBorrar.setVisible(true);
+			}else {
+				bCrear.setVisible(true);
+			}
+			
 		}else if(user instanceof Organizacion){
 			CtrMenu menu = new CtrMenu(new Menu((Organizacion)user));
 			add(menu.getPanel());
