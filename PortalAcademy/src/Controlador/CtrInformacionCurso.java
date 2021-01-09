@@ -68,6 +68,8 @@ public class CtrInformacionCurso implements ActionListener {
 			Main.setPanel(c.getPanel());
 		}
 		
+		
+		
 	}
 
 	public JPanel getPanel() {

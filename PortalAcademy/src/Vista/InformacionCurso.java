@@ -60,18 +60,6 @@ public class InformacionCurso extends JPanel {
 		jsp.setBounds(429, 258, 777, 345);
 		add(jsp);
 		
-		JButton bInicio = new JButton("Inicio");
-		bInicio.setVerticalAlignment(SwingConstants.TOP);
-		bInicio.setForeground(new Color(0, 0, 255));
-		bInicio.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 18));
-		bInicio.setBounds(429, 102, 77, 29);
-		add(bInicio);
-		
-		JButton bCuestionarios = new JButton("Cuestionarios");
-		bCuestionarios.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 18));
-		bCuestionarios.setBounds(516, 102, 143, 29);
-		add(bCuestionarios);
-		
 		//-----
 		if (curso.getTieneForo()) {
 			JScrollPane foro = new JScrollPane();
