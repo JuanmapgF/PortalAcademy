@@ -47,6 +47,7 @@ public class Menu extends JPanel {
 	private JButton btnChat;
 	private JButton cerrarSesion;
 	private ButtonDynamic user;
+	private JLabel logo;
 
 	private Estudiante est = null;
 	private Organizacion org = null;
@@ -63,6 +64,7 @@ public class Menu extends JPanel {
 	private final ImageIcon REGISTRARSE = new ImageIcon(getClass().getResource("/img/registrarse.png"));
 	private final ImageIcon CHAT_PRIVADO = new ImageIcon(getClass().getResource("/img/chatPrivado.png"));
 	private final ImageIcon CERRAR_SESION = new ImageIcon(getClass().getResource("/img/cerrarSesion.png"));
+	private final ImageIcon LOGO = new ImageIcon(getClass().getResource("/img/logoMenu.png"));
 	
 
 	public Menu() {
@@ -125,6 +127,13 @@ public class Menu extends JPanel {
 
 		    }
 		});
+		
+		logo = new JLabel(LOGO);
+		logo.setBounds(780, 10, 400, 100);
+		logo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		logo.setText("Portal Academy");
+		logo.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		add(logo);
 
 	}
 	
@@ -232,6 +241,13 @@ public class Menu extends JPanel {
 
 		    }
 		});
+		
+		logo = new JLabel(LOGO);
+		logo.setBounds(780, 10, 400, 100);
+		logo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		logo.setText("Portal Academy");
+		logo.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		add(logo);
 	}
 
 	
@@ -338,6 +354,13 @@ public class Menu extends JPanel {
 
 		    }
 		});
+		
+		logo = new JLabel(LOGO);
+		logo.setBounds(780, 10, 400, 100);
+		logo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		logo.setText("Portal Academy");
+		logo.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		add(logo);
 	}
 
 	public Menu(Organizacion organizacion) {
@@ -435,6 +458,13 @@ public class Menu extends JPanel {
 
 		    }
 		});
+		
+		logo = new JLabel(LOGO);
+		logo.setBounds(780, 10, 400, 100);
+		logo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		logo.setText("Portal Academy");
+		logo.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		add(logo);
 	}
 
 	public void controlador(ActionListener ctr) {
