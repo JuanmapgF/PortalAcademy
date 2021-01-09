@@ -37,21 +37,7 @@ public class CtrInformacionCurso implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equals("Enviar")) {
-			if(ventana.mensajeAEnviar().length() > 0) {
-				if(user == null) {
-					Usuario x = new Usuario("anonimo");
-					Mensaje m = new Mensaje(ventana.mensajeAEnviar(), x, curso);
-					CtrInformacionCurso c = new CtrInformacionCurso(user, curso);
-					Main.setPanel(c.getPanel());
-				}else {
-					Mensaje m = new Mensaje(ventana.mensajeAEnviar(), user, curso);
-					CtrInformacionCurso c = new CtrInformacionCurso(user, curso);
-					Main.setPanel(c.getPanel());
-				}
-				
-			}
-		}
+		
 
 		if (e.getActionCommand().equals("Refrescar")) {
 			CtrInformacionCurso c = new CtrInformacionCurso(user, curso);
