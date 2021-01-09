@@ -62,10 +62,10 @@ public class Explorar extends JPanel {
 
 		datosTablaUsuario();
 
-		JLabel lblNewLabel = new JLabel("Explorar");
-		lblNewLabel.setBounds(904, 60, 170, 49);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		add(lblNewLabel);
+//		JLabel lblNewLabel = new JLabel("Explorar");
+//		lblNewLabel.setBounds(904, 60, 170, 49);
+//		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
+//		add(lblNewLabel);
 
 		JLabel t_curso = new JLabel("Cursos");
 		t_curso.setBorder(new LineBorder(Color.BLACK));
@@ -153,10 +153,10 @@ public class Explorar extends JPanel {
 
 		datosTabla();
 
-		JLabel lblNewLabel = new JLabel("Explorar");
-		lblNewLabel.setBounds(904, 60, 170, 49);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		add(lblNewLabel);
+//		JLabel lblNewLabel = new JLabel("Explorar");
+//		lblNewLabel.setBounds(904, 60, 170, 49);
+//		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
+//		add(lblNewLabel);
 
 		JLabel t_curso = new JLabel("Cursos");
 		t_curso.setBorder(new LineBorder(Color.BLACK));
@@ -241,10 +241,10 @@ public class Explorar extends JPanel {
 
 		datosTablaUsuario();
 
-		JLabel lblNewLabel = new JLabel("Explorar");
-		lblNewLabel.setBounds(904, 60, 170, 49);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		add(lblNewLabel);
+//		JLabel lblNewLabel = new JLabel("Explorar");
+//		lblNewLabel.setBounds(904, 60, 170, 49);
+//		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
+//		add(lblNewLabel);
 
 		JLabel t_curso = new JLabel("Cursos");
 		t_curso.setBorder(new LineBorder(Color.BLACK));
@@ -329,10 +329,10 @@ public class Explorar extends JPanel {
 
 		datosTabla();
 
-		JLabel lblNewLabel = new JLabel("Explorar");
-		lblNewLabel.setBounds(904, 60, 170, 49);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		add(lblNewLabel);
+//		JLabel lblNewLabel = new JLabel("Explorar");
+//		lblNewLabel.setBounds(904, 60, 170, 49);
+//		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
+//		add(lblNewLabel);
 
 		JLabel t_curso = new JLabel("Cursos");
 		t_curso.setBorder(new LineBorder(Color.BLACK));
