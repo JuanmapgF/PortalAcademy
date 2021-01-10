@@ -88,8 +88,6 @@ public class InformacionCurso extends JPanel {
 	
 	public void controlador(ActionListener ctr) {
 		
-		
-		
 		if (editarParticipantes != null) {
 			editarParticipantes.addActionListener(ctr);
 			editarParticipantes.setActionCommand("EditarParticipantes");

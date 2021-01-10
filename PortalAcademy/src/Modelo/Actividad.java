@@ -16,6 +16,7 @@ public class Actividad {
 	private int aforo;
 	private Date fecha;
 	private String lugar;
+	private Boolean satisfaccion;
 
 	private Organizacion organizacion;
 	private List<Usuario> participantes;
@@ -223,5 +224,21 @@ public class Actividad {
 		bd.finalize();
 		return new Actividad((int)((tuplaEstudiantes[0])));
 	}
+
+	public Boolean getSatisfaccion() {
+		bd = BD.getBD();
+		Object[]tupla = bd.Select("SELECT satisfaccion FROM Actividad WHERE idCurso = '" + this.idActividad +"'").get(0);
+		bd.finalize();
+		return (Boolean) tupla[0];
+	}
+
+	public void setSatisfaccion(Boolean satisfaccion) {
+		bd = BD.getBD();
+		bd.Update("UPDATE Actividad SET satisfaccion = " + ((satisfaccion) ? 1 : 0) + " WHERE idActividad = " + this.idActividad);
+		bd.finalize();
+		this.satisfaccion = satisfaccion;
+	}
+	
+	
 	
 }
