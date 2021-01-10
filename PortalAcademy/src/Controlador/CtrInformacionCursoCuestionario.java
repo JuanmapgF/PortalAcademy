@@ -51,7 +51,8 @@ public class CtrInformacionCursoCuestionario implements ActionListener{
 		}
 		
 		if(e.getActionCommand().equals("Crear test")) {
-			
+			CtrCrearTestCurso ctr = new CtrCrearTestCurso(user, curso);
+			Main.setPanel(ctr.getPanel());
 		}
 		
 	}
