@@ -19,7 +19,7 @@ import javax.swing.JScrollPane;
 
 public class InformacionCursoCuestionarios extends JPanel {
 	
-	public JButton bInicio, bCuestionarios,bHacerCuestionario, bCrear, bBorrar;
+	public JButton bHacerCuestionario, bCrear, bBorrar,bCrearTest;
 
 	/**
 	 * Create the panel.
@@ -63,6 +63,11 @@ public class InformacionCursoCuestionarios extends JPanel {
 		add(bBorrar);
 		bBorrar.setVisible(false);
 		
+		bCrearTest = new JButton("Crear test");
+		bCrearTest.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		bCrearTest.setBounds(934, 150, 111, 31);
+		add(bCrearTest);
+		
 		if(user instanceof Profesor) {
 			CtrMenu menu = new CtrMenu(new Menu((Profesor)user));
 			add(menu.getPanel());
@@ -82,5 +87,7 @@ public class InformacionCursoCuestionarios extends JPanel {
 		}
 		CtrMenuCurso menuc = new CtrMenuCurso(new MenuCurso(curso));
 		add(menuc.getPanel());
+		
+		
 	}
 }

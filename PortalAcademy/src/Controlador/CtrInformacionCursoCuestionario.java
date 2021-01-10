@@ -50,6 +50,10 @@ public class CtrInformacionCursoCuestionario implements ActionListener{
 			enlace(enalceCuestionario);
 		}
 		
+		if(e.getActionCommand().equals("Crear test")) {
+			
+		}
+		
 	}
 
 	public void enlace (String enlaceAAceder){
