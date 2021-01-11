@@ -12,11 +12,15 @@ import javax.swing.JButton;
 
 public class CrearTestCurso extends JPanel {
 
+	public JTextField tfNombre;
+
+	public JTextField tfDescripccion;
+
+	public JTextField tfLink;
+	
 	private Usuario user;
 	private Curso curso;
-	private JTextField tfNombre;
-	private JTextField textField;
-	private JTextField tfLink;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -46,11 +50,11 @@ public class CrearTestCurso extends JPanel {
 		lDescripccion.setBounds(429, 307, 110, 25);
 		add(lDescripccion);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		textField.setBounds(556, 314, 645, 297);
-		add(textField);
-		textField.setColumns(10);
+		tfDescripccion = new JTextField();
+		tfDescripccion.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		tfDescripccion.setBounds(556, 314, 645, 297);
+		add(tfDescripccion);
+		tfDescripccion.setColumns(10);
 		
 		JLabel lLink = new JLabel("Link al test:");
 		lLink.setFont(new Font("Tahoma", Font.PLAIN, 20));
