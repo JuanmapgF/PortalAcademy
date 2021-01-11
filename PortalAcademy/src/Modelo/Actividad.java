@@ -28,7 +28,8 @@ public class Actividad {
 	public Actividad(String nombre, String descripcion, File imagen, int aforo, Date fecha, String lugar,
 			Organizacion organizacion) {
 		bd = BD.getBD();
-		bd.InsertActividad(nombre, descripcion, imagen, aforo, formato.format(fecha), lugar, organizacion.getNick());
+		this.idActividad = bd.InsertActividad(nombre, descripcion, imagen, aforo, formato.format(fecha), lugar,
+				organizacion.getNick());
 		bd.finalize();
 
 		this.nombre = nombre;

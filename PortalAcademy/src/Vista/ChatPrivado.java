@@ -14,16 +14,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicScrollBarUI;
-import javax.swing.plaf.metal.MetalScrollBarUI;
-import javax.swing.plaf.multi.MultiScrollBarUI;
-import javax.swing.plaf.synth.SynthScrollBarUI;
-
 
 import Controlador.CtrMenu;
 import Modelo.Estudiante;

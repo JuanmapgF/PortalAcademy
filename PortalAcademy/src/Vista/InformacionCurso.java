@@ -3,26 +3,19 @@ package Vista;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 import Controlador.CtrMenu;
 import Controlador.CtrMenuCurso;
 import Modelo.Curso;
 import Modelo.Estudiante;
-import Modelo.Mensaje;
 import Modelo.Organizacion;
 import Modelo.Profesor;
 import Modelo.Usuario;
-import java.awt.event.ActionEvent;
-import java.awt.Color;
-import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class InformacionCurso extends JPanel {
@@ -50,7 +43,7 @@ public class InformacionCurso extends JPanel {
 		
 		descripcionCurso.setEditable(false);
 		JScrollPane jsp = new JScrollPane(descripcionCurso);
-		jsp.setBounds(429, 258, 777, 345);
+		jsp.setBounds(429, 450, 777, 345);
 		add(jsp);
 		
 		//-----

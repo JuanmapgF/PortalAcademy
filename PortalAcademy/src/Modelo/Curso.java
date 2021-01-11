@@ -1,7 +1,6 @@
 package Modelo;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,20 +16,18 @@ public class Curso {
 	private Boolean tieneForo;
 	private Boolean satisfaccion;
 
-	
-
 	private List<Mensaje> mensajes;
 	private Profesor profesor;
 	private List<Usuario> estudiantes;
 
 	private static BD bd;
 
-	
 	public Curso(String nombre, String descripcion, File imagen, Boolean publico, Integer aforo, Boolean presencial,
 			Boolean tieneForo, Profesor profesor) {
 
 		bd = BD.getBD();
-		bd.InsertCurso(nombre, descripcion, imagen, publico, aforo, presencial, tieneForo, profesor.getNick());
+		this.idCurso = bd.InsertCurso(nombre, descripcion, imagen, publico, aforo, presencial, tieneForo,
+				profesor.getNick());
 		bd.finalize();
 
 		this.nombre = nombre;
@@ -68,8 +65,7 @@ public class Curso {
 	public Integer getId() {
 		return idCurso;
 	}
-	
-	
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -201,10 +197,10 @@ public class Curso {
 		this.imagen = null;
 		this.publico = null;
 	}
-	
+
 	public void eliminarUsuario(Usuario u) {
 		bd = BD.getBD();
-		bd.Delete("DELETE FROM RelCursoUsuario WHERE nickUsuario = '" + u.getNick() +"'");
+		bd.Delete("DELETE FROM RelCursoUsuario WHERE nickUsuario = '" + u.getNick() + "'");
 		bd.finalize();
 	}
 
@@ -237,17 +233,19 @@ public class Curso {
 			return false;
 		}
 	}
-	
+
 	public static Curso cogerId(Profesor prof) {
 		bd = BD.getBD();
-		Object[] tuplaEstudiantes = bd.Select("SELECT idCurso FROM Curso WHERE nickProfesor = '" + prof.getNick() + "' ORDER BY idCurso DESC;").get(0);
+		Object[] tuplaEstudiantes = bd.Select(
+				"SELECT idCurso FROM Curso WHERE nickProfesor = '" + prof.getNick() + "' ORDER BY idCurso DESC;")
+				.get(0);
 		bd.finalize();
-		return new Curso((int)((tuplaEstudiantes[0])));
+		return new Curso((int) ((tuplaEstudiantes[0])));
 	}
-	
+
 	public Boolean getSatisfaccion() {
 		bd = BD.getBD();
-		Object[]tupla = bd.Select("SELECT satisfaccion FROM Curso WHERE idCurso = '" + this.idCurso +"'").get(0);
+		Object[] tupla = bd.Select("SELECT satisfaccion FROM Curso WHERE idCurso = '" + this.idCurso + "'").get(0);
 		bd.finalize();
 		return (Boolean) tupla[0];
 	}
@@ -257,5 +255,16 @@ public class Curso {
 		bd.Update("UPDATE Curso SET satisfaccion = " + ((satisfaccion) ? 1 : 0) + " WHERE idCurso = " + this.idCurso);
 		bd.finalize();
 		this.satisfaccion = satisfaccion;
+	}
+
+	public List<Archivo> getArchivosCurso() {
+		List<Archivo> lista_archivos = new ArrayList<>();
+		bd = BD.getBD();
+		List<Object[]> tupla = bd.Select("SELECT nombre,idArchivo FROM ArchivoCurso WHERE idCurso = " + getId());
+		bd.finalize();
+		for (Object[] objects : tupla) {
+			lista_archivos.add(new Archivo(objects[0].toString(), Integer.parseInt(objects[1].toString())));
+		}
+		return lista_archivos;
 	}
 }

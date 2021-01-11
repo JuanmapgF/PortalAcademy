@@ -4,9 +4,6 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -18,20 +15,17 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
-import com.toedter.calendar.IDateEvaluator;
-import com.toedter.calendar.JCalendar;
+import com.toedter.calendar.JDateChooser;
 
-import Controlador.CtrCalendario;
 import Controlador.CtrMenu;
 import Modelo.Actividad;
 import Modelo.Estudiante;
 import Modelo.Organizacion;
 import Modelo.Profesor;
-import Modelo.Usuario;
-import com.toedter.calendar.JDateChooser;
-import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class Calendario extends JPanel {
 	
 	

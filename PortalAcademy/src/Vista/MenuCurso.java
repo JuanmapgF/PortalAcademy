@@ -1,12 +1,14 @@
 package Vista;
 
-import javax.swing.JPanel;
-
-import Modelo.Curso;
-import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+import Modelo.Curso;
+
+@SuppressWarnings("serial")
 public class MenuCurso extends JPanel{
 	
 	private JButton btnInicio;

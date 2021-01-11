@@ -1,11 +1,11 @@
 package Vista;
 
-import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+import javax.swing.JScrollPane;
 
 import Controlador.CtrMenu;
 import Controlador.CtrMenuCurso;
@@ -14,9 +14,8 @@ import Modelo.Estudiante;
 import Modelo.Organizacion;
 import Modelo.Profesor;
 import Modelo.Usuario;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
 
+@SuppressWarnings("serial")
 public class InformacionCursoCuestionarios extends JPanel {
 	
 	public JButton bHacerCuestionario, bCrear, bBorrar,bCrearTest, bHacerTest;

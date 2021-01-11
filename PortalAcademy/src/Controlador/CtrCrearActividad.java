@@ -9,7 +9,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Modelo.Actividad;
-import Modelo.Curso;
 import Modelo.ErrorBD;
 import Modelo.Organizacion;
 import Vista.CrearActividad;
@@ -60,11 +59,13 @@ public class CtrCrearActividad implements ActionListener {
 						vista.textAreaDescripcion.getText(), vista.fileChooserImagen.getSelectedFile(),
 						Integer.parseInt(vista.spinnerAforo.getValue().toString()), vista.dateChooser.getDate(),
 						vista.textFieldLugar.getText(), organizacion);
-
+				// (Juanma) Comprobar el paso a la vista siguiente despues de crear
+				// curso/actividad
 				JOptionPane.showMessageDialog(vista,
-						"La actividad " + actividad.getNombre() + " ha sido creado satisfactoriamente.",
+						"La actividad " + actividad.getNombre() + " ha sido creada satisfactoriamente.",
 						"Actividad creada", JOptionPane.INFORMATION_MESSAGE);
-				CtrInformacionActividad cia = new CtrInformacionActividad(organizacion, Actividad.cogerId(organizacion));
+				CtrInformacionActividad cia = new CtrInformacionActividad(organizacion,
+						Actividad.cogerId(organizacion));
 				Main.setPanel(cia.getPanel());
 			} catch (ErrorBD err) {
 				JOptionPane.showMessageDialog(vista, err.getMessage(), "Error crear actividad",

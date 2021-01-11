@@ -2,11 +2,11 @@ package Vista;
 
 import java.awt.Component;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
+@SuppressWarnings("serial")
 public class ButtonRenderer extends JButton implements TableCellRenderer {
 	
 	public ButtonRenderer() {

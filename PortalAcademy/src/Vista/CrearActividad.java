@@ -28,7 +28,6 @@ public class CrearActividad extends JPanel {
 	public JButton btnCrearActividad;
 	public JButton btnCancelar;
 	public JDateChooser dateChooser;
-	private JLabel lblLugar;
 	public JTextField textFieldLugar;
 	private JLabel lblNewLabel_1;
 
@@ -44,10 +43,10 @@ public class CrearActividad extends JPanel {
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Nombre:");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(575, 310, 109, 26);
-		add(lblNewLabel);
+		JLabel lblNombre = new JLabel("Nombre:");
+		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNombre.setBounds(575, 310, 109, 26);
+		add(lblNombre);
 
 		JLabel lblImagenes = new JLabel("Imagen:");
 		lblImagenes.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -59,10 +58,10 @@ public class CrearActividad extends JPanel {
 		lblDescripcin.setBounds(540, 510, 121, 42);
 		add(lblDescripcin);
 
-		JLabel lblPrivacidad = new JLabel("Lugar:");
-		lblPrivacidad.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblPrivacidad.setBounds(590, 610, 109, 35);
-		add(lblPrivacidad);
+		JLabel lblLugar = new JLabel("Lugar:");
+		lblLugar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblLugar.setBounds(590, 610, 109, 35);
+		add(lblLugar);
 
 		JLabel lblAforo = new JLabel("Aforo:");
 		lblAforo.setFont(new Font("Tahoma", Font.PLAIN, 20));

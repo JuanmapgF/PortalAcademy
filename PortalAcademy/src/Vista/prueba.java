@@ -2,7 +2,6 @@ package Vista;
 
 import java.awt.EventQueue;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -41,7 +40,7 @@ public class prueba extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		cerrar = new ButtonDynamic("Sesion iniciada como: xxxxxxxxxxxxx", ButtonDynamic.USUARIO);
+		cerrar = new ButtonDynamic("Subir archivo", ButtonDynamic.SUBIR);
 		CtrButtonDynamic cbd = new CtrButtonDynamic(cerrar);
 		cerrar.setBounds(10, 100, 400, 73);
 		getContentPane().add(cbd.getBoton());

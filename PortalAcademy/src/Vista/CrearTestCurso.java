@@ -2,14 +2,15 @@ package Vista;
 
 import java.awt.Font;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import Modelo.Curso;
 import Modelo.Usuario;
-import javax.swing.JTextField;
-import javax.swing.JButton;
 
+@SuppressWarnings("serial")
 public class CrearTestCurso extends JPanel {
 
 	public JTextField tfNombre;

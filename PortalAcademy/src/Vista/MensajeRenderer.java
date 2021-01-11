@@ -6,36 +6,31 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 import javax.swing.JTable;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableCellRenderer;
 
-	public class MensajeRenderer extends JLabel implements TableCellRenderer {
+@SuppressWarnings("serial")
+public class MensajeRenderer extends JLabel implements TableCellRenderer {
 
-
-    /**
+	/**
 	 * 
 	 */
-	private ChatPrivado MensajeRenderer;
+	private ChatPrivado mensajeRenderer;
 
 	/**
 	 * @param chatPrivado
 	 */
 	MensajeRenderer(ChatPrivado chatPrivado) {
-		MensajeRenderer = chatPrivado;
+		mensajeRenderer = chatPrivado;
 	}
 
 	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
 			int row, int column) {
-		
-    	this.setOpaque(true);
-    	this.setText("<html><p style=\"width:80px\">"+(String) value+"</p></html>");
-    	this.setFont(new Font("Microsoft YaHei", Font.ITALIC, 11));
-    	
-    	
-    	
+
+		this.setOpaque(true);
+		this.setText("<html><p style=\"width:80px\">" + (String) value + "</p></html>");
+		this.setFont(new Font("Microsoft YaHei", Font.ITALIC, 11));
+
 		if (value.equals("")) {
 			setBackground(Color.decode("#F0F0F0"));
 		} else {

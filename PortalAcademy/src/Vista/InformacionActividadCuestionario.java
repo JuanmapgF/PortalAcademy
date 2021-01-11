@@ -7,13 +7,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Controlador.CtrMenu;
-import Controlador.CtrMenuCurso;
 import Modelo.Actividad;
 import Modelo.Estudiante;
 import Modelo.Organizacion;
 import Modelo.Profesor;
 import Modelo.Usuario;
 
+@SuppressWarnings("serial")
 public class InformacionActividadCuestionario extends JPanel{
 	private Usuario user;
 	private Actividad actividad;

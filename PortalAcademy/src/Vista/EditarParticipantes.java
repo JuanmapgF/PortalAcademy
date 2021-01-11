@@ -13,10 +13,10 @@ import javax.swing.JScrollPane;
 
 import Controlador.CtrMenu;
 import Modelo.Curso;
-import Modelo.Estudiante;
 import Modelo.Profesor;
 import Modelo.Usuario;
 
+@SuppressWarnings("serial")
 public class EditarParticipantes extends JPanel {
 
 	private DefaultListModel<String> modeloC = new DefaultListModel<String>();

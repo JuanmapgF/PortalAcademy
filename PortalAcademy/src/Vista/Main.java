@@ -22,11 +22,10 @@ public class Main extends JFrame {
 	private static JLabel userName;
 
 	public Main() {
-		setExtendedState(JFrame. MAXIMIZED_BOTH);
 		userName = new JLabel();
 		userName.setBounds(10, 11, 240, 20);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 1080, 650);
+		setBounds(0, 0, 1920, 1080);
 		CtrExplorar c = null;
 		c = new CtrExplorar(new Explorar(Curso.getTodosLosCursos(), Actividad.getTodasLasActividades()));
 		contentPane = c.getPanel();

@@ -6,10 +6,8 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.BorderFactory;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -120,8 +118,8 @@ public class MisCursos extends JPanel {
 		sp_curso1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		impartidos.setRowHeight(75);
 		impartidos.setShowVerticalLines(false);
-		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
-		cursos.getColumnModel().getColumn(0).setMinWidth(75);
+		impartidos.getColumnModel().getColumn(0).setMaxWidth(75);
+		impartidos.getColumnModel().getColumn(0).setMinWidth(75);
 //		cursos.getColumnModel().getColumn(1).setMaxWidth(315);
 //		cursos.getColumnModel().getColumn(1).setMinWidth(315);
 

@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class ButtonChatEditor extends DefaultCellEditor {
 		/**
 		 * 

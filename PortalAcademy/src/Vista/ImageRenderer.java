@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
+@SuppressWarnings("serial")
 public class ImageRenderer extends JPanel implements TableCellRenderer {
 	
 	private boolean esCurso;
