@@ -1,12 +1,12 @@
 package Vista;
 
+import java.awt.Font;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import Modelo.Actividad;
-import Modelo.Curso;
-import javax.swing.JButton;
-import java.awt.Font;
-import java.awt.event.ActionListener;
 
 public class MenuActividad extends JPanel{
 	

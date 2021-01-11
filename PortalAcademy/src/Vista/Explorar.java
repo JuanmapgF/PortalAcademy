@@ -11,6 +11,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 
 import Controlador.CtrMenu;
 import Modelo.Actividad;
@@ -20,10 +23,6 @@ import Modelo.MensajeNoticia;
 import Modelo.Organizacion;
 import Modelo.Profesor;
 import Modelo.Usuario;
-import javax.swing.border.EmptyBorder;
-import javax.swing.SwingConstants;
-import javax.swing.border.LineBorder;
-import javax.swing.plaf.basic.BasicScrollBarUI;
 
 @SuppressWarnings("serial")
 public class Explorar extends JPanel {

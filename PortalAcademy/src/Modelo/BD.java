@@ -119,6 +119,39 @@ public class BD {
 		return lista;
 	}
 
+	public File SelectArchivoCurso(Integer idArchivo, String nombre, String direccion) {
+		File file = null;
+		try {
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT archivo FROM ArchivoCurso WHERE idArchivo = " + idArchivo);
+			if (rs.next()) {
+				Blob blob = rs.getBlob("archivo");
+				if (blob != null) {
+					file = new File(direccion + "\\" + nombre);
+					InputStream lecturaFich = blob.getBinaryStream();
+					BufferedInputStream in = new BufferedInputStream(lecturaFich);
+					BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(file));
+					byte[] buffer = new byte[8096];
+					int length = 0;
+					while ((length = in.read(buffer)) > 0) {
+						out.write(buffer, 0, length);
+					}
+					out.flush();
+					out.close();
+					in.close();
+				}
+			}
+		} catch (FileNotFoundException e) {
+			throw new ErrorBD("Error al encontrar la imagen. " + e.getMessage());
+		} catch (SQLException e) {
+			throw new ErrorBD("Error en el Select de la imagen. " + e.getMessage());
+		} catch (IOException e) {
+			throw new ErrorBD("Error al leer la Imagen. " + e.getMessage());
+		}
+
+		return file;
+	}
+
 	public File SelectImagenCurso(Integer idCurso) {
 		File file = null;
 		try {
@@ -272,6 +305,26 @@ public class BD {
 			stmt.close();
 		} catch (SQLException e) {
 			throw new ErrorBD("Error en el DELETE: " + del + ". " + e.getMessage());
+		}
+	}
+
+	public void InsertArchivo(String nombre, File archivo, int idCurso) {
+		try {
+			FileInputStream fis = null;
+			if (archivo != null) {
+				fis = new FileInputStream(archivo);
+			}
+			PreparedStatement ps = con
+					.prepareStatement("INSERT INTO ArchivoCurso (nombre, idCurso, archivo) VALUES (?, ?, ?)");
+			ps.setString(1, nombre);
+			ps.setInt(2, idCurso);
+			ps.setBlob(3, fis);
+			ps.executeUpdate();
+			ps.close();
+		} catch (FileNotFoundException e) {
+			throw new ErrorBD("Error al encontrar el archivo. " + e.getMessage());
+		} catch (SQLException e) {
+			throw new ErrorBD("Error en el insert de imagen. " + e.getMessage());
 		}
 	}
 

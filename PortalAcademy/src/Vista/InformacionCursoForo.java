@@ -19,6 +19,7 @@ import Modelo.Organizacion;
 import Modelo.Profesor;
 import Modelo.Usuario;
 
+@SuppressWarnings("serial")
 public class InformacionCursoForo extends JPanel {
 	private JList<String> listaMensajes;
 	private DefaultListModel<String> modelo = new DefaultListModel<String>();

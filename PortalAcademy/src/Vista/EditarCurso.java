@@ -18,7 +18,6 @@ import javax.swing.SwingConstants;
 import Controlador.CtrMenu;
 import Modelo.Curso;
 import Modelo.Profesor;
-import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class EditarCurso extends JPanel {

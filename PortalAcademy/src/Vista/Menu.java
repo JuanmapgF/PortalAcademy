@@ -1,38 +1,30 @@
 package Vista;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import com.toedter.calendar.IDateEvaluator;
+import com.toedter.calendar.JCalendar;
+
 import Controlador.CtrButtonDynamic;
 import Controlador.CtrCalendario;
-import Controlador.CtrRegistro;
 import Modelo.Actividad;
-import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Organizacion;
 import Modelo.Profesor;
-
-import com.toedter.calendar.IDateEvaluator;
-import com.toedter.calendar.JCalendar;
-import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class Menu extends JPanel {

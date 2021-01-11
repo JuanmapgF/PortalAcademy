@@ -3,11 +3,9 @@ package Vista;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
-import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 

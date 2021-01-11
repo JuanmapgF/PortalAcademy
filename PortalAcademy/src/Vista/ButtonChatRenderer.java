@@ -2,12 +2,12 @@ package Vista;
 
 import java.awt.Component;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.TableCellRenderer;
 
+@SuppressWarnings("serial")
 public class ButtonChatRenderer extends JButton implements TableCellRenderer {
 	
 	/**

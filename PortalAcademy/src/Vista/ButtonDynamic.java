@@ -19,6 +19,9 @@ public class ButtonDynamic extends JButton {
 	public static final int USUARIO_HEIGHT_I = 73;
 	public static final int USUARIO_WIDTH_F = 325;
 	public static final int USUARIO_HEIGHT_F = 73;
+	public static final String SUBIR = "resources/img/subir_archivo.png";
+	public static final int SUBIR_WIDTH_I = 400;
+	public static final int SUBIR_HEIGHT_I = 73;
 
 	private String name;
 	private String icono;
@@ -28,7 +31,7 @@ public class ButtonDynamic extends JButton {
 		this.name = name;
 		this.icono = icono;
 		setIcon(new ImageIcon(icono));
-		setFont(new Font("Tahoma", Font.ITALIC, 20));
+		setFont(new Font("Tahoma", Font.ITALIC, 16));
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 
@@ -45,6 +48,12 @@ public class ButtonDynamic extends JButton {
 			setVerticalTextPosition(CENTER);
 			setVerticalAlignment(CENTER);
 			setPreferredSize(new Dimension(USUARIO_WIDTH_I, USUARIO_HEIGHT_I));
+		} else if (icono == SUBIR) {
+			setHorizontalTextPosition(CENTER);
+			setHorizontalAlignment(CENTER);
+			setVerticalTextPosition(BOTTOM);
+			setVerticalAlignment(CENTER);
+			setPreferredSize(new Dimension(SUBIR_WIDTH_I, SUBIR_HEIGHT_I));
 		}
 	}
 

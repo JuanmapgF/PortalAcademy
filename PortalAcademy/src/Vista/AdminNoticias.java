@@ -17,6 +17,7 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 
 import Modelo.MensajeNoticia;
 
+@SuppressWarnings("serial")
 public class AdminNoticias extends JPanel {
 
 	public JButton bCerrarSesion, bInicio, bCursos_1, bActividades_1, bUsuarios_1, bAjustes, agregarNoticia;

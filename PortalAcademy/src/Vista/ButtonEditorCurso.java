@@ -6,10 +6,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class ButtonEditorCurso extends DefaultCellEditor {
 	private JButton btn;
 	private String lbl;
@@ -35,7 +35,7 @@ public class ButtonEditorCurso extends DefaultCellEditor {
 	 @Override
 	public Component getTableCellEditorComponent(JTable table, Object obj, boolean selected, int row, int col) {
 
-			//SET TEXT TO BUTTON,SET CLICKED TO TRUE,THEN RETURN THE BTN OBJECT
+		//SET TEXT TO BUTTON,SET CLICKED TO TRUE,THEN RETURN THE BTN OBJECT
 		 lbl = (obj == null) ? "":obj.toString();
 		 btn.setText(lbl);
 		 clicked = true;
