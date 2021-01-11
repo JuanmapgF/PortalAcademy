@@ -219,6 +219,23 @@ public class Curso {
 		}
 		return listaCursos;
 	}
+	
+	public static List<Curso> getCursos(String busqueda) {
+		if (busqueda.equals("")) {
+			return getTodosLosCursos();
+		} else {
+			List<Curso> listaCursos = new ArrayList<>();
+			bd = BD.getBD();
+			List<Object[]> cursos = bd.Select("SELECT idCurso FROM Curso WHERE nombre like " + "'%" + busqueda + "%'" );
+			BD.contadorFinalize(cursos.size() + 1);
+			bd.finalize();
+			for (Object[] tupla : cursos) {
+				listaCursos.add(new Curso(Integer.parseInt(tupla[0].toString())));
+			}
+			return listaCursos;
+		}
+		
+	}
 
 	@Override
 	public String toString() {

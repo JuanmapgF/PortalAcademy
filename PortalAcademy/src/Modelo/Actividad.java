@@ -193,6 +193,23 @@ public class Actividad {
 		}
 		return listaActividades;
 	}
+	
+	public static List<Actividad> getActividades(String busqueda) {
+		if (busqueda.equals("")) {
+			return getTodasLasActividades();
+		} else {
+			List<Actividad> listaActividades = new ArrayList<>();
+			bd = BD.getBD();
+			List<Object[]> actividades = bd.Select("SELECT idActividad FROM Actividad WHERE nombre like " + "'%" + busqueda + "%'" );
+			BD.contadorFinalize(actividades.size() + 1);
+			bd.finalize();
+			for (Object[] tupla : actividades) {
+				listaActividades.add(new Actividad(Integer.parseInt(tupla[0].toString())));
+			}
+			return listaActividades;
+		}
+		
+	}
 
 	@Override
 	public String toString() {

@@ -20,6 +20,8 @@ public class CtrExplorar implements ActionListener {
 	public CtrExplorar(Explorar v) {
 		ventana = v;
 		ventana.controlador(this);
+		new CtrBusquedaExplorar(v);
+		new CtrFocusBusqueda(v);
 	}
 
 	@Override

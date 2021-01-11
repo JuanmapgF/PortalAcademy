@@ -3,6 +3,8 @@ package Vista;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyListener;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -23,6 +25,7 @@ import Modelo.MensajeNoticia;
 import Modelo.Organizacion;
 import Modelo.Profesor;
 import Modelo.Usuario;
+import javax.swing.JButton;
 
 @SuppressWarnings("serial")
 public class Explorar extends JPanel {
@@ -39,6 +42,7 @@ public class Explorar extends JPanel {
 	private boolean estudiante = false;
 	private boolean organizacion = false;
 	private boolean profesor = false;
+	private boolean invitado = false;
 
 	private List<MensajeNoticia> lista_noticias = MensajeNoticia.getTodasLasNoticias();
 	private List<Curso> lista_cursos = null;
@@ -47,7 +51,13 @@ public class Explorar extends JPanel {
 	private Object[][] datosNoticias = null;
 	private Object[][] datosCurso = null;
 	private Object[][] datosActividad = null;
-
+	
+	private JScrollPane sp_curso;
+	private JScrollPane sp_actividad;
+	
+	public JTextField busquedaCurso;
+	public JTextField busquedaActividad;
+	
 	/**
 	 * @wbp.parser.constructor
 	 */
@@ -58,8 +68,25 @@ public class Explorar extends JPanel {
 		this.setBounds(0, 0, 1920, 1080);
 		est = e;
 		setLayout(null);
+		
+		busquedaCurso = new JTextField("Busca un curso");
+		busquedaCurso.setBounds(431, 360, 475, 30);
+		busquedaCurso.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		busquedaCurso.setForeground(Color.GRAY);
+		add(busquedaCurso);
+		busquedaCurso.setColumns(10);
+		
+		
+		busquedaActividad = new JTextField("Busca una actividad");
+		busquedaActividad.setBounds(1089, 360, 475, 30);
+		busquedaActividad.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		busquedaActividad.setForeground(Color.GRAY);
+		add(busquedaActividad);
+		busquedaActividad.setColumns(10);
+		
 
-		datosTablaUsuario();
+		cargarCursosUsuario("");
+		cargarActividadesUsuario("");
 
 //		JLabel lblNewLabel = new JLabel("Explorar");
 //		lblNewLabel.setBounds(904, 60, 170, 49);
@@ -104,37 +131,6 @@ public class Explorar extends JPanel {
 			noticias.getColumnModel().getColumn(i).setMinWidth(170);
 		}
 		noticias.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		
-
-		JScrollPane sp_curso = new JScrollPane();
-		sp_curso.setBounds(431, 447, 475, 500);
-		sp_curso.setViewportView(cursos);
-		sp_curso.getVerticalScrollBar().setUI(new BasicScrollBarUI());
-		add(sp_curso);
-		sp_curso.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		cursos.setRowHeight(75);
-		cursos.setShowVerticalLines(false);
-		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
-		cursos.getColumnModel().getColumn(0).setMinWidth(75);
-		cursos.getColumnModel().getColumn(1).setMaxWidth(315);
-		cursos.getColumnModel().getColumn(1).setMinWidth(315);
-		cursos.getColumnModel().getColumn(2).setMaxWidth(75);
-		cursos.getColumnModel().getColumn(2).setMinWidth(75);
-
-		JScrollPane sp_actividad = new JScrollPane();
-		sp_actividad.setBounds(1089, 447, 475, 500);
-		sp_actividad.setViewportView(actividades);
-		sp_actividad.getVerticalScrollBar().setUI(new BasicScrollBarUI());
-		add(sp_actividad);
-		sp_actividad.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		actividades.setRowHeight(75);
-		actividades.setShowVerticalLines(false);
-		actividades.getColumnModel().getColumn(0).setMaxWidth(75);
-		actividades.getColumnModel().getColumn(0).setMinWidth(75);
-		actividades.getColumnModel().getColumn(1).setMaxWidth(315);
-		actividades.getColumnModel().getColumn(1).setMinWidth(315);
-		actividades.getColumnModel().getColumn(2).setMaxWidth(75);
-		actividades.getColumnModel().getColumn(2).setMinWidth(75);
 		
 
 		CtrMenu menu = new CtrMenu(new Menu(e));
@@ -145,12 +141,30 @@ public class Explorar extends JPanel {
 
 	
 	public Explorar(List<Curso> lc, List<Actividad> la) {
+		invitado = true;
 		lista_cursos = lc;
 		lista_actividades = la;
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
+		
+		busquedaCurso = new JTextField("Busca un curso");
+		busquedaCurso.setBounds(431, 360, 475, 30);
+		busquedaCurso.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		busquedaCurso.setForeground(Color.GRAY);
+		add(busquedaCurso);
+		busquedaCurso.setColumns(10);
+		
+		
+		busquedaActividad = new JTextField("Busca una actividad");
+		busquedaActividad.setBounds(1089, 360, 475, 30);
+		busquedaActividad.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		busquedaActividad.setForeground(Color.GRAY);
+		add(busquedaActividad);
+		busquedaActividad.setColumns(10);
+		
 
-		datosTabla();
+		cargarCursosInvitado("");
+		cargarActividadesInvitado("");
 
 //		JLabel lblNewLabel = new JLabel("Explorar");
 //		lblNewLabel.setBounds(904, 60, 170, 49);
@@ -196,35 +210,6 @@ public class Explorar extends JPanel {
 		}
 		noticias.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-		JScrollPane sp_curso = new JScrollPane();
-		sp_curso.setBounds(431, 447, 475, 500);
-		sp_curso.setViewportView(cursos);
-		sp_curso.getVerticalScrollBar().setUI(new BasicScrollBarUI());
-		add(sp_curso);
-		sp_curso.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		cursos.setRowHeight(75);
-		cursos.setShowVerticalLines(false);
-		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
-		cursos.getColumnModel().getColumn(0).setMinWidth(75);
-		cursos.getColumnModel().getColumn(1).setMaxWidth(315);
-		cursos.getColumnModel().getColumn(1).setMinWidth(315);
-		cursos.getColumnModel().getColumn(2).setMaxWidth(75);
-		cursos.getColumnModel().getColumn(2).setMinWidth(75);
-
-		JScrollPane sp_actividad = new JScrollPane();
-		sp_actividad.setBounds(1089, 447, 475, 500);
-		sp_actividad.setViewportView(actividades);
-		sp_actividad.getVerticalScrollBar().setUI(new BasicScrollBarUI());
-		add(sp_actividad);
-		sp_actividad.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		actividades.setRowHeight(75);
-		actividades.setShowVerticalLines(false);
-		actividades.getColumnModel().getColumn(0).setMaxWidth(75);
-		actividades.getColumnModel().getColumn(0).setMinWidth(75);
-		actividades.getColumnModel().getColumn(1).setMaxWidth(315);
-		actividades.getColumnModel().getColumn(1).setMinWidth(315);
-		actividades.getColumnModel().getColumn(2).setMaxWidth(75);
-		actividades.getColumnModel().getColumn(2).setMinWidth(75);
 
 		CtrMenu menu = new CtrMenu(new Menu());
 		add(menu.getPanel());
@@ -237,8 +222,25 @@ public class Explorar extends JPanel {
 		this.setBounds(0, 0, 1920, 1080);
 		prof = e;
 		setLayout(null);
+		
+		busquedaCurso = new JTextField("Busca un curso");
+		busquedaCurso.setBounds(431, 360, 475, 30);
+		busquedaCurso.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		busquedaCurso.setForeground(Color.GRAY);
+		add(busquedaCurso);
+		busquedaCurso.setColumns(10);
+		
+		
+		busquedaActividad = new JTextField("Busca una actividad");
+		busquedaActividad.setBounds(1089, 360, 475, 30);
+		busquedaActividad.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		busquedaActividad.setForeground(Color.GRAY);
+		add(busquedaActividad);
+		busquedaActividad.setColumns(10);
+		
 
-		datosTablaUsuario();
+		cargarCursosUsuario("");
+		cargarActividadesUsuario("");
 
 //		JLabel lblNewLabel = new JLabel("Explorar");
 //		lblNewLabel.setBounds(904, 60, 170, 49);
@@ -284,35 +286,6 @@ public class Explorar extends JPanel {
 		}
 		noticias.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-		JScrollPane sp_curso = new JScrollPane();
-		sp_curso.setBounds(431, 447, 475, 500);
-		sp_curso.setViewportView(cursos);
-		sp_curso.getVerticalScrollBar().setUI(new BasicScrollBarUI());
-		add(sp_curso);
-		sp_curso.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		cursos.setRowHeight(75);
-		cursos.setShowVerticalLines(false);
-		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
-		cursos.getColumnModel().getColumn(0).setMinWidth(75);
-		cursos.getColumnModel().getColumn(1).setMaxWidth(315);
-		cursos.getColumnModel().getColumn(1).setMinWidth(315);
-		cursos.getColumnModel().getColumn(2).setMaxWidth(75);
-		cursos.getColumnModel().getColumn(2).setMinWidth(75);
-
-		JScrollPane sp_actividad = new JScrollPane();
-		sp_actividad.setBounds(1089, 447, 475, 500);
-		sp_actividad.setViewportView(actividades);
-		sp_actividad.getVerticalScrollBar().setUI(new BasicScrollBarUI());
-		add(sp_actividad);
-		sp_actividad.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		actividades.setRowHeight(75);
-		actividades.setShowVerticalLines(false);
-		actividades.getColumnModel().getColumn(0).setMaxWidth(75);
-		actividades.getColumnModel().getColumn(0).setMinWidth(75);
-		actividades.getColumnModel().getColumn(1).setMaxWidth(315);
-		actividades.getColumnModel().getColumn(1).setMinWidth(315);
-		actividades.getColumnModel().getColumn(2).setMaxWidth(75);
-		actividades.getColumnModel().getColumn(2).setMinWidth(75);
 
 		CtrMenu menu = new CtrMenu(new Menu(e));
 		add(menu.getPanel());
@@ -325,8 +298,25 @@ public class Explorar extends JPanel {
 		this.setBounds(0, 0, 1920, 1080);
 		org = e;
 		setLayout(null);
+		
+		busquedaCurso = new JTextField("Busca un curso");
+		busquedaCurso.setBounds(431, 360, 475, 30);
+		busquedaCurso.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		busquedaCurso.setForeground(Color.GRAY);
+		add(busquedaCurso);
+		busquedaCurso.setColumns(10);
+		
+		
+		busquedaActividad = new JTextField("Busca una actividad");
+		busquedaActividad.setBounds(1089, 360, 475, 30);
+		busquedaActividad.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		busquedaActividad.setForeground(Color.GRAY);
+		add(busquedaActividad);
+		busquedaActividad.setColumns(10);
+		
 
-		datosTabla();
+		cargarCursosUsuario("");
+		cargarActividadesUsuario("");
 
 //		JLabel lblNewLabel = new JLabel("Explorar");
 //		lblNewLabel.setBounds(904, 60, 170, 49);
@@ -372,35 +362,6 @@ public class Explorar extends JPanel {
 		}
 		noticias.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-		JScrollPane sp_curso = new JScrollPane();
-		sp_curso.setBounds(431, 447, 475, 500);
-		sp_curso.setViewportView(cursos);
-		sp_curso.getVerticalScrollBar().setUI(new BasicScrollBarUI());
-		add(sp_curso);
-		sp_curso.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		cursos.setRowHeight(75);
-		cursos.setShowVerticalLines(false);
-		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
-		cursos.getColumnModel().getColumn(0).setMinWidth(75);
-		cursos.getColumnModel().getColumn(1).setMaxWidth(315);
-		cursos.getColumnModel().getColumn(1).setMinWidth(315);
-		cursos.getColumnModel().getColumn(2).setMaxWidth(75);
-		cursos.getColumnModel().getColumn(2).setMinWidth(75);
-
-		JScrollPane sp_actividad = new JScrollPane();
-		sp_actividad.setBounds(1089, 447, 475, 500);
-		sp_actividad.setViewportView(actividades);
-		sp_actividad.getVerticalScrollBar().setUI(new BasicScrollBarUI());
-		add(sp_actividad);
-		sp_actividad.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		actividades.setRowHeight(75);
-		actividades.setShowVerticalLines(false);
-		actividades.getColumnModel().getColumn(0).setMaxWidth(75);
-		actividades.getColumnModel().getColumn(0).setMinWidth(75);
-		actividades.getColumnModel().getColumn(1).setMaxWidth(315);
-		actividades.getColumnModel().getColumn(1).setMinWidth(315);
-		actividades.getColumnModel().getColumn(2).setMaxWidth(75);
-		actividades.getColumnModel().getColumn(2).setMinWidth(75);
 
 		CtrMenu menu = new CtrMenu(new Menu(e));
 		add(menu.getPanel());
@@ -409,6 +370,17 @@ public class Explorar extends JPanel {
 	public void controlador(ActionListener ctr) {
 		editorCurso.controlador(ctr);
 		editorActividad.controlador(ctr);
+		
+	}
+	
+	public void controladorBusqueda(KeyListener ctr) {
+		busquedaCurso.addKeyListener(ctr);
+		busquedaActividad.addKeyListener(ctr);
+	}
+	
+	public void controladorFocus(FocusListener ctr) {
+		busquedaCurso.addFocusListener(ctr);
+		busquedaActividad.addFocusListener(ctr);
 	}
 
 	public boolean esEstudiante() {
@@ -421,6 +393,10 @@ public class Explorar extends JPanel {
 
 	public boolean esProfesor() {
 		return profesor;
+	}
+	
+	public boolean esInvitado() {
+		return invitado;
 	}
 
 	public Estudiante getEstudiante() {
@@ -457,9 +433,15 @@ public class Explorar extends JPanel {
 		}
 		noticias.setTableHeader(null);
 		noticias.setCellSelectionEnabled(false);
+		
 	}
 
-	private void datosTablaUsuario() {
+	public void cargarCursosUsuario(String busqueda) {
+		if (!busqueda.equals("")) {
+			lista_cursos = Curso.getCursos(busqueda);
+		} else {
+			lista_cursos = Curso.getTodosLosCursos();
+		}
 		
 		datosCurso = new Object[lista_cursos.size()][3];
 
@@ -498,10 +480,49 @@ public class Explorar extends JPanel {
 		cursos.getColumnModel().getColumn(2).setCellEditor(editorCurso);
 		cursos.setTableHeader(null);
 		cursos.setCellSelectionEnabled(false);
+		
+		if (sp_curso != null) {
+			remove(sp_curso);
+		}
+		
+		sp_curso = new JScrollPane();
+		sp_curso.setBounds(431, 447, 475, 500);
+		sp_curso.setViewportView(cursos);
+		sp_curso.getVerticalScrollBar().setUI(new BasicScrollBarUI());
+		add(sp_curso);
+		sp_curso.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		cursos.setRowHeight(75);
+		cursos.setShowVerticalLines(false);
+		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
+		cursos.getColumnModel().getColumn(0).setMinWidth(75);
+		cursos.getColumnModel().getColumn(1).setMaxWidth(315);
+		cursos.getColumnModel().getColumn(1).setMinWidth(315);
+		cursos.getColumnModel().getColumn(2).setMaxWidth(75);
+		cursos.getColumnModel().getColumn(2).setMinWidth(75);
+		
+	}
+	
+	public void cargarActividadesUsuario(String busqueda) {
+		if (!busqueda.equals("")) {
+			lista_actividades = Actividad.getActividades(busqueda);
+		} else {
+			lista_actividades = Actividad.getTodasLasActividades();
+		}
 
 		datosActividad = new Object[lista_actividades.size()][3];
 
-		k = 0;
+		int k = 0;
+		
+		Usuario u = null;
+
+		if (estudiante) {
+			u = est;
+		} else if (profesor) {
+			u = prof;
+		} else if (organizacion) {
+			u = org;
+		}
+		
 		for (Actividad actividad : lista_actividades) {
 			datosActividad[k][0] = actividad.getImagen();
 			datosActividad[k][1] = actividad.getNombre();
@@ -526,10 +547,34 @@ public class Explorar extends JPanel {
 		actividades.getColumnModel().getColumn(2).setCellEditor(editorActividad);
 		actividades.setTableHeader(null);
 		actividades.setCellSelectionEnabled(false);
+		
+		if (sp_actividad != null) {
+			remove(sp_actividad);
+		}
+		
+		sp_actividad = new JScrollPane();
+		sp_actividad.setBounds(1089, 447, 475, 500);
+		sp_actividad.setViewportView(actividades);
+		sp_actividad.getVerticalScrollBar().setUI(new BasicScrollBarUI());
+		add(sp_actividad);
+		sp_actividad.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		actividades.setRowHeight(75);
+		actividades.setShowVerticalLines(false);
+		actividades.getColumnModel().getColumn(0).setMaxWidth(75);
+		actividades.getColumnModel().getColumn(0).setMinWidth(75);
+		actividades.getColumnModel().getColumn(1).setMaxWidth(315);
+		actividades.getColumnModel().getColumn(1).setMinWidth(315);
+		actividades.getColumnModel().getColumn(2).setMaxWidth(75);
+		actividades.getColumnModel().getColumn(2).setMinWidth(75);
 	}
-
-	private void datosTabla() {
-
+	
+	public void cargarCursosInvitado(String busqueda) {
+		if (!busqueda.equals("")) {
+			lista_cursos = Curso.getCursos(busqueda);
+		} else {
+			lista_cursos = Curso.getTodosLosCursos();
+		}
+		
 		datosCurso = new Object[lista_cursos.size()][3];
 
 		int k = 0;
@@ -555,10 +600,38 @@ public class Explorar extends JPanel {
 		cursos.getColumnModel().getColumn(2).setCellEditor(editorCurso);
 		cursos.setTableHeader(null);
 		cursos.setCellSelectionEnabled(false);
+		
+		if (sp_curso != null) {
+			remove(sp_curso);
+		}
+		
+		sp_curso = new JScrollPane();
+		sp_curso.setBounds(431, 447, 475, 500);
+		sp_curso.setViewportView(cursos);
+		sp_curso.getVerticalScrollBar().setUI(new BasicScrollBarUI());
+		add(sp_curso);
+		sp_curso.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		cursos.setRowHeight(75);
+		cursos.setShowVerticalLines(false);
+		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
+		cursos.getColumnModel().getColumn(0).setMinWidth(75);
+		cursos.getColumnModel().getColumn(1).setMaxWidth(315);
+		cursos.getColumnModel().getColumn(1).setMinWidth(315);
+		cursos.getColumnModel().getColumn(2).setMaxWidth(75);
+		cursos.getColumnModel().getColumn(2).setMinWidth(75);
+		
+	}
+
+	public void cargarActividadesInvitado(String busqueda) {
+		if (!busqueda.equals("")) {
+			lista_actividades = Actividad.getActividades(busqueda);
+		} else {
+			lista_actividades = Actividad.getTodasLasActividades();
+		}
 
 		datosActividad = new Object[lista_actividades.size()][3];
 
-		k = 0;
+		int k = 0;
 		for (Actividad actividad : lista_actividades) {
 			datosActividad[k][0] = actividad.getImagen();
 			datosActividad[k][1] = actividad.getNombre();
@@ -580,6 +653,25 @@ public class Explorar extends JPanel {
 		actividades.getColumnModel().getColumn(2).setCellEditor(editorActividad);
 		actividades.setTableHeader(null);
 		actividades.setCellSelectionEnabled(false);
+		
+		if (sp_actividad != null) {
+			remove(sp_actividad);
+		}
+		
+		sp_actividad = new JScrollPane();
+		sp_actividad.setBounds(1089, 447, 475, 500);
+		sp_actividad.setViewportView(actividades);
+		sp_actividad.getVerticalScrollBar().setUI(new BasicScrollBarUI());
+		add(sp_actividad);
+		sp_actividad.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		actividades.setRowHeight(75);
+		actividades.setShowVerticalLines(false);
+		actividades.getColumnModel().getColumn(0).setMaxWidth(75);
+		actividades.getColumnModel().getColumn(0).setMinWidth(75);
+		actividades.getColumnModel().getColumn(1).setMaxWidth(315);
+		actividades.getColumnModel().getColumn(1).setMinWidth(315);
+		actividades.getColumnModel().getColumn(2).setMaxWidth(75);
+		actividades.getColumnModel().getColumn(2).setMinWidth(75);
 	}
 
 	public Curso getCurso() {
@@ -588,5 +680,14 @@ public class Explorar extends JPanel {
 
 	public Actividad getActividad() {
 		return lista_actividades.get(actividades.getSelectedRow());
+	}
+	
+	
+	public String getBusquedaCurso() {
+		return busquedaCurso.getText();
+	}
+	
+	public String getBusquedaActividad() {
+		return busquedaActividad.getText();
 	}
 }
