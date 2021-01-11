@@ -32,7 +32,7 @@ public class CtrMisCursos implements ActionListener {
 		}
 
 		if (e.getActionCommand().equals("VERCURSO")) {
-			Curso c = ventana.getC();
+			Curso c = ventana.getCurso();
 			if (c != null) {
 				if (ventana.esEstudiante()) {
 					CtrInformacionCurso cr = new CtrInformacionCurso(ventana.getEstudiante(), c);
@@ -46,7 +46,7 @@ public class CtrMisCursos implements ActionListener {
 		}
 
 		if (e.getActionCommand().equals("VERCURSOA")) {
-			Curso c = ventana.getCA();
+			Curso c = ventana.getCursoProfesor();
 			if (c != null) {
 				if (ventana.esProfesor()) {
 					CtrInformacionCurso cr = new CtrInformacionCurso(ventana.getProfesor(), c);

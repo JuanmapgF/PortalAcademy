@@ -14,6 +14,9 @@ public class Curso {
 	private Integer aforo;
 	private Boolean presencial;
 	private Boolean tieneForo;
+	private Boolean satisfaccion;
+
+	
 
 	private List<Mensaje> mensajes;
 	private Profesor profesor;
@@ -64,7 +67,8 @@ public class Curso {
 	public Integer getId() {
 		return idCurso;
 	}
-
+	
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -231,5 +235,26 @@ public class Curso {
 		} else {
 			return false;
 		}
+	}
+	
+	public static Curso cogerId(Profesor prof) {
+		bd = BD.getBD();
+		Object[] tuplaEstudiantes = bd.Select("SELECT idCurso FROM Curso WHERE nickProfesor = '" + prof.getNick() + "' ORDER BY idCurso DESC;").get(0);
+		bd.finalize();
+		return new Curso((int)((tuplaEstudiantes[0])));
+	}
+	
+	public Boolean getSatisfaccion() {
+		bd = BD.getBD();
+		Object[]tupla = bd.Select("SELECT satisfaccion FROM Curso WHERE idCurso = '" + this.idCurso +"'").get(0);
+		bd.finalize();
+		return (Boolean) tupla[0];
+	}
+
+	public void setSatisfaccion(Boolean satisfaccion) {
+		bd = BD.getBD();
+		bd.Update("UPDATE Curso SET satisfaccion = " + ((satisfaccion) ? 1 : 0) + " WHERE idCurso = " + this.idCurso);
+		bd.finalize();
+		this.satisfaccion = satisfaccion;
 	}
 }

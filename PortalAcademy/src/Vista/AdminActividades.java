@@ -38,57 +38,59 @@ public class AdminActividades extends JPanel {
 		// --------------------------------------------------------
 
 		setLayout(null);
-		this.setBounds(0, 0, 1080, 650);
-
-		bInicio = new JButton("Inicio");
-		bInicio.setBounds(10, 85, 106, 21);
-		add(bInicio);
-
-		bCursos_1 = new JButton("Cursos");
-		bCursos_1.setFont(new Font("Calibri", Font.PLAIN, 12));
-		bCursos_1.setBounds(10, 116, 106, 23);
-		add(bCursos_1);
-
-		bActividades_1 = new JButton("Actividades");
-		bActividades_1.setForeground(Color.BLUE);
-		bActividades_1.setFont(new Font("Calibri", Font.PLAIN, 12));
-		bActividades_1.setBounds(10, 149, 106, 23);
-		add(bActividades_1);
-
-		bUsuarios_1 = new JButton("Usuarios");
-		bUsuarios_1.setFont(new Font("Calibri", Font.PLAIN, 12));
-		bUsuarios_1.setBounds(10, 182, 106, 23);
-		add(bUsuarios_1);
-
-		bAjustes = new JButton("Ajustes");
-		bAjustes.setFont(new Font("Calibri", Font.PLAIN, 12));
-		bAjustes.setBounds(10, 215, 106, 21);
-		add(bAjustes);
+		this.setBounds(0, 0, 1920, 1080);
 
 		bCerrarSesion = new JButton("Cerrar sesi\u00F3n");
 		bCerrarSesion.setVerticalAlignment(SwingConstants.TOP);
-		bCerrarSesion.setFont(new Font("Calibri", Font.PLAIN, 12));
-		bCerrarSesion.setBounds(944, 10, 126, 23);
+		bCerrarSesion.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		bCerrarSesion.setBounds(1647, 58, 202, 48);
 		add(bCerrarSesion);
 
+		bInicio = new JButton("Inicio");
+		bInicio.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		bInicio.setBounds(64, 246, 143, 40);
+		add(bInicio);
+
+		bCursos_1 = new JButton("Cursos");
+		bCursos_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		bCursos_1.setBounds(64, 339, 143, 40);
+		add(bCursos_1);
+
+		bActividades_1 = new JButton("Actividades");
+		bActividades_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		bActividades_1.setBounds(64, 431, 143, 40);
+		bActividades_1.setForeground(Color.BLUE);
+		add(bActividades_1);
+
+		bUsuarios_1 = new JButton("Usuarios");
+		bUsuarios_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		bUsuarios_1.setBounds(64, 525, 143, 40);
+		add(bUsuarios_1);
+
+		bAjustes = new JButton("Ajustes");
+		bAjustes.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		bAjustes.setBounds(64, 627, 143, 40);
+		add(bAjustes);
+
 		JLabel lblNewLabel_1 = new JLabel("Actividades");
-		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 60));
-		lblNewLabel_1.setBounds(160, 54, 349, 74);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		lblNewLabel_1.setBounds(830, 186, 349, 74);
 		add(lblNewLabel_1);
 
 		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
-		lblNewLabel.setBounds(429, 627, 222, 13);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel.setBounds(726, 812, 466, 40);
 		add(lblNewLabel);
 
 		JScrollPane spActivadades = new JScrollPane();
-		spActivadades.setBounds(190, 195, 700, 400);
+		spActivadades.setBounds(600, 300, 700, 400);
 		spActivadades.setViewportView(listA);
 		add(spActivadades);
 
 		bEliminar = new JButton("ELIMINAR");
-		bEliminar.setFont(new Font("Tahoma", Font.BOLD, 10));
+		bEliminar.setFont(new Font("Tahoma", Font.BOLD, 20));
 		bEliminar.setForeground(Color.RED);
-		bEliminar.setBounds(944, 330, 97, 74);
+		bEliminar.setBounds(1451, 454, 143, 74);
 		add(bEliminar);
 
 		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + Main.getUser().getNick());

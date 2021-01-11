@@ -18,6 +18,7 @@ import javax.swing.SwingConstants;
 import Controlador.CtrMenu;
 import Modelo.Curso;
 import Modelo.Profesor;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class EditarCurso extends JPanel {
@@ -45,65 +46,71 @@ public class EditarCurso extends JPanel {
 		usuario = p;
 		c = cur;
 		this.setLayout(null);
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 
 		JLabel titulo = new JLabel("");
-		titulo.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
-		titulo.setBounds(239, 11, 545, 49);
+		titulo.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		titulo.setBounds(548, 75, 545, 49);
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
 		titulo.setText(c.getNombre());
 		add(titulo);
 
 		JLabel lblNewLabel = new JLabel("Nombre:");
-		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		lblNewLabel.setBounds(264, 123, 136, 27);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel.setBounds(565, 207, 136, 27);
 		add(lblNewLabel);
 
 		nombre = new JTextField();
-		nombre.setBounds(400, 126, 311, 20);
+		nombre.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		nombre.setBounds(671, 198, 311, 46);
 		nombre.setText(c.getNombre());
 		add(nombre);
 		nombre.setColumns(10);
 
 		JLabel lblImagen = new JLabel("Imagen:");
-		lblImagen.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		lblImagen.setBounds(264, 175, 136, 27);
+		lblImagen.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblImagen.setBounds(565, 307, 136, 27);
 		add(lblImagen);
 
 		lblImagenSeleccionada = new JLabel("");
+		lblImagenSeleccionada.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblImagenSeleccionada.setHorizontalAlignment(SwingConstants.LEFT);
-		lblImagenSeleccionada.setBounds(400, 175, 190, 14);
+		lblImagenSeleccionada.setBounds(671, 300, 190, 40);
 		add(lblImagenSeleccionada);
 
 		fileChooserImagen = new JFileChooser();
 		fileChooserImagen.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		
 		btnSeleccionar = new JButton("Seleccionar");
-		btnSeleccionar.setBounds(590, 170, 120, 23);
+		btnSeleccionar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnSeleccionar.setBounds(897, 300, 136, 40);
 		add(btnSeleccionar);
 
 		JLabel lblDescripcin = new JLabel("Descripci\u00F3n:");
-		lblDescripcin.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		lblDescripcin.setBounds(264, 240, 136, 27);
+		lblDescripcin.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblDescripcin.setBounds(535, 446, 136, 27);
 		add(lblDescripcin);
 
 		descripcion = new JTextArea();
+		descripcion.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		descripcion.setText(c.getDescripcion());
 		JScrollPane jsp = new JScrollPane(descripcion);
-		jsp.setBounds(400, 240, 311, 113);
+		jsp.setBounds(670, 410, 311, 113);
 		add(jsp);
 
 		JLabel lblPrivacidad = new JLabel("Privacidad:");
-		lblPrivacidad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		lblPrivacidad.setBounds(264, 362, 136, 27);
+		lblPrivacidad.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblPrivacidad.setBounds(547, 579, 136, 27);
 		add(lblPrivacidad);
 
 		publico = new JRadioButton("P\u00FAblico");
-		publico.setBounds(395, 364, 109, 23);
+		publico.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		publico.setBounds(701, 582, 109, 20);
 		add(publico);
 
 		privado = new JRadioButton("Privado");
-		privado.setBounds(540, 364, 109, 23);
+		privado.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		privado.setBounds(872, 581, 109, 23);
 		add(privado);
 
 		if (cur.getPublico()) {
@@ -113,27 +120,29 @@ public class EditarCurso extends JPanel {
 		}
 
 		JLabel lblAforo = new JLabel("Aforo:");
-		lblAforo.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		lblAforo.setBounds(264, 446, 136, 27);
+		lblAforo.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblAforo.setBounds(590, 678, 136, 27);
 		add(lblAforo);
 
 		aforo = new JSpinner();
-		aforo.setBounds(400, 449, 47, 20);
+		aforo.setBounds(717, 675, 47, 40);
 		add(aforo);
 
 		aforo.setValue(c.getAforo());
 
 		JLabel lblModo = new JLabel("Modo:");
-		lblModo.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		lblModo.setBounds(264, 518, 136, 27);
+		lblModo.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblModo.setBounds(590, 784, 136, 27);
 		add(lblModo);
 
 		presencial = new JRadioButton("Presencial");
-		presencial.setBounds(395, 518, 109, 23);
+		presencial.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		presencial.setBounds(701, 786, 120, 23);
 		add(presencial);
 
 		online = new JRadioButton("Online");
-		online.setBounds(540, 520, 109, 23);
+		online.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		online.setBounds(872, 786, 109, 23);
 		add(online);
 
 		if (c.getPresencial()) {
@@ -143,25 +152,28 @@ public class EditarCurso extends JPanel {
 		}
 
 		guardar = new JButton("Guardar cambios");
-		guardar.setBounds(867, 255, 144, 23);
+		guardar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		guardar.setBounds(1118, 402, 197, 40);
 		add(guardar);
 
 		eliminar = new JButton("Eliminar curso");
-		eliminar.setBounds(867, 350, 144, 23);
+		eliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		eliminar.setBounds(1118, 566, 197, 40);
 		add(eliminar);
 
 		lblForo = new JLabel("Foro:");
-		lblForo.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-		lblForo.setBounds(704, 518, 136, 27);
+		lblForo.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblForo.setBounds(601, 871, 136, 40);
 		add(lblForo);
 
 		foro = new JCheckBox("");
-		foro.setBounds(781, 518, 97, 23);
+		foro.setBounds(701, 871, 97, 40);
 		foro.setSelected(c.getTieneForo());
 		add(foro);
 
 		volver = new JButton("Descartar cambios");
-		volver.setBounds(867, 434, 144, 23);
+		volver.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		volver.setBounds(1118, 715, 197, 40);
 		add(volver);
 
 		CtrMenu menu = new CtrMenu(new Menu(p));

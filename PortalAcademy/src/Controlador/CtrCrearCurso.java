@@ -59,7 +59,7 @@ public class CtrCrearCurso implements ActionListener {
 				JOptionPane.showMessageDialog(vista,
 						"El curso " + curso.getNombre() + " ha sido creado satisfactoriamente.", "Curso creado",
 						JOptionPane.INFORMATION_MESSAGE);
-				CtrInformacionCurso cic = new CtrInformacionCurso(profesor, curso);
+				CtrInformacionCurso cic = new CtrInformacionCurso(profesor, Curso.cogerId(profesor));
 				Main.setPanel(cic.getPanel());
 			} catch (ErrorBD err) {
 				JOptionPane.showMessageDialog(vista, err.getMessage(), "Error crear curso", JOptionPane.ERROR_MESSAGE);

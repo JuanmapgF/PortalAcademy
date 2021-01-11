@@ -8,6 +8,7 @@ import Modelo.Curso;
 import Vista.AdminActividades;
 import Vista.AdminCursos;
 import Vista.AdminInicio;
+import Vista.AdminNoticias;
 import Vista.AdminUsuarios;
 import Vista.Explorar;
 import Vista.Main;
@@ -29,6 +30,7 @@ public class CtrAdminInicio implements ActionListener{
 		vista.bInicio.addActionListener(this);
 		vista.bUsuarios.addActionListener(this);
 		vista.bUsuarios_1.addActionListener(this);
+		vista.bNoticias.addActionListener(this);
 	}
 	
 	public AdminInicio getPanel() {
@@ -74,7 +76,10 @@ public class CtrAdminInicio implements ActionListener{
 			Main.setPanel(ctr.getPanel());
 		}
 		
-		
+		if (e.getSource() == vista.bNoticias) {
+			CtrAdminNoticias ctr = new CtrAdminNoticias(new AdminNoticias());
+			Main.setPanel(ctr.getPanel());
+		}
 		
 	}
 

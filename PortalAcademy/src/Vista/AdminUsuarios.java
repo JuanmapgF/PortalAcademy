@@ -28,7 +28,7 @@ public class AdminUsuarios extends JPanel {
 	 */
 	public AdminUsuarios() {
 
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		this.setLayout(null);
 
 		// para mostrar la lista de Usuarios en el scrollpanel
@@ -42,54 +42,56 @@ public class AdminUsuarios extends JPanel {
 		// ------------------------------------------------------
 
 		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
-		lblNewLabel.setBounds(418, 606, 274, 13);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel.setBounds(726, 812, 466, 40);
 		add(lblNewLabel);
 
 		bCerrarSesion = new JButton("Cerrar sesi\u00F3n");
 		bCerrarSesion.setVerticalAlignment(SwingConstants.TOP);
-		bCerrarSesion.setFont(new Font("Calibri", Font.PLAIN, 12));
-		bCerrarSesion.setBounds(944, 12, 115, 21);
+		bCerrarSesion.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		bCerrarSesion.setBounds(1647, 58, 202, 48);
 		add(bCerrarSesion);
 
 		bInicio = new JButton("Inicio");
-		bInicio.setBounds(10, 85, 115, 21);
+		bInicio.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		bInicio.setBounds(64, 246, 143, 40);
 		add(bInicio);
 
 		bCursos_1 = new JButton("Cursos");
-		bCursos_1.setFont(new Font("Calibri", Font.PLAIN, 12));
-		bCursos_1.setBounds(10, 116, 115, 23);
+		bCursos_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		bCursos_1.setBounds(64, 339, 143, 40);
 		add(bCursos_1);
 
 		bActividades_1 = new JButton("Actividades");
-		bActividades_1.setFont(new Font("Calibri", Font.PLAIN, 12));
-		bActividades_1.setBounds(10, 149, 115, 23);
+		bActividades_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		bActividades_1.setBounds(64, 431, 143, 40);
 		add(bActividades_1);
 
 		bUsuarios_1 = new JButton("Usuarios");
 		bUsuarios_1.setForeground(Color.BLUE);
-		bUsuarios_1.setFont(new Font("Calibri", Font.PLAIN, 12));
-		bUsuarios_1.setBounds(10, 182, 115, 23);
+		bUsuarios_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		bUsuarios_1.setBounds(64, 525, 143, 40);
 		add(bUsuarios_1);
 
 		bAjustes = new JButton("Ajustes");
-		bAjustes.setFont(new Font("Calibri", Font.PLAIN, 12));
-		bAjustes.setBounds(10, 214, 115, 21);
+		bAjustes.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		bAjustes.setBounds(64, 627, 143, 40);
 		add(bAjustes);
 
 		JLabel lblNewLabel_1 = new JLabel("Usuarios");
-		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 60));
-		lblNewLabel_1.setBounds(181, 54, 381, 74);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		lblNewLabel_1.setBounds(858, 169, 381, 74);
 		add(lblNewLabel_1);
 
 		JScrollPane spUsuarios = new JScrollPane();
-		spUsuarios.setBounds(190, 195, 700, 400);
+		spUsuarios.setBounds(600, 300, 700, 400);
 		spUsuarios.setViewportView(listA);
 		add(spUsuarios);
 
 		bEliminar = new JButton("ELIMINAR");
-		bEliminar.setFont(new Font("Tahoma", Font.BOLD, 10));
+		bEliminar.setFont(new Font("Tahoma", Font.BOLD, 20));
 		bEliminar.setForeground(Color.RED);
-		bEliminar.setBounds(944, 330, 103, 74);
+		bEliminar.setBounds(1451, 454, 143, 74);
 		add(bEliminar);
 
 		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + Main.getUser().getNick());

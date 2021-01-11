@@ -1,8 +1,10 @@
 package Vista;
 
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -57,9 +59,7 @@ public class Ajustes extends JPanel {
 		return esOrganizacion;
 	}
 
-	/**
-	 * @wbp.parser.constructor
-	 */
+	
 	public Ajustes(Estudiante u) {
 		estudiante = u;
 		esEstudiante = true;
@@ -67,102 +67,134 @@ public class Ajustes extends JPanel {
 		setLayout(null);
 
 		JLabel titulo = new JLabel("Ajustes");
-		titulo.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
-		titulo.setBounds(529, 0, 118, 102);
+		titulo.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		titulo.setBounds(731, 153, 183, 102);
 		add(titulo);
 
 
 		JLabel nueva = new JLabel("Nueva contrase\u00F1a:");
-		nueva.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 16));
-		nueva.setBounds(283, 183, 158, 102);
+		nueva.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		nueva.setBounds(580, 301, 183, 60);
 		add(nueva);
 
 		texto = new JPasswordField();
-		texto.setBounds(466, 223, 278, 20);
+		texto.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		texto.setBounds(790, 312, 278, 40);
 		add(texto);
 		texto.setColumns(10);
 
-		cambiar = new JButton("Cambiar contrase\u00F1a");
-		cambiar.setBounds(484, 324, 183, 23);
+		cambiar = new JButton(new ImageIcon(getClass().getResource("/img/cambiarContrasena.png")));
+		cambiar.setBounds(685, 419, 218, 60);
+		cambiar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		cambiar.setContentAreaFilled(false);
+		cambiar.setFocusPainted(false);
+		cambiar.setBorderPainted(false);
 		add(cambiar);
 
-		eliminar = new JButton("Eliminar cuenta");
-		eliminar.setBounds(509, 456, 129, 23);
+		eliminar = new JButton(new ImageIcon(getClass().getResource("/img/eliminarCuenta.png")));
+		eliminar.setBounds(685, 673, 218, 60);
+		eliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		eliminar.setContentAreaFilled(false);
+		eliminar.setFocusPainted(false);
+		eliminar.setBorderPainted(false);
 		add(eliminar);
 		
 		CtrMenu menu = new CtrMenu(new Menu(u));
 		add(menu.getPanel());
 
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 	}
 
+	
 	public Ajustes(Profesor u) {
 		esProfesor = true;
 		prof = u;
 		setLayout(null);
 
 		JLabel titulo = new JLabel("Ajustes");
-		titulo.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
-		titulo.setBounds(529, 0, 118, 102);
+		titulo.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		titulo.setBounds(731, 153, 183, 102);
 		add(titulo);
 
 
 		JLabel nueva = new JLabel("Nueva contrase\u00F1a:");
-		nueva.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 16));
-		nueva.setBounds(283, 183, 158, 102);
+		nueva.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		nueva.setBounds(580, 301, 183, 60);
 		add(nueva);
 
 		texto = new JPasswordField();
-		texto.setBounds(466, 223, 278, 20);
+		texto.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		texto.setBounds(790, 312, 278, 40);
 		add(texto);
 		texto.setColumns(10);
 
-		cambiar = new JButton("Cambiar contrase\u00F1a");
-		cambiar.setBounds(484, 324, 183, 23);
+		cambiar = new JButton(new ImageIcon(getClass().getResource("/img/cambiarContrasena.png")));
+		cambiar.setBounds(685, 419, 218, 60);
+		cambiar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		cambiar.setContentAreaFilled(false);
+		cambiar.setFocusPainted(false);
+		cambiar.setBorderPainted(false);
 		add(cambiar);
 
-		eliminar = new JButton("Eliminar cuenta");
-		eliminar.setBounds(509, 456, 129, 23);
+		eliminar = new JButton(new ImageIcon(getClass().getResource("/img/eliminarCuenta.png")));
+		eliminar.setBounds(685, 673, 218, 60);
+		eliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		eliminar.setContentAreaFilled(false);
+		eliminar.setFocusPainted(false);
+		eliminar.setBorderPainted(false);
 		add(eliminar);
 		
 		CtrMenu menu = new CtrMenu(new Menu(u));
 		add(menu.getPanel());
 
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 	}
 
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public Ajustes(Organizacion u) {
 		esOrganizacion = true;
 		org = u;
 		setLayout(null);
 
 		JLabel titulo = new JLabel("Ajustes");
-		titulo.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
-		titulo.setBounds(529, 0, 118, 102);
+		titulo.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		titulo.setBounds(731, 153, 183, 102);
 		add(titulo);
 
+
 		JLabel nueva = new JLabel("Nueva contrase\u00F1a:");
-		nueva.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 16));
-		nueva.setBounds(283, 183, 158, 102);
+		nueva.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		nueva.setBounds(580, 301, 183, 60);
 		add(nueva);
 
 		texto = new JPasswordField();
-		texto.setBounds(466, 223, 278, 20);
+		texto.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		texto.setBounds(790, 312, 278, 40);
 		add(texto);
 		texto.setColumns(10);
 
-		cambiar = new JButton("Cambiar contrase\u00F1a");
-		cambiar.setBounds(484, 324, 183, 23);
+		cambiar = new JButton(new ImageIcon(getClass().getResource("/img/cambiarContrasena.png")));
+		cambiar.setBounds(685, 419, 218, 60);
+		cambiar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		cambiar.setContentAreaFilled(false);
+		cambiar.setFocusPainted(false);
+		cambiar.setBorderPainted(false);
 		add(cambiar);
 
-		eliminar = new JButton("Eliminar cuenta");
-		eliminar.setBounds(509, 456, 129, 23);
+		eliminar = new JButton(new ImageIcon(getClass().getResource("/img/eliminarCuenta.png")));
+		eliminar.setBounds(685, 673, 218, 60);
+		eliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		eliminar.setContentAreaFilled(false);
+		eliminar.setFocusPainted(false);
+		eliminar.setBorderPainted(false);
 		add(eliminar);
-
+		
 		CtrMenu menu = new CtrMenu(new Menu(u));
 		add(menu.getPanel());
 
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 	}
 
 	public void controlador(ActionListener ctr) {

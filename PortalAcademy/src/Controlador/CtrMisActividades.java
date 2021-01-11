@@ -33,7 +33,7 @@ public class CtrMisActividades implements ActionListener {
 		}
 
 		if (e.getActionCommand().equals("VERACTIVIDAD")) {
-			Actividad c = ventana.getA();
+			Actividad c = ventana.getActividad();
 			if (c != null) {
 				if (ventana.esEstudiante()) {
 					CtrInformacionActividad cr = new CtrInformacionActividad(ventana.getEstudiante(), c);

@@ -45,103 +45,121 @@ public class CrearCurso extends JPanel {
 	 * Create the panel.
 	 */
 	public CrearCurso() {
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Nombre:");
-		lblNewLabel.setBounds(297, 140, 66, 14);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel.setBounds(575, 310, 109, 26);
 		add(lblNewLabel);
 
 		JLabel lblImagenes = new JLabel("Imagen:");
-		lblImagenes.setBounds(297, 193, 76, 14);
+		lblImagenes.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblImagenes.setBounds(575, 410, 109, 26);
 		add(lblImagenes);
 
-		JLabel lblDescripcin = new JLabel("Descripci\u00F3n");
-		lblDescripcin.setBounds(297, 246, 76, 14);
+		JLabel lblDescripcin = new JLabel("Descripci\u00F3n:");
+		lblDescripcin.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblDescripcin.setBounds(540, 510, 121, 42);
 		add(lblDescripcin);
 
 		JLabel lblPrivacidad = new JLabel("Privacidad:");
-		lblPrivacidad.setBounds(297, 314, 76, 14);
+		lblPrivacidad.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblPrivacidad.setBounds(550, 610, 109, 35);
 		add(lblPrivacidad);
 
 		JLabel lblAforo = new JLabel("Aforo:");
-		lblAforo.setBounds(297, 368, 76, 14);
+		lblAforo.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblAforo.setBounds(595, 710, 76, 25);
 		add(lblAforo);
 
 		JLabel lblModo = new JLabel("Modo:");
-		lblModo.setBounds(297, 425, 76, 14);
+		lblModo.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblModo.setBounds(595, 810, 76, 35);
 		add(lblModo);
 
 		textFieldNombre = new JTextField();
-		textFieldNombre.setBounds(441, 137, 242, 20);
+		textFieldNombre.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		textFieldNombre.setBounds(750, 305, 242, 40);
 		add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 
 		textAreaDescripcion = new JTextArea();
+		textAreaDescripcion.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		JScrollPane jsp = new JScrollPane(textAreaDescripcion);
-		jsp.setBounds(441, 241, 242, 47);
+		jsp.setBounds(750, 510, 242, 47);
 		add(jsp);
 
 		rdbtnPublico = new JRadioButton("P\u00FAblico");
+		rdbtnPublico.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		rdbtnPublico.setSelected(true);
 		buttonGroupPrivacidad.add(rdbtnPublico);
-		rdbtnPublico.setBounds(470, 310, 82, 23);
+		rdbtnPublico.setBounds(750, 610, 100, 38);
 		add(rdbtnPublico);
 
 		rdbtnPrivado = new JRadioButton("Privado");
+		rdbtnPrivado.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		buttonGroupPrivacidad.add(rdbtnPrivado);
-		rdbtnPrivado.setBounds(575, 310, 82, 23);
+		rdbtnPrivado.setBounds(930, 610, 120, 40);
 		add(rdbtnPrivado);
 
 		rdbtnPresencial = new JRadioButton("Presencial");
+		rdbtnPresencial.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		buttonGroupModo.add(rdbtnPresencial);
-		rdbtnPresencial.setBounds(470, 421, 109, 23);
+		rdbtnPresencial.setBounds(750, 810, 130, 40);
 		add(rdbtnPresencial);
 
 		rdbtnOnline = new JRadioButton("Online");
+		rdbtnOnline.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		rdbtnOnline.setSelected(true);
 		buttonGroupModo.add(rdbtnOnline);
-		rdbtnOnline.setBounds(575, 421, 109, 23);
+		rdbtnOnline.setBounds(930, 810, 109, 40);
 		add(rdbtnOnline);
 
 		spinnerAforo = new JSpinner();
-		spinnerAforo.setBounds(511, 365, 90, 20);
+		spinnerAforo.setBounds(750, 710, 90, 40);
 		add(spinnerAforo);
 
 		btnCrearCurso = new JButton("Crear curso");
-		btnCrearCurso.setBounds(400, 546, 109, 35);
+		btnCrearCurso.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnCrearCurso.setBounds(1300, 446, 179, 40);
 		add(btnCrearCurso);
 
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(908, 546, 109, 35);
+		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnCancelar.setBounds(1310, 910, 150, 35);
 		add(btnCancelar);
 
 		lblForo = new JLabel("Foro:");
-		lblForo.setBounds(297, 480, 76, 14);
+		lblForo.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblForo.setBounds(595, 910, 82, 25);
 		add(lblForo);
 
 		chckbxForo = new JCheckBox("");
-		chckbxForo.setBounds(470, 476, 39, 23);
+		chckbxForo.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		chckbxForo.setBounds(750, 905, 39, 40);
 		add(chckbxForo);
 
 		lblNewLabel_1 = new JLabel("Crear Curso");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		lblNewLabel_1.setBounds(395, 35, 148, 40);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		lblNewLabel_1.setBounds(695, 200, 242, 49);
 		add(lblNewLabel_1);
 
 		btnSeleccionar = new JButton("Seleccionar");
-		btnSeleccionar.setBounds(574, 196, 109, 23);
+		btnSeleccionar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnSeleccionar.setBounds(975, 410, 140, 40);
 		add(btnSeleccionar);
 
 		lblImagenSeleccionada = new JLabel("");
+		lblImagenSeleccionada.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblImagenSeleccionada.setHorizontalAlignment(SwingConstants.LEFT);
-		lblImagenSeleccionada.setBounds(441, 200, 138, 14);
+		lblImagenSeleccionada.setBounds(750, 410, 170, 40);
 		add(lblImagenSeleccionada);
 
 		fileChooserImagen = new JFileChooser();
 		fileChooserImagen.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
-		CtrMenu menu = new CtrMenu(new Menu((new Profesor(Main.getUser().getNick()))));
+		CtrMenu menu = new CtrMenu(new Menu(new Profesor(Main.getUser().getNick())));
 		add(menu.getPanel());
 
 	}

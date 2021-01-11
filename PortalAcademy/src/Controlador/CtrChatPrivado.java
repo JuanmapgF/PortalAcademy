@@ -1,5 +1,6 @@
 package Controlador;
 
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,6 +25,8 @@ public class CtrChatPrivado implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		ventana.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+		
 		if (e.getActionCommand().equals("VER_CHAT")) {
 			seleccionado = ventana.getUsuarioSeleccionado();
 			ventana = new ChatPrivado(user, seleccionado);
@@ -54,8 +57,8 @@ public class CtrChatPrivado implements ActionListener {
 			
 			if (mensaje.length() > 80) {
 				JOptionPane.showMessageDialog(ventana, "El mensaje ha superado los 80 caracteres permitidos");
-			} else if(mensaje.equals("")) {
-				JOptionPane.showMessageDialog(ventana, "El mensaje debe tener algun caracter");
+			} else if(mensaje.equals("") || mensaje.charAt(0) == ' ') {
+				JOptionPane.showMessageDialog(ventana, "El mensaje debe empezar por algun caracter");
 			} else {
 				new MensajePrivado(ventana.getMensaje(), user, seleccionado);
 			}

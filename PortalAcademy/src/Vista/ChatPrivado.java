@@ -14,9 +14,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.basic.BasicScrollBarUI;
+import javax.swing.plaf.metal.MetalScrollBarUI;
+import javax.swing.plaf.multi.MultiScrollBarUI;
+import javax.swing.plaf.synth.SynthScrollBarUI;
+
 
 import Controlador.CtrMenu;
 import Modelo.Estudiante;
@@ -25,6 +32,7 @@ import Modelo.Organizacion;
 import Modelo.Profesor;
 import Modelo.Usuario;
 
+@SuppressWarnings("serial")
 public class ChatPrivado extends JPanel {
 	
 	private Usuario user;
@@ -44,8 +52,10 @@ public class ChatPrivado extends JPanel {
 	private JTextField textFieldNuevoChat;
 	private JButton buttonAgregarChat;
 
+
+	
 	public ChatPrivado(Usuario user) {
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 		
 		this.user = user;
@@ -53,21 +63,24 @@ public class ChatPrivado extends JPanel {
 		getChatsAbiertos();
 		
 		JScrollPane sp = new JScrollPane();
-		sp.setBounds(230, 105, 273, 479);
+		sp.setBounds(464, 239, 363, 568);
 		sp.setViewportView(chatsAbiertos);
+		sp.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp);
 		chatsAbiertos.setRowHeight(75);
 		
+		
 		textFieldNuevoChat = new JTextField();
+		textFieldNuevoChat.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		textFieldNuevoChat.setToolTipText("");
-		textFieldNuevoChat.setBounds(263, 74, 240, 20);
+		textFieldNuevoChat.setBounds(464, 178, 277, 40);
 		add(textFieldNuevoChat);
 		textFieldNuevoChat.setColumns(10);
 		
 		buttonAgregarChat = new JButton("");
 		buttonAgregarChat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		buttonAgregarChat.setBounds(220, 65, 34, 36);
-		buttonAgregarChat.setIcon(new ImageIcon(getClass().getResource("/img/agregar_chat.png")));
+		buttonAgregarChat.setBounds(770, 167, 57, 59);
+		buttonAgregarChat.setIcon(new ImageIcon(getClass().getResource("/img/agregar.png")));
 		buttonAgregarChat.setContentAreaFilled(false);
 		buttonAgregarChat.setFocusPainted(false);
 		buttonAgregarChat.setBorderPainted(false);
@@ -88,9 +101,12 @@ public class ChatPrivado extends JPanel {
 	
 
 	
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public ChatPrivado(Usuario user, Usuario seleccionado) {
 		
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 		
 		this.user = user;
@@ -100,29 +116,31 @@ public class ChatPrivado extends JPanel {
 		getMensajes();
 
 		JScrollPane chat = new JScrollPane();
-		chat.setBounds(550, 105, 273, 446);
+		chat.setBounds(977, 237, 371, 570);
 		chat.setViewportView(tablaMensajes);
-		chat.setAutoscrolls(true);
+		chat.getVerticalScrollBar().setUI(new BasicScrollBarUI());
+		chat.getVerticalScrollBar().setValue(chat.getVerticalScrollBar().getMaximum());
 		add(chat);
 		tablaMensajes.setRowHeight(80);
-		
 		getChatsAbiertos();
 		
 		JScrollPane sp = new JScrollPane();
-		sp.setBounds(230, 105, 273, 479);
+		sp.setBounds(464, 239, 363, 568);
 		sp.setViewportView(chatsAbiertos);
+		sp.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp);
 		chatsAbiertos.setRowHeight(75);
 		
 		
 		textField = new JTextField();
-		textField.setBounds(550, 562, 240, 20);
+		textField.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		textField.setBounds(977, 826, 370, 40);
 		add(textField);
 		textField.setColumns(20);
 
 		enviar = new JButton("");
 		enviar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		enviar.setBounds(796, 554, 40, 36);
+		enviar.setBounds(1357, 818, 73, 59);
 		enviar.setIcon(new ImageIcon(getClass().getResource("/img/enviar.png")));
 		enviar.setContentAreaFilled(false);
 		enviar.setFocusPainted(false);
@@ -132,7 +150,7 @@ public class ChatPrivado extends JPanel {
 		refrescar = new JButton("");
 		refrescar.setToolTipText("Refresca el chat para ver nuevos mensajes");
 		refrescar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		refrescar.setBounds(783, 58, 40, 36);
+		refrescar.setBounds(1291, 167, 57, 59);
 		refrescar.setIcon(new ImageIcon(getClass().getResource("/img/refrescar.png")));
 		refrescar.setContentAreaFilled(false);
 		refrescar.setFocusPainted(false);
@@ -141,20 +159,21 @@ public class ChatPrivado extends JPanel {
 		
 		JLabel nombreReceptor = new JLabel(seleccionado.getNick());
 		nombreReceptor.setHorizontalAlignment(SwingConstants.CENTER);
-		nombreReceptor.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		nombreReceptor.setBounds(550, 58, 223, 36);
+		nombreReceptor.setFont(new Font("Tahoma", Font.BOLD, 16));
+		nombreReceptor.setBounds(977, 178, 223, 36);
 		add(nombreReceptor);
 		
 		textFieldNuevoChat = new JTextField();
+		textFieldNuevoChat.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		textFieldNuevoChat.setToolTipText("");
-		textFieldNuevoChat.setBounds(263, 74, 240, 20);
+		textFieldNuevoChat.setBounds(464, 178, 277, 40);
 		add(textFieldNuevoChat);
 		textFieldNuevoChat.setColumns(10);
 		
 		buttonAgregarChat = new JButton("");
 		buttonAgregarChat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		buttonAgregarChat.setBounds(220, 65, 34, 36);
-		buttonAgregarChat.setIcon(new ImageIcon(getClass().getResource("/img/agregar_chat.png")));
+		buttonAgregarChat.setBounds(770, 167, 57, 59);
+		buttonAgregarChat.setIcon(new ImageIcon(getClass().getResource("/img/agregar.png")));
 		buttonAgregarChat.setContentAreaFilled(false);
 		buttonAgregarChat.setFocusPainted(false);
 		buttonAgregarChat.setBorderPainted(false);

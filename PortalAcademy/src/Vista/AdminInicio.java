@@ -13,7 +13,7 @@ import javax.swing.SwingConstants;
 @SuppressWarnings("serial")
 public class AdminInicio extends JPanel {
 
-	public JButton bCerrarSesion, bCursos, bActividades, bUsuarios, bInicio, bCursos_1, bActividades_1, bUsuarios_1, bAjustes;
+	public JButton bCerrarSesion, bCursos, bActividades, bUsuarios, bInicio, bCursos_1, bActividades_1, bUsuarios_1, bAjustes, bNoticias;
 	
 	
 	/**
@@ -21,70 +21,71 @@ public class AdminInicio extends JPanel {
 	 */
 	public AdminInicio() {
 		
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		this.setLayout(null);
 		
-		bCerrarSesion = new JButton("Cerrar sesi\u00F3n");
-		bCerrarSesion.setFont(new Font("Calibri", Font.PLAIN, 12));
-		bCerrarSesion.setBounds(952, 10, 118, 23);
-		bCerrarSesion.setVerticalAlignment(SwingConstants.TOP);
-		bCerrarSesion.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		
 		
 		
 		 bCursos = new JButton("Cursos");
 		bCursos.setVerticalAlignment(SwingConstants.BOTTOM);
 		bCursos.setFont(new Font("Calibri", Font.PLAIN, 30));
-		bCursos.setBounds(429, 182, 199, 47);
+		bCursos.setBounds(764, 229, 199, 47);
 		add(bCursos);
-		add(bCerrarSesion);
+		
 		
 		 bActividades = new JButton("Actividades");
 		bActividades.setVerticalAlignment(SwingConstants.BOTTOM);
 		bActividades.setFont(new Font("Calibri", Font.PLAIN, 30));
-		bActividades.setBounds(429, 277, 199, 47);
+		bActividades.setBounds(764, 324, 199, 47);
 		add(bActividades);
 		
 		 bUsuarios = new JButton("Usuarios");
 		bUsuarios.setVerticalAlignment(SwingConstants.BOTTOM);
 		bUsuarios.setFont(new Font("Calibri", Font.PLAIN, 30));
-		bUsuarios.setBounds(429, 369, 199, 47);
+		bUsuarios.setBounds(764, 416, 199, 47);
 		add(bUsuarios);
 		
 		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
-		lblNewLabel.setBounds(429, 627, 222, 13);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel.setBounds(726, 812, 466, 40);
 		add(lblNewLabel);
 		
-		 bInicio = new JButton("Inicio");
+		bCerrarSesion = new JButton("Cerrar sesi\u00F3n");
+		bCerrarSesion.setVerticalAlignment(SwingConstants.TOP);
+		bCerrarSesion.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		bCerrarSesion.setBounds(1647, 58, 202, 48);
+		add(bCerrarSesion);
+
+		bInicio = new JButton("Inicio");
+		bInicio.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		bInicio.setForeground(Color.BLUE);
-		bInicio.setBounds(10, 85, 104, 21);
+		bInicio.setBounds(64, 246, 143, 40);
 		add(bInicio);
-		
-		 bCursos_1 = new JButton("Cursos");
-		bCursos_1.setFont(new Font("Calibri", Font.PLAIN, 12));
-		bCursos_1.setBounds(10, 116, 104, 23);
+
+		bCursos_1 = new JButton("Cursos");
+		bCursos_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		bCursos_1.setBounds(64, 339, 143, 40);
 		add(bCursos_1);
-		
-		 bActividades_1 = new JButton("Actividades");
-		bActividades_1.setFont(new Font("Calibri", Font.PLAIN, 12));
-		bActividades_1.setBounds(10, 149, 104, 23);
+
+		bActividades_1 = new JButton("Actividades");
+		bActividades_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		bActividades_1.setBounds(64, 431, 143, 40);
 		add(bActividades_1);
-		
-		 bUsuarios_1 = new JButton("Usuarios");
-		bUsuarios_1.setFont(new Font("Calibri", Font.PLAIN, 12));
-		bUsuarios_1.setBounds(10, 182, 104, 23);
+
+		bUsuarios_1 = new JButton("Usuarios");
+		bUsuarios_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		bUsuarios_1.setBounds(64, 525, 143, 40);
 		add(bUsuarios_1);
-		
-		 bAjustes = new JButton("Ajustes");
-		bAjustes.setFont(new Font("Calibri", Font.PLAIN, 12));
-		bAjustes.setBounds(10, 215, 104, 21);
+
+		bAjustes = new JButton("Ajustes");
+		bAjustes.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		bAjustes.setBounds(64, 627, 143, 40);
 		add(bAjustes);
 		
 		JLabel lblNewLabel_1 = new JLabel("Administrador");
-		lblNewLabel_1.setFont(new Font("Calibri", Font.PLAIN, 60));
-		lblNewLabel_1.setBounds(160, 54, 534, 74);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		lblNewLabel_1.setBounds(735, 105, 534, 74);
 		add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: "+Main.getUser().getNick());
@@ -94,8 +95,14 @@ public class AdminInicio extends JPanel {
 		JButton bForos = new JButton("Foros");
 		bForos.setVerticalAlignment(SwingConstants.BOTTOM);
 		bForos.setFont(new Font("Calibri", Font.PLAIN, 30));
-		bForos.setBounds(429, 471, 199, 47);
+		bForos.setBounds(764, 510, 199, 47);
 		add(bForos);
+		
+		bNoticias = new JButton("Noticias");
+		bNoticias.setVerticalAlignment(SwingConstants.BOTTOM);
+		bNoticias.setFont(new Font("Calibri", Font.PLAIN, 30));
+		bNoticias.setBounds(764, 602, 199, 47);
+		add(bNoticias);
 
 	}
 }

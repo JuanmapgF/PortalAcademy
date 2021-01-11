@@ -16,6 +16,7 @@ public class Actividad {
 	private int aforo;
 	private Date fecha;
 	private String lugar;
+	private Boolean satisfaccion;
 
 	private Organizacion organizacion;
 	private List<Usuario> participantes;
@@ -206,4 +207,39 @@ public class Actividad {
 			return false;
 		}
 	}
+	
+	public static List<Actividad> getActividadFecha(Date d) {
+		List <Actividad> acts = new ArrayList<Actividad>();
+		bd = BD.getBD();
+		List<Object[]> tuplaAc = bd.Select("SELECT * FROM Actividad WHERE fecha = '" + formato.format(d) + "';");
+		bd.finalize();
+		for (Object[] o : tuplaAc) {
+			acts.add(new Actividad((int)o[0]));
+		}
+		return acts;
+	}
+	
+	public static Actividad cogerId(Organizacion org) {
+		bd = BD.getBD();
+		Object[] tuplaEstudiantes = bd.Select("SELECT idActividad FROM Actividad WHERE nickOrganizacion = '" + org.getNick() + "' ORDER BY idActividad DESC;").get(0);
+		bd.finalize();
+		return new Actividad((int)((tuplaEstudiantes[0])));
+	}
+
+	public Boolean getSatisfaccion() {
+		bd = BD.getBD();
+		Object[]tupla = bd.Select("SELECT satisfaccion FROM Actividad WHERE idCurso = '" + this.idActividad +"'").get(0);
+		bd.finalize();
+		return (Boolean) tupla[0];
+	}
+
+	public void setSatisfaccion(Boolean satisfaccion) {
+		bd = BD.getBD();
+		bd.Update("UPDATE Actividad SET satisfaccion = " + ((satisfaccion) ? 1 : 0) + " WHERE idActividad = " + this.idActividad);
+		bd.finalize();
+		this.satisfaccion = satisfaccion;
+	}
+	
+	
+	
 }

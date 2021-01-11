@@ -2,6 +2,7 @@ package Vista;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -27,25 +28,37 @@ public class DescripcionActividad extends JPanel {
 		
 		// TODO (Juanma) Hacer que aparezca la imagen normal y la por defecto.
 
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
 		JLabel nombreActividad = new JLabel(actividad.getNombre());
-		nombreActividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
-		nombreActividad.setBounds(460, 70, 269, 33);
+		nombreActividad.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		nombreActividad.setBounds(596, 79, 756, 51);
 		add(nombreActividad);
 
 		JTextArea descripcionActividad = new JTextArea(actividad.getDescripcion());
 		descripcionActividad.setEditable(false);
 		JScrollPane jsp = new JScrollPane(descripcionActividad);
-		jsp.setBounds(292, 131, 652, 371);
+		jsp.setBounds(750, 300, 652, 371);
 		add(jsp);
 		
 		unirse = new JButton("Unirse");
-		unirse.setBounds(478, 511, 89, 23);
+		unirse.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		unirse.setBounds(750, 702, 100, 40);
 		unirse.setVisible(false);
 		add(unirse);
 
+		File imagen = actividad.getImagen();
+		
+		JPanelImagen jpi;
+		if(imagen!=null) {
+			jpi = new JPanelImagen(imagen.getName());
+		}else{
+			jpi = new JPanelImagen(getClass().getResource("/img/actividad_default.png"));
+		}
+		jpi.setBounds(449, 300, 250, 225);
+		add(jpi);
+		
 		if (user == null) {
 
 			CtrMenu menu = new CtrMenu(new Menu());

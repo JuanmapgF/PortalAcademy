@@ -17,9 +17,13 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import Controlador.CtrButtonDynamic;
+import Controlador.CtrCalendario;
+import Controlador.CtrRegistro;
 import Modelo.Actividad;
 import Modelo.Curso;
 import Modelo.Estudiante;
@@ -28,6 +32,7 @@ import Modelo.Profesor;
 
 import com.toedter.calendar.IDateEvaluator;
 import com.toedter.calendar.JCalendar;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class Menu extends JPanel {
@@ -40,7 +45,9 @@ public class Menu extends JPanel {
 	private JButton ajustes;
 	private JButton registrarse;
 	private JButton btnChat;
+	private JButton cerrarSesion;
 	private ButtonDynamic user;
+	private JLabel logo;
 
 	private Estudiante est = null;
 	private Organizacion org = null;
@@ -48,32 +55,65 @@ public class Menu extends JPanel {
 	private boolean estudiante = false;
 	private boolean organizacion = false;
 	private boolean profesor = false;
+	
+	private final ImageIcon EXPLORAR = new ImageIcon(getClass().getResource("/img/explorar.png"));
+	private final ImageIcon MIS_CURSOS = new ImageIcon(getClass().getResource("/img/misCursos.png"));
+	private final ImageIcon MIS_ACTIVIDADES = new ImageIcon(getClass().getResource("/img/misActividades.png"));
+	private final ImageIcon AJUSTES = new ImageIcon(getClass().getResource("/img/ajustes.png"));
+	private final ImageIcon INICIAR_SESION = new ImageIcon(getClass().getResource("/img/iniciarSesion.png"));
+	private final ImageIcon REGISTRARSE = new ImageIcon(getClass().getResource("/img/registrarse.png"));
+	private final ImageIcon CHAT_PRIVADO = new ImageIcon(getClass().getResource("/img/chatPrivado.png"));
+	private final ImageIcon CERRAR_SESION = new ImageIcon(getClass().getResource("/img/cerrarSesion.png"));
+	private final ImageIcon LOGO = new ImageIcon(getClass().getResource("/img/logoMenu.png"));
+	
 
 	public Menu() {
 
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
-		iniciar = new JButton("Iniciar sesi\u00F3n");
-		iniciar.setBounds(729, 37, 121, 23);
+		iniciar = new JButton(INICIAR_SESION);
+		iniciar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		iniciar.setBounds(1358, 47, 189, 60);
+		iniciar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		iniciar.setContentAreaFilled(false);
+		iniciar.setFocusPainted(false);
+		iniciar.setBorderPainted(false);
 		add(iniciar);
 
-		registrarse = new JButton("Registrarse");
-		registrarse.setBounds(860, 37, 121, 23);
+		registrarse = new JButton(REGISTRARSE);
+		registrarse.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		registrarse.setBounds(1642, 47, 184, 60);
+		registrarse.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		registrarse.setContentAreaFilled(false);
+		registrarse.setFocusPainted(false);
+		registrarse.setBorderPainted(false);
 		add(registrarse);
 
-		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
+		explorar = new JButton(EXPLORAR);
+		explorar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		explorar.setBounds(60, 191, 205, 60);
+		explorar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		explorar.setContentAreaFilled(false);
+		explorar.setFocusPainted(false);
+		explorar.setBorderPainted(false);
 		add(explorar);
 		
+		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel.setBounds(680, 975, 593, 40);
+		add(lblNewLabel);
+		
 		JCalendar jc = new JCalendar();
-		jc.setBounds(10, 469, 205, 153);
+		jc.setBounds(60, 755, 205, 153);
 	    HighlightEvaluator evaluator = new HighlightEvaluator();
 	    for(Actividad a : Actividad.getTodasLasActividades()) {
 			evaluator.add(a.getFecha());
 		}
 //			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-09"));
 //			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-10"));
+	   
 	    jc.getDayChooser().addDateEvaluator(evaluator);
 	    jc.setCalendar(jc.getCalendar());  
 		add(jc);
@@ -82,55 +122,94 @@ public class Menu extends JPanel {
 
 		    @Override
 		    public void propertyChange(PropertyChangeEvent e) {
-		        System.out.println(jc.getDate().toString());
+		    	CtrCalendario c = new CtrCalendario(new Calendario(jc.getDate()));
+				Main.setPanel(c.getPanel());
 
 		    }
 		});
+		
+		logo = new JLabel(LOGO);
+		logo.setBounds(780, 10, 400, 100);
+		logo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		logo.setText("Portal Academy");
+		logo.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		add(logo);
 
 	}
+	
+	
 
-	
-	
-	
-	
-	
 	public Menu(Estudiante estudiante) {
 		this.estudiante = true;
 		this.est = estudiante;
 
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
-		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
-		cerrar.setBounds(900, 37, (int) cerrar.getPreferredSize().getWidth(),
-				(int) cerrar.getPreferredSize().getHeight());
-		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
-		add(cbdCerrar.getBoton());
+//		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
+//		cerrar.setBounds(1705, 47, 156,
+//				122);
+//		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
+//		add(cbdCerrar.getBoton());
 
-		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
+		explorar = new JButton(EXPLORAR);
+		explorar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		explorar.setBounds(60, 191, 205, 60);
+		explorar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		explorar.setContentAreaFilled(false);
+		explorar.setFocusPainted(false);
+		explorar.setBorderPainted(false);
 		add(explorar);
 
-		cursos = new JButton("Mis cursos");
-		cursos.setBounds(36, 261, 131, 32);
+		cursos = new JButton(MIS_CURSOS);
+		cursos.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		cursos.setBounds(60, 365, 205, 60);
+		cursos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		cursos.setContentAreaFilled(false);
+		cursos.setFocusPainted(false);
+		cursos.setBorderPainted(false);
 		add(cursos);
 
-		actividades = new JButton("Mis actividades");
-		actividades.setBounds(36, 336, 131, 32);
+		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel.setBounds(680, 975, 593, 40);
+		add(lblNewLabel);
+		
+		actividades = new JButton(MIS_ACTIVIDADES);
+		actividades.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		actividades.setBounds(60, 489, 205, 60);
+		actividades.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		actividades.setContentAreaFilled(false);
+		actividades.setFocusPainted(false);
+		actividades.setBorderPainted(false);
 		add(actividades);
 
-		ajustes = new JButton("Ajustes");
-		ajustes.setBounds(36, 413, 131, 32);
+		ajustes = new JButton(AJUSTES);
+		ajustes.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		ajustes.setBounds(1627, 47, 81, 74);
+		ajustes.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ajustes.setContentAreaFilled(false);
+		ajustes.setFocusPainted(false);
+		ajustes.setBorderPainted(false);
 		add(ajustes);
 
-		user = new ButtonDynamic("Sesión iniciada como: " + estudiante.getNick(), ButtonDynamic.USUARIO);
+		user = new ButtonDynamic(estudiante.getNick(), ButtonDynamic.USUARIO);
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
-		user.setBounds(0, 11, (int) user.getPreferredSize().getWidth(), (int) user.getPreferredSize().getHeight());
+		user.setBounds(82, 22, 150, 136);
 		add(cbdUser.getBoton());
+		
+		cerrarSesion = new JButton(CERRAR_SESION);
+		cerrarSesion.setBounds(1718, 47, 81, 74);
+		cerrarSesion.setContentAreaFilled(false);
+		cerrarSesion.setFocusPainted(false);
+		cerrarSesion.setBorderPainted(false);
+		cerrarSesion.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		add(cerrarSesion);
 
 		btnChat = new JButton("");
-		btnChat.setBounds(860, 37, 46, 32);
-		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
+		btnChat.setBounds(1501, 47, 81, 74);
+		btnChat.setIcon(CHAT_PRIVADO);
 		btnChat.setContentAreaFilled(false);
 		btnChat.setFocusPainted(false);
 		btnChat.setBorderPainted(false);
@@ -138,7 +217,7 @@ public class Menu extends JPanel {
 		add(btnChat);
 		
 		JCalendar jc = new JCalendar();
-		jc.setBounds(10, 469, 205, 153);
+		jc.setBounds(60, 755, 205, 153);
 	    HighlightEvaluator evaluator = new HighlightEvaluator();
 	    for(Actividad a : estudiante.getListaActividades()) {
 			evaluator.add(a.getFecha());
@@ -152,46 +231,97 @@ public class Menu extends JPanel {
 	    jc.getDayChooser().addDateEvaluator(evaluator);
 	    jc.setCalendar(jc.getCalendar());  
 		add(jc);
+		jc.setWeekOfYearVisible(false);
+		jc.getDayChooser().addPropertyChangeListener("day", new PropertyChangeListener() {
+
+		    @Override
+		    public void propertyChange(PropertyChangeEvent e) {
+		    	CtrCalendario c = new CtrCalendario(new Calendario(estudiante,jc.getDate()));
+				Main.setPanel(c.getPanel());
+
+		    }
+		});
 		
+		logo = new JLabel(LOGO);
+		logo.setBounds(780, 10, 400, 100);
+		logo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		logo.setText("Portal Academy");
+		logo.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		add(logo);
 	}
 
+	
 	public Menu(Profesor profesor) {
 		this.prof = profesor;
 		this.profesor = true;
 
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
-		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
-		cerrar.setBounds(900, 37, (int) cerrar.getPreferredSize().getWidth(),
-				(int) cerrar.getPreferredSize().getHeight());
-		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
-		add(cbdCerrar.getBoton());
+//		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
+//		cerrar.setBounds(1705, 47, 156,
+//				122);
+//		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
+//		add(cbdCerrar.getBoton());
 
-		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
+		explorar = new JButton(EXPLORAR);
+		explorar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		explorar.setBounds(60, 191, 205, 60);
+		explorar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		explorar.setContentAreaFilled(false);
+		explorar.setFocusPainted(false);
+		explorar.setBorderPainted(false);
 		add(explorar);
 
-		cursos = new JButton("Mis cursos");
-		cursos.setBounds(36, 261, 131, 32);
+		cursos = new JButton(MIS_CURSOS);
+		cursos.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		cursos.setBounds(60, 365, 205, 60);
+		cursos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		cursos.setContentAreaFilled(false);
+		cursos.setFocusPainted(false);
+		cursos.setBorderPainted(false);
 		add(cursos);
 
-		actividades = new JButton("Mis actividades");
-		actividades.setBounds(36, 336, 131, 32);
+		actividades = new JButton(MIS_ACTIVIDADES);
+		actividades.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		actividades.setBounds(60, 489, 205, 60);
+		actividades.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		actividades.setContentAreaFilled(false);
+		actividades.setFocusPainted(false);
+		actividades.setBorderPainted(false);
 		add(actividades);
 
-		ajustes = new JButton("Ajustes");
-		ajustes.setBounds(36, 413, 131, 32);
+		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel.setBounds(680, 975, 593, 40);
+		add(lblNewLabel);
+		
+		ajustes = new JButton(AJUSTES);
+		ajustes.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		ajustes.setBounds(1627, 47, 81, 74);
+		ajustes.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ajustes.setContentAreaFilled(false);
+		ajustes.setFocusPainted(false);
+		ajustes.setBorderPainted(false);
 		add(ajustes);
 
-		user = new ButtonDynamic("Sesión iniciada como: " + profesor.getNick(), ButtonDynamic.USUARIO);
+		user = new ButtonDynamic(profesor.getNick(), ButtonDynamic.USUARIO);
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
-		user.setBounds(0, 11, (int) user.getPreferredSize().getWidth(), (int) user.getPreferredSize().getHeight());
+		user.setBounds(82, 22, 150, 136);
 		add(cbdUser.getBoton());
+		
+		cerrarSesion = new JButton(CERRAR_SESION);
+		cerrarSesion.setBounds(1718, 47, 81, 74);
+		cerrarSesion.setContentAreaFilled(false);
+		cerrarSesion.setFocusPainted(false);
+		cerrarSesion.setBorderPainted(false);
+		cerrarSesion.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		add(cerrarSesion);
 
 		btnChat = new JButton("");
-		btnChat.setBounds(860, 37, 46, 32);
-		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
+		btnChat.setBounds(1501, 47, 81, 74);
+		btnChat.setIcon(CHAT_PRIVADO);
 		btnChat.setContentAreaFilled(false);
 		btnChat.setFocusPainted(false);
 		btnChat.setBorderPainted(false);
@@ -199,7 +329,7 @@ public class Menu extends JPanel {
 		add(btnChat);
 		
 		JCalendar jc = new JCalendar();
-		jc.setBounds(10, 469, 205, 153);
+		jc.setBounds(60, 755, 205, 153);
 	    HighlightEvaluator evaluator = new HighlightEvaluator();
 	    
 	    for(Actividad a : profesor.getListaActividades()) {
@@ -214,42 +344,87 @@ public class Menu extends JPanel {
 	    jc.getDayChooser().addDateEvaluator(evaluator);
 	    jc.setCalendar(jc.getCalendar());  
 		add(jc);
+		jc.setWeekOfYearVisible(false);
+		jc.getDayChooser().addPropertyChangeListener("day", new PropertyChangeListener() {
+
+		    @Override
+		    public void propertyChange(PropertyChangeEvent e) {
+		    	CtrCalendario c = new CtrCalendario(new Calendario(profesor,jc.getDate()));
+				Main.setPanel(c.getPanel());
+
+		    }
+		});
 		
+		logo = new JLabel(LOGO);
+		logo.setBounds(780, 10, 400, 100);
+		logo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		logo.setText("Portal Academy");
+		logo.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		add(logo);
 	}
 
 	public Menu(Organizacion organizacion) {
 		this.org = organizacion;
 		this.organizacion = true;
 
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
-		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
-		cerrar.setBounds(900, 37, (int) cerrar.getPreferredSize().getWidth(),
-				(int) cerrar.getPreferredSize().getHeight());
-		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
-		add(cbdCerrar.getBoton());
+//		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
+//		cerrar.setBounds(1643, 47, 267,
+//				122);
+//		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
+//		add(cbdCerrar.getBoton());
 
-		explorar = new JButton("Explorar");
-		explorar.setBounds(36, 191, 131, 32);
+		explorar = new JButton(EXPLORAR);
+		explorar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		explorar.setBounds(60, 191, 205, 60);
+		explorar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		explorar.setContentAreaFilled(false);
+		explorar.setFocusPainted(false);
+		explorar.setBorderPainted(false);
 		add(explorar);
 
-		actividades = new JButton("Mis actividades");
-		actividades.setBounds(36, 261, 131, 32);
+		actividades = new JButton(MIS_ACTIVIDADES);
+		actividades.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		actividades.setBounds(60, 489, 205, 60);
+		actividades.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		actividades.setContentAreaFilled(false);
+		actividades.setFocusPainted(false);
+		actividades.setBorderPainted(false);
 		add(actividades);
 
-		ajustes = new JButton("Ajustes");
-		ajustes.setBounds(36, 336, 131, 32);
+		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel.setBounds(680, 975, 593, 40);
+		add(lblNewLabel);
+		
+		ajustes = new JButton(AJUSTES);
+		ajustes.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		ajustes.setBounds(1627, 47, 81, 74);
+		ajustes.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ajustes.setContentAreaFilled(false);
+		ajustes.setFocusPainted(false);
+		ajustes.setBorderPainted(false);
 		add(ajustes);
 
-		user = new ButtonDynamic("Sesión iniciada como: " + organizacion.getNick(), ButtonDynamic.USUARIO);
+		user = new ButtonDynamic(organizacion.getNick(), ButtonDynamic.USUARIO);
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
-		user.setBounds(0, 11, (int) user.getPreferredSize().getWidth(), (int) user.getPreferredSize().getHeight());
+		user.setBounds(82, 22, 590, 136);
 		add(cbdUser.getBoton());
+		
+		cerrarSesion = new JButton(CERRAR_SESION);
+		cerrarSesion.setBounds(1718, 47, 81, 74);
+		cerrarSesion.setContentAreaFilled(false);
+		cerrarSesion.setFocusPainted(false);
+		cerrarSesion.setBorderPainted(false);
+		cerrarSesion.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		add(cerrarSesion);
 
 		btnChat = new JButton("");
-		btnChat.setBounds(860, 37, 46, 32);
-		btnChat.setIcon(new ImageIcon(getClass().getResource("/img/chat_privado.png")));
+		btnChat.setBounds(1501, 47, 81, 74);
+		btnChat.setIcon(CHAT_PRIVADO);
 		btnChat.setContentAreaFilled(false);
 		btnChat.setFocusPainted(false);
 		btnChat.setBorderPainted(false);
@@ -257,7 +432,7 @@ public class Menu extends JPanel {
 		add(btnChat);
 		
 		JCalendar jc = new JCalendar();
-		jc.setBounds(10, 469, 205, 153);
+		jc.setBounds(60, 755, 205, 153);
 	    HighlightEvaluator evaluator = new HighlightEvaluator();
 
 	    for(Actividad a : organizacion.getActividades()) {
@@ -273,7 +448,23 @@ public class Menu extends JPanel {
 	    jc.getDayChooser().addDateEvaluator(evaluator);
 	    jc.setCalendar(jc.getCalendar());  
 		add(jc);
+		jc.setWeekOfYearVisible(false);
+		jc.getDayChooser().addPropertyChangeListener("day", new PropertyChangeListener() {
+
+		    @Override
+		    public void propertyChange(PropertyChangeEvent e) {
+		    	CtrCalendario c = new CtrCalendario(new Calendario(organizacion,jc.getDate()));
+				Main.setPanel(c.getPanel());
+
+		    }
+		});
 		
+		logo = new JLabel(LOGO);
+		logo.setBounds(780, 10, 400, 100);
+		logo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		logo.setText("Portal Academy");
+		logo.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		add(logo);
 	}
 
 	public void controlador(ActionListener ctr) {
@@ -293,9 +484,9 @@ public class Menu extends JPanel {
 			ajustes.addActionListener(ctr);
 			ajustes.setActionCommand("AJUSTES");
 		}
-		if (cerrar != null) {
-			cerrar.addActionListener(ctr);
-			cerrar.setActionCommand("CERRAR_SESION");
+		if (cerrarSesion != null) {
+			cerrarSesion.addActionListener(ctr);
+			cerrarSesion.setActionCommand("CERRAR_SESION");
 		}
 		if (iniciar != null) {
 			iniciar.addActionListener(ctr);
