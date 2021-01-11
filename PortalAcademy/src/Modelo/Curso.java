@@ -1,7 +1,6 @@
 package Modelo;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,12 +21,12 @@ public class Curso {
 
 	private static BD bd;
 
-	
 	public Curso(String nombre, String descripcion, File imagen, Boolean publico, Integer aforo, Boolean presencial,
 			Boolean tieneForo, Profesor profesor) {
 
 		bd = BD.getBD();
-		bd.InsertCurso(nombre, descripcion, imagen, publico, aforo, presencial, tieneForo, profesor.getNick());
+		this.idCurso = bd.InsertCurso(nombre, descripcion, imagen, publico, aforo, presencial, tieneForo,
+				profesor.getNick());
 		bd.finalize();
 
 		this.nombre = nombre;
@@ -197,10 +196,10 @@ public class Curso {
 		this.imagen = null;
 		this.publico = null;
 	}
-	
+
 	public void eliminarUsuario(Usuario u) {
 		bd = BD.getBD();
-		bd.Delete("DELETE FROM RelCursoUsuario WHERE nickUsuario = '" + u.getNick() +"'");
+		bd.Delete("DELETE FROM RelCursoUsuario WHERE nickUsuario = '" + u.getNick() + "'");
 		bd.finalize();
 	}
 

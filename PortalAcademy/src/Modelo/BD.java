@@ -188,7 +188,6 @@ public class BD {
 	public void Insert(String ins) {
 		if (!ins.toUpperCase().startsWith("INSERT"))
 			throw new ErrorBD("INSERT Sytanx Error: " + ins);
-
 		try {
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(ins);
@@ -198,8 +197,9 @@ public class BD {
 		}
 	}
 
-	public void InsertCurso(String nombre, String descripcion, File imagen, Boolean publico, Integer aforo,
+	public int InsertCurso(String nombre, String descripcion, File imagen, Boolean publico, Integer aforo,
 			Boolean presencial, Boolean tieneForo, String profesor) {
+		int id = -1;
 		try {
 			FileInputStream fis = null;
 			if (imagen != null) {
@@ -207,7 +207,8 @@ public class BD {
 			}
 
 			PreparedStatement ps = con.prepareStatement(
-					"INSERT INTO Curso 	(nombre, descripcion, imagen, publico, aforo, presencial, tieneForo, nickProfesor) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+					"INSERT INTO Curso 	(nombre, descripcion, imagen, publico, aforo, presencial, tieneForo, nickProfesor) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+					Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, nombre);
 			ps.setString(2, descripcion);
 			ps.setBlob(3, fis);
@@ -216,24 +217,31 @@ public class BD {
 			ps.setInt(6, ((presencial) ? 1 : 0));
 			ps.setInt(7, ((tieneForo) ? 1 : 0));
 			ps.setString(8, profesor);
-			ps.execute();
+			ps.executeUpdate();
+			ResultSet rs = ps.getGeneratedKeys();
+			while (rs.next()) {
+				id = rs.getInt(1);
+			}
 			ps.close();
 		} catch (FileNotFoundException e) {
 			throw new ErrorBD("Error al encontrar el archivo. " + e.getMessage());
 		} catch (SQLException e) {
 			throw new ErrorBD("Error en el insert de imagen. " + e.getMessage());
 		}
+		return id;
 	}
 
-	public void InsertActividad(String nombre, String descripcion, File imagen, int aforo, String fecha, String lugar,
+	public int InsertActividad(String nombre, String descripcion, File imagen, int aforo, String fecha, String lugar,
 			String organizacion) {
+		int id = -1;
 		try {
 			FileInputStream fis = null;
 			if (imagen != null) {
 				fis = new FileInputStream(imagen);
 			}
 			PreparedStatement ps = con.prepareStatement(
-					"INSERT INTO Actividad (nombre, descripcion, imagen, aforo, fecha, lugar, nickOrganizacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+					"INSERT INTO Actividad (nombre, descripcion, imagen, aforo, fecha, lugar, nickOrganizacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+					Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, nombre);
 			ps.setString(2, descripcion);
 			ps.setBlob(3, fis);
@@ -241,13 +249,18 @@ public class BD {
 			ps.setString(5, fecha);
 			ps.setString(6, lugar);
 			ps.setString(7, organizacion);
-			ps.execute();
+			ps.executeUpdate();
+			ResultSet rs = ps.getGeneratedKeys();
+			while (rs.next()) {
+				id = rs.getInt(1);
+			}
 			ps.close();
 		} catch (FileNotFoundException e) {
 			throw new ErrorBD("Error al encontrar el archivo. " + e.getMessage());
 		} catch (SQLException e) {
 			throw new ErrorBD("Error en el insert de imagen. " + e.getMessage());
 		}
+		return id;
 	}
 
 	public void Delete(String del) {
