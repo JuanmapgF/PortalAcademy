@@ -1,8 +1,10 @@
 package Vista;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,55 +24,107 @@ public class AdminInicio extends JPanel {
 		this.setBounds(0, 0, 1920, 1080);
 		this.setLayout(null);
 
-		bCursos = new JButton("Cursos");
-		bCursos.setVerticalAlignment(SwingConstants.BOTTOM);
-		bCursos.setFont(new Font("Calibri", Font.PLAIN, 30));
-		bCursos.setBounds(764, 229, 199, 47);
+		bCursos = new JButton(new ImageIcon(getClass().getResource("/img/cursos.png")));
+		bCursos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bCursos.setContentAreaFilled(false);
+		bCursos.setFocusPainted(false);
+		bCursos.setBorderPainted(false);
+		bCursos.setBounds(764, 229, 199, 60);
 		add(bCursos);
 
-		bActividades = new JButton("Actividades");
-		bActividades.setVerticalAlignment(SwingConstants.BOTTOM);
-		bActividades.setFont(new Font("Calibri", Font.PLAIN, 30));
-		bActividades.setBounds(764, 324, 199, 47);
+		bActividades = new JButton(new ImageIcon(getClass().getResource("/img/actividades.png")));
+		bActividades.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bActividades.setContentAreaFilled(false);
+		bActividades.setFocusPainted(false);
+		bActividades.setBorderPainted(false);
+		bActividades.setBounds(764, 324, 199, 60);
 		add(bActividades);
 
-		bUsuarios = new JButton("Usuarios");
-		bUsuarios.setVerticalAlignment(SwingConstants.BOTTOM);
-		bUsuarios.setFont(new Font("Calibri", Font.PLAIN, 30));
-		bUsuarios.setBounds(764, 416, 199, 47);
+		bUsuarios = new JButton(new ImageIcon(getClass().getResource("/img/usuarios.png")));
+		bUsuarios.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bUsuarios.setContentAreaFilled(false);
+		bUsuarios.setFocusPainted(false);
+		bUsuarios.setBorderPainted(false);
+		bUsuarios.setBounds(764, 416, 199, 60);
 		add(bUsuarios);
+		
+		bForos = new JButton(new ImageIcon(getClass().getResource("/img/foros.png")));
+		bForos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bForos.setContentAreaFilled(false);
+		bForos.setFocusPainted(false);
+		bForos.setBorderPainted(false);
+		bForos.setBounds(764, 510, 199, 60);
+		add(bForos);
+
+		bNoticias = new JButton(new ImageIcon(getClass().getResource("/img/noticias.png")));
+		bNoticias.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bNoticias.setContentAreaFilled(false);
+		bNoticias.setFocusPainted(false);
+		bNoticias.setBorderPainted(false);
+		bNoticias.setBounds(764, 602, 199, 60);
+		add(bNoticias);
 
 		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(726, 812, 466, 40);
+		lblNewLabel.setBounds(680, 975, 593, 40);
 		add(lblNewLabel);
 
-		bCerrarSesion = new JButton("Cerrar sesi\u00F3n");
-		bCerrarSesion.setVerticalAlignment(SwingConstants.TOP);
-		bCerrarSesion.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		bCerrarSesion.setBounds(1647, 58, 202, 48);
+		bCerrarSesion = new JButton(new ImageIcon(getClass().getResource("/img/cerrarSesion.png")));
+		bCerrarSesion.setBounds(1718, 47, 81, 74);
+		bCerrarSesion.setContentAreaFilled(false);
+		bCerrarSesion.setFocusPainted(false);
+		bCerrarSesion.setBorderPainted(false);
+		bCerrarSesion.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		add(bCerrarSesion);
 
-		bInicio = new JButton("Inicio");
-		bInicio.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		bInicio.setForeground(Color.BLUE);
-		bInicio.setBounds(64, 246, 143, 40);
+		bInicio = new JButton(new ImageIcon(getClass().getResource("/img/inicioAdmin.png")));
+		bInicio.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bInicio.setContentAreaFilled(false);
+		bInicio.setFocusPainted(false);
+		bInicio.setBorderPainted(false);
+		bInicio.setBounds(64, 246, 199, 60);
 		add(bInicio);
 
-		bCursos_1 = new JButton("Cursos");
-		bCursos_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		bCursos_1.setBounds(64, 312, 143, 40);
+		bCursos_1 = new JButton(new ImageIcon(getClass().getResource("/img/cursos.png")));
+		bCursos_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bCursos_1.setContentAreaFilled(false);
+		bCursos_1.setFocusPainted(false);
+		bCursos_1.setBorderPainted(false);
+		bCursos_1.setBounds(64, 318, 199, 60);
 		add(bCursos_1);
 
-		bActividades_1 = new JButton("Actividades");
-		bActividades_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		bActividades_1.setBounds(64, 376, 143, 40);
+		bActividades_1 = new JButton(new ImageIcon(getClass().getResource("/img/actividades.png")));
+		bActividades_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bActividades_1.setContentAreaFilled(false);
+		bActividades_1.setFocusPainted(false);
+		bActividades_1.setBorderPainted(false);
+		bActividades_1.setBounds(64, 389, 199, 60);
 		add(bActividades_1);
-
-		bUsuarios_1 = new JButton("Usuarios");
-		bUsuarios_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		bUsuarios_1.setBounds(64, 437, 143, 40);
+		
+		bUsuarios_1 = new JButton(new ImageIcon(getClass().getResource("/img/usuarios.png")));
+		bUsuarios_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bUsuarios_1.setContentAreaFilled(false);
+		bUsuarios_1.setFocusPainted(false);
+		bUsuarios_1.setBorderPainted(false);
+		bUsuarios_1.setBounds(64, 460, 199, 60);
 		add(bUsuarios_1);
+		
+		bForos_1 = new JButton(new ImageIcon(getClass().getResource("/img/foros.png")));
+		bForos_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bForos_1.setContentAreaFilled(false);
+		bForos_1.setFocusPainted(false);
+		bForos_1.setBorderPainted(false);
+		bForos_1.setBounds(64, 531, 199, 60);
+		add(bForos_1);
+
+		bNoticias_1 = new JButton(new ImageIcon(getClass().getResource("/img/noticias.png")));
+		bNoticias_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bNoticias_1.setContentAreaFilled(false);
+		bNoticias_1.setFocusPainted(false);
+		bNoticias_1.setBorderPainted(false);
+		bNoticias_1.setBounds(64, 602, 199, 60);
+		add(bNoticias_1);
 
 		JLabel lblNewLabel_1 = new JLabel("Administrador");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 40));
@@ -81,27 +135,7 @@ public class AdminInicio extends JPanel {
 		lblNewLabel_2.setBounds(10, 11, 240, 20);
 		add(lblNewLabel_2);
 
-		bForos = new JButton("Foros");
-		bForos.setVerticalAlignment(SwingConstants.BOTTOM);
-		bForos.setFont(new Font("Calibri", Font.PLAIN, 30));
-		bForos.setBounds(764, 510, 199, 47);
-		add(bForos);
-
-		bNoticias = new JButton("Noticias");
-		bNoticias.setVerticalAlignment(SwingConstants.BOTTOM);
-		bNoticias.setFont(new Font("Calibri", Font.PLAIN, 30));
-		bNoticias.setBounds(764, 602, 199, 47);
-		add(bNoticias);
-
-		bForos_1 = new JButton("Foros");
-		bForos_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		bForos_1.setBounds(64, 498, 143, 40);
-		add(bForos_1);
-
-		bNoticias_1 = new JButton("Noticias");
-		bNoticias_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		bNoticias_1.setBounds(64, 567, 143, 40);
-		add(bNoticias_1);
+		
 
 	}
 }

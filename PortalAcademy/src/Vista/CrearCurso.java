@@ -1,8 +1,11 @@
 package Vista;
 
+import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
@@ -14,6 +17,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 
 import Controlador.CtrMenu;
 import Modelo.Profesor;
@@ -120,14 +124,21 @@ public class CrearCurso extends JPanel {
 		spinnerAforo.setBounds(750, 710, 90, 40);
 		add(spinnerAforo);
 
-		btnCrearCurso = new JButton("Crear curso");
+		btnCrearCurso = new JButton(new ImageIcon(getClass().getResource("/img/guardar.png")));
+		btnCrearCurso.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnCrearCurso.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnCrearCurso.setContentAreaFilled(false);
+		btnCrearCurso.setText("Guardar nuevo curso");
 		btnCrearCurso.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnCrearCurso.setBounds(1300, 446, 179, 40);
+		btnCrearCurso.setBounds(1128, 784, 305, 49);
 		add(btnCrearCurso);
 
-		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnCancelar.setBounds(1310, 910, 150, 35);
+		btnCancelar = new JButton(new ImageIcon(getClass().getResource("/img/volver.png")));
+		btnCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnCancelar.setContentAreaFilled(false);
+		btnCancelar.setFocusPainted(false);
+		btnCancelar.setBorderPainted(false);
+		btnCancelar.setBounds(448, 117, 78, 67);
 		add(btnCancelar);
 
 		lblForo = new JLabel("Foro:");
