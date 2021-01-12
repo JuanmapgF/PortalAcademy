@@ -1,11 +1,13 @@
 package Vista;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -90,9 +92,12 @@ public class MisCursos extends JPanel {
 		
 		datosTablaProfesor();
 
-		crearCurso = new JButton("Crear curso");
-		crearCurso.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		crearCurso.setBounds(1599, 400, 171, 40);
+		crearCurso = new JButton(new ImageIcon(getClass().getResource("/img/crearCurso.png")));
+		crearCurso.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		crearCurso.setContentAreaFilled(false);
+		crearCurso.setFocusPainted(false);
+		crearCurso.setBorderPainted(false);
+		crearCurso.setBounds(1599, 400, 180, 60);
 		add(crearCurso);
 
 		JScrollPane sp_curso = new JScrollPane();

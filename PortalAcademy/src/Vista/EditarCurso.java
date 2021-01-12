@@ -1,8 +1,10 @@
 package Vista;
 
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
@@ -18,6 +20,9 @@ import javax.swing.SwingConstants;
 import Controlador.CtrMenu;
 import Modelo.Curso;
 import Modelo.Profesor;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
+import javax.swing.border.EtchedBorder;
 
 @SuppressWarnings("serial")
 public class EditarCurso extends JPanel {
@@ -47,13 +52,6 @@ public class EditarCurso extends JPanel {
 		this.setLayout(null);
 		this.setBounds(0, 0, 1920, 1080);
 
-		JLabel titulo = new JLabel("");
-		titulo.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		titulo.setBounds(548, 75, 545, 49);
-		titulo.setHorizontalAlignment(SwingConstants.CENTER);
-		titulo.setText(c.getNombre());
-		add(titulo);
-
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(565, 207, 136, 27);
@@ -80,8 +78,11 @@ public class EditarCurso extends JPanel {
 		fileChooserImagen = new JFileChooser();
 		fileChooserImagen.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		
-		btnSeleccionar = new JButton("Seleccionar");
-		btnSeleccionar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnSeleccionar = new JButton(new ImageIcon(getClass().getResource("/img/subir_archivo.png")));
+		btnSeleccionar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnSeleccionar.setContentAreaFilled(false);
+		btnSeleccionar.setFocusPainted(false);
+		btnSeleccionar.setBorderPainted(false);
 		btnSeleccionar.setBounds(897, 300, 136, 40);
 		add(btnSeleccionar);
 
@@ -150,14 +151,24 @@ public class EditarCurso extends JPanel {
 			online.setSelected(true);
 		}
 
-		guardar = new JButton("Guardar cambios");
+		guardar = new JButton(new ImageIcon(getClass().getResource("/img/guardar.png")));
+		guardar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		guardar.setContentAreaFilled(false);
+		guardar.setFocusPainted(false);
+		guardar.setBorderPainted(false);
+		guardar.setText("Guardar cambios");
 		guardar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		guardar.setBounds(1118, 402, 197, 40);
+		guardar.setBounds(1128, 784, 249, 49);
 		add(guardar);
 
-		eliminar = new JButton("Eliminar curso");
+		eliminar = new JButton(new ImageIcon(getClass().getResource("/img/eliminar.png")));
+		eliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		eliminar.setContentAreaFilled(false);
+		eliminar.setFocusPainted(false);
+		eliminar.setBorderPainted(false);
+		eliminar.setText("Eliminar curso");
 		eliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		eliminar.setBounds(1118, 566, 197, 40);
+		eliminar.setBounds(1118, 867, 249, 49);
 		add(eliminar);
 
 		lblForo = new JLabel("Foro:");
@@ -170,9 +181,12 @@ public class EditarCurso extends JPanel {
 		foro.setSelected(c.getTieneForo());
 		add(foro);
 
-		volver = new JButton("Descartar cambios");
-		volver.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		volver.setBounds(1118, 715, 197, 40);
+		volver = new JButton(new ImageIcon(getClass().getResource("/img/volver.png")));
+		volver.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		volver.setContentAreaFilled(false);
+		volver.setFocusPainted(false);
+		volver.setBorderPainted(false);
+		volver.setBounds(448, 117, 78, 67);
 		add(volver);
 
 		CtrMenu menu = new CtrMenu(new Menu(p));

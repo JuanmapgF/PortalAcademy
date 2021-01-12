@@ -18,73 +18,60 @@ import Modelo.Usuario;
 @SuppressWarnings("serial")
 public class InformacionActividad extends JPanel {
 
-	private JButton editar;
 
 	
 	/**
 	 * Create the panel.
 	 */
 	public InformacionActividad(Actividad actividad, Usuario user) {
-		this.setBounds(0, 0, 1080, 650);
+		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 		
 		JLabel lblFecha = new JLabel("Fecha:");
 		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblFecha.setBounds(278, 336, 63, 14);
+		lblFecha.setBounds(499, 746, 81, 27);
 		add(lblFecha);
 		
 		JLabel lblLugar = new JLabel("Lugar:");
 		lblLugar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblLugar.setBounds(278, 382, 63, 14);
+		lblLugar.setBounds(499, 794, 81, 27);
 		add(lblLugar);
 		
 		JLabel nombreActividad = new JLabel(actividad.getNombre());
 		nombreActividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
-		nombreActividad.setBounds(428, 34, 364, 33);
+		nombreActividad.setBounds(416, 190, 364, 33);
 		add(nombreActividad);
 		
 		JTextArea descripcionActividad = new JTextArea(actividad.getDescripcion());
 		descripcionActividad.setEditable(false);
 		JScrollPane jsp = new JScrollPane(descripcionActividad);
-		jsp.setBounds(278, 102, 652, 185);
+		jsp.setBounds(499, 504, 652, 185);
 		add(jsp);
 		
 		JLabel fecha = new JLabel(actividad.getFecha().toString());
 		fecha.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		fecha.setBounds(382, 336, 377, 14);
+		fecha.setBounds(620, 746, 378, 27);
 		add(fecha);
 		
 		JLabel lugar = new JLabel(actividad.getLugar());
 		lugar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lugar.setBounds(382, 384, 342, 14);
+		lugar.setBounds(619, 794, 344, 27);
 		add(lugar);
 		
 		if (user == null) {
-			CtrMenu menu = new CtrMenu(new Menu());
+			CtrMenu menu = new CtrMenu(new Menu(actividad));
 			add(menu.getPanel());
 		} else if (user instanceof Organizacion) {
-			if(user.equals(actividad.getOrganizacion())) {
-				editar = new JButton("Editar");
-				editar.setBounds(752, 68, 89, 23);
-				add(editar);
-			}
-			CtrMenu menu = new CtrMenu(new Menu((Organizacion)user));
+			CtrMenu menu = new CtrMenu(new Menu((Organizacion)user, actividad));
 			add(menu.getPanel());
 		} else if(user instanceof Profesor){
-			CtrMenu menu = new CtrMenu(new Menu((Profesor)user));
+			CtrMenu menu = new CtrMenu(new Menu((Profesor)user, actividad));
 			add(menu.getPanel());
 		} else {
-			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user));
+			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user, actividad));
 			add(menu.getPanel());
 		}
 		
-	}
-	
-	public void controlador(ActionListener ctr) {	
-		if (editar != null) {
-			editar.addActionListener(ctr);
-			editar.setActionCommand("Editar");
-		}
 	}
 
 }
