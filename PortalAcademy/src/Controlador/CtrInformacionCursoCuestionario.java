@@ -46,7 +46,12 @@ public class CtrInformacionCursoCuestionario implements ActionListener{
 		}
 		
 		if(e.getActionCommand().equals("Hacer")) {
-			enlace(enalceCuestionario);
+			try {
+				Abrir_URL(enalceCuestionario);
+			} catch (URISyntaxException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		
 		if(e.getActionCommand().equals("Crear test")) {
@@ -57,12 +62,26 @@ public class CtrInformacionCursoCuestionario implements ActionListener{
 	}
 
 	public void enlace (String enlaceAAceder){
-        Desktop enlace=Desktop.getDesktop();
+        Desktop enlace = Desktop.getDesktop();
         try {
                 enlace.browse(new URI(enlaceAAceder));
         } catch (IOException | URISyntaxException e) {
             e.getMessage();
         }
     }
+	
+	private void Abrir_URL(String url) throws URISyntaxException {
+		 if (Desktop.isDesktopSupported()) {
+			 Desktop desktop = Desktop.getDesktop();
+			 try {
+				 URI uri = new URI("http://www.byspel.com");
+				 desktop.browse(uri);
+			 } catch (IOException e) {
+				 System.err.println("Error: No se pudo abrir el enlace" + e.getMessage() );
+			 }
+		 } else {
+			 System.err.println("Error: No se puede abrir enlaces web.");
+		 }
+	}
 	
 }
