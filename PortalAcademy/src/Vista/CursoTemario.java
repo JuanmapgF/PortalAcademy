@@ -77,20 +77,20 @@ public class CursoTemario extends JPanel {
 		buttonDynamicSubir.setBounds(1385, 317, 152, 80);
 		add(buttonDynamicSubir);
 
-		CtrMenuCurso ctrMenuCurso = new CtrMenuCurso(new MenuCurso(curso));
-		add(ctrMenuCurso.getPanel());
+//		CtrMenuCurso ctrMenuCurso = new CtrMenuCurso(new MenuCurso(curso));
+//		add(ctrMenuCurso.getPanel());
 
 		if (Main.getUser() == null) {
-			CtrMenu menu = new CtrMenu(new Menu());
+			CtrMenu menu = new CtrMenu(new Menu(curso));
 			add(menu.getPanel());
 		} else if (Main.getUser() instanceof Profesor) {
-			CtrMenu menu = new CtrMenu(new Menu((Profesor) Main.getUser()));
+			CtrMenu menu = new CtrMenu(new Menu((Profesor) Main.getUser(), curso));
 			add(menu.getPanel());
 		} else if (Main.getUser() instanceof Organizacion) {
 			CtrMenu menu = new CtrMenu(new Menu((Organizacion) Main.getUser()));
 			add(menu.getPanel());
 		} else {
-			CtrMenu menu = new CtrMenu(new Menu((Estudiante) Main.getUser()));
+			CtrMenu menu = new CtrMenu(new Menu((Estudiante) Main.getUser(), curso));
 			add(menu.getPanel());
 		}
 	}
@@ -131,6 +131,9 @@ public class CursoTemario extends JPanel {
 	}
 
 	private boolean esCreador() {
+		if (Main.getUser() == null) {
+			return false;
+		}
 		return Main.getUser().getNick().equalsIgnoreCase(curso.getProfesor().getNick());
 	}
 

@@ -584,7 +584,11 @@ public class Explorar extends JPanel {
 			if (!curso.quedanPlazas()) {
 				datosCurso[k][2] = "Lleno";
 			} else {
-				datosCurso[k][2] = "Disponible";
+				if (curso.getPublico()) {
+					datosCurso[k][2] = "Disponible";
+				} else {
+					datosCurso[k][2] = "Privado";
+				}
 			}
 
 			k++;

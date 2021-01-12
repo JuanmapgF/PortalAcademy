@@ -68,8 +68,13 @@ public class InformacionCursoCuestionarios extends JPanel {
 		bCrearTest.setBounds(934, 150, 111, 31);
 		add(bCrearTest);
 		
+		bHacerTest = new JButton("Hacer test");
+		bHacerTest.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		bHacerTest.setBounds(1055, 189, 115, 31);
+		add(bHacerTest);
+		
 		if(user instanceof Profesor) {
-			CtrMenu menu = new CtrMenu(new Menu((Profesor)user));
+			CtrMenu menu = new CtrMenu(new Menu((Profesor)user, curso));
 			add(menu.getPanel());
 			
 			if(curso.getSatisfaccion()) {
@@ -82,16 +87,13 @@ public class InformacionCursoCuestionarios extends JPanel {
 			CtrMenu menu = new CtrMenu(new Menu((Organizacion)user));
 			add(menu.getPanel());
 		} else {
-			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user));
+			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user, curso));
 			add(menu.getPanel());
 		}
-		CtrMenuCurso menuc = new CtrMenuCurso(new MenuCurso(curso));
-		add(menuc.getPanel());
+//		CtrMenuCurso menuc = new CtrMenuCurso(new MenuCurso(curso));
+//		add(menuc.getPanel());
 		
-		bHacerTest = new JButton("Hacer test");
-		bHacerTest.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		bHacerTest.setBounds(1055, 189, 115, 31);
-		add(bHacerTest);
+		
 		
 		
 	}

@@ -46,13 +46,12 @@ public class InformacionCurso extends JPanel {
 		jsp.setBounds(429, 450, 777, 345);
 		add(jsp);
 		
-		//-----
-		if (curso.getTieneForo()) {
-			
-		}
+		
+//		CtrMenuCurso menuc = new CtrMenuCurso(new MenuCurso(curso));
+//		add(menuc.getPanel());
 		
 		if (user == null) {
-			CtrMenu menu = new CtrMenu(new Menu());
+			CtrMenu menu = new CtrMenu(new Menu(curso));
 			add(menu.getPanel());
 		}  else if (user instanceof Profesor) {
 			if(user.equals(curso.getProfesor())) {
@@ -64,18 +63,16 @@ public class InformacionCurso extends JPanel {
 				editarParticipantes.setBounds(752, 168, 149, 23);
 				add(editarParticipantes);
 			}
-			CtrMenu menu = new CtrMenu(new Menu((Profesor)user));
+			CtrMenu menu = new CtrMenu(new Menu((Profesor)user, curso));
 			add(menu.getPanel());
 		} else if(user instanceof Organizacion){
 			CtrMenu menu = new CtrMenu(new Menu((Organizacion)user));
 			add(menu.getPanel());
 		} else {
-			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user));
+			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user, curso));
 			add(menu.getPanel());
 		}
 		
-		CtrMenuCurso menuc = new CtrMenuCurso(new MenuCurso(curso));
-		add(menuc.getPanel());
 	}
 
 	

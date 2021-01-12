@@ -33,6 +33,25 @@ public class InformacionCursoForo extends JPanel {
 	 * Create the panel.
 	 */
 	public InformacionCursoForo(Usuario user, Curso curso) {
+		
+		this.setBounds(0, 0, 1920, 1080);
+		setLayout(null);
+		
+		listaMensajes = new JList();
+		listaMensajes.setModel(modelo);
+		
+		for (Mensaje mensaje : curso.getMensajes()) {
+			if (mensaje.getEmisor() == null) {
+				modelo.addElement("<INVITADO> : " + mensaje.getTexto());
+			} else if (mensaje.getEmisor().equals(user)) {
+				modelo.addElement("<TU> : " + mensaje.getTexto());
+			} else if (mensaje.getEmisor().equals(curso.getProfesor())) {
+				modelo.addElement("<PROFESOR> : " + mensaje.getTexto());
+			} else {
+				modelo.addElement("<" +mensaje.getEmisor().toString().toUpperCase() + "> : " + mensaje.getTexto());
+			}
+		}
+		
 		JScrollPane foro = new JScrollPane();
 		foro.setBounds(278, 234, 459, 268);
 		foro.setViewportView(listaMensajes);
@@ -55,36 +74,24 @@ public class InformacionCursoForo extends JPanel {
 		lblForo.setBounds(278, 215, 46, 14);
 		add(lblForo);
 		
-		listaMensajes.setModel(modelo);
 		
-		for (Mensaje mensaje : curso.getMensajes()) {
-			if (mensaje.getEmisor() == null) {
-				modelo.addElement("<INVITADO> : " + mensaje.getTexto());
-			} else if (mensaje.getEmisor().equals(user)) {
-				modelo.addElement("<TU> : " + mensaje.getTexto());
-			} else if (mensaje.getEmisor().equals(curso.getProfesor())) {
-				modelo.addElement("<PROFESOR> : " + mensaje.getTexto());
-			} else {
-				modelo.addElement("<" +mensaje.getEmisor().toString().toUpperCase() + "> : " + mensaje.getTexto());
-			}
-		}
 		
 		if (user == null) {
-			CtrMenu menu = new CtrMenu(new Menu());
+			CtrMenu menu = new CtrMenu(new Menu(curso));
 			add(menu.getPanel());
 		}  else if (user instanceof Profesor) {
-			CtrMenu menu = new CtrMenu(new Menu((Profesor)user));
+			CtrMenu menu = new CtrMenu(new Menu((Profesor)user, curso));
 			add(menu.getPanel());
 		} else if(user instanceof Organizacion){
 			CtrMenu menu = new CtrMenu(new Menu((Organizacion)user));
 			add(menu.getPanel());
 		} else {
-			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user));
+			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user, curso));
 			add(menu.getPanel());
 		}
 		
-		CtrMenuCurso menuc = new CtrMenuCurso(new MenuCurso(curso));
-		add(menuc.getPanel());
+//		CtrMenuCurso menuc = new CtrMenuCurso(new MenuCurso(curso));
+//		add(menuc.getPanel());
 	}
 	
 	public void controlador(ActionListener ctr) {
