@@ -123,11 +123,6 @@ public class InformacionCursoCuestionarios extends JPanel {
 		CtrMenuCurso menuc = new CtrMenuCurso(new MenuCurso(curso));
 		add(menuc.getPanel());
 		
-		bHacerTest = new JButton("Hacer test");
-		bHacerTest.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		bHacerTest.setBounds(1055, 189, 115, 31);
-		add(bHacerTest);
-		
 		
 	}
 
@@ -142,7 +137,6 @@ public class InformacionCursoCuestionarios extends JPanel {
 		}
 		
 		return t;
-		
 	}
 	
 	private boolean esCreador() {
