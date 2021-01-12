@@ -2,6 +2,9 @@ package Vista;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.net.URL;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -26,6 +29,9 @@ public class AdminNoticias extends JPanel {
 	private List<MensajeNoticia> lista_noticias = MensajeNoticia.getTodasLasNoticias();
 	private JTable noticias;
 	private Object[][] datosNoticias = null;
+	
+	private URL url = getClass().getResource("/img/fondoBlanco.jpg");
+    Image image = new ImageIcon(url).getImage();
 	
 	/**
 	 * Create the panel.
@@ -138,6 +144,16 @@ public class AdminNoticias extends JPanel {
 	
 	public String getNoticia() {
 		return nuevoMensaje.getText();
+	}
+	
+	@Override
+	public void paint(Graphics g) {
+		// TODO Auto-generated method stub
+		
+		g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+        this.setOpaque(false);
+		
+		super.paint(g);
 	}
 
 }

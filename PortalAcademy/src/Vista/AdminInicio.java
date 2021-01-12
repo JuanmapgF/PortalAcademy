@@ -2,7 +2,11 @@ package Vista;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.net.URL;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,6 +17,9 @@ public class AdminInicio extends JPanel {
 
 	public JButton bCerrarSesion, bCursos, bActividades, bUsuarios, bInicio, bCursos_1, bActividades_1, bUsuarios_1,
 			bNoticias, bForos, bForos_1, bNoticias_1;
+	
+	private URL url = getClass().getResource("/img/fondoBlanco.jpg");
+    Image image = new ImageIcon(url).getImage();
 
 	/**
 	 * Create the panel.
@@ -103,5 +110,15 @@ public class AdminInicio extends JPanel {
 		bNoticias_1.setBounds(64, 567, 143, 40);
 		add(bNoticias_1);
 
+	}
+	
+	@Override
+	public void paint(Graphics g) {
+		// TODO Auto-generated method stub
+		
+		g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+        this.setOpaque(false);
+		
+		super.paint(g);
 	}
 }
