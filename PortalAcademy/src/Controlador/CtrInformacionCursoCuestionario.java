@@ -14,62 +14,59 @@ import Modelo.Usuario;
 import Vista.InformacionCursoCuestionarios;
 import Vista.Main;
 
-public class CtrInformacionCursoCuestionario implements ActionListener{
-	
+public class CtrInformacionCursoCuestionario implements ActionListener {
+
 	private InformacionCursoCuestionarios vista;
 	private Curso curso;
 	private Usuario user;
 	private String enalceCuestionario = "https://forms.gle/A6w9nd54iKBxBfFTA";
-	
 
-	
 	public CtrInformacionCursoCuestionario(Usuario user, Curso c) {
-		vista = new InformacionCursoCuestionarios(user,c);
+		vista = new InformacionCursoCuestionarios(user, c);
 		curso = c;
 		this.user = user;
-		// TODO Auto-generated constructor stub
+		vista.controlador(this);
 	}
 
 	public JPanel getPanel() {
 		return vista;
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getActionCommand().equals("Crear")) {
+		if (e.getActionCommand().equals("CREAR")) {
 			curso.setSatisfaccion(true);
 		}
-		
-		if(e.getActionCommand().equals("Borrar")) {
+
+		if (e.getActionCommand().equals("BORRAR")) {
 			curso.setSatisfaccion(false);
 		}
-		
-		if(e.getActionCommand().equals("Hacer")) {
+
+		if (e.getActionCommand().equals("HACER")) {
 			try {
 				Abrir_URL(enalceCuestionario);
 			} catch (URISyntaxException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
-		
-		if(e.getActionCommand().equals("Crear test")) {
+
+		if (e.getActionCommand().equals("CREARTEST")) {
 			CtrCrearTestCurso ctr = new CtrCrearTestCurso(user, curso);
 			Main.setPanel(ctr.getPanel());
 		}
-		
+
 	}
 
-	public void enlace (String enlaceAAceder){
-        Desktop enlace = Desktop.getDesktop();
-        try {
-                enlace.browse(new URI(enlaceAAceder));
-        } catch (IOException | URISyntaxException e) {
-            e.getMessage();
-        }
-    }
-	
+	public void enlace(String enlaceAAceder) {
+		Desktop enlace = Desktop.getDesktop();
+		try {
+			enlace.browse(new URI(enlaceAAceder));
+		} catch (IOException | URISyntaxException e) {
+			e.getMessage();
+		}
+	}
+
 	private void Abrir_URL(String url) throws URISyntaxException {
 		 if (Desktop.isDesktopSupported()) {
 			 Desktop desktop = Desktop.getDesktop();
@@ -83,5 +80,5 @@ public class CtrInformacionCursoCuestionario implements ActionListener{
 			 System.err.println("Error: No se puede abrir enlaces web.");
 		 }
 	}
-	
+
 }

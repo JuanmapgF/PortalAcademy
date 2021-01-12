@@ -1,7 +1,7 @@
 package Vista;
 
 import java.awt.Font;
-import java.util.ArrayList;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
@@ -20,49 +20,46 @@ import Modelo.Organizacion;
 import Modelo.Profesor;
 import Modelo.Test;
 import Modelo.Usuario;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 @SuppressWarnings("serial")
 public class InformacionCursoCuestionarios extends JPanel {
-	
-	public JButton bHacerCuestionario, bCrear, bBorrar,bCrearTest, bHacerTest;
-	
+
+	public JButton bHacerCuestionario, bCrear, bBorrar, bCrearTest, bHacerTest;
+
 	private DefaultListModel<String> modeloC = new DefaultListModel<String>();
 	private JList<String> listaC = new JList<String>();
 	private List<Test> l;
 	private List<Object> lista_test = null;
 	private Object[][] datos = null;
-	
+
 	private static BD bd;
-	
+
 	private Curso curso;
 
-	
 	/**
 	 * Create the panel.
 	 */
 	public InformacionCursoCuestionarios(Usuario user, Curso curso) {
 		this.curso = curso;
-		
+
 		this.curso = curso;
-		
+
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
-		
+
 		addElements(Test.getTodosLosTests(curso.getId()));
 		
 		JLabel labelTest = new JLabel("Tests de conocimiento");
 		labelTest.setFont(new Font("Tahoma", Font.BOLD, 30));
 		labelTest.setBounds(647, 365, 368, 46);
 		add(labelTest);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(647, 421, 616, 327);
 		listaC.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		scrollPane.setViewportView(listaC);
 		add(scrollPane);
-		
+
 		JLabel labelCuestionario = new JLabel("Cuestionario de satisfacci\u00F3n");
 		labelCuestionario.setFont(new Font("Tahoma", Font.BOLD, 30));
 		labelCuestionario.setBounds(647, 776, 435, 52);
@@ -107,24 +104,21 @@ public class InformacionCursoCuestionarios extends JPanel {
 			add(bCrearTest);
 			
 		}
-		
-		if(user instanceof Profesor) {
-			CtrMenu menu = new CtrMenu(new Menu((Profesor)user, curso));
+
+		if (user instanceof Profesor) {
+			CtrMenu menu = new CtrMenu(new Menu((Profesor) user, curso));
 			add(menu.getPanel());
-		}else if(user instanceof Organizacion){
-			CtrMenu menu = new CtrMenu(new Menu((Organizacion)user));
+		} else if (user instanceof Organizacion) {
+			CtrMenu menu = new CtrMenu(new Menu((Organizacion) user));
 			add(menu.getPanel());
 		} else {
-			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user, curso));
+			CtrMenu menu = new CtrMenu(new Menu((Estudiante) user, curso));
 			add(menu.getPanel());
 		}
-		
+
 		CtrMenuCurso menuc = new CtrMenuCurso(new MenuCurso(curso));
 		add(menuc.getPanel());
-		
-		
-		
-		
+
 	}
 
 	public void addElements(List<Test> l) {
@@ -137,11 +131,20 @@ public class InformacionCursoCuestionarios extends JPanel {
 
 		listaC.setLayoutOrientation(JList.VERTICAL);
 	}
-	
+
 	private boolean esCreador() {
 		if (Main.getUser() == null) {
 			return false;
 		}
 		return Main.getUser().equals(curso.getProfesor());
+	}
+
+	public void controlador(ActionListener ctr) {
+		this.bCrearTest.addActionListener(ctr);
+		this.bCrearTest.setActionCommand("CREARTEST");
+		this.bBorrar.addActionListener(ctr);
+		this.bBorrar.setActionCommand("BORRAR");
+		this.bCrear.addActionListener(ctr);
+		this.bCrear.setActionCommand("CREAR");
 	}
 }

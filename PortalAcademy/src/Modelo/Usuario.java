@@ -7,8 +7,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import javax.swing.JLabel;
-
 public class Usuario {
 
 	private String nick;
