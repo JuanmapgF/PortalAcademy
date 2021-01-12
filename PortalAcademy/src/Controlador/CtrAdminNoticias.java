@@ -8,7 +8,9 @@ import javax.swing.JPanel;
 
 import Modelo.Actividad;
 import Modelo.Curso;
+import Modelo.EnviarCorreo;
 import Modelo.MensajeNoticia;
+import Modelo.Usuario;
 import Vista.AdminActividades;
 import Vista.AdminCursos;
 import Vista.AdminForos;
@@ -37,7 +39,7 @@ public class CtrAdminNoticias implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+
 		if (e.getSource() == vista.bNoticias_1) {
 			CtrAdminNoticias ctrAdminNoticias = new CtrAdminNoticias(new AdminNoticias());
 			Main.setPanel(ctrAdminNoticias.getPanel());
@@ -47,7 +49,7 @@ public class CtrAdminNoticias implements ActionListener {
 			CtrAdminForos ctrAdminForos = new CtrAdminForos(new AdminForos());
 			Main.setPanel(ctrAdminForos.getPanel());
 		}
-		
+
 		// pulsar en cualquiera de los dos botones de "ACTIVIDAD"
 		if (e.getSource() == vista.bActividades_1) {
 			CtrAdminActividades ctr = new CtrAdminActividades(new AdminActividades());
@@ -78,16 +80,21 @@ public class CtrAdminNoticias implements ActionListener {
 			CtrAdminUsuarios ctr = new CtrAdminUsuarios(new AdminUsuarios());
 			Main.setPanel(ctr.getPanel());
 		}
-		
+
 		if (e.getSource() == vista.agregarNoticia) {
 			String noticia = vista.getNoticia();
-			
+
 			if (noticia.length() > 80) {
 				JOptionPane.showMessageDialog(vista, "La noticia ha superado los 80 caracteres permitidos");
 			} else if (noticia.equals("") || noticia.charAt(0) == ' ') {
 				JOptionPane.showMessageDialog(vista, "La noticia debe empezar por algun caracter");
 			} else {
 				new MensajeNoticia(noticia);
+				for (Usuario u : Usuario.getUsuarios()) {
+					EnviarCorreo.enviarGmailUnico(u.getCorreo(), "Noticias",
+							"Hola buenas " + u.getNick() + ",\n\nLe adjuntamos la siguiente noticia:\n" + noticia
+									+ "\n\nUn cordial saludo de la comunidad NoTrabaJava.");
+				}
 			}
 			CtrAdminNoticias ctr = new CtrAdminNoticias(new AdminNoticias());
 			Main.setPanel(ctr.getPanel());

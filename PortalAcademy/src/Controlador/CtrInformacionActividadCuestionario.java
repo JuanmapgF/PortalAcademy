@@ -10,19 +10,20 @@ import java.net.URISyntaxException;
 import javax.swing.JPanel;
 
 import Modelo.Actividad;
+import Modelo.Curso;
 import Modelo.Usuario;
 import Vista.InformacionActividadCuestionario;
 import Vista.Main;
 
 public class CtrInformacionActividadCuestionario implements ActionListener {
 
-	private InformacionActividadCuestionario vista;
+	private InformacionActividadCuestionarios vista;
 	private Actividad actividad;
 	private Usuario user;
 	private String enlaceCuestionario = "https://forms.gle/A6w9nd54iKBxBfFTA";
 
 	public CtrInformacionActividadCuestionario(Actividad actividad, Usuario user) {
-		vista = new InformacionActividadCuestionario(user, actividad);
+		vista = new InformacionActividadCuestionarios(user, actividad);
 		this.actividad = actividad;
 		this.user = user;
 		vista.controlador(this);
@@ -60,13 +61,20 @@ public class CtrInformacionActividadCuestionario implements ActionListener {
 
 	}
 
-	public void enlace(String enlaceAAceder) {
-		Desktop enlace = Desktop.getDesktop();
-		try {
-			enlace.browse(new URI(enlaceAAceder));
-		} catch (IOException | URISyntaxException e) {
-			e.getMessage();
-		}
+	
+	
+	private void Abrir_URL(String url) throws URISyntaxException {
+		 if (Desktop.isDesktopSupported()) {
+			 Desktop desktop = Desktop.getDesktop();
+			 try {
+				 URI uri = new URI(url);
+				 desktop.browse(uri);
+			 } catch (IOException e) {
+				 System.err.println("Error: No se pudo abrir el enlace" + e.getMessage() );
+			 }
+		 } else {
+			 System.err.println("Error: No se puede abrir enlaces web.");
+		 }
 	}
 	
 	private void Abrir_URL(String url) throws URISyntaxException {
