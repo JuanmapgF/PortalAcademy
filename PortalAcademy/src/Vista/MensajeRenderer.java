@@ -11,17 +11,7 @@ import javax.swing.table.TableCellRenderer;
 @SuppressWarnings("serial")
 public class MensajeRenderer extends JLabel implements TableCellRenderer {
 
-	/**
-	 * 
-	 */
-	private ChatPrivado mensajeRenderer;
 
-	/**
-	 * @param chatPrivado
-	 */
-	MensajeRenderer(ChatPrivado chatPrivado) {
-		mensajeRenderer = chatPrivado;
-	}
 
 	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
