@@ -36,7 +36,6 @@ public class ButtonChatEditor extends DefaultCellEditor {
 		 
 		public ButtonChatEditor(InformacionCursoForo icf, JTextField txt) {
 			super(txt);
-			button = icf;
 			
 			btn = new JButton();
 			btn.setOpaque(true);

@@ -37,7 +37,7 @@ public class InformacionCursoForo extends JPanel {
 	
 	private List<Mensaje> lista;
 	private JTable tablaMensajes;
-	private MensajeRenderer mensajeRenderer = new MensajeRenderer(this);
+	private MensajeRenderer mensajeRenderer = new MensajeRenderer();
 	private ButtonChatEditor chatEditor = new ButtonChatEditor(this, new JTextField());
 	private Usuario user;
 	private Curso curso;
