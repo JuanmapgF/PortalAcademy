@@ -107,6 +107,7 @@ public class InformacionCursoCuestionarios extends JPanel {
 			
 		}
 
+		
 		if (user instanceof Profesor) {
 			CtrMenu menu = new CtrMenu(new Menu((Profesor) user, curso));
 			add(menu.getPanel());
