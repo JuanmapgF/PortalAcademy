@@ -22,7 +22,6 @@ import Modelo.Curso;
 import Modelo.Profesor;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
-import javax.swing.border.EtchedBorder;
 
 @SuppressWarnings("serial")
 public class EditarCurso extends JPanel {
@@ -152,20 +151,18 @@ public class EditarCurso extends JPanel {
 		}
 
 		guardar = new JButton(new ImageIcon(getClass().getResource("/img/guardar.png")));
+		guardar.setBorder(new LineBorder(new Color(0, 0, 0)));
 		guardar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		guardar.setContentAreaFilled(false);
-		guardar.setFocusPainted(false);
-		guardar.setBorderPainted(false);
 		guardar.setText("Guardar cambios");
 		guardar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		guardar.setBounds(1128, 784, 249, 49);
 		add(guardar);
 
 		eliminar = new JButton(new ImageIcon(getClass().getResource("/img/eliminar.png")));
+		eliminar.setBorder(new LineBorder(new Color(0, 0, 0)));
 		eliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		eliminar.setContentAreaFilled(false);
-		eliminar.setFocusPainted(false);
-		eliminar.setBorderPainted(false);
 		eliminar.setText("Eliminar curso");
 		eliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		eliminar.setBounds(1118, 867, 249, 49);
