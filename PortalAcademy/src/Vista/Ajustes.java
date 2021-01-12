@@ -29,8 +29,6 @@ public class Ajustes extends JPanel {
 	private boolean esProfesor = false;
 	private boolean esOrganizacion = false;
 
-
-
 	public String getTexto() {
 		return String.valueOf(texto.getPassword());
 	}
@@ -59,7 +57,6 @@ public class Ajustes extends JPanel {
 		return esOrganizacion;
 	}
 
-	
 	public Ajustes(Estudiante u) {
 		estudiante = u;
 		esEstudiante = true;
@@ -71,7 +68,6 @@ public class Ajustes extends JPanel {
 		titulo.setBounds(731, 153, 183, 102);
 		add(titulo);
 
-
 		JLabel nueva = new JLabel("Nueva contrase\u00F1a:");
 		nueva.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		nueva.setBounds(580, 301, 183, 60);
@@ -98,14 +94,13 @@ public class Ajustes extends JPanel {
 		eliminar.setFocusPainted(false);
 		eliminar.setBorderPainted(false);
 		add(eliminar);
-		
+
 		CtrMenu menu = new CtrMenu(new Menu(u));
 		add(menu.getPanel());
 
 		this.setBounds(0, 0, 1920, 1080);
 	}
 
-	
 	public Ajustes(Profesor u) {
 		esProfesor = true;
 		prof = u;
@@ -116,7 +111,6 @@ public class Ajustes extends JPanel {
 		titulo.setBounds(731, 153, 183, 102);
 		add(titulo);
 
-
 		JLabel nueva = new JLabel("Nueva contrase\u00F1a:");
 		nueva.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		nueva.setBounds(580, 301, 183, 60);
@@ -143,7 +137,7 @@ public class Ajustes extends JPanel {
 		eliminar.setFocusPainted(false);
 		eliminar.setBorderPainted(false);
 		add(eliminar);
-		
+
 		CtrMenu menu = new CtrMenu(new Menu(u));
 		add(menu.getPanel());
 
@@ -163,7 +157,6 @@ public class Ajustes extends JPanel {
 		titulo.setBounds(731, 153, 183, 102);
 		add(titulo);
 
-
 		JLabel nueva = new JLabel("Nueva contrase\u00F1a:");
 		nueva.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		nueva.setBounds(580, 301, 183, 60);
@@ -190,7 +183,7 @@ public class Ajustes extends JPanel {
 		eliminar.setFocusPainted(false);
 		eliminar.setBorderPainted(false);
 		add(eliminar);
-		
+
 		CtrMenu menu = new CtrMenu(new Menu(u));
 		add(menu.getPanel());
 

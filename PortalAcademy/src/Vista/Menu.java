@@ -718,7 +718,7 @@ public class Menu extends JPanel {
 		CtrMenuCurso menuc = new CtrMenuCurso(new MenuCurso(curso));
 		add(menuc.getPanel());
 	}
-	
+
 	public Menu(Actividad actividad) {
 
 		this.setBounds(0, 0, 1920, 1080);
@@ -750,49 +750,47 @@ public class Menu extends JPanel {
 		explorar.setFocusPainted(false);
 		explorar.setBorderPainted(false);
 		add(explorar);
-		
+
 		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(680, 975, 593, 40);
 		add(lblNewLabel);
-		
+
 		JCalendar jc = new JCalendar();
 		jc.setBounds(60, 755, 205, 153);
-	    HighlightEvaluator evaluator = new HighlightEvaluator();
-	    for(Actividad a : Actividad.getTodasLasActividades()) {
+		HighlightEvaluator evaluator = new HighlightEvaluator();
+		for (Actividad a : Actividad.getTodasLasActividades()) {
 			evaluator.add(a.getFecha());
 		}
 //			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-09"));
 //			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-10"));
-	   
-	    jc.getDayChooser().addDateEvaluator(evaluator);
-	    jc.setCalendar(jc.getCalendar());  
+
+		jc.getDayChooser().addDateEvaluator(evaluator);
+		jc.setCalendar(jc.getCalendar());
 		add(jc);
 		jc.setWeekOfYearVisible(false);
 		jc.getDayChooser().addPropertyChangeListener("day", new PropertyChangeListener() {
 
-		    @Override
-		    public void propertyChange(PropertyChangeEvent e) {
-		    	CtrCalendario c = new CtrCalendario(new Calendario(jc.getDate()));
+			@Override
+			public void propertyChange(PropertyChangeEvent e) {
+				CtrCalendario c = new CtrCalendario(new Calendario(jc.getDate()));
 				Main.setPanel(c.getPanel());
 
-		    }
+			}
 		});
-		
+
 		logo = new JLabel(LOGO);
 		logo.setBounds(780, 10, 400, 100);
 		logo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		logo.setText("Portal Academy");
 		logo.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		add(logo);
-		
+
 		CtrMenuActividad menua = new CtrMenuActividad(new MenuActividad(actividad));
 		add(menua.getPanel());
 
 	}
-	
-	
 
 	public Menu(Estudiante estudiante, Actividad actividad) {
 		this.estudiante = true;
@@ -830,7 +828,7 @@ public class Menu extends JPanel {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(680, 975, 593, 40);
 		add(lblNewLabel);
-		
+
 		actividades = new JButton(MIS_ACTIVIDADES);
 		actividades.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		actividades.setBounds(60, 489, 205, 60);
@@ -849,11 +847,11 @@ public class Menu extends JPanel {
 		ajustes.setBorderPainted(false);
 		add(ajustes);
 
-		user = new ButtonDynamic(estudiante.getNick(), ButtonDynamic.USUARIO);
+		user = new ButtonDynamic(estudiante.getNick(), "USUARIO");
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
 		user.setBounds(82, 22, 150, 136);
 		add(cbdUser.getBoton());
-		
+
 		cerrarSesion = new JButton(CERRAR_SESION);
 		cerrarSesion.setBounds(1718, 47, 81, 74);
 		cerrarSesion.setContentAreaFilled(false);
@@ -870,45 +868,44 @@ public class Menu extends JPanel {
 		btnChat.setBorderPainted(false);
 		btnChat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		add(btnChat);
-		
+
 		JCalendar jc = new JCalendar();
 		jc.setBounds(60, 755, 205, 153);
-	    HighlightEvaluator evaluator = new HighlightEvaluator();
-	    for(Actividad a : estudiante.getListaActividades()) {
+		HighlightEvaluator evaluator = new HighlightEvaluator();
+		for (Actividad a : estudiante.getListaActividades()) {
 			evaluator.add(a.getFecha());
 		}
-	    
-	    for(Date a : estudiante.getFechas()) {
+
+		for (Date a : estudiante.getFechas()) {
 			evaluator.add(a);
 		}
 //			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-09"));
 //			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-10"));
-	    jc.getDayChooser().addDateEvaluator(evaluator);
-	    jc.setCalendar(jc.getCalendar());  
+		jc.getDayChooser().addDateEvaluator(evaluator);
+		jc.setCalendar(jc.getCalendar());
 		add(jc);
 		jc.setWeekOfYearVisible(false);
 		jc.getDayChooser().addPropertyChangeListener("day", new PropertyChangeListener() {
 
-		    @Override
-		    public void propertyChange(PropertyChangeEvent e) {
-		    	CtrCalendario c = new CtrCalendario(new Calendario(estudiante,jc.getDate()));
+			@Override
+			public void propertyChange(PropertyChangeEvent e) {
+				CtrCalendario c = new CtrCalendario(new Calendario(estudiante, jc.getDate()));
 				Main.setPanel(c.getPanel());
 
-		    }
+			}
 		});
-		
+
 		logo = new JLabel(LOGO);
 		logo.setBounds(780, 10, 400, 100);
 		logo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		logo.setText("Portal Academy");
 		logo.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		add(logo);
-		
+
 		CtrMenuActividad menua = new CtrMenuActividad(new MenuActividad(actividad));
 		add(menua.getPanel());
 	}
 
-	
 	public Menu(Profesor profesor, Actividad actividad) {
 		this.prof = profesor;
 		this.profesor = true;
@@ -954,7 +951,7 @@ public class Menu extends JPanel {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(680, 975, 593, 40);
 		add(lblNewLabel);
-		
+
 		ajustes = new JButton(AJUSTES);
 		ajustes.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		ajustes.setBounds(1627, 47, 81, 74);
@@ -964,11 +961,11 @@ public class Menu extends JPanel {
 		ajustes.setBorderPainted(false);
 		add(ajustes);
 
-		user = new ButtonDynamic(profesor.getNick(), ButtonDynamic.USUARIO);
+		user = new ButtonDynamic(profesor.getNick(), "USUARIO");
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
 		user.setBounds(82, 22, 150, 136);
 		add(cbdUser.getBoton());
-		
+
 		cerrarSesion = new JButton(CERRAR_SESION);
 		cerrarSesion.setBounds(1718, 47, 81, 74);
 		cerrarSesion.setContentAreaFilled(false);
@@ -985,45 +982,45 @@ public class Menu extends JPanel {
 		btnChat.setBorderPainted(false);
 		btnChat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		add(btnChat);
-		
+
 		JCalendar jc = new JCalendar();
 		jc.setBounds(60, 755, 205, 153);
-	    HighlightEvaluator evaluator = new HighlightEvaluator();
-	    
-	    for(Actividad a : profesor.getListaActividades()) {
+		HighlightEvaluator evaluator = new HighlightEvaluator();
+
+		for (Actividad a : profesor.getListaActividades()) {
 			evaluator.add(a.getFecha());
 		}
-	    
-	    for(Date a : profesor.getFechas()) {
+
+		for (Date a : profesor.getFechas()) {
 			evaluator.add(a);
 		}
 //			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-09"));
 //			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-10"));
-	    jc.getDayChooser().addDateEvaluator(evaluator);
-	    jc.setCalendar(jc.getCalendar());  
+		jc.getDayChooser().addDateEvaluator(evaluator);
+		jc.setCalendar(jc.getCalendar());
 		add(jc);
 		jc.setWeekOfYearVisible(false);
 		jc.getDayChooser().addPropertyChangeListener("day", new PropertyChangeListener() {
 
-		    @Override
-		    public void propertyChange(PropertyChangeEvent e) {
-		    	CtrCalendario c = new CtrCalendario(new Calendario(profesor,jc.getDate()));
+			@Override
+			public void propertyChange(PropertyChangeEvent e) {
+				CtrCalendario c = new CtrCalendario(new Calendario(profesor, jc.getDate()));
 				Main.setPanel(c.getPanel());
 
-		    }
+			}
 		});
-		
+
 		logo = new JLabel(LOGO);
 		logo.setBounds(780, 10, 400, 100);
 		logo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		logo.setText("Portal Academy");
 		logo.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		add(logo);
-		
+
 		CtrMenuActividad menua = new CtrMenuActividad(new MenuActividad(actividad));
 		add(menua.getPanel());
 	}
-	
+
 	public Menu(Organizacion organizacion, Actividad actividad) {
 		this.org = organizacion;
 		this.organizacion = true;
@@ -1060,7 +1057,7 @@ public class Menu extends JPanel {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(680, 975, 593, 40);
 		add(lblNewLabel);
-		
+
 		ajustes = new JButton(AJUSTES);
 		ajustes.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		ajustes.setBounds(1627, 47, 81, 74);
@@ -1070,11 +1067,11 @@ public class Menu extends JPanel {
 		ajustes.setBorderPainted(false);
 		add(ajustes);
 
-		user = new ButtonDynamic(organizacion.getNick(), ButtonDynamic.USUARIO);
+		user = new ButtonDynamic(organizacion.getNick(), "USUARIO");
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
 		user.setBounds(82, 22, 590, 136);
 		add(cbdUser.getBoton());
-		
+
 		cerrarSesion = new JButton(CERRAR_SESION);
 		cerrarSesion.setBounds(1718, 47, 81, 74);
 		cerrarSesion.setContentAreaFilled(false);
@@ -1091,42 +1088,42 @@ public class Menu extends JPanel {
 		btnChat.setBorderPainted(false);
 		btnChat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		add(btnChat);
-		
+
 		JCalendar jc = new JCalendar();
 		jc.setBounds(60, 755, 205, 153);
-	    HighlightEvaluator evaluator = new HighlightEvaluator();
+		HighlightEvaluator evaluator = new HighlightEvaluator();
 
-	    for(Actividad a : organizacion.getActividades()) {
+		for (Actividad a : organizacion.getActividades()) {
 			evaluator.add(a.getFecha());
 		}
-	    
-	    for(Date a : organizacion.getFechas()) {
+
+		for (Date a : organizacion.getFechas()) {
 			evaluator.add(a);
 		}
-	    
+
 //			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-09"));
 //			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-10"));
-	    jc.getDayChooser().addDateEvaluator(evaluator);
-	    jc.setCalendar(jc.getCalendar());  
+		jc.getDayChooser().addDateEvaluator(evaluator);
+		jc.setCalendar(jc.getCalendar());
 		add(jc);
 		jc.setWeekOfYearVisible(false);
 		jc.getDayChooser().addPropertyChangeListener("day", new PropertyChangeListener() {
 
-		    @Override
-		    public void propertyChange(PropertyChangeEvent e) {
-		    	CtrCalendario c = new CtrCalendario(new Calendario(organizacion,jc.getDate()));
+			@Override
+			public void propertyChange(PropertyChangeEvent e) {
+				CtrCalendario c = new CtrCalendario(new Calendario(organizacion, jc.getDate()));
 				Main.setPanel(c.getPanel());
 
-		    }
+			}
 		});
-		
+
 		logo = new JLabel(LOGO);
 		logo.setBounds(780, 10, 400, 100);
 		logo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		logo.setText("Portal Academy");
 		logo.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		add(logo);
-		
+
 		CtrMenuActividad menua = new CtrMenuActividad(new MenuActividad(actividad));
 		add(menua.getPanel());
 	}

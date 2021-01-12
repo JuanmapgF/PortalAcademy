@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 
 import Modelo.Actividad;
 import Modelo.Curso;
-import Modelo.MensajeNoticia;
 import Vista.AdminActividades;
 import Vista.AdminCursos;
 import Vista.AdminForos;
@@ -18,26 +17,27 @@ import Vista.AdminUsuarios;
 import Vista.Explorar;
 import Vista.Main;
 
-public class CtrAdminNoticias implements ActionListener {
+public class CtrAdminForos implements ActionListener {
 
-	private AdminNoticias vista;
+	private AdminForos vista;
 
-	public CtrAdminNoticias(AdminNoticias v) {
+	public CtrAdminForos(AdminForos v) {
 		vista = v;
 
 		vista.bActividades_1.addActionListener(this);
+		vista.bForos_1.addActionListener(this);
+		vista.bNoticias_1.addActionListener(this);
 		vista.bCerrarSesion.addActionListener(this);
 		vista.bCursos_1.addActionListener(this);
 		vista.bInicio.addActionListener(this);
 		vista.bUsuarios_1.addActionListener(this);
-		vista.agregarNoticia.addActionListener(this);
-		vista.bForos_1.addActionListener(this);
-		vista.bNoticias_1.addActionListener(this);
+		vista.bEliminar.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		// pulsar en el botón "ELIMINAR" tras seleccionar un curso
+
 		if (e.getSource() == vista.bNoticias_1) {
 			CtrAdminNoticias ctrAdminNoticias = new CtrAdminNoticias(new AdminNoticias());
 			Main.setPanel(ctrAdminNoticias.getPanel());
@@ -47,7 +47,18 @@ public class CtrAdminNoticias implements ActionListener {
 			CtrAdminForos ctrAdminForos = new CtrAdminForos(new AdminForos());
 			Main.setPanel(ctrAdminForos.getPanel());
 		}
-		
+
+		if (e.getSource() == vista.bEliminar) {
+			Curso cur = vista.getCurso();
+			if (cur != null) {
+				cur.setTieneForo(false);
+				JOptionPane.showMessageDialog(vista, "Se ha eliminado el foro del curso de forma satisfactoria",
+						"Eliminar foro", JOptionPane.INFORMATION_MESSAGE);
+				CtrAdminCursos ctr = new CtrAdminCursos(new AdminCursos());
+				Main.setPanel(ctr.getPanel());
+			}
+		}
+
 		// pulsar en cualquiera de los dos botones de "ACTIVIDAD"
 		if (e.getSource() == vista.bActividades_1) {
 			CtrAdminActividades ctr = new CtrAdminActividades(new AdminActividades());
@@ -78,21 +89,6 @@ public class CtrAdminNoticias implements ActionListener {
 			CtrAdminUsuarios ctr = new CtrAdminUsuarios(new AdminUsuarios());
 			Main.setPanel(ctr.getPanel());
 		}
-		
-		if (e.getSource() == vista.agregarNoticia) {
-			String noticia = vista.getNoticia();
-			
-			if (noticia.length() > 80) {
-				JOptionPane.showMessageDialog(vista, "La noticia ha superado los 80 caracteres permitidos");
-			} else if (noticia.equals("") || noticia.charAt(0) == ' ') {
-				JOptionPane.showMessageDialog(vista, "La noticia debe empezar por algun caracter");
-			} else {
-				new MensajeNoticia(noticia);
-			}
-			CtrAdminNoticias ctr = new CtrAdminNoticias(new AdminNoticias());
-			Main.setPanel(ctr.getPanel());
-		}
-
 	}
 
 	public JPanel getPanel() {

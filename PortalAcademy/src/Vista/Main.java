@@ -10,7 +10,6 @@ import javax.swing.border.EmptyBorder;
 
 import Controlador.CtrExplorar;
 import Modelo.Actividad;
-import Modelo.BD;
 import Modelo.Curso;
 import Modelo.Usuario;
 

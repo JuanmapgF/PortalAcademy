@@ -2,6 +2,7 @@ package Vista;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
@@ -12,33 +13,45 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
-import Modelo.Actividad;
+import Modelo.Curso;
 
 @SuppressWarnings("serial")
-public class AdminActividades extends JPanel {
+public class AdminForos extends JPanel {
 
 	public JButton bCerrarSesion, bInicio, bCursos_1, bActividades_1, bUsuarios_1, bEliminar, bForos_1, bNoticias_1;
 
 	private DefaultListModel<String> modeloA = new DefaultListModel<String>();
 	private JList<String> listA = new JList<String>();
-	private List<Actividad> lista_actividades;
+	private List<Curso> lista_cursos;
 
 	/**
 	 * Create the panel.
 	 */
-	public AdminActividades() {
-
-		// para mostrar la lista de actividades en el scrollpanel
+	public AdminForos() {
 		listA.setModel(modeloA);
-		lista_actividades = Actividad.getTodasLasActividades();
-		for (Actividad d : lista_actividades) {
-			modeloA.addElement(d.toString());
+		lista_cursos = new ArrayList<Curso>();
+		Object[] cursos = Curso.getTodosLosCursos().toArray();
+		for (int i = 0; i < cursos.length; i++) {
+			if (cursos[i] instanceof Curso) {
+				Curso c = (Curso) cursos[i];
+				if (c.getTieneForo()) {
+					lista_cursos.add(c);
+				}
+			}
+		}
+		for (Curso c : lista_cursos) {
+			modeloA.addElement(c.toString());
 		}
 		listA.setLayoutOrientation(JList.VERTICAL);
 		// --------------------------------------------------------
 
 		setLayout(null);
 		this.setBounds(0, 0, 1920, 1080);
+
+		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel.setBounds(726, 812, 466, 40);
+		add(lblNewLabel);
 
 		bCerrarSesion = new JButton("Cerrar sesi\u00F3n");
 		bCerrarSesion.setVerticalAlignment(SwingConstants.TOP);
@@ -65,23 +78,18 @@ public class AdminActividades extends JPanel {
 		bUsuarios_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		bUsuarios_1.setBounds(64, 437, 143, 40);
 		add(bUsuarios_1);
-
-		JLabel lblNewLabel_1 = new JLabel("Actividades");
+		
+		JLabel lblNewLabel_1 = new JLabel("Cursos con foro:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		lblNewLabel_1.setBounds(830, 186, 349, 74);
+		lblNewLabel_1.setBounds(892, 190, 211, 74);
 		add(lblNewLabel_1);
 
-		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(726, 812, 466, 40);
-		add(lblNewLabel);
+		JScrollPane spCursos = new JScrollPane();
+		spCursos.setBounds(600, 300, 700, 400);
+		spCursos.setViewportView(listA);
+		add(spCursos);
 
-		JScrollPane spActivadades = new JScrollPane();
-		spActivadades.setBounds(600, 300, 700, 400);
-		spActivadades.setViewportView(listA);
-		add(spActivadades);
-
-		bEliminar = new JButton("ELIMINAR");
+		bEliminar = new JButton("Borrar foro");
 		bEliminar.setFont(new Font("Tahoma", Font.BOLD, 20));
 		bEliminar.setForeground(Color.RED);
 		bEliminar.setBounds(1451, 454, 143, 74);
@@ -90,7 +98,7 @@ public class AdminActividades extends JPanel {
 		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + Main.getUser().getNick());
 		lblNewLabel_2.setBounds(10, 11, 240, 20);
 		add(lblNewLabel_2);
-
+		
 		bForos_1 = new JButton("Foros");
 		bForos_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		bForos_1.setBounds(64, 498, 143, 40);
@@ -100,14 +108,14 @@ public class AdminActividades extends JPanel {
 		bNoticias_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		bNoticias_1.setBounds(64, 567, 143, 40);
 		add(bNoticias_1);
-
 	}
 
-	public Actividad getActividad() {
+	public Curso getCurso() {
 		if (listA.isSelectionEmpty()) {
 			return null;
 		} else {
-			return lista_actividades.get(listA.getSelectedIndex());
+			return lista_cursos.get(listA.getSelectedIndex());
 		}
 	}
+
 }

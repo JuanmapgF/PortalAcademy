@@ -10,7 +10,9 @@ import Modelo.Actividad;
 import Modelo.Curso;
 import Vista.AdminActividades;
 import Vista.AdminCursos;
+import Vista.AdminForos;
 import Vista.AdminInicio;
+import Vista.AdminNoticias;
 import Vista.AdminUsuarios;
 import Vista.Explorar;
 import Vista.Main;
@@ -23,12 +25,13 @@ public class CtrAdminCursos implements ActionListener {
 		vista = v;
 
 		vista.bActividades_1.addActionListener(this);
-		vista.bAjustes.addActionListener(this);
 		vista.bCerrarSesion.addActionListener(this);
 		vista.bCursos_1.addActionListener(this);
 		vista.bInicio.addActionListener(this);
 		vista.bUsuarios_1.addActionListener(this);
 		vista.bEliminar.addActionListener(this);
+		vista.bForos_1.addActionListener(this);
+		vista.bNoticias_1.addActionListener(this);
 	}
 
 	public JPanel getPanel() {
@@ -55,9 +58,14 @@ public class CtrAdminCursos implements ActionListener {
 			Main.setPanel(ctr.getPanel());
 		}
 
-		// pulsar en el botón "AJUSTES"
-		if (e.getSource() == vista.bAjustes) {
+		if (e.getSource() == vista.bNoticias_1) {
+			CtrAdminNoticias ctrAdminNoticias = new CtrAdminNoticias(new AdminNoticias());
+			Main.setPanel(ctrAdminNoticias.getPanel());
+		}
 
+		if (e.getSource() == vista.bForos_1) {
+			CtrAdminForos ctrAdminForos = new CtrAdminForos(new AdminForos());
+			Main.setPanel(ctrAdminForos.getPanel());
 		}
 
 		// pulsar en el botón "CERRARSESION"
