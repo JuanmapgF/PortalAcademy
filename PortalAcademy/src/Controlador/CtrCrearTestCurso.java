@@ -60,10 +60,7 @@ public class CtrCrearTestCurso implements ActionListener{
 					link = vista.tfLink.getText();
 					
 					
-					bd = BD.getBD();
-					bd.Insert("INSERT INTO Test (idCurso,nombre,descripccion,link) VALUES (" + curso.getId() + ",'" + nombre + "', '"+ descripccion +
-							"', '"+ link+"')");
-					bd.finalize();
+					
 					
 					JOptionPane.showMessageDialog(vista,
 							"El test " + nombre + " ha sido creado satisfactoriamente.", "Test creado",JOptionPane.INFORMATION_MESSAGE);
