@@ -38,7 +38,7 @@ public class InformacionActividad extends JPanel {
 		add(lblLugar);
 		
 		JLabel nombreCurso = new JLabel(actividad.getNombre());
-		nombreCurso.setBounds(429, 189, 364, 33);
+		nombreCurso.setBounds(429, 189, 664, 33);
 		nombreCurso.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		add(nombreCurso);
 		

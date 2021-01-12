@@ -61,14 +61,14 @@ public class InformacionCursoForo extends JPanel {
 		getMensajes();
 
 		JScrollPane foro = new JScrollPane();
-		foro.setBounds(602, 454, 459, 268);
+		foro.setBounds(602, 454, 659, 268);
 		foro.setViewportView(tablaMensajes);
 		tablaMensajes.setRowHeight(50);
 		foro.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(foro);
 
 		textField = new JTextField();
-		textField.setBounds(602, 733, 459, 20);
+		textField.setBounds(602, 733, 659, 20);
 		add(textField);
 		textField.setColumns(10);
 
@@ -77,7 +77,7 @@ public class InformacionCursoForo extends JPanel {
 		enviar.setContentAreaFilled(false);
 		enviar.setFocusPainted(false);
 		enviar.setBorderPainted(false);
-		enviar.setBounds(1071, 714, 73, 59);
+		enviar.setBounds(1271, 714, 73, 59);
 		add(enviar);
 
 		refrescar = new JButton(new ImageIcon(getClass().getResource("/img/refrescar.png")));
@@ -85,7 +85,7 @@ public class InformacionCursoForo extends JPanel {
 		refrescar.setContentAreaFilled(false);
 		refrescar.setFocusPainted(false);
 		refrescar.setBorderPainted(false);
-		refrescar.setBounds(1071, 454, 57, 59);
+		refrescar.setBounds(1271, 454, 57, 59);
 		add(refrescar);
 
 		if (user == null) {
@@ -125,15 +125,19 @@ public class InformacionCursoForo extends JPanel {
 		Object[][] datos = new Object[lista.size()][2];
 		
 		int k = 0;
-		for (Mensaje m : lista) {
+		for (Mensaje m : lista) {			
 			if (m.getEmisor() == null) {
-				datos[k][0] = "<ANONIMO> : " + m.getTexto();
+				datos[k][0] = "[ANONIMO] : " + m.getTexto();
+				datos[k][1] = "";
 			} else if (m.getEmisor().equals(user)) {
+				datos[k][0] = "";
 				datos[k][1] = m.getTexto();				
 			} else if (m.getEmisor().equals(curso.getProfesor())) {
-				datos[k][0] = "<PROFESOR> : " + m.getTexto();
+				datos[k][0] = "[PROFESOR] : " + m.getTexto();
+				datos[k][1] = "";
 			} else {
-				datos[k][0] = "<" + m.getEmisor().toString().toUpperCase() + "> : " + m.getTexto();
+				datos[k][0] = "[" + m.getEmisor().toString().toUpperCase() + "] : " + m.getTexto();
+				datos[k][1] = "";
 			}
 			
 			k++;
