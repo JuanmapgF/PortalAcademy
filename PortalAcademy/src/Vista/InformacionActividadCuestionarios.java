@@ -2,6 +2,7 @@ package Vista;
 
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -29,48 +30,39 @@ public class InformacionActividadCuestionarios extends JPanel{
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 		
+		if(esCreador() || actividad.getSatisfaccion()) {
+			JLabel labelCuestionario = new JLabel("Cuestionario de satisfacci\u00F3n");
+			labelCuestionario.setFont(new Font("Segoe UI Emoji", Font.BOLD, 20));
+			labelCuestionario.setBounds(427, 339, 264, 22);
+			add(labelCuestionario);
+		}
 		
-		JLabel labelCuestionario = new JLabel("Cuestionario de satisfacci\u00F3n");
-		labelCuestionario.setFont(new Font("Segoe UI Emoji", Font.BOLD, 20));
-		labelCuestionario.setBounds(427, 339, 264, 22);
-		add(labelCuestionario);
+		if(actividad.getSatisfaccion() && !esCreador()) {
+			bHacerCuestionario = new JButton("Hacer");
+			bHacerCuestionario.setFont(new Font("Tahoma", Font.PLAIN, 18));
+			bHacerCuestionario.setBounds(745, 336, 79, 29);
+			add(bHacerCuestionario);
+		}
 		
-		bHacerCuestionario = new JButton(new ImageIcon(getClass().getResource("/img/hacer.png")));
-		bHacerCuestionario.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		bHacerCuestionario.setContentAreaFilled(false);
-		bHacerCuestionario.setFocusPainted(false);
-		bHacerCuestionario.setBorderPainted(false);
-		bHacerCuestionario.setBounds(745, 336, 142, 52);
-		add(bHacerCuestionario);
+		if(!actividad.getSatisfaccion() && esCreador()) {
+			bCrear = new JButton("Crear");
+			bCrear.setFont(new Font("Tahoma", Font.PLAIN, 18));
+			bCrear.setBounds(966, 332, 75, 31);
+			add(bCrear);
+			bCrear.setVisible(false);
+		}
 		
-		bCrear = new JButton(new ImageIcon(getClass().getResource("/img/crear.png")));
-		bCrear.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		bCrear.setContentAreaFilled(false);
-		bCrear.setFocusPainted(false);
-		bCrear.setBorderPainted(false);
-		bCrear.setBounds(966, 332, 142, 52);
-		add(bCrear);
-		bCrear.setVisible(false);
-		
-		bBorrar = new JButton(new ImageIcon(getClass().getResource("/img/borrar.png")));
-		bBorrar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		bBorrar.setContentAreaFilled(false);
-		bBorrar.setFocusPainted(false);
-		bBorrar.setBorderPainted(false);
-		bBorrar.setBounds(1051, 332, 142, 52);
-		add(bBorrar);
-		bBorrar.setVisible(false);
+		if(actividad.getSatisfaccion() && esCreador()) {
+			bBorrar = new JButton("Borrar");
+			bBorrar.setFont(new Font("Tahoma", Font.PLAIN, 18));
+			bBorrar.setBounds(1051, 332, 83, 31);
+			add(bBorrar);
+			bBorrar.setVisible(false);
+		}
 		
 		if(user instanceof Profesor) {
 			CtrMenu menu = new CtrMenu(new Menu((Profesor)user));
 			add(menu.getPanel());
-			
-			if(actividad.getSatisfaccion()) {
-				bBorrar.setVisible(true);
-			}else {
-				bCrear.setVisible(true);
-			}
-			
 		}else if(user instanceof Organizacion){
 			CtrMenu menu = new CtrMenu(new Menu((Organizacion)user));
 			add(menu.getPanel());
@@ -78,7 +70,36 @@ public class InformacionActividadCuestionarios extends JPanel{
 			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user));
 			add(menu.getPanel());
 		}
+		
+//		CtrMenuCurso menuc = new CtrMenuCurso(new MenuActividad(actividad));
+//		add(menuc.getPanel());
+		
+		
 	}
 	
+	private boolean esCreador() {
+		if (Main.getUser() == null) {
+			return false;
+		}
+		return Main.getUser().equals(actividad.getOrganizacion());
+	}
+	
+	public void controlador(ActionListener ctr) {
+		if(bBorrar != null) {
+			this.bBorrar.addActionListener(ctr);
+			this.bBorrar.setActionCommand("BORRAR");
+		}
+		
+		if(bCrear != null) {
+			this.bCrear.addActionListener(ctr);
+			this.bCrear.setActionCommand("CREAR");
+		}
+		
+		if(bHacerCuestionario != null) {
+			this.bHacerCuestionario.addActionListener(ctr);
+			this.bHacerCuestionario.setActionCommand("HACER");
+		}
+		
+	}
 	
 }
