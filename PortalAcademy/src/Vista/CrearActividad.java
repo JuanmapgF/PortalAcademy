@@ -1,8 +1,11 @@
 package Vista;
 
+import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.util.Date;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -17,6 +20,7 @@ import com.toedter.calendar.JDateChooser;
 
 import Controlador.CtrMenu;
 import Modelo.Organizacion;
+import javax.swing.border.LineBorder;
 
 @SuppressWarnings("serial")
 public class CrearActividad extends JPanel {
@@ -90,14 +94,21 @@ public class CrearActividad extends JPanel {
 		add(spinnerAforo);
 
 
-		btnCrearActividad = new JButton("Crear actividad");
+		btnCrearActividad = new JButton(new ImageIcon(getClass().getResource("/img/guardar.png")));
+		btnCrearActividad.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnCrearActividad.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnCrearActividad.setContentAreaFilled(false);
+		btnCrearActividad.setText("Guardar nueva actividad");
 		btnCrearActividad.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnCrearActividad.setBounds(1300, 446, 179, 40);
+		btnCrearActividad.setBounds(1128, 784, 305, 49);
 		add(btnCrearActividad);
 
-		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnCancelar.setBounds(1310, 910, 150, 35);
+		btnCancelar = new JButton(new ImageIcon(getClass().getResource("/img/volver.png")));
+		btnCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnCancelar.setContentAreaFilled(false);
+		btnCancelar.setFocusPainted(false);
+		btnCancelar.setBorderPainted(false);
+		btnCancelar.setBounds(448, 117, 78, 67);
 		add(btnCancelar);
 
 		dateChooser = new JDateChooser("yyyy-MM-dd", "####-##-##", '_');

@@ -36,7 +36,7 @@ public class CtrEditarParticipantes implements ActionListener {
 			if (usuario != null) {
 				
 				if (JOptionPane.showConfirmDialog(ventana, "¿Está seguro de que desea eliminar este usuario?", "Eliminar usuario", JOptionPane.OK_CANCEL_OPTION) == 0) {
-					curso.eliminarUsuario(usuario);
+					curso.eliminarUsuario(usuario, curso);
 					JOptionPane.showMessageDialog(ventana, "Se ha eliminado al usuario del curso correctamente");
 					CtrEditarParticipantes c = new CtrEditarParticipantes(new EditarParticipantes(curso, profesor));
 					Main.setPanel(c.getPanel());

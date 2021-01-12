@@ -22,6 +22,7 @@ public class EnviarCorreo {
 		props.put("mail.smtp.clave", contrasena_gmail);
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
 		props.put("mail.smtp.port", "587");
 
 		Session session = Session.getDefaultInstance(props);
@@ -29,7 +30,7 @@ public class EnviarCorreo {
 
 		try {
 			mimeMessage.setFrom(new InternetAddress(correo_gmail));
-			mimeMessage.addRecipients(Message.RecipientType.TO, destinatario);
+			mimeMessage.addRecipients(Message.RecipientType.TO, InternetAddress.parse(destinatario));
 			mimeMessage.setSubject(asunto);
 			mimeMessage.setText(cuerpo);
 			Transport transport = session.getTransport("smtp");

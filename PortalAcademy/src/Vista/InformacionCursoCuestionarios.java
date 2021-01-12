@@ -60,10 +60,13 @@ public class InformacionCursoCuestionarios extends JPanel {
 		scrollPane.setViewportView(listaC);
 		add(scrollPane);
 
-		JLabel labelCuestionario = new JLabel("Cuestionario de satisfacci\u00F3n");
-		labelCuestionario.setFont(new Font("Tahoma", Font.BOLD, 30));
-		labelCuestionario.setBounds(647, 776, 435, 52);
-		add(labelCuestionario);
+		if(esCreador() || curso.getSatisfaccion()) {
+			JLabel labelCuestionario = new JLabel("Cuestionario de satisfacci\u00F3n");
+			labelCuestionario.setFont(new Font("Tahoma", Font.BOLD, 30));
+			labelCuestionario.setBounds(647, 776, 435, 52);
+			add(labelCuestionario);
+		}
+		
 		
 		
 		if(curso.getSatisfaccion() && !esCreador()) {
@@ -81,21 +84,20 @@ public class InformacionCursoCuestionarios extends JPanel {
 		}
 		
 		
-		if(!curso.getSatisfaccion()) {
+		if(!curso.getSatisfaccion() && esCreador()) {
 			bCrear = new JButton("Crear");
 			bCrear.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			bCrear.setBounds(1174, 786, 89, 40);
 			add(bCrear);
 		
-		}else {
+		}
+		
+		if(curso.getSatisfaccion() && esCreador()) {
 			bBorrar = new JButton("Borrar");
 			bBorrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			bBorrar.setBounds(1297, 786, 101, 40);
 			add(bBorrar);
-			
 		}
-		
-		
 		
 		if(esCreador()) {
 			bCrearTest = new JButton("Crear test");
@@ -132,6 +134,14 @@ public class InformacionCursoCuestionarios extends JPanel {
 		listaC.setLayoutOrientation(JList.VERTICAL);
 	}
 
+	public Test getTest() {
+		if (!listaC.isSelectionEmpty()) {
+			return l.get(listaC.getSelectedIndex());
+		} else {
+			return null;
+		}
+	}
+	
 	private boolean esCreador() {
 		if (Main.getUser() == null) {
 			return false;
@@ -140,11 +150,29 @@ public class InformacionCursoCuestionarios extends JPanel {
 	}
 
 	public void controlador(ActionListener ctr) {
-		this.bCrearTest.addActionListener(ctr);
-		this.bCrearTest.setActionCommand("CREARTEST");
-		this.bBorrar.addActionListener(ctr);
-		this.bBorrar.setActionCommand("BORRAR");
-		this.bCrear.addActionListener(ctr);
-		this.bCrear.setActionCommand("CREAR");
+		if(bCrearTest != null) {
+			this.bCrearTest.addActionListener(ctr);
+			this.bCrearTest.setActionCommand("CREARTEST");
+		}
+		
+		if(bBorrar != null) {
+			this.bBorrar.addActionListener(ctr);
+			this.bBorrar.setActionCommand("BORRAR");
+		}
+		
+		if(bCrear != null) {
+			this.bCrear.addActionListener(ctr);
+			this.bCrear.setActionCommand("CREAR");
+		}
+		
+		if(bHacerCuestionario != null) {
+			this.bHacerCuestionario.addActionListener(ctr);
+			this.bHacerCuestionario.setActionCommand("HACER");
+		}
+		
+		if(bHacerTest != null) {
+			this.bHacerTest.addActionListener(ctr);
+			this.bHacerTest.setActionCommand("HACERTEST");
+		}
 	}
 }
