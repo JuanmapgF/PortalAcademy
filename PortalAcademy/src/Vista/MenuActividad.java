@@ -2,7 +2,10 @@ package Vista;
 
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,6 +20,9 @@ public class MenuActividad extends JPanel{
 	private JButton btnInicio;
 	private JButton btnCuestionarios;
 	private Actividad actividad;
+	
+	private URL url = getClass().getResource("/img/fondoBlanco.jpg");
+    Image image = new ImageIcon(url).getImage();
 	
 	public MenuActividad(Actividad actividad) {
 		this.actividad = actividad;
@@ -68,5 +74,15 @@ public class MenuActividad extends JPanel{
 			editar.addActionListener(ctr);
 			editar.setActionCommand("EDITAR");
 		}
+	}
+	
+	@Override
+	public void paint(Graphics g) {
+		// TODO Auto-generated method stub
+		
+		g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+        this.setOpaque(false);
+		
+		super.paint(g);
 	}
 }

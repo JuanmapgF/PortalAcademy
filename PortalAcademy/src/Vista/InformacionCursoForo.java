@@ -1,9 +1,11 @@
 package Vista;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.EventObject;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
@@ -18,7 +20,9 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.CellEditorListener;
 import javax.swing.plaf.basic.BasicScrollBarUI;
+import javax.swing.table.TableCellEditor;
 
 import Controlador.CtrMenu;
 import Modelo.Curso;
@@ -38,7 +42,7 @@ public class InformacionCursoForo extends JPanel {
 	private List<Mensaje> lista;
 	private JTable tablaMensajes;
 	private MensajeRenderer mensajeRenderer = new MensajeRenderer();
-	private ButtonChatEditor chatEditor = new ButtonChatEditor(this, new JTextField());
+	private ButtonChatEditor chatEditor = new ButtonChatEditor(new JTextField());
 	private Usuario user;
 	private Curso curso;
 
@@ -123,9 +127,9 @@ public class InformacionCursoForo extends JPanel {
 		int k = 0;
 		for (Mensaje m : lista) {
 			if (m.getEmisor() == null) {
-				datos[k][0] = "<AN�NIMO> : " + m.getTexto();
+				datos[k][0] = "<ANONIMO> : " + m.getTexto();
 			} else if (m.getEmisor().equals(user)) {
-				datos[k][1] = m.getTexto();
+				datos[k][1] = m.getTexto();				
 			} else if (m.getEmisor().equals(curso.getProfesor())) {
 				datos[k][0] = "<PROFESOR> : " + m.getTexto();
 			} else {
@@ -135,6 +139,12 @@ public class InformacionCursoForo extends JPanel {
 			k++;
 		}
 		
+		for (int i = 0; i < datos.length; i++) {
+			for (int j = 0; j < datos[0].length; j++) {
+				System.out.println(datos[i][j]);
+			}
+		}
+		
 		tablaMensajes = new JTable(datos, columnHeaders);
 		Border border = mensajeRenderer.getBorder();
 		Border margin = new EmptyBorder(5,5,5,5);
@@ -142,8 +152,63 @@ public class InformacionCursoForo extends JPanel {
 		tablaMensajes.getColumnModel().getColumn(0).setCellRenderer(mensajeRenderer);
 		tablaMensajes.getColumnModel().getColumn(1).setCellRenderer(mensajeRenderer);
 		tablaMensajes.setTableHeader(null);
+		tablaMensajes.getColumnModel().getColumn(0).setCellEditor(new EditorMensajes());
+		tablaMensajes.getColumnModel().getColumn(1).setCellEditor(new EditorMensajes());
 		tablaMensajes.setCellSelectionEnabled(false);
 		tablaMensajes.setGridColor(Color.decode("#F0F0F0"));
+	}
+	
+	private class EditorMensajes implements TableCellEditor {
+
+		@Override
+		public Object getCellEditorValue() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public boolean isCellEditable(EventObject anEvent) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean shouldSelectCell(EventObject anEvent) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean stopCellEditing() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public void cancelCellEditing() {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void addCellEditorListener(CellEditorListener l) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void removeCellEditorListener(CellEditorListener l) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row,
+				int column) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
 	}
 
 }
