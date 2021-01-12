@@ -1,9 +1,11 @@
 package Vista;
 
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.Date;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -46,13 +48,6 @@ public class EditarActividad extends JPanel {
 		this.setLayout(null);
 		this.setBounds(0, 0, 1920, 1080);
 
-		JLabel titulo = new JLabel("");
-		titulo.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		titulo.setBounds(558, 121, 545, 49);
-		titulo.setHorizontalAlignment(SwingConstants.CENTER);
-		titulo.setText(a.getNombre());
-		add(titulo);
-
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(607, 255, 136, 27);
@@ -79,9 +74,12 @@ public class EditarActividad extends JPanel {
 		fileChooserImagen = new JFileChooser();
 		fileChooserImagen.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
-		btnSeleccionar = new JButton("Seleccionar");
-		btnSeleccionar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnSeleccionar.setBounds(1046, 359, 166, 40);
+		btnSeleccionar = new JButton(new ImageIcon(getClass().getResource("/img/subir_archivo.png")));
+		btnSeleccionar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnSeleccionar.setContentAreaFilled(false);
+		btnSeleccionar.setFocusPainted(false);
+		btnSeleccionar.setBorderPainted(false);
+		btnSeleccionar.setBounds(967, 353, 136, 40);
 		add(btnSeleccionar);
 
 		JLabel lblDescripcin = new JLabel("Descripci\u00F3n:");
@@ -107,23 +105,36 @@ public class EditarActividad extends JPanel {
 
 		aforo.setValue(a.getAforo());
 
-		guardar = new JButton("Guardar cambios");
+		guardar = new JButton(new ImageIcon(getClass().getResource("/img/guardar.png")));
+		guardar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		guardar.setContentAreaFilled(false);
+		guardar.setFocusPainted(false);
+		guardar.setBorderPainted(false);
+		guardar.setText("Guardar cambios");
 		guardar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		guardar.setBounds(1307, 455, 197, 40);
+		guardar.setBounds(1128, 784, 249, 49);
 		add(guardar);
 
-		eliminar = new JButton("Eliminar actividad");
+		eliminar = new JButton(new ImageIcon(getClass().getResource("/img/eliminar.png")));
+		eliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		eliminar.setContentAreaFilled(false);
+		eliminar.setFocusPainted(false);
+		eliminar.setBorderPainted(false);
+		eliminar.setText("Eliminar curso");
 		eliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		eliminar.setBounds(1307, 607, 197, 40);
+		eliminar.setBounds(1118, 867, 249, 49);
 		add(eliminar);
 
-		volver = new JButton("Descartar cambios");
-		volver.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		volver.setBounds(1307, 762, 197, 40);
+		volver = new JButton(new ImageIcon(getClass().getResource("/img/volver.png")));
+		volver.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		volver.setContentAreaFilled(false);
+		volver.setFocusPainted(false);
+		volver.setBorderPainted(false);
+		volver.setBounds(448, 117, 78, 67);
 		add(volver);
 
 		calendario = new JCalendar();
-		calendario.setBounds(800, 800, 311, 200);
+		calendario.setBounds(800, 757, 311, 200);
 		calendario.setDate(a.getFecha());
 		calendario.setTodayButtonVisible(true);
 		calendario.setTodayButtonText("Hoy");

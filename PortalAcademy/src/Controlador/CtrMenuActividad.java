@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
+import Modelo.Organizacion;
+import Vista.EditarActividad;
 import Vista.Main;
 import Vista.MenuActividad;
 import Vista.MenuCurso;
@@ -32,7 +34,10 @@ public class CtrMenuActividad  implements ActionListener {
 //			Main.setPanel(c.getPanel());
 //		}
 
-		
+		if (e.getActionCommand().equals("EDITAR")) {
+			CtrEditarActividad c = new CtrEditarActividad(new EditarActividad(ventana.getActividad(), (Organizacion) Main.getUser()));
+			Main.setPanel(c.getPanel());
+		}
 	}
 	public JPanel getPanel() {
 		return ventana;

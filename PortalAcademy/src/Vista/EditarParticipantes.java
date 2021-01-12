@@ -1,10 +1,12 @@
 package Vista;
 
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -47,14 +49,20 @@ public class EditarParticipantes extends JPanel {
 		t_curso.setBounds(591, 215, 215, 49);
 		add(t_curso);
 		
-		bEliminar = new JButton("Eliminar usuario");
-		bEliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		bEliminar.setBounds(1165, 424, 191, 40);
+		bEliminar = new JButton(new ImageIcon(getClass().getResource("/img/eliminarUsuario.png")));
+		bEliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bEliminar.setContentAreaFilled(false);
+		bEliminar.setFocusPainted(false);
+		bEliminar.setBorderPainted(false);
+		bEliminar.setBounds(1165, 424, 191, 60);
 		add(bEliminar);
 		
-		bVolver = new JButton("Volver");
-		bVolver.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		bVolver.setBounds(1184, 944, 129, 40);
+		bVolver = new JButton(new ImageIcon(getClass().getResource("/img/volver.png")));
+		bVolver.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bVolver.setContentAreaFilled(false);
+		bVolver.setFocusPainted(false);
+		bVolver.setBorderPainted(false);
+		bVolver.setBounds(448, 117, 78, 67);
 		add(bVolver);
 		
 		CtrMenu menu = new CtrMenu(new Menu(p));

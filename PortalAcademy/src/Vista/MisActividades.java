@@ -1,11 +1,13 @@
 package Vista;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -95,9 +97,12 @@ public class MisActividades extends JPanel {
 //		actividades.getColumnModel().getColumn(1).setMaxWidth(315);
 //		actividades.getColumnModel().getColumn(1).setMinWidth(315);
 		
-		crearActividad = new JButton("Crear actividad");
-		crearActividad.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		crearActividad.setBounds(1175, 403, 171, 40);
+		crearActividad = new JButton(new ImageIcon(getClass().getResource("/img/crearActividad.png")));
+		crearActividad.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		crearActividad.setContentAreaFilled(false);
+		crearActividad.setFocusPainted(false);
+		crearActividad.setBorderPainted(false);
+		crearActividad.setBounds(1175, 403, 180, 60);
 		add(crearActividad);
 		
 		JLabel t_actividad = new JLabel("Mis actividades");

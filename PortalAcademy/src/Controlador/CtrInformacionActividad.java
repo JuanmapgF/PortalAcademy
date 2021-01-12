@@ -31,17 +31,10 @@ public class CtrInformacionActividad implements ActionListener {
 		this.user = user;
 		this.actividad = actividad;
 		ventana = new InformacionActividad(actividad, user);
-		ventana.controlador(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-
-		if (e.getActionCommand().equals("Editar")) {
-			CtrEditarActividad c = new CtrEditarActividad(new EditarActividad(actividad, (Organizacion) user));
-			Main.setPanel(c.getPanel());
-		}
 		
 	}
 
