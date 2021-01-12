@@ -1,8 +1,10 @@
 package Vista;
 
+import java.awt.Cursor;
 import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -62,17 +64,21 @@ public class InformacionCursoForo extends JPanel {
 		add(textField);
 		textField.setColumns(10);
 		
-		enviar = new JButton("Enviar");
-		enviar.setBounds(1072, 733, 89, 23);
+		enviar = new JButton(new ImageIcon (getClass().getResource("/img/enviar.png")));
+		enviar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		enviar.setContentAreaFilled(false);
+		enviar.setFocusPainted(false);
+		enviar.setBorderPainted(false);
+		enviar.setBounds(1071, 714, 73, 59);
 		add(enviar);
 		
-		refrescar = new JButton("Refrescar");
-		refrescar.setBounds(1072, 494, 100, 23);
+		refrescar = new JButton(new ImageIcon (getClass().getResource("/img/refrescar.png")));
+		refrescar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		refrescar.setContentAreaFilled(false);
+		refrescar.setFocusPainted(false);
+		refrescar.setBorderPainted(false);
+		refrescar.setBounds(1071, 454, 57, 59);
 		add(refrescar);
-		
-		JLabel lblForo = new JLabel("Foro");
-		lblForo.setBounds(602, 435, 46, 14);
-		add(lblForo);
 		
 		
 		
@@ -90,8 +96,6 @@ public class InformacionCursoForo extends JPanel {
 			add(menu.getPanel());
 		}
 		
-//		CtrMenuCurso menuc = new CtrMenuCurso(new MenuCurso(curso));
-//		add(menuc.getPanel());
 	}
 	
 	public void controlador(ActionListener ctr) {

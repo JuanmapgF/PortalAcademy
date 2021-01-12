@@ -20,14 +20,15 @@ public class InformacionCursoCuestionarios extends JPanel {
 	
 	public JButton bHacerCuestionario, bCrear, bBorrar,bCrearTest, bHacerTest;
 	
+	private Curso curso;
 
+	
 	/**
 	 * Create the panel.
 	 */
 	public InformacionCursoCuestionarios(Usuario user, Curso curso) {
 		
-//		CtrMenu menu_1 = new CtrMenu(new Menu((Profesor)user));
-//		add(menu_1.getPanel());
+		this.curso = curso;
 		
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
@@ -67,22 +68,25 @@ public class InformacionCursoCuestionarios extends JPanel {
 		bCrearTest.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		bCrearTest.setBounds(1152, 382, 111, 31);
 		add(bCrearTest);
+		bCrearTest.setVisible(false);
 		
 		bHacerTest = new JButton("Hacer test");
 		bHacerTest.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		bHacerTest.setBounds(1273, 421, 115, 31);
 		add(bHacerTest);
 		
-		if(user instanceof Profesor) {
-			CtrMenu menu = new CtrMenu(new Menu((Profesor)user, curso));
-			add(menu.getPanel());
-			
+		if (esCreador()) {
+			bCrearTest.setVisible(true);
 			if(curso.getSatisfaccion()) {
 				bBorrar.setVisible(true);
 			}else {
 				bCrear.setVisible(true);
 			}
-			
+		}
+		
+		if(user instanceof Profesor) {
+			CtrMenu menu = new CtrMenu(new Menu((Profesor)user, curso));
+			add(menu.getPanel());
 		}else if(user instanceof Organizacion){
 			CtrMenu menu = new CtrMenu(new Menu((Organizacion)user));
 			add(menu.getPanel());
@@ -90,11 +94,13 @@ public class InformacionCursoCuestionarios extends JPanel {
 			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user, curso));
 			add(menu.getPanel());
 		}
-//		CtrMenuCurso menuc = new CtrMenuCurso(new MenuCurso(curso));
-//		add(menuc.getPanel());
 		
-		
-		
-		
+	}
+	
+	private boolean esCreador() {
+		if (Main.getUser() == null) {
+			return false;
+		}
+		return Main.getUser().equals(curso.getProfesor());
 	}
 }

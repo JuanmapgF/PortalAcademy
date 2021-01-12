@@ -134,7 +134,7 @@ public class InformacionCursoTemario extends JPanel {
 		if (Main.getUser() == null) {
 			return false;
 		}
-		return Main.getUser().getNick().equalsIgnoreCase(curso.getProfesor().getNick());
+		return Main.getUser().equals(curso.getProfesor());
 	}
 
 	public void controlador(ActionListener ctr) {

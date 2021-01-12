@@ -83,15 +83,6 @@ public class Usuario {
 		listaActividades = null;
 	}
 
-	@Override
-	public boolean equals(Object o) {
-		if (o instanceof Usuario) {
-			Usuario u = (Usuario) o;
-			return this.getNick().equals(u.nick) && this.getPassword().equals(u.password);
-		} else {
-			return false;
-		}
-	}
 
 	public static List<Usuario> getUsuarios() {
 		List<Usuario> usuarios = new ArrayList<>();
@@ -190,5 +181,15 @@ public class Usuario {
 		bd = BD.getBD();
 		bd.Insert("INSERT INTO FechasUsuarios VALUES ( '" + this.getNick() + "', '" +  formato.format(fecha) + "', '" + informacion + "');") ;
 		bd.finalize();
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (o instanceof Usuario) {
+			Usuario u = (Usuario) o;
+			return this.getNick().equals(u.nick) && this.getPassword().equals(u.password);
+		} else {
+			return false;
+		}
 	}
 }
