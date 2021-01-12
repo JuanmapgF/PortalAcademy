@@ -54,7 +54,7 @@ public class CtrAdminForos implements ActionListener {
 				cur.setTieneForo(false);
 				JOptionPane.showMessageDialog(vista, "Se ha eliminado el foro del curso de forma satisfactoria",
 						"Eliminar foro", JOptionPane.INFORMATION_MESSAGE);
-				CtrAdminCursos ctr = new CtrAdminCursos(new AdminCursos());
+				CtrAdminForos ctr = new CtrAdminForos(new AdminForos());
 				Main.setPanel(ctr.getPanel());
 			}
 		}

@@ -19,7 +19,7 @@ public class CtrInformacionCursoCuestionario implements ActionListener {
 	private InformacionCursoCuestionarios vista;
 	private Curso curso;
 	private Usuario user;
-	private String enalceCuestionario = "https://forms.gle/A6w9nd54iKBxBfFTA";
+	private String enlaceCuestionario = "https://forms.gle/A6w9nd54iKBxBfFTA";
 
 	public CtrInformacionCursoCuestionario(Usuario user, Curso c) {
 		vista = new InformacionCursoCuestionarios(user, c);
@@ -37,20 +37,41 @@ public class CtrInformacionCursoCuestionario implements ActionListener {
 		// TODO Auto-generated method stub
 		if (e.getActionCommand().equals("CREAR")) {
 			curso.setSatisfaccion(true);
+			CtrInformacionCursoCuestionario c = new CtrInformacionCursoCuestionario(user,curso);
+			Main.setPanel(c.getPanel());
 		}
 
 		if (e.getActionCommand().equals("BORRAR")) {
 			curso.setSatisfaccion(false);
+			CtrInformacionCursoCuestionario c = new CtrInformacionCursoCuestionario(user,curso);
+			Main.setPanel(c.getPanel());
 		}
 
 		if (e.getActionCommand().equals("HACER")) {
 			try {
-				Abrir_URL(enalceCuestionario);
+				Abrir_URL(enlaceCuestionario);
 			} catch (URISyntaxException e1) {
 				e1.printStackTrace();
+			}finally {
+				CtrInformacionCursoCuestionario c = new CtrInformacionCursoCuestionario(user,curso);
+				Main.setPanel(c.getPanel());
 			}
 		}
 
+		if (e.getActionCommand().equals("HACERTEST")) {
+			if(vista.getTest() != null) {
+				try {
+					Abrir_URL(vista.getTest().getLink());
+				} catch (URISyntaxException e1) {
+					e1.printStackTrace();
+				}finally {
+					CtrInformacionCursoCuestionario c = new CtrInformacionCursoCuestionario(user,curso);
+					Main.setPanel(c.getPanel());
+				}
+			}
+			
+		}
+		
 		if (e.getActionCommand().equals("CREARTEST")) {
 			CtrCrearTestCurso ctr = new CtrCrearTestCurso(user, curso);
 			Main.setPanel(ctr.getPanel());

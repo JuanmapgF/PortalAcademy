@@ -2,6 +2,9 @@ package Vista;
 
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.net.URL;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -28,6 +31,9 @@ public class Registro extends JPanel {
 	public JTextField textFieldCodigo;
 	public JButton btnInicioSesion;
 	public JButton volver = new JButton();
+	
+	private URL url = getClass().getResource("/img/fondoBlanco.jpg");
+    Image image = new ImageIcon(url).getImage();
 	
 	/**
 	 * Create the panel.
@@ -148,5 +154,15 @@ public class Registro extends JPanel {
 		btnInicioSesion.setBorderPainted(false);
 		add(btnInicioSesion);
 
+	}
+	
+	@Override
+	public void paint(Graphics g) {
+		// TODO Auto-generated method stub
+		
+		g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+        this.setOpaque(false);
+		
+		super.paint(g);
 	}
 }

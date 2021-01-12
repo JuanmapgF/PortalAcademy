@@ -177,7 +177,7 @@ public class Usuario {
 	
 	public void addFecha(Date fecha, String informacion) {
 		bd = BD.getBD();
-		bd.Insert("INSERT INTO FechasUsuarios VALUES ( '" + this.getNick() + "', '" +  formato.format(fecha) + "', '" + informacion + "');") ;
+		bd.Insert("INSERT INTO FechasUsuarios (nickUsuario, fecha, informacion) VALUES ( '" + this.getNick() + "', '" +  formato.format(fecha) + "', '" + informacion + "');") ;
 		bd.finalize();
 	}
 	

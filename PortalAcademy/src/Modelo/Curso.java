@@ -204,9 +204,9 @@ public class Curso {
 		this.publico = null;
 	}
 
-	public void eliminarUsuario(Usuario u) {
+	public void eliminarUsuario(Usuario u, Curso c) {
 		bd = BD.getBD();
-		bd.Delete("DELETE FROM RelCursoUsuario WHERE nickUsuario = '" + u.getNick() + "'");
+		bd.Delete("DELETE FROM RelCursoUsuario WHERE nickUsuario = '" + u.getNick() + "' AND idCurso = " + c.getId() + ";");
 		bd.finalize();
 	}
 

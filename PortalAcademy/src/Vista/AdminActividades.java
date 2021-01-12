@@ -3,6 +3,9 @@ package Vista;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.net.URL;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
@@ -24,6 +27,9 @@ public class AdminActividades extends JPanel {
 	private DefaultListModel<String> modeloA = new DefaultListModel<String>();
 	private JList<String> listA = new JList<String>();
 	private List<Actividad> lista_actividades;
+	
+	private URL url = getClass().getResource("/img/fondoBlanco.jpg");
+    Image image = new ImageIcon(url).getImage();
 
 	/**
 	 * Create the panel.
@@ -136,5 +142,15 @@ public class AdminActividades extends JPanel {
 		} else {
 			return lista_actividades.get(listA.getSelectedIndex());
 		}
+	}
+	
+	@Override
+	public void paint(Graphics g) {
+		// TODO Auto-generated method stub
+		
+		g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+        this.setOpaque(false);
+		
+		super.paint(g);
 	}
 }
