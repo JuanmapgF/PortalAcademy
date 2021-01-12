@@ -1,8 +1,10 @@
 package Vista;
 
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -41,24 +43,33 @@ public class InformacionActividadCuestionarios extends JPanel{
 		}
 		
 		if(actividad.getSatisfaccion() && !esCreador()) {
-			bHacerCuestionario = new JButton("Hacer");
-			bHacerCuestionario.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			bHacerCuestionario.setBounds(1159, 783, 104, 46);
+			bHacerCuestionario = new JButton(new ImageIcon(getClass().getResource("/img/hacer.png")));
+			bHacerCuestionario.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			bHacerCuestionario.setContentAreaFilled(false);
+			bHacerCuestionario.setFocusPainted(false);
+			bHacerCuestionario.setBorderPainted(false);
+			bHacerCuestionario.setBounds(1159, 783, 142, 52);
 			add(bHacerCuestionario);
 		}
 		
 		if(!actividad.getSatisfaccion() && esCreador()) {
-			bCrear = new JButton("Crear");
-			bCrear.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			bCrear.setBounds(1174, 786, 89, 40);
+			bCrear = new JButton(new ImageIcon(getClass().getResource("/img/crear.png")));
+			bCrear.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			bCrear.setContentAreaFilled(false);
+			bCrear.setFocusPainted(false);
+			bCrear.setBorderPainted(false);
+			bCrear.setBounds(1174, 786, 142, 52);
 			add(bCrear);
 		
 		}
 		
 		if(actividad.getSatisfaccion() && esCreador()) {
-			bBorrar = new JButton("Borrar");
-			bBorrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			bBorrar.setBounds(1297, 786, 101, 40);
+			bBorrar = new JButton(new ImageIcon(getClass().getResource("/img/borrar.png")));
+			bBorrar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			bBorrar.setContentAreaFilled(false);
+			bBorrar.setFocusPainted(false);
+			bBorrar.setBorderPainted(false);
+			bBorrar.setBounds(1297, 786, 142, 52);
 			add(bBorrar);
 		}
 		

@@ -77,9 +77,13 @@ public class CrearTestCurso extends JPanel {
 		add(tfLink);
 		tfLink.setColumns(10);
 		
-		bGuardar = new JButton("Crear test");
+		bGuardar = new JButton(new ImageIcon(getClass().getResource("/img/crearTest.png")));
+		bGuardar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bGuardar.setContentAreaFilled(false);
+		bGuardar.setFocusPainted(false);
+		bGuardar.setBorderPainted(false);
 		bGuardar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		bGuardar.setBounds(1657, 472, 140, 40);
+		bGuardar.setBounds(1657, 472, 142, 52);
 		add(bGuardar);
 		
 		volver = new JButton(new ImageIcon(getClass().getResource("/img/volver.png")));
