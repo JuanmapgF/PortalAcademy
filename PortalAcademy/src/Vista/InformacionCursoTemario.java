@@ -24,7 +24,7 @@ import Modelo.Organizacion;
 import Modelo.Profesor;
 
 @SuppressWarnings("serial")
-public class CursoTemario extends JPanel {
+public class InformacionCursoTemario extends JPanel {
 
 	private Curso curso;
 	private List<Archivo> lista_archivos_curso;
@@ -38,7 +38,7 @@ public class CursoTemario extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public CursoTemario(Curso c) {
+	public InformacionCursoTemario(Curso c) {
 		curso = c;
 		lista_archivos_curso = curso.getArchivosCurso();
 		this.setBounds(0, 0, 1920, 1080);

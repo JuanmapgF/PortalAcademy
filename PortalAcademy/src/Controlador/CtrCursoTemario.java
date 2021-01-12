@@ -10,14 +10,14 @@ import javax.swing.JPanel;
 import Modelo.Archivo;
 import Modelo.BD;
 import Modelo.ErrorBD;
-import Vista.CursoTemario;
+import Vista.InformacionCursoTemario;
 import Vista.Main;
 
 public class CtrCursoTemario implements ActionListener {
 
-	private CursoTemario vista;
+	private InformacionCursoTemario vista;
 
-	public CtrCursoTemario(CursoTemario v) {
+	public CtrCursoTemario(InformacionCursoTemario v) {
 		vista = v;
 		vista.controlador(this);
 	}
@@ -50,7 +50,7 @@ public class CtrCursoTemario implements ActionListener {
 				JOptionPane.showMessageDialog(vista,
 						"El archivo " + archivo.getNombre() + " ha sido borrado correctamente. ", "Borrar archivo",
 						JOptionPane.INFORMATION_MESSAGE);
-				CtrCursoTemario ctrCursoTemario = new CtrCursoTemario(new CursoTemario(vista.getCurso()));
+				CtrCursoTemario ctrCursoTemario = new CtrCursoTemario(new InformacionCursoTemario(vista.getCurso()));
 				Main.setPanel(ctrCursoTemario.getPanel());
 			} catch (ErrorBD err) {
 				JOptionPane.showMessageDialog(vista, err.getMessage(), "Descargar archivo", JOptionPane.ERROR_MESSAGE);
@@ -69,7 +69,7 @@ public class CtrCursoTemario implements ActionListener {
 							"El archivo " + vista.fileChooserFicheroSubir.getSelectedFile().getName()
 									+ " ha sido subido correctamente.",
 							"Subida archivo", JOptionPane.INFORMATION_MESSAGE);
-					CtrCursoTemario ctrCursoTemario = new CtrCursoTemario(new CursoTemario(vista.getCurso()));
+					CtrCursoTemario ctrCursoTemario = new CtrCursoTemario(new InformacionCursoTemario(vista.getCurso()));
 					Main.setPanel(ctrCursoTemario.getPanel());
 				}
 			} catch (ErrorBD err) {

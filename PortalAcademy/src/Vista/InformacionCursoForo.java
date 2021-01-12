@@ -53,25 +53,25 @@ public class InformacionCursoForo extends JPanel {
 		}
 		
 		JScrollPane foro = new JScrollPane();
-		foro.setBounds(278, 234, 459, 268);
+		foro.setBounds(602, 454, 459, 268);
 		foro.setViewportView(listaMensajes);
 		add(foro);
 		
 		textField = new JTextField();
-		textField.setBounds(278, 513, 459, 20);
+		textField.setBounds(602, 733, 459, 20);
 		add(textField);
 		textField.setColumns(10);
 		
 		enviar = new JButton("Enviar");
-		enviar.setBounds(748, 513, 89, 23);
+		enviar.setBounds(1072, 733, 89, 23);
 		add(enviar);
 		
 		refrescar = new JButton("Refrescar");
-		refrescar.setBounds(748, 274, 100, 23);
+		refrescar.setBounds(1072, 494, 100, 23);
 		add(refrescar);
 		
 		JLabel lblForo = new JLabel("Foro");
-		lblForo.setBounds(278, 215, 46, 14);
+		lblForo.setBounds(602, 435, 46, 14);
 		add(lblForo);
 		
 		

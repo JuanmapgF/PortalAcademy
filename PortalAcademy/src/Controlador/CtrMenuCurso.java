@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-import Vista.CursoTemario;
+import Vista.InformacionCursoTemario;
 import Vista.Main;
 import Vista.MenuCurso;
 
@@ -27,7 +27,7 @@ public class CtrMenuCurso implements ActionListener {
 		}
 
 		if (e.getActionCommand().equals("TEMARIO")) {
-			CtrCursoTemario ctrCursoTemario = new CtrCursoTemario(new CursoTemario(ventana.getCurso()));
+			CtrCursoTemario ctrCursoTemario = new CtrCursoTemario(new InformacionCursoTemario(ventana.getCurso()));
 			Main.setPanel(ctrCursoTemario.getPanel());
 		}
 
