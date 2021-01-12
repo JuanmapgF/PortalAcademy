@@ -1,6 +1,8 @@
 package Vista;
 
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -9,16 +11,25 @@ import javax.swing.JScrollPane;
 
 import Controlador.CtrMenu;
 import Controlador.CtrMenuCurso;
+import Modelo.BD;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Organizacion;
 import Modelo.Profesor;
 import Modelo.Usuario;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 @SuppressWarnings("serial")
 public class InformacionCursoCuestionarios extends JPanel {
 	
 	public JButton bHacerCuestionario, bCrear, bBorrar,bCrearTest, bHacerTest;
+	private JTable table;
+	
+	private List<Object> lista_test = null;
+	private Object[][] datos = null;
+	
+	private static BD bd;
 	
 	private Curso curso;
 
@@ -27,6 +38,8 @@ public class InformacionCursoCuestionarios extends JPanel {
 	 * Create the panel.
 	 */
 	public InformacionCursoCuestionarios(Usuario user, Curso curso) {
+		this.curso = curso;
+		lista_test = getTest();
 		
 		this.curso = curso;
 		
@@ -41,6 +54,18 @@ public class InformacionCursoCuestionarios extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(647, 421, 616, 327);
 		add(scrollPane);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Nombre", "Descripccion"
+			}
+		));
+		table.getColumnModel().getColumn(0).setPreferredWidth(134);
+		table.getColumnModel().getColumn(1).setPreferredWidth(328);
+		scrollPane.setViewportView(table);
 		
 		JLabel labelCuestionario = new JLabel("Cuestionario de satisfacci\u00F3n");
 		labelCuestionario.setFont(new Font("Segoe UI Emoji", Font.BOLD, 20));
@@ -94,6 +119,29 @@ public class InformacionCursoCuestionarios extends JPanel {
 			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user, curso));
 			add(menu.getPanel());
 		}
+		
+		CtrMenuCurso menuc = new CtrMenuCurso(new MenuCurso(curso));
+		add(menuc.getPanel());
+		
+		bHacerTest = new JButton("Hacer test");
+		bHacerTest.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		bHacerTest.setBounds(1055, 189, 115, 31);
+		add(bHacerTest);
+		
+		
+	}
+
+	private List<Object> getTest() {
+		List<Object> t = new ArrayList<>();
+		bd = BD.getBD();
+		List<Object[]> test = bd.Select("SELECT * FROM Test WHERE idCurso = " + curso.getId() );
+		BD.contadorFinalize(test.size() + 1);
+		bd.finalize();
+		for (Object[] o : test) {
+			t.add(o);
+		}
+		
+		return t;
 		
 	}
 	
