@@ -1,6 +1,7 @@
 package Vista;
 
 import java.awt.Component;
+import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JTable;
@@ -18,6 +19,7 @@ public class ButtonRenderer extends JButton implements TableCellRenderer {
 			int row, int column) {
 		
 		this.setText("<html><p style=\"width:100px\">" + (String) value + "</p></html>");
+		this.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		this.setContentAreaFilled(false);
 		this.setFocusPainted(false);
 		this.setBorderPainted(false);
