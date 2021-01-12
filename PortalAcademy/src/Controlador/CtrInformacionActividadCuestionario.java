@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import Modelo.Actividad;
 import Modelo.Curso;
 import Modelo.Usuario;
-import Vista.InformacionActividadCuestionario;
+import Vista.InformacionActividadCuestionarios;
 import Vista.Main;
 
 public class CtrInformacionActividadCuestionario implements ActionListener {
@@ -63,19 +63,6 @@ public class CtrInformacionActividadCuestionario implements ActionListener {
 
 	
 	
-	private void Abrir_URL(String url) throws URISyntaxException {
-		 if (Desktop.isDesktopSupported()) {
-			 Desktop desktop = Desktop.getDesktop();
-			 try {
-				 URI uri = new URI(url);
-				 desktop.browse(uri);
-			 } catch (IOException e) {
-				 System.err.println("Error: No se pudo abrir el enlace" + e.getMessage() );
-			 }
-		 } else {
-			 System.err.println("Error: No se puede abrir enlaces web.");
-		 }
-	}
 	
 	private void Abrir_URL(String url) throws URISyntaxException {
 		 if (Desktop.isDesktopSupported()) {
