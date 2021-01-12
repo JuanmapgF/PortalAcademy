@@ -1,10 +1,12 @@
 package Vista;
 
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -49,6 +51,11 @@ public class InformacionCursoCuestionarios extends JPanel {
 
 		addElements(Test.getTodosLosTests(curso.getId()));
 		
+		JLabel nombreCurso = new JLabel(curso.getNombre());
+		nombreCurso.setBounds(429, 189, 364, 33);
+		nombreCurso.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		add(nombreCurso);
+		
 		JLabel labelTest = new JLabel("Tests de conocimiento");
 		labelTest.setFont(new Font("Tahoma", Font.BOLD, 30));
 		labelTest.setBounds(647, 365, 368, 46);
@@ -70,57 +77,70 @@ public class InformacionCursoCuestionarios extends JPanel {
 		
 		
 		if(curso.getSatisfaccion() && !esCreador()) {
-			bHacerCuestionario = new JButton("Hacer");
-			bHacerCuestionario.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			bHacerCuestionario.setBounds(1159, 783, 104, 46);
+			bHacerCuestionario = new JButton(new ImageIcon(getClass().getResource("/img/hacer.png")));
+			bHacerCuestionario.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			bHacerCuestionario.setContentAreaFilled(false);
+			bHacerCuestionario.setFocusPainted(false);
+			bHacerCuestionario.setBorderPainted(false);
+			bHacerCuestionario.setBounds(1156, 776, 142, 52);
 			add(bHacerCuestionario);
 		}
 		
 		if(!esCreador()) {
-			bHacerTest = new JButton("Hacer test");
-			bHacerTest.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			bHacerTest.setBounds(1402, 521, 129, 46);
+			bHacerTest = new JButton(new ImageIcon(getClass().getResource("/img/hacerTest.png")));
+			bHacerTest.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			bHacerTest.setContentAreaFilled(false);
+			bHacerTest.setFocusPainted(false);
+			bHacerTest.setBorderPainted(false);
+			bHacerTest.setBounds(1402, 521, 142, 52);
 			add(bHacerTest);
 		}
 		
 		
-		if(!curso.getSatisfaccion() && esCreador()) {
-			bCrear = new JButton("Crear");
-			bCrear.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			bCrear.setBounds(1174, 786, 89, 40);
+		if(!curso.getSatisfaccion()) {
+			bCrear = new JButton(new ImageIcon(getClass().getResource("/img/crear.png")));
+			bCrear.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			bCrear.setContentAreaFilled(false);
+			bCrear.setFocusPainted(false);
+			bCrear.setBorderPainted(false);
+			bCrear.setBounds(1156, 776, 142, 52);
 			add(bCrear);
 		
-		}
-		
-		if(curso.getSatisfaccion() && esCreador()) {
-			bBorrar = new JButton("Borrar");
-			bBorrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			bBorrar.setBounds(1297, 786, 101, 40);
+		}else {
+			bBorrar = new JButton(new ImageIcon(getClass().getResource("/img/borrar.png")));
+			bBorrar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			bBorrar.setContentAreaFilled(false);
+			bBorrar.setFocusPainted(false);
+			bBorrar.setBorderPainted(false);
+			bBorrar.setBounds(1156, 776, 142, 52);
 			add(bBorrar);
 		}
 		
 		if(esCreador()) {
-			bCrearTest = new JButton("Crear test");
-			bCrearTest.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			bCrearTest.setBounds(1402, 423, 129, 46);
+			bCrearTest = new JButton(new ImageIcon(getClass().getResource("/img/crearTest.png")));
+			bCrearTest.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			bCrearTest.setContentAreaFilled(false);
+			bCrearTest.setFocusPainted(false);
+			bCrearTest.setBorderPainted(false);
+			bCrearTest.setBounds(1402, 423, 142, 52);
 			add(bCrearTest);
 			
 		}
 
+		
 		if (user instanceof Profesor) {
 			CtrMenu menu = new CtrMenu(new Menu((Profesor) user, curso));
 			add(menu.getPanel());
 		} else if (user instanceof Organizacion) {
 			CtrMenu menu = new CtrMenu(new Menu((Organizacion) user));
 			add(menu.getPanel());
+		} else if (user instanceof Estudiante) {
+			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user, curso));
+			add(menu.getPanel());
 		} else {
-			CtrMenu menu = new CtrMenu(new Menu((Estudiante) user, curso));
+			CtrMenu menu = new CtrMenu(new Menu(curso));
 			add(menu.getPanel());
 		}
-
-		CtrMenuCurso menuc = new CtrMenuCurso(new MenuCurso(curso));
-		add(menuc.getPanel());
-
 	}
 
 	public void addElements(List<Test> l) {

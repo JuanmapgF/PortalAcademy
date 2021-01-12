@@ -1,9 +1,11 @@
 package Vista;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.EventObject;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -17,7 +19,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.CellEditorListener;
 import javax.swing.plaf.basic.BasicScrollBarUI;
+import javax.swing.table.TableCellEditor;
 
 import Controlador.CtrMenu;
 import Modelo.Estudiante;
@@ -40,8 +44,8 @@ public class ChatPrivado extends JPanel {
 	private JButton enviar;
 	private JButton refrescar;
 	
-	private MensajeRenderer mensajeRenderer = new MensajeRenderer(this);
-	private ButtonChatEditor chatEditor = new ButtonChatEditor(this, new JTextField());
+	private MensajeRenderer mensajeRenderer = new MensajeRenderer();
+	private ButtonChatEditor chatEditor = new ButtonChatEditor(new JTextField());
 	
 	private JTextField textFieldNuevoChat;
 	private JButton buttonAgregarChat;
@@ -116,6 +120,7 @@ public class ChatPrivado extends JPanel {
 		chat.getVerticalScrollBar().setValue(chat.getVerticalScrollBar().getMaximum());
 		add(chat);
 		tablaMensajes.setRowHeight(80);
+		
 		getChatsAbiertos();
 		
 		JScrollPane sp = new JScrollPane();
@@ -241,6 +246,8 @@ public class ChatPrivado extends JPanel {
 		tablaMensajes.getColumnModel().getColumn(0).setCellRenderer(mensajeRenderer);
 		tablaMensajes.getColumnModel().getColumn(1).setCellRenderer(mensajeRenderer);
 		tablaMensajes.setTableHeader(null);
+		tablaMensajes.getColumnModel().getColumn(0).setCellEditor(new EditorMensajes());
+		tablaMensajes.getColumnModel().getColumn(1).setCellEditor(new EditorMensajes());
 		tablaMensajes.setCellSelectionEnabled(false);
 		tablaMensajes.setGridColor(Color.decode("#F0F0F0"));
 		
@@ -278,5 +285,58 @@ public class ChatPrivado extends JPanel {
 	
 	public String getNuevoUsuario() {
 		return textFieldNuevoChat.getText();
+	}
+	
+	private class EditorMensajes implements TableCellEditor {
+
+		@Override
+		public Object getCellEditorValue() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public boolean isCellEditable(EventObject anEvent) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean shouldSelectCell(EventObject anEvent) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean stopCellEditing() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public void cancelCellEditing() {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void addCellEditorListener(CellEditorListener l) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void removeCellEditorListener(CellEditorListener l) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row,
+				int column) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
 	}
 }

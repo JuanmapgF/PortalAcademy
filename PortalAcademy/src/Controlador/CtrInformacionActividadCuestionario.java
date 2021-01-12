@@ -17,15 +17,16 @@ import Vista.Main;
 
 public class CtrInformacionActividadCuestionario implements ActionListener {
 
-	private InformacionActividadCuestionario vista;
+	private InformacionActividadCuestionarios vista;
 	private Actividad actividad;
-	private String enlaceCuestionario = "https://forms.gle/A6w9nd54iKBxBfFTA";
-	
 	private Usuario user;
+	private String enlaceCuestionario = "https://forms.gle/A6w9nd54iKBxBfFTA";
 
 	public CtrInformacionActividadCuestionario(Actividad actividad, Usuario user) {
-		vista = new InformacionActividadCuestionario(user, actividad);
+		vista = new InformacionActividadCuestionarios(user, actividad);
 		this.actividad = actividad;
+		this.user = user;
+		vista.controlador(this);
 	}
 
 	public JPanel getPanel() {
@@ -34,19 +35,19 @@ public class CtrInformacionActividadCuestionario implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equals("Crear")) {
+		if (e.getActionCommand().equals("CREAR")) {
 			actividad.setSatisfaccion(true);
-			CtrInformacionActividadCuestionario c = new CtrInformacionActividadCuestionario(actividad,user);
+			CtrInformacionActividadCuestionario c = new CtrInformacionActividadCuestionario(actividad, user);
 			Main.setPanel(c.getPanel());
 		}
 
-		if (e.getActionCommand().equals("Borrar")) {
+		if (e.getActionCommand().equals("BORRAR")) {
 			actividad.setSatisfaccion(false);
 			CtrInformacionActividadCuestionario c = new CtrInformacionActividadCuestionario(actividad,user);
 			Main.setPanel(c.getPanel());
 		}
 
-		if (e.getActionCommand().equals("Hacer")) {
+		if (e.getActionCommand().equals("HACER")) {
 			try {
 				Abrir_URL(enlaceCuestionario);
 			} catch (URISyntaxException e1) {
@@ -61,6 +62,20 @@ public class CtrInformacionActividadCuestionario implements ActionListener {
 	}
 
 	
+	
+	private void Abrir_URL(String url) throws URISyntaxException {
+		 if (Desktop.isDesktopSupported()) {
+			 Desktop desktop = Desktop.getDesktop();
+			 try {
+				 URI uri = new URI(url);
+				 desktop.browse(uri);
+			 } catch (IOException e) {
+				 System.err.println("Error: No se pudo abrir el enlace" + e.getMessage() );
+			 }
+		 } else {
+			 System.err.println("Error: No se puede abrir enlaces web.");
+		 }
+	}
 	
 	private void Abrir_URL(String url) throws URISyntaxException {
 		 if (Desktop.isDesktopSupported()) {

@@ -39,7 +39,7 @@ public class MenuActividad extends JPanel{
 		btnCuestionarios.setBounds(592, 278, 174, 40);
 		add(btnCuestionarios);
 		
-		if(Main.getUser().equals(actividad.getOrganizacion())) {
+		if(Main.getUser() != null && Main.getUser().equals(actividad.getOrganizacion())) {
 			editar = new JButton(new ImageIcon(getClass().getResource("/img/editarActividad.png")));
 			editar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			editar.setContentAreaFilled(false);

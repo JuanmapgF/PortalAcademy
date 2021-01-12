@@ -14,16 +14,12 @@ public class ButtonChatEditor extends DefaultCellEditor {
 		/**
 		 * 
 		 */
-		private ChatPrivado ButtonChatEditor;
 		private JButton btn;
 		private String lbl;
 		private Boolean clicked;
 		
-		private InformacionCursoForo button;
-		
-		 public ButtonChatEditor(ChatPrivado chatPrivado, JTextField txt) {
+		 public ButtonChatEditor(JTextField txt) {
 			super(txt);
-			ButtonChatEditor = chatPrivado;
 			
 			btn = new JButton();
 			btn.setOpaque(true);

@@ -2,12 +2,14 @@ package Vista;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -121,7 +123,7 @@ public class InformacionCursoForo extends JPanel {
 		int k = 0;
 		for (Mensaje m : lista) {
 			if (m.getEmisor() == null) {
-				datos[k][0] = "<ANÓNIMO> : " + m.getTexto();
+				datos[k][0] = "<ANï¿½NIMO> : " + m.getTexto();
 			} else if (m.getEmisor().equals(user)) {
 				datos[k][1] = m.getTexto();
 			} else if (m.getEmisor().equals(curso.getProfesor())) {
