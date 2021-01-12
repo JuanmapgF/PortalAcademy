@@ -52,56 +52,60 @@ public class InformacionCursoCuestionarios extends JPanel {
 		
 		addElements(Test.getTodosLosTests(curso.getId()));
 		
-		JLabel labelTest = new JLabel("Test de conocimiento");
-		labelTest.setFont(new Font("Segoe UI Emoji", Font.BOLD, 20));
-		labelTest.setBounds(647, 389, 202, 22);
+		JLabel labelTest = new JLabel("Tests de conocimiento");
+		labelTest.setFont(new Font("Tahoma", Font.BOLD, 30));
+		labelTest.setBounds(647, 365, 368, 46);
 		add(labelTest);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(647, 421, 616, 327);
+		listaC.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		scrollPane.setViewportView(listaC);
 		add(scrollPane);
 		
 		JLabel labelCuestionario = new JLabel("Cuestionario de satisfacci\u00F3n");
-		labelCuestionario.setFont(new Font("Segoe UI Emoji", Font.BOLD, 20));
-		labelCuestionario.setBounds(647, 776, 264, 22);
+		labelCuestionario.setFont(new Font("Tahoma", Font.BOLD, 30));
+		labelCuestionario.setBounds(647, 776, 435, 52);
 		add(labelCuestionario);
 		
-		bHacerCuestionario = new JButton("Hacer");
-		bHacerCuestionario.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		bHacerCuestionario.setBounds(965, 773, 79, 29);
-		add(bHacerCuestionario);
 		
-		bCrear = new JButton("Crear");
-		bCrear.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		bCrear.setBounds(1186, 769, 75, 31);
-		add(bCrear);
-		bCrear.setVisible(false);
+		if(curso.getSatisfaccion() && !esCreador()) {
+			bHacerCuestionario = new JButton("Hacer");
+			bHacerCuestionario.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			bHacerCuestionario.setBounds(1159, 783, 104, 46);
+			add(bHacerCuestionario);
+		}
 		
-		bBorrar = new JButton("Borrar");
-		bBorrar.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		bBorrar.setBounds(1271, 769, 83, 31);
-		add(bBorrar);
-		bBorrar.setVisible(false);
+		if(!esCreador()) {
+			bHacerTest = new JButton("Hacer test");
+			bHacerTest.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			bHacerTest.setBounds(1402, 521, 129, 46);
+			add(bHacerTest);
+		}
 		
-		bCrearTest = new JButton("Crear test");
-		bCrearTest.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		bCrearTest.setBounds(1152, 382, 111, 31);
-		add(bCrearTest);
-		bCrearTest.setVisible(false);
 		
-		bHacerTest = new JButton("Hacer test");
-		bHacerTest.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		bHacerTest.setBounds(1273, 421, 115, 31);
-		add(bHacerTest);
+		if(!curso.getSatisfaccion()) {
+			bCrear = new JButton("Crear");
+			bCrear.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			bCrear.setBounds(1174, 786, 89, 40);
+			add(bCrear);
 		
-		if (esCreador()) {
-			bCrearTest.setVisible(true);
-			if(curso.getSatisfaccion()) {
-				bBorrar.setVisible(true);
-			}else {
-				bCrear.setVisible(true);
-			}
+		}else {
+			bBorrar = new JButton("Borrar");
+			bBorrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			bBorrar.setBounds(1297, 786, 101, 40);
+			add(bBorrar);
+			
+		}
+		
+		
+		
+		if(esCreador()) {
+			bCrearTest = new JButton("Crear test");
+			bCrearTest.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			bCrearTest.setBounds(1402, 423, 129, 46);
+			add(bCrearTest);
+			
 		}
 		
 		if(user instanceof Profesor) {

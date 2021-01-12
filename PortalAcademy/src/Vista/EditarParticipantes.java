@@ -41,6 +41,7 @@ public class EditarParticipantes extends JPanel {
 		
 		JScrollPane sp_cursos = new JScrollPane();
 		sp_cursos.setBounds(591, 275, 465, 500);
+		listaC.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		sp_cursos.setViewportView(listaC);
 		add(sp_cursos);
 		
