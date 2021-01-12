@@ -40,7 +40,7 @@ public class prueba extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		cerrar = new ButtonDynamic("Subir archivo", ButtonDynamic.SUBIR);
+		cerrar = new ButtonDynamic("Subir archivo", "SUBIR");
 		CtrButtonDynamic cbd = new CtrButtonDynamic(cerrar);
 		cerrar.setBounds(10, 100, 400, 73);
 		getContentPane().add(cbd.getBoton());

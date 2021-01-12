@@ -8,18 +8,17 @@ import javax.swing.JPanel;
 
 import Modelo.Curso;
 import Modelo.Mensaje;
-import Modelo.MensajePrivado;
 import Modelo.Usuario;
 import Vista.InformacionCursoForo;
 import Vista.Main;
 
 public class CtrInformacionCursoForo implements ActionListener {
-	
+
 	private Usuario user;
 	private Curso curso;
-	
+
 	private InformacionCursoForo ventana;
-	
+
 	public CtrInformacionCursoForo(Usuario user, Curso curso) {
 		this.user = user;
 		this.curso = curso;
@@ -28,35 +27,35 @@ public class CtrInformacionCursoForo implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {	
+	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("Enviar")) {
 			String mensaje = ventana.mensajeAEnviar();
-			
+
 			if (mensaje.length() > 80) {
 				JOptionPane.showMessageDialog(ventana, "El mensaje ha superado los 80 caracteres permitidos");
-			} else if(mensaje.equals("") || mensaje.charAt(0) == ' ') {
+			} else if (mensaje.equals("") || mensaje.charAt(0) == ' ') {
 				JOptionPane.showMessageDialog(ventana, "El mensaje debe empezar por algun caracter");
 			} else {
-				if(user == null) {
+				if (user == null) {
 					Usuario x = new Usuario("anonimo");
 					new Mensaje(ventana.mensajeAEnviar(), x, curso);
-					CtrInformacionCurso c = new CtrInformacionCurso(user, curso);
+					CtrInformacionCursoForo c = new CtrInformacionCursoForo(user, curso);
 					Main.setPanel(c.getPanel());
-				}else {
+				} else {
 					new Mensaje(ventana.mensajeAEnviar(), user, curso);
-					CtrInformacionCurso c = new CtrInformacionCurso(user, curso);
+					CtrInformacionCursoForo c = new CtrInformacionCursoForo(user, curso);
 					Main.setPanel(c.getPanel());
 				}
-				
+
 			}
 		}
-		
+
 		if (e.getActionCommand().equals("Refrescar")) {
-			CtrInformacionCurso c = new CtrInformacionCurso(user, curso);
+			CtrInformacionCursoForo c = new CtrInformacionCursoForo(user, curso);
 			Main.setPanel(c.getPanel());
 		}
 	}
-	
+
 	public JPanel getPanel() {
 		return ventana;
 	}

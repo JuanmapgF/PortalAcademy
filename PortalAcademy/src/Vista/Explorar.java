@@ -136,7 +136,6 @@ public class Explorar extends JPanel {
 		CtrMenu menu = new CtrMenu(new Menu(e));
 		add(menu.getPanel());
 		
-		
 	}
 
 	
@@ -491,7 +490,7 @@ public class Explorar extends JPanel {
 		sp_curso.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(sp_curso);
 		sp_curso.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		cursos.setRowHeight(75);
+		cursos.setRowHeight(75);	
 		cursos.setShowVerticalLines(false);
 		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
 		cursos.getColumnModel().getColumn(0).setMinWidth(75);

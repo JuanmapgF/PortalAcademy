@@ -17,7 +17,6 @@ public class Actividad {
 	private Date fecha;
 	private String lugar;
 	private Boolean satisfaccion;
-
 	private Organizacion organizacion;
 	private List<Usuario> participantes;
 

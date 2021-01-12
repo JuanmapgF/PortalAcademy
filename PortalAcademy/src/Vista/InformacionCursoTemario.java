@@ -1,8 +1,10 @@
 package Vista;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.EventObject;
 import java.util.List;
 
 import javax.swing.JFileChooser;
@@ -13,14 +15,15 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+import javax.swing.event.CellEditorListener;
 import javax.swing.plaf.basic.BasicScrollBarUI;
+import javax.swing.table.TableCellEditor;
 
+import Controlador.CtrButtonDynamic;
 import Controlador.CtrMenu;
-import Controlador.CtrMenuCurso;
 import Modelo.Archivo;
 import Modelo.Curso;
 import Modelo.Estudiante;
-import Modelo.Organizacion;
 import Modelo.Profesor;
 
 @SuppressWarnings("serial")
@@ -65,6 +68,9 @@ public class InformacionCursoTemario extends JPanel {
 		spTemario.setWheelScrollingEnabled(true);
 		spTemario.setBounds(359, 422, 1178, 384);
 		spTemario.getHorizontalScrollBar().setUI(new BasicScrollBarUI());
+		spTemario.getVerticalScrollBar().setUI(new BasicScrollBarUI());
+		spTemario.setFont(new Font("Segoe UI", Font.BOLD, 20));
+
 		add(spTemario);
 
 		fileChooserDireccionDescarga = new JFileChooser();
@@ -73,21 +79,16 @@ public class InformacionCursoTemario extends JPanel {
 		fileChooserFicheroSubir = new JFileChooser();
 		fileChooserFicheroSubir.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
-		buttonDynamicSubir = new ButtonDynamic("Subir archivo", ButtonDynamic.SUBIR);
+		buttonDynamicSubir = new ButtonDynamic("Subir archivo", "SUBIR");
 		buttonDynamicSubir.setBounds(1385, 317, 152, 80);
-		add(buttonDynamicSubir);
-
-//		CtrMenuCurso ctrMenuCurso = new CtrMenuCurso(new MenuCurso(curso));
-//		add(ctrMenuCurso.getPanel());
+		CtrButtonDynamic ctrButtonDynamic = new CtrButtonDynamic(buttonDynamicSubir);
+		add(ctrButtonDynamic.getBoton());
 
 		if (Main.getUser() == null) {
 			CtrMenu menu = new CtrMenu(new Menu(curso));
 			add(menu.getPanel());
 		} else if (Main.getUser() instanceof Profesor) {
 			CtrMenu menu = new CtrMenu(new Menu((Profesor) Main.getUser(), curso));
-			add(menu.getPanel());
-		} else if (Main.getUser() instanceof Organizacion) {
-			CtrMenu menu = new CtrMenu(new Menu((Organizacion) Main.getUser()));
 			add(menu.getPanel());
 		} else {
 			CtrMenu menu = new CtrMenu(new Menu((Estudiante) Main.getUser(), curso));
@@ -97,7 +98,6 @@ public class InformacionCursoTemario extends JPanel {
 
 	private void cargarTemario() {
 		Object datosTemario[][];
-
 		int cnt = 0;
 		if (!esCreador()) {
 			datosTemario = new Object[lista_archivos_curso.size()][2];
@@ -108,8 +108,55 @@ public class InformacionCursoTemario extends JPanel {
 			}
 			String[] headerTemario = { "Nombre", "" };
 			temarios = new JTable(datosTemario, headerTemario);
+			temarios.getColumnModel().getColumn(0).setCellEditor(new TableCellEditor() {
+
+				@Override
+				public boolean stopCellEditing() {
+					return false;
+				}
+
+				@Override
+				public boolean shouldSelectCell(EventObject arg0) {
+					return false;
+				}
+
+				@Override
+				public void removeCellEditorListener(CellEditorListener arg0) {
+					removeCellEditorListener(arg0);
+				}
+
+				@Override
+				public boolean isCellEditable(EventObject arg0) {
+					return false;
+				}
+
+				@Override
+				public Object getCellEditorValue() {
+					return getCellEditorValue();
+				}
+
+				@Override
+				public void cancelCellEditing() {
+					cancelCellEditing();
+				}
+
+				@Override
+				public void addCellEditorListener(CellEditorListener arg0) {
+					addCellEditorListener(arg0);
+				}
+
+				@Override
+				public Component getTableCellEditorComponent(JTable arg0, Object arg1, boolean arg2, int arg3,
+						int arg4) {
+					return getTableCellEditorComponent(arg0, arg1, arg2, arg3, arg4);
+				}
+			});
+			temarios.getColumnModel().getColumn(0).setMinWidth(990);
+			temarios.getColumnModel().getColumn(0).setMaxWidth(990);
 			temarios.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
 			temarios.getColumnModel().getColumn(1).setCellEditor(descargar);
+			temarios.getColumnModel().getColumn(1).setMinWidth(180);
+			temarios.getColumnModel().getColumn(1).setMaxWidth(180);
 		} else {
 			datosTemario = new Object[lista_archivos_curso.size()][3];
 			for (Archivo archivo : lista_archivos_curso) {
@@ -120,13 +167,66 @@ public class InformacionCursoTemario extends JPanel {
 			}
 			String[] headerTemario = { "Nombre", "", "" };
 			temarios = new JTable(datosTemario, headerTemario);
+			temarios.getColumnModel().getColumn(0).setCellEditor(new TableCellEditor() {
+
+				@Override
+				public boolean stopCellEditing() {
+					return false;
+				}
+
+				@Override
+				public boolean shouldSelectCell(EventObject arg0) {
+					return false;
+				}
+
+				@Override
+				public void removeCellEditorListener(CellEditorListener arg0) {
+					removeCellEditorListener(arg0);
+				}
+
+				@Override
+				public boolean isCellEditable(EventObject arg0) {
+					return false;
+				}
+
+				@Override
+				public Object getCellEditorValue() {
+					return getCellEditorValue();
+				}
+
+				@Override
+				public void cancelCellEditing() {
+					cancelCellEditing();
+				}
+
+				@Override
+				public void addCellEditorListener(CellEditorListener arg0) {
+					addCellEditorListener(arg0);
+				}
+
+				@Override
+				public Component getTableCellEditorComponent(JTable arg0, Object arg1, boolean arg2, int arg3,
+						int arg4) {
+					return getTableCellEditorComponent(arg0, arg1, arg2, arg3, arg4);
+				}
+			});
+			temarios.getColumnModel().getColumn(0).setMinWidth(801);
+			temarios.getColumnModel().getColumn(0).setMaxWidth(801);
 			temarios.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
 			temarios.getColumnModel().getColumn(1).setCellEditor(descargar);
+			temarios.getColumnModel().getColumn(1).setMinWidth(188);
+			temarios.getColumnModel().getColumn(1).setMaxWidth(188);
 			temarios.getColumnModel().getColumn(2).setCellRenderer(new ButtonRenderer());
 			temarios.getColumnModel().getColumn(2).setCellEditor(borrar);
+			temarios.getColumnModel().getColumn(2).setMinWidth(188);
+			temarios.getColumnModel().getColumn(2).setMaxWidth(188);
 		}
 		temarios.setCellSelectionEnabled(false);
 		temarios.setTableHeader(null);
+		temarios.setShowHorizontalLines(false);
+		temarios.setShowVerticalLines(false);
+		temarios.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		temarios.setRowHeight(75);
 
 	}
 

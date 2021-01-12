@@ -6,12 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import Modelo.Actividad;
-import Modelo.Usuario;
 import Vista.Calendario;
 import Vista.Main;
-import Vista.Menu;
-import Vista.Registro;
 
 public class CtrCalendario   implements ActionListener{
 	private Calendario ventana;

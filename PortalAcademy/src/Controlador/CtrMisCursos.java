@@ -5,13 +5,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-import Modelo.Actividad;
 import Modelo.Curso;
-import Vista.Ajustes;
 import Vista.CrearCurso;
-import Vista.Explorar;
 import Vista.Main;
-import Vista.MisActividades;
 import Vista.MisCursos;
 
 public class CtrMisCursos implements ActionListener {
@@ -41,7 +37,6 @@ public class CtrMisCursos implements ActionListener {
 					CtrInformacionCurso cr = new CtrInformacionCurso(ventana.getProfesor(), c);
 					Main.setPanel(cr.getPanel());
 				}
-
 			}
 		}
 

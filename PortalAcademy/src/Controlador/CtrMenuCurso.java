@@ -30,7 +30,7 @@ public class CtrMenuCurso implements ActionListener {
 		}
 
 		if (e.getActionCommand().equals("TEMARIO")) {
-			CtrCursoTemario ctrCursoTemario = new CtrCursoTemario(new InformacionCursoTemario(ventana.getCurso()));
+			CtrInformacionCursoTemario ctrCursoTemario = new CtrInformacionCursoTemario(new InformacionCursoTemario(ventana.getCurso()));
 			Main.setPanel(ctrCursoTemario.getPanel());
 		}
 

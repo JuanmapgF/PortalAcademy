@@ -35,7 +35,6 @@ public class Menu extends JPanel {
 	private JButton explorar;
 	private JButton cursos;
 	private JButton actividades;
-	private ButtonDynamic cerrar;
 	private JButton ajustes;
 	private JButton registrarse;
 	private JButton btnChat;
@@ -49,7 +48,7 @@ public class Menu extends JPanel {
 	private boolean estudiante = false;
 	private boolean organizacion = false;
 	private boolean profesor = false;
-	
+
 	private final ImageIcon EXPLORAR = new ImageIcon(getClass().getResource("/img/explorar.png"));
 	private final ImageIcon MIS_CURSOS = new ImageIcon(getClass().getResource("/img/misCursos.png"));
 	private final ImageIcon MIS_ACTIVIDADES = new ImageIcon(getClass().getResource("/img/misActividades.png"));
@@ -59,7 +58,6 @@ public class Menu extends JPanel {
 	private final ImageIcon CHAT_PRIVADO = new ImageIcon(getClass().getResource("/img/chatPrivado.png"));
 	private final ImageIcon CERRAR_SESION = new ImageIcon(getClass().getResource("/img/cerrarSesion.png"));
 	private final ImageIcon LOGO = new ImageIcon(getClass().getResource("/img/logoMenu.png"));
-	
 
 	public Menu() {
 
@@ -92,36 +90,34 @@ public class Menu extends JPanel {
 		explorar.setFocusPainted(false);
 		explorar.setBorderPainted(false);
 		add(explorar);
-		
+
 		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(680, 975, 593, 40);
 		add(lblNewLabel);
-		
+
 		JCalendar jc = new JCalendar();
 		jc.setBounds(60, 755, 205, 153);
-	    HighlightEvaluator evaluator = new HighlightEvaluator();
-	    for(Actividad a : Actividad.getTodasLasActividades()) {
+		HighlightEvaluator evaluator = new HighlightEvaluator();
+		for (Actividad a : Actividad.getTodasLasActividades()) {
 			evaluator.add(a.getFecha());
 		}
-//			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-09"));
-//			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-10"));
-	   
-	    jc.getDayChooser().addDateEvaluator(evaluator);
-	    jc.setCalendar(jc.getCalendar());  
+
+		jc.getDayChooser().addDateEvaluator(evaluator);
+		jc.setCalendar(jc.getCalendar());
 		add(jc);
 		jc.setWeekOfYearVisible(false);
 		jc.getDayChooser().addPropertyChangeListener("day", new PropertyChangeListener() {
 
-		    @Override
-		    public void propertyChange(PropertyChangeEvent e) {
-		    	CtrCalendario c = new CtrCalendario(new Calendario(jc.getDate()));
+			@Override
+			public void propertyChange(PropertyChangeEvent e) {
+				CtrCalendario c = new CtrCalendario(new Calendario(jc.getDate()));
 				Main.setPanel(c.getPanel());
 
-		    }
+			}
 		});
-		
+
 		logo = new JLabel(LOGO);
 		logo.setBounds(780, 10, 400, 100);
 		logo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -130,8 +126,6 @@ public class Menu extends JPanel {
 		add(logo);
 
 	}
-	
-	
 
 	public Menu(Estudiante estudiante) {
 		this.estudiante = true;
@@ -140,12 +134,6 @@ public class Menu extends JPanel {
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
-//		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
-//		cerrar.setBounds(1705, 47, 156,
-//				122);
-//		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
-//		add(cbdCerrar.getBoton());
-
 		explorar = new JButton(EXPLORAR);
 		explorar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		explorar.setBounds(60, 191, 205, 60);
@@ -169,7 +157,7 @@ public class Menu extends JPanel {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(680, 975, 593, 40);
 		add(lblNewLabel);
-		
+
 		actividades = new JButton(MIS_ACTIVIDADES);
 		actividades.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		actividades.setBounds(60, 489, 205, 60);
@@ -188,11 +176,11 @@ public class Menu extends JPanel {
 		ajustes.setBorderPainted(false);
 		add(ajustes);
 
-		user = new ButtonDynamic(estudiante.getNick(), ButtonDynamic.USUARIO);
+		user = new ButtonDynamic(estudiante.getNick(), "USUARIO");
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
 		user.setBounds(82, 22, 150, 136);
 		add(cbdUser.getBoton());
-		
+
 		cerrarSesion = new JButton(CERRAR_SESION);
 		cerrarSesion.setBounds(1718, 47, 81, 74);
 		cerrarSesion.setContentAreaFilled(false);
@@ -209,33 +197,32 @@ public class Menu extends JPanel {
 		btnChat.setBorderPainted(false);
 		btnChat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		add(btnChat);
-		
+
 		JCalendar jc = new JCalendar();
 		jc.setBounds(60, 755, 205, 153);
-	    HighlightEvaluator evaluator = new HighlightEvaluator();
-	    for(Actividad a : estudiante.getListaActividades()) {
+		HighlightEvaluator evaluator = new HighlightEvaluator();
+		for (Actividad a : estudiante.getListaActividades()) {
 			evaluator.add(a.getFecha());
 		}
-	    
-	    for(Date a : estudiante.getFechas()) {
+
+		for (Date a : estudiante.getFechas()) {
 			evaluator.add(a);
 		}
-//			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-09"));
-//			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-10"));
-	    jc.getDayChooser().addDateEvaluator(evaluator);
-	    jc.setCalendar(jc.getCalendar());  
+
+		jc.getDayChooser().addDateEvaluator(evaluator);
+		jc.setCalendar(jc.getCalendar());
 		add(jc);
 		jc.setWeekOfYearVisible(false);
 		jc.getDayChooser().addPropertyChangeListener("day", new PropertyChangeListener() {
 
-		    @Override
-		    public void propertyChange(PropertyChangeEvent e) {
-		    	CtrCalendario c = new CtrCalendario(new Calendario(estudiante,jc.getDate()));
+			@Override
+			public void propertyChange(PropertyChangeEvent e) {
+				CtrCalendario c = new CtrCalendario(new Calendario(estudiante, jc.getDate()));
 				Main.setPanel(c.getPanel());
 
-		    }
+			}
 		});
-		
+
 		logo = new JLabel(LOGO);
 		logo.setBounds(780, 10, 400, 100);
 		logo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -244,19 +231,12 @@ public class Menu extends JPanel {
 		add(logo);
 	}
 
-	
 	public Menu(Profesor profesor) {
 		this.prof = profesor;
 		this.profesor = true;
 
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
-
-//		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
-//		cerrar.setBounds(1705, 47, 156,
-//				122);
-//		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
-//		add(cbdCerrar.getBoton());
 
 		explorar = new JButton(EXPLORAR);
 		explorar.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -290,7 +270,7 @@ public class Menu extends JPanel {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(680, 975, 593, 40);
 		add(lblNewLabel);
-		
+
 		ajustes = new JButton(AJUSTES);
 		ajustes.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		ajustes.setBounds(1627, 47, 81, 74);
@@ -300,11 +280,11 @@ public class Menu extends JPanel {
 		ajustes.setBorderPainted(false);
 		add(ajustes);
 
-		user = new ButtonDynamic(profesor.getNick(), ButtonDynamic.USUARIO);
+		user = new ButtonDynamic(profesor.getNick(), "USUARIO");
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
 		user.setBounds(82, 22, 150, 136);
 		add(cbdUser.getBoton());
-		
+
 		cerrarSesion = new JButton(CERRAR_SESION);
 		cerrarSesion.setBounds(1718, 47, 81, 74);
 		cerrarSesion.setContentAreaFilled(false);
@@ -321,34 +301,33 @@ public class Menu extends JPanel {
 		btnChat.setBorderPainted(false);
 		btnChat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		add(btnChat);
-		
+
 		JCalendar jc = new JCalendar();
 		jc.setBounds(60, 755, 205, 153);
-	    HighlightEvaluator evaluator = new HighlightEvaluator();
-	    
-	    for(Actividad a : profesor.getListaActividades()) {
+		HighlightEvaluator evaluator = new HighlightEvaluator();
+
+		for (Actividad a : profesor.getListaActividades()) {
 			evaluator.add(a.getFecha());
 		}
-	    
-	    for(Date a : profesor.getFechas()) {
+
+		for (Date a : profesor.getFechas()) {
 			evaluator.add(a);
 		}
-//			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-09"));
-//			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-10"));
-	    jc.getDayChooser().addDateEvaluator(evaluator);
-	    jc.setCalendar(jc.getCalendar());  
+
+		jc.getDayChooser().addDateEvaluator(evaluator);
+		jc.setCalendar(jc.getCalendar());
 		add(jc);
 		jc.setWeekOfYearVisible(false);
 		jc.getDayChooser().addPropertyChangeListener("day", new PropertyChangeListener() {
 
-		    @Override
-		    public void propertyChange(PropertyChangeEvent e) {
-		    	CtrCalendario c = new CtrCalendario(new Calendario(profesor,jc.getDate()));
+			@Override
+			public void propertyChange(PropertyChangeEvent e) {
+				CtrCalendario c = new CtrCalendario(new Calendario(profesor, jc.getDate()));
 				Main.setPanel(c.getPanel());
 
-		    }
+			}
 		});
-		
+
 		logo = new JLabel(LOGO);
 		logo.setBounds(780, 10, 400, 100);
 		logo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -364,12 +343,6 @@ public class Menu extends JPanel {
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
-//		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
-//		cerrar.setBounds(1643, 47, 267,
-//				122);
-//		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
-//		add(cbdCerrar.getBoton());
-
 		explorar = new JButton(EXPLORAR);
 		explorar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		explorar.setBounds(60, 191, 205, 60);
@@ -393,7 +366,7 @@ public class Menu extends JPanel {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(680, 975, 593, 40);
 		add(lblNewLabel);
-		
+
 		ajustes = new JButton(AJUSTES);
 		ajustes.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		ajustes.setBounds(1627, 47, 81, 74);
@@ -403,11 +376,11 @@ public class Menu extends JPanel {
 		ajustes.setBorderPainted(false);
 		add(ajustes);
 
-		user = new ButtonDynamic(organizacion.getNick(), ButtonDynamic.USUARIO);
+		user = new ButtonDynamic(organizacion.getNick(), "USUARIO");
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
 		user.setBounds(82, 22, 590, 136);
 		add(cbdUser.getBoton());
-		
+
 		cerrarSesion = new JButton(CERRAR_SESION);
 		cerrarSesion.setBounds(1718, 47, 81, 74);
 		cerrarSesion.setContentAreaFilled(false);
@@ -424,35 +397,33 @@ public class Menu extends JPanel {
 		btnChat.setBorderPainted(false);
 		btnChat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		add(btnChat);
-		
+
 		JCalendar jc = new JCalendar();
 		jc.setBounds(60, 755, 205, 153);
-	    HighlightEvaluator evaluator = new HighlightEvaluator();
+		HighlightEvaluator evaluator = new HighlightEvaluator();
 
-	    for(Actividad a : organizacion.getActividades()) {
+		for (Actividad a : organizacion.getActividades()) {
 			evaluator.add(a.getFecha());
 		}
-	    
-	    for(Date a : organizacion.getFechas()) {
+
+		for (Date a : organizacion.getFechas()) {
 			evaluator.add(a);
 		}
-	    
-//			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-09"));
-//			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-10"));
-	    jc.getDayChooser().addDateEvaluator(evaluator);
-	    jc.setCalendar(jc.getCalendar());  
+
+		jc.getDayChooser().addDateEvaluator(evaluator);
+		jc.setCalendar(jc.getCalendar());
 		add(jc);
 		jc.setWeekOfYearVisible(false);
 		jc.getDayChooser().addPropertyChangeListener("day", new PropertyChangeListener() {
 
-		    @Override
-		    public void propertyChange(PropertyChangeEvent e) {
-		    	CtrCalendario c = new CtrCalendario(new Calendario(organizacion,jc.getDate()));
+			@Override
+			public void propertyChange(PropertyChangeEvent e) {
+				CtrCalendario c = new CtrCalendario(new Calendario(organizacion, jc.getDate()));
 				Main.setPanel(c.getPanel());
 
-		    }
+			}
 		});
-		
+
 		logo = new JLabel(LOGO);
 		logo.setBounds(780, 10, 400, 100);
 		logo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -460,7 +431,7 @@ public class Menu extends JPanel {
 		logo.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		add(logo);
 	}
-	
+
 	public Menu(Curso curso) {
 
 		this.setBounds(0, 0, 1920, 1080);
@@ -492,49 +463,45 @@ public class Menu extends JPanel {
 		explorar.setFocusPainted(false);
 		explorar.setBorderPainted(false);
 		add(explorar);
-		
+
 		JLabel lblNewLabel = new JLabel("\u00A9NoTrabaJava - Todos los derechos reservados");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(680, 975, 593, 40);
 		add(lblNewLabel);
-		
+
 		JCalendar jc = new JCalendar();
 		jc.setBounds(60, 755, 205, 153);
-	    HighlightEvaluator evaluator = new HighlightEvaluator();
-	    for(Actividad a : Actividad.getTodasLasActividades()) {
+		HighlightEvaluator evaluator = new HighlightEvaluator();
+		for (Actividad a : Actividad.getTodasLasActividades()) {
 			evaluator.add(a.getFecha());
 		}
-//			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-09"));
-//			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-10"));
-	   
-	    jc.getDayChooser().addDateEvaluator(evaluator);
-	    jc.setCalendar(jc.getCalendar());  
+
+		jc.getDayChooser().addDateEvaluator(evaluator);
+		jc.setCalendar(jc.getCalendar());
 		add(jc);
 		jc.setWeekOfYearVisible(false);
 		jc.getDayChooser().addPropertyChangeListener("day", new PropertyChangeListener() {
 
-		    @Override
-		    public void propertyChange(PropertyChangeEvent e) {
-		    	CtrCalendario c = new CtrCalendario(new Calendario(jc.getDate()));
+			@Override
+			public void propertyChange(PropertyChangeEvent e) {
+				CtrCalendario c = new CtrCalendario(new Calendario(jc.getDate()));
 				Main.setPanel(c.getPanel());
 
-		    }
+			}
 		});
-		
+
 		logo = new JLabel(LOGO);
 		logo.setBounds(780, 10, 400, 100);
 		logo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		logo.setText("Portal Academy");
 		logo.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		add(logo);
-		
+
 		CtrMenuCurso menuc = new CtrMenuCurso(new MenuCurso(curso));
 		add(menuc.getPanel());
 
 	}
-	
-	
 
 	public Menu(Estudiante estudiante, Curso curso) {
 		this.estudiante = true;
@@ -543,12 +510,6 @@ public class Menu extends JPanel {
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
-//		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
-//		cerrar.setBounds(1705, 47, 156,
-//				122);
-//		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
-//		add(cbdCerrar.getBoton());
-
 		explorar = new JButton(EXPLORAR);
 		explorar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		explorar.setBounds(60, 191, 205, 60);
@@ -572,7 +533,7 @@ public class Menu extends JPanel {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(680, 975, 593, 40);
 		add(lblNewLabel);
-		
+
 		actividades = new JButton(MIS_ACTIVIDADES);
 		actividades.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		actividades.setBounds(60, 489, 205, 60);
@@ -591,11 +552,11 @@ public class Menu extends JPanel {
 		ajustes.setBorderPainted(false);
 		add(ajustes);
 
-		user = new ButtonDynamic(estudiante.getNick(), ButtonDynamic.USUARIO);
+		user = new ButtonDynamic(estudiante.getNick(), "USUARIO");
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
 		user.setBounds(82, 22, 150, 136);
 		add(cbdUser.getBoton());
-		
+
 		cerrarSesion = new JButton(CERRAR_SESION);
 		cerrarSesion.setBounds(1718, 47, 81, 74);
 		cerrarSesion.setContentAreaFilled(false);
@@ -612,45 +573,43 @@ public class Menu extends JPanel {
 		btnChat.setBorderPainted(false);
 		btnChat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		add(btnChat);
-		
+
 		JCalendar jc = new JCalendar();
 		jc.setBounds(60, 755, 205, 153);
-	    HighlightEvaluator evaluator = new HighlightEvaluator();
-	    for(Actividad a : estudiante.getListaActividades()) {
+		HighlightEvaluator evaluator = new HighlightEvaluator();
+		for (Actividad a : estudiante.getListaActividades()) {
 			evaluator.add(a.getFecha());
 		}
-	    
-	    for(Date a : estudiante.getFechas()) {
+
+		for (Date a : estudiante.getFechas()) {
 			evaluator.add(a);
 		}
-//			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-09"));
-//			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-10"));
-	    jc.getDayChooser().addDateEvaluator(evaluator);
-	    jc.setCalendar(jc.getCalendar());  
+
+		jc.getDayChooser().addDateEvaluator(evaluator);
+		jc.setCalendar(jc.getCalendar());
 		add(jc);
 		jc.setWeekOfYearVisible(false);
 		jc.getDayChooser().addPropertyChangeListener("day", new PropertyChangeListener() {
 
-		    @Override
-		    public void propertyChange(PropertyChangeEvent e) {
-		    	CtrCalendario c = new CtrCalendario(new Calendario(estudiante,jc.getDate()));
+			@Override
+			public void propertyChange(PropertyChangeEvent e) {
+				CtrCalendario c = new CtrCalendario(new Calendario(estudiante, jc.getDate()));
 				Main.setPanel(c.getPanel());
 
-		    }
+			}
 		});
-		
+
 		logo = new JLabel(LOGO);
 		logo.setBounds(780, 10, 400, 100);
 		logo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		logo.setText("Portal Academy");
 		logo.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		add(logo);
-		
+
 		CtrMenuCurso menuc = new CtrMenuCurso(new MenuCurso(curso));
 		add(menuc.getPanel());
 	}
 
-	
 	public Menu(Profesor profesor, Curso curso) {
 		this.prof = profesor;
 		this.profesor = true;
@@ -658,12 +617,6 @@ public class Menu extends JPanel {
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
-//		cerrar = new ButtonDynamic("Cerrar Sesión", ButtonDynamic.CERRAR_SESION);
-//		cerrar.setBounds(1705, 47, 156,
-//				122);
-//		CtrButtonDynamic cbdCerrar = new CtrButtonDynamic(cerrar);
-//		add(cbdCerrar.getBoton());
-
 		explorar = new JButton(EXPLORAR);
 		explorar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		explorar.setBounds(60, 191, 205, 60);
@@ -696,7 +649,7 @@ public class Menu extends JPanel {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(680, 975, 593, 40);
 		add(lblNewLabel);
-		
+
 		ajustes = new JButton(AJUSTES);
 		ajustes.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		ajustes.setBounds(1627, 47, 81, 74);
@@ -706,11 +659,11 @@ public class Menu extends JPanel {
 		ajustes.setBorderPainted(false);
 		add(ajustes);
 
-		user = new ButtonDynamic(profesor.getNick(), ButtonDynamic.USUARIO);
+		user = new ButtonDynamic(profesor.getNick(), "USUARIO");
 		CtrButtonDynamic cbdUser = new CtrButtonDynamic(user);
 		user.setBounds(82, 22, 150, 136);
 		add(cbdUser.getBoton());
-		
+
 		cerrarSesion = new JButton(CERRAR_SESION);
 		cerrarSesion.setBounds(1718, 47, 81, 74);
 		cerrarSesion.setContentAreaFilled(false);
@@ -727,46 +680,44 @@ public class Menu extends JPanel {
 		btnChat.setBorderPainted(false);
 		btnChat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		add(btnChat);
-		
+
 		JCalendar jc = new JCalendar();
 		jc.setBounds(60, 755, 205, 153);
-	    HighlightEvaluator evaluator = new HighlightEvaluator();
-	    
-	    for(Actividad a : profesor.getListaActividades()) {
+		HighlightEvaluator evaluator = new HighlightEvaluator();
+
+		for (Actividad a : profesor.getListaActividades()) {
 			evaluator.add(a.getFecha());
 		}
-	    
-	    for(Date a : profesor.getFechas()) {
+
+		for (Date a : profesor.getFechas()) {
 			evaluator.add(a);
 		}
-//			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-09"));
-//			evaluator.add(new SimpleDateFormat("yyyy-MM-dd").parse("2021-01-10"));
-	    jc.getDayChooser().addDateEvaluator(evaluator);
-	    jc.setCalendar(jc.getCalendar());  
+
+		jc.getDayChooser().addDateEvaluator(evaluator);
+		jc.setCalendar(jc.getCalendar());
 		add(jc);
 		jc.setWeekOfYearVisible(false);
 		jc.getDayChooser().addPropertyChangeListener("day", new PropertyChangeListener() {
 
-		    @Override
-		    public void propertyChange(PropertyChangeEvent e) {
-		    	CtrCalendario c = new CtrCalendario(new Calendario(profesor,jc.getDate()));
+			@Override
+			public void propertyChange(PropertyChangeEvent e) {
+				CtrCalendario c = new CtrCalendario(new Calendario(profesor, jc.getDate()));
 				Main.setPanel(c.getPanel());
 
-		    }
+			}
 		});
-		
+
 		logo = new JLabel(LOGO);
 		logo.setBounds(780, 10, 400, 100);
 		logo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		logo.setText("Portal Academy");
 		logo.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		add(logo);
-		
+
 		CtrMenuCurso menuc = new CtrMenuCurso(new MenuCurso(curso));
 		add(menuc.getPanel());
 	}
 
-	
 	public void controlador(ActionListener ctr) {
 		if (explorar != null) {
 			explorar.addActionListener(ctr);
@@ -827,53 +778,53 @@ public class Menu extends JPanel {
 	public Profesor getProfesor() {
 		return prof;
 	}
-	
+
 	private static class HighlightEvaluator implements IDateEvaluator {
 
-        private final List<Date> list = new ArrayList<>();
+		private final List<Date> list = new ArrayList<>();
 
-        public void add(Date date) {
-            list.add(date);
-        }
+		public void add(Date date) {
+			list.add(date);
+		}
 
-        @Override
-        public boolean isSpecial(Date date) {
-            return list.contains(date);
-        }
+		@Override
+		public boolean isSpecial(Date date) {
+			return list.contains(date);
+		}
 
-        @Override
-        public Color getSpecialForegroundColor() {
-            return Color.black;
-        }
+		@Override
+		public Color getSpecialForegroundColor() {
+			return Color.black;
+		}
 
-        @Override
-        public Color getSpecialBackroundColor() {
-            return Color.yellow;
-        }
+		@Override
+		public Color getSpecialBackroundColor() {
+			return Color.yellow;
+		}
 
-        @Override
-        public String getSpecialTooltip() {
-            return "Highlighted event.";
-        }
+		@Override
+		public String getSpecialTooltip() {
+			return "Highlighted event.";
+		}
 
-        @Override
-        public boolean isInvalid(Date date) {
-            return false;
-        }
+		@Override
+		public boolean isInvalid(Date date) {
+			return false;
+		}
 
-        @Override
-        public Color getInvalidForegroundColor() {
-            return null;
-        }
+		@Override
+		public Color getInvalidForegroundColor() {
+			return null;
+		}
 
-        @Override
-        public Color getInvalidBackroundColor() {
-            return null;
-        }
+		@Override
+		public Color getInvalidBackroundColor() {
+			return null;
+		}
 
-        @Override
-        public String getInvalidTooltip() {
-            return null;
-        }
-    }
+		@Override
+		public String getInvalidTooltip() {
+			return null;
+		}
+	}
 }
