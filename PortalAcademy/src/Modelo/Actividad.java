@@ -244,9 +244,9 @@ public class Actividad {
 
 	public Boolean getSatisfaccion() {
 		bd = BD.getBD();
-		Object[]tupla = bd.Select("SELECT satisfaccion FROM Actividad WHERE idCurso = '" + this.idActividad +"'").get(0);
+		Object[]tupla = bd.Select("SELECT satisfaccion FROM Actividad WHERE idActividad = '" + this.idActividad +"'").get(0);
 		bd.finalize();
-		return (Boolean) tupla[0];
+		return tupla[0].toString().equals("1") ? true : false;
 	}
 
 	public void setSatisfaccion(Boolean satisfaccion) {

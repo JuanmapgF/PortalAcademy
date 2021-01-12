@@ -26,7 +26,7 @@ public class MenuCurso extends JPanel{
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 		
-		if(Main.getUser().equals(curso.getProfesor())) {
+		if(Main.getUser() != null && Main.getUser().equals(curso.getProfesor())) {
 			editar = new JButton(new ImageIcon(getClass().getResource("/img/editarCurso.png")));
 			editar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			editar.setContentAreaFilled(false);

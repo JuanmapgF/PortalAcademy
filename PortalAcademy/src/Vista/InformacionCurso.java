@@ -33,7 +33,7 @@ public class InformacionCurso extends JPanel {
 		
 		JLabel nombreCurso = new JLabel(curso.getNombre());
 		nombreCurso.setBounds(429, 189, 364, 33);
-		nombreCurso.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
+		nombreCurso.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		add(nombreCurso);
 		
 		
@@ -42,6 +42,7 @@ public class InformacionCurso extends JPanel {
 		
 		descripcionCurso.setEditable(false);
 		JScrollPane jsp = new JScrollPane(descripcionCurso);
+		jsp.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		jsp.setBounds(429, 450, 777, 345);
 		add(jsp);
 		

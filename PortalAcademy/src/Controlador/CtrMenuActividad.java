@@ -29,10 +29,10 @@ public class CtrMenuActividad  implements ActionListener {
 		}
 		
 		
-//		if (e.getActionCommand().equals("CUESTIONARIOS")) {
-//			CtrInformacionActividadCuestionario c = new CtrInformacionActividadCuestionario (Main.getUser(),ventana.getActividad());
-//			Main.setPanel(c.getPanel());
-//		}
+		if (e.getActionCommand().equals("CUESTIONARIOS")) {
+			CtrInformacionActividadCuestionario c = new CtrInformacionActividadCuestionario (ventana.getActividad(),Main.getUser());
+			Main.setPanel(c.getPanel());
+		}
 
 		if (e.getActionCommand().equals("EDITAR")) {
 			CtrEditarActividad c = new CtrEditarActividad(new EditarActividad(ventana.getActividad(), (Organizacion) Main.getUser()));

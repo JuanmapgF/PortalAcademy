@@ -49,6 +49,11 @@ public class InformacionCursoCuestionarios extends JPanel {
 
 		addElements(Test.getTodosLosTests(curso.getId()));
 		
+		JLabel nombreCurso = new JLabel(curso.getNombre());
+		nombreCurso.setBounds(429, 189, 364, 33);
+		nombreCurso.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		add(nombreCurso);
+		
 		JLabel labelTest = new JLabel("Tests de conocimiento");
 		labelTest.setFont(new Font("Tahoma", Font.BOLD, 30));
 		labelTest.setBounds(647, 365, 368, 46);
@@ -113,14 +118,13 @@ public class InformacionCursoCuestionarios extends JPanel {
 		} else if (user instanceof Organizacion) {
 			CtrMenu menu = new CtrMenu(new Menu((Organizacion) user));
 			add(menu.getPanel());
+		} else if (user instanceof Estudiante) {
+			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user, curso));
+			add(menu.getPanel());
 		} else {
-			CtrMenu menu = new CtrMenu(new Menu((Estudiante) user, curso));
+			CtrMenu menu = new CtrMenu(new Menu(curso));
 			add(menu.getPanel());
 		}
-
-		CtrMenuCurso menuc = new CtrMenuCurso(new MenuCurso(curso));
-		add(menuc.getPanel());
-
 	}
 
 	public void addElements(List<Test> l) {
