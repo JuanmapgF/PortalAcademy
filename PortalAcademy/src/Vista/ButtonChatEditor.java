@@ -19,9 +19,28 @@ public class ButtonChatEditor extends DefaultCellEditor {
 		private String lbl;
 		private Boolean clicked;
 		
+		private InformacionCursoForo button;
+		
 		 public ButtonChatEditor(ChatPrivado chatPrivado, JTextField txt) {
 			super(txt);
 			ButtonChatEditor = chatPrivado;
+			
+			btn = new JButton();
+			btn.setOpaque(true);
+			
+			btn.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					fireEditingStopped();
+				}
+			});
+		}
+		 
+		public ButtonChatEditor(InformacionCursoForo icf, JTextField txt) {
+			super(txt);
+			button = icf;
 			
 			btn = new JButton();
 			btn.setOpaque(true);
