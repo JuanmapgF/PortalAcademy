@@ -1,7 +1,9 @@
 package Vista;
 
+import java.awt.Cursor;
 import java.awt.Font;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,13 +16,13 @@ import Modelo.Profesor;
 import Modelo.Usuario;
 
 @SuppressWarnings("serial")
-public class InformacionActividadCuestionario extends JPanel{
+public class InformacionActividadCuestionarios extends JPanel{
 	private Usuario user;
 	private Actividad actividad;
 	
 	public JButton bHacerCuestionario, bCrear, bBorrar;
 	
-	public InformacionActividadCuestionario(Usuario user, Actividad actividad) {
+	public InformacionActividadCuestionarios(Usuario user, Actividad actividad) {
 		this.user = user;
 		this.actividad = actividad;
 		
@@ -33,20 +35,29 @@ public class InformacionActividadCuestionario extends JPanel{
 		labelCuestionario.setBounds(427, 339, 264, 22);
 		add(labelCuestionario);
 		
-		bHacerCuestionario = new JButton("Hacer");
-		bHacerCuestionario.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		bHacerCuestionario.setBounds(745, 336, 79, 29);
+		bHacerCuestionario = new JButton(new ImageIcon(getClass().getResource("/img/hacer.png")));
+		bHacerCuestionario.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bHacerCuestionario.setContentAreaFilled(false);
+		bHacerCuestionario.setFocusPainted(false);
+		bHacerCuestionario.setBorderPainted(false);
+		bHacerCuestionario.setBounds(745, 336, 142, 52);
 		add(bHacerCuestionario);
 		
-		bCrear = new JButton("Crear");
-		bCrear.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		bCrear.setBounds(966, 332, 75, 31);
+		bCrear = new JButton(new ImageIcon(getClass().getResource("/img/crear.png")));
+		bCrear.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bCrear.setContentAreaFilled(false);
+		bCrear.setFocusPainted(false);
+		bCrear.setBorderPainted(false);
+		bCrear.setBounds(966, 332, 142, 52);
 		add(bCrear);
 		bCrear.setVisible(false);
 		
-		bBorrar = new JButton("Borrar");
-		bBorrar.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		bBorrar.setBounds(1051, 332, 83, 31);
+		bBorrar = new JButton(new ImageIcon(getClass().getResource("/img/borrar.png")));
+		bBorrar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bBorrar.setContentAreaFilled(false);
+		bBorrar.setFocusPainted(false);
+		bBorrar.setBorderPainted(false);
+		bBorrar.setBounds(1051, 332, 142, 52);
 		add(bBorrar);
 		bBorrar.setVisible(false);
 		
@@ -67,9 +78,6 @@ public class InformacionActividadCuestionario extends JPanel{
 			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user));
 			add(menu.getPanel());
 		}
-		
-//		CtrMenuCurso menuc = new CtrMenuCurso(new MenuActividad(actividad));
-//		add(menuc.getPanel());
 	}
 	
 	

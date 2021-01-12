@@ -11,16 +11,16 @@ import javax.swing.JPanel;
 
 import Modelo.Actividad;
 import Modelo.Usuario;
-import Vista.InformacionActividadCuestionario;
+import Vista.InformacionActividadCuestionarios;
 
 public class CtrInformacionActividadCuestionario implements ActionListener {
 
-	private InformacionActividadCuestionario vista;
+	private InformacionActividadCuestionarios vista;
 	private Actividad actividad;
 	private String enalceCuestionario = "https://forms.gle/A6w9nd54iKBxBfFTA";
 
 	public CtrInformacionActividadCuestionario(Actividad actividad, Usuario user) {
-		vista = new InformacionActividadCuestionario(user, actividad);
+		vista = new InformacionActividadCuestionarios(user, actividad);
 		this.actividad = actividad;
 	}
 
