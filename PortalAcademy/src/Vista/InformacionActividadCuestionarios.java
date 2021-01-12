@@ -1,8 +1,10 @@
 package Vista;
 
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,13 +17,13 @@ import Modelo.Profesor;
 import Modelo.Usuario;
 
 @SuppressWarnings("serial")
-public class InformacionActividadCuestionario extends JPanel{
+public class InformacionActividadCuestionarios extends JPanel{
 	private Usuario user;
 	private Actividad actividad;
 	
 	public JButton bHacerCuestionario, bCrear, bBorrar;
 	
-	public InformacionActividadCuestionario(Usuario user, Actividad actividad) {
+	public InformacionActividadCuestionarios(Usuario user, Actividad actividad) {
 		this.user = user;
 		this.actividad = actividad;
 		

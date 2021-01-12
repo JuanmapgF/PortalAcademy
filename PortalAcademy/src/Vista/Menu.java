@@ -3,9 +3,12 @@ package Vista;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -59,6 +62,9 @@ public class Menu extends JPanel {
 	private final ImageIcon CHAT_PRIVADO = new ImageIcon(getClass().getResource("/img/chatPrivado.png"));
 	private final ImageIcon CERRAR_SESION = new ImageIcon(getClass().getResource("/img/cerrarSesion.png"));
 	private final ImageIcon LOGO = new ImageIcon(getClass().getResource("/img/logoMenu.png"));
+	
+	private URL url = getClass().getResource("/img/fondoBlanco.jpg");
+    Image image = new ImageIcon(url).getImage();
 
 	public Menu() {
 
@@ -146,7 +152,7 @@ public class Menu extends JPanel {
 
 		cursos = new JButton(MIS_CURSOS);
 		cursos.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		cursos.setBounds(60, 365, 205, 60);
+		cursos.setBounds(60, 315, 205, 60);
 		cursos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cursos.setContentAreaFilled(false);
 		cursos.setFocusPainted(false);
@@ -161,7 +167,7 @@ public class Menu extends JPanel {
 
 		actividades = new JButton(MIS_ACTIVIDADES);
 		actividades.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		actividades.setBounds(60, 489, 205, 60);
+		actividades.setBounds(60, 439, 205, 60);
 		actividades.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		actividades.setContentAreaFilled(false);
 		actividades.setFocusPainted(false);
@@ -1236,5 +1242,15 @@ public class Menu extends JPanel {
 		public String getInvalidTooltip() {
 			return null;
 		}
+	}
+	
+	@Override
+	public void paint(Graphics g) {
+		// TODO Auto-generated method stub
+		
+		g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+        this.setOpaque(false);
+		
+		super.paint(g);
 	}
 }

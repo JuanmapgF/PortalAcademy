@@ -17,14 +17,14 @@ import Vista.Main;
 
 public class CtrInformacionActividadCuestionario implements ActionListener {
 
-	private InformacionActividadCuestionario vista;
+	private InformacionActividadCuestionarios vista;
 	private Actividad actividad;
 	private String enlaceCuestionario = "https://forms.gle/A6w9nd54iKBxBfFTA";
 	
 	private Usuario user;
 
 	public CtrInformacionActividadCuestionario(Actividad actividad, Usuario user) {
-		vista = new InformacionActividadCuestionario(user, actividad);
+		vista = new InformacionActividadCuestionarios(user, actividad);
 		this.actividad = actividad;
 	}
 
