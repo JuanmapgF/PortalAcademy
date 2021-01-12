@@ -1,8 +1,10 @@
 package Vista;
 
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -10,29 +12,47 @@ import Modelo.Actividad;
 
 public class MenuActividad extends JPanel{
 	
+	private JButton editar;
+	
 	private JButton btnInicio;
 	private JButton btnCuestionarios;
-	private Actividad c;
+	private Actividad actividad;
 	
 	public MenuActividad(Actividad actividad) {
-		c = actividad;
+		this.actividad = actividad;
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 		
-		btnInicio = new JButton("Inicio");
-		btnInicio.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnInicio = new JButton(new ImageIcon(getClass().getResource("/img/inicio.png")));
+		btnInicio.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnInicio.setContentAreaFilled(false);
+		btnInicio.setFocusPainted(false);
+		btnInicio.setBorderPainted(false);
 		btnInicio.setBounds(328, 278, 174, 40);
 		add(btnInicio);
 		
-		btnCuestionarios = new JButton("Cuestionarios");
-		btnCuestionarios.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnCuestionarios.setBounds(854, 278, 174, 40);
+		btnCuestionarios = new JButton(new ImageIcon(getClass().getResource("/img/cuestionarios.png")));
+		btnCuestionarios.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnCuestionarios.setContentAreaFilled(false);
+		btnCuestionarios.setFocusPainted(false);
+		btnCuestionarios.setBorderPainted(false);
+		btnCuestionarios.setBounds(592, 278, 174, 40);
 		add(btnCuestionarios);
+		
+		if(Main.getUser().equals(actividad.getOrganizacion())) {
+			editar = new JButton(new ImageIcon(getClass().getResource("/img/editarActividad.png")));
+			editar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			editar.setContentAreaFilled(false);
+			editar.setFocusPainted(false);
+			editar.setBorderPainted(false);
+			editar.setBounds(455, 854, 180, 60);
+			add(editar);
+		}
 		
 	}
 	
 	public Actividad getActividad() {
-		return c;
+		return actividad;
 	}
 	
 	public void controlador(ActionListener ctr) {
@@ -43,6 +63,10 @@ public class MenuActividad extends JPanel{
 		if (btnCuestionarios != null) {
 			btnCuestionarios.addActionListener(ctr);
 			btnCuestionarios.setActionCommand("CUESTIONARIOS");
+		}
+		if (editar != null) {
+			editar.addActionListener(ctr);
+			editar.setActionCommand("EDITAR");
 		}
 	}
 }

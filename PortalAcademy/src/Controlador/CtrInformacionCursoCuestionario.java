@@ -9,7 +9,6 @@ import java.net.URISyntaxException;
 
 import javax.swing.JPanel;
 
-import Modelo.BD;
 import Modelo.Curso;
 import Modelo.Usuario;
 import Vista.InformacionCursoCuestionarios;

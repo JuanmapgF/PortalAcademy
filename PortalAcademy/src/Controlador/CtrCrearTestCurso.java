@@ -10,9 +10,7 @@ import Modelo.BD;
 import Modelo.Curso;
 import Modelo.ErrorBD;
 import Modelo.Usuario;
-import Vista.AdminCursos;
 import Vista.CrearTestCurso;
-import Vista.InformacionCursoCuestionarios;
 import Vista.Main;
 
 public class CtrCrearTestCurso implements ActionListener{

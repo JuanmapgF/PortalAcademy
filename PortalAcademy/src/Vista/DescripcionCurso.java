@@ -1,9 +1,11 @@
 package Vista;
 
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -43,9 +45,12 @@ public class DescripcionCurso extends JPanel {
 		jsp.setBounds(750, 300, 652, 371);
 		add(jsp);
 
-		unirse = new JButton("Unirse");
-		unirse.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		unirse.setBounds(750, 702, 89, 40);
+		unirse = new JButton(new ImageIcon(getClass().getResource("/img/unirse.png")));
+		unirse.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		unirse.setContentAreaFilled(false);
+		unirse.setFocusPainted(false);
+		unirse.setBorderPainted(false);
+		unirse.setBounds(750, 702, 180, 60);
 		unirse.setVisible(false);
 		add(unirse);
 

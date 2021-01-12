@@ -145,10 +145,12 @@ public class Curso {
 	}
 
 	public Profesor getProfesor() {
-		bd = BD.getBD();
-		Object tupla = bd.SelectEscalar("SELECT nickProfesor FROM Curso WHERE idCurso = " + idCurso);
-		bd.finalize();
-		this.profesor = new Profesor(tupla.toString());
+		if (this.profesor == null) {
+			bd = BD.getBD();
+			Object tupla = bd.SelectEscalar("SELECT nickProfesor FROM Curso WHERE idCurso = " + idCurso);
+			bd.finalize();
+			this.profesor = new Profesor(tupla.toString());
+		}
 		return profesor;
 	}
 
@@ -220,6 +222,23 @@ public class Curso {
 		return listaCursos;
 	}
 
+	public static List<Curso> getCursos(String busqueda) {
+		if (busqueda.equals("")) {
+			return getTodosLosCursos();
+		} else {
+			List<Curso> listaCursos = new ArrayList<>();
+			bd = BD.getBD();
+			List<Object[]> cursos = bd.Select("SELECT idCurso FROM Curso WHERE nombre like " + "'%" + busqueda + "%'");
+			BD.contadorFinalize(cursos.size() + 1);
+			bd.finalize();
+			for (Object[] tupla : cursos) {
+				listaCursos.add(new Curso(Integer.parseInt(tupla[0].toString())));
+			}
+			return listaCursos;
+		}
+
+	}
+
 	@Override
 	public String toString() {
 		return nombre;
@@ -247,7 +266,7 @@ public class Curso {
 		bd = BD.getBD();
 		Object[] tupla = bd.Select("SELECT satisfaccion FROM Curso WHERE idCurso = '" + this.idCurso + "'").get(0);
 		bd.finalize();
-		return (Boolean) tupla[0];
+		return tupla[0].toString().equals("1") ? true : false;
 	}
 
 	public void setSatisfaccion(Boolean satisfaccion) {

@@ -6,20 +6,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 import Modelo.Actividad;
-import Modelo.Curso;
-import Modelo.Estudiante;
 import Modelo.Organizacion;
-import Modelo.Profesor;
 import Modelo.Usuario;
-import Vista.Ajustes;
 import Vista.EditarActividad;
-import Vista.Explorar;
 import Vista.InformacionActividad;
-import Vista.Inicio;
 import Vista.Main;
-import Vista.MisActividades;
-import Vista.MisCursos;
-import Vista.Registro;
 
 public class CtrInformacionActividad implements ActionListener {
 	private Usuario user;
@@ -31,17 +22,10 @@ public class CtrInformacionActividad implements ActionListener {
 		this.user = user;
 		this.actividad = actividad;
 		ventana = new InformacionActividad(actividad, user);
-		ventana.controlador(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-
-		if (e.getActionCommand().equals("Editar")) {
-			CtrEditarActividad c = new CtrEditarActividad(new EditarActividad(actividad, (Organizacion) user));
-			Main.setPanel(c.getPanel());
-		}
 		
 	}
 

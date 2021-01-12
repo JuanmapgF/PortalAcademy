@@ -12,6 +12,8 @@ import Modelo.Actividad;
 import Modelo.ErrorBD;
 import Modelo.Organizacion;
 import Vista.EditarActividad;
+import Vista.InformacionActividad;
+import Vista.InformacionCurso;
 import Vista.Main;
 import Vista.MisActividades;
 
@@ -86,7 +88,7 @@ public class CtrEditarActividad implements ActionListener {
 		if (e.getActionCommand().equals("VOLVER")) {
 			int res = JOptionPane.showConfirmDialog(ventana, "¿Salir sin guardar?");
 			if (res == 0) {
-				CtrMisActividades c = new CtrMisActividades(new MisActividades(organizacion));
+				CtrInformacionActividad c = new CtrInformacionActividad(organizacion, actividad);
 				Main.setPanel(c.getPanel());
 			}
 		}

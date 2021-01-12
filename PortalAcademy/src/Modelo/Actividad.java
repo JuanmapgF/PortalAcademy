@@ -17,7 +17,6 @@ public class Actividad {
 	private Date fecha;
 	private String lugar;
 	private Boolean satisfaccion;
-
 	private Organizacion organizacion;
 	private List<Usuario> participantes;
 
@@ -192,6 +191,23 @@ public class Actividad {
 			listaActividades.add(new Actividad(Integer.parseInt(tupla[0].toString())));
 		}
 		return listaActividades;
+	}
+	
+	public static List<Actividad> getActividades(String busqueda) {
+		if (busqueda.equals("")) {
+			return getTodasLasActividades();
+		} else {
+			List<Actividad> listaActividades = new ArrayList<>();
+			bd = BD.getBD();
+			List<Object[]> actividades = bd.Select("SELECT idActividad FROM Actividad WHERE nombre like " + "'%" + busqueda + "%'" );
+			BD.contadorFinalize(actividades.size() + 1);
+			bd.finalize();
+			for (Object[] tupla : actividades) {
+				listaActividades.add(new Actividad(Integer.parseInt(tupla[0].toString())));
+			}
+			return listaActividades;
+		}
+		
 	}
 
 	@Override

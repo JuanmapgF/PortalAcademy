@@ -1,11 +1,13 @@
 package Vista;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -68,8 +70,6 @@ public class MisCursos extends JPanel {
 		cursos.setShowVerticalLines(false);
 		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
 		cursos.getColumnModel().getColumn(0).setMinWidth(75);
-//		cursos.getColumnModel().getColumn(1).setMaxWidth(315);
-//		cursos.getColumnModel().getColumn(1).setMinWidth(315);
 
 		this.setBounds(0, 0, 1920, 1080);
 
@@ -92,9 +92,12 @@ public class MisCursos extends JPanel {
 		
 		datosTablaProfesor();
 
-		crearCurso = new JButton("Crear curso");
-		crearCurso.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		crearCurso.setBounds(1599, 400, 171, 40);
+		crearCurso = new JButton(new ImageIcon(getClass().getResource("/img/crearCurso.png")));
+		crearCurso.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		crearCurso.setContentAreaFilled(false);
+		crearCurso.setFocusPainted(false);
+		crearCurso.setBorderPainted(false);
+		crearCurso.setBounds(1599, 400, 180, 60);
 		add(crearCurso);
 
 		JScrollPane sp_curso = new JScrollPane();
@@ -107,8 +110,6 @@ public class MisCursos extends JPanel {
 		cursos.setShowVerticalLines(false);
 		cursos.getColumnModel().getColumn(0).setMaxWidth(75);
 		cursos.getColumnModel().getColumn(0).setMinWidth(75);
-//		cursos.getColumnModel().getColumn(1).setMaxWidth(315);
-//		cursos.getColumnModel().getColumn(1).setMinWidth(315);
 		
 		JScrollPane sp_curso1 = new JScrollPane();
 		sp_curso1.setBounds(1041, 400, 400, 546);
@@ -120,8 +121,6 @@ public class MisCursos extends JPanel {
 		impartidos.setShowVerticalLines(false);
 		impartidos.getColumnModel().getColumn(0).setMaxWidth(75);
 		impartidos.getColumnModel().getColumn(0).setMinWidth(75);
-//		cursos.getColumnModel().getColumn(1).setMaxWidth(315);
-//		cursos.getColumnModel().getColumn(1).setMinWidth(315);
 
 		JLabel t_curso2 = new JLabel("Mis cursos");
 		t_curso2.setFont(new Font("Tahoma", Font.PLAIN, 40));
