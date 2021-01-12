@@ -50,6 +50,11 @@ public class CtrInformacionCursoForo implements ActionListener {
 				
 			}
 		}
+		
+		if (e.getActionCommand().equals("Refrescar")) {
+			CtrInformacionCurso c = new CtrInformacionCurso(user, curso);
+			Main.setPanel(c.getPanel());
+		}
 	}
 	
 	public JPanel getPanel() {

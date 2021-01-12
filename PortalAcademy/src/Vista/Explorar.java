@@ -71,7 +71,7 @@ public class Explorar extends JPanel {
 		
 		busquedaCurso = new JTextField("Busca un curso");
 		busquedaCurso.setBounds(431, 360, 475, 30);
-		busquedaCurso.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		busquedaCurso.setFont(new Font("Segoe UI", Font.ITALIC, 20));
 		busquedaCurso.setForeground(Color.GRAY);
 		add(busquedaCurso);
 		busquedaCurso.setColumns(10);
@@ -79,7 +79,7 @@ public class Explorar extends JPanel {
 		
 		busquedaActividad = new JTextField("Busca una actividad");
 		busquedaActividad.setBounds(1089, 360, 475, 30);
-		busquedaActividad.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		busquedaActividad.setFont(new Font("Segoe UI", Font.ITALIC, 20));
 		busquedaActividad.setForeground(Color.GRAY);
 		add(busquedaActividad);
 		busquedaActividad.setColumns(10);
@@ -149,7 +149,7 @@ public class Explorar extends JPanel {
 		
 		busquedaCurso = new JTextField("Busca un curso");
 		busquedaCurso.setBounds(431, 360, 475, 30);
-		busquedaCurso.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		busquedaCurso.setFont(new Font("Segoe UI", Font.ITALIC, 20));
 		busquedaCurso.setForeground(Color.GRAY);
 		add(busquedaCurso);
 		busquedaCurso.setColumns(10);
@@ -157,7 +157,7 @@ public class Explorar extends JPanel {
 		
 		busquedaActividad = new JTextField("Busca una actividad");
 		busquedaActividad.setBounds(1089, 360, 475, 30);
-		busquedaActividad.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		busquedaActividad.setFont(new Font("Segoe UI", Font.ITALIC, 20));
 		busquedaActividad.setForeground(Color.GRAY);
 		add(busquedaActividad);
 		busquedaActividad.setColumns(10);
@@ -225,7 +225,7 @@ public class Explorar extends JPanel {
 		
 		busquedaCurso = new JTextField("Busca un curso");
 		busquedaCurso.setBounds(431, 360, 475, 30);
-		busquedaCurso.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		busquedaCurso.setFont(new Font("Segoe UI", Font.ITALIC, 20));
 		busquedaCurso.setForeground(Color.GRAY);
 		add(busquedaCurso);
 		busquedaCurso.setColumns(10);
@@ -233,7 +233,7 @@ public class Explorar extends JPanel {
 		
 		busquedaActividad = new JTextField("Busca una actividad");
 		busquedaActividad.setBounds(1089, 360, 475, 30);
-		busquedaActividad.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		busquedaActividad.setFont(new Font("Segoe UI", Font.ITALIC, 20));
 		busquedaActividad.setForeground(Color.GRAY);
 		add(busquedaActividad);
 		busquedaActividad.setColumns(10);
@@ -301,7 +301,7 @@ public class Explorar extends JPanel {
 		
 		busquedaCurso = new JTextField("Busca un curso");
 		busquedaCurso.setBounds(431, 360, 475, 30);
-		busquedaCurso.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		busquedaCurso.setFont(new Font("Segoe UI", Font.ITALIC, 20));
 		busquedaCurso.setForeground(Color.GRAY);
 		add(busquedaCurso);
 		busquedaCurso.setColumns(10);
@@ -309,7 +309,7 @@ public class Explorar extends JPanel {
 		
 		busquedaActividad = new JTextField("Busca una actividad");
 		busquedaActividad.setBounds(1089, 360, 475, 30);
-		busquedaActividad.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		busquedaActividad.setFont(new Font("Segoe UI", Font.ITALIC, 20));
 		busquedaActividad.setForeground(Color.GRAY);
 		add(busquedaActividad);
 		busquedaActividad.setColumns(10);
@@ -584,7 +584,11 @@ public class Explorar extends JPanel {
 			if (!curso.quedanPlazas()) {
 				datosCurso[k][2] = "Lleno";
 			} else {
-				datosCurso[k][2] = "Disponible";
+				if (curso.getPublico()) {
+					datosCurso[k][2] = "Disponible";
+				} else {
+					datosCurso[k][2] = "Privado";
+				}
 			}
 
 			k++;

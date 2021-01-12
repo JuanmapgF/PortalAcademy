@@ -23,27 +23,12 @@ public class CtrInformacionCurso implements ActionListener {
 		this.user = user;
 		this.curso = curso;
 		ventana = new InformacionCurso(user, curso);
-		ventana.controlador(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
 
-		if (e.getActionCommand().equals("Refrescar")) {
-			CtrInformacionCurso c = new CtrInformacionCurso(user, curso);
-			Main.setPanel(c.getPanel());
-		}
-
-		if (e.getActionCommand().equals("Editar")) {
-			CtrEditarCurso c = new CtrEditarCurso(new EditarCurso(curso, (Profesor) user));
-			Main.setPanel(c.getPanel());
-		}
 		
-		if (e.getActionCommand().equals("EditarParticipantes")) {
-			CtrEditarParticipantes c = new CtrEditarParticipantes(new EditarParticipantes(curso, (Profesor) user));
-			Main.setPanel(c.getPanel());
-		}
 		
 		
 		

@@ -5,7 +5,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-import Vista.CursoTemario;
+import Modelo.Profesor;
+import Vista.EditarCurso;
+import Vista.EditarParticipantes;
+import Vista.InformacionCursoTemario;
 import Vista.Main;
 import Vista.MenuCurso;
 
@@ -27,7 +30,7 @@ public class CtrMenuCurso implements ActionListener {
 		}
 
 		if (e.getActionCommand().equals("TEMARIO")) {
-			CtrCursoTemario ctrCursoTemario = new CtrCursoTemario(new CursoTemario(ventana.getCurso()));
+			CtrCursoTemario ctrCursoTemario = new CtrCursoTemario(new InformacionCursoTemario(ventana.getCurso()));
 			Main.setPanel(ctrCursoTemario.getPanel());
 		}
 
@@ -38,6 +41,16 @@ public class CtrMenuCurso implements ActionListener {
 
 		if (e.getActionCommand().equals("FORO")) {
 			CtrInformacionCursoForo c = new CtrInformacionCursoForo(Main.getUser(), ventana.getCurso());
+			Main.setPanel(c.getPanel());
+		}
+		
+		if (e.getActionCommand().equals("EDITAR")) {
+			CtrEditarCurso c = new CtrEditarCurso(new EditarCurso(ventana.getCurso(), (Profesor) Main.getUser()));
+			Main.setPanel(c.getPanel());
+		}
+		
+		if (e.getActionCommand().equals("EDITAR_PARTICIPANTES")) {
+			CtrEditarParticipantes c = new CtrEditarParticipantes(new EditarParticipantes(ventana.getCurso(), (Profesor) Main.getUser()));
 			Main.setPanel(c.getPanel());
 		}
 

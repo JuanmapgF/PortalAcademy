@@ -24,7 +24,7 @@ import Modelo.Organizacion;
 import Modelo.Profesor;
 
 @SuppressWarnings("serial")
-public class CursoTemario extends JPanel {
+public class InformacionCursoTemario extends JPanel {
 
 	private Curso curso;
 	private List<Archivo> lista_archivos_curso;
@@ -38,7 +38,7 @@ public class CursoTemario extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public CursoTemario(Curso c) {
+	public InformacionCursoTemario(Curso c) {
 		curso = c;
 		lista_archivos_curso = curso.getArchivosCurso();
 		this.setBounds(0, 0, 1920, 1080);
@@ -77,20 +77,20 @@ public class CursoTemario extends JPanel {
 		buttonDynamicSubir.setBounds(1385, 317, 152, 80);
 		add(buttonDynamicSubir);
 
-		CtrMenuCurso ctrMenuCurso = new CtrMenuCurso(new MenuCurso(curso));
-		add(ctrMenuCurso.getPanel());
+//		CtrMenuCurso ctrMenuCurso = new CtrMenuCurso(new MenuCurso(curso));
+//		add(ctrMenuCurso.getPanel());
 
 		if (Main.getUser() == null) {
-			CtrMenu menu = new CtrMenu(new Menu());
+			CtrMenu menu = new CtrMenu(new Menu(curso));
 			add(menu.getPanel());
 		} else if (Main.getUser() instanceof Profesor) {
-			CtrMenu menu = new CtrMenu(new Menu((Profesor) Main.getUser()));
+			CtrMenu menu = new CtrMenu(new Menu((Profesor) Main.getUser(), curso));
 			add(menu.getPanel());
 		} else if (Main.getUser() instanceof Organizacion) {
 			CtrMenu menu = new CtrMenu(new Menu((Organizacion) Main.getUser()));
 			add(menu.getPanel());
 		} else {
-			CtrMenu menu = new CtrMenu(new Menu((Estudiante) Main.getUser()));
+			CtrMenu menu = new CtrMenu(new Menu((Estudiante) Main.getUser(), curso));
 			add(menu.getPanel());
 		}
 	}
@@ -131,7 +131,10 @@ public class CursoTemario extends JPanel {
 	}
 
 	private boolean esCreador() {
-		return Main.getUser().getNick().equalsIgnoreCase(curso.getProfesor().getNick());
+		if (Main.getUser() == null) {
+			return false;
+		}
+		return Main.getUser().equals(curso.getProfesor());
 	}
 
 	public void controlador(ActionListener ctr) {

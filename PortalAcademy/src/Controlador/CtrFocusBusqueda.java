@@ -22,7 +22,7 @@ public class CtrFocusBusqueda implements FocusListener {
 		if (e.getSource() == ventana.busquedaCurso) {
 			if (ventana.busquedaCurso.getText().equals("Busca un curso")) {
 				ventana.busquedaCurso.setText("");
-				ventana.busquedaCurso.setFont(new Font("Tahoma", Font.PLAIN, 20));
+				ventana.busquedaCurso.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 				ventana.busquedaCurso.setForeground(Color.BLACK);
 			}
 		}
@@ -30,7 +30,7 @@ public class CtrFocusBusqueda implements FocusListener {
 		if (e.getSource() == ventana.busquedaActividad) {
 			if (ventana.busquedaActividad.getText().equals("Busca una actividad")) {
 				ventana.busquedaActividad.setText("");
-				ventana.busquedaActividad.setFont(new Font("Tahoma", Font.PLAIN, 20));
+				ventana.busquedaActividad.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 				ventana.busquedaActividad.setForeground(Color.BLACK);
 			}
 		}
@@ -42,7 +42,7 @@ public class CtrFocusBusqueda implements FocusListener {
 		if (e.getSource() == ventana.busquedaCurso) {
 			if (ventana.busquedaCurso.getText().equals("")) {
 				ventana.busquedaCurso.setText("Busca un curso");
-				ventana.busquedaCurso.setFont(new Font("Tahoma", Font.ITALIC, 20));
+				ventana.busquedaCurso.setFont(new Font("Segoe UI", Font.ITALIC, 20));
 				ventana.busquedaCurso.setForeground(Color.GRAY);
 			}
 		}
@@ -50,7 +50,7 @@ public class CtrFocusBusqueda implements FocusListener {
 		if (e.getSource() == ventana.busquedaActividad) {
 			if (ventana.busquedaActividad.getText().equals("")) {
 				ventana.busquedaActividad.setText("Busca una actividad");
-				ventana.busquedaActividad.setFont(new Font("Tahoma", Font.ITALIC, 20));
+				ventana.busquedaActividad.setFont(new Font("Segoe UI", Font.ITALIC, 20));
 				ventana.busquedaActividad.setForeground(Color.GRAY);
 			}
 		}

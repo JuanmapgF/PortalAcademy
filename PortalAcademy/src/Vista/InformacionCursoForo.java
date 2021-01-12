@@ -1,8 +1,10 @@
 package Vista;
 
+import java.awt.Cursor;
 import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -33,28 +35,11 @@ public class InformacionCursoForo extends JPanel {
 	 * Create the panel.
 	 */
 	public InformacionCursoForo(Usuario user, Curso curso) {
-		JScrollPane foro = new JScrollPane();
-		foro.setBounds(278, 234, 459, 268);
-		foro.setViewportView(listaMensajes);
-		add(foro);
 		
-		textField = new JTextField();
-		textField.setBounds(278, 513, 459, 20);
-		add(textField);
-		textField.setColumns(10);
+		this.setBounds(0, 0, 1920, 1080);
+		setLayout(null);
 		
-		enviar = new JButton("Enviar");
-		enviar.setBounds(748, 513, 89, 23);
-		add(enviar);
-		
-		refrescar = new JButton("Refrescar");
-		refrescar.setBounds(748, 274, 100, 23);
-		add(refrescar);
-		
-		JLabel lblForo = new JLabel("Foro");
-		lblForo.setBounds(278, 215, 46, 14);
-		add(lblForo);
-		
+		listaMensajes = new JList();
 		listaMensajes.setModel(modelo);
 		
 		for (Mensaje mensaje : curso.getMensajes()) {
@@ -69,22 +54,48 @@ public class InformacionCursoForo extends JPanel {
 			}
 		}
 		
+		JScrollPane foro = new JScrollPane();
+		foro.setBounds(602, 454, 459, 268);
+		foro.setViewportView(listaMensajes);
+		add(foro);
+		
+		textField = new JTextField();
+		textField.setBounds(602, 733, 459, 20);
+		add(textField);
+		textField.setColumns(10);
+		
+		enviar = new JButton(new ImageIcon (getClass().getResource("/img/enviar.png")));
+		enviar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		enviar.setContentAreaFilled(false);
+		enviar.setFocusPainted(false);
+		enviar.setBorderPainted(false);
+		enviar.setBounds(1071, 714, 73, 59);
+		add(enviar);
+		
+		refrescar = new JButton(new ImageIcon (getClass().getResource("/img/refrescar.png")));
+		refrescar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		refrescar.setContentAreaFilled(false);
+		refrescar.setFocusPainted(false);
+		refrescar.setBorderPainted(false);
+		refrescar.setBounds(1071, 454, 57, 59);
+		add(refrescar);
+		
+		
+		
 		if (user == null) {
-			CtrMenu menu = new CtrMenu(new Menu());
+			CtrMenu menu = new CtrMenu(new Menu(curso));
 			add(menu.getPanel());
 		}  else if (user instanceof Profesor) {
-			CtrMenu menu = new CtrMenu(new Menu((Profesor)user));
+			CtrMenu menu = new CtrMenu(new Menu((Profesor)user, curso));
 			add(menu.getPanel());
 		} else if(user instanceof Organizacion){
 			CtrMenu menu = new CtrMenu(new Menu((Organizacion)user));
 			add(menu.getPanel());
 		} else {
-			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user));
+			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user, curso));
 			add(menu.getPanel());
 		}
 		
-		CtrMenuCurso menuc = new CtrMenuCurso(new MenuCurso(curso));
-		add(menuc.getPanel());
 	}
 	
 	public void controlador(ActionListener ctr) {
