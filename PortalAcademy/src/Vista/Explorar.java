@@ -1,6 +1,7 @@
 package Vista;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
@@ -436,6 +437,7 @@ public class Explorar extends JPanel {
 	}
 
 	public void cargarCursosUsuario(String busqueda) {
+		this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		if (!busqueda.equals("")) {
 			lista_cursos = Curso.getCursos(busqueda);
 		} else {
@@ -498,10 +500,11 @@ public class Explorar extends JPanel {
 		cursos.getColumnModel().getColumn(1).setMinWidth(315);
 		cursos.getColumnModel().getColumn(2).setMaxWidth(75);
 		cursos.getColumnModel().getColumn(2).setMinWidth(75);
-		
+		this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 	}
 	
 	public void cargarActividadesUsuario(String busqueda) {
+		this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		if (!busqueda.equals("")) {
 			lista_actividades = Actividad.getActividades(busqueda);
 		} else {
@@ -565,9 +568,11 @@ public class Explorar extends JPanel {
 		actividades.getColumnModel().getColumn(1).setMinWidth(315);
 		actividades.getColumnModel().getColumn(2).setMaxWidth(75);
 		actividades.getColumnModel().getColumn(2).setMinWidth(75);
+		this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 	}
 	
 	public void cargarCursosInvitado(String busqueda) {
+		this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		if (!busqueda.equals("")) {
 			lista_cursos = Curso.getCursos(busqueda);
 		} else {
@@ -622,10 +627,11 @@ public class Explorar extends JPanel {
 		cursos.getColumnModel().getColumn(1).setMinWidth(315);
 		cursos.getColumnModel().getColumn(2).setMaxWidth(75);
 		cursos.getColumnModel().getColumn(2).setMinWidth(75);
-		
+		this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 	}
 
 	public void cargarActividadesInvitado(String busqueda) {
+		this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		if (!busqueda.equals("")) {
 			lista_actividades = Actividad.getActividades(busqueda);
 		} else {
@@ -675,6 +681,7 @@ public class Explorar extends JPanel {
 		actividades.getColumnModel().getColumn(1).setMinWidth(315);
 		actividades.getColumnModel().getColumn(2).setMaxWidth(75);
 		actividades.getColumnModel().getColumn(2).setMinWidth(75);
+		this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 	}
 
 	public Curso getCurso() {

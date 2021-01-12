@@ -1,7 +1,10 @@
 package Vista;
 
 import java.awt.Cursor;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -21,12 +24,15 @@ public class MenuCurso extends JPanel{
 	private JButton editar;
 	private JButton editarParticipantes;
 	
+	private URL url = getClass().getResource("/img/fondoBlanco.jpg");
+    Image image = new ImageIcon(url).getImage();
+	
 	public MenuCurso(Curso curso) {
 		this.curso = curso;
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 		
-		if(Main.getUser().equals(curso.getProfesor())) {
+		if(Main.getUser() != null && Main.getUser().equals(curso.getProfesor())) {
 			editar = new JButton(new ImageIcon(getClass().getResource("/img/editarCurso.png")));
 			editar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			editar.setContentAreaFilled(false);
@@ -115,5 +121,15 @@ public class MenuCurso extends JPanel{
 			btnForo.addActionListener(ctr);
 			btnForo.setActionCommand("FORO");
 		}
+	}
+	
+	@Override
+	public void paint(Graphics g) {
+		// TODO Auto-generated method stub
+		
+		g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+        this.setOpaque(false);
+		
+		super.paint(g);
 	}
 }

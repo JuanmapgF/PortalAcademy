@@ -3,8 +3,11 @@ package Vista;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
+import java.net.URL;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -24,6 +27,11 @@ public class Inicio extends JPanel {
 	private JLabel error;
 	private JTextField textFieldCorreo;
 	private JButton btnRecuperar;
+	
+	private URL url = getClass().getResource("/img/fondoBlanco.jpg");
+    Image image = new ImageIcon(url).getImage();
+    
+    
 
 	/**
 	 * Create the panel.
@@ -148,5 +156,15 @@ public class Inicio extends JPanel {
 
 	public void ocultarError() {
 		error.setVisible(false);
+	}
+
+	@Override
+	public void paint(Graphics g) {
+		// TODO Auto-generated method stub
+		
+		g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+        this.setOpaque(false);
+		
+		super.paint(g);
 	}
 }
