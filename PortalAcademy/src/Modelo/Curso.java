@@ -139,6 +139,10 @@ public class Curso {
 
 	public void setTieneForo(Boolean tieneForo) {
 		bd = BD.getBD();
+		if (!tieneForo) {
+			bd.Delete("DELETE FROM Mensaje WHERE idCurso = " + getId());
+		}
+
 		bd.Update("UPDATE Curso SET tieneforo = " + ((tieneForo) ? 1 : 0) + " WHERE idCurso = " + this.idCurso);
 		bd.finalize();
 		this.tieneForo = tieneForo;

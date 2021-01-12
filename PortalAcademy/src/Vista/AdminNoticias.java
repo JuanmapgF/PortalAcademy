@@ -20,7 +20,7 @@ import Modelo.MensajeNoticia;
 @SuppressWarnings("serial")
 public class AdminNoticias extends JPanel {
 
-	public JButton bCerrarSesion, bInicio, bCursos_1, bActividades_1, bUsuarios_1, bAjustes, agregarNoticia;
+	public JButton bCerrarSesion, bInicio, bCursos_1, bActividades_1, bUsuarios_1, agregarNoticia, bForos_1, bNoticias_1;
 	private JTextField nuevoMensaje;
 	
 	private List<MensajeNoticia> lista_noticias = MensajeNoticia.getTodasLasNoticias();
@@ -52,24 +52,18 @@ public class AdminNoticias extends JPanel {
 
 		bCursos_1 = new JButton("Cursos");
 		bCursos_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		bCursos_1.setForeground(Color.BLUE);
-		bCursos_1.setBounds(64, 339, 143, 40);
+		bCursos_1.setBounds(64, 312, 143, 40);
 		add(bCursos_1);
 
 		bActividades_1 = new JButton("Actividades");
 		bActividades_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		bActividades_1.setBounds(64, 431, 143, 40);
+		bActividades_1.setBounds(64, 376, 143, 40);
 		add(bActividades_1);
 
 		bUsuarios_1 = new JButton("Usuarios");
 		bUsuarios_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		bUsuarios_1.setBounds(64, 525, 143, 40);
+		bUsuarios_1.setBounds(64, 437, 143, 40);
 		add(bUsuarios_1);
-
-		bAjustes = new JButton("Ajustes");
-		bAjustes.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		bAjustes.setBounds(64, 627, 143, 40);
-		add(bAjustes);
 		
 		JLabel lblNewLabel_2 = new JLabel("Sesión iniciada como: " + Main.getUser().getNick());
 		lblNewLabel_2.setBounds(10, 11, 240, 20);
@@ -105,6 +99,16 @@ public class AdminNoticias extends JPanel {
 		agregarNoticia.setFocusPainted(false);
 		agregarNoticia.setBorderPainted(false);
 		add(agregarNoticia);
+		
+		bForos_1 = new JButton("Foros");
+		bForos_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		bForos_1.setBounds(64, 498, 143, 40);
+		add(bForos_1);
+
+		bNoticias_1 = new JButton("Noticias");
+		bNoticias_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		bNoticias_1.setBounds(64, 567, 143, 40);
+		add(bNoticias_1);
 	}
 	
 	private void cargarNoticias() {
