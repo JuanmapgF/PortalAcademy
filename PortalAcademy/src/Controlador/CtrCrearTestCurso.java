@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import Modelo.BD;
 import Modelo.Curso;
 import Modelo.ErrorBD;
+import Modelo.Test;
 import Modelo.Usuario;
 import Vista.CrearTestCurso;
 import Vista.Main;
@@ -20,13 +21,13 @@ public class CtrCrearTestCurso implements ActionListener{
 	private Usuario user;
 	private static BD bd;
 	
-	private String nombre, descripccion, link;
+	private String nombre, descripcion, link;
 	
 	public CtrCrearTestCurso(Usuario user, Curso curso) {
 		vista = new CrearTestCurso(user,curso);
 		this.curso = curso;
 		this.user = user;
-		
+		vista.controlador(this);
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -37,12 +38,8 @@ public class CtrCrearTestCurso implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getActionCommand().equals("Atr\\u00E1s")) {
-			CtrInformacionCursoCuestionario ctr = new CtrInformacionCursoCuestionario(user, curso);
-			Main.setPanel(ctr.getPanel());
-		}
 		
-		if(e.getActionCommand().equals("Guardar")) {
+		if(e.getActionCommand().equals("CREAR")) {
 			
 			try {
 				if (!nombreValido()) {
@@ -56,10 +53,11 @@ public class CtrCrearTestCurso implements ActionListener{
 					
 				}else {
 					nombre = vista.tfNombre.getText();
-					descripccion = vista.tfDescripccion.getText();
+					descripcion = vista.tfDescripccion.getText();
 					link = vista.tfLink.getText();
 					
-					
+					Test test = new Test(nombre,descripcion,link);
+					test.addTest(curso.getId());
 					
 					
 					JOptionPane.showMessageDialog(vista,
@@ -74,7 +72,13 @@ public class CtrCrearTestCurso implements ActionListener{
 			}
 			
 		}
+		
+		if(e.getActionCommand().equals("VOLVER")) {
+			CtrInformacionCursoCuestionario c = new CtrInformacionCursoCuestionario(user,curso);
+			Main.setPanel(c.getPanel());
+		}
 	}
+
 
 	
 	
