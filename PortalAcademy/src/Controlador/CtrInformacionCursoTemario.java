@@ -9,7 +9,9 @@ import javax.swing.JPanel;
 
 import Modelo.Archivo;
 import Modelo.BD;
+import Modelo.EnviarCorreo;
 import Modelo.ErrorBD;
+import Modelo.Usuario;
 import Vista.InformacionCursoTemario;
 import Vista.Main;
 
@@ -73,6 +75,14 @@ public class CtrInformacionCursoTemario implements ActionListener {
 					CtrInformacionCursoTemario ctrCursoTemario = new CtrInformacionCursoTemario(
 							new InformacionCursoTemario(vista.getCurso()));
 					Main.setPanel(ctrCursoTemario.getPanel());
+					for (Usuario user : vista.getCurso().getEstudiantes()) {
+						EnviarCorreo.enviarGmailUnico(user.getCorreo(), vista.getCurso().getNombre() + " Temario",
+								"Hola buenas " + user.getNick()
+										+ ",\n\nLe informamos que ha sido añadido nuevo temario en el curso "
+										+ vista.getCurso().getNombre()
+										+ ". Esperemos que aprenda mucho.\n\nUn cordial saludo de la comunidad NoTrabaJava.");
+					}
+
 				}
 			} catch (ErrorBD err) {
 				JOptionPane.showMessageDialog(vista, err.getMessage(), "Subida archivo", JOptionPane.ERROR_MESSAGE);
