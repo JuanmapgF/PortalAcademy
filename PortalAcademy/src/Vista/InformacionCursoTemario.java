@@ -48,12 +48,11 @@ public class InformacionCursoTemario extends JPanel {
 		setLayout(null);
 		descargar = new ButtonArchivo(new JTextField("Descargar"));
 		borrar = new ButtonArchivo(new JTextField("Borrar"));
-		JLabel lblNombreCurso = new JLabel(curso.getNombre());
-		lblNombreCurso.setBorder(new LineBorder(Color.BLACK));
-		lblNombreCurso.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNombreCurso.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNombreCurso.setBounds(380, 135, 106, 27);
-		add(lblNombreCurso);
+		
+		JLabel nombreCurso = new JLabel(curso.getNombre());
+		nombreCurso.setBounds(429, 189, 364, 33);
+		nombreCurso.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		add(nombreCurso);
 
 		JLabel lblTemario = new JLabel("Temario");
 		lblTemario.setBorder(new LineBorder(Color.BLACK));

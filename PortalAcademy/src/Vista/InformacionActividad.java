@@ -28,34 +28,35 @@ public class InformacionActividad extends JPanel {
 		setLayout(null);
 		
 		JLabel lblFecha = new JLabel("Fecha:");
-		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblFecha.setBounds(499, 746, 81, 27);
 		add(lblFecha);
 		
 		JLabel lblLugar = new JLabel("Lugar:");
-		lblLugar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblLugar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblLugar.setBounds(499, 794, 81, 27);
 		add(lblLugar);
 		
-		JLabel nombreActividad = new JLabel(actividad.getNombre());
-		nombreActividad.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 30));
-		nombreActividad.setBounds(416, 190, 364, 33);
-		add(nombreActividad);
+		JLabel nombreCurso = new JLabel(actividad.getNombre());
+		nombreCurso.setBounds(429, 189, 364, 33);
+		nombreCurso.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		add(nombreCurso);
 		
 		JTextArea descripcionActividad = new JTextArea(actividad.getDescripcion());
 		descripcionActividad.setEditable(false);
 		JScrollPane jsp = new JScrollPane(descripcionActividad);
+		jsp.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		jsp.setBounds(499, 504, 652, 185);
 		add(jsp);
 		
 		JLabel fecha = new JLabel(actividad.getFecha().toString());
-		fecha.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		fecha.setBounds(620, 746, 378, 27);
+		fecha.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		fecha.setBounds(623, 743, 418, 33);
 		add(fecha);
 		
 		JLabel lugar = new JLabel(actividad.getLugar());
-		lugar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lugar.setBounds(619, 794, 344, 27);
+		lugar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lugar.setBounds(623, 791, 345, 33);
 		add(lugar);
 		
 		if (user == null) {

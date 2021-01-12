@@ -1,11 +1,13 @@
 package Vista;
 
 import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -37,6 +39,11 @@ public class InformacionCursoForo extends JPanel {
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
+		JLabel nombreCurso = new JLabel(curso.getNombre());
+		nombreCurso.setBounds(429, 189, 364, 33);
+		nombreCurso.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		add(nombreCurso);
+		
 		listaMensajes = new JList<String>();
 		listaMensajes.setModel(modelo);
 
