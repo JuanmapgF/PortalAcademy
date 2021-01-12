@@ -44,8 +44,8 @@ public class ChatPrivado extends JPanel {
 	private JButton enviar;
 	private JButton refrescar;
 	
-	private MensajeRenderer mensajeRenderer = new MensajeRenderer(this);
-	private ButtonChatEditor chatEditor = new ButtonChatEditor(this, new JTextField());
+	private MensajeRenderer mensajeRenderer = new MensajeRenderer();
+	private ButtonChatEditor chatEditor = new ButtonChatEditor(new JTextField());
 	
 	private JTextField textFieldNuevoChat;
 	private JButton buttonAgregarChat;

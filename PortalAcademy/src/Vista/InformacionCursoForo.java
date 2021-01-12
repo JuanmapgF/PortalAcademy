@@ -1,8 +1,10 @@
 package Vista;
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -11,7 +13,12 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 
 import Controlador.CtrMenu;
 import Modelo.Curso;
@@ -23,13 +30,17 @@ import Modelo.Usuario;
 
 @SuppressWarnings("serial")
 public class InformacionCursoForo extends JPanel {
-	private JList<String> listaMensajes;
-	private DefaultListModel<String> modelo = new DefaultListModel<String>();
-
 	private JButton enviar;
 	private JButton refrescar;
 
 	private JTextField textField;
+	
+	private List<Mensaje> lista;
+	private JTable tablaMensajes;
+	private MensajeRenderer mensajeRenderer = new MensajeRenderer();
+	private ButtonChatEditor chatEditor = new ButtonChatEditor(this, new JTextField());
+	private Usuario user;
+	private Curso curso;
 
 	/**
 	 * Create the panel.
@@ -38,30 +49,18 @@ public class InformacionCursoForo extends JPanel {
 
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
-
-		JLabel nombreCurso = new JLabel(curso.getNombre());
-		nombreCurso.setBounds(429, 189, 364, 33);
-		nombreCurso.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		add(nombreCurso);
 		
-		listaMensajes = new JList<String>();
-		listaMensajes.setModel(modelo);
-
-		for (Mensaje mensaje : curso.getMensajes()) {
-			if (mensaje.getEmisor() == null) {
-				modelo.addElement("<INVITADO> : " + mensaje.getTexto());
-			} else if (mensaje.getEmisor().equals(user)) {
-				modelo.addElement("<TU> : " + mensaje.getTexto());
-			} else if (mensaje.getEmisor().equals(curso.getProfesor())) {
-				modelo.addElement("<PROFESOR> : " + mensaje.getTexto());
-			} else {
-				modelo.addElement("<" + mensaje.getEmisor().toString().toUpperCase() + "> : " + mensaje.getTexto());
-			}
-		}
+		lista = curso.getMensajes();
+		this.user = user;
+		this.curso = curso;
+		
+		getMensajes();
 
 		JScrollPane foro = new JScrollPane();
 		foro.setBounds(602, 454, 459, 268);
-		foro.setViewportView(listaMensajes);
+		foro.setViewportView(tablaMensajes);
+		tablaMensajes.setRowHeight(50);
+		foro.getVerticalScrollBar().setUI(new BasicScrollBarUI());
 		add(foro);
 
 		textField = new JTextField();
@@ -115,6 +114,36 @@ public class InformacionCursoForo extends JPanel {
 
 	public String mensajeAEnviar() {
 		return textField.getText();
+	}
+	
+	public void getMensajes() {
+		String[] columnHeaders = {"Otros", "Emisor"};
+		Object[][] datos = new Object[lista.size()][2];
+		
+		int k = 0;
+		for (Mensaje m : lista) {
+			if (m.getEmisor() == null) {
+				datos[k][0] = "<AN�NIMO> : " + m.getTexto();
+			} else if (m.getEmisor().equals(user)) {
+				datos[k][1] = m.getTexto();
+			} else if (m.getEmisor().equals(curso.getProfesor())) {
+				datos[k][0] = "<PROFESOR> : " + m.getTexto();
+			} else {
+				datos[k][0] = "<" + m.getEmisor().toString().toUpperCase() + "> : " + m.getTexto();
+			}
+			
+			k++;
+		}
+		
+		tablaMensajes = new JTable(datos, columnHeaders);
+		Border border = mensajeRenderer.getBorder();
+		Border margin = new EmptyBorder(5,5,5,5);
+		mensajeRenderer.setBorder(new CompoundBorder(border, margin));
+		tablaMensajes.getColumnModel().getColumn(0).setCellRenderer(mensajeRenderer);
+		tablaMensajes.getColumnModel().getColumn(1).setCellRenderer(mensajeRenderer);
+		tablaMensajes.setTableHeader(null);
+		tablaMensajes.setCellSelectionEnabled(false);
+		tablaMensajes.setGridColor(Color.decode("#F0F0F0"));
 	}
 
 }

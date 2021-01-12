@@ -256,7 +256,7 @@ public class Menu extends JPanel {
 
 		cursos = new JButton(MIS_CURSOS);
 		cursos.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		cursos.setBounds(60, 365, 205, 60);
+		cursos.setBounds(60, 315, 205, 60);
 		cursos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cursos.setContentAreaFilled(false);
 		cursos.setFocusPainted(false);
@@ -265,7 +265,7 @@ public class Menu extends JPanel {
 
 		actividades = new JButton(MIS_ACTIVIDADES);
 		actividades.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		actividades.setBounds(60, 489, 205, 60);
+		actividades.setBounds(60, 439, 205, 60);
 		actividades.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		actividades.setContentAreaFilled(false);
 		actividades.setFocusPainted(false);
@@ -361,7 +361,7 @@ public class Menu extends JPanel {
 
 		actividades = new JButton(MIS_ACTIVIDADES);
 		actividades.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		actividades.setBounds(60, 489, 205, 60);
+		actividades.setBounds(60, 315, 205, 60);
 		actividades.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		actividades.setContentAreaFilled(false);
 		actividades.setFocusPainted(false);
