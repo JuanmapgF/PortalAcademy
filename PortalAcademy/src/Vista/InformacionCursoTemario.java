@@ -48,7 +48,7 @@ public class InformacionCursoTemario extends JPanel {
 		setLayout(null);
 		descargar = new ButtonArchivo(new JTextField("Descargar"));
 		borrar = new ButtonArchivo(new JTextField("Borrar"));
-		
+
 		JLabel nombreCurso = new JLabel(curso.getNombre());
 		nombreCurso.setBounds(429, 189, 364, 33);
 		nombreCurso.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -82,6 +82,9 @@ public class InformacionCursoTemario extends JPanel {
 		buttonDynamicSubir.setBounds(1385, 317, 152, 80);
 		CtrButtonDynamic ctrButtonDynamic = new CtrButtonDynamic(buttonDynamicSubir);
 		add(ctrButtonDynamic.getBoton());
+		if (Main.getUser() == null || Main.getUser().getNick().equals(curso.getProfesor().getNick())) {
+			buttonDynamicSubir.setVisible(false);
+		}
 
 		if (Main.getUser() == null) {
 			CtrMenu menu = new CtrMenu(new Menu(curso));
