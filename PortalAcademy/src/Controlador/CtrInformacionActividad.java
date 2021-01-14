@@ -6,11 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 import Modelo.Actividad;
-import Modelo.Organizacion;
 import Modelo.Usuario;
-import Vista.EditarActividad;
 import Vista.InformacionActividad;
-import Vista.Main;
 
 public class CtrInformacionActividad implements ActionListener {
 	private Usuario user;

@@ -15,12 +15,12 @@ import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 
 import com.toedter.calendar.JDateChooser;
 
 import Controlador.CtrMenu;
 import Modelo.Organizacion;
-import javax.swing.border.LineBorder;
 
 @SuppressWarnings("serial")
 public class CrearActividad extends JPanel {

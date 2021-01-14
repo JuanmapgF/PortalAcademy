@@ -26,7 +26,6 @@ import Modelo.MensajeNoticia;
 import Modelo.Organizacion;
 import Modelo.Profesor;
 import Modelo.Usuario;
-import javax.swing.JButton;
 
 @SuppressWarnings("serial")
 public class Explorar extends JPanel {

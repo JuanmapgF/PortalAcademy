@@ -1,16 +1,13 @@
 package Vista;
 
 import java.awt.Font;
-import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import Controlador.CtrMenu;
-import Controlador.CtrMenuCurso;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Organizacion;

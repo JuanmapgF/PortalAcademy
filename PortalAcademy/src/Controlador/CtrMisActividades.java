@@ -6,13 +6,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 import Modelo.Actividad;
-import Modelo.Curso;
-import Vista.Ajustes;
 import Vista.CrearActividad;
-import Vista.Explorar;
 import Vista.Main;
 import Vista.MisActividades;
-import Vista.MisCursos;
 
 public class CtrMisActividades implements ActionListener {
 

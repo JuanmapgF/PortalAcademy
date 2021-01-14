@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import Controlador.CtrMenu;
-import Controlador.CtrMenuCurso;
 import Modelo.BD;
 import Modelo.Curso;
 import Modelo.Estudiante;

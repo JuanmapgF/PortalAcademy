@@ -10,7 +10,6 @@ import Modelo.Organizacion;
 import Vista.EditarActividad;
 import Vista.Main;
 import Vista.MenuActividad;
-import Vista.MenuCurso;
 
 public class CtrMenuActividad  implements ActionListener {
 	

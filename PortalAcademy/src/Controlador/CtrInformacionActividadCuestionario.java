@@ -10,7 +10,6 @@ import java.net.URISyntaxException;
 import javax.swing.JPanel;
 
 import Modelo.Actividad;
-import Modelo.Curso;
 import Modelo.Usuario;
 import Vista.InformacionActividadCuestionarios;
 import Vista.Main;

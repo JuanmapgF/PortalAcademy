@@ -6,8 +6,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import Modelo.*;
-import Vista.*;
+import Modelo.Curso;
+import Modelo.EnviarCorreo;
+import Modelo.Usuario;
+import Vista.DescripcionCurso;
+import Vista.Main;
 
 public class CtrDescripcionCurso implements ActionListener {
 	private Usuario user;
