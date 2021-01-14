@@ -3,6 +3,7 @@ package Controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Modelo.Organizacion;
@@ -30,8 +31,12 @@ public class CtrMenuActividad  implements ActionListener {
 		
 		
 		if (e.getActionCommand().equals("CUESTIONARIOS")) {
-			CtrInformacionActividadCuestionario c = new CtrInformacionActividadCuestionario (ventana.getActividad(),Main.getUser());
-			Main.setPanel(c.getPanel());
+			if (Main.getUser() == null) {
+				JOptionPane.showMessageDialog(ventana, "No tienes permiso para hacer cuestionarios");
+			} else {
+				CtrInformacionActividadCuestionario c = new CtrInformacionActividadCuestionario (ventana.getActividad(),Main.getUser());
+				Main.setPanel(c.getPanel());
+			}
 		}
 
 		if (e.getActionCommand().equals("EDITAR")) {
