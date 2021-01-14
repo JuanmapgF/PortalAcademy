@@ -82,7 +82,7 @@ public class InformacionCursoTemario extends JPanel {
 		buttonDynamicSubir.setBounds(1385, 317, 152, 80);
 		CtrButtonDynamic ctrButtonDynamic = new CtrButtonDynamic(buttonDynamicSubir);
 		add(ctrButtonDynamic.getBoton());
-		if (Main.getUser() == null || Main.getUser().getNick().equals(curso.getProfesor().getNick())) {
+		if (Main.getUser() == null || !Main.getUser().getNick().equals(curso.getProfesor().getNick())) {
 			buttonDynamicSubir.setVisible(false);
 		}
 
