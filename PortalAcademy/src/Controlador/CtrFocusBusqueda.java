@@ -18,7 +18,6 @@ public class CtrFocusBusqueda implements FocusListener {
 
 	@Override
 	public void focusGained(FocusEvent e) {
-		// TODO Auto-generated method stub
 		if (e.getSource() == ventana.busquedaCurso) {
 			if (ventana.busquedaCurso.getText().equals("Busca un curso")) {
 				ventana.busquedaCurso.setText("");
@@ -38,7 +37,6 @@ public class CtrFocusBusqueda implements FocusListener {
 
 	@Override
 	public void focusLost(FocusEvent e) {
-		// TODO Auto-generated method stub
 		if (e.getSource() == ventana.busquedaCurso) {
 			if (ventana.busquedaCurso.getText().equals("")) {
 				ventana.busquedaCurso.setText("Busca un curso");

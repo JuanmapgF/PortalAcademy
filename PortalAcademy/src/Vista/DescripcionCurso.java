@@ -29,12 +29,10 @@ public class DescripcionCurso extends JPanel {
 	public DescripcionCurso(Usuario user, Curso curso) {
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
-
-		// TODO (Juanma) Hacer que aparezca la por defecto.
 		
 		JLabel nombreCurso = new JLabel(curso.getNombre());
 		nombreCurso.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		nombreCurso.setBounds(486, 79, 853, 51);
+		nombreCurso.setBounds(484, 144, 1147, 51);
 		add(nombreCurso);
 
 		JTextArea descripcionCurso = new JTextArea(curso.getDescripcion());

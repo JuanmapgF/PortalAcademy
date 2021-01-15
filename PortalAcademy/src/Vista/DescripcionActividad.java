@@ -28,14 +28,13 @@ public class DescripcionActividad extends JPanel {
 	 */
 	public DescripcionActividad(Usuario user, Actividad actividad) {
 		
-		// TODO (Juanma) Hacer que aparezca la imagen normal y la por defecto.
 
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 
 		JLabel nombreActividad = new JLabel(actividad.getNombre());
 		nombreActividad.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		nombreActividad.setBounds(596, 79, 756, 51);
+		nombreActividad.setBounds(427, 150, 1147, 51);
 		add(nombreActividad);
 
 		JTextArea descripcionActividad = new JTextArea(actividad.getDescripcion());

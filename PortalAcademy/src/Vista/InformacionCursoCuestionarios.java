@@ -49,12 +49,12 @@ public class InformacionCursoCuestionarios extends JPanel {
 		setLayout(null);
 
 		addElements(Test.getTodosLosTests(curso.getId()));
-		
+
 		JLabel nombreCurso = new JLabel(curso.getNombre());
 		nombreCurso.setBounds(429, 189, 364, 33);
 		nombreCurso.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		add(nombreCurso);
-		
+
 		JLabel labelTest = new JLabel("Tests de conocimiento");
 		labelTest.setFont(new Font("Tahoma", Font.BOLD, 30));
 		labelTest.setBounds(647, 365, 368, 46);
@@ -66,16 +66,14 @@ public class InformacionCursoCuestionarios extends JPanel {
 		scrollPane.setViewportView(listaC);
 		add(scrollPane);
 
-		if(esCreador() || curso.getSatisfaccion()) {
+		if (esCreador() || curso.getSatisfaccion()) {
 			JLabel labelCuestionario = new JLabel("Cuestionario de satisfacci\u00F3n");
 			labelCuestionario.setFont(new Font("Tahoma", Font.BOLD, 30));
 			labelCuestionario.setBounds(647, 776, 435, 52);
 			add(labelCuestionario);
 		}
-		
-		
-		
-		if(curso.getSatisfaccion() && !esCreador()) {
+
+		if (curso.getSatisfaccion() && !esCreador()) {
 			bHacerCuestionario = new JButton(new ImageIcon(getClass().getResource("/img/hacer.png")));
 			bHacerCuestionario.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			bHacerCuestionario.setContentAreaFilled(false);
@@ -84,8 +82,8 @@ public class InformacionCursoCuestionarios extends JPanel {
 			bHacerCuestionario.setBounds(1156, 776, 142, 52);
 			add(bHacerCuestionario);
 		}
-		
-		if(!esCreador()) {
+
+		if (!esCreador()) {
 			bHacerTest = new JButton(new ImageIcon(getClass().getResource("/img/hacerTest.png")));
 			bHacerTest.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			bHacerTest.setContentAreaFilled(false);
@@ -94,9 +92,8 @@ public class InformacionCursoCuestionarios extends JPanel {
 			bHacerTest.setBounds(1402, 521, 142, 52);
 			add(bHacerTest);
 		}
-		
-		
-		if(!curso.getSatisfaccion()) {
+
+		if (!curso.getSatisfaccion() && esCreador()) {
 			bCrear = new JButton(new ImageIcon(getClass().getResource("/img/crear.png")));
 			bCrear.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			bCrear.setContentAreaFilled(false);
@@ -104,8 +101,7 @@ public class InformacionCursoCuestionarios extends JPanel {
 			bCrear.setBorderPainted(false);
 			bCrear.setBounds(1156, 776, 142, 52);
 			add(bCrear);
-		
-		}else {
+		} else if (esCreador()) {
 			bBorrar = new JButton(new ImageIcon(getClass().getResource("/img/borrar.png")));
 			bBorrar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			bBorrar.setContentAreaFilled(false);
@@ -114,8 +110,8 @@ public class InformacionCursoCuestionarios extends JPanel {
 			bBorrar.setBounds(1156, 776, 142, 52);
 			add(bBorrar);
 		}
-		
-		if(esCreador()) {
+
+		if (esCreador()) {
 			bCrearTest = new JButton(new ImageIcon(getClass().getResource("/img/crearTest.png")));
 			bCrearTest.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			bCrearTest.setContentAreaFilled(false);
@@ -123,10 +119,8 @@ public class InformacionCursoCuestionarios extends JPanel {
 			bCrearTest.setBorderPainted(false);
 			bCrearTest.setBounds(1402, 423, 142, 52);
 			add(bCrearTest);
-			
 		}
 
-		
 		if (user instanceof Profesor) {
 			CtrMenu menu = new CtrMenu(new Menu((Profesor) user, curso));
 			add(menu.getPanel());
@@ -134,7 +128,7 @@ public class InformacionCursoCuestionarios extends JPanel {
 			CtrMenu menu = new CtrMenu(new Menu((Organizacion) user));
 			add(menu.getPanel());
 		} else if (user instanceof Estudiante) {
-			CtrMenu menu = new CtrMenu(new Menu((Estudiante)user, curso));
+			CtrMenu menu = new CtrMenu(new Menu((Estudiante) user, curso));
 			add(menu.getPanel());
 		} else {
 			CtrMenu menu = new CtrMenu(new Menu(curso));
@@ -160,7 +154,7 @@ public class InformacionCursoCuestionarios extends JPanel {
 			return null;
 		}
 	}
-	
+
 	private boolean esCreador() {
 		if (Main.getUser() == null) {
 			return false;
@@ -169,27 +163,27 @@ public class InformacionCursoCuestionarios extends JPanel {
 	}
 
 	public void controlador(ActionListener ctr) {
-		if(bCrearTest != null) {
+		if (bCrearTest != null) {
 			this.bCrearTest.addActionListener(ctr);
 			this.bCrearTest.setActionCommand("CREARTEST");
 		}
-		
-		if(bBorrar != null) {
+
+		if (bBorrar != null) {
 			this.bBorrar.addActionListener(ctr);
 			this.bBorrar.setActionCommand("BORRAR");
 		}
-		
-		if(bCrear != null) {
+
+		if (bCrear != null) {
 			this.bCrear.addActionListener(ctr);
 			this.bCrear.setActionCommand("CREAR");
 		}
-		
-		if(bHacerCuestionario != null) {
+
+		if (bHacerCuestionario != null) {
 			this.bHacerCuestionario.addActionListener(ctr);
 			this.bHacerCuestionario.setActionCommand("HACER");
 		}
-		
-		if(bHacerTest != null) {
+
+		if (bHacerTest != null) {
 			this.bHacerTest.addActionListener(ctr);
 			this.bHacerTest.setActionCommand("HACERTEST");
 		}

@@ -30,6 +30,7 @@ public class CtrAdminInicio implements ActionListener {
 		vista.bUsuarios.addActionListener(this);
 		vista.bUsuarios_1.addActionListener(this);
 		vista.bNoticias.addActionListener(this);
+		vista.bNoticias_1.addActionListener(this);
 		vista.bForos.addActionListener(this);
 		vista.bForos_1.addActionListener(this);
 	}

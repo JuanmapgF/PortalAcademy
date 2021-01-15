@@ -56,7 +56,6 @@ public class CtrInformacionActividadCuestionario implements ActionListener {
 				Main.setPanel(c.getPanel());
 			}
 		}
-		// TODO Auto-generated method stub
 
 	}
 

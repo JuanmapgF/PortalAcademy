@@ -44,7 +44,6 @@ public class CtrDescripcionActividad implements ActionListener {
 				Main.setPanel(c.getPanel());
 			}
 
-			// TODO: Entramos en informacionActividad
 		}
 	}
 

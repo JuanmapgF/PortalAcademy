@@ -140,7 +140,6 @@ public class Usuario {
 			try {
 				c.add(formato.parse(o[0].toString()));
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

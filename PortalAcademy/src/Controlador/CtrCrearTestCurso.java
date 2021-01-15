@@ -28,7 +28,6 @@ public class CtrCrearTestCurso implements ActionListener{
 		this.curso = curso;
 		this.user = user;
 		vista.controlador(this);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public JPanel getPanel() {
@@ -37,7 +36,6 @@ public class CtrCrearTestCurso implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		
 		if(e.getActionCommand().equals("CREAR")) {
 			

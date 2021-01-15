@@ -32,8 +32,6 @@ public class CtrEditarActividad implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		// TODO (Juanma) Añadir cambio del formato de la fecha que utiliza para
-		// seleccionar la hora.
 
 		if (e.getActionCommand().equals("SELECCIONAR")) {
 			if (ventana.getFileChooserImagen()

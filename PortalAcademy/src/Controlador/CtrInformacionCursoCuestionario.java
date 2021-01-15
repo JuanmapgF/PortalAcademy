@@ -34,7 +34,6 @@ public class CtrInformacionCursoCuestionario implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		if (e.getActionCommand().equals("CREAR")) {
 			curso.setSatisfaccion(true);
 			CtrInformacionCursoCuestionario c = new CtrInformacionCursoCuestionario(user,curso);

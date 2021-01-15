@@ -143,7 +143,6 @@ public class AdminCursos extends JPanel {
 	
 	@Override
 	public void paint(Graphics g) {
-		// TODO Auto-generated method stub
 		
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
         this.setOpaque(false);
