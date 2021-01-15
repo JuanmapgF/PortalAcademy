@@ -31,7 +31,7 @@ public class InformacionActividadCuestionarios extends JPanel{
 		setLayout(null);
 		
 		JLabel nombreCurso = new JLabel(actividad.getNombre());
-		nombreCurso.setBounds(429, 189, 364, 33);
+		nombreCurso.setBounds(429, 189, 1056, 33);
 		nombreCurso.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		add(nombreCurso);
 		
