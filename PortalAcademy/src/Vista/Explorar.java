@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -46,7 +47,9 @@ public class Explorar extends JPanel {
 
 	private List<MensajeNoticia> lista_noticias = MensajeNoticia.getTodasLasNoticias();
 	private List<Curso> lista_cursos = null;
+	private List<Curso> lista_cursos_original = null;
 	private List<Actividad> lista_actividades = null;
+	private List<Actividad> lista_actividades_original = null;
 
 	private Object[][] datosNoticias = null;
 	private Object[][] datosCurso = null;
@@ -63,8 +66,8 @@ public class Explorar extends JPanel {
 	 */
 	public Explorar(Estudiante e, List<Curso> lc, List<Actividad> la) {
 		estudiante = true;
-		lista_cursos = lc;
-		lista_actividades = la;
+		lista_cursos_original = lc;
+		lista_actividades_original = la;
 		this.setBounds(0, 0, 1920, 1080);
 		est = e;
 		setLayout(null);
@@ -141,8 +144,8 @@ public class Explorar extends JPanel {
 	
 	public Explorar(List<Curso> lc, List<Actividad> la) {
 		invitado = true;
-		lista_cursos = lc;
-		lista_actividades = la;
+		lista_cursos_original = lc;
+		lista_actividades_original = la;
 		this.setBounds(0, 0, 1920, 1080);
 		setLayout(null);
 		
@@ -216,8 +219,8 @@ public class Explorar extends JPanel {
 
 	public Explorar(Profesor e, List<Curso> lc, List<Actividad> la) {
 		profesor = true;
-		lista_cursos = lc;
-		lista_actividades = la;
+		lista_cursos_original = lc;
+		lista_actividades_original = la;
 		this.setBounds(0, 0, 1920, 1080);
 		prof = e;
 		setLayout(null);
@@ -292,8 +295,8 @@ public class Explorar extends JPanel {
 
 	public Explorar(Organizacion e, List<Curso> lc, List<Actividad> la) {
 		organizacion = true;
-		lista_cursos = lc;
-		lista_actividades = la;
+		lista_cursos_original = lc;
+		lista_actividades_original = la;
 		this.setBounds(0, 0, 1920, 1080);
 		org = e;
 		setLayout(null);
@@ -438,9 +441,9 @@ public class Explorar extends JPanel {
 	public void cargarCursosUsuario(String busqueda) {
 		this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		if (!busqueda.equals("")) {
-			lista_cursos = Curso.getCursos(busqueda);
+			lista_cursos = getCursos(busqueda);
 		} else {
-			lista_cursos = Curso.getTodosLosCursos();
+			lista_cursos = lista_cursos_original;
 		}
 		
 		datosCurso = new Object[lista_cursos.size()][3];
@@ -505,9 +508,9 @@ public class Explorar extends JPanel {
 	public void cargarActividadesUsuario(String busqueda) {
 		this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		if (!busqueda.equals("")) {
-			lista_actividades = Actividad.getActividades(busqueda);
+			lista_actividades = getActividades(busqueda);
 		} else {
-			lista_actividades = Actividad.getTodasLasActividades();
+			lista_actividades = lista_actividades_original;
 		}
 
 		datosActividad = new Object[lista_actividades.size()][3];
@@ -573,9 +576,9 @@ public class Explorar extends JPanel {
 	public void cargarCursosInvitado(String busqueda) {
 		this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		if (!busqueda.equals("")) {
-			lista_cursos = Curso.getCursos(busqueda);
+			lista_cursos = getCursos(busqueda);
 		} else {
-			lista_cursos = Curso.getTodosLosCursos();
+			lista_cursos = lista_cursos_original;
 		}
 		
 		datosCurso = new Object[lista_cursos.size()][3];
@@ -632,9 +635,9 @@ public class Explorar extends JPanel {
 	public void cargarActividadesInvitado(String busqueda) {
 		this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		if (!busqueda.equals("")) {
-			lista_actividades = Actividad.getActividades(busqueda);
+			lista_actividades = getActividades(busqueda);
 		} else {
-			lista_actividades = Actividad.getTodasLasActividades();
+			lista_actividades = lista_actividades_original;
 		}
 
 		datosActividad = new Object[lista_actividades.size()][3];
@@ -698,5 +701,41 @@ public class Explorar extends JPanel {
 	
 	public String getBusquedaActividad() {
 		return busquedaActividad.getText();
+	}
+	
+	private List<Curso> getCursos(String busqueda) {
+		Integer longitud = busqueda.length();
+		Integer i;
+		Boolean esta;
+		List<Curso> res = new ArrayList<>();
+		for (Curso curso : lista_cursos_original) {
+			i = 0;
+			esta = false;
+			while (i + longitud  < curso.getNombre().length() && !busqueda.equalsIgnoreCase(curso.getNombre().substring(i, i + longitud))) {
+				i++;
+			}
+			if (i + longitud < curso.getNombre().length() && busqueda.equalsIgnoreCase(curso.getNombre().substring(i, i + longitud))) {
+				res.add(curso);
+			}
+		}
+		return res;
+	}
+	
+	private List<Actividad> getActividades(String busqueda) {
+		Integer longitud = busqueda.length();
+		Integer i;
+		Boolean esta;
+		List<Actividad> res = new ArrayList<>();
+		for (Actividad actividad : lista_actividades_original) {
+			i = 0;
+			esta = false;
+			while (i + longitud < actividad.getNombre().length() && !busqueda.equalsIgnoreCase(actividad.getNombre().substring(i, i + longitud))) {
+				i++;
+			}
+			if (i + longitud < actividad.getNombre().length() && busqueda.equalsIgnoreCase(actividad.getNombre().substring(i, i + longitud))) {
+				res.add(actividad);
+			}
+		}
+		return res;
 	}
 }
