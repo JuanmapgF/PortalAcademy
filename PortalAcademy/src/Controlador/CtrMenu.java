@@ -32,7 +32,7 @@ public class CtrMenu implements ActionListener {
 			Inicio i = new Inicio();
 			i.setFocusable(true);
 			i.requestFocusInWindow();
-			CtrInicio2 c2 = new CtrInicio2(i);
+			new CtrInicio2(i);
 			CtrInicio c = new CtrInicio(i);
 			Main.setPanel(c.getPanel());
 		}

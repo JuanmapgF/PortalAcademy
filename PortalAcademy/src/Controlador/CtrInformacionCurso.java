@@ -1,7 +1,5 @@
 package Controlador;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
@@ -9,7 +7,7 @@ import Modelo.Curso;
 import Modelo.Usuario;
 import Vista.InformacionCurso;
 
-public class CtrInformacionCurso implements ActionListener {
+public class CtrInformacionCurso {
 
 	private InformacionCurso ventana;
 
@@ -17,10 +15,6 @@ public class CtrInformacionCurso implements ActionListener {
 		ventana = new InformacionCurso(user, curso);
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-
-	}
 
 	public JPanel getPanel() {
 		return ventana;

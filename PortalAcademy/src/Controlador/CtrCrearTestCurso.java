@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import Modelo.BD;
 import Modelo.Curso;
 import Modelo.ErrorBD;
 import Modelo.Test;
@@ -19,7 +18,6 @@ public class CtrCrearTestCurso implements ActionListener{
 	private CrearTestCurso vista;
 	private Curso curso;
 	private Usuario user;
-	private static BD bd;
 	
 	private String nombre, descripcion, link;
 	
