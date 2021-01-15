@@ -31,8 +31,8 @@ public class CtrInformacionCursoForo implements ActionListener {
 		if (e.getActionCommand().equals("Enviar")) {
 			String mensaje = ventana.mensajeAEnviar();
 
-			if (mensaje.length() > 80) {
-				JOptionPane.showMessageDialog(ventana, "El mensaje ha superado los 80 caracteres permitidos");
+			if (mensaje.length() > 120) {
+				JOptionPane.showMessageDialog(ventana, "El mensaje ha superado los 120 caracteres permitidos");
 			} else if (mensaje.equals("") || mensaje.charAt(0) == ' ') {
 				JOptionPane.showMessageDialog(ventana, "El mensaje debe empezar por algun caracter");
 			} else {
