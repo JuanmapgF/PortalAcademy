@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import Controlador.CtrMenu;
-import Modelo.BD;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Organizacion;
@@ -25,15 +24,11 @@ import Modelo.Usuario;
 @SuppressWarnings("serial")
 public class InformacionCursoCuestionarios extends JPanel {
 
-	public JButton bHacerCuestionario, bCrear, bBorrar, bCrearTest, bHacerTest;
+	public JButton bHacerCuestionario, bCrear, bBorrar, bCrearTest, bHacerTest, bBorrarTest;
 
 	private DefaultListModel<String> modeloC = new DefaultListModel<String>();
 	private JList<String> listaC = new JList<String>();
 	private List<Test> l;
-	private List<Object> lista_test = null;
-	private Object[][] datos = null;
-
-	private static BD bd;
 
 	private Curso curso;
 
@@ -109,6 +104,7 @@ public class InformacionCursoCuestionarios extends JPanel {
 			bBorrar.setBorderPainted(false);
 			bBorrar.setBounds(1156, 776, 142, 52);
 			add(bBorrar);
+
 		}
 
 		if (esCreador()) {
@@ -119,6 +115,14 @@ public class InformacionCursoCuestionarios extends JPanel {
 			bCrearTest.setBorderPainted(false);
 			bCrearTest.setBounds(1402, 423, 142, 52);
 			add(bCrearTest);
+
+			bBorrarTest = new JButton(new ImageIcon(getClass().getResource("/img/borrar.png")));
+			bBorrarTest.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			bBorrarTest.setContentAreaFilled(false);
+			bBorrarTest.setFocusPainted(false);
+			bBorrarTest.setBorderPainted(false);
+			bBorrarTest.setBounds(1273, 499, 142, 52);
+			add(bBorrarTest);
 		}
 
 		if (user instanceof Profesor) {
@@ -163,6 +167,11 @@ public class InformacionCursoCuestionarios extends JPanel {
 	}
 
 	public void controlador(ActionListener ctr) {
+		if (bBorrarTest != null) {
+			bBorrarTest.addActionListener(ctr);
+			bBorrarTest.setActionCommand("BORRARTEST");
+		}
+
 		if (bCrearTest != null) {
 			this.bCrearTest.addActionListener(ctr);
 			this.bCrearTest.setActionCommand("CREARTEST");
