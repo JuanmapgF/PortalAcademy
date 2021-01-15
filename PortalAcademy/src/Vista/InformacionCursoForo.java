@@ -38,7 +38,6 @@ public class InformacionCursoForo extends JPanel {
 	private List<Mensaje> lista;
 	private JTable tablaMensajes;
 	private MensajeRenderer mensajeRenderer = new MensajeRenderer();
-	private ButtonChatEditor chatEditor = new ButtonChatEditor(new JTextField());
 	private Usuario user;
 	private Curso curso;
 
@@ -137,12 +136,6 @@ public class InformacionCursoForo extends JPanel {
 			}
 			
 			k++;
-		}
-		
-		for (int i = 0; i < datos.length; i++) {
-			for (int j = 0; j < datos[0].length; j++) {
-				System.out.println(datos[i][j]);
-			}
 		}
 		
 		tablaMensajes = new JTable(datos, columnHeaders);

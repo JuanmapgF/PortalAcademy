@@ -6,21 +6,19 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.table.TableCellRenderer;
 
 @SuppressWarnings("serial")
 public class MensajeRenderer extends JLabel implements TableCellRenderer {
-
-
 
 	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
 			int row, int column) {
 
 		this.setOpaque(true);
-		this.setText("<html><p style=\"width:200px\">" + (String) value + "</p></html>");
+		this.setText("<html><p style=\"width:120px\">" + (String) value + "</p></html>");
 		this.setFont(new Font("Microsoft YaHei", Font.ITALIC, 11));
-
 		if (value.equals("")) {
 			setBackground(Color.decode("#F0F0F0"));
 		} else {
