@@ -243,10 +243,15 @@ public class Actividad {
 	}
 
 	public Boolean getSatisfaccion() {
-		bd = BD.getBD();
-		Object[]tupla = bd.Select("SELECT satisfaccion FROM Actividad WHERE idActividad = '" + this.idActividad +"'").get(0);
-		bd.finalize();
-		return tupla[0].toString().equals("1") ? true : false;
+		if (satisfaccion == null) {
+			bd = BD.getBD();
+			Object[]tupla = bd.Select("SELECT satisfaccion FROM Actividad WHERE idActividad = '" + this.idActividad +"'").get(0);
+			bd.finalize();
+			return tupla[0].toString().equals("1") ? true : false;
+		} else {
+			return satisfaccion;
+		}
+		
 	}
 
 	public void setSatisfaccion(Boolean satisfaccion) {
