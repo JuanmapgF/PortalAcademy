@@ -16,6 +16,10 @@ public class CtrBusquedaExplorar implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
 		if (e.getSource() == ventana.busquedaCurso) {
 			if (ventana.esInvitado()) {
 				ventana.cargarCursosInvitado(ventana.getBusquedaCurso());
@@ -34,13 +38,22 @@ public class CtrBusquedaExplorar implements KeyListener {
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e) {
-		
-	}
-
-	@Override
 	public void keyReleased(KeyEvent e) {
-		
+		if (e.getSource() == ventana.busquedaCurso) {
+			if (ventana.esInvitado()) {
+				ventana.cargarCursosInvitado(ventana.getBusquedaCurso());
+			} else {
+				ventana.cargarCursosUsuario(ventana.getBusquedaCurso());
+			}
+		}
+
+		if (e.getSource() == ventana.busquedaActividad) {
+			if (ventana.esInvitado()) {
+				ventana.cargarActividadesInvitado(ventana.getBusquedaActividad());
+			} else {
+				ventana.cargarActividadesUsuario(ventana.getBusquedaActividad());
+			}
+		}
 	}
 
 }
