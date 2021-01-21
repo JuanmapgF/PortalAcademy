@@ -91,12 +91,13 @@ public class CtrAdminNoticias implements ActionListener {
 			} else {
 				new MensajeNoticia(noticia);
 				CtrAdminNoticias ctr = new CtrAdminNoticias(new AdminNoticias());
+//				for (Usuario u : Usuario.getUsuarios()) {
+//					EnviarCorreo.enviarGmailUnico(u.getCorreo(), "Noticias",
+//							"Hola buenas " + u.getNick() + ",\n\nLe adjuntamos la siguiente noticia:\n" + noticia
+//									+ "\n\nUn cordial saludo de la comunidad NoTrabaJava.");
+//				}
 				Main.setPanel(ctr.getPanel());
-				for (Usuario u : Usuario.getUsuarios()) {
-					EnviarCorreo.enviarGmailUnico(u.getCorreo(), "Noticias",
-							"Hola buenas " + u.getNick() + ",\n\nLe adjuntamos la siguiente noticia:\n" + noticia
-									+ "\n\nUn cordial saludo de la comunidad NoTrabaJava.");
-				}
+				
 			}
 		}
 
